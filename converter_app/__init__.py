@@ -47,4 +47,12 @@ def create_app(test_config=None):
     def root():
         return make_response(jsonify({'status': 'ok'}), 200)
 
+    @app.route('/api/v1/fileconversion', methods=['POST'])
+    def convert_file():
+        if request.files.get('file'):
+            file = request.files.get('file')
+            return test_csv(file)
+        else:
+            return jsonify({'error': 'please provide file'}), 200
+
     return app
