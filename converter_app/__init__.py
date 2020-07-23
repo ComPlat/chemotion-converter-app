@@ -55,7 +55,11 @@ def create_app(test_config=None):
         if request.files.get('file'):
             file = request.files.get('file')
             reader = registry.match_reader(file)
-            return reader.process()
+            if reader:
+                return reader.process()
+            else:
+                return jsonify(
+                    {'error': 'your file could not be processed'}), 400
         else:
             return jsonify({'error': 'please provide file'}), 200
 
