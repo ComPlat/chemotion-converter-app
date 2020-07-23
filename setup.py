@@ -29,5 +29,10 @@ setup(
         'License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)'
     ],
     packages=find_packages(),
-    include_package_data=True
+    include_package_data=True,
+    entry_points={
+        'console_scripts': [
+            'chemotion-converter=converter_app.scripts:converter',
+        ]
+    }
 )
