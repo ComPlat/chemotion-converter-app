@@ -5,6 +5,8 @@ from dotenv import load_dotenv
 from flask import Flask, jsonify, make_response, request
 from flask_cors import CORS
 
+from .converters import test_csv
+
 __title__ = 'chemotion-converter-app'
 __version__ = '0.1.0'
 __author__ = 'Nicole Jung'
