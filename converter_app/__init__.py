@@ -1,11 +1,12 @@
 import os
+
 from pathlib import Path
 
 from dotenv import load_dotenv
 from flask import Flask, jsonify, make_response, request
 from flask_cors import CORS
 
-from .converters import test_csv
+from .readers import registry
 
 __title__ = 'chemotion-converter-app'
 __version__ = '0.1.0'
@@ -53,7 +54,8 @@ def create_app(test_config=None):
     def convert_file():
         if request.files.get('file'):
             file = request.files.get('file')
-            return test_csv(file)
+            reader = registry.match_reader(file)
+            return reader.process()
         else:
             return jsonify({'error': 'please provide file'}), 200
 
