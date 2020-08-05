@@ -1,9 +1,13 @@
 import os
+import json
+import tempfile
+from io import StringIO
 
 from pathlib import Path
 
 from dotenv import load_dotenv
-from flask import Flask, jsonify, make_response, request
+from flask import Flask, jsonify, make_response, request, Response
+
 from flask_cors import CORS
 
 from .readers import registry
@@ -63,4 +67,51 @@ def create_app(test_config=None):
         else:
             return jsonify({'error': 'please provide file'}), 200
 
+    @app.route('/api/v1/jcampconversion', methods=['POST'])
+    def convert_json():
+        from .writers.jcamp import JcampWriter
+
+        form = request.form
+        x_column = form['x_column']
+        y_column = form['y_column']
+        time_stamp = form['time_stamp']
+        first_row_is_header = False if form['firstRowIsHeader'] == 'false' else True
+
+        json_path = os.path.join(
+            tempfile.gettempdir(), '{}.json'.format(time_stamp))
+
+        with open(json_path, 'r') as data_file:
+            data_dict = json.load(data_file)
+            points = []
+
+            if not first_row_is_header:
+                x = None
+                y = None
+                for entry in data_dict['header']:
+                    if entry['key'] == x_column:
+                        x = entry['name']
+                    if entry['key'] == y_column:
+                        y = entry['name']
+                if x and y:
+                    points.append([x, y])
+
+            for row in data_dict['data']:
+                x_value = row.get(x_column)
+                y_value = row.get(y_column)
+                points.append([x_value, y_value])
+
+            prepared_data = {
+                'points': points
+            }
+
+            jcamp_buffer = StringIO()
+            jcamp_writer = JcampWriter(jcamp_buffer)
+            jcamp_writer.write(prepared_data)
+
+            return Response(
+                jcamp_buffer.getvalue(),
+                mimetype="text/plain",
+                headers={
+                    "Content-Disposition": "attachment;filename=test.jcamp"
+                })
     return app
