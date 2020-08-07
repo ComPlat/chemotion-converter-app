@@ -1,9 +1,10 @@
 import json
-from datetime import datetime
-import tempfile
 import os
+import tempfile
+from datetime import datetime
 
 from flask import jsonify
+
 
 class Reader(object):
 

@@ -1,13 +1,11 @@
-import os
 import json
+import os
 import tempfile
 from io import StringIO
-
 from pathlib import Path
 
 from dotenv import load_dotenv
-from flask import Flask, jsonify, make_response, request, Response
-
+from flask import Flask, Response, jsonify, make_response, request
 from flask_cors import CORS
 
 from .readers import registry
@@ -110,7 +108,7 @@ def create_app(test_config=None):
 
             return Response(
                 jcamp_buffer.getvalue(),
-                mimetype="text/plain",
+                mimetype="chemical/x-jcamp-dx",
                 headers={
                     "Content-Disposition": "attachment;filename=test.jcamp"
                 })
