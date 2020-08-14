@@ -2,7 +2,7 @@ import os
 import sys
 
 from .. import __title__, __version__
-from . import Writer
+from .base import Writer
 
 
 class JcampWriter(Writer):

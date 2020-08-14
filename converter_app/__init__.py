@@ -9,6 +9,7 @@ from flask import Flask, Response, jsonify, make_response, request
 from flask_cors import CORS
 
 from .readers import registry
+from .converters import match_profile
 
 __title__ = 'chemotion-converter-app'
 __version__ = '0.1.0'
@@ -22,8 +23,6 @@ VERSION = __version__
 
 def create_app(test_config=None):
     load_dotenv(Path().cwd() / '.env')
-
-    # create and configure the app
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_mapping(
         SECRET_KEY=os.getenv('SECRET_KEY')
@@ -32,13 +31,10 @@ def create_app(test_config=None):
     CORS(app)
 
     if test_config is None:
-        # load the instance config, if it exists, when not testing
         app.config.from_pyfile('config.py', silent=True)
     else:
-        # load the test config if passed in
         app.config.from_mapping(test_config)
 
-    # ensure the instance folder exists
     try:
         os.makedirs(app.instance_path)
     except OSError:
@@ -52,55 +48,41 @@ def create_app(test_config=None):
     def root():
         return make_response(jsonify({'status': 'ok'}), 200)
 
-    @app.route('/api/v1/fileconversion', methods=['POST'])
-    def convert_file():
+    # Step 1 (advanced): gets file, saves file im temp dir,
+    # returns data from file as json
+    @app.route('/api/v1/fileviewer', methods=['POST'])
+    def return_file_data_as_json():
         if request.files.get('file'):
             file = request.files.get('file')
             reader = registry.match_reader(file)
             if reader:
-                return reader.process()
+                return jsonify(reader.process()), 201
             else:
                 return jsonify(
                     {'error': 'your file could not be processed'}), 400
         else:
             return jsonify({'error': 'please provide file'}), 200
 
-    @app.route('/api/v1/jcampconversion', methods=['POST'])
+    # Step 2 (advanced): get json that defines rules and identifiers for file
+    # from step 1, saves rules and identifiers as profile returns jcamp
+    @app.route('/api/v1/createprofile', methods=['POST'])
     def convert_json():
         from .writers.jcamp import JcampWriter
+        from .converters.base import Converter
 
-        form = request.form
-        x_column = form['x_column']
-        y_column = form['y_column']
-        time_stamp = form['time_stamp']
-        first_row_is_header = False if form['firstRowIsHeader'] == 'false' else True
+        data = json.loads(request.data)
+        uuid = data.pop('uuid')
+        converter = Converter(**data)
+        converter.save_profile()
 
         json_path = os.path.join(
-            tempfile.gettempdir(), '{}.json'.format(time_stamp))
+            tempfile.gettempdir(), '{}.json'.format(uuid))
 
         with open(json_path, 'r') as data_file:
             data_dict = json.load(data_file)
-            points = []
-
-            if not first_row_is_header:
-                x = None
-                y = None
-                for entry in data_dict['header']:
-                    if entry['key'] == x_column:
-                        x = entry['name']
-                    if entry['key'] == y_column:
-                        y = entry['name']
-                if x and y:
-                    points.append([x, y])
-
-            for row in data_dict['data']:
-                x_value = row.get(x_column)
-                y_value = row.get(y_column)
-                points.append([x_value, y_value])
-
-            prepared_data = {
-                'points': points
-            }
+            header = data_dict['header']
+            data = data_dict['data']
+            prepared_data = converter.apply_to_data(header, data)
 
             jcamp_buffer = StringIO()
             jcamp_writer = JcampWriter(jcamp_buffer)
@@ -112,4 +94,35 @@ def create_app(test_config=None):
                 headers={
                     "Content-Disposition": "attachment;filename=test.jcamp"
                 })
+
+    # Simple View: gets file, converts file, searches for profile,
+    # return jcamp based on profile
+    @app.route('/api/v1/simplefileconversion', methods=['POST'])
+    def return_jcamp_from_fileuplaod_from_identifier():
+        from .writers.jcamp import JcampWriter
+        if request.files.get('file'):
+            file = request.files.get('file')
+            reader = registry.match_reader(file)
+            if reader:
+                file_data = reader.process()
+                file_data_metadata = file_data.pop('metadata')
+                converter = match_profile(file_data_metadata)
+                prepared_data = converter.apply_to_data(**file_data)
+
+                jcamp_buffer = StringIO()
+                jcamp_writer = JcampWriter(jcamp_buffer)
+                jcamp_writer.write(prepared_data)
+
+                return Response(
+                    jcamp_buffer.getvalue(),
+                    mimetype="chemical/x-jcamp-dx",
+                    headers={
+                        "Content-Disposition": "attachment;filename=test.jcamp"
+                    })
+            else:
+                return jsonify(
+                    {'error': 'your file could not be processed'}), 400
+        else:
+            return jsonify({'error': 'please provide file'}), 200
+
     return app
