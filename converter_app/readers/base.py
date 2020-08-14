@@ -1,7 +1,7 @@
 import json
 import os
 import tempfile
-from datetime import datetime
+import uuid
 
 from flask import jsonify
 
@@ -13,26 +13,26 @@ class Reader(object):
 
     def process(self):
         data_dict = self.convert_to_dict()
-        data_dict_with_props = self.add_properties(data_dict)
-        self.save_to_tempfile(data_dict_with_props)
-        return jsonify({'result': data_dict_with_props}), 201
+        data_dict_with_metadata = self.add_metadata(data_dict)
+        self.save_to_tempfile(data_dict_with_metadata)
+        return data_dict_with_metadata
 
     def convert_to_dict(self):
         raise NotImplementedError
 
-    def add_properties(self, data_dict):
-        data_dict['properties'] = {
+    def add_metadata(self, data_dict):
+        data_dict['metadata'] = {
             'file_name': self.file_name,
             'content_type': self.content_type,
             'extension': self.extension,
-            'time_stamp': self.time_stamp
+            'uuid': self.uuid
         }
         return data_dict
 
     def save_to_tempfile(self, data_json):
         tempdir = tempfile.gettempdir()
         path = os.path.join(tempdir)
-        with open(path + '/{}.json'.format(self.time_stamp), 'a') as jsonfile:
+        with open(path + '/{}.json'.format(self.uuid), 'a') as jsonfile:
             json.dump(data_json, jsonfile)
 
     def __init__(self, file):
@@ -40,7 +40,7 @@ class Reader(object):
         self.extension = ''
         self.content_type = self.file.content_type
         self.file_name = file.filename
-        self.time_stamp = datetime.now().strftime('%Y%m%d%H%M%S')
+        self.uuid = str(uuid.uuid4())
 
         if '.' in self.file_name:
             file_name_splitted = self.file_name.split('.')
