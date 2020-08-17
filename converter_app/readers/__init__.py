@@ -1,4 +1,5 @@
 from .csv import CSVReader
+from .txt import TXTReader
 
 
 class Readers:
@@ -27,3 +28,4 @@ class Readers:
 
 registry = Readers()
 registry.register(CSVReader)
+registry.register(TXTReader)

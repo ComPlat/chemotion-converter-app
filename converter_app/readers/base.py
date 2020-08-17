@@ -20,13 +20,16 @@ class Reader(object):
     def convert_to_dict(self):
         raise NotImplementedError
 
-    def add_metadata(self, data_dict):
-        data_dict['metadata'] = {
+    def get_metadata(self):
+        return {
             'file_name': self.file_name,
             'content_type': self.content_type,
             'extension': self.extension,
             'uuid': self.uuid
         }
+
+    def add_metadata(self, data_dict):
+        data_dict['metadata'] = self.get_metadata()
         return data_dict
 
     def save_to_tempfile(self, data_json):
