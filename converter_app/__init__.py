@@ -8,8 +8,8 @@ from dotenv import load_dotenv
 from flask import Flask, Response, jsonify, make_response, request
 from flask_cors import CORS
 
-from .readers import registry
 from .converters import match_profile
+from .readers import registry
 
 __title__ = 'chemotion-converter-app'
 __version__ = '0.1.0'
@@ -61,7 +61,7 @@ def create_app(test_config=None):
                 return jsonify(
                     {'error': 'your file could not be processed'}), 400
         else:
-            return jsonify({'error': 'please provide file'}), 200
+            return jsonify({'error': 'please provide file'}), 400
 
     # Step 2 (advanced): get json that defines rules and identifiers for file
     # from step 1, saves rules and identifiers as profile returns jcamp
@@ -123,6 +123,6 @@ def create_app(test_config=None):
                 return jsonify(
                     {'error': 'your file could not be processed'}), 400
         else:
-            return jsonify({'error': 'please provide file'}), 200
+            return jsonify({'error': 'please provide file'}), 400
 
     return app
