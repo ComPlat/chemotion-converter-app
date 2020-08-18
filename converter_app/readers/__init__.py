@@ -1,5 +1,5 @@
+from .ascii import AsciiReader
 from .csv import CSVReader
-from .txt import TXTReader
 
 
 class Readers:
@@ -19,13 +19,13 @@ class Readers:
     def readers(self):
         return self._registry['readers']
 
-    def match_reader(self, file):
+    def match_reader(self, file, file_name, content_type):
         for identifier, reader in self.readers.items():
-            reader = reader(file)
+            reader = reader(file, file_name, content_type)
             if reader.check():
                 return reader
 
 
 registry = Readers()
 registry.register(CSVReader)
-registry.register(TXTReader)
+registry.register(AsciiReader)

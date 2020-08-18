@@ -57,7 +57,7 @@ class JcampWriter(Writer):
             'YUNITS': data.get('yunits', 'TRANSMITTANCE')
         }
 
-        if 'points' in data:
+        if 'x' in data:
             self.write_xypoints(metadata, data)
         else:
             self.write_xydata(metadata, data)
@@ -123,24 +123,25 @@ class JcampWriter(Writer):
         self.buffer.write('##END=$$ End of the data block' + os.linesep)
 
     def write_xypoints(self, metadata, data):
-        points = data.get('points')
-        firstx = points[0][0]
-        firsty = points[0][1]
-        lastx = points[-1][0]
-        npoints = len(points)
+        x = data.get('x')
+        y = data.get('y')
+        firstx = x[0]
+        firsty = y[0]
+        lastx = x[-1]
+        npoints = len(x)
 
         # find MINX, MAXX, MINY, MAXY
         minx = sys.float_info.max
         maxx = sys.float_info.min
         miny = sys.float_info.max
         maxy = sys.float_info.min
-        for point in points:
-            x, y = float(point[0]), float(point[1])
+        for x_string, y_string in zip(x, y):
+            x_float, y_float = float(x_string), float(y_string)
 
-            minx = min(minx, x)
-            maxx = max(maxx, x)
-            miny = min(miny, y)
-            maxy = max(maxy, y)
+            minx = min(minx, x_float)
+            maxx = max(maxx, x_float)
+            miny = min(miny, y_float)
+            maxy = max(maxy, y_float)
 
         # update metadata with xydata specific values
         metadata.update({
@@ -161,8 +162,8 @@ class JcampWriter(Writer):
                 self.buffer.write('##{}={}'.format(key, value) + os.linesep)
 
         # write the xypoints
-        for point in points:
-            line = '{},{}'.format(*point)
+        for x_string, y_string in zip(x, y):
+            line = x_string + ',' + y_string
             self.buffer.write(line + os.linesep)
 
         # write the end

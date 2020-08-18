@@ -1,14 +1,14 @@
+import io
 import json
+import logging
 import os
 import tempfile
-from io import StringIO
 from pathlib import Path
 
 from dotenv import load_dotenv
 from flask import Flask, Response, jsonify, make_response, request
 from flask_cors import CORS
 
-from .converters import match_profile
 from .readers import registry
 
 __title__ = 'chemotion-converter-app'
@@ -23,6 +23,9 @@ VERSION = __version__
 
 def create_app(test_config=None):
     load_dotenv(Path().cwd() / '.env')
+
+    logging.basicConfig(level=os.getenv('LOG_LEVEL'))
+
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_mapping(
         SECRET_KEY=os.getenv('SECRET_KEY')
@@ -50,11 +53,13 @@ def create_app(test_config=None):
 
     # Step 1 (advanced): gets file, saves file im temp dir,
     # returns data from file as json
-    @app.route('/api/v1/fileviewer', methods=['POST'])
+    @app.route('/api/v1/tables', methods=['POST'])
     def return_file_data_as_json():
         if request.files.get('file'):
             file = request.files.get('file')
-            reader = registry.match_reader(file)
+            file_reader = io.BufferedReader(file)
+            reader = registry.match_reader(file_reader, file.filename, file.content_type)
+
             if reader:
                 return jsonify(reader.process()), 201
             else:
@@ -65,13 +70,14 @@ def create_app(test_config=None):
 
     # Step 2 (advanced): get json that defines rules and identifiers for file
     # from step 1, saves rules and identifiers as profile returns jcamp
-    @app.route('/api/v1/createprofile', methods=['POST'])
+    @app.route('/api/v1/profiles', methods=['POST'])
     def convert_json():
         from .writers.jcamp import JcampWriter
-        from .converters.base import Converter
+        from .converters import Converter
 
         data = json.loads(request.data)
         uuid = data.pop('uuid')
+
         converter = Converter(**data)
         converter.save_profile()
 
@@ -79,12 +85,10 @@ def create_app(test_config=None):
             tempfile.gettempdir(), '{}.json'.format(uuid))
 
         with open(json_path, 'r') as data_file:
-            data_dict = json.load(data_file)
-            header = data_dict['header']
-            data = data_dict['data']
-            prepared_data = converter.apply_to_data(header, data)
+            table_data = json.load(data_file)
+            prepared_data = converter.apply_to_data(table_data.get('data'))
 
-            jcamp_buffer = StringIO()
+            jcamp_buffer = io.StringIO()
             jcamp_writer = JcampWriter(jcamp_buffer)
             jcamp_writer.write(prepared_data)
 
@@ -97,19 +101,24 @@ def create_app(test_config=None):
 
     # Simple View: gets file, converts file, searches for profile,
     # return jcamp based on profile
-    @app.route('/api/v1/simplefileconversion', methods=['POST'])
+    @app.route('/api/v1/conversions', methods=['POST'])
     def return_jcamp_from_fileuplaod_from_identifier():
+        from .converters import Converter
         from .writers.jcamp import JcampWriter
+
         if request.files.get('file'):
             file = request.files.get('file')
-            reader = registry.match_reader(file)
-            if reader:
-                file_data = reader.process()
-                file_data_metadata = file_data.pop('metadata')
-                converter = match_profile(file_data_metadata)
-                prepared_data = converter.apply_to_data(**file_data)
+            file_reader = io.BufferedReader(file)
+            reader = registry.match_reader(file_reader, file.filename, file.content_type)
 
-                jcamp_buffer = StringIO()
+            if reader:
+                table_data = reader.process()
+                file_data_metadata = table_data.pop('metadata')
+
+                converter = Converter.match_profile(file_data_metadata)
+                prepared_data = converter.apply_to_data(table_data.get('data'))
+
+                jcamp_buffer = io.StringIO()
                 jcamp_writer = JcampWriter(jcamp_buffer)
                 jcamp_writer.write(prepared_data)
 

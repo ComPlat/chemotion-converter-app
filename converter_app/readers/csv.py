@@ -1,44 +1,45 @@
 import csv
 import io
-
+import logging
+import string
 
 from .base import Reader
+
+logger = logging.getLogger(__name__)
 
 
 class CSVReader(Reader):
     identifier = 'csv_reader'
 
     def check(self):
+        file_string, self.encoding = self.peek_ascii()
+
         try:
-            file = self.file.read().decode('utf-8')
-            io_string = io.StringIO(file)
-            dialect = csv.Sniffer().sniff(
-                io_string.read(1024), delimiters=";,\t")
-            io_string.seek(0)
-            self.reader = csv.reader(io_string, dialect)
-            return True
-        except (csv.Error, UnicodeDecodeError):
-            return False
+            self.dialect = csv.Sniffer().sniff(file_string, delimiters=';,\t')
+        except csv.Error:
+            result = False
+        else:
+            result = True
 
-    def convert_to_dict(self):
-        header = next(self.reader, None)
-        res_header = []
-        for idx, entry in enumerate(header):
-            res_header.append({
-                'key': str(idx),
-                'name': entry.strip()
-            })
-
-        data = []
-        for row in self.reader:
-            row_dict = {}
-            for idx, value in enumerate(row):
-                row_dict[res_header[idx]['key']] = value
-            data.append(row_dict)
-
-        result = {
-            'header': res_header,
-            'data': data,
-        }
-
+        logger.debug('result=%s', result)
         return result
+
+    def get_data(self):
+        io_string = io.StringIO(self.file_reader.read().decode(self.encoding))
+        reader = csv.reader(io_string, self.dialect)
+
+        columns = []
+        rows = []
+        for row in reader:
+            if not columns:
+                columns = [{
+                    'key': str(idx),
+                    'name': string.ascii_uppercase[idx]
+                } for idx, value in enumerate(row)]
+            rows.append(row)
+
+        return [{
+            'header': [],
+            'columns': columns,
+            'rows': rows
+        }]
