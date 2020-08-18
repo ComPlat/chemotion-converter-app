@@ -34,10 +34,10 @@ class Converter(object):
             return self.rules.get(rule)
 
     def save_profile(self):
-        load_dotenv(Path().cwd() / '.env')
-        profiles_dir = os.getenv('PROFILES_DIR')
-        os.makedirs(profiles_dir, exist_ok=True)
-        file_path = os.path.join(profiles_dir, '{}.json'.format(self.uuid))
+        profiles_path = Path(os.getenv('PROFILES_PATH', 'profiles'))
+        profiles_path.mkdir(parents=True, exist_ok=True)
+        os.makedirs(profiles_path, exist_ok=True)
+        file_path = profiles_path / '{}.json'.format(self.uuid)
         with open(file_path, 'w') as fp:
             json.dump(self.get_dict(), fp, sort_keys=True, indent=4)
 
@@ -67,11 +67,10 @@ class Converter(object):
 
     @classmethod
     def match_profile(cls, file_data_metadata):
-        profiles_dir = os.getenv('PROFILES_DIR')
-        profiles = os.listdir(profiles_dir)
+        profiles_path = Path(os.getenv('PROFILES_PATH', 'profiles'))
+        for file_name in os.listdir(profiles_path):
+            file_path = profiles_path / file_name
 
-        for file in profiles:
-            file_path = os.path.join(profiles_dir, file)
             with open(file_path, 'r') as data_file:
                 data_dict = json.load(data_file)
                 converter = cls(**data_dict)
