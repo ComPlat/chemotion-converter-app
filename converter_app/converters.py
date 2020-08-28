@@ -3,7 +3,7 @@ import os
 import uuid
 from pathlib import Path
 
-from dotenv import load_dotenv
+from flask import current_app as app
 
 
 class Converter(object):
@@ -34,9 +34,9 @@ class Converter(object):
             return self.rules.get(rule)
 
     def save_profile(self):
-        profiles_path = Path(os.getenv('PROFILES_PATH', 'profiles'))
+        profiles_path = Path(app.config['PROFILES_DIR'])
         profiles_path.mkdir(parents=True, exist_ok=True)
-        os.makedirs(profiles_path, exist_ok=True)
+
         file_path = profiles_path / '{}.json'.format(self.uuid)
         with open(file_path, 'w') as fp:
             json.dump(self.get_dict(), fp, sort_keys=True, indent=4)
@@ -67,7 +67,8 @@ class Converter(object):
 
     @classmethod
     def match_profile(cls, file_data_metadata):
-        profiles_path = Path(os.getenv('PROFILES_PATH', 'profiles'))
+        profiles_path = Path(app.config['PROFILES_DIR'])
+
         for file_name in os.listdir(profiles_path):
             file_path = profiles_path / file_name
 

@@ -2,14 +2,17 @@ import io
 import json
 import logging
 import os
-import tempfile
+import uuid
 from pathlib import Path
 
 from dotenv import load_dotenv
 from flask import Flask, Response, jsonify, make_response, request
 from flask_cors import CORS
 
+from .converters import Converter
+from .files import delete_tmp_file, read_tmp_file, write_tmp_file
 from .readers import registry
+from .writers.jcamp import JcampWriter
 
 
 def create_app(test_config=None):
@@ -19,20 +22,14 @@ def create_app(test_config=None):
 
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_mapping(
-        SECRET_KEY=os.getenv('SECRET_KEY')
+        SECRET_KEY=os.getenv('SECRET_KEY'),
+        TMP_DIR=os.getenv('TMP_DIR', 'tmp'),
+        PROFILES_DIR=os.getenv('PROFILES_DIR', 'profiles'),
+        CORS=os.getenv('CORS', 'False').lower() in ['true', 't', '1']
     )
 
-    CORS(app)
-
-    if test_config is None:
-        app.config.from_pyfile('config.py', silent=True)
-    else:
-        app.config.from_mapping(test_config)
-
-    try:
-        os.makedirs(app.instance_path)
-    except OSError:
-        pass
+    if app.config['CORS']:
+        CORS(app)
 
     @app.errorhandler(404)
     def not_found(error):
@@ -45,14 +42,21 @@ def create_app(test_config=None):
     # Step 1 (advanced): gets file, saves file im temp dir,
     # returns data from file as json
     @app.route('/api/v1/tables', methods=['POST'])
-    def return_file_data_as_json():
+    def tables():
         if request.files.get('file'):
             file = request.files.get('file')
             file_reader = io.BufferedReader(file)
             reader = registry.match_reader(file_reader, file.filename, file.content_type)
 
             if reader:
-                return jsonify(reader.process()), 201
+                file_uuid = str(uuid.uuid4())
+                file_data = reader.process()
+
+                write_tmp_file(file_uuid, file_data)
+
+                # inject uuid into json response
+                response_data = dict(**file_data, uuid=file_uuid)
+                return jsonify(response_data), 201
             else:
                 return jsonify(
                     {'error': 'your file could not be processed'}), 400
@@ -62,38 +66,33 @@ def create_app(test_config=None):
     # Step 2 (advanced): get json that defines rules and identifiers for file
     # from step 1, saves rules and identifiers as profile returns jcamp
     @app.route('/api/v1/profiles', methods=['POST'])
-    def convert_json():
-        from .writers.jcamp import JcampWriter
-        from .converters import Converter
-
+    def profiles():
         data = json.loads(request.data)
         uuid = data.pop('uuid')
 
         converter = Converter(**data)
         converter.save_profile()
 
-        json_path = os.path.join(
-            tempfile.gettempdir(), '{}.json'.format(uuid))
+        file_data = read_tmp_file(uuid)
+        prepared_data = converter.apply_to_data(file_data.get('data'))
 
-        with open(json_path, 'r') as data_file:
-            table_data = json.load(data_file)
-            prepared_data = converter.apply_to_data(table_data.get('data'))
+        delete_tmp_file(uuid)
 
-            jcamp_buffer = io.StringIO()
-            jcamp_writer = JcampWriter(jcamp_buffer)
-            jcamp_writer.write(prepared_data)
+        jcamp_buffer = io.StringIO()
+        jcamp_writer = JcampWriter(jcamp_buffer)
+        jcamp_writer.write(prepared_data)
 
-            return Response(
-                jcamp_buffer.getvalue(),
-                mimetype="chemical/x-jcamp-dx",
-                headers={
-                    "Content-Disposition": "attachment;filename=test.jcamp"
-                })
+        return Response(
+            jcamp_buffer.getvalue(),
+            mimetype="chemical/x-jcamp-dx",
+            headers={
+                "Content-Disposition": "attachment;filename=test.jcamp"
+            })
 
     # Simple View: gets file, converts file, searches for profile,
     # return jcamp based on profile
     @app.route('/api/v1/conversions', methods=['POST'])
-    def return_jcamp_from_fileuplaod_from_identifier():
+    def conversions():
         from .converters import Converter
         from .writers.jcamp import JcampWriter
 
@@ -103,11 +102,11 @@ def create_app(test_config=None):
             reader = registry.match_reader(file_reader, file.filename, file.content_type)
 
             if reader:
-                table_data = reader.process()
-                file_data_metadata = table_data.pop('metadata')
+                file_data = reader.process()
+                file_data_metadata = file_data.pop('metadata')
 
                 converter = Converter.match_profile(file_data_metadata)
-                prepared_data = converter.apply_to_data(table_data.get('data'))
+                prepared_data = converter.apply_to_data(file_data.get('data'))
 
                 jcamp_buffer = io.StringIO()
                 jcamp_writer = JcampWriter(jcamp_buffer)
