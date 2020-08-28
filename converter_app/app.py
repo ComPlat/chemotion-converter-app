@@ -38,7 +38,7 @@ def create_app(test_config=None):
 
     # Step 1 (advanced): gets file, saves file im temp dir,
     # returns data from file as json
-    @app.route('/api/v1/tables', methods=['POST'])
+    @app.route('/tables', methods=['POST'])
     def tables():
         if request.files.get('file'):
             file = request.files.get('file')
@@ -56,7 +56,7 @@ def create_app(test_config=None):
 
     # Step 2 (advanced): get json that defines rules and identifiers for file
     # from step 1, saves rules and identifiers as profile returns jcamp
-    @app.route('/api/v1/profiles', methods=['POST'])
+    @app.route('/profiles', methods=['POST'])
     def profiles():
         data = json.loads(request.data)
 
@@ -67,7 +67,7 @@ def create_app(test_config=None):
 
     # Simple View: gets file, converts file, searches for profile,
     # return jcamp based on profile
-    @app.route('/api/v1/conversions', methods=['POST'])
+    @app.route('/conversions', methods=['POST'])
     def conversions():
         if request.files.get('file'):
             file = request.files.get('file')
