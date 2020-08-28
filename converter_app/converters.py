@@ -1,3 +1,4 @@
+import hashlib
 import json
 import os
 import uuid
@@ -37,9 +38,14 @@ class Converter(object):
         profiles_path = Path(app.config['PROFILES_DIR'])
         profiles_path.mkdir(parents=True, exist_ok=True)
 
-        file_path = profiles_path / '{}.json'.format(self.uuid)
-        with open(file_path, 'w') as fp:
-            json.dump(self.get_dict(), fp, sort_keys=True, indent=4)
+        json_data = json.dumps(self.get_dict(), sort_keys=True, indent=4)
+        checksum = hashlib.sha1(json_data.encode()).hexdigest()
+
+        file_path = profiles_path / '{}.json'.format(checksum)
+
+        if not file_path.exists():
+            with open(file_path, 'w') as fp:
+                fp.write(json_data)
 
     def apply_to_data(self, tables):
         x_column = self.get_rule('x_column')
@@ -69,12 +75,15 @@ class Converter(object):
     def match_profile(cls, file_data_metadata):
         profiles_path = Path(app.config['PROFILES_DIR'])
 
-        for file_name in os.listdir(profiles_path):
-            file_path = profiles_path / file_name
+        if profiles_path.exists():
+            for file_name in os.listdir(profiles_path):
+                file_path = profiles_path / file_name
 
-            with open(file_path, 'r') as data_file:
-                data_dict = json.load(data_file)
-                converter = cls(**data_dict)
-                indentifiers = converter.identifiers
-                if indentifiers.items() <= file_data_metadata.items():
-                    return converter
+                with open(file_path, 'r') as data_file:
+                    data_dict = json.load(data_file)
+                    converter = cls(**data_dict)
+                    indentifiers = converter.identifiers
+                    if indentifiers.items() <= file_data_metadata.items():
+                        return converter
+        else:
+            return None
