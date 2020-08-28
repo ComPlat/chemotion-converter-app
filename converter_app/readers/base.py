@@ -1,33 +1,44 @@
 import json
+import logging
 import os
 import tempfile
 import uuid
+from pathlib import Path
 
-from flask import jsonify
+logger = logging.getLogger(__name__)
 
 
 class Reader(object):
+
+    def __init__(self, file_reader, file_name, content_type):
+        self.file_reader = file_reader
+        self.file_name = file_name
+        self.content_type = content_type
+        self.extension = Path(file_name).suffix
+        self.uuid = str(uuid.uuid4())
 
     def check(self):
         raise NotImplementedError
 
     def process(self):
-        data_dict = self.convert_to_dict()
-        data_dict_with_metadata = self.add_metadata(data_dict)
-        self.save_to_tempfile(data_dict_with_metadata)
-        return data_dict_with_metadata
+        data_dict = {
+            'data': self.get_data(),
+            'metadata': self.get_metadata()
+        }
 
-    def convert_to_dict(self):
+        self.save_to_tempfile(data_dict)
+        return data_dict
+
+    def get_data(self):
         raise NotImplementedError
 
-    def add_metadata(self, data_dict):
-        data_dict['metadata'] = {
+    def get_metadata(self):
+        return {
             'file_name': self.file_name,
             'content_type': self.content_type,
             'extension': self.extension,
             'uuid': self.uuid
         }
-        return data_dict
 
     def save_to_tempfile(self, data_json):
         tempdir = tempfile.gettempdir()
@@ -35,14 +46,17 @@ class Reader(object):
         with open(path + '/{}.json'.format(self.uuid), 'a') as jsonfile:
             json.dump(data_json, jsonfile)
 
-    def __init__(self, file):
-        self.file = file
-        self.extension = ''
-        self.content_type = self.file.content_type
-        self.file_name = file.filename
-        self.uuid = str(uuid.uuid4())
+    def peek_ascii(self):
+        file_string = self.file_reader.peek(1024)
+        encoding = None
 
-        if '.' in self.file_name:
-            file_name_splitted = self.file_name.split('.')
-            self.extension = file_name_splitted[-1]
-            self.file_name = file_name_splitted[0]
+        for item in ['utf-8', 'iso-8859-1']:
+            try:
+                file_string = file_string.decode(item)
+                encoding = item
+                break
+            except UnicodeDecodeError:
+                pass
+
+        logger.debug('encoding=%s', encoding)
+        return file_string, encoding
