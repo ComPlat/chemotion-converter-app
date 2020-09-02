@@ -48,6 +48,8 @@ class AsciiReader(Reader):
                 # try to match columns of floats
                 float_match = PATTERNS['floats'].findall(row)
                 if float_match:
+                    float_match = [float_str.replace(',', '.')
+                                   for float_str in float_match]
                     if current_length == len(float_match):
                         # the current number of columns is the same
                         tables[-1]['rows'].append(float_match)
