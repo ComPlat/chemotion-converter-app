@@ -62,9 +62,9 @@ class Converter(object):
                     else:
                         for column_index, column in enumerate(table['columns']):
                             if table_index == x_column['tableIndex'] and column_index == x_column['columnIndex']:
-                                x.append(row[column_index])
+                                x.append(row[column_index].replace(',', '.'))
                             if table_index == y_column['tableIndex'] and column_index == y_column['columnIndex']:
-                                y.append(row[column_index])
+                                y.append(row[column_index].replace(',', '.'))
 
         return {
             'x': x,

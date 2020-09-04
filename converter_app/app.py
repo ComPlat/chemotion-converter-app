@@ -71,8 +71,7 @@ def create_app(test_config=None):
     def conversions():
         if request.files.get('file'):
             file = request.files.get('file')
-            file_reader = io.BufferedReader(file)
-            reader = registry.match_reader(file_reader, file.filename, file.content_type)
+            reader = registry.match_reader(file, file.filename, file.content_type)
 
             if reader:
                 file_data = reader.process()
