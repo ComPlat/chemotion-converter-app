@@ -1,3 +1,5 @@
+from collections import OrderedDict
+
 from .ascii import AsciiReader
 from .csv import CSVReader
 
@@ -17,7 +19,8 @@ class Readers:
 
     @property
     def readers(self):
-        return self._registry['readers']
+        sorted_readers = sorted(self._registry['readers'].values(), key=lambda reader: reader.priority)
+        return OrderedDict([(reader.identifier, reader) for reader in sorted_readers])
 
     def match_reader(self, file, file_name, content_type):
         for identifier, reader in self.readers.items():

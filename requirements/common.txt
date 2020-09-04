@@ -2,4 +2,3 @@ Flask
 flask-cors
 gunicorn
 python-dotenv
-pandas
