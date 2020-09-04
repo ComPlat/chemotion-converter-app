@@ -21,7 +21,7 @@ class CSVReader(Reader):
         except csv.Error:
             result = False
         else:
-            io_string = io.StringIO(self.file_reader.read().decode(encoding))
+            io_string = io.StringIO(self.file.read().decode(encoding))
             self.lines = copy.copy(io_string)
             self.reader = csv.reader(io_string, dialect)
             result = True
@@ -33,8 +33,8 @@ class CSVReader(Reader):
         tables = []
         self.append_table(tables)
 
-        previous_shape = None
-        previous_row = None
+        previous_shape = []
+        previous_row = []
         for line, row in zip(self.lines, self.reader):
             shape = self.get_shape(row)
 

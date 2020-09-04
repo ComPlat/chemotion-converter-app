@@ -1,9 +1,6 @@
-import copy
-import csv
-import io
 import logging
-import mimetypes
 import string
+import zipfile
 
 import openpyxl
 
@@ -20,7 +17,7 @@ class ExcelReader(Reader):
         try:
             self.wb = openpyxl.load_workbook(filename=self.file)
             result = True
-        except openpyxl.utils.exceptions.InvalidFileException:
+        except (openpyxl.utils.exceptions.InvalidFileException, zipfile.BadZipFile):
             result = False
 
         logger.debug('result=%s', result)
