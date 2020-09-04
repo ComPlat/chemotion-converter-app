@@ -6,6 +6,7 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 from flask import Flask, Response, jsonify, make_response, request
+
 from flask_cors import CORS
 
 from .converters import Converter
@@ -42,8 +43,7 @@ def create_app(test_config=None):
     def tables():
         if request.files.get('file'):
             file = request.files.get('file')
-            file_reader = io.BufferedReader(file)
-            reader = registry.match_reader(file_reader, file.filename, file.content_type)
+            reader = registry.match_reader(file, file.filename, file.content_type)
 
             if reader:
                 response_data = reader.process()

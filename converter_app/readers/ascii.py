@@ -29,7 +29,7 @@ class AsciiReader(Reader):
 
         # loop over lines of the file
         previous_count = None
-        for line in self.file_reader.readlines():
+        for line in self.file.readlines():
             row = line.decode(self.encoding).rstrip()
             count = None
 

@@ -2,6 +2,7 @@ from collections import OrderedDict
 
 from .ascii import AsciiReader
 from .csv import CSVReader
+from .excel import ExcelReader
 
 
 class Readers:
@@ -25,6 +26,8 @@ class Readers:
     def match_reader(self, file, file_name, content_type):
         for identifier, reader in self.readers.items():
             reader = reader(file, file_name, content_type)
+            file.seek(0)
+
             if reader.check():
                 return reader
 
@@ -32,3 +35,4 @@ class Readers:
 registry = Readers()
 registry.register(CSVReader)
 registry.register(AsciiReader)
+registry.register(ExcelReader)

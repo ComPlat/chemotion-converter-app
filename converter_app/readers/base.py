@@ -6,8 +6,8 @@ logger = logging.getLogger(__name__)
 
 class Reader(object):
 
-    def __init__(self, file_reader, file_name, content_type):
-        self.file_reader = file_reader
+    def __init__(self, file, file_name, content_type):
+        self.file = file
         self.file_name = file_name
         self.content_type = content_type
         self.extension = Path(file_name).suffix
@@ -32,9 +32,10 @@ class Reader(object):
         }
 
     def peek_ascii(self):
-        file_string = self.file_reader.peek(1024)
-        encoding = None
+        file_string = self.file.read(1024)
+        self.file.seek(0)
 
+        encoding = None
         for item in ['utf-8', 'iso-8859-1']:
             try:
                 file_string = file_string.decode(item)
