@@ -14,11 +14,17 @@ class ExcelReader(Reader):
     priority = 10
 
     def check(self):
-        try:
-            self.wb = openpyxl.load_workbook(filename=self.file)
-            result = True
-        except (openpyxl.utils.exceptions.InvalidFileException, zipfile.BadZipFile):
+        logger.debug('file_name=%s content_type=%s mime_type=%s encoding=%s',
+                     self.file_name, self.content_type, self.mime_type, self.encoding)
+
+        if self.encoding != 'binary':
             result = False
+        else:
+            try:
+                self.wb = openpyxl.load_workbook(filename=self.file)
+                result = True
+            except (openpyxl.utils.exceptions.InvalidFileException, zipfile.BadZipFile):
+                result = False
 
         logger.debug('result=%s', result)
         return result

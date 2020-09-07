@@ -17,8 +17,13 @@ class AsciiReader(Reader):
     priority = 1000
 
     def check(self):
-        file_string, self.encoding = self.peek_ascii()
-        result = ('\n' in file_string)
+        logger.debug('file_name=%s content_type=%s mime_type=%s encoding=%s',
+                     self.file_name, self.content_type, self.mime_type, self.encoding)
+
+        if self.encoding == 'binary':
+            result = False
+        else:
+            result = True
 
         logger.debug('result=%s', result)
         return result

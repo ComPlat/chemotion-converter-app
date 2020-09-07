@@ -1,8 +1,11 @@
+import logging
 from collections import OrderedDict
 
 from .ascii import AsciiReader
 from .csv import CSVReader
 from .excel import ExcelReader
+
+logger = logging.getLogger(__name__)
 
 
 class Readers:
@@ -26,9 +29,11 @@ class Readers:
     def match_reader(self, file, file_name, content_type):
         for identifier, reader in self.readers.items():
             reader = reader(file, file_name, content_type)
-            file.seek(0)
+            result = reader.check()
 
-            if reader.check():
+            # reset file pointer and return the reader it is the one
+            file.seek(0)
+            if result:
                 return reader
 
 

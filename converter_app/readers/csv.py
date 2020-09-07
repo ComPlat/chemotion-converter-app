@@ -14,17 +14,22 @@ class CSVReader(Reader):
     priority = 100
 
     def check(self):
-        file_string, encoding = self.peek_ascii()
+        logger.debug('file_name=%s content_type=%s mime_type=%s encoding=%s',
+                     self.file_name, self.content_type, self.mime_type, self.encoding)
 
-        try:
-            dialect = csv.Sniffer().sniff(file_string, delimiters=';,\t')
-        except csv.Error:
+        if self.encoding == 'binary':
             result = False
         else:
-            io_string = io.StringIO(self.file.read().decode(encoding))
-            self.lines = copy.copy(io_string)
-            self.reader = csv.reader(io_string, dialect)
-            result = True
+            try:
+                peek_string = self.peek.decode(self.encoding)
+                dialect = csv.Sniffer().sniff(peek_string, delimiters=';,\t')
+            except csv.Error:
+                result = False
+            else:
+                io_string = io.StringIO(self.file.read().decode(self.encoding))
+                self.lines = copy.copy(io_string)
+                self.reader = csv.reader(io_string, dialect)
+                result = True
 
         logger.debug('result=%s', result)
         return result
