@@ -42,7 +42,7 @@ def create_app(test_config=None):
         '''
         return make_response(jsonify({'status': 'ok'}), 200)
 
-    @app.route('/profiles/', methods=['GET'])
+    @app.route('/profiles', methods=['GET'])
     def list_profiles():
         '''
         Utility endpoint: List all profiles
@@ -50,7 +50,7 @@ def create_app(test_config=None):
         profiles = Converter.list_profiles()
         return jsonify(profiles), 200
 
-    @app.route('/tables/', methods=['POST'])
+    @app.route('/tables', methods=['POST'])
     def retrieve_table():
         '''
         Step 1 (advanced): upload file and convert to table
@@ -68,7 +68,7 @@ def create_app(test_config=None):
         else:
             return jsonify({'error': 'please provide file'}), 400
 
-    @app.route('/profiles/', methods=['POST'])
+    @app.route('/profiles', methods=['POST'])
     def create_profile():
         '''
         Step 2 (advanced): upload json that defines rules and identifiers for file
@@ -82,7 +82,7 @@ def create_app(test_config=None):
 
         return jsonify(profile), 201
 
-    @app.route('/conversions/', methods=['POST'])
+    @app.route('/conversions', methods=['POST'])
     def create_conversion():
         '''
         Simple View: upload file, convert to table, search for profile,
