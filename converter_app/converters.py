@@ -87,3 +87,11 @@ class Converter(object):
                         return converter
         else:
             return None
+
+    @classmethod
+    def list_profiles(cls):
+        profiles = []
+        profiles_path = Path(app.config['PROFILES_DIR'])
+        for file_path in Path.iterdir(profiles_path):
+            profiles.append(json.loads(file_path.read_text()))
+        return profiles
