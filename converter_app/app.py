@@ -6,7 +6,6 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 from flask import Flask, Response, jsonify, make_response, request
-
 from flask_cors import CORS
 
 from .converters import Converter
@@ -17,7 +16,10 @@ from .writers.jcamp import JcampWriter
 def create_app(test_config=None):
     load_dotenv(Path().cwd() / '.env')
 
-    logging.basicConfig(level=os.getenv('LOG_LEVEL'))
+    if os.getenv('LOG_FILE'):
+        logging.basicConfig(level=os.getenv('LOG_LEVEL'), filename=os.getenv('LOG_FILE'))
+    else:
+        logging.basicConfig(level=os.getenv('LOG_LEVEL'))
 
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_mapping(
