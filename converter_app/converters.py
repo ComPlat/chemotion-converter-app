@@ -62,9 +62,9 @@ class Converter(object):
                     else:
                         for column_index, column in enumerate(table['columns']):
                             if table_index == x_column['tableIndex'] and column_index == x_column['columnIndex']:
-                                x.append(row[column_index])
+                                x.append(row[column_index].replace(',', '.'))
                             if table_index == y_column['tableIndex'] and column_index == y_column['columnIndex']:
-                                y.append(row[column_index])
+                                y.append(row[column_index].replace(',', '.'))
 
         return {
             'x': x,
@@ -87,3 +87,11 @@ class Converter(object):
                         return converter
         else:
             return None
+
+    @classmethod
+    def list_profiles(cls):
+        profiles = []
+        profiles_path = Path(app.config['PROFILES_DIR'])
+        for file_path in Path.iterdir(profiles_path):
+            profiles.append(json.loads(file_path.read_text()))
+        return profiles

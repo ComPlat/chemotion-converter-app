@@ -1,15 +1,24 @@
 import logging
 from pathlib import Path
 
+import magic
+
 logger = logging.getLogger(__name__)
 
 
 class Reader(object):
 
-    def __init__(self, file_reader, file_name, content_type):
-        self.file_reader = file_reader
+    def __init__(self, file, file_name, content_type):
+        self.file = file
         self.file_name = file_name
         self.content_type = content_type
+
+        self.peek = self.file.read(1024)
+        self.file.seek(0)
+
+        self.mime_type = magic.Magic(mime=True).from_buffer(self.peek)
+        self.encoding = magic.Magic(mime_encoding=True).from_buffer(self.peek)
+
         self.extension = Path(file_name).suffix
 
     def check(self):
@@ -28,20 +37,6 @@ class Reader(object):
         return {
             'file_name': self.file_name,
             'content_type': self.content_type,
+            'mime_type': self.mime_type,
             'extension': self.extension
         }
-
-    def peek_ascii(self):
-        file_string = self.file_reader.peek(1024)
-        encoding = None
-
-        for item in ['utf-8', 'iso-8859-1']:
-            try:
-                file_string = file_string.decode(item)
-                encoding = item
-                break
-            except UnicodeDecodeError:
-                pass
-
-        logger.debug('encoding=%s', encoding)
-        return file_string, encoding

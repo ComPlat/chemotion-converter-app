@@ -52,42 +52,25 @@ pip install git+https://github.com/ComPlat/converter-app
 
 The development server is not suited for a production deployment. Instead we recomend to use a reverse-proxy setup using [gunicorn](https://gunicorn.org/) and [NGINX](https://www.nginx.com/).
 
-First create a systemd service file in `/etc/systemd/system/chemotion-converter-app.service`:
+Create the `.env` file in `/srv/chemotion/.env`, but use `.env.prod` as template, since it contains the variables we need to set for gunicorn.
+
+In order to create the needed `log` and `run` directories create a `tmpfiles.d` config in `/etc/tmpfiles.d/chemotion-converter-app.conf`. A sample file can be found in [etc/tmpfiles.d/chemotion-converter-app.conf](etc/tmpfiles.d/chemotion-converter-app.conf). Create the directories using:
 
 ```
-# /etc/systemd/system/chemotion-converter-app.service
-[Unit]
-Description=chemotion-converter-app gunicorn daemon
-After=network.target
-
-[Service]
-User=chemotion
-Group=chemotion
-WorkingDirectory=/srv/chemotion
-
-Environment=FLASK_APP=converter_app.app
-Environment=FLASK_ENV=production
-Environment=LOG_LEVEL=INFO
-Environment=LOG_FILE=/var/log/chemotion/converter-app.log
-Environment=PROFILES_DIR=/srv/chemotion/profiles
-
-ExecStart=/srv/chemotion/env/bin/gunicorn --workers 3  \
-                                          --bind localhost:9000 \
-                                          --timeout 60 \
-                                          "converter_app.app:create_app()"
-
-[Install]
-WantedBy=multi-user.target
+systemd-tmpfiles --create
 ```
 
-Reload systemd using `systemctl daemon-reload` and start the service:
+Next, create a systemd service file in `/etc/systemd/system/chemotion-converter-app.service`. Again, a sample file can be found in [etc/systemd/system/chemotion-converter-app.service](etc/systemd/system/chemotion-converter-app.service). Reload systemd and start (and enable) the service:
 
 ```bash
+systemctl daemon-reload
 systemctl start chemotion-converter-app
 systemctl enable chemotion-converter-app
 ```
 
-The guincorn server listens on port 9000 on localhost. Using the following code in your NGINX configuration it can be reversed proxied to the `/api/v1` route:
+If the service won't start, `journalctl -xf` might indicate what is wrong.
+
+The guincorn server listens on the port given in the env file (default: 9000) on localhost. Using the following code in your NGINX configuration, it can be reversed proxied to the `/api/v1` route:
 
 ```nginx
     location /api/v1 {

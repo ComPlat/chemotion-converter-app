@@ -16,7 +16,10 @@ from .writers.jcamp import JcampWriter
 def create_app(test_config=None):
     load_dotenv(Path().cwd() / '.env')
 
-    logging.basicConfig(level=os.getenv('LOG_LEVEL'))
+    if os.getenv('LOG_FILE'):
+        logging.basicConfig(level=os.getenv('LOG_LEVEL'), filename=os.getenv('LOG_FILE'))
+    else:
+        logging.basicConfig(level=os.getenv('LOG_LEVEL'))
 
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_mapping(
@@ -34,16 +37,27 @@ def create_app(test_config=None):
 
     @app.route('/', methods=['GET'])
     def root():
+        '''
+        Utility endpoint: Just return ok
+        '''
         return make_response(jsonify({'status': 'ok'}), 200)
 
-    # Step 1 (advanced): gets file, saves file im temp dir,
-    # returns data from file as json
+    @app.route('/profiles', methods=['GET'])
+    def list_profiles():
+        '''
+        Utility endpoint: List all profiles
+        '''
+        profiles = Converter.list_profiles()
+        return jsonify(profiles), 200
+
     @app.route('/tables', methods=['POST'])
-    def tables():
+    def retrieve_table():
+        '''
+        Step 1 (advanced): upload file and convert to table
+        '''
         if request.files.get('file'):
             file = request.files.get('file')
-            file_reader = io.BufferedReader(file)
-            reader = registry.match_reader(file_reader, file.filename, file.content_type)
+            reader = registry.match_reader(file, file.filename, file.content_type)
 
             if reader:
                 response_data = reader.process()
@@ -54,10 +68,13 @@ def create_app(test_config=None):
         else:
             return jsonify({'error': 'please provide file'}), 400
 
-    # Step 2 (advanced): get json that defines rules and identifiers for file
-    # from step 1, saves rules and identifiers as profile returns jcamp
     @app.route('/profiles', methods=['POST'])
-    def profiles():
+    def create_profile():
+        '''
+        Step 2 (advanced): upload json that defines rules and identifiers for file
+        from step 1, saves rules and identifiers as profile
+        '''
+
         data = json.loads(request.data)
 
         converter = Converter(**data)
@@ -65,14 +82,15 @@ def create_app(test_config=None):
 
         return jsonify(profile), 201
 
-    # Simple View: gets file, converts file, searches for profile,
-    # return jcamp based on profile
     @app.route('/conversions', methods=['POST'])
-    def conversions():
+    def create_conversion():
+        '''
+        Simple View: upload file, convert to table, search for profile,
+        return jcamp based on profile
+        '''
         if request.files.get('file'):
             file = request.files.get('file')
-            file_reader = io.BufferedReader(file)
-            reader = registry.match_reader(file_reader, file.filename, file.content_type)
+            reader = registry.match_reader(file, file.filename, file.content_type)
 
             if reader:
                 file_data = reader.process()
