@@ -85,12 +85,14 @@ class Converter(object):
     def match_value(self, identifier, value):
         if value is not None:
             if identifier.get('isExact'):
-                return value == identifier.get('value')
+                result = value == identifier.get('value')
+                logger.debug('match_value value="%s" result=%s', value, result)
+                return result
 
             if identifier.get('isRegex'):
                 pattern = identifier.get('value')
                 match = re.search(pattern, value)
-                logger.debug('pattern=%s value=%s match=%s', pattern, value, bool(match))
+                logger.debug('match_value pattern="%s" value="%s" match=%s', pattern, value, bool(match))
                 return bool(match)
 
     def convert(self, tables):
