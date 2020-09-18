@@ -1,10 +1,13 @@
 import hashlib
 import json
+import logging
 import os
-import uuid
+import re
 from pathlib import Path
 
 from flask import current_app as app
+
+logger = logging.getLogger(__name__)
 
 
 class Converter(object):
@@ -12,7 +15,6 @@ class Converter(object):
     def __init__(self, identifiers, rules):
         self.identifiers = identifiers
         self.rules = self.clean_rules(rules)
-        self.uuid = str(uuid.uuid4())
 
     def get_dict(self):
         return {
@@ -47,7 +49,51 @@ class Converter(object):
             with open(file_path, 'w') as fp:
                 fp.write(json_data)
 
-    def apply_to_data(self, tables):
+    def match(self, file_data):
+        for identifier in self.identifiers:
+            if identifier.get('type') == 'metadata':
+                if not self.match_metadata(identifier, file_data.get('metadata')):
+                    return False
+            elif identifier.get('type') == 'tabledata':
+                if not self.match_data(identifier, file_data.get('data')):
+                    return False
+
+        # if everything matched, return True
+        return True
+
+    def match_metadata(self, identifier, metadata):
+        metadata_key = identifier.get('metadataKey')
+        metadata_value = metadata.get(metadata_key)
+        return self.match_value(identifier, metadata_value)
+
+    def match_data(self, identifier, data):
+        table_index = identifier.get('table')
+        if table_index is not None:
+            try:
+                table = data[table_index]
+            except KeyError:
+                return False
+
+            try:
+                line_number = int(identifier.get('linenumber'))
+                header_value = table['header'][line_number]
+            except (ValueError, TypeError):
+                header_value = os.linesep.join(table['header'])
+
+            return self.match_value(identifier, header_value)
+
+    def match_value(self, identifier, value):
+        if value is not None:
+            if identifier.get('isExact'):
+                return value == identifier.get('value')
+
+            if identifier.get('isRegex'):
+                pattern = identifier.get('value')
+                match = re.search(pattern, value)
+                logger.debug('pattern=%s value=%s match=%s', pattern, value, bool(match))
+                return bool(match)
+
+    def convert(self, tables):
         x_column = self.get_rule('x_column')
         y_column = self.get_rule('y_column')
         first_row_is_header = self.get_rule('firstRowIsHeader')
@@ -72,7 +118,7 @@ class Converter(object):
         }
 
     @classmethod
-    def match_profile(cls, file_data_metadata):
+    def match_profile(cls, file_data):
         profiles_path = Path(app.config['PROFILES_DIR'])
 
         if profiles_path.exists():
@@ -82,8 +128,7 @@ class Converter(object):
                 with open(file_path, 'r') as data_file:
                     data_dict = json.load(data_file)
                     converter = cls(**data_dict)
-                    indentifiers = converter.identifiers
-                    if indentifiers.items() <= file_data_metadata.items():
+                    if converter.match(file_data):
                         return converter
         else:
             return None

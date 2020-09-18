@@ -94,11 +94,9 @@ def create_app(test_config=None):
 
             if reader:
                 file_data = reader.process()
-                file_data_metadata = file_data.pop('metadata')
-
-                converter = Converter.match_profile(file_data_metadata)
+                converter = Converter.match_profile(file_data)
                 if converter:
-                    prepared_data = converter.apply_to_data(file_data.get('data'))
+                    prepared_data = converter.convert(file_data.get('data'))
 
                     jcamp_buffer = io.StringIO()
                     jcamp_writer = JcampWriter(jcamp_buffer)
