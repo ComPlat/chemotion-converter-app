@@ -50,7 +50,7 @@ class JcampWriter(Writer):
             'TITLE': data.get('title', 'Spectrum'),
             'JCAMP-DX': '5.01 $$ {} ({})'.format(__title__, __version__),
             'DATA TYPE': 'INFRARED SPECTRUM',
-            'DATA_CLASS': 'XYDATA',
+            'DATA CLASS': 'XYDATA',
             'ORIGIN': data.get('origin'),
             'OWNER': data.get('owner'),
             'XUNITS': data.get('xunits', '1/CM'),
