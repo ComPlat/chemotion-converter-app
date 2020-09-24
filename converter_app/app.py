@@ -1,4 +1,3 @@
-import io
 import json
 import logging
 import os
@@ -60,8 +59,9 @@ def create_app(test_config=None):
             reader = registry.match_reader(file, file.filename, file.content_type)
 
             if reader:
-                response_data = reader.process()
-                return jsonify(response_data), 201
+                response_json = reader.process()
+                response_json['options'] = JcampWriter().options
+                return jsonify(response_json), 201
             else:
                 return jsonify(
                     {'error': 'your file could not be processed'}), 400
@@ -75,12 +75,13 @@ def create_app(test_config=None):
         from step 1, saves rules and identifiers as profile
         '''
 
-        data = json.loads(request.data)
+        profile_json = json.loads(request.data)
 
-        converter = Converter(**data)
-        profile = converter.save_profile()
+        converter = Converter(profile_json)
+        converter.clean()
+        converter.save()
 
-        return jsonify(profile), 201
+        return jsonify(converter.profile), 201
 
     @app.route('/conversions', methods=['POST'])
     def create_conversion():
@@ -93,17 +94,17 @@ def create_app(test_config=None):
             reader = registry.match_reader(file, file.filename, file.content_type)
 
             if reader:
-                file_data = reader.process()
-                converter = Converter.match_profile(file_data)
+                file_json = reader.process()
+                converter = Converter.match_profile(file_json)
                 if converter:
-                    prepared_data = converter.convert(file_data.get('data'))
+                    converter_metadata = converter.get_metadata()
+                    converter_data = converter.get_data(file_json.get('data'))
 
-                    jcamp_buffer = io.StringIO()
-                    jcamp_writer = JcampWriter(jcamp_buffer)
-                    jcamp_writer.write(prepared_data)
+                    writer = JcampWriter()
+                    writer.process(converter_metadata, converter_data)
 
                     return Response(
-                        jcamp_buffer.getvalue(),
+                        writer.write(),
                         mimetype="chemical/x-jcamp-dx",
                         headers={
                             "Content-Disposition": "attachment;filename=test.jcamp"

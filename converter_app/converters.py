@@ -12,45 +12,27 @@ logger = logging.getLogger(__name__)
 
 class Converter(object):
 
-    def __init__(self, identifiers, rules):
-        self.identifiers = identifiers
-        self.rules = self.clean_rules(rules)
+    def __init__(self, profile):
+        self.profile = profile
 
-    def get_dict(self):
-        return {
-            'identifiers': self.identifiers,
-            'rules': self.rules
-        }
+    def clean(self):
+        pass
 
-    def clean_rules(self, rules):
-        cleaned_rules = {}
-        for key, value in rules.items():
-            if value == 'true':
-                value = True
-            if value == 'false':
-                value = False
-            cleaned_rules[key] = value
-        return cleaned_rules
-
-    def get_rule(self, rule):
-        if rule in self.rules:
-            return self.rules.get(rule)
-
-    def save_profile(self):
+    def save(self):
         profiles_path = Path(app.config['PROFILES_DIR'])
         profiles_path.mkdir(parents=True, exist_ok=True)
 
-        json_data = json.dumps(self.get_dict(), sort_keys=True, indent=4)
-        checksum = hashlib.sha1(json_data.encode()).hexdigest()
+        profile_json = json.dumps(self.profile, sort_keys=True, indent=4)
+        checksum = hashlib.sha1(profile_json.encode()).hexdigest()
 
         file_path = profiles_path / '{}.json'.format(checksum)
 
         if not file_path.exists():
             with open(file_path, 'w') as fp:
-                fp.write(json_data)
+                fp.write(profile_json)
 
     def match(self, file_data):
-        for identifier in self.identifiers:
+        for identifier in self.profile.get('identifiers', []):
             if identifier.get('type') == 'metadata':
                 if not self.match_metadata(identifier, file_data.get('metadata')):
                     return False
@@ -95,14 +77,20 @@ class Converter(object):
                 logger.debug('match_value pattern="%s" value="%s" match=%s', pattern, value, bool(match))
                 return bool(match)
 
-    def convert(self, tables):
+    def get_rule(self, rule):
+        return self.profile.get('rules', {}).get(rule)
+
+    def get_metadata(self):
+        return self.profile.get('metadata')
+
+    def get_data(self, data):
         x_column = self.get_rule('x_column')
         y_column = self.get_rule('y_column')
         first_row_is_header = self.get_rule('firstRowIsHeader')
 
         x = []
         y = []
-        for table_index, table in enumerate(tables):
+        for table_index, table in enumerate(data):
             if table_index in [x_column['tableIndex'], y_column['tableIndex']]:
                 for row_index, row in enumerate(table['rows']):
                     if first_row_is_header[table_index] and row_index == 0:
@@ -128,8 +116,8 @@ class Converter(object):
                 file_path = profiles_path / file_name
 
                 with open(file_path, 'r') as data_file:
-                    data_dict = json.load(data_file)
-                    converter = cls(**data_dict)
+                    profile = json.load(data_file)
+                    converter = cls(profile)
                     if converter.match(file_data):
                         return converter
         else:
