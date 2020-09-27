@@ -19,15 +19,15 @@ class JcampWriter(Writer):
         'NMR SPECTRUM',
         'NMR PEAK TABLE',
         'NMP PEAK ASSIGNMENTS',
-        'MASS SPECTRUM'
+        'MASS SPECTRUM',
+        'CONTINUOUS MASS SPECTRUM',
     )
 
     data_classes = (
         'XYDATA',
         'XYPOINTS',
-        # 'PEAK TABLE',
-        # 'ASSIGNMENTS',
-        'NTUPLES'
+        'PEAK TABLE',
+        'NTUPLES',
     )
 
     xunits = (
@@ -35,7 +35,7 @@ class JcampWriter(Writer):
         'MICROMETERS',
         'NANOMETERS',
         'SECONDS',
-        'HZ'
+        'HZ',
     )
 
     yunits = (
@@ -43,7 +43,8 @@ class JcampWriter(Writer):
         'REFLECTANCE',
         'ABSORBANCE',
         'KUBELKA-MUNK',
-        'ARBITRARY UNITS'
+        'COUNTS',
+        'ARBITRARY UNITS',
     )
 
     @property
@@ -54,6 +55,10 @@ class JcampWriter(Writer):
             'XUNITS': self.xunits,
             'YUNITS': self.yunits,
         }
+
+    @property
+    def suffix(self):
+        return '.jdx'
 
     def process(self, metadata, data):
         self.write_header({
@@ -68,7 +73,7 @@ class JcampWriter(Writer):
         data_class = metadata.get('DATA CLASS', self.data_classes[0])
         if data_class == 'XYDATA':
             self.write_xydata(metadata, data)
-        elif data_class == 'XYPOINTS':
+        elif data_class in ['XYPOINTS', 'PEAK TABLE']:
             self.process_xypoints(metadata, data)
         elif data_class == 'NTUPLES':
             self.process_ntuples(metadata, data)

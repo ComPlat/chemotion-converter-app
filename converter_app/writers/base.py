@@ -15,3 +15,7 @@ class Writer(object):
     @property
     def options(self):
         raise NotImplementedError
+
+    @property
+    def suffix(self):
+        raise NotImplementedError

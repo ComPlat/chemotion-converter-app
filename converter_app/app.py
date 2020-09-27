@@ -28,7 +28,7 @@ def create_app(test_config=None):
     )
 
     if app.config['CORS']:
-        CORS(app)
+        CORS(app, expose_headers=['Content-Disposition'])
 
     @app.errorhandler(404)
     def not_found(error):
@@ -103,12 +103,11 @@ def create_app(test_config=None):
                     writer = JcampWriter()
                     writer.process(converter_metadata, converter_data)
 
-                    return Response(
-                        writer.write(),
-                        mimetype="chemical/x-jcamp-dx",
-                        headers={
-                            "Content-Disposition": "attachment;filename=test.jcamp"
-                        })
+                    file_name = Path(file.filename).with_suffix(writer.suffix)
+
+                    response = Response(writer.write(), mimetype='chemical/x-jcamp-dx')
+                    response.headers['Content-Disposition'] = 'attachment;filename={}'.format(file_name)
+                    return response
 
             return jsonify({'error': 'Your file could not be processed.'}), 400
         else:
