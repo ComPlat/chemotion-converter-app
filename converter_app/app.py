@@ -64,9 +64,9 @@ def create_app(test_config=None):
                 return jsonify(response_json), 201
             else:
                 return jsonify(
-                    {'error': 'your file could not be processed'}), 400
+                    {'error': 'Your file could not be processed.'}), 400
         else:
-            return jsonify({'error': 'please provide file'}), 400
+            return jsonify({'error': 'No file provided.'}), 400
 
     @app.route('/profiles', methods=['POST'])
     def create_profile():
@@ -110,8 +110,8 @@ def create_app(test_config=None):
                             "Content-Disposition": "attachment;filename=test.jcamp"
                         })
 
-            return jsonify({'error': 'your file could not be processed'}), 400
+            return jsonify({'error': 'Your file could not be processed.'}), 400
         else:
-            return jsonify({'error': 'please provide file'}), 400
+            return jsonify({'error': 'No file provided.'}), 400
 
     return app
