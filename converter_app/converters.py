@@ -3,7 +3,7 @@ import json
 import logging
 import os
 import re
-from collections import defaultdict
+from collections import OrderedDict, defaultdict
 from pathlib import Path
 
 from flask import current_app as app
@@ -58,13 +58,21 @@ class Converter(object):
                 fp.write(profile_json)
 
     def match(self, file_data):
+        self.header = OrderedDict()
+
         for identifier in self.profile.get('identifiers', []):
             if identifier.get('type') == 'metadata':
-                if not self.match_metadata(identifier, file_data.get('metadata')):
-                    return False
-            elif identifier.get('type') == 'tabledata':
-                if not self.match_data(identifier, file_data.get('data')):
-                    return False
+                value = self.match_metadata(identifier, file_data.get('metadata'))
+            elif identifier.get('type') == 'data':
+                value = self.match_data(identifier, file_data.get('data'))
+
+            if value is False:
+                return False
+            else:
+                # if a header key is given, store this match in the header
+                header_key = identifier.get('headerKey')
+                if header_key:
+                    self.header[header_key] = value
 
         # if everything matched, return True
         return True
@@ -75,7 +83,7 @@ class Converter(object):
         return self.match_value(identifier, metadata_value)
 
     def match_data(self, identifier, data):
-        table_index = identifier.get('table')
+        table_index = identifier.get('tableIndex')
         if table_index is not None:
             try:
                 table = data[table_index]
@@ -83,7 +91,7 @@ class Converter(object):
                 return False
 
             try:
-                line_number = int(identifier.get('linenumber'))
+                line_number = int(identifier.get('lineNumber')) - 1  # the interface counts from 1
                 header_value = table['header'][line_number]
             except (ValueError, TypeError):
                 header_value = os.linesep.join(table['header'])
@@ -92,42 +100,41 @@ class Converter(object):
 
     def match_value(self, identifier, value):
         if value is not None:
-            if identifier.get('isExact'):
-                result = value == identifier.get('value')
-                logger.debug('match_value value="%s" result=%s', value, result)
-                return result
-
             if identifier.get('isRegex'):
                 pattern = identifier.get('value')
                 match = re.search(pattern, value)
                 logger.debug('match_value pattern="%s" value="%s" match=%s', pattern, value, bool(match))
-                return bool(match)
+                return match.group(1) if match else False
+            else:
+                result = value == identifier.get('value')
+                logger.debug('match_value value="%s" result=%s', value, result)
+                return value if result else False
+        else:
+            return False
 
-    def get_rule(self, rule):
-        return self.profile.get('rules', {}).get(rule)
-
-    def get_metadata(self):
-        return self.profile.get('metadata')
+    def get_header(self):
+        header = self.profile.get('header')
+        header.update(self.header)
+        return header
 
     def get_data(self, data):
-        x_column = self.get_rule('x_column')
-        y_column = self.get_rule('y_column')
-        first_row_is_header = self.get_rule('firstRowIsHeader')
+        x_column = self.profile.get('table', {}).get('xColumn')
+        y_column = self.profile.get('table', {}).get('yColumn')
+        first_row_is_header = self.profile.get('table', {}).get('firstRowIsHeader')
 
         x = []
         y = []
         for table_index, table in enumerate(data):
-            if table_index in [x_column['tableIndex'], y_column['tableIndex']]:
+            if (x_column and table_index == x_column['tableIndex']) or (y_column and table_index == y_column['tableIndex']):
                 for row_index, row in enumerate(table['rows']):
-                    if first_row_is_header[table_index] and row_index == 0:
+                    if first_row_is_header and first_row_is_header[table_index] and row_index == 0:
                         pass
                     else:
                         for column_index, column in enumerate(table['columns']):
-                            if table_index == x_column['tableIndex'] and column_index == x_column['columnIndex']:
+                            if x_column and table_index == x_column['tableIndex'] and column_index == x_column['columnIndex']:
                                 x.append(row[column_index].replace(',', '.'))
-                            if table_index == y_column['tableIndex'] and column_index == y_column['columnIndex']:
+                            if y_column and table_index == y_column['tableIndex'] and column_index == y_column['columnIndex']:
                                 y.append(row[column_index].replace(',', '.'))
-
         return {
             'x': x,
             'y': y

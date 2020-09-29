@@ -100,11 +100,11 @@ def create_app(test_config=None):
                 file_json = reader.process()
                 converter = Converter.match_profile(file_json)
                 if converter:
-                    converter_metadata = converter.get_metadata()
+                    converter_header = converter.get_header()
                     converter_data = converter.get_data(file_json.get('data'))
 
                     writer = JcampWriter()
-                    writer.process(converter_metadata, converter_data)
+                    writer.process(converter_header, converter_data)
 
                     file_name = Path(file.filename).with_suffix(writer.suffix)
 

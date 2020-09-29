@@ -60,40 +60,45 @@ class JcampWriter(Writer):
     def suffix(self):
         return '.jdx'
 
-    def process(self, metadata, data):
+    def process(self, header, data):
         self.write_header({
             'TITLE': data.get('title', 'Spectrum'),
             'JCAMP-DX': '5.00 $$ {} ({})'.format(__title__, __version__),
-            'DATA TYPE': metadata.get('DATA TYPE', self.data_types[0]),
-            'DATA CLASS': metadata.get('DATA CLASS', self.data_classes[0]),
-            'ORIGIN': metadata.get('ORIGIN'),
-            'OWNER': metadata.get('OWNER')
+            'DATA TYPE': header.get('DATA TYPE', self.data_types[0]),
+            'DATA CLASS': header.get('DATA CLASS', self.data_classes[0]),
+            'ORIGIN': header.get('ORIGIN'),
+            'OWNER': header.get('OWNER')
         })
 
-        data_class = metadata.get('DATA CLASS', self.data_classes[0])
+        data_class = header.get('DATA CLASS', self.data_classes[0])
         if data_class == 'XYDATA':
-            self.write_xydata(metadata, data)
+            self.process_xydata(header, data)
         elif data_class in ['XYPOINTS', 'PEAK TABLE']:
-            self.process_xypoints(metadata, data)
+            self.process_xypoints(header, data)
         elif data_class == 'NTUPLES':
-            self.process_ntuples(metadata, data)
+            self.process_ntuples(header, data)
 
-    def process_xydata(self, metadata, data):
+    def process_xydata(self, header, data):
         y = data.get('y')
-        firstx = data.get('firstx')
-        lastx = data.get('lastx')
+        firstx = header.get('FIRSTX')
+        lastx = header.get('LASTX')
+        deltax = header.get('DELTAX')
 
-        assert y is not None
+        assert y
         assert firstx is not None
-        assert lastx is not None
+        assert not (lastx is None and deltax is None)
 
         npoints = len(y)
-        deltax = (float(lastx) - float(firstx)) / (npoints - 1)
+        if lastx is None:
+            lastx = float(firstx) + (npoints - 1) * float(deltax)
+        if deltax is None:
+            deltax = (float(lastx) - float(firstx)) / (npoints - 1)
 
         # find YFACTOR, MINY, and MAXY
         miny = sys.float_info.max
         maxy = sys.float_info.min
         max_decimal = 0
+
         for i, string in enumerate(y):
             value = float(string)
             index = string.index('.')
@@ -117,8 +122,8 @@ class JcampWriter(Writer):
             'FIRSTY': y[0],
             'XFACTOR': 1.0,
             'YFACTOR': yfactor,
-            'XUNITS': metadata.get('XUNITS', self.xunits[0]),
-            'YUNITS': metadata.get('YUNITS', self.yunits[0]),
+            'XUNITS': header.get('XUNITS', self.xunits[0]),
+            'YUNITS': header.get('YUNITS', self.yunits[0]),
             'XYDATA': '(X++(Y..Y))'
         })
 
