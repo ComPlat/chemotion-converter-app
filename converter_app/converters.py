@@ -26,21 +26,21 @@ class Converter(object):
         else:
             errors['identifiers'].append('This field has to be provided.')
 
-        if 'rules' in self.profile:
-            if isinstance(self.profile['rules'], dict):
+        if 'table' in self.profile:
+            if isinstance(self.profile['table'], dict):
                 pass
             else:
-                errors['rules'].append('This field has to be an object.')
+                errors['table'].append('This field has to be an object.')
         else:
-            errors['rules'].append('This field has to be provided.')
+            errors['table'].append('This field has to be provided.')
 
-        if 'metadata' in self.profile:
-            if isinstance(self.profile['metadata'], dict):
+        if 'header' in self.profile:
+            if isinstance(self.profile['header'], dict):
                 pass
             else:
-                errors['metadata'].append('This field has to be an object.')
+                errors['header'].append('This field has to be an object.')
         else:
-            errors['metadata'].append('This field has to be provided.')
+            errors['header'].append('This field has to be provided.')
 
         return errors
 
@@ -59,30 +59,34 @@ class Converter(object):
 
     def match(self, file_data):
         self.header = OrderedDict()
+        self.match_count = 0
 
         for identifier in self.profile.get('identifiers', []):
             if identifier.get('type') == 'metadata':
                 value = self.match_metadata(identifier, file_data.get('metadata'))
-            elif identifier.get('type') == 'data':
-                value = self.match_data(identifier, file_data.get('data'))
+            elif identifier.get('type') == 'table':
+                value = self.match_table(identifier, file_data.get('data'))
 
             if value is False:
                 return False
             else:
+                # increment match_count
+                self.match_count += 1
+
                 # if a header key is given, store this match in the header
                 header_key = identifier.get('headerKey')
                 if header_key:
                     self.header[header_key] = value
 
-        # if everything matched, return True
-        return True
+        # if everything matched, return how many identifiers matched
+        return self.match_count
 
     def match_metadata(self, identifier, metadata):
         metadata_key = identifier.get('metadataKey')
         metadata_value = metadata.get(metadata_key)
         return self.match_value(identifier, metadata_value)
 
-    def match_data(self, identifier, data):
+    def match_table(self, identifier, data):
         table_index = identifier.get('tableIndex')
         if table_index is not None:
             try:
@@ -91,10 +95,20 @@ class Converter(object):
                 return False
 
             try:
-                line_number = int(identifier.get('lineNumber')) - 1  # the interface counts from 1
-                header_value = table['header'][line_number]
+                line_number = int(identifier.get('lineNumber'))
             except (ValueError, TypeError):
+                line_number = None
+
+            if line_number is None:
+                # use the whole header
                 header_value = os.linesep.join(table['header'])
+            else:
+                try:
+                    # the interface counts from 1
+                    header_value = table['header'][line_number - 1]
+                except IndexError:
+                    # the line in the header does not exist
+                    return False
 
             return self.match_value(identifier, header_value)
 
@@ -104,7 +118,13 @@ class Converter(object):
                 pattern = identifier.get('value')
                 match = re.search(pattern, value)
                 logger.debug('match_value pattern="%s" value="%s" match=%s', pattern, value, bool(match))
-                return match.group(1) if match else False
+                if match:
+                    try:
+                        return match.group(1)
+                    except IndexError:
+                        return match.group(0)
+                else:
+                    return False
             else:
                 result = value == identifier.get('value')
                 logger.debug('match_value value="%s" result=%s', value, result)
@@ -115,6 +135,8 @@ class Converter(object):
     def get_header(self):
         header = self.profile.get('header')
         header.update(self.header)
+
+        logger.debug('header=%s', header)
         return header
 
     def get_data(self, data):
@@ -145,14 +167,25 @@ class Converter(object):
         profiles_path = Path(app.config['PROFILES_DIR'])
 
         if profiles_path.exists():
+            converter = None
+            matches = 0
+
             for file_name in os.listdir(profiles_path):
                 file_path = profiles_path / file_name
 
                 with open(file_path, 'r') as data_file:
                     profile = json.load(data_file)
-                    converter = cls(profile)
-                    if converter.match(file_data):
-                        return converter
+                    current_converter = cls(profile)
+                    current_matches = current_converter.match(file_data)
+
+                    logger.debug('profile=%s matches=%s', file_name, current_matches)
+
+                    if current_matches is not False and current_matches > matches:
+                        converter = current_converter
+                        matches = current_matches
+
+            return converter
+
         else:
             return None
 
