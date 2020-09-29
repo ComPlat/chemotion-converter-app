@@ -3,6 +3,7 @@ import json
 import logging
 import os
 import re
+from collections import defaultdict
 from pathlib import Path
 
 from flask import current_app as app
@@ -16,7 +17,32 @@ class Converter(object):
         self.profile = profile
 
     def clean(self):
-        pass
+        errors = defaultdict(list)
+        if 'identifiers' in self.profile:
+            if isinstance(self.profile['identifiers'], list):
+                pass
+            else:
+                errors['identifiers'].append('This field has to be a list.')
+        else:
+            errors['identifiers'].append('This field has to be provided.')
+
+        if 'rules' in self.profile:
+            if isinstance(self.profile['rules'], dict):
+                pass
+            else:
+                errors['rules'].append('This field has to be an object.')
+        else:
+            errors['rules'].append('This field has to be provided.')
+
+        if 'metadata' in self.profile:
+            if isinstance(self.profile['metadata'], dict):
+                pass
+            else:
+                errors['metadata'].append('This field has to be an object.')
+        else:
+            errors['metadata'].append('This field has to be provided.')
+
+        return errors
 
     def save(self):
         profiles_path = Path(app.config['PROFILES_DIR'])

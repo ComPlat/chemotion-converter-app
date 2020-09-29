@@ -78,10 +78,13 @@ def create_app(test_config=None):
         profile_json = json.loads(request.data)
 
         converter = Converter(profile_json)
-        converter.clean()
-        converter.save()
+        errors = converter.clean()
 
-        return jsonify(converter.profile), 201
+        if errors:
+            return jsonify(errors), 400
+        else:
+            converter.save()
+            return jsonify(converter.profile), 201
 
     @app.route('/conversions', methods=['POST'])
     def create_conversion():
