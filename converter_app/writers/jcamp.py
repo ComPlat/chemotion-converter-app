@@ -24,8 +24,8 @@ class JcampWriter(Writer):
     )
 
     data_classes = (
-        'XYDATA',
         'XYPOINTS',
+        'XYDATA',
         'PEAK TABLE',
         'NTUPLES',
     )

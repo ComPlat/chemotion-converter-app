@@ -104,7 +104,10 @@ def create_app(test_config=None):
                     converter_data = converter.get_data(file_json.get('data'))
 
                     writer = JcampWriter()
-                    writer.process(converter_header, converter_data)
+                    try:
+                        writer.process(converter_header, converter_data)
+                    except AssertionError:
+                        return jsonify({'error': 'There was an error while converting your file.'}), 400
 
                     file_name = Path(file.filename).with_suffix(writer.suffix)
 

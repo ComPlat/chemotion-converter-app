@@ -154,9 +154,11 @@ class Converter(object):
                     else:
                         for column_index, column in enumerate(table['columns']):
                             if x_column and table_index == x_column['tableIndex'] and column_index == x_column['columnIndex']:
-                                x.append(row[column_index].replace(',', '.'))
+                                x_str = str(row[column_index]).replace(',', '.')
+                                x.append(x_str)
                             if y_column and table_index == y_column['tableIndex'] and column_index == y_column['columnIndex']:
-                                y.append(row[column_index].replace(',', '.'))
+                                y_str = str(row[column_index]).replace(',', '.')
+                                y.append(y_str)
         return {
             'x': x,
             'y': y
