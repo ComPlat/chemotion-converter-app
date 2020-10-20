@@ -21,6 +21,10 @@ class JcampWriter(Writer):
         'NMP PEAK ASSIGNMENTS',
         'MASS SPECTRUM',
         'CONTINUOUS MASS SPECTRUM',
+        'THERMOGRAVIMETRIC ANALYSIS',
+        'UV-VIS',
+        'GEL PERMEATION CHROMATOGRAPHY',
+        'CYCLIC VOLTAMMETRY',
     )
 
     data_classes = (
