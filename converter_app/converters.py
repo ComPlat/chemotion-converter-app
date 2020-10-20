@@ -154,15 +154,16 @@ class Converter(object):
                     else:
                         for column_index, column in enumerate(table['columns']):
                             if x_column and table_index == x_column['tableIndex'] and column_index == x_column['columnIndex']:
-                                x_str = str(row[column_index]).replace(',', '.')
-                                x.append(x_str)
+                                x.append(self.get_value(row, column_index))
                             if y_column and table_index == y_column['tableIndex'] and column_index == y_column['columnIndex']:
-                                y_str = str(row[column_index]).replace(',', '.')
-                                y.append(y_str)
+                                y.append(self.get_value(row, column_index))
         return {
             'x': x,
             'y': y
         }
+
+    def get_value(self, row, column_index):
+        return str(row[column_index]).replace(',', '.').replace('e', 'E')
 
     @classmethod
     def match_profile(cls, file_data):
