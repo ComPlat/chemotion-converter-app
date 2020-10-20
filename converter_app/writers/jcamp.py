@@ -141,8 +141,8 @@ class JcampWriter(Writer):
         x = data.get('x')
         y = data.get('y')
 
-        assert x is not None
-        assert y is not None
+        assert x
+        assert y
 
         firstx = x[0]
         firsty = y[0]
@@ -187,8 +187,8 @@ class JcampWriter(Writer):
         x = data.get('x')
         y = data.get('y')
 
-        assert x is not None
-        assert y is not None
+        assert x
+        assert y
 
         npoints = len(x)
 
