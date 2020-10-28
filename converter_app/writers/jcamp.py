@@ -40,6 +40,7 @@ class JcampWriter(Writer):
         'NANOMETERS',
         'SECONDS',
         'HZ',
+        'DEGREES CELSIUS',
     )
 
     yunits = (
@@ -49,6 +50,8 @@ class JcampWriter(Writer):
         'KUBELKA-MUNK',
         'COUNTS',
         'ARBITRARY UNITS',
+        'WEIGHT',
+        'DERIVATIVE WEIGHT'
     )
 
     @property
@@ -66,13 +69,15 @@ class JcampWriter(Writer):
 
     def process(self, header, data):
         self.write_header({
-            'TITLE': data.get('title', 'Spectrum'),
+            'TITLE': data.pop('title', 'Spectrum'),
             'JCAMP-DX': '5.00 $$ {} ({})'.format(__title__, __version__),
-            'DATA TYPE': header.get('DATA TYPE', self.data_types[0]),
-            'DATA CLASS': header.get('DATA CLASS', self.data_classes[0]),
-            'ORIGIN': header.get('ORIGIN'),
-            'OWNER': header.get('OWNER')
+            'DATA TYPE': header.pop('DATA TYPE', self.data_types[0]),
+            'DATA CLASS': header.pop('DATA CLASS', self.data_classes[0]),
+            'ORIGIN': header.pop('ORIGIN', ''),
+            'OWNER': header.pop('OWNER', '')
         })
+
+        print(header)
 
         data_class = header.get('DATA CLASS', self.data_classes[0])
         if data_class == 'XYDATA':
