@@ -9,6 +9,7 @@ from flask_cors import CORS
 
 from .converters import Converter
 from .readers import registry
+from .utils import validate_id
 from .writers.jcamp import JcampWriter
 
 
@@ -116,7 +117,47 @@ def create_app(test_config=None):
         if errors:
             return jsonify(errors), 400
         else:
-            converter.save()
-            return jsonify(converter.profile), 201
+            profile = converter.save()
+            return jsonify(profile), 201
+
+    @app.route('/profiles/<profile_id>', methods=['GET'])
+    def retrieve_profile(profile_id):
+        if validate_id(profile_id):
+            profile = Converter.retrieve_profile(profile_id)
+            if profile:
+                return jsonify(profile), 200
+            else:
+                return jsonify({'error': 'Not found.'}), 404
+        else:
+            return jsonify({'error': 'Bad request.'}), 400
+
+    @app.route('/profiles/<profile_id>', methods=['PUT'])
+    def update_profile(profile_id):
+        if validate_id(profile_id):
+            profile_json = json.loads(request.data)
+
+            converter = Converter(profile_json)
+            errors = converter.clean()
+
+            if errors:
+                return jsonify(errors), 400
+            else:
+                profile = converter.update(profile_id)
+                if profile:
+                    return jsonify(profile), 201
+                else:
+                    return jsonify({'error': 'Not found.'}), 404
+        else:
+            return jsonify({'error': 'Bad request.'}), 400
+
+    @app.route('/profiles/<profile_id>', methods=['DELETE'])
+    def delete_profile(profile_id):
+        if validate_id(profile_id):
+            if Converter.delete_profile(profile_id):
+                return '', 204
+            else:
+                return jsonify({'error': 'Not found.'}), 404
+        else:
+            return jsonify({'error': 'Bad request.'}), 400
 
     return app

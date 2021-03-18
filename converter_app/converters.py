@@ -53,9 +53,28 @@ class Converter(object):
 
         profile_json = json.dumps(self.profile, sort_keys=True, indent=4)
 
-        file_path = profiles_path / '{}.json'.format(self.profile['id'])
+        file_path = profiles_path.joinpath(self.profile['id']).with_suffix('.json')
         with open(file_path, 'w') as fp:
             fp.write(profile_json)
+
+        return self.profile
+
+    def update(self, profile_id):
+        profiles_path = Path(app.config['PROFILES_DIR'])
+        profiles_path.mkdir(parents=True, exist_ok=True)
+
+        # update the uuid for the profile
+        self.profile['id'] = profile_id
+
+        profile_json = json.dumps(self.profile, sort_keys=True, indent=4)
+
+        file_path = profiles_path.joinpath(profile_id).with_suffix('.json')
+        if file_path.is_file():
+            with open(file_path, 'w') as fp:
+                fp.write(profile_json)
+            return self.profile
+        else:
+            return False
 
     def match(self, file_data):
         self.header = OrderedDict()
@@ -199,3 +218,20 @@ class Converter(object):
         for file_path in Path.iterdir(profiles_path):
             profiles.append(json.loads(file_path.read_text()))
         return profiles
+
+    @classmethod
+    def retrieve_profile(cls, profile_id):
+        profiles_path = Path(app.config['PROFILES_DIR'])
+        file_path = profiles_path.joinpath(profile_id).with_suffix('.json')
+        if file_path.is_file():
+            return json.loads(file_path.read_text())
+        else:
+            return False
+
+    @classmethod
+    def delete_profile(cls, profile_id):
+        profiles_path = Path(app.config['PROFILES_DIR'])
+        file_path = profiles_path.joinpath(profile_id).with_suffix('.json')
+        if file_path.is_file():
+            file_path.unlink()
+            return True
