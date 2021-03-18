@@ -1,8 +1,8 @@
-import hashlib
 import json
 import logging
 import os
 import re
+import uuid
 from collections import OrderedDict, defaultdict
 from pathlib import Path
 
@@ -48,14 +48,14 @@ class Converter(object):
         profiles_path = Path(app.config['PROFILES_DIR'])
         profiles_path.mkdir(parents=True, exist_ok=True)
 
+        # create a uuid for the profile
+        self.profile['id'] = str(uuid.uuid4())
+
         profile_json = json.dumps(self.profile, sort_keys=True, indent=4)
-        checksum = hashlib.sha1(profile_json.encode()).hexdigest()
 
-        file_path = profiles_path / '{}.json'.format(checksum)
-
-        if not file_path.exists():
-            with open(file_path, 'w') as fp:
-                fp.write(profile_json)
+        file_path = profiles_path / '{}.json'.format(self.profile['id'])
+        with open(file_path, 'w') as fp:
+            fp.write(profile_json)
 
     def match(self, file_data):
         self.header = OrderedDict()

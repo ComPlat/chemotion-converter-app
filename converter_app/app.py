@@ -41,53 +41,8 @@ def create_app(test_config=None):
         '''
         return make_response(jsonify({'status': 'ok'}), 200)
 
-    @app.route('/profiles', methods=['GET'])
-    def list_profiles():
-        '''
-        Utility endpoint: List all profiles
-        '''
-        profiles = Converter.list_profiles()
-        return jsonify(profiles), 200
-
-    @app.route('/tables', methods=['POST'])
-    def retrieve_table():
-        '''
-        Step 1 (advanced): upload file and convert to table
-        '''
-        if request.files.get('file'):
-            file = request.files.get('file')
-            reader = registry.match_reader(file, file.filename, file.content_type)
-
-            if reader:
-                response_json = reader.process()
-                response_json['options'] = JcampWriter().options
-                return jsonify(response_json), 201
-            else:
-                return jsonify(
-                    {'error': 'Your file could not be processed.'}), 400
-        else:
-            return jsonify({'error': 'No file provided.'}), 400
-
-    @app.route('/profiles', methods=['POST'])
-    def create_profile():
-        '''
-        Step 2 (advanced): upload json that defines rules and identifiers for file
-        from step 1, saves rules and identifiers as profile
-        '''
-
-        profile_json = json.loads(request.data)
-
-        converter = Converter(profile_json)
-        errors = converter.clean()
-
-        if errors:
-            return jsonify(errors), 400
-        else:
-            converter.save()
-            return jsonify(converter.profile), 201
-
     @app.route('/conversions', methods=['POST'])
-    def create_conversion():
+    def retrieve_conversion():
         '''
         Simple View: upload file, convert to table, search for profile,
         return jcamp based on profile
@@ -118,5 +73,50 @@ def create_app(test_config=None):
             return jsonify({'error': 'Your file could not be processed.'}), 400
         else:
             return jsonify({'error': 'No file provided.'}), 400
+
+    @app.route('/tables', methods=['POST'])
+    def retrieve_table():
+        '''
+        Step 1 (advanced): upload file and convert to table
+        '''
+        if request.files.get('file'):
+            file = request.files.get('file')
+            reader = registry.match_reader(file, file.filename, file.content_type)
+
+            if reader:
+                response_json = reader.process()
+                response_json['options'] = JcampWriter().options
+                return jsonify(response_json), 201
+            else:
+                return jsonify(
+                    {'error': 'Your file could not be processed.'}), 400
+        else:
+            return jsonify({'error': 'No file provided.'}), 400
+
+    @app.route('/profiles', methods=['GET'])
+    def list_profiles():
+        '''
+        Utility endpoint: List all profiles
+        '''
+        profiles = Converter.list_profiles()
+        return jsonify(profiles), 200
+
+    @app.route('/profiles', methods=['POST'])
+    def create_profile():
+        '''
+        Step 2 (advanced): upload json that defines rules and identifiers for file
+        from step 1, saves rules and identifiers as profile
+        '''
+
+        profile_json = json.loads(request.data)
+
+        converter = Converter(profile_json)
+        errors = converter.clean()
+
+        if errors:
+            return jsonify(errors), 400
+        else:
+            converter.save()
+            return jsonify(converter.profile), 201
 
     return app
