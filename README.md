@@ -24,7 +24,7 @@ pip install -e .                     # installs the package in editable mode
 pip install -r requirements/dev.txt  # only needed for the development setup
 ```
 
-The application is configured using environment variables, which can be read from a `.env` file. The file `.env.sample` as template. At least `FLASK_APP=converter_app.app` needs to be set.
+The application is configured using environment variables, which can be read from a `.env` file. The file `.env.dev` can be used as template. At least `FLASK_APP=converter_app.app` needs to be set.
 
 The Flask development server can be started now:
 
