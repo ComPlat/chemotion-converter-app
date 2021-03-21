@@ -4,12 +4,12 @@ import os
 from pathlib import Path
 
 from dotenv import load_dotenv
-from flask import Flask, Response, jsonify, make_response, request
+from flask import Flask, Response, abort, jsonify, make_response, request
 from flask_cors import CORS
 
 from .converters import Converter
+from .models import Profile
 from .readers import registry
-from .utils import validate_id
 from .writers.jcamp import JcampWriter
 
 
@@ -32,7 +32,7 @@ def create_app(test_config=None):
         CORS(app, expose_headers=['Content-Disposition'])
 
     @app.errorhandler(404)
-    def not_found(error):
+    def not_found(error=None):
         return make_response(jsonify({'error': 'Not found'}), 404)
 
     @app.route('/', methods=['GET'])
@@ -55,6 +55,7 @@ def create_app(test_config=None):
             if reader:
                 file_json = reader.process()
                 converter = Converter.match_profile(file_json)
+
                 if converter:
                     converter_header = converter.get_header()
                     converter_data = converter.get_data(file_json.get('data'))
@@ -96,68 +97,49 @@ def create_app(test_config=None):
 
     @app.route('/profiles', methods=['GET'])
     def list_profiles():
-        '''
-        Utility endpoint: List all profiles
-        '''
-        profiles = Converter.list_profiles()
-        return jsonify(profiles), 200
+        profiles = Profile.list()
+        return jsonify([profile.as_dict for profile in profiles]), 200
 
     @app.route('/profiles', methods=['POST'])
     def create_profile():
-        '''
-        Step 2 (advanced): upload json that defines rules and identifiers for file
-        from step 1, saves rules and identifiers as profile
-        '''
+        profile_data = json.loads(request.data)
+        profile = Profile(profile_data)
 
-        profile_json = json.loads(request.data)
-
-        converter = Converter(profile_json)
-        errors = converter.clean()
-
-        if errors:
-            return jsonify(errors), 400
+        if profile.clean():
+            profile.save()
+            return jsonify(profile.as_dict), 201
         else:
-            profile = converter.save()
-            return jsonify(profile), 201
+            return jsonify(profile.errors), 400
 
     @app.route('/profiles/<profile_id>', methods=['GET'])
     def retrieve_profile(profile_id):
-        if validate_id(profile_id):
-            profile = Converter.retrieve_profile(profile_id)
-            if profile:
-                return jsonify(profile), 200
-            else:
-                return jsonify({'error': 'Not found.'}), 404
+        profile = Profile.retrieve(profile_id)
+        if profile:
+            return jsonify(profile.as_dict), 200
         else:
-            return jsonify({'error': 'Bad request.'}), 400
+            abort(404)
 
     @app.route('/profiles/<profile_id>', methods=['PUT'])
     def update_profile(profile_id):
-        if validate_id(profile_id):
-            profile_json = json.loads(request.data)
+        profile = Profile.retrieve(profile_id)
+        if profile:
+            profile.data = json.loads(request.data)
 
-            converter = Converter(profile_json)
-            errors = converter.clean()
-
-            if errors:
-                return jsonify(errors), 400
+            if profile.clean():
+                profile.save()
+                return jsonify(profile.as_dict), 200
             else:
-                profile = converter.update(profile_id)
-                if profile:
-                    return jsonify(profile), 201
-                else:
-                    return jsonify({'error': 'Not found.'}), 404
+                return jsonify(profile.errors), 400
         else:
-            return jsonify({'error': 'Bad request.'}), 400
+            abort(404)
 
     @app.route('/profiles/<profile_id>', methods=['DELETE'])
     def delete_profile(profile_id):
-        if validate_id(profile_id):
-            if Converter.delete_profile(profile_id):
-                return '', 204
-            else:
-                return jsonify({'error': 'Not found.'}), 404
+        profile = Profile.retrieve(profile_id)
+        if profile:
+            profile.delete()
+            return '', 204
         else:
-            return jsonify({'error': 'Bad request.'}), 400
+            abort(404)
 
     return app

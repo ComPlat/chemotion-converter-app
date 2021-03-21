@@ -1,12 +1,9 @@
-import json
 import logging
 import os
 import re
-import uuid
-from collections import OrderedDict, defaultdict
-from pathlib import Path
+from collections import OrderedDict
 
-from flask import current_app as app
+from .models import Profile
 
 logger = logging.getLogger(__name__)
 
@@ -15,72 +12,11 @@ class Converter(object):
 
     def __init__(self, profile):
         self.profile = profile
-
-    def clean(self):
-        errors = defaultdict(list)
-        if 'identifiers' in self.profile:
-            if isinstance(self.profile['identifiers'], list):
-                pass
-            else:
-                errors['identifiers'].append('This field has to be a list.')
-        else:
-            errors['identifiers'].append('This field has to be provided.')
-
-        if 'table' in self.profile:
-            if isinstance(self.profile['table'], dict):
-                pass
-            else:
-                errors['table'].append('This field has to be an object.')
-        else:
-            errors['table'].append('This field has to be provided.')
-
-        if 'header' in self.profile:
-            if isinstance(self.profile['header'], dict):
-                pass
-            else:
-                errors['header'].append('This field has to be an object.')
-        else:
-            errors['header'].append('This field has to be provided.')
-
-        return errors
-
-    def save(self):
-        profiles_path = Path(app.config['PROFILES_DIR'])
-        profiles_path.mkdir(parents=True, exist_ok=True)
-
-        # create a uuid for the profile
-        self.profile['id'] = str(uuid.uuid4())
-
-        profile_json = json.dumps(self.profile, sort_keys=True, indent=4)
-
-        file_path = profiles_path.joinpath(self.profile['id']).with_suffix('.json')
-        with open(file_path, 'w') as fp:
-            fp.write(profile_json)
-
-        return self.profile
-
-    def update(self, profile_id):
-        profiles_path = Path(app.config['PROFILES_DIR'])
-        profiles_path.mkdir(parents=True, exist_ok=True)
-
-        # update the uuid for the profile
-        self.profile['id'] = profile_id
-
-        profile_json = json.dumps(self.profile, sort_keys=True, indent=4)
-
-        file_path = profiles_path.joinpath(profile_id).with_suffix('.json')
-        if file_path.is_file():
-            with open(file_path, 'w') as fp:
-                fp.write(profile_json)
-            return self.profile
-        else:
-            return False
-
-    def match(self, file_data):
         self.header = OrderedDict()
         self.match_count = 0
 
-        for identifier in self.profile.get('identifiers', []):
+    def match(self, file_data):
+        for identifier in self.profile.data.get('identifiers', []):
             if identifier.get('type') == 'metadata':
                 value = self.match_metadata(identifier, file_data.get('metadata'))
             elif identifier.get('type') == 'table':
@@ -152,16 +88,16 @@ class Converter(object):
             return False
 
     def get_header(self):
-        header = self.profile.get('header')
+        header = self.profile.data.get('header')
         header.update(self.header)
 
         logger.debug('header=%s', header)
         return header
 
     def get_data(self, data):
-        x_column = self.profile.get('table', {}).get('xColumn')
-        y_column = self.profile.get('table', {}).get('yColumn')
-        first_row_is_header = self.profile.get('table', {}).get('firstRowIsHeader')
+        x_column = self.profile.data.get('table', {}).get('xColumn')
+        y_column = self.profile.data.get('table', {}).get('yColumn')
+        first_row_is_header = self.profile.data.get('table', {}).get('firstRowIsHeader')
 
         x = []
         y = []
@@ -186,52 +122,17 @@ class Converter(object):
 
     @classmethod
     def match_profile(cls, file_data):
-        profiles_path = Path(app.config['PROFILES_DIR'])
+        converter = None
+        matches = 0
 
-        if profiles_path.exists():
-            converter = None
-            matches = 0
+        for profile in Profile.list():
+            current_converter = cls(profile)
+            current_matches = current_converter.match(file_data)
 
-            for file_name in os.listdir(profiles_path):
-                file_path = profiles_path / file_name
+            logger.debug('profile=%s matches=%s', profile.id, current_matches)
 
-                with open(file_path, 'r') as data_file:
-                    profile = json.load(data_file)
-                    current_converter = cls(profile)
-                    current_matches = current_converter.match(file_data)
+            if current_matches is not False and current_matches > matches:
+                converter = current_converter
+                matches = current_matches
 
-                    logger.debug('profile=%s matches=%s', file_name, current_matches)
-
-                    if current_matches is not False and current_matches > matches:
-                        converter = current_converter
-                        matches = current_matches
-
-            return converter
-
-        else:
-            return None
-
-    @classmethod
-    def list_profiles(cls):
-        profiles = []
-        profiles_path = Path(app.config['PROFILES_DIR'])
-        for file_path in Path.iterdir(profiles_path):
-            profiles.append(json.loads(file_path.read_text()))
-        return profiles
-
-    @classmethod
-    def retrieve_profile(cls, profile_id):
-        profiles_path = Path(app.config['PROFILES_DIR'])
-        file_path = profiles_path.joinpath(profile_id).with_suffix('.json')
-        if file_path.is_file():
-            return json.loads(file_path.read_text())
-        else:
-            return False
-
-    @classmethod
-    def delete_profile(cls, profile_id):
-        profiles_path = Path(app.config['PROFILES_DIR'])
-        file_path = profiles_path.joinpath(profile_id).with_suffix('.json')
-        if file_path.is_file():
-            file_path.unlink()
-            return True
+        return converter
