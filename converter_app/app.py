@@ -123,7 +123,10 @@ def create_app(test_config=None):
     def update_profile(profile_id):
         profile = Profile.retrieve(profile_id)
         if profile:
-            profile.data = json.loads(request.data)
+            try:
+                profile.data = json.loads(request.data)
+            except json.decoder.JSONDecodeError:
+                return jsonify({'error': 'Bad request'}), 400
 
             if profile.clean():
                 profile.save()
