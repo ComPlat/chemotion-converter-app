@@ -87,6 +87,11 @@ def create_app(test_config=None):
 
             if reader:
                 response_json = reader.process()
+
+                # only return the first 10 rows of each table
+                for index, table in enumerate(response_json['data']):
+                    response_json['data'][index]['rows'] = table['rows'][:10]
+
                 response_json['options'] = JcampWriter().options
                 return jsonify(response_json), 201
             else:
