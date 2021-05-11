@@ -68,7 +68,7 @@ class AsciiReader(Reader):
             if table['rows']:
                 table['columns'] = [{
                     'key': str(idx),
-                    'name': string.ascii_uppercase[idx]
+                    'name': 'Column #{}'.format(idx)
                 } for idx, value in enumerate(table['rows'][0])]
 
         return tables
