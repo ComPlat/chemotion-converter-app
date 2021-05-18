@@ -54,18 +54,18 @@ The development server is not suited for a production deployment. Instead we rec
 
 Create the `.env` file in `/srv/chemotion/.env`, but use `.env.prod` as template, since it contains the variables we need to set for gunicorn.
 
-In order to create the needed `log` and `run` directories create a `tmpfiles.d` config in `/etc/tmpfiles.d/chemotion-converter-app.conf`. A sample file can be found in [etc/tmpfiles.d/chemotion-converter-app.conf](etc/tmpfiles.d/chemotion-converter-app.conf). Create the directories using:
+In order to create the needed `log` and `run` directories create a `tmpfiles.d` config in `/etc/tmpfiles.d/chemotion-converter.conf`. A sample file can be found in [etc/tmpfiles.d/chemotion-converter.conf](etc/tmpfiles.d/chemotion-converter.conf). Create the directories using:
 
 ```
 systemd-tmpfiles --create
 ```
 
-Next, create a systemd service file in `/etc/systemd/system/chemotion-converter-app.service`. Again, a sample file can be found in [etc/systemd/system/chemotion-converter-app.service](etc/systemd/system/chemotion-converter-app.service). Reload systemd and start (and enable) the service:
+Next, create a systemd service file in `/etc/systemd/system/chemotion-converter.service`. Again, a sample file can be found in [etc/systemd/system/chemotion-converter.service](etc/systemd/system/chemotion-converter.service). Reload systemd and start (and enable) the service:
 
 ```bash
 systemctl daemon-reload
-systemctl start chemotion-converter-app
-systemctl enable chemotion-converter-app
+systemctl start chemotion-converter
+systemctl enable chemotion-converter
 ```
 
 If the service won't start, `journalctl -xf` might indicate what is wrong.
