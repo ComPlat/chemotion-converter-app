@@ -11,6 +11,7 @@ from .converters import Converter
 from .models import Profile
 from .readers import registry
 from .writers.jcamp import JcampWriter
+from .utils import human2bytes
 
 
 def create_app(test_config=None):
@@ -25,6 +26,7 @@ def create_app(test_config=None):
     app.config.from_mapping(
         SECRET_KEY=os.getenv('SECRET_KEY'),
         PROFILES_DIR=os.getenv('PROFILES_DIR', 'profiles'),
+        MAX_CONTENT_LENGTH=human2bytes(os.getenv('MAX_CONTENT_LENGTH', '64M')),
         CORS=os.getenv('CORS', 'False').lower() in ['true', 't', '1']
     )
 
