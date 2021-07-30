@@ -78,8 +78,6 @@ class JcampWriter(Writer):
             'OWNER': header.pop('OWNER', '')
         })
 
-        print(header)
-
         data_class = header.get('DATA CLASS', self.data_classes[0])
         if data_class == 'XYDATA':
             self.process_xydata(header, data)

@@ -24,7 +24,7 @@ pip install -e .                     # installs the package in editable mode
 pip install -r requirements/dev.txt  # only needed for the development setup
 ```
 
-The application is configured using environment variables, which can be read from a `.env` file. The file `.env.sample` as template. At least `FLASK_APP=converter_app.app` needs to be set.
+The application is configured using environment variables, which can be read from a `.env` file. The file `.env.dev` can be used as template. At least `FLASK_APP=converter_app.app` needs to be set.
 
 The Flask development server can be started now:
 
@@ -54,18 +54,18 @@ The development server is not suited for a production deployment. Instead we rec
 
 Create the `.env` file in `/srv/chemotion/.env`, but use `.env.prod` as template, since it contains the variables we need to set for gunicorn.
 
-In order to create the needed `log` and `run` directories create a `tmpfiles.d` config in `/etc/tmpfiles.d/chemotion-converter-app.conf`. A sample file can be found in [etc/tmpfiles.d/chemotion-converter-app.conf](etc/tmpfiles.d/chemotion-converter-app.conf). Create the directories using:
+In order to create the needed `log` and `run` directories create a `tmpfiles.d` config in `/etc/tmpfiles.d/chemotion-converter.conf`. A sample file can be found in [etc/tmpfiles.d/chemotion-converter.conf](etc/tmpfiles.d/chemotion-converter.conf). Create the directories using:
 
 ```
 systemd-tmpfiles --create
 ```
 
-Next, create a systemd service file in `/etc/systemd/system/chemotion-converter-app.service`. Again, a sample file can be found in [etc/systemd/system/chemotion-converter-app.service](etc/systemd/system/chemotion-converter-app.service). Reload systemd and start (and enable) the service:
+Next, create a systemd service file in `/etc/systemd/system/chemotion-converter.service`. Again, a sample file can be found in [etc/systemd/system/chemotion-converter.service](etc/systemd/system/chemotion-converter.service). Reload systemd and start (and enable) the service:
 
 ```bash
 systemctl daemon-reload
-systemctl start chemotion-converter-app
-systemctl enable chemotion-converter-app
+systemctl start chemotion-converter
+systemctl enable chemotion-converter
 ```
 
 If the service won't start, `journalctl -xf` might indicate what is wrong.
@@ -82,4 +82,6 @@ The guincorn server listens on the port given in the env file (default: 9000) on
         proxy_set_header   X-Forwarded-For      $proxy_add_x_forwarded_for;
         proxy_set_header   X-Forwarded-Proto    $scheme;
     }
+
+    client_max_body_size 64M;  # set this to the maximum file size allowed for upload
 ```
