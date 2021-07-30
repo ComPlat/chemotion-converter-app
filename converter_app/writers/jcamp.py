@@ -25,6 +25,7 @@ class JcampWriter(Writer):
         'UV-VIS',
         'GEL PERMEATION CHROMATOGRAPHY',
         'CYCLIC VOLTAMMETRY',
+        'X-RAY DIFFRACTION'
     )
 
     data_classes = (
