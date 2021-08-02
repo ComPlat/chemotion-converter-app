@@ -45,7 +45,7 @@ class Converter(object):
         table_index = identifier.get('tableIndex')
         if table_index is not None:
             try:
-                table = data[table_index]
+                table = data[int(table_index)]
             except KeyError:
                 return False
 
@@ -65,7 +65,7 @@ class Converter(object):
                     # the line in the header does not exist
                     return False
 
-            return self.match_value(identifier, header_value)
+            return self.match_value(identifier, header_value.rstrip())
 
     def match_value(self, identifier, value):
         if value is not None:
@@ -82,7 +82,7 @@ class Converter(object):
                     return False
             else:
                 result = value == identifier.get('value')
-                logger.debug('match_value value="%s" result=%s', value, result)
+                logger.debug('match_value identifier="%s", value="%s" result=%s', identifier.get('value'), value, result)
                 return value if result else False
         else:
             return False
