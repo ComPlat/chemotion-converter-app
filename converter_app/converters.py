@@ -45,7 +45,7 @@ class Converter(object):
         table_index = identifier.get('tableIndex')
         if table_index is not None:
             try:
-                table = data[int(table_index)]
+                table = data[table_index]
             except KeyError:
                 return False
 
