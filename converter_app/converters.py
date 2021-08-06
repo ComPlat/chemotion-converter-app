@@ -45,7 +45,10 @@ class Converter(object):
         table_index = identifier.get('tableIndex')
         if table_index is not None:
             try:
-                table = data[table_index]
+                if int(table_index) >= len(data):
+                  return False
+
+                table = data[int(table_index)]
             except KeyError:
                 return False
 
@@ -129,7 +132,7 @@ class Converter(object):
             current_converter = cls(profile)
             current_matches = current_converter.match(file_data)
 
-            logger.debug('profile=%s matches=%s', profile.id, current_matches)
+            logger.info('profile=%s matches=%s', profile.id, current_matches)
 
             if current_matches is not False and current_matches > matches:
                 converter = current_converter
