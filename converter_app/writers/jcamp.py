@@ -40,6 +40,7 @@ class JcampWriter(Writer):
         'MICROMETERS',
         'NANOMETERS',
         'SECONDS',
+        'MINUTES',
         'HZ',
         'DEGREES CELSIUS',
     )
@@ -48,6 +49,7 @@ class JcampWriter(Writer):
         'TRANSMITTANCE',
         'REFLECTANCE',
         'ABSORBANCE',
+        'MILLI-ABSORBANCE UNITS',
         'KUBELKA-MUNK',
         'COUNTS',
         'ARBITRARY UNITS',

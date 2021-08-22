@@ -8,7 +8,7 @@ logger = logging.getLogger(__name__)
 
 PATTERNS = {
     'text': re.compile(r'[A-Za-z]{2,}'),                 # two or more chars in row
-    'floats': re.compile(r'(\d+[,.]*\d*[eE+\-\d]*)\S*')  # e.g. 1.00001E-10
+    'floats': re.compile(r'(-?\d+[,.]*\d*[eE+\-\d]*)\S*')  # e.g. 1.00001E-10
 }
 
 
