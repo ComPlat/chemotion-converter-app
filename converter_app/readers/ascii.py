@@ -49,6 +49,7 @@ class AsciiReader(Reader):
                 tables[-1]['header'].append(row)
             else:
                 # try to match columns of floats
+                row = row.replace('n.a.','0')
                 float_match = PATTERNS['floats'].findall(row)
                 if float_match:
                     # replace , by . in floats
