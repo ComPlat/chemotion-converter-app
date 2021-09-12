@@ -37,6 +37,7 @@ class JcampWriter(Writer):
 
     xunits = (
         '1/CM',
+        '2Theta',
         'MICROMETERS',
         'NANOMETERS',
         'SECONDS',
@@ -49,7 +50,7 @@ class JcampWriter(Writer):
         'TRANSMITTANCE',
         'REFLECTANCE',
         'ABSORBANCE',
-        'MILLI-ABSORBANCE UNITS',
+        'mAU',
         'KUBELKA-MUNK',
         'COUNTS',
         'ARBITRARY UNITS',
