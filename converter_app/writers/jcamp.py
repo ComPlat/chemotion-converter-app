@@ -55,7 +55,8 @@ class JcampWriter(Writer):
         'COUNTS',
         'ARBITRARY UNITS',
         'WEIGHT',
-        'DERIVATIVE WEIGHT'
+        'DERIVATIVE WEIGHT',
+        'Intensity'
     )
 
     @property
