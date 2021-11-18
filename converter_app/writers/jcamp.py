@@ -23,6 +23,7 @@ class JcampWriter(Writer):
         'CONTINUOUS MASS SPECTRUM',
         'THERMOGRAVIMETRIC ANALYSIS',
         'UV-VIS',
+        'HPLC UV-VIS',
         'GEL PERMEATION CHROMATOGRAPHY',
         'CYCLIC VOLTAMMETRY',
         'X-RAY DIFFRACTION'
