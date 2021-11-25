@@ -44,8 +44,8 @@ class Profile(object):
         if not self.errors:
             return True
 
-    def save(self):
-        profiles_path = Path(current_app.config['PROFILES_DIR'])
+    def save(self, client_id):
+        profiles_path = Path(current_app.config['PROFILES_DIR']).joinpath(client_id)
         profiles_path.mkdir(parents=True, exist_ok=True)
 
         if self.id is None:
@@ -71,8 +71,8 @@ class Profile(object):
         }
 
     @classmethod
-    def list(cls):
-        profiles_path = Path(current_app.config['PROFILES_DIR'])
+    def list(cls, client_id):
+        profiles_path = Path(current_app.config['PROFILES_DIR']).joinpath(client_id)
 
         if profiles_path.exists():
             for file_path in Path.iterdir(profiles_path):
@@ -83,8 +83,8 @@ class Profile(object):
             return []
 
     @classmethod
-    def retrieve(cls, profile_id):
-        profiles_path = Path(current_app.config['PROFILES_DIR'])
+    def retrieve(cls, client_id, profile_id):
+        profiles_path = Path(current_app.config['PROFILES_DIR']).joinpath(client_id)
 
         # make sure that its really a uuid, this should prevent file system traversal
         try:

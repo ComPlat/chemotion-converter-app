@@ -121,17 +121,19 @@ def create_app(test_config=None):
     @app.route('/profiles', methods=['GET'])
     @auth.login_required
     def list_profiles():
-        profiles = Profile.list()
+        client_id = auth.current_user()
+        profiles = Profile.list(client_id)
         return jsonify([profile.as_dict for profile in profiles]), 200
 
     @app.route('/profiles', methods=['POST'])
     @auth.login_required
     def create_profile():
+        client_id = auth.current_user()
         profile_data = json.loads(request.data)
         profile = Profile(profile_data)
 
         if profile.clean():
-            profile.save()
+            profile.save(client_id)
             return jsonify(profile.as_dict), 201
         else:
             return jsonify(profile.errors), 400
@@ -139,7 +141,8 @@ def create_app(test_config=None):
     @app.route('/profiles/<profile_id>', methods=['GET'])
     @auth.login_required
     def retrieve_profile(profile_id):
-        profile = Profile.retrieve(profile_id)
+        client_id = auth.current_user()
+        profile = Profile.retrieve(client_id, profile_id)
         if profile:
             return jsonify(profile.as_dict), 200
         else:
@@ -148,7 +151,8 @@ def create_app(test_config=None):
     @app.route('/profiles/<profile_id>', methods=['PUT'])
     @auth.login_required
     def update_profile(profile_id):
-        profile = Profile.retrieve(profile_id)
+        client_id = auth.current_user()
+        profile = Profile.retrieve(client_id, profile_id)
         if profile:
             try:
                 profile.data = json.loads(request.data)
@@ -156,7 +160,7 @@ def create_app(test_config=None):
                 return jsonify({'error': 'Bad request'}), 400
 
             if profile.clean():
-                profile.save()
+                profile.save(client_id)
                 return jsonify(profile.as_dict), 200
             else:
                 return jsonify(profile.errors), 400
@@ -166,7 +170,8 @@ def create_app(test_config=None):
     @app.route('/profiles/<profile_id>', methods=['DELETE'])
     @auth.login_required
     def delete_profile(profile_id):
-        profile = Profile.retrieve(profile_id)
+        client_id = auth.current_user()
+        profile = Profile.retrieve(client_id, profile_id)
         if profile:
             profile.delete()
             return '', 204
