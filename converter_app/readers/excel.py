@@ -1,5 +1,4 @@
 import logging
-import string
 import zipfile
 
 import openpyxl

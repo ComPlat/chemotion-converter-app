@@ -1,6 +1,5 @@
 import logging
 import re
-import string
 
 from .base import Reader
 

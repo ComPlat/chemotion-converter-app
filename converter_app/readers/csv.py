@@ -2,7 +2,6 @@ import copy
 import csv
 import io
 import logging
-import string
 
 from .base import Reader
 
