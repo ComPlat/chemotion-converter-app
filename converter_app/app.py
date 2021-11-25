@@ -5,6 +5,7 @@ import yaml
 
 from flask import Flask, Response, abort, jsonify, make_response, request
 from flask_cors import CORS
+from flask_httpauth import HTTPBasicAuth
 
 from .converters import Converter
 from .models import Profile
@@ -20,6 +21,7 @@ def create_app(test_config=None):
     # setup logging
     logging.basicConfig(level=config.get('log_level', 'INFO').upper(), filename=config.get('log_file'))
 
+    # configure app
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_mapping(
         SECRET_KEY=config.get('secret_key'),
@@ -28,12 +30,26 @@ def create_app(test_config=None):
         CORS=bool(config.get('cors', False))
     )
 
+    # configure CORS
     if app.config['CORS']:
         CORS(app, expose_headers=['Content-Disposition'])
 
+    # configure errorhandler
     @app.errorhandler(404)
     def not_found(error=None):
         return make_response(jsonify({'error': 'Not found'}), 404)
+
+    # configure basic auth
+    auth = HTTPBasicAuth()
+
+    @auth.verify_password
+    def verify_password(username, password):
+        for client in config.get('clients', []):
+            if client.get('client_id') == username and client.get('client_secret') == password:
+                return client.get('client_id')
+        return False
+
+    # configure routes
 
     @app.route('/', methods=['GET'])
     def root():
@@ -43,6 +59,7 @@ def create_app(test_config=None):
         return make_response(jsonify({'status': 'ok'}), 200)
 
     @app.route('/conversions', methods=['POST'])
+    @auth.login_required
     def retrieve_conversion():
         '''
         Simple View: upload file, convert to table, search for profile,
@@ -77,6 +94,7 @@ def create_app(test_config=None):
             return jsonify({'error': 'No file provided.'}), 400
 
     @app.route('/tables', methods=['POST'])
+    @auth.login_required
     def retrieve_table():
         '''
         Step 1 (advanced): upload file and convert to table
@@ -101,11 +119,13 @@ def create_app(test_config=None):
             return jsonify({'error': 'No file provided.'}), 400
 
     @app.route('/profiles', methods=['GET'])
+    @auth.login_required
     def list_profiles():
         profiles = Profile.list()
         return jsonify([profile.as_dict for profile in profiles]), 200
 
     @app.route('/profiles', methods=['POST'])
+    @auth.login_required
     def create_profile():
         profile_data = json.loads(request.data)
         profile = Profile(profile_data)
@@ -117,6 +137,7 @@ def create_app(test_config=None):
             return jsonify(profile.errors), 400
 
     @app.route('/profiles/<profile_id>', methods=['GET'])
+    @auth.login_required
     def retrieve_profile(profile_id):
         profile = Profile.retrieve(profile_id)
         if profile:
@@ -125,6 +146,7 @@ def create_app(test_config=None):
             abort(404)
 
     @app.route('/profiles/<profile_id>', methods=['PUT'])
+    @auth.login_required
     def update_profile(profile_id):
         profile = Profile.retrieve(profile_id)
         if profile:
@@ -142,6 +164,7 @@ def create_app(test_config=None):
             abort(404)
 
     @app.route('/profiles/<profile_id>', methods=['DELETE'])
+    @auth.login_required
     def delete_profile(profile_id):
         profile = Profile.retrieve(profile_id)
         if profile:
