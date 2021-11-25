@@ -46,7 +46,7 @@ class Converter(object):
         if table_index is not None:
             try:
                 if int(table_index) >= len(data):
-                  return False
+                    return False
 
                 table = data[int(table_index)]
             except KeyError:

@@ -3,4 +3,5 @@ flask-cors
 gunicorn
 python-dotenv
 python-magic
+pyyaml
 openpyxl

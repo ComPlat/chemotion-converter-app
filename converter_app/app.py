@@ -1,9 +1,8 @@
 import json
 import logging
-import os
 from pathlib import Path
+import yaml
 
-from dotenv import load_dotenv
 from flask import Flask, Response, abort, jsonify, make_response, request
 from flask_cors import CORS
 
@@ -15,19 +14,18 @@ from .utils import human2bytes
 
 
 def create_app(test_config=None):
-    load_dotenv(Path().cwd() / '.env')
+    # read config from yaml file
+    config = yaml.safe_load(Path().cwd().joinpath('config.yml').read_text())
 
-    if os.getenv('LOG_FILE'):
-        logging.basicConfig(level=os.getenv('LOG_LEVEL'), filename=os.getenv('LOG_FILE'))
-    else:
-        logging.basicConfig(level=os.getenv('LOG_LEVEL'))
+    # setup logging
+    logging.basicConfig(level=config.get('log_level', 'INFO').upper(), filename=config.get('log_file'))
 
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_mapping(
-        SECRET_KEY=os.getenv('SECRET_KEY'),
-        PROFILES_DIR=os.getenv('PROFILES_DIR', 'profiles'),
-        MAX_CONTENT_LENGTH=human2bytes(os.getenv('MAX_CONTENT_LENGTH', '64M')),
-        CORS=os.getenv('CORS', 'False').lower() in ['true', 't', '1']
+        SECRET_KEY=config.get('secret_key'),
+        PROFILES_DIR=config.get('profiles_dir', 'profiles'),
+        MAX_CONTENT_LENGTH=human2bytes(config.get('max_content_length', '64M')),
+        CORS=bool(config.get('cors', False))
     )
 
     if app.config['CORS']:

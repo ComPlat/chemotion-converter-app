@@ -1,0 +1,9 @@
+secret_key: not a secret key
+profiles_dir: /srv/chemotion/profiles
+max_content_length: 10G
+cors: false
+log_level: info
+log_file: /var/log/chemotion/converter.log
+clients:
+- client_id:
+  client_secret:
