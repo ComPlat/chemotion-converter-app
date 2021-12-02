@@ -124,11 +124,11 @@ class Converter(object):
         return str(row[column_index]).replace(',', '.').replace('e', 'E')
 
     @classmethod
-    def match_profile(cls, file_data):
+    def match_profile(cls, client_id, file_data):
         converter = None
         matches = 0
 
-        for profile in Profile.list():
+        for profile in Profile.list(client_id):
             current_converter = cls(profile)
             current_matches = current_converter.match(file_data)
 
