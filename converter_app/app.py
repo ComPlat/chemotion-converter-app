@@ -65,13 +65,14 @@ def create_app(test_config=None):
         Simple View: upload file, convert to table, search for profile,
         return jcamp based on profile
         '''
+        client_id = auth.current_user()
         if request.files.get('file'):
             file = request.files.get('file')
             reader = registry.match_reader(file, file.filename, file.content_type)
 
             if reader:
                 file_json = reader.process()
-                converter = Converter.match_profile(file_json)
+                converter = Converter.match_profile(client_id, file_json)
 
                 if converter:
                     converter_header = converter.get_header()
