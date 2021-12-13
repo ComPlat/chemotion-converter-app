@@ -19,13 +19,14 @@ class CSVReader(Reader):
         if self.encoding == 'binary':
             result = False
         else:
+            file_string = self.file_content.decode(self.encoding)
+
             try:
-                peek_string = self.peek.decode(self.encoding)
-                dialect = csv.Sniffer().sniff(peek_string, delimiters=';,\t')
+                dialect = csv.Sniffer().sniff(file_string, delimiters=';,\t')
             except csv.Error:
                 result = False
             else:
-                io_string = io.StringIO(self.file.read().decode(self.encoding))
+                io_string = io.StringIO(file_string)
                 self.lines = copy.copy(io_string)
                 self.reader = csv.reader(io_string, dialect)
                 result = True

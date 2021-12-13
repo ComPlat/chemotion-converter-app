@@ -13,11 +13,11 @@ class Reader(object):
         self.file_name = file_name
         self.content_type = content_type
 
-        self.peek = self.file.read(1024)
+        self.file_content = self.file.read()
         self.file.seek(0)
 
-        self.mime_type = magic.Magic(mime=True).from_buffer(self.peek)
-        self.encoding = magic.Magic(mime_encoding=True).from_buffer(self.peek)
+        self.mime_type = magic.Magic(mime=True).from_buffer(self.file_content)
+        self.encoding = magic.Magic(mime_encoding=True).from_buffer(self.file_content)
 
         self.extension = Path(file_name).suffix
 
