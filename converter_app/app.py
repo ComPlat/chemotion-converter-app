@@ -131,10 +131,10 @@ def create_app(test_config=None):
     def create_profile():
         client_id = auth.current_user()
         profile_data = json.loads(request.data)
-        profile = Profile(profile_data)
+        profile = Profile(profile_data, client_id)
 
         if profile.clean():
-            profile.save(client_id)
+            profile.save()
             return jsonify(profile.as_dict), 201
         else:
             return jsonify(profile.errors), 400
@@ -161,7 +161,7 @@ def create_app(test_config=None):
                 return jsonify({'error': 'Bad request'}), 400
 
             if profile.clean():
-                profile.save(client_id)
+                profile.save()
                 return jsonify(profile.as_dict), 200
             else:
                 return jsonify(profile.errors), 400
