@@ -26,21 +26,26 @@ class Profile(object):
         else:
             self.errors['identifiers'].append('This field has to be provided.')
 
-        if 'table' in self.data:
-            if isinstance(self.data['table'], dict):
-                pass
-            else:
-                self.errors['table'].append('This field has to be an object.')
-        else:
-            self.errors['table'].append('This field has to be provided.')
+        if 'tables' in self.data:
+            if isinstance(self.data['tables'], list):
+                for table in self.data['tables']:
+                    if 'table' in table:
+                        if isinstance(table['table'], dict):
+                            pass
+                        else:
+                            self.errors['tables'].append('table.table has to be an object.')
+                    else:
+                        self.errors['table'].append('This field has to be provided.')
 
-        if 'header' in self.data:
-            if isinstance(self.data['header'], dict):
-                pass
+                    if 'header' in table:
+                        if isinstance(table['header'], dict):
+                            pass
+                        else:
+                            self.errors['tables'].append('table.header field has to be an object.')
+                    else:
+                        self.errors['header'].append('This field has to be provided.')
             else:
-                self.errors['header'].append('This field has to be an object.')
-        else:
-            self.errors['header'].append('This field has to be provided.')
+                self.errors['tables'].append('This field has to be provided.')
 
         if not self.errors:
             return True

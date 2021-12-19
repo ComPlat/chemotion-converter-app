@@ -1,10 +1,4 @@
-import io
-
-
 class Writer(object):
-
-    def __init__(self):
-        self.buffer = io.StringIO()
 
     def write(self):
         return self.buffer.getvalue()

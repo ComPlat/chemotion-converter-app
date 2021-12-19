@@ -1,3 +1,4 @@
+import io
 import os
 import sys
 
@@ -60,6 +61,12 @@ class JcampWriter(Writer):
         'Intensity'
     )
 
+    suffix = '.jdx'
+    mimetype = 'chemical/x-jcamp-dx'
+
+    def __init__(self):
+        self.buffer = io.StringIO()
+
     @property
     def options(self):
         return {
@@ -69,13 +76,14 @@ class JcampWriter(Writer):
             'YUNITS': self.yunits,
         }
 
-    @property
-    def suffix(self):
-        return '.jdx'
+    def process(self, tables):
+        self.process_table(tables[0])
 
-    def process(self, header, data):
+    def process_table(self, table):
+        header = table.get('header', {})
+
         self.write_header({
-            'TITLE': data.pop('title', 'Spectrum'),
+            'TITLE': header.pop('title', 'Spectrum'),
             'JCAMP-DX': '5.00 $$ {} ({})'.format(__title__, __version__),
             'DATA TYPE': header.pop('DATA TYPE', self.data_types[0]),
             'DATA CLASS': header.pop('DATA CLASS', self.data_classes[0]),
@@ -85,14 +93,13 @@ class JcampWriter(Writer):
 
         data_class = header.get('DATA CLASS', self.data_classes[0])
         if data_class == 'XYDATA':
-            self.process_xydata(header, data)
+            self.process_xydata(header, table.get('y'))
         elif data_class in ['XYPOINTS', 'PEAK TABLE']:
-            self.process_xypoints(header, data)
+            self.process_xypoints(header, table.get('x'), table.get('y'))
         elif data_class == 'NTUPLES':
-            self.process_ntuples(header, data)
+            self.process_ntuples(header, table.get('x'), table.get('y'))
 
-    def process_xydata(self, header, data):
-        y = data.get('y')
+    def process_xydata(self, header, y):
         firstx = header.get('FIRSTX')
         lastx = header.get('LASTX')
         deltax = header.get('DELTAX')
@@ -146,10 +153,7 @@ class JcampWriter(Writer):
         # write the end
         self.buffer.write('##END=$$ End of the data block' + os.linesep)
 
-    def process_xypoints(self, metadata, data):
-        x = data.get('x')
-        y = data.get('y')
-
+    def process_xypoints(self, header, x, y):
         assert x
         assert y
 
@@ -181,8 +185,8 @@ class JcampWriter(Writer):
             'MAXY': maxy,
             'NPOINTS': npoints,
             'FIRSTY': firsty,
-            'XUNITS': metadata.get('XUNITS', self.xunits[0]),
-            'YUNITS': metadata.get('YUNITS', self.yunits[0]),
+            'XUNITS': header.get('XUNITS', self.xunits[0]),
+            'YUNITS': header.get('YUNITS', self.yunits[0]),
             'XYPOINTS': '(XY..XY)'
         })
 
@@ -192,10 +196,7 @@ class JcampWriter(Writer):
         # write the end
         self.buffer.write('##END=$$ End of the data block' + os.linesep)
 
-    def process_ntuples(self, metadata, data):
-        x = data.get('x')
-        y = data.get('y')
-
+    def process_ntuples(self, header, x, y):
         assert x
         assert y
 
@@ -215,7 +216,7 @@ class JcampWriter(Writer):
             maxy = max(maxy, y_float)
 
         # write header with ntuples specific values
-        data_class = metadata.get('DATA CLASS', self.data_classes[0])
+        data_class = header.get('DATA CLASS', self.data_classes[0])
         self.write_header({
             'NTUPLES': data_class,
             'VAR_NAME': '',
@@ -265,3 +266,6 @@ class JcampWriter(Writer):
         for x_string, y_string in zip(x, y):
             line = x_string + ', ' + y_string
             self.buffer.write(line + os.linesep)
+
+    def write(self):
+        return self.buffer.getvalue()

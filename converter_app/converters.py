@@ -90,35 +90,37 @@ class Converter(object):
         else:
             return False
 
-    def get_header(self):
-        header = self.profile.data.get('header')
-        header.update(self.header)
+    def get_tables(self, data):
+        tables = []
+        for table in self.profile.data.get('tables'):
+            header = table.get('header', {})
+            header.update(self.header)
 
-        logger.debug('header=%s', header)
-        return header
+            x_column = table.get('table', {}).get('xColumn')
+            y_column = table.get('table', {}).get('yColumn')
+            first_row_is_header = self.profile.data.get('firstRowIsHeader')
 
-    def get_data(self, data):
-        x_column = self.profile.data.get('table', {}).get('xColumn')
-        y_column = self.profile.data.get('table', {}).get('yColumn')
-        first_row_is_header = self.profile.data.get('table', {}).get('firstRowIsHeader')
+            x = []
+            y = []
+            for table_index, table in enumerate(data):
+                if (x_column and table_index == x_column['tableIndex']) or (y_column and table_index == y_column['tableIndex']):
+                    for row_index, row in enumerate(table['rows']):
+                        if first_row_is_header and first_row_is_header[table_index] and row_index == 0:
+                            pass
+                        else:
+                            for column_index, column in enumerate(table['columns']):
+                                if x_column and table_index == x_column['tableIndex'] and column_index == x_column['columnIndex']:
+                                    x.append(self.get_value(row, column_index))
+                                if y_column and table_index == y_column['tableIndex'] and column_index == y_column['columnIndex']:
+                                    y.append(self.get_value(row, column_index))
 
-        x = []
-        y = []
-        for table_index, table in enumerate(data):
-            if (x_column and table_index == x_column['tableIndex']) or (y_column and table_index == y_column['tableIndex']):
-                for row_index, row in enumerate(table['rows']):
-                    if first_row_is_header and first_row_is_header[table_index] and row_index == 0:
-                        pass
-                    else:
-                        for column_index, column in enumerate(table['columns']):
-                            if x_column and table_index == x_column['tableIndex'] and column_index == x_column['columnIndex']:
-                                x.append(self.get_value(row, column_index))
-                            if y_column and table_index == y_column['tableIndex'] and column_index == y_column['columnIndex']:
-                                y.append(self.get_value(row, column_index))
-        return {
-            'x': x,
-            'y': y
-        }
+            tables.append({
+                'header': header,
+                'x': x,
+                'y': y
+            })
+
+        return tables
 
     def get_value(self, row, column_index):
         return str(row[column_index]).replace(',', '.').replace('e', 'E')
