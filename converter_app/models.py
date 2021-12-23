@@ -6,6 +6,8 @@ from pathlib import Path
 
 from flask import current_app
 
+from .utils import check_uuid
+
 logger = logging.getLogger(__name__)
 
 
@@ -18,13 +20,23 @@ class Profile(object):
 
     def clean(self):
         self.errors = defaultdict(list)
+
+        if 'id' in self.data:
+            profile_id = self.data['id']
+            if check_uuid(profile_id):
+                existing_profile = Profile.retrieve(self.client_id, self.data['id'])
+                if existing_profile:
+                    self.errors['id'].append('A profile with this ID already exists.')
+            else:
+                self.errors['id'].append('id is not a valid UUID4.')
+
         if 'identifiers' in self.data:
             if isinstance(self.data['identifiers'], list):
                 pass
             else:
-                self.errors['identifiers'].append('This field has to be a list.')
+                self.errors['identifiers'].append('identifiers has to be a list.')
         else:
-            self.errors['identifiers'].append('This field has to be provided.')
+            self.errors['identifiers'].append('identifiers have to be provided.')
 
         if 'tables' in self.data:
             if isinstance(self.data['tables'], list):
@@ -35,7 +47,7 @@ class Profile(object):
                         else:
                             self.errors['tables'].append('table.table has to be an object.')
                     else:
-                        self.errors['table'].append('This field has to be provided.')
+                        self.errors['table'].append('table.table has to be provided.')
 
                     if 'header' in table:
                         if isinstance(table['header'], dict):
@@ -43,9 +55,9 @@ class Profile(object):
                         else:
                             self.errors['tables'].append('table.header field has to be an object.')
                     else:
-                        self.errors['header'].append('This field has to be provided.')
+                        self.errors['header'].append('table.header has to be provided.')
             else:
-                self.errors['tables'].append('This field has to be provided.')
+                self.errors['tables'].append('tables have to be provided.')
 
         if not self.errors:
             return True
@@ -55,8 +67,11 @@ class Profile(object):
         profiles_path.mkdir(parents=True, exist_ok=True)
 
         if self.id is None:
-            # create a uuid for new profiles
-            self.id = str(uuid.uuid4())
+            if 'id' in self.data:
+                self.id = self.data['id']
+            else:
+                # create a uuid for new profiles
+                self.id = str(uuid.uuid4())
 
         file_path = profiles_path.joinpath(self.id).with_suffix('.json')
         with open(file_path, 'w') as fp:
@@ -93,14 +108,10 @@ class Profile(object):
         profiles_path = Path(current_app.config['PROFILES_DIR']).joinpath(client_id)
 
         # make sure that its really a uuid, this should prevent file system traversal
-        try:
-            uuid.UUID(profile_id, version=4)
-        except ValueError:
-            return False
+        if check_uuid(profile_id):
+            file_path = profiles_path.joinpath(profile_id).with_suffix('.json')
+            if file_path.is_file():
+                profile_data = json.loads(file_path.read_text())
+                return cls(profile_data, client_id, profile_id)
 
-        file_path = profiles_path.joinpath(profile_id).with_suffix('.json')
-        if file_path.is_file():
-            profile_data = json.loads(file_path.read_text())
-            return cls(profile_data, client_id, profile_id)
-        else:
-            return False
+        return False
