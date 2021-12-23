@@ -98,10 +98,20 @@ class Converter(object):
 
             x_column = table.get('table', {}).get('xColumn')
             y_column = table.get('table', {}).get('yColumn')
+            x_operations = table.get('table', {}).get('xOperations', [])
+            y_operations = table.get('table', {}).get('yOperations', [])
             first_row_is_header = self.profile.data.get('firstRowIsHeader')
 
-            x = []
-            y = []
+            # repare rows
+            x_rows = []
+            y_rows = []
+            for operation in x_operations:
+                if operation.get('type') == 'column':
+                    operation['rows'] = []
+            for operation in y_operations:
+                if operation.get('type') == 'column':
+                    operation['rows'] = []
+
             for table_index, table in enumerate(data):
                 if (x_column and table_index == x_column['tableIndex']) or (y_column and table_index == y_column['tableIndex']):
                     for row_index, row in enumerate(table['rows']):
@@ -109,18 +119,66 @@ class Converter(object):
                             pass
                         else:
                             for column_index, column in enumerate(table['columns']):
-                                if x_column and table_index == x_column['tableIndex'] and column_index == x_column['columnIndex']:
-                                    x.append(self.get_value(row, column_index))
-                                if y_column and table_index == y_column['tableIndex'] and column_index == y_column['columnIndex']:
-                                    y.append(self.get_value(row, column_index))
+                                if x_column and \
+                                        table_index == x_column.get('tableIndex') and \
+                                        column_index == x_column.get('columnIndex'):
+                                    x_rows.append(self.get_value(row, column_index))
+
+                                if y_column and \
+                                        table_index == y_column.get('tableIndex') and \
+                                        column_index == y_column.get('columnIndex'):
+                                    y_rows.append(self.get_value(row, column_index))
+
+                                for operation in x_operations:
+                                    if operation.get('type') == 'column' and \
+                                            table_index == operation.get('column', {}).get('tableIndex') and \
+                                            column_index == operation.get('column', {}).get('columnIndex'):
+                                        operation['rows'].append(self.get_value(row, column_index))
+
+                                for operation in y_operations:
+                                    if operation.get('type') == 'column' and \
+                                            table_index == operation.get('column', {}).get('tableIndex') and \
+                                            column_index == operation.get('column', {}).get('columnIndex'):
+                                        operation['rows'].append(self.get_value(row, column_index))
+
+            print(y_rows)
+            for operation in x_operations:
+                x_rows = self.run_operation(x_rows, operation)
+            for operation in y_operations:
+                y_rows = self.run_operation(y_rows, operation)
+            print(y_rows)
 
             tables.append({
                 'header': header,
-                'x': x,
-                'y': y
+                'x': x_rows,
+                'y': y_rows
             })
 
         return tables
+
+    def run_operation(self, rows, operation):
+        for i, row in enumerate(rows):
+            op_value = None
+            if operation.get('type') == 'column':
+                try:
+                    op_value = operation['rows'][i]
+                except IndexError:
+                    pass
+            elif operation.get('type') == 'value':
+                op_value = operation.get('value')
+
+            if op_value:
+                if operation.get('operator') == '+':
+                    row_value = float(row) + float(op_value)
+                elif operation.get('operator') == '-':
+                    row_value = float(row) - float(op_value)
+                elif operation.get('operator') == '*':
+                    row_value = float(row) * float(op_value)
+                elif operation.get('operator') == ':':
+                    row_value = float(row) / float(op_value)
+                rows[i] = str(row_value)
+
+        return rows
 
     def get_value(self, row, column_index):
         return str(row[column_index]).replace(',', '.').replace('e', 'E')
