@@ -21,7 +21,7 @@ class Profile(object):
     def clean(self):
         self.errors = defaultdict(list)
 
-        if 'id' in self.data:
+        if self.id is None and 'id' in self.data:
             profile_id = self.data['id']
             if check_uuid(profile_id):
                 existing_profile = Profile.retrieve(self.client_id, self.data['id'])
