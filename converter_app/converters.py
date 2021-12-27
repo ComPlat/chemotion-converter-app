@@ -113,40 +113,37 @@ class Converter(object):
                     operation['rows'] = []
 
             for table_index, table in enumerate(data):
-                if (x_column and table_index == x_column['tableIndex']) or (y_column and table_index == y_column['tableIndex']):
-                    for row_index, row in enumerate(table['rows']):
-                        if first_row_is_header and first_row_is_header[table_index] and row_index == 0:
-                            pass
-                        else:
-                            for column_index, column in enumerate(table['columns']):
-                                if x_column and \
-                                        table_index == x_column.get('tableIndex') and \
-                                        column_index == x_column.get('columnIndex'):
-                                    x_rows.append(self.get_value(row, column_index))
+                for row_index, row in enumerate(table['rows']):
+                    if first_row_is_header and first_row_is_header[table_index] and row_index == 0:
+                        pass
+                    else:
+                        for column_index, column in enumerate(table['columns']):
+                            if x_column and \
+                                    table_index == x_column.get('tableIndex') and \
+                                    column_index == x_column.get('columnIndex'):
+                                x_rows.append(self.get_value(row, column_index))
 
-                                if y_column and \
-                                        table_index == y_column.get('tableIndex') and \
-                                        column_index == y_column.get('columnIndex'):
-                                    y_rows.append(self.get_value(row, column_index))
+                            if y_column and \
+                                    table_index == y_column.get('tableIndex') and \
+                                    column_index == y_column.get('columnIndex'):
+                                y_rows.append(self.get_value(row, column_index))
 
-                                for operation in x_operations:
-                                    if operation.get('type') == 'column' and \
-                                            table_index == operation.get('column', {}).get('tableIndex') and \
-                                            column_index == operation.get('column', {}).get('columnIndex'):
-                                        operation['rows'].append(self.get_value(row, column_index))
+                            for operation in x_operations:
+                                if operation.get('type') == 'column' and \
+                                        table_index == operation.get('column', {}).get('tableIndex') and \
+                                        column_index == operation.get('column', {}).get('columnIndex'):
+                                    operation['rows'].append(self.get_value(row, column_index))
 
-                                for operation in y_operations:
-                                    if operation.get('type') == 'column' and \
-                                            table_index == operation.get('column', {}).get('tableIndex') and \
-                                            column_index == operation.get('column', {}).get('columnIndex'):
-                                        operation['rows'].append(self.get_value(row, column_index))
+                            for operation in y_operations:
+                                if operation.get('type') == 'column' and \
+                                        table_index == operation.get('column', {}).get('tableIndex') and \
+                                        column_index == operation.get('column', {}).get('columnIndex'):
+                                    operation['rows'].append(self.get_value(row, column_index))
 
-            print(y_rows)
             for operation in x_operations:
                 x_rows = self.run_operation(x_rows, operation)
             for operation in y_operations:
                 y_rows = self.run_operation(y_rows, operation)
-            print(y_rows)
 
             tables.append({
                 'header': header,

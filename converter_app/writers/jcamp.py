@@ -83,12 +83,12 @@ class JcampWriter(Writer):
         header = table.get('header', {})
 
         self.write_header({
-            'TITLE': header.pop('title', 'Spectrum'),
+            'TITLE': header.get('title', 'Spectrum'),
             'JCAMP-DX': '5.00 $$ {} ({})'.format(__title__, __version__),
-            'DATA TYPE': header.pop('DATA TYPE', self.data_types[0]),
-            'DATA CLASS': header.pop('DATA CLASS', self.data_classes[0]),
-            'ORIGIN': header.pop('ORIGIN', ''),
-            'OWNER': header.pop('OWNER', '')
+            'DATA TYPE': header.get('DATA TYPE', self.data_types[0]),
+            'DATA CLASS': header.get('DATA CLASS', self.data_classes[0]),
+            'ORIGIN': header.get('ORIGIN', ''),
+            'OWNER': header.get('OWNER', '')
         })
 
         data_class = header.get('DATA CLASS', self.data_classes[0])
