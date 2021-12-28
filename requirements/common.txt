@@ -1,6 +1,7 @@
 defusedxml~=0.7.1
 Flask~=2.0.2
 Flask-Cors~=3.0.10
+Flask-HTTPAuth~=4.5.0
 gunicorn~=20.1.0
 openpyxl~=3.0.9
 python-dotenv~=0.19.2
