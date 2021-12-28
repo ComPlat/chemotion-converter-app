@@ -74,6 +74,14 @@ def create_app(test_config=None):
         '''
         return make_response(jsonify({'status': 'ok'}), 200)
 
+    @app.route('/client', methods=['GET'])
+    @auth.login_required
+    def client():
+        '''
+        Utility endpoint: Return the client_id iflogged in
+        '''
+        return make_response(jsonify({'client_id': auth.current_user()}), 200)
+
     @app.route('/conversions', methods=['POST'])
     @auth.login_required
     def retrieve_conversion():
