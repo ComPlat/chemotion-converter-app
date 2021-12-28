@@ -1,8 +1,10 @@
+import os
 import json
 import logging
 from pathlib import Path
-import yaml
 
+from bcrypt import checkpw
+from dotenv import load_dotenv
 from flask import Flask, Response, abort, jsonify, make_response, request
 from flask_cors import CORS
 from flask_httpauth import HTTPBasicAuth
@@ -16,19 +18,30 @@ from .utils import human2bytes
 
 
 def create_app(test_config=None):
-    # read config from yaml file
-    config = yaml.safe_load(Path().cwd().joinpath('config.yml').read_text())
+    load_dotenv(Path().cwd() / '.env')
 
     # setup logging
-    logging.basicConfig(level=config.get('log_level', 'INFO').upper(), filename=config.get('log_file'))
+    logging.basicConfig(level=os.getenv('LOG_LEVEL', 'INFO').upper(), filename=os.getenv('LOG_FILE'))
+
+    # open (plain) htpasswd file for the clients
+    htpasswd_path = os.getenv('HTPASSWD_PATH')
+    if htpasswd_path:
+        clients = {}
+        with open(htpasswd_path) as fp:
+            for line in fp.readlines():
+                username, password = line.strip().split(':')
+                clients[username] = password
+    else:
+        clients = None
 
     # configure app
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_mapping(
-        SECRET_KEY=config.get('secret_key'),
-        PROFILES_DIR=config.get('profiles_dir', 'profiles'),
-        MAX_CONTENT_LENGTH=human2bytes(config.get('max_content_length', '64M')),
-        CORS=bool(config.get('cors', False))
+        SECRET_KEY=os.getenv('SECRET_KEY'),
+        PROFILES_DIR=os.getenv('PROFILES_DIR', 'profiles'),
+        MAX_CONTENT_LENGTH=human2bytes(os.getenv('MAX_CONTENT_LENGTH', '64M')),
+        CORS=bool(os.getenv('CORS', False)),
+        CLIENTS=clients
     )
 
     # configure CORS
@@ -45,10 +58,13 @@ def create_app(test_config=None):
 
     @auth.verify_password
     def verify_password(username, password):
-        for client in config.get('clients', []):
-            if client.get('client_id') == username and client.get('client_secret') == password:
-                return client.get('client_id')
-        return False
+        if app.config['CLIENTS'] is None:
+            return 'dev'
+        else:
+            hashed_password = app.config['CLIENTS'].get(username)
+            if hashed_password is not None:
+                if checkpw(password.encode(), hashed_password.encode()):
+                    return username
 
     # configure routes
 

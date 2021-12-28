@@ -15,7 +15,7 @@ __pycache__/
 /env
 /.env
 
-/config.yml
+/htpasswd
 /log
 /tmp
 /profiles
