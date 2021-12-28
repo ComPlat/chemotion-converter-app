@@ -50,11 +50,11 @@ source env/bin/activate
 pip install git+https://github.com/ComPlat/converter-app
 ```
 
-In production, HTTP basic auth is used to seperate clients. First, create a `htpasswd` file using the `bcrypt` hashing algorithm:
+In production, HTTP basic auth is used to seperate clients. First, create a `htpasswd` file using the `sha1` hashing algorithm:
 
 ```bash
-htpasswd -B -c htpasswd client  # create a new file with the client_id "client"
-htpasswd -B htpasswd client     # update an existing file for the client_id "client"
+htpasswd -s -c htpasswd client  # create a new file with the client_id "client"
+htpasswd -s htpasswd client     # update an existing file for the client_id "client"
 ```
 
 The path to this file needs to be provided in `.env` as `HTPASSWD_PATH`.

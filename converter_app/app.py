@@ -3,7 +3,6 @@ import json
 import logging
 from pathlib import Path
 
-from bcrypt import checkpw
 from dotenv import load_dotenv
 from flask import Flask, Response, abort, jsonify, make_response, request
 from flask_cors import CORS
@@ -14,7 +13,7 @@ from .models import Profile
 from .readers import registry
 from .writers.jcamp import JcampWriter
 from .writers.jcampzip import JcampZipWriter
-from .utils import human2bytes
+from .utils import human2bytes, checkpw
 
 
 def create_app(test_config=None):
