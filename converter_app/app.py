@@ -11,6 +11,7 @@ from .converters import Converter
 from .models import Profile
 from .readers import registry
 from .writers.jcamp import JcampWriter
+from .writers.jcampzip import JcampZipWriter
 from .utils import human2bytes
 
 
@@ -72,21 +73,25 @@ def create_app(test_config=None):
 
             if reader:
                 file_json = reader.process()
+                file_data = file_json.get('data')
                 converter = Converter.match_profile(client_id, file_json)
 
                 if converter:
-                    converter_header = converter.get_header()
-                    converter_data = converter.get_data(file_json.get('data'))
+                    converter_tables = converter.get_tables(file_data)
 
-                    writer = JcampWriter()
+                    if len(converter_tables) > 1:
+                        writer = JcampZipWriter()
+                    else:
+                        writer = JcampWriter()
+
                     try:
-                        writer.process(converter_header, converter_data)
+                        writer.process(converter_tables)
                     except AssertionError:
                         return jsonify({'error': 'There was an error while converting your file.'}), 400
 
                     file_name = Path(file.filename).with_suffix(writer.suffix)
 
-                    response = Response(writer.write(), mimetype='chemical/x-jcamp-dx')
+                    response = Response(writer.write(), mimetype=writer.mimetype)
                     response.headers['Content-Disposition'] = 'attachment;filename={}'.format(file_name)
                     return response
 

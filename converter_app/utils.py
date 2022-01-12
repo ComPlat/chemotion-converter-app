@@ -1,4 +1,5 @@
 import re
+import uuid
 
 
 def human2bytes(string):
@@ -28,3 +29,10 @@ def human2bytes(string):
         return number * 1024**4
     elif unit == 'pib':
         return number * 1024**5
+
+
+def check_uuid(string):
+    try:
+        return uuid.UUID(string, version=4)
+    except ValueError:
+        return False
