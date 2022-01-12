@@ -1,3 +1,5 @@
+import base64
+import hashlib
 import re
 import uuid
 
@@ -36,3 +38,8 @@ def check_uuid(string):
         return uuid.UUID(string, version=4)
     except ValueError:
         return False
+
+def checkpw(password, hashed_password):
+    m = hashlib.sha1()
+    m.update(password)
+    return (b'{SHA}' + base64.b64encode(m.digest())) == hashed_password

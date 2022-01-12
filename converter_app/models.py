@@ -115,9 +115,3 @@ class Profile(object):
                 return cls(profile_data, client_id, profile_id)
 
         return False
-#        file_path = profiles_path.joinpath(profile_id).with_suffix('.json')
-#        if file_path.is_file():
-#            profile_data = json.loads(file_path.read_text())
-#            return cls(profile_data, client_id, profile_id)
-#        else:
-#            return False

@@ -50,6 +50,15 @@ source env/bin/activate
 pip install git+https://github.com/ComPlat/converter-app
 ```
 
+In production, HTTP basic auth is used to seperate clients. First, create a `htpasswd` file using the `sha1` hashing algorithm:
+
+```bash
+htpasswd -s -c htpasswd client  # create a new file with the client_id "client"
+htpasswd -s htpasswd client     # update an existing file for the client_id "client"
+```
+
+The path to this file needs to be provided in `.env` as `HTPASSWD_PATH`.
+
 The development server is not suited for a production deployment. Instead we recomend to use a reverse-proxy setup using [gunicorn](https://gunicorn.org/) and [NGINX](https://www.nginx.com/).
 
 Create the `.env` file in `/srv/chemotion/.env`, but use `.env.prod` as template, since it contains the variables we need to set for gunicorn.
