@@ -15,7 +15,6 @@ from .writers.jcamp import JcampWriter
 from .writers.jcampzip import JcampZipWriter
 from .utils import human2bytes, checkpw
 
-
 def create_app(test_config=None):
     load_dotenv(Path().cwd() / '.env')
 
