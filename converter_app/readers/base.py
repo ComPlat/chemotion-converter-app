@@ -38,5 +38,6 @@ class Reader(object):
             'file_name': self.file_name,
             'content_type': self.content_type,
             'mime_type': self.mime_type,
-            'extension': self.extension
+            'extension': self.extension,
+            'reader': self.__class__.__name__
         }
