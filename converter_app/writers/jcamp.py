@@ -40,25 +40,28 @@ class JcampWriter(Writer):
     xunits = (
         '1/CM',
         '2Theta',
+        'DEGREES CELSIUS',
+        'HZ',
         'MICROMETERS',
+        'MINUTES',
+        'm/z',
         'NANOMETERS',
         'SECONDS',
-        'MINUTES',
-        'HZ',
-        'DEGREES CELSIUS',
+        'Voltage vs Ref'
     )
 
     yunits = (
-        'TRANSMITTANCE',
-        'REFLECTANCE',
         'ABSORBANCE',
-        'mAU',
-        'KUBELKA-MUNK',
-        'COUNTS',
+        'Ampere',
         'ARBITRARY UNITS',
-        'WEIGHT',
+        'COUNTS',
         'DERIVATIVE WEIGHT',
-        'Intensity'
+        'Intensity',
+        'KUBELKA-MUNK',
+        'mAU',
+        'REFLECTANCE',
+        'TRANSMITTANCE',
+        'WEIGHT',
     )
 
     suffix = '.jdx'
