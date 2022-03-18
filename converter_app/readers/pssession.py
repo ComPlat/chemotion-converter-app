@@ -3,7 +3,6 @@ import itertools
 import json
 
 from pathlib import Path
-import defusedxml.ElementTree as ET
 
 from .base import Reader
 
@@ -54,7 +53,7 @@ class PsSessionReader(Reader):
                 columns.append([datavalues['v'] for datavalues in values['datavalues']])
 
             # transpose data list of lists
-            table['rows'] = list(map(list, itertools.zip_longest(*columns, fillvalue=float('nan'))))
+            table['rows'] = list(map(list, zip(*columns)))
 
             tables.append(table)
 
