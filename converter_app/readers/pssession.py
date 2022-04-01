@@ -1,5 +1,4 @@
 import logging
-import itertools
 import json
 
 from pathlib import Path
@@ -25,21 +24,24 @@ class PsSessionReader(Reader):
         logger.debug('result=%s', result)
         return result
 
-    def get_data(self):
+    def get_tables(self):
         tables = []
 
         data = json.load(self.file)
         for measurement in data['measurements']:
             # each measurement is a table
             table = {
-                'header': [f"type: {data['type']}"],
+                'metadata': {
+                    'type': data['type']
+                },
+                'header': [],
                 'columns': [],
                 'rows': []
             }
 
-            # add measurement fields to the header
+            # add measurement fields to the metadata
             for key in ['title', 'timestamp', 'deviceused', 'deviceserial']:
-                table['header'].append(f"{key}: {measurement[key]}")
+                table['metadata'][key] = str(measurement[key])
 
             columns = []
             for idx, values in enumerate(measurement['dataset']['values']):

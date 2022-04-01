@@ -34,7 +34,7 @@ class CSVReader(Reader):
         logger.debug('result=%s', result)
         return result
 
-    def get_data(self):
+    def get_tables(self):
         tables = []
         self.append_table(tables)
 

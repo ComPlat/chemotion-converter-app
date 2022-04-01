@@ -15,6 +15,7 @@ from .writers.jcamp import JcampWriter
 from .writers.jcampzip import JcampZipWriter
 from .utils import human2bytes, checkpw
 
+
 def create_app(test_config=None):
     load_dotenv(Path().cwd() / '.env')
 
@@ -94,20 +95,21 @@ def create_app(test_config=None):
             reader = registry.match_reader(file, file.filename, file.content_type)
 
             if reader:
-                file_json = reader.process()
-                file_data = file_json.get('data')
-                converter = Converter.match_profile(client_id, file_json)
+                file_data = reader.process()
+                converter = Converter.match_profile(client_id, file_data)
 
                 if converter:
-                    converter_tables = converter.get_tables(file_data)
+                    converter.process(file_data.get('tables'))
 
-                    if len(converter_tables) > 1:
-                        writer = JcampZipWriter()
+                    if len(converter.tables) > 1:
+                        writer = JcampZipWriter(converter)
+                    elif len(converter.tables) == 1:
+                        writer = JcampWriter(converter)
                     else:
-                        writer = JcampWriter()
+                        return jsonify({'error': 'No tables could be converted.'}), 400
 
                     try:
-                        writer.process(converter_tables)
+                        writer.process()
                     except AssertionError:
                         return jsonify({'error': 'There was an error while converting your file.'}), 400
 
@@ -135,10 +137,13 @@ def create_app(test_config=None):
                 response_json = reader.process()
 
                 # only return the first 10 rows of each table
-                for index, table in enumerate(response_json['data']):
-                    response_json['data'][index]['rows'] = table['rows'][:10]
+                for index, table in enumerate(response_json['tables']):
+                    response_json['tables'][index]['rows'] = table['rows'][:10]
 
-                response_json['options'] = JcampWriter().options
+                # legacy fix until the client is updated
+                response_json['data'] = response_json['tables']
+
+                response_json['options'] = JcampWriter.options
                 return jsonify(response_json), 201
             else:
                 return jsonify(

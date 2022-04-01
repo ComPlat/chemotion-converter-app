@@ -25,7 +25,7 @@ class BrmlReader(Reader):
         logger.debug('result=%s', result)
         return result
 
-    def get_data(self):
+    def get_tables(self):
         tables = []
 
         with zipfile.ZipFile(self.file) as zf:

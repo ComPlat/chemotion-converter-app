@@ -26,7 +26,7 @@ class DtaReader(Reader):
         logger.debug('result=%s', result)
         return result
 
-    def get_data(self):
+    def get_tables(self):
         count = 0
         tables = []
         self.append_table(tables)
@@ -54,7 +54,6 @@ class DtaReader(Reader):
 
                 # append header line to last table
                 tables[-1]['header'].append(row)
-
 
         # loop over tables and append rows
         for table in tables:
