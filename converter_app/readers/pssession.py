@@ -27,22 +27,27 @@ class PsSessionReader(Reader):
     def get_tables(self):
         tables = []
 
-        data = json.load(self.file)
+        data = json.loads(self.file_content)
         for measurement in data['measurements']:
             # each measurement is a table
             table = {
-                'metadata': {
-                    'type': data['type']
-                },
+                'metadata': {},
                 'header': [],
                 'columns': [],
                 'rows': []
             }
 
-            # add measurement fields to the metadata
-            for key in ['title', 'timestamp', 'deviceused', 'deviceserial']:
-                table['metadata'][key] = str(measurement[key])
+            # add the methods field to the header
+            table['header'] = measurement['method'].splitlines()
 
+            # add measurement fields to the metadata
+            table['metadata']['title'] = str(measurement['title'])
+            table['metadata']['timestamp'] = str(measurement['timestamp'])
+            table['metadata']['deviceused'] = str(measurement['deviceused'])
+            table['metadata']['deviceserial'] = str(measurement['deviceserial'])
+            table['metadata']['type'] = str(measurement['dataset']['type'])
+
+            # exctract the columns
             columns = []
             for idx, values in enumerate(measurement['dataset']['values']):
                 # each array is a column
@@ -60,3 +65,9 @@ class PsSessionReader(Reader):
             tables.append(table)
 
         return tables
+
+    def get_metadata(self):
+        metadata = super().get_metadata()
+        data = json.loads(self.file_content)
+        metadata['type'] = data['type']
+        return metadata
