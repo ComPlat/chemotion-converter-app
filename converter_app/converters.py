@@ -25,15 +25,15 @@ class Converter(object):
             else:
                 return False
 
-            if match:
-                # store match
-                self.matches.append({
-                    'identifier': identifier,
-                    'match': match
-                })
-            else:
+            if match is False:
                 # return immediately if one identifier does not match
                 return False
+
+            # store match
+            self.matches.append({
+                'identifier': identifier,
+                'match': match
+            })
 
         # if everything matched, return how many identifiers matched
         return len(self.matches)
@@ -48,6 +48,8 @@ class Converter(object):
                     'value': value
                 }
 
+        return False
+
     def match_table_metadata(self, identifier, input_tables):
         input_table_index = identifier.get('tableIndex')
         input_table = self.get_input_table(input_table_index, input_tables)
@@ -61,6 +63,8 @@ class Converter(object):
                         'value': value,
                         'tableIndex': input_table_index
                     }
+
+        return False
 
     def match_table_header(self, identifier, input_tables):
         input_table_index = identifier.get('tableIndex')
@@ -83,6 +87,7 @@ class Converter(object):
                 except IndexError:
                     # the line in the header does not exist
                     return False
+
             if header:
                 # try to match the value
                 value = self.match_value(identifier, header)
@@ -97,6 +102,8 @@ class Converter(object):
                         'tableIndex': input_table_index,
                         'lineNumber': line_number,
                     }
+
+        return False
 
     def match_value(self, identifier, value):
         if value is not None:
