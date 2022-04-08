@@ -22,13 +22,13 @@ class CSVReader(Reader):
             file_string = self.file_content.decode(self.encoding)
 
             try:
-                dialect = csv.Sniffer().sniff(file_string, delimiters=';,\t')
+                self.dialect = csv.Sniffer().sniff(file_string, delimiters=';,\t')
             except csv.Error:
                 result = False
             else:
                 io_string = io.StringIO(file_string)
                 self.lines = copy.copy(io_string)
-                self.reader = csv.reader(io_string, dialect)
+                self.reader = csv.reader(io_string, self.dialect)
                 result = True
 
         logger.debug('result=%s', result)
@@ -103,3 +103,13 @@ class CSVReader(Reader):
                 except ValueError:
                     shape.append('s')
         return shape
+
+    def get_metadata(self):
+        metadata = super().get_metadata()
+        metadata['lineterminator'] = self.dialect.lineterminator
+        metadata['quoting'] = self.dialect.quoting
+        metadata['doublequote'] = self.dialect.doublequote
+        metadata['delimiter'] = self.dialect.delimiter
+        metadata['quotechar'] = self.dialect.quotechar
+        metadata['skipinitialspace'] = self.dialect.skipinitialspace
+        return metadata
