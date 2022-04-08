@@ -8,6 +8,7 @@ from .base import Reader
 logger = logging.getLogger(__name__)
 
 
+
 class DtaReader(Reader):
     identifier = 'dta_reader'
     priority = 10
@@ -27,33 +28,31 @@ class DtaReader(Reader):
         return result
 
     def get_tables(self):
-        count = 0
         tables = []
         self.append_table(tables)
 
         # loop over lines of the file
+        header = True
         for line in self.file.readlines():
             row = line.decode(self.encoding).rstrip()
 
-            if row.startswith('\t'):
-                count += 1
+            # check if this is the first line of the header
+            if not row.startswith('\t'):
+                header = True
 
-                if count < 3:
-                    # add the first 2 rows to the header
-                    tables[-1]['header'].append(row)
-                else:
-                    tables[-1]['rows'].append([self.get_value(value) for value in row.split()])
-            else:
-                # this is the header
+            if header:
                 if tables[-1]['rows']:
                     # if a table is already there, this must be a new header
                     self.append_table(tables)
 
-                    # reset the row count
-                    count = 0
-
                 # append header line to last table
                 tables[-1]['header'].append(row)
+            else:
+                tables[-1]['rows'].append([self.get_value(value) for value in row.split()])
+
+            # check if this is the last line of the header
+            if row.startswith('\t#'):
+                header = False
 
         # loop over tables and append rows
         for table in tables:
