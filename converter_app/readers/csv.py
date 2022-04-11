@@ -35,54 +35,67 @@ class CSVReader(Reader):
         return result
 
     def get_tables(self):
-        tables = []
-        self.append_table(tables)
-
-        previous_shape = []
-        previous_row = []
-        for line, row in zip(self.lines, self.reader):
-            shape = self.get_shape(row)
-
-            if 'f' in shape and shape == previous_shape:
-                if tables[-1]['rows'] == []:
-                    # move the previous row with the same shape from the header to the table
-                    tables[-1]['header'].pop()
-                    tables[-1]['rows'].append(previous_row)
-
-                tables[-1]['rows'].append(row)
-
-            else:
-                if tables[-1]['rows']:
-                    # start a new table if the shape has changed
-                    self.append_table(tables)
-
-                tables[-1]['header'].append(line)
-
-            # store shape and row for the next iteration
-            previous_shape = shape
-            previous_row = row
-
-        for table in tables:
-            if table['rows']:
-                table['columns'] = [{
-                    'key': str(idx),
-                    'name': 'Column #{}'.format(idx)
-                } for idx, value in enumerate(table['rows'][0])]
-
-        return tables
-
-    def append_table(self, tables):
-        tables.append({
+        table = {
             'header': [],
+            'metadata': {},
             'columns': [],
             'rows': []
-        })
+        }
+        table_shape = None
+        header = False
+
+        # loop through the rows in reverse order from bottom to top
+        reverse_lines = reversed(list(self.lines))
+        reverse_rows = reversed(list(self.reader))
+        for line, row in zip(reverse_lines, reverse_rows):
+            shape = self.get_shape(row)
+            if table_shape is None:
+                # store shape of the first row from the end of the table
+                table_shape = shape
+
+            if header:
+                table['header'].append(line)
+            elif shape != table_shape:
+                # this is the last row of the header, check if these are column names
+                if list(map(bool, shape)) == list(map(bool, table_shape)):
+                    # add the column names as metadata
+                    table['metadata'] = {
+                        'column{:02d}'.format(idx): str(value) for idx, value in enumerate(row)
+                    }
+
+                else:
+                    # add the line as a regular header line
+                    table['header'].append(line)
+
+                # set the header switch to true
+                header = True
+            else:
+                table['rows'].append(row)
+
+        table['header'] = list(reversed(table['header']))
+        table['rows'] = list(reversed(table['rows']))
+        table['columns'] = self.get_columns(table['metadata'].values(), len(table_shape))
+
+        return [table]
+
+    def get_columns(self, column_names, n_columns):
+        if column_names:
+            return [{
+                'key': str(idx),
+                'name': '{} (Column #{})'.format(column_name, idx)
+            } for idx, column_name in enumerate(column_names)]
+        else:
+            # add the row as columns
+            return [{
+                'key': str(idx),
+                'name': 'Column #{}'.format(idx)
+            } for idx in range(n_columns)]
 
     def get_shape(self, row):
         shape = []
         for cell in row:
             if cell.strip() == '':
-                shape.append('')
+                shape.append('s')
             else:
                 try:
                     float(cell.replace(',', '.'))
