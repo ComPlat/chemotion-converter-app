@@ -20,7 +20,7 @@ class ExcelReader(Reader):
 
         if self.encoding != 'binary':
             result = False
-        elif Path(self.file_name).suffix != '.xslx':
+        elif Path(self.file_name).suffix != '.xlsx':
             result = False
         else:
             try:
@@ -40,7 +40,6 @@ class ExcelReader(Reader):
             self.append_table(tables)
 
             previous_shape = None
-            previous_row = None
             for row in ws.values:
                 shape = self.get_shape(row)
 
@@ -58,12 +57,6 @@ class ExcelReader(Reader):
                         # start a new table if the shape has changed
                         self.append_table(tables)
 
-                    elif tables[-1]['rows'] == [] and [bool(s) for s in shape] == [bool(s) for s in previous_shape]:
-                        # move the previous row with a "similar" shape from the header to the table
-                        tables[-1]['header'].pop()
-                        values = [previous_row[i] for i, value in enumerate(previous_shape) if value is not None]
-                        tables[-1]['rows'].append(values)
-
                     # this row has floats but no strings, this is the "real" table
                     values = [row[i] for i, value in enumerate(shape) if value == 'f']
                     tables[-1]['rows'].append(values)
@@ -74,7 +67,6 @@ class ExcelReader(Reader):
 
                 # store shape and row for the next iteration
                 previous_shape = shape
-                previous_row = row
 
         for table in tables:
             if table['rows']:
