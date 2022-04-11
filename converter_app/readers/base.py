@@ -26,11 +26,11 @@ class Reader(object):
 
     def process(self):
         return {
-            'data': self.get_data(),
+            'tables': self.get_tables(),
             'metadata': self.get_metadata()
         }
 
-    def get_data(self):
+    def get_tables(self):
         raise NotImplementedError
 
     def get_metadata(self):

@@ -1,15 +1,10 @@
 class Writer(object):
 
+    def __init__(self, converter):
+        raise NotImplementedError
+
     def write(self):
         return self.buffer.getvalue()
 
-    def process(self, metadata, data):
-        raise NotImplementedError
-
-    @property
-    def options(self):
-        raise NotImplementedError
-
-    @property
-    def suffix(self):
+    def process(self):
         raise NotImplementedError

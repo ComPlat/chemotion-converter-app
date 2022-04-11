@@ -64,35 +64,39 @@ class JcampWriter(Writer):
         'WEIGHT',
     )
 
+    options = {
+        'DATA TYPE': data_types,
+        'DATA CLASS': data_classes,
+        'XUNITS': xunits,
+        'YUNITS': yunits,
+    }
+
     suffix = '.jdx'
     mimetype = 'chemical/x-jcamp-dx'
 
-    def __init__(self):
+    def __init__(self, converter):
+        self.table = converter.tables[0]
         self.buffer = io.StringIO()
 
-    @property
-    def options(self):
-        return {
-            'DATA TYPE': self.data_types,
-            'DATA CLASS': self.data_classes,
-            'XUNITS': self.xunits,
-            'YUNITS': self.yunits,
-        }
-
-    def process(self, tables):
-        self.process_table(tables[0])
+    def process(self):
+        self.process_table(self.table)
 
     def process_table(self, table):
         header = table.get('header', {})
 
-        self.write_header({
-            'TITLE': header.get('title', 'Spectrum'),
+        jcamp_header = {
+            'TITLE': header.get('TITLE', 'Spectrum'),
             'JCAMP-DX': '5.00 $$ {} ({})'.format(__title__, __version__),
             'DATA TYPE': header.get('DATA TYPE', self.data_types[0]),
             'DATA CLASS': header.get('DATA CLASS', self.data_classes[0]),
             'ORIGIN': header.get('ORIGIN', ''),
             'OWNER': header.get('OWNER', '')
-        })
+        }
+        for key in header:
+            key_upper = key.upper()
+            if key_upper not in jcamp_header:
+                jcamp_header[key_upper] = header[key]
+        self.write_header(jcamp_header)
 
         data_class = header.get('DATA CLASS', self.data_classes[0])
         if data_class == 'XYDATA':

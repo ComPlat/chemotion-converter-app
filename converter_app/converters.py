@@ -1,7 +1,6 @@
 import logging
 import os
 import re
-from collections import OrderedDict
 
 from .models import Profile
 
@@ -12,46 +11,66 @@ class Converter(object):
 
     def __init__(self, profile):
         self.profile = profile
-        self.header = OrderedDict()
-        self.match_count = 0
+        self.matches = []
+        self.tables = []
 
     def match(self, file_data):
         for identifier in self.profile.data.get('identifiers', []):
-            if identifier.get('type') == 'metadata':
-                value = self.match_metadata(identifier, file_data.get('metadata'))
-            elif identifier.get('type') == 'table':
-                value = self.match_table(identifier, file_data.get('data'))
-
-            if value is False:
-                return False
+            if identifier.get('type') == 'fileMetadata':
+                match = self.match_file_metadata(identifier, file_data.get('metadata'))
+            elif identifier.get('type') == 'tableMetadata':
+                match = self.match_table_metadata(identifier, file_data.get('tables'))
+            elif identifier.get('type') == 'tableHeader':
+                match = self.match_table_header(identifier, file_data.get('tables'))
             else:
-                # increment match_count
-                self.match_count += 1
+                return False
 
-                # if a header key is given, store this match in the header
-                header_key = identifier.get('headerKey')
-                if header_key:
-                    self.header[header_key] = value
+            if match is False:
+                # return immediately if one identifier does not match
+                return False
+
+            # store match
+            self.matches.append({
+                'identifier': identifier,
+                'match': match
+            })
 
         # if everything matched, return how many identifiers matched
-        return self.match_count
+        return len(self.matches)
 
-    def match_metadata(self, identifier, metadata):
-        metadata_key = identifier.get('metadataKey')
-        metadata_value = metadata.get(metadata_key)
-        return self.match_value(identifier, metadata_value)
+    def match_file_metadata(self, identifier, metadata):
+        input_key = identifier.get('key')
+        input_value = metadata.get(input_key)
+        if input_key and input_value:
+            value = self.match_value(identifier, input_value)
+            if value:
+                return {
+                    'value': value
+                }
 
-    def match_table(self, identifier, data):
-        table_index = identifier.get('tableIndex')
-        if table_index is not None:
-            try:
-                if int(table_index) >= len(data):
-                    return False
+        return False
 
-                table = data[int(table_index)]
-            except KeyError:
-                return False
+    def match_table_metadata(self, identifier, input_tables):
+        input_table_index = identifier.get('tableIndex')
+        input_table = self.get_input_table(input_table_index, input_tables)
+        if input_table is not None:
+            input_key = identifier.get('key')
+            input_value = input_table.get('metadata', {}).get(input_key)
+            if input_key and input_value:
+                value = self.match_value(identifier, input_value)
+                if value:
+                    return {
+                        'value': value,
+                        'tableIndex': input_table_index
+                    }
 
+        return False
+
+    def match_table_header(self, identifier, input_tables):
+        input_table_index = identifier.get('tableIndex')
+        input_table = self.get_input_table(input_table_index, input_tables)
+        if input_table is not None:
+            # try to get the line_number from the identifier
             try:
                 line_number = int(identifier.get('lineNumber'))
             except (ValueError, TypeError):
@@ -59,16 +78,32 @@ class Converter(object):
 
             if line_number is None:
                 # use the whole header
-                header_value = os.linesep.join(table['header'])
+                header = os.linesep.join(input_table['header']).rstrip()
             else:
+                # use only the provided line
                 try:
                     # the interface counts from 1
-                    header_value = table['header'][line_number - 1]
+                    header = input_table['header'][line_number - 1].rstrip()
                 except IndexError:
                     # the line in the header does not exist
                     return False
 
-            return self.match_value(identifier, header_value.rstrip())
+            if header:
+                # try to match the value
+                value = self.match_value(identifier, header)
+
+                if value:
+                    # if no line number was provided, find the line number for the value
+                    if line_number is None:
+                        line_number = self.get_line_number(input_table['header'], value)
+
+                    return {
+                        'value': value,
+                        'tableIndex': input_table_index,
+                        'lineNumber': line_number,
+                    }
+
+        return False
 
     def match_value(self, identifier, value):
         if value is not None:
@@ -78,28 +113,35 @@ class Converter(object):
                 logger.debug('match_value pattern="%s" value="%s" match=%s', pattern, value, bool(match))
                 if match:
                     try:
-                        return match.group(1)
+                        return match.group(1).strip()
                     except IndexError:
-                        return match.group(0)
+                        return match.group(0).strip()
                 else:
                     return False
             else:
-                result = value == identifier.get('value')
+                result = (value == identifier.get('value'))
                 logger.debug('match_value identifier="%s", value="%s" result=%s', identifier.get('value'), value, result)
                 return value if result else False
         else:
             return False
 
-    def get_tables(self, data):
-        tables = []
-        for table in self.profile.data.get('tables'):
-            header = table.get('header', {})
-            header.update(self.header)
+    def process(self, input_tables):
+        for output_table_index, output_table in enumerate(self.profile.data.get('tables')):
+            header = output_table.get('header', {})
 
-            x_column = table.get('table', {}).get('xColumn')
-            y_column = table.get('table', {}).get('yColumn')
-            x_operations = table.get('table', {}).get('xOperations', [])
-            y_operations = table.get('table', {}).get('yOperations', [])
+            # merge the metadata from the profile (header) with the metadata
+            # extracted using the identifiers (see self.match)
+            for match in self.matches:
+                match_output_key = match.get('identifier', {}).get('outputKey')
+                match_output_table_index = match.get('identifier', {}).get('outputTableIndex')
+                match_value = match.get('match', {}).get('value')
+                if match_output_key and (output_table_index == match_output_table_index or match_output_table_index is None):
+                    header[match_output_key] = match_value
+
+            x_column = output_table.get('table', {}).get('xColumn')
+            y_column = output_table.get('table', {}).get('yColumn')
+            x_operations = output_table.get('table', {}).get('xOperations', [])
+            y_operations = output_table.get('table', {}).get('yOperations', [])
             first_row_is_header = self.profile.data.get('firstRowIsHeader')
 
             # repare rows
@@ -112,7 +154,7 @@ class Converter(object):
                 if operation.get('type') == 'column':
                     operation['rows'] = []
 
-            for table_index, table in enumerate(data):
+            for table_index, table in enumerate(input_tables):
                 for row_index, row in enumerate(table['rows']):
                     if first_row_is_header and first_row_is_header[table_index] and row_index == 0:
                         pass
@@ -145,13 +187,11 @@ class Converter(object):
             for operation in y_operations:
                 y_rows = self.run_operation(y_rows, operation)
 
-            tables.append({
+            self.tables.append({
                 'header': header,
                 'x': x_rows,
                 'y': y_rows
             })
-
-        return tables
 
     def run_operation(self, rows, operation):
         for i, row in enumerate(rows):
@@ -176,6 +216,23 @@ class Converter(object):
                 rows[i] = str(row_value)
 
         return rows
+
+    def get_input_table(self, index, input_tables):
+        if index is not None:
+            try:
+                if int(index) >= len(input_tables):
+                    return None
+                else:
+                    return input_tables[int(index)]
+            except KeyError:
+                return None
+
+    def get_line_number(self, header, value):
+        # if line_number is None:
+        for i, line in enumerate(header):
+            if value in line:
+                # again we count from 1
+                return i + 1
 
     def get_value(self, row, column_index):
         return str(row[column_index]).replace(',', '.').replace('e', 'E')

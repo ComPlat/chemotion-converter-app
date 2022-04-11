@@ -6,6 +6,7 @@ from .csv import CSVReader
 from .excel import ExcelReader
 from .brml import BrmlReader
 from .dta import DtaReader
+from .pssession import PsSessionReader
 
 logger = logging.getLogger(__name__)
 
@@ -45,3 +46,4 @@ registry.register(AsciiReader)
 registry.register(ExcelReader)
 registry.register(BrmlReader)
 registry.register(DtaReader)
+registry.register(PsSessionReader)
