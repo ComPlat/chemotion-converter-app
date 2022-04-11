@@ -142,7 +142,6 @@ class Converter(object):
             y_column = output_table.get('table', {}).get('yColumn')
             x_operations = output_table.get('table', {}).get('xOperations', [])
             y_operations = output_table.get('table', {}).get('yOperations', [])
-            first_row_is_header = self.profile.data.get('firstRowIsHeader')
 
             # repare rows
             x_rows = []
@@ -156,31 +155,28 @@ class Converter(object):
 
             for table_index, table in enumerate(input_tables):
                 for row_index, row in enumerate(table['rows']):
-                    if first_row_is_header and first_row_is_header[table_index] and row_index == 0:
-                        pass
-                    else:
-                        for column_index, column in enumerate(table['columns']):
-                            if x_column and \
-                                    table_index == x_column.get('tableIndex') and \
-                                    column_index == x_column.get('columnIndex'):
-                                x_rows.append(self.get_value(row, column_index))
+                    for column_index, column in enumerate(table['columns']):
+                        if x_column and \
+                                table_index == x_column.get('tableIndex') and \
+                                column_index == x_column.get('columnIndex'):
+                            x_rows.append(self.get_value(row, column_index))
 
-                            if y_column and \
-                                    table_index == y_column.get('tableIndex') and \
-                                    column_index == y_column.get('columnIndex'):
-                                y_rows.append(self.get_value(row, column_index))
+                        if y_column and \
+                                table_index == y_column.get('tableIndex') and \
+                                column_index == y_column.get('columnIndex'):
+                            y_rows.append(self.get_value(row, column_index))
 
-                            for operation in x_operations:
-                                if operation.get('type') == 'column' and \
-                                        table_index == operation.get('column', {}).get('tableIndex') and \
-                                        column_index == operation.get('column', {}).get('columnIndex'):
-                                    operation['rows'].append(self.get_value(row, column_index))
+                        for operation in x_operations:
+                            if operation.get('type') == 'column' and \
+                                    table_index == operation.get('column', {}).get('tableIndex') and \
+                                    column_index == operation.get('column', {}).get('columnIndex'):
+                                operation['rows'].append(self.get_value(row, column_index))
 
-                            for operation in y_operations:
-                                if operation.get('type') == 'column' and \
-                                        table_index == operation.get('column', {}).get('tableIndex') and \
-                                        column_index == operation.get('column', {}).get('columnIndex'):
-                                    operation['rows'].append(self.get_value(row, column_index))
+                        for operation in y_operations:
+                            if operation.get('type') == 'column' and \
+                                    table_index == operation.get('column', {}).get('tableIndex') and \
+                                    column_index == operation.get('column', {}).get('columnIndex'):
+                                operation['rows'].append(self.get_value(row, column_index))
 
             for operation in x_operations:
                 x_rows = self.run_operation(x_rows, operation)
