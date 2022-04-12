@@ -60,9 +60,15 @@ class PsSessionReader(Reader):
             columns = []
             for idx, values in enumerate(measurement['dataset']['values']):
                 # each array is a column
+                column_name = values['description']
+
+                # add the column name to the metadata
+                table['metadata']['column_{:02d}'.format(idx)] = column_name
+
+                # add the column name to list of columns
                 table['columns'].append({
                     'key': str(idx),
-                    'name': 'Column #{} ({})'.format(idx, values['description'])
+                    'name': 'Column #{} ({})'.format(idx, column_name)
                 })
 
                 # append the "datavalues" to list data list of lists
