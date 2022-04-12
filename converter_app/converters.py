@@ -25,14 +25,14 @@ class Converter(object):
             else:
                 return False
 
-            if match is False:
-                # return immediately if one identifier does not match
+            if match is False and not identifier.get('optional'):
+                # return immediately if one (non optional) identifier does not match
                 return False
 
             # store match
             self.matches.append({
                 'identifier': identifier,
-                'match': match
+                'result': match
             })
 
         # if everything matched, return how many identifiers matched
@@ -132,11 +132,16 @@ class Converter(object):
             # merge the metadata from the profile (header) with the metadata
             # extracted using the identifiers (see self.match)
             for match in self.matches:
-                match_output_key = match.get('identifier', {}).get('outputKey')
-                match_output_table_index = match.get('identifier', {}).get('outputTableIndex')
-                match_value = match.get('match', {}).get('value')
-                if match_output_key and (output_table_index == match_output_table_index or match_output_table_index is None):
-                    header[match_output_key] = match_value
+                match_result = match.get('result')
+                if match_result:
+                    match_output_key = match.get('identifier', {}).get('outputKey')
+                    match_output_table_index = match.get('identifier', {}).get('outputTableIndex')
+                    match_value = match_result.get('value')
+                    if match_output_key and (
+                        output_table_index == match_output_table_index or
+                        match_output_table_index is None
+                    ):
+                        header[match_output_key] = match_value
 
             x_column = output_table.get('table', {}).get('xColumn')
             y_column = output_table.get('table', {}).get('yColumn')
