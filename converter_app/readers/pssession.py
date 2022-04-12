@@ -37,8 +37,17 @@ class PsSessionReader(Reader):
                 'rows': []
             }
 
-            # add the methods field to the header
+            # add the method field to the header
             table['header'] = measurement['method'].splitlines()
+
+            # add key value pairs from the method field to the metadata
+            for line in table['header']:
+                if not line.startswith('#'):
+                    try:
+                        key, value = line.strip().split('=')
+                        table['metadata'][key] = value
+                    except ValueError:
+                        pass
 
             # add measurement fields to the metadata
             table['metadata']['title'] = str(measurement['title'])
