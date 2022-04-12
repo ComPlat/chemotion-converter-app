@@ -60,7 +60,7 @@ class CSVReader(Reader):
                 if list(map(bool, shape)) == list(map(bool, table_shape)):
                     # add the column names as metadata
                     table['metadata'] = {
-                        'column{:02d}'.format(idx): str(value) for idx, value in enumerate(row)
+                        'column_{:02d}'.format(idx): str(value) for idx, value in enumerate(row)
                     }
 
                 else:
@@ -82,7 +82,7 @@ class CSVReader(Reader):
         if column_names:
             return [{
                 'key': str(idx),
-                'name': '{} (Column #{})'.format(column_name, idx)
+                'name': 'Column #{} ({})'.format(idx, column_name)
             } for idx, column_name in enumerate(column_names)]
         else:
             # add the row as columns
