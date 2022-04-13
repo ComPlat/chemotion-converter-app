@@ -37,8 +37,17 @@ class PsSessionReader(Reader):
                 'rows': []
             }
 
-            # add the methods field to the header
+            # add the method field to the header
             table['header'] = measurement['method'].splitlines()
+
+            # add key value pairs from the method field to the metadata
+            for line in table['header']:
+                if not line.startswith('#'):
+                    try:
+                        key, value = line.strip().split('=')
+                        table['metadata'][key] = value
+                    except ValueError:
+                        pass
 
             # add measurement fields to the metadata
             table['metadata']['title'] = str(measurement['title'])
@@ -51,9 +60,15 @@ class PsSessionReader(Reader):
             columns = []
             for idx, values in enumerate(measurement['dataset']['values']):
                 # each array is a column
+                column_name = values['description']
+
+                # add the column name to the metadata
+                table['metadata']['column_{:02d}'.format(idx)] = column_name
+
+                # add the column name to list of columns
                 table['columns'].append({
                     'key': str(idx),
-                    'name': 'Column #{} ({})'.format(idx, values['description'])
+                    'name': 'Column #{} ({})'.format(idx, column_name)
                 })
 
                 # append the "datavalues" to list data list of lists

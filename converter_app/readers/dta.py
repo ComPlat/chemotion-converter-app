@@ -1,12 +1,10 @@
 import logging
-import re
 
 from pathlib import Path
 
 from .base import Reader
 
 logger = logging.getLogger(__name__)
-
 
 
 class DtaReader(Reader):
@@ -47,26 +45,47 @@ class DtaReader(Reader):
 
                 # append header line to last table
                 tables[-1]['header'].append(row)
+
+                # add key value pairs from header to the metadata
+                row_split = row.split()
+                try:
+                    key, value = row_split[0], row_split[2]
+                    tables[-1]['metadata'][key] = value
+                except IndexError:
+                    pass
+
             else:
-                tables[-1]['rows'].append([self.get_value(value) for value in row.split()])
+                if tables[-1]['metadata'].get('column_00') is None:
+                    # this is the row with the columns
+                    for idx, column_name in enumerate(row.split()):
+                        # add the column name to the metadata
+                        tables[-1]['metadata']['column_{:02d}'.format(idx)] = column_name
+
+                        # add the column name to list of columns
+                        tables[-1]['columns'].append({
+                            'key': str(idx),
+                            'name': 'Column #{} ({})'.format(idx, column_name)
+                        })
+                elif tables[-1]['metadata'].get('column_00_unit') is None:
+                    # this is the row with the units
+                    for idx, column_unit in enumerate(row.split()):
+                        # add the column unit to the metadata
+                        tables[-1]['metadata']['column_{:02d}_unit'.format(idx)] = column_unit
+
+                else:
+                    # now we extract the actual table
+                    tables[-1]['rows'].append([self.get_value(value) for value in row.split()])
 
             # check if this is the last line of the header
-            if row.startswith('\t#'):
+            if row.startswith('CURVE'):
                 header = False
-
-        # loop over tables and append rows
-        for table in tables:
-            if table['rows']:
-                table['columns'] = [{
-                    'key': str(idx),
-                    'name': 'Column #{}'.format(idx)
-                } for idx, value in enumerate(table['rows'][0])]
 
         return tables
 
     def append_table(self, tables):
         tables.append({
             'header': [],
+            'metadata': {},
             'columns': [],
             'rows': []
         })

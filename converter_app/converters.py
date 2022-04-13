@@ -25,14 +25,14 @@ class Converter(object):
             else:
                 return False
 
-            if match is False:
-                # return immediately if one identifier does not match
+            if match is False and not identifier.get('optional'):
+                # return immediately if one (non optional) identifier does not match
                 return False
 
             # store match
             self.matches.append({
                 'identifier': identifier,
-                'match': match
+                'result': match
             })
 
         # if everything matched, return how many identifiers matched
@@ -132,17 +132,21 @@ class Converter(object):
             # merge the metadata from the profile (header) with the metadata
             # extracted using the identifiers (see self.match)
             for match in self.matches:
-                match_output_key = match.get('identifier', {}).get('outputKey')
-                match_output_table_index = match.get('identifier', {}).get('outputTableIndex')
-                match_value = match.get('match', {}).get('value')
-                if match_output_key and (output_table_index == match_output_table_index or match_output_table_index is None):
-                    header[match_output_key] = match_value
+                match_result = match.get('result')
+                if match_result:
+                    match_output_key = match.get('identifier', {}).get('outputKey')
+                    match_output_table_index = match.get('identifier', {}).get('outputTableIndex')
+                    match_value = match_result.get('value')
+                    if match_output_key and (
+                        output_table_index == match_output_table_index or
+                        match_output_table_index is None
+                    ):
+                        header[match_output_key] = match_value
 
             x_column = output_table.get('table', {}).get('xColumn')
             y_column = output_table.get('table', {}).get('yColumn')
             x_operations = output_table.get('table', {}).get('xOperations', [])
             y_operations = output_table.get('table', {}).get('yOperations', [])
-            first_row_is_header = self.profile.data.get('firstRowIsHeader')
 
             # repare rows
             x_rows = []
@@ -156,31 +160,28 @@ class Converter(object):
 
             for table_index, table in enumerate(input_tables):
                 for row_index, row in enumerate(table['rows']):
-                    if first_row_is_header and first_row_is_header[table_index] and row_index == 0:
-                        pass
-                    else:
-                        for column_index, column in enumerate(table['columns']):
-                            if x_column and \
-                                    table_index == x_column.get('tableIndex') and \
-                                    column_index == x_column.get('columnIndex'):
-                                x_rows.append(self.get_value(row, column_index))
+                    for column_index, column in enumerate(table['columns']):
+                        if x_column and \
+                                table_index == x_column.get('tableIndex') and \
+                                column_index == x_column.get('columnIndex'):
+                            x_rows.append(self.get_value(row, column_index))
 
-                            if y_column and \
-                                    table_index == y_column.get('tableIndex') and \
-                                    column_index == y_column.get('columnIndex'):
-                                y_rows.append(self.get_value(row, column_index))
+                        if y_column and \
+                                table_index == y_column.get('tableIndex') and \
+                                column_index == y_column.get('columnIndex'):
+                            y_rows.append(self.get_value(row, column_index))
 
-                            for operation in x_operations:
-                                if operation.get('type') == 'column' and \
-                                        table_index == operation.get('column', {}).get('tableIndex') and \
-                                        column_index == operation.get('column', {}).get('columnIndex'):
-                                    operation['rows'].append(self.get_value(row, column_index))
+                        for operation in x_operations:
+                            if operation.get('type') == 'column' and \
+                                    table_index == operation.get('column', {}).get('tableIndex') and \
+                                    column_index == operation.get('column', {}).get('columnIndex'):
+                                operation['rows'].append(self.get_value(row, column_index))
 
-                            for operation in y_operations:
-                                if operation.get('type') == 'column' and \
-                                        table_index == operation.get('column', {}).get('tableIndex') and \
-                                        column_index == operation.get('column', {}).get('columnIndex'):
-                                    operation['rows'].append(self.get_value(row, column_index))
+                        for operation in y_operations:
+                            if operation.get('type') == 'column' and \
+                                    table_index == operation.get('column', {}).get('tableIndex') and \
+                                    column_index == operation.get('column', {}).get('columnIndex'):
+                                operation['rows'].append(self.get_value(row, column_index))
 
             for operation in x_operations:
                 x_rows = self.run_operation(x_rows, operation)
