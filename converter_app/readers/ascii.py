@@ -29,7 +29,7 @@ class AsciiReader(Reader):
 
     def get_tables(self):
         tables = []
-        self.append_table(tables)
+        table = self.append_table(tables)
 
         # loop over lines of the file
         previous_count = None
@@ -40,12 +40,12 @@ class AsciiReader(Reader):
             # try to match text for the header
             text_match = PATTERNS['text'].search(row)
             if text_match:
-                if tables[-1]['rows']:
+                if table['rows']:
                     # if a table is already there, this must be a new header
-                    self.append_table(tables)
+                    table = self.append_table(tables)
 
                 # append header line to last table
-                tables[-1]['header'].append(row)
+                table['header'].append(row)
             else:
                 # try to match columns of floats
                 row = row.replace('n.a.','0')
@@ -55,15 +55,15 @@ class AsciiReader(Reader):
                     float_match = [float_str.replace(',', '.') for float_str in float_match]
                     count = len(float_match)
 
-                    if tables[-1]['rows'] and count != previous_count:
+                    if table['rows'] and count != previous_count:
                         # start a new table if the shape has changed
                         self.append_table(tables)
 
-                    tables[-1]['rows'].append(float_match)
+                    table['rows'].append(float_match)
 
             previous_count = count
 
-        # loop over tables and append rows
+        # loop over tables and append columns
         for table in tables:
             if table['rows']:
                 table['columns'] = [{
@@ -71,11 +71,7 @@ class AsciiReader(Reader):
                     'name': 'Column #{}'.format(idx)
                 } for idx, value in enumerate(table['rows'][0])]
 
-        return tables
+            table['metadata']['rows'] = len(table['rows'])
+            table['metadata']['columns'] = len(table['columns'])
 
-    def append_table(self, tables):
-        tables.append({
-            'header': [],
-            'columns': [],
-            'rows': []
-        })
+        return tables

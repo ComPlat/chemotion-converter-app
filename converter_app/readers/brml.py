@@ -39,11 +39,7 @@ class BrmlReader(Reader):
                         raw_data = ET.fromstring(rd.read())
 
                         for data_route in raw_data.findall('./DataRoutes/DataRoute'):
-                            table = {
-                                'header': [],
-                                'columns': [],
-                                'rows': []
-                            }
+                            table = self.append_table(tables)
 
                             first = True
                             for datum in data_route.findall('./Datum'):
@@ -64,6 +60,7 @@ class BrmlReader(Reader):
 
                                 table['rows'].append(row)
 
-                            tables.append(table)
+                    table['metadata']['rows'] = len(table['rows'])
+                    table['metadata']['columns'] = len(table['columns'])
 
         return tables

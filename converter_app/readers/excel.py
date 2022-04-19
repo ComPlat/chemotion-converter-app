@@ -37,7 +37,7 @@ class ExcelReader(Reader):
 
         # loop over worksheets
         for ws in self.wb:
-            self.append_table(tables)
+            table = self.append_table(tables)
 
             previous_shape = None
             for row in ws.values:
@@ -48,7 +48,7 @@ class ExcelReader(Reader):
 
                     if tables[-1]['rows']:
                         # if a table is already there, this must be a new header
-                        self.append_table(tables)
+                        table = self.append_table(tables)
 
                     tables[-1]['header'].append('\t'.join([str(cell) for cell in row]))
 
@@ -75,14 +75,10 @@ class ExcelReader(Reader):
                     'name': 'Column #{}'.format(idx)
                 } for idx, value in enumerate(table['rows'][0])]
 
-        return tables
+            table['metadata']['rows'] = len(table['rows'])
+            table['metadata']['columns'] = len(table['columns'])
 
-    def append_table(self, tables):
-        tables.append({
-            'header': [],
-            'columns': [],
-            'rows': []
-        })
+        return tables
 
     def get_shape(self, row):
         shape = []

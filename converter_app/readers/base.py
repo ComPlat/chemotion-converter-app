@@ -41,3 +41,19 @@ class Reader(object):
             'extension': self.extension,
             'reader': self.__class__.__name__
         }
+
+    def append_table(self, tables):
+        table = {
+            'header': [],
+            'metadata': {},
+            'columns': [],
+            'rows': []
+        }
+        tables.append(table)
+        return table
+
+    def get_value(self, value):
+        try:
+            return float(value.replace(',', '.'))
+        except ValueError:
+            return value
