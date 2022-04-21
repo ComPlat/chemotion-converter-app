@@ -207,6 +207,9 @@ class JcampWriter(Writer):
         assert x
         assert y
 
+        firstx = x[0]
+        firsty = y[0]
+        lastx = x[-1]
         npoints = len(x)
 
         # find MINX, MAXX, MINY, MAXY
@@ -225,6 +228,15 @@ class JcampWriter(Writer):
         # write header with ntuples specific values
         data_class = header.get('DATA CLASS', self.data_classes[0])
         self.write_header({
+            'FIRSTX': firstx,
+            'LASTX': lastx,
+            'MINX': minx,
+            'MAXX': maxx,
+            'MINY': miny,
+            'MAXY': maxy,
+            'FIRSTY': firsty,
+            'XUNITS': header.get('XUNITS', self.xunits[0]),
+            'YUNITS': header.get('YUNITS', self.yunits[0]),
             'NTUPLES': data_class,
             'VAR_NAME': '',
             'SYMBOL': '',

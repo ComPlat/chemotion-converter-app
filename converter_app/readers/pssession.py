@@ -30,12 +30,7 @@ class PsSessionReader(Reader):
         data = json.loads(self.file_content)
         for measurement in data['measurements']:
             # each measurement is a table
-            table = {
-                'metadata': {},
-                'header': [],
-                'columns': [],
-                'rows': []
-            }
+            table = self.append_table(tables)
 
             # add the method field to the header
             table['header'] = measurement['method'].splitlines()
@@ -77,7 +72,9 @@ class PsSessionReader(Reader):
             # transpose data list of lists
             table['rows'] = list(map(list, zip(*columns)))
 
-            tables.append(table)
+            # add number of rows and columns to metadata
+            table['metadata']['rows'] = len(table['rows'])
+            table['metadata']['columns'] = len(table['columns'])
 
         return tables
 
