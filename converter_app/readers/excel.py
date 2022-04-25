@@ -86,9 +86,9 @@ class ExcelReader(Reader):
             if cell is None:
                 shape.append(None)
             else:
-                try:
-                    float(cell)
+
+                if isinstance(cell, (int, float)):
                     shape.append('f')
-                except (ValueError, TypeError):
+                else:
                     shape.append('s')
         return shape

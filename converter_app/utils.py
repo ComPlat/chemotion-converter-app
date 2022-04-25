@@ -39,6 +39,7 @@ def check_uuid(string):
     except ValueError:
         return False
 
+
 def checkpw(password, hashed_password):
     m = hashlib.sha1()
     m.update(password)
