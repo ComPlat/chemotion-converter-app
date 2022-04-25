@@ -2,6 +2,7 @@ import copy
 import csv
 import io
 import logging
+import os
 
 from .base import Reader
 
@@ -34,6 +35,12 @@ class CSVReader(Reader):
         if self.encoding != 'binary':
             file_string = self.file_content.decode(self.encoding)
 
+            # split the file into lines, if the file is just one line, split it on spaces
+            file_lines = file_string.splitlines()
+            if len(file_lines) == 1:
+                file_lines = file_string.split()
+                file_string = os.linesep.join(file_lines)
+
             # check different delimiters one by one
             for delimiter in DELIMITERS.keys():
                 try:
@@ -44,9 +51,8 @@ class CSVReader(Reader):
                     pass
 
         if result:
-            io_string = io.StringIO(file_string)
-            self.lines = list(copy.copy(io_string))
-            self.rows = list(csv.reader(io_string, self.dialect))
+            self.lines = file_lines
+            self.rows = list(csv.reader(io.StringIO(file_string), self.dialect))
 
         logger.debug('result=%s', result)
         return result
