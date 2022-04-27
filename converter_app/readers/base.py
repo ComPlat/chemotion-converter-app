@@ -10,8 +10,8 @@ logger = logging.getLogger(__name__)
 class Reader(object):
 
     float_pattern = re.compile(r'(-?\d+[,.]*\d*[eE+\-\d]*)\S*')
-    float_de_pattern = re.compile(r'(-?[\d.]+,?\d*[eE+\-\d]*)')
-    float_us_pattern = re.compile(r'(-?[\d,]+.?\d*[eE+\-\d]*)')
+    float_de_pattern = re.compile(r'(-?[\d.]+,\d*[eE+\-\d]*)')
+    float_us_pattern = re.compile(r'(-?[\d,]+.\d*[eE+\-\d]*)')
 
     def __init__(self, file, file_name, content_type):
         self.file = file
@@ -72,8 +72,10 @@ class Reader(object):
 
     def get_value(self, value):
         if self.float_de_pattern.match(value):
+            # remove any digit group seperators and replace the comma with a period
             return value.replace('.', '').replace(',', '.')
         if self.float_us_pattern.match(value):
-            return value.replace('.', '').replace(',', '.')
+            # just remove the digit group seperators
+            return value.replace(',', '')
         else:
             return value
