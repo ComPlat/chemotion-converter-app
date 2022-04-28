@@ -1,4 +1,3 @@
-import copy
 import csv
 import io
 import logging
@@ -7,24 +6,24 @@ from .base import Reader
 
 logger = logging.getLogger(__name__)
 
-TABLE_MIN_ROWS = 20
-
-DELIMITERS = {
-    '\t': 'tab',
-    ' ': 'space',
-    ';': 'semicolon',
-    ',': 'comma',
-}
-LINETERMINATORS = {
-    '\r\n': '\\r\\n',
-    '\r': '\\r',
-    '\n': '\\n',
-}
-
 
 class CSVReader(Reader):
     identifier = 'csv_reader'
     priority = 100
+
+    empty_values = ['', 'n.a.']
+    table_min_rows = 20
+    delimiters = {
+        '\t': 'tab',
+        ' ': 'space',
+        ';': 'semicolon',
+        ',': 'comma',
+    }
+    lineterminators = {
+        '\r\n': '\\r\\n',
+        '\r': '\\r',
+        '\n': '\\n',
+    }
 
     def check(self):
         logger.debug('file_name=%s content_type=%s mime_type=%s encoding=%s',
@@ -35,7 +34,7 @@ class CSVReader(Reader):
             file_string = self.file_content.decode(self.encoding)
 
             # check different delimiters one by one
-            for delimiter in DELIMITERS.keys():
+            for delimiter in self.delimiters.keys():
                 try:
                     self.dialect = csv.Sniffer().sniff(file_string, delimiters=delimiter)
                     result = True
@@ -44,9 +43,8 @@ class CSVReader(Reader):
                     pass
 
         if result:
-            io_string = io.StringIO(file_string)
-            self.lines = list(copy.copy(io_string))
-            self.rows = list(csv.reader(io_string, self.dialect))
+            self.rows = list(csv.reader(io.StringIO(file_string), self.dialect))
+            self.lines = file_string.splitlines()
 
         logger.debug('result=%s', result)
         return result
@@ -69,7 +67,7 @@ class CSVReader(Reader):
         # loop over blocks and sort into header, table, and metadata
         prev_block = None
         for block in blocks:
-            if len(block['indexes']) < TABLE_MIN_ROWS or not block['shape']:
+            if len(block['indexes']) < self.table_min_rows or not block['shape']:
                 # this is the header
                 if table['rows']:
                     # if a table is already there, this must be a new header
@@ -92,7 +90,7 @@ class CSVReader(Reader):
                             # remove the colum line from the header
                             table['header'] = table['header'][:-1]
 
-                table['rows'] += [self.rows[index] for index in block['indexes']]
+                table['rows'] += [[self.get_value(value) for value in self.rows[index]] for index in block['indexes']]
 
             prev_block = block
 
@@ -114,10 +112,10 @@ class CSVReader(Reader):
 
     def get_metadata(self):
         metadata = super().get_metadata()
-        metadata['lineterminator'] = LINETERMINATORS.get(self.dialect.lineterminator, self.dialect.lineterminator)
+        metadata['lineterminator'] = self.lineterminators.get(self.dialect.lineterminator, self.dialect.lineterminator)
         metadata['quoting'] = self.dialect.quoting
         metadata['doublequote'] = self.dialect.doublequote
-        metadata['delimiter'] = DELIMITERS.get(self.dialect.delimiter, self.dialect.delimiter)
+        metadata['delimiter'] = self.delimiters.get(self.dialect.delimiter, self.dialect.delimiter)
         metadata['quotechar'] = self.dialect.quotechar
         metadata['skipinitialspace'] = self.dialect.skipinitialspace
         return metadata
@@ -125,14 +123,14 @@ class CSVReader(Reader):
     def get_shape(self, row):
         shape = []
         for cell in row:
-            if cell.strip() == '':
+            value = cell.strip()
+            if value in self.empty_values:
                 shape.append('')
+            elif self.float_pattern.match(value):
+                shape.append('f')
             else:
-                try:
-                    float(cell.replace(',', '.'))
-                    shape.append('f')
-                except ValueError:
-                    shape.append('s')
+                shape.append('s')
+
         return shape
 
     def compare_shape(self, shape_a, shape_b):

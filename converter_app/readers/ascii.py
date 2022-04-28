@@ -5,15 +5,13 @@ from .base import Reader
 
 logger = logging.getLogger(__name__)
 
-PATTERNS = {
-    'text': re.compile(r'[A-Za-z]{2,}'),                   # two or more chars in row
-    'floats': re.compile(r'(-?\d+[,.]*\d*[eE+\-\d]*)\S*')  # e.g. 1.00001E-10
-}
-
 
 class AsciiReader(Reader):
     identifier = 'ascii_reader'
     priority = 1000
+
+    # two or more chars in row
+    text_pattern = re.compile(r'[A-Za-z]{2,}')
 
     def check(self):
         logger.debug('file_name=%s content_type=%s mime_type=%s encoding=%s',
@@ -38,7 +36,7 @@ class AsciiReader(Reader):
             count = None
 
             # try to match text for the header
-            text_match = PATTERNS['text'].search(row)
+            text_match = self.text_pattern.search(row)
             if text_match:
                 if table['rows']:
                     # if a table is already there, this must be a new header
@@ -48,11 +46,10 @@ class AsciiReader(Reader):
                 table['header'].append(row)
             else:
                 # try to match columns of floats
-                row = row.replace('n.a.','0')
-                float_match = PATTERNS['floats'].findall(row)
+                row = row.replace('n.a.', '')
+                float_match = self.float_pattern.findall(row)
                 if float_match:
-                    # replace , by . in floats
-                    float_match = [float_str.replace(',', '.') for float_str in float_match]
+                    float_match = [self.get_value(float_str) for float_str in float_match]
                     count = len(float_match)
 
                     if table['rows'] and count != previous_count:

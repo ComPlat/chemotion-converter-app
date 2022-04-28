@@ -7,6 +7,7 @@ from .excel import ExcelReader
 from .brml import BrmlReader
 from .dta import DtaReader
 from .pssession import PsSessionReader
+from .jasco import JascoReader
 
 logger = logging.getLogger(__name__)
 
@@ -47,3 +48,4 @@ registry.register(ExcelReader)
 registry.register(BrmlReader)
 registry.register(DtaReader)
 registry.register(PsSessionReader)
+registry.register(JascoReader)
