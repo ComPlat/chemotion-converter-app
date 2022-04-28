@@ -15,7 +15,6 @@ class CSVReader(Reader):
     table_min_rows = 20
     delimiters = {
         '\t': 'tab',
-        ' ': 'space',
         ';': 'semicolon',
         ',': 'comma',
     }
