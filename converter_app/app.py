@@ -10,6 +10,7 @@ from flask_httpauth import HTTPBasicAuth
 
 from .converters import Converter
 from .models import Profile
+from .datasets import Dataset
 from .readers import registry
 from .writers.jcamp import JcampWriter
 from .writers.jcampzip import JcampZipWriter
@@ -38,6 +39,7 @@ def create_app(test_config=None):
     app.config.from_mapping(
         SECRET_KEY=os.getenv('SECRET_KEY'),
         PROFILES_DIR=os.getenv('PROFILES_DIR', 'profiles'),
+        DATASETS_DIR=os.getenv('DATASETS_DIR', 'datasets'),
         MAX_CONTENT_LENGTH=human2bytes(os.getenv('MAX_CONTENT_LENGTH', '64M')),
         CORS=bool(os.getenv('CORS', False)),
         CLIENTS=clients
@@ -210,5 +212,11 @@ def create_app(test_config=None):
             return '', 204
         else:
             abort(404)
+
+    @app.route('/datasets', methods=['GET'])
+    @auth.login_required
+    def list_datasets():
+        datasets = Dataset.list()
+        return jsonify([dataset.dataset_data for dataset in datasets]), 200
 
     return app
