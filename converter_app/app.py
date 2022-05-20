@@ -10,6 +10,7 @@ from flask_httpauth import HTTPBasicAuth
 
 from .converters import Converter
 from .models import Profile
+from .options import OPTIONS
 from .datasets import Dataset
 from .readers import registry
 from .writers.jcamp import JcampWriter
@@ -142,7 +143,6 @@ def create_app(test_config=None):
                 for index, table in enumerate(response_json['tables']):
                     response_json['tables'][index]['rows'] = table['rows'][:10]
 
-                response_json['options'] = JcampWriter.options
                 return jsonify(response_json), 201
             else:
                 return jsonify(
@@ -163,7 +163,6 @@ def create_app(test_config=None):
         client_id = auth.current_user()
         profile_data = json.loads(request.data)
         profile = Profile(profile_data, client_id)
-
         if profile.clean():
             profile.save()
             return jsonify(profile.as_dict), 201
@@ -215,5 +214,10 @@ def create_app(test_config=None):
     def list_datasets():
         datasets = Dataset.list()
         return jsonify([dataset.dataset_data for dataset in datasets]), 200
+
+    @app.route('/options', methods=['GET'])
+    @auth.login_required
+    def list_options():
+        return jsonify(OPTIONS), 200
 
     return app

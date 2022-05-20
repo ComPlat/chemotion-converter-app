@@ -3,74 +3,13 @@ import os
 import sys
 
 from .. import __title__, __version__
+from ..options import DATA_TYPES, DATA_CLASSES, XUNITS, YUNITS
 from .base import Writer
 
 
 class JcampWriter(Writer):
 
     nline = 12
-
-    data_types = (
-        'INFRARED SPECTRUM',
-        'RAMAN SPECTRUM',
-        'INFRARED PEAK TABLE',
-        'INFRARED INTERFEROGRAM',
-        'INFRARED TRANSFERED SPECTRUM',
-        'NMR FID',
-        'NMR SPECTRUM',
-        'NMR PEAK TABLE',
-        'NMP PEAK ASSIGNMENTS',
-        'MASS SPECTRUM',
-        'CONTINUOUS MASS SPECTRUM',
-        'THERMOGRAVIMETRIC ANALYSIS',
-        'UV-VIS',
-        'HPLC UV-VIS',
-        'GEL PERMEATION CHROMATOGRAPHY',
-        'CYCLIC VOLTAMMETRY',
-        'X-RAY DIFFRACTION'
-    )
-
-    data_classes = (
-        'XYPOINTS',
-        'XYDATA',
-        'PEAK TABLE',
-        'NTUPLES',
-    )
-
-    xunits = (
-        '1/CM',
-        '2Theta',
-        'DEGREES CELSIUS',
-        'HZ',
-        'MICROMETERS',
-        'MINUTES',
-        'm/z',
-        'NANOMETERS',
-        'SECONDS',
-        'Voltage vs Ref'
-    )
-
-    yunits = (
-        'ABSORBANCE',
-        'Ampere',
-        'ARBITRARY UNITS',
-        'COUNTS',
-        'DERIVATIVE WEIGHT',
-        'Intensity',
-        'KUBELKA-MUNK',
-        'mAU',
-        'REFLECTANCE',
-        'TRANSMITTANCE',
-        'WEIGHT',
-    )
-
-    options = {
-        'DATA TYPE': data_types,
-        'DATA CLASS': data_classes,
-        'XUNITS': xunits,
-        'YUNITS': yunits,
-    }
-
     suffix = '.jdx'
     mimetype = 'chemical/x-jcamp-dx'
 
@@ -87,8 +26,8 @@ class JcampWriter(Writer):
         jcamp_header = {
             'TITLE': header.get('TITLE', 'Spectrum'),
             'JCAMP-DX': '5.00 $$ {} ({})'.format(__title__, __version__),
-            'DATA TYPE': header.get('DATA TYPE', self.data_types[0]),
-            'DATA CLASS': header.get('DATA CLASS', self.data_classes[0]),
+            'DATA TYPE': header.get('DATA TYPE', DATA_TYPES[0]),
+            'DATA CLASS': header.get('DATA CLASS', DATA_CLASSES[0]),
             'ORIGIN': header.get('ORIGIN', ''),
             'OWNER': header.get('OWNER', '')
         }
@@ -98,7 +37,7 @@ class JcampWriter(Writer):
                 jcamp_header[key_upper] = header[key]
         self.write_header(jcamp_header)
 
-        data_class = header.get('DATA CLASS', self.data_classes[0])
+        data_class = header.get('DATA CLASS', DATA_CLASSES[0])
         if data_class == 'XYDATA':
             self.process_xydata(header, table.get('y'))
         elif data_class in ['XYPOINTS', 'PEAK TABLE']:
@@ -149,8 +88,8 @@ class JcampWriter(Writer):
             'FIRSTY': y[0],
             'XFACTOR': 1.0,
             'YFACTOR': yfactor,
-            'XUNITS': header.get('XUNITS', self.xunits[0]),
-            'YUNITS': header.get('YUNITS', self.yunits[0]),
+            'XUNITS': header.get('XUNITS', XUNITS[0]),
+            'YUNITS': header.get('YUNITS', YUNITS[0]),
             'XYDATA': '(X++(Y..Y))'
         })
 
@@ -192,8 +131,8 @@ class JcampWriter(Writer):
             'MAXY': maxy,
             'NPOINTS': npoints,
             'FIRSTY': firsty,
-            'XUNITS': header.get('XUNITS', self.xunits[0]),
-            'YUNITS': header.get('YUNITS', self.yunits[0]),
+            'XUNITS': header.get('XUNITS', XUNITS[0]),
+            'YUNITS': header.get('YUNITS', YUNITS[0]),
             'XYPOINTS': '(XY..XY)'
         })
 
@@ -226,7 +165,7 @@ class JcampWriter(Writer):
             maxy = max(maxy, y_float)
 
         # write header with ntuples specific values
-        data_class = header.get('DATA CLASS', self.data_classes[0])
+        data_class = header.get('DATA CLASS', DATA_CLASSES[0])
         self.write_header({
             'FIRSTX': firstx,
             'LASTX': lastx,
@@ -235,8 +174,8 @@ class JcampWriter(Writer):
             'MINY': miny,
             'MAXY': maxy,
             'FIRSTY': firsty,
-            'XUNITS': header.get('XUNITS', self.xunits[0]),
-            'YUNITS': header.get('YUNITS', self.yunits[0]),
+            'XUNITS': header.get('XUNITS', XUNITS[0]),
+            'YUNITS': header.get('YUNITS', YUNITS[0]),
             'NTUPLES': data_class,
             'VAR_NAME': '',
             'SYMBOL': '',
