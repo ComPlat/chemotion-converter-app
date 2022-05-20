@@ -13,7 +13,6 @@ from .models import Profile
 from .options import OPTIONS
 from .datasets import Dataset
 from .readers import registry
-from .writers.jcamp import JcampWriter
 from .writers.jcampzip import JcampZipWriter
 from .utils import human2bytes, checkpw
 
@@ -104,10 +103,8 @@ def create_app(test_config=None):
                 if converter:
                     converter.process(file_data.get('tables'))
 
-                    if len(converter.tables) > 1:
+                    if converter.tables:
                         writer = JcampZipWriter(converter)
-                    elif len(converter.tables) == 1:
-                        writer = JcampWriter(converter)
                     else:
                         return jsonify({'error': 'No tables could be converted.'}), 400
 
