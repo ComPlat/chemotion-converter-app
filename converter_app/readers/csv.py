@@ -28,7 +28,16 @@ class CSVReader(Reader):
         logger.debug('file_name=%s content_type=%s mime_type=%s encoding=%s',
                      self.file_name, self.content_type, self.mime_type, self.encoding)
 
-        result = False
+        # check using seperate function for inheritance
+        result, file_string = self.check_csv()
+        if result:
+            self.rows = list(csv.reader(io.StringIO(file_string), self.dialect))
+            self.lines = file_string.splitlines()
+
+        logger.debug('result=%s', result)
+        return result
+
+    def check_csv(self):
         if self.encoding != 'binary':
             file_string = self.file_content.decode(self.encoding)
 
@@ -36,17 +45,11 @@ class CSVReader(Reader):
             for delimiter in self.delimiters.keys():
                 try:
                     self.dialect = csv.Sniffer().sniff(file_string, delimiters=delimiter)
-                    result = True
-                    break
+                    return True, file_string
                 except csv.Error:
                     pass
 
-        if result:
-            self.rows = list(csv.reader(io.StringIO(file_string), self.dialect))
-            self.lines = file_string.splitlines()
-
-        logger.debug('result=%s', result)
-        return result
+        return False, ''
 
     def get_tables(self):
         tables = []
