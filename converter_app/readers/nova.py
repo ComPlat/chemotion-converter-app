@@ -1,3 +1,4 @@
+import copy
 import csv
 import io
 import logging
@@ -42,10 +43,11 @@ class NovaReader(CSVReader):
                     scan = row[self.scan_index]
                     table = {
                         'header': [],
-                        'metadata': csv_table.get('metadata', {}),
-                        'columns': csv_table.get('columns', {}),
+                        'metadata': copy.deepcopy(csv_table.get('metadata', {})),
+                        'columns': copy.deepcopy(csv_table.get('columns', {})),
                         'rows': []
                     }
+                    table['metadata']['scan'] = int(scan)
                     tables.append(table)
 
                 table['rows'].append(row)
