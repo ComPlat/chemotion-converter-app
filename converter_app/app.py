@@ -101,7 +101,7 @@ def create_app(test_config=None):
                 converter = Converter.match_profile(client_id, file_data)
 
                 if converter:
-                    converter.process(file_data.get('tables'))
+                    converter.process()
 
                     if converter.tables:
                         writer = JcampZipWriter(converter)

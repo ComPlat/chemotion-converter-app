@@ -1,3 +1,4 @@
+import copy
 import logging
 import os
 import re
@@ -9,19 +10,67 @@ logger = logging.getLogger(__name__)
 
 class Converter(object):
 
-    def __init__(self, profile):
+    def __init__(self, profile, file_data):
         self.profile = profile
         self.matches = []
         self.tables = []
+        self.file_metadata = file_data.get('metadata', {})
+        self.input_tables = file_data.get('tables', [])
 
-    def match(self, file_data):
-        for identifier in self.profile.data.get('identifiers', []):
+        if self.profile.data.get('matchTables'):
+            profile_identifiers = self.profile.data.get('identifiers', [])
+            profile_output_tables = self.profile.data.get('tables', [])
+
+            self.identifiers = []
+            for identifier in profile_identifiers:
+                if identifier.get('outputTableIndex') is None:
+                    # if no outputTableIndex was set this identifier is valid for every table
+                    # no adjustment has to be done
+                    self.identifiers.append(identifier)
+                else:
+                    # adjust this identifier for every input table
+                    for input_table_index, input_table in enumerate(self.input_tables):
+                        # make a copy of the identifier and adjust the outputTableIndex
+                        identifier_copy = copy.deepcopy(identifier)
+                        identifier_copy['outputTableIndex'] = input_table_index
+
+                        # adjust the (input)tableIndex as well if it was not null
+                        if identifier_copy.get('tableIndex') is not None:
+                            identifier_copy['tableIndex'] = input_table_index
+
+                        self.identifiers.append(identifier_copy)
+
+            # match the output Table to the input tables and adjust the tableIndexes to the input table
+            self.output_tables = []
+            for input_table_index, input_table in enumerate(self.input_tables):
+                output_table = copy.deepcopy(profile_output_tables[0])
+                output_table_table = output_table.get('table')
+                if output_table_table:
+                    if 'xColumn' in output_table_table:
+                        output_table_table['xColumn']['tableIndex'] = input_table_index
+                    if 'xColumn' in output_table_table:
+                        output_table_table['yColumn']['tableIndex'] = input_table_index
+                    for xOperation in output_table_table.get('xOperations', []):
+                        if 'column' in xOperation:
+                            xOperation['column']['tableIndex'] = input_table_index
+                    for yOperation in output_table_table.get('yOperations', []):
+                        if 'column' in yOperation:
+                            yOperation['column']['tableIndex'] = input_table_index
+
+                self.output_tables.append(output_table)
+
+        else:
+            self.output_tables = self.profile.data.get('tables', [])
+            self.identifiers = self.profile.data.get('identifiers', [])
+
+    def match(self):
+        for identifier in self.identifiers:
             if identifier.get('type') == 'fileMetadata':
-                match = self.match_file_metadata(identifier, file_data.get('metadata'))
+                match = self.match_file_metadata(identifier, self.file_metadata)
             elif identifier.get('type') == 'tableMetadata':
-                match = self.match_table_metadata(identifier, file_data.get('tables'))
+                match = self.match_table_metadata(identifier, self.input_tables)
             elif identifier.get('type') == 'tableHeader':
-                match = self.match_table_header(identifier, file_data.get('tables'))
+                match = self.match_table_header(identifier, self.input_tables)
             else:
                 return False
 
@@ -126,8 +175,8 @@ class Converter(object):
         else:
             return False
 
-    def process(self, input_tables):
-        for output_table_index, output_table in enumerate(self.profile.data.get('tables')):
+    def process(self):
+        for output_table_index, output_table in enumerate(self.output_tables):
             header = output_table.get('header', {})
 
             # merge the metadata from the profile (header) with the metadata
@@ -159,7 +208,7 @@ class Converter(object):
                 if operation.get('type') == 'column':
                     operation['rows'] = []
 
-            for table_index, table in enumerate(input_tables):
+            for table_index, table in enumerate(self.input_tables):
                 for row_index, row in enumerate(table['rows']):
                     for column_index, column in enumerate(table['columns']):
                         if x_column and \
@@ -245,8 +294,8 @@ class Converter(object):
         matches = 0
 
         for profile in Profile.list(client_id):
-            current_converter = cls(profile)
-            current_matches = current_converter.match(file_data)
+            current_converter = cls(profile, file_data)
+            current_matches = current_converter.match()
 
             logger.info('profile=%s matches=%s', profile.id, current_matches)
 
