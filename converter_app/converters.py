@@ -107,9 +107,10 @@ class Converter(object):
 
     def match_value(self, identifier, value):
         if value is not None:
+            value = str(value)
             if identifier.get('isRegex'):
                 pattern = identifier.get('value')
-                match = re.search(pattern, value)
+                match = re.search(pattern, str(value))
                 logger.debug('match_value pattern="%s" value="%s" match=%s', pattern, value, bool(match))
                 if match:
                     try:
