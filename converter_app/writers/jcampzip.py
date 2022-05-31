@@ -8,6 +8,7 @@ from .jcamp import JcampWriter
 
 logger = logging.getLogger(__name__)
 
+
 class JcampZipWriter(JcampWriter):
 
     suffix = '.zip'
@@ -22,7 +23,7 @@ class JcampZipWriter(JcampWriter):
     def process(self):
         metadata = {
             'profileId': self.profile.id,
-            'ols': self.profile.data['ols'],
+            'ols': self.profile.data.get('ols'),
             'matches': self.matches,
             'tablesCount': 0,
             'tables': []
