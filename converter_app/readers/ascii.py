@@ -14,10 +14,7 @@ class AsciiReader(Reader):
     text_pattern = re.compile(r'[A-Za-z]{2,}')
 
     def check(self):
-        logger.debug('file_name=%s content_type=%s mime_type=%s encoding=%s',
-                     self.file_name, self.content_type, self.mime_type, self.encoding)
-
-        if self.encoding == 'binary':
+        if self.file.encoding == 'binary':
             result = False
         else:
             result = True
@@ -31,8 +28,8 @@ class AsciiReader(Reader):
 
         # loop over lines of the file
         previous_count = None
-        for line in self.file.readlines():
-            row = line.decode(self.encoding).rstrip()
+        for line in self.file.fp.readlines():
+            row = line.decode(self.file.encoding).rstrip()
             count = None
 
             # try to match text for the header

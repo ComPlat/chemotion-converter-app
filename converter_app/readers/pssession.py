@@ -1,7 +1,5 @@
-import logging
 import json
-
-from pathlib import Path
+import logging
 
 from .base import Reader
 
@@ -13,10 +11,7 @@ class PsSessionReader(Reader):
     priority = 10
 
     def check(self):
-        logger.debug('file_name=%s content_type=%s mime_type=%s encoding=%s',
-                     self.file_name, self.content_type, self.mime_type, self.encoding)
-
-        if Path(self.file_name).suffix != '.pssession':
+        if self.file.suffix != '.pssession':
             result = False
         else:
             result = True
@@ -27,7 +22,7 @@ class PsSessionReader(Reader):
     def get_tables(self):
         tables = []
 
-        data = json.loads(self.file_content)
+        data = json.loads(self.file.content)
         for measurement in data['measurements']:
             # each measurement is a table
             table = self.append_table(tables)
@@ -80,6 +75,6 @@ class PsSessionReader(Reader):
 
     def get_metadata(self):
         metadata = super().get_metadata()
-        data = json.loads(self.file_content)
+        data = json.loads(self.file.content)
         metadata['type'] = data['type']
         return metadata

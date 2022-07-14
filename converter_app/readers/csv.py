@@ -23,33 +23,34 @@ class CSVReader(Reader):
         '\r': '\\r',
         '\n': '\\n',
     }
+    sniff_buffer_size = 100000
 
     def check(self):
-        logger.debug('file_name=%s content_type=%s mime_type=%s encoding=%s',
-                     self.file_name, self.content_type, self.mime_type, self.encoding)
-
         # check using seperate function for inheritance
-        result, file_string = self.check_csv()
+        result = self.check_csv()
         if result:
-            self.rows = list(csv.reader(io.StringIO(file_string), self.dialect))
-            self.lines = file_string.splitlines()
+            self.rows = list(csv.reader(io.StringIO(self.file.string), self.file.csv_dialect))
+            self.lines = self.file.string.splitlines()
 
         logger.debug('result=%s', result)
         return result
 
     def check_csv(self):
-        if self.encoding != 'binary':
-            file_string = self.file_content.decode(self.encoding)
+        try:
+            # check if the csv dialect was already found
+            self.file.csv_dialect
+            return True
+        except AttributeError:
+            if self.file.string is not None:
+                # check different delimiters one by one
+                for delimiter in self.delimiters.keys():
+                    try:
+                        self.file.csv_dialect = csv.Sniffer().sniff(self.file.string[:self.sniff_buffer_size], delimiters=delimiter)
+                        return True
+                    except csv.Error:
+                        pass
 
-            # check different delimiters one by one
-            for delimiter in self.delimiters.keys():
-                try:
-                    self.dialect = csv.Sniffer().sniff(file_string, delimiters=delimiter)
-                    return True, file_string
-                except csv.Error:
-                    pass
-
-        return False, ''
+        return False
 
     def get_tables(self):
         tables = []
@@ -114,12 +115,12 @@ class CSVReader(Reader):
 
     def get_metadata(self):
         metadata = super().get_metadata()
-        metadata['lineterminator'] = self.lineterminators.get(self.dialect.lineterminator, self.dialect.lineterminator)
-        metadata['quoting'] = self.dialect.quoting
-        metadata['doublequote'] = self.dialect.doublequote
-        metadata['delimiter'] = self.delimiters.get(self.dialect.delimiter, self.dialect.delimiter)
-        metadata['quotechar'] = self.dialect.quotechar
-        metadata['skipinitialspace'] = self.dialect.skipinitialspace
+        metadata['lineterminator'] = self.lineterminators.get(self.file.csv_dialect.lineterminator, self.file.csv_dialect.lineterminator)
+        metadata['quoting'] = self.file.csv_dialect.quoting
+        metadata['doublequote'] = self.file.csv_dialect.doublequote
+        metadata['delimiter'] = self.delimiters.get(self.file.csv_dialect.delimiter, self.file.csv_dialect.delimiter)
+        metadata['quotechar'] = self.file.csv_dialect.quotechar
+        metadata['skipinitialspace'] = self.file.csv_dialect.skipinitialspace
         return metadata
 
     def get_shape(self, row):

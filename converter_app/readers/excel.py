@@ -3,8 +3,6 @@ import zipfile
 
 import openpyxl
 
-from pathlib import Path
-
 from .base import Reader
 
 logger = logging.getLogger(__name__)
@@ -15,16 +13,13 @@ class ExcelReader(Reader):
     priority = 15
 
     def check(self):
-        logger.debug('file_name=%s content_type=%s mime_type=%s encoding=%s',
-                     self.file_name, self.content_type, self.mime_type, self.encoding)
-
-        if self.encoding != 'binary':
+        if self.file.encoding != 'binary':
             result = False
-        elif Path(self.file_name).suffix != '.xlsx':
+        elif self.file.suffix != '.xlsx':
             result = False
         else:
             try:
-                self.wb = openpyxl.load_workbook(filename=self.file)
+                self.wb = openpyxl.load_workbook(filename=self.file.fp)
                 result = True
             except (openpyxl.utils.exceptions.InvalidFileException, zipfile.BadZipFile):
                 result = False

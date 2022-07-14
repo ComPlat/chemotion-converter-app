@@ -1,7 +1,6 @@
 import logging
 import zipfile
 
-from pathlib import Path
 import defusedxml.ElementTree as ET
 
 from .base import Reader
@@ -14,10 +13,7 @@ class BrmlReader(Reader):
     priority = 10
 
     def check(self):
-        logger.debug('file_name=%s content_type=%s mime_type=%s encoding=%s',
-                     self.file_name, self.content_type, self.mime_type, self.encoding)
-
-        if Path(self.file_name).suffix != '.brml':
+        if self.file.suffix != '.brml':
             result = False
         else:
             result = True
@@ -28,7 +24,7 @@ class BrmlReader(Reader):
     def get_tables(self):
         tables = []
 
-        with zipfile.ZipFile(self.file) as zf:
+        with zipfile.ZipFile(self.file.fp) as zf:
             # open DataContainer.xml
             with zf.open('Experiment0/DataContainer.xml') as dc:
                 data_container = ET.fromstring(dc.read())

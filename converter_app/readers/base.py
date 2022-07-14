@@ -1,8 +1,5 @@
 import logging
 import re
-from pathlib import Path
-
-import magic
 
 logger = logging.getLogger(__name__)
 
@@ -13,18 +10,8 @@ class Reader(object):
     float_de_pattern = re.compile(r'(-?[\d.]+,\d*[eE+\-\d]*)')
     float_us_pattern = re.compile(r'(-?[\d,]+.\d*[eE+\-\d]*)')
 
-    def __init__(self, file, file_name, content_type):
+    def __init__(self, file):
         self.file = file
-        self.file_name = file_name
-        self.content_type = content_type
-
-        self.file_content = self.file.read()
-        self.file.seek(0)
-
-        self.mime_type = magic.Magic(mime=True).from_buffer(self.file_content)
-        self.encoding = magic.Magic(mime_encoding=True).from_buffer(self.file_content)
-
-        self.extension = Path(file_name).suffix
 
     def check(self):
         raise NotImplementedError
@@ -40,10 +27,10 @@ class Reader(object):
 
     def get_metadata(self):
         return {
-            'file_name': self.file_name,
-            'content_type': self.content_type,
-            'mime_type': self.mime_type,
-            'extension': self.extension,
+            'file_name': self.file.name,
+            'content_type': self.file.content_type,
+            'mime_type': self.file.mime_type,
+            'extension': self.file.suffix,
             'reader': self.__class__.__name__
         }
 
