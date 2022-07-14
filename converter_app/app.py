@@ -1,6 +1,6 @@
-import os
 import json
 import logging
+import os
 from pathlib import Path
 
 from dotenv import load_dotenv
@@ -9,12 +9,12 @@ from flask_cors import CORS
 from flask_httpauth import HTTPBasicAuth
 
 from .converters import Converter
-from .models import Profile
-from .options import OPTIONS
 from .datasets import Dataset
+from .models import File, Profile
+from .options import OPTIONS
 from .readers import registry
+from .utils import checkpw, human2bytes
 from .writers.jcampzip import JcampZipWriter
-from .utils import human2bytes, checkpw
 
 
 def create_app(test_config=None):
@@ -93,8 +93,8 @@ def create_app(test_config=None):
         '''
         client_id = auth.current_user()
         if request.files.get('file'):
-            file = request.files.get('file')
-            reader = registry.match_reader(file, file.filename, file.content_type)
+            file = File(request.files.get('file'))
+            reader = registry.match_reader(file)
 
             if reader:
                 file_data = reader.process()
@@ -130,8 +130,8 @@ def create_app(test_config=None):
         Step 1 (advanced): upload file and convert to table
         '''
         if request.files.get('file'):
-            file = request.files.get('file')
-            reader = registry.match_reader(file, file.filename, file.content_type)
+            file = File(request.files.get('file'))
+            reader = registry.match_reader(file)
 
             if reader:
                 response_json = reader.process()

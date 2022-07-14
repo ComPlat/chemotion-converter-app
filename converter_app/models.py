@@ -4,6 +4,7 @@ import uuid
 from collections import defaultdict
 from pathlib import Path
 
+import magic
 from flask import current_app
 
 from .utils import check_uuid
@@ -115,3 +116,22 @@ class Profile(object):
                 return cls(profile_data, client_id, profile_id)
 
         return False
+
+
+class File(object):
+
+    def __init__(self, file):
+        self.fp = file
+        self.name = file.filename
+        self.content_type = file.content_type
+
+        # read the file
+        self.content = file.read()
+        file.seek(0)
+
+        self.mime_type = magic.Magic(mime=True).from_buffer(self.content)
+        self.encoding = magic.Magic(mime_encoding=True).from_buffer(self.content)
+        self.suffix = Path(self.name).suffix
+
+        # decode file string
+        self.string = self.content.decode(self.encoding) if self.encoding != 'binary' else None

@@ -11,14 +11,10 @@ class JascoReader(Reader):
     header_length = 8
 
     def check(self):
-        logger.debug('file_name=%s content_type=%s mime_type=%s encoding=%s',
-                     self.file_name, self.content_type, self.mime_type, self.encoding)
-
         result = False
-        if self.encoding != 'binary':
-            file_string = self.file_content.decode(self.encoding)
-            if len(file_string.splitlines()) == 1:
-                file_lines = file_string.split(',')
+        if self.file.string is not None:
+            if len(self.file.string.splitlines()) == 1:
+                file_lines = self.file.string.split(',')
                 if file_lines[self.header_length - 1] == str(len(file_lines) - self.header_length):
                     result = True
         if result:

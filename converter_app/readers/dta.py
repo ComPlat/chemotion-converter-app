@@ -1,7 +1,5 @@
 import logging
 
-from pathlib import Path
-
 from .base import Reader
 
 logger = logging.getLogger(__name__)
@@ -12,12 +10,9 @@ class DtaReader(Reader):
     priority = 10
 
     def check(self):
-        logger.debug('file_name=%s content_type=%s mime_type=%s encoding=%s',
-                     self.file_name, self.content_type, self.mime_type, self.encoding)
-
-        if self.encoding == 'binary':
+        if self.file.encoding == 'binary':
             result = False
-        elif Path(self.file_name).suffix.lower() == '.dta' and self.mime_type == 'text/plain':
+        elif self.file.suffix.lower() == '.dta' and self.file.mime_type == 'text/plain':
             result = True
         else:
             result = False
@@ -31,8 +26,8 @@ class DtaReader(Reader):
 
         # loop over lines of the file
         header = True
-        for line in self.file.readlines():
-            row = line.decode(self.encoding).rstrip()
+        for line in self.file.fp.readlines():
+            row = line.decode(self.file.encoding).rstrip()
 
             # check if this is the first line of the header
             if not row.startswith('\t'):

@@ -16,17 +16,14 @@ class NovaReader(CSVReader):
     scan_index = 4
 
     def check(self):
-        logger.debug('file_name=%s content_type=%s mime_type=%s encoding=%s',
-                     self.file_name, self.content_type, self.mime_type, self.encoding)
-
         # check using seperate function in the CSVReader
-        result, file_string = self.check_csv()
+        result = self.check_csv()
         if result:
-            first_line = file_string.splitlines()[0]
-            first_row = next(csv.reader(io.StringIO(first_line), self.dialect))
+            first_line = self.file.string.splitlines()[0]
+            first_row = next(csv.reader(io.StringIO(first_line), self.file.csv_dialect))
             if first_row[:8] == self.first_row:
-                self.rows = list(csv.reader(io.StringIO(file_string), self.dialect))
-                self.lines = file_string.splitlines()
+                self.rows = list(csv.reader(io.StringIO(self.file.string), self.file.csv_dialect))
+                self.lines = self.file.string.splitlines()
             else:
                 result = False
 
