@@ -113,7 +113,7 @@ def create_app(test_config=None):
                     except AssertionError:
                         return jsonify({'error': 'There was an error while converting your file.'}), 400
 
-                    file_name = Path(file.filename).with_suffix(writer.suffix)
+                    file_name = Path(file.name).with_suffix(writer.suffix)
 
                     response = Response(writer.write(), mimetype=writer.mimetype)
                     response.headers['Content-Disposition'] = 'attachment;filename={}'.format(file_name)
