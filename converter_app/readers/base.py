@@ -1,5 +1,6 @@
 import logging
 import re
+from datetime import datetime
 
 logger = logging.getLogger(__name__)
 
@@ -36,7 +37,8 @@ class Reader(object):
             'content_type': self.file.content_type,
             'mime_type': self.file.mime_type,
             'extension': self.file.suffix,
-            'reader': self.__class__.__name__
+            'reader': self.__class__.__name__,
+            'uploaded': datetime.utcnow().isoformat()
         }
 
     def append_table(self, tables):
