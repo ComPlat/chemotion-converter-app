@@ -2,10 +2,13 @@ import copy
 import csv
 import io
 import logging
+import re
 
 from .csv import CSVReader
 
 logger = logging.getLogger(__name__)
+
+unit_pattern = re.compile(r'\(([a-zA-Z])\)$')
 
 
 class NovaReader(CSVReader):
@@ -34,6 +37,7 @@ class NovaReader(CSVReader):
         tables = []
         table = None
         scan = None
+        prev = None
         for csv_table in super().get_tables():
             for row in csv_table['rows']:
                 if row[self.scan_index] != scan:
@@ -44,13 +48,58 @@ class NovaReader(CSVReader):
                         'columns': copy.deepcopy(csv_table.get('columns', {})),
                         'rows': []
                     }
+
+                    # add the units of some of the colums as metadata
+                    for key in list(table['metadata'].keys()):
+                        if key.startswith('column_'):
+                            match = unit_pattern.search(table['metadata'][key])
+                            if match:
+                                table['metadata'][key + '_unit'] = match.group(1)
+
+                    # add additional columns
+                    table['columns'] += [{
+                        'key': str(len(table['columns']) + i),
+                        'name': 'Column #{} ({})'.format(len(table['columns']) + i, name)
+                    } for i, name in enumerate(['Delta V', 'V/s'])]
+
                     table['metadata']['scan'] = int(scan)
                     tables.append(table)
 
-                table['rows'].append(row)
+                # compute additional columns
+                if prev is None:
+                    table['rows'].append(row + ['nan', 'nan'])
+                else:
+                    delta_v = float(row[0]) - float(prev[0])
+                    v_s = delta_v / (float(row[1]) - float(prev[1]))
+                    table['rows'].append(row + [str(delta_v), str(v_s)])
+
+                prev = row
 
         for table in tables:
             table['metadata']['rows'] = len(table['rows'])
             table['metadata']['columns'] = len(table['columns'])
 
         return tables
+
+    def get_metadata(self):
+        total_rows = sum([table['metadata']['rows'] for table in self.tables])
+
+        v_init = self.tables[0]['rows'][0][0]
+        v_end = self.tables[-1]['rows'][-1][0]
+        v_max = max([max([float(row[0]) for row in table['rows']]) for table in self.tables])
+        v_min = min([min([float(row[0]) for row in table['rows']]) for table in self.tables])
+        step_size = sum([sum([abs(float(row[-2])) for row in table['rows'][1:]]) for table in self.tables]) / total_rows
+        scan_rate = sum([sum([abs(float(row[-1])) for row in table['rows'][1:]]) for table in self.tables]) / total_rows
+        cycles = max([table['metadata']['scan'] for table in self.tables])
+
+        metadata = super().get_metadata()
+        metadata.update({
+            'v_init': v_init,
+            'v_end': v_end,
+            'v_max': v_max,
+            'v_min': v_min,
+            'step_size': step_size,
+            'scan_rate': scan_rate,
+            'cycles': cycles
+        })
+        return metadata
