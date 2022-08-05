@@ -98,8 +98,8 @@ def create_app(test_config=None):
             reader = registry.match_reader(file)
 
             if reader:
-                file_data = reader.process()
-                converter = Converter.match_profile(client_id, file_data)
+                reader.process()
+                converter = Converter.match_profile(client_id, reader.as_dict)
 
                 if converter:
                     converter.process()
@@ -145,13 +145,13 @@ def create_app(test_config=None):
             reader = registry.match_reader(file)
 
             if reader:
-                response_json = reader.process()
+                reader.process()
 
                 # only return the first 10 rows of each table
-                for index, table in enumerate(response_json['tables']):
-                    response_json['tables'][index]['rows'] = table['rows'][:10]
+                for index, table in enumerate(reader.tables):
+                    reader.tables[index]['rows'] = table['rows'][:10]
 
-                return jsonify(response_json), 201
+                return jsonify(reader.as_dict), 201
             else:
                 return jsonify(
                     {'error': 'Your file could not be processed.'}), 400
