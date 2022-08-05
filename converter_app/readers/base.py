@@ -13,14 +13,19 @@ class Reader(object):
     def __init__(self, file):
         self.file = file
 
+    @property
+    def as_dict(self):
+        return {
+            'tables': self.tables,
+            'metadata': self.metadata
+        }
+
     def check(self):
         raise NotImplementedError
 
     def process(self):
-        return {
-            'tables': self.get_tables(),
-            'metadata': self.get_metadata()
-        }
+        self.tables = self.get_tables()
+        self.metadata = self.get_metadata()
 
     def get_tables(self):
         raise NotImplementedError
