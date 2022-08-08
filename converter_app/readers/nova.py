@@ -3,6 +3,7 @@ import csv
 import io
 import logging
 import re
+import sys
 
 from .csv import CSVReader
 
@@ -67,11 +68,11 @@ class NovaReader(CSVReader):
                     if self.scan_rate_unit is None and 'column_00_unit' in table['metadata'] and 'column_01_unit' in table['metadata']:
                         self.scan_rate_unit = '{column_00_unit}/{column_01_unit}'.format(**table['metadata'])
 
-                    for i, column in enumerate([
+                    for column in [
                         ('Step size', self.step_size_unit),
                         ('Scan rate', self.scan_rate_unit)
-                    ]):
-                        idx = len(table['columns']) + i
+                    ]:
+                        idx = len(table['columns'])
                         name, unit = column
                         table['columns'].append({
                             'key': str(idx),
@@ -87,9 +88,9 @@ class NovaReader(CSVReader):
                 if prev is None:
                     table['rows'].append(row + ['nan', 'nan'])
                 else:
-                    delta_v = float(row[0]) - float(prev[0])
-                    v_s = delta_v / (float(row[1]) - float(prev[1]))
-                    table['rows'].append(row + [str(delta_v), str(v_s)])
+                    step_size = float(row[0]) - float(prev[0])
+                    scan_rate = step_size / (float(row[1]) - float(prev[1]))
+                    table['rows'].append(row + [str(step_size), str(scan_rate)])
 
                 prev = row
 
@@ -104,8 +105,24 @@ class NovaReader(CSVReader):
 
         v_init = self.tables[0]['rows'][0][0]
         v_end = self.tables[-1]['rows'][-1][0]
-        v_max = max([max([float(row[0]) for row in table['rows']]) for table in self.tables])
-        v_min = min([min([float(row[0]) for row in table['rows']]) for table in self.tables])
+
+        idx = 0
+        v_max, v_max_idx = sys.float_info.min, 0
+        v_min, v_min_idx = sys.float_info.max, 0
+        for table in self.tables:
+            for row in table['rows']:
+                value = float(row[0])
+                if value > v_max:
+                    v_max, v_max_idx = value, idx
+                if value < v_min:
+                    v_min, v_min_idx = value, idx
+                idx += 1
+
+        if v_max_idx < v_min_idx:
+            v_limit1, v_limit2 = v_max, v_min
+        else:
+            v_limit1, v_limit2 = v_min, v_max
+
         step_size = sum([sum([abs(float(row[-2])) for row in table['rows'][1:]]) for table in self.tables]) / total_rows
         scan_rate = sum([sum([abs(float(row[-1])) for row in table['rows'][1:]]) for table in self.tables]) / total_rows
         cycles = max([table['metadata']['scan'] for table in self.tables])
@@ -116,6 +133,8 @@ class NovaReader(CSVReader):
             'v_end': v_end,
             'v_max': v_max,
             'v_min': v_min,
+            'v_limit1': v_limit1,
+            'v_limit2': v_limit2,
             'step_size': step_size,
             'step_size_unit': self.step_size_unit,
             'scan_rate': scan_rate,
