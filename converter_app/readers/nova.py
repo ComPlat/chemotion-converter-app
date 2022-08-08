@@ -38,6 +38,10 @@ class NovaReader(CSVReader):
         table = None
         scan = None
         prev = None
+
+        self.step_size_unit = None
+        self.scan_rate_unit = None
+
         for csv_table in super().get_tables():
             for row in csv_table['rows']:
                 if row[self.scan_index] != scan:
@@ -57,10 +61,24 @@ class NovaReader(CSVReader):
                                 table['metadata'][key + '_unit'] = match.group(1)
 
                     # add additional columns
-                    table['columns'] += [{
-                        'key': str(len(table['columns']) + i),
-                        'name': 'Column #{} ({})'.format(len(table['columns']) + i, name)
-                    } for i, name in enumerate(['Delta V', 'V/s'])]
+                    if self.step_size_unit is None and 'column_00_unit' in table['metadata']:
+                        self.step_size_unit = '{column_00_unit}'.format(**table['metadata'])
+
+                    if self.scan_rate_unit is None and 'column_00_unit' in table['metadata'] and 'column_01_unit' in table['metadata']:
+                        self.scan_rate_unit = '{column_00_unit}/{column_01_unit}'.format(**table['metadata'])
+
+                    for i, column in enumerate([
+                        ('Step size', self.step_size_unit),
+                        ('Scan rate', self.scan_rate_unit)
+                    ]):
+                        idx = len(table['columns']) + i
+                        name, unit = column
+                        table['columns'].append({
+                            'key': str(idx),
+                            'name': 'Column #{} ({} ({}))'.format(idx, name, unit)
+                        })
+                        table['metadata']['column_{:02d}'.format(idx)] = '{} ({})'.format(name, unit) if unit else name
+                        table['metadata']['column_{:02d}_unit'.format(idx)] = unit
 
                     table['metadata']['scan'] = int(scan)
                     tables.append(table)
@@ -99,7 +117,9 @@ class NovaReader(CSVReader):
             'v_max': v_max,
             'v_min': v_min,
             'step_size': step_size,
+            'step_size_unit': self.step_size_unit,
             'scan_rate': scan_rate,
+            'scan_rate_unit': self.scan_rate_unit,
             'cycles': cycles
         })
         return metadata
