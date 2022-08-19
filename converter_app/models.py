@@ -93,13 +93,28 @@ class Profile(object):
         }
 
     @classmethod
+    def load(cls, file_path):
+        profile_data = json.loads(file_path.read_text())
+
+        # ensure compatibility with older isRegex flag
+        for identifier in profile_data.get('identifiers', []):
+            if 'match' not in identifier:
+                if 'isRegex' in identifier:
+                    identifier['match'] = ('regex' if identifier['isRegex'] else 'exact')
+                    del identifier['isRegex']
+                else:
+                    identifier['match'] = 'exact'
+
+        return profile_data
+
+    @classmethod
     def list(cls, client_id):
         profiles_path = Path(current_app.config['PROFILES_DIR']).joinpath(client_id)
 
         if profiles_path.exists():
             for file_path in Path.iterdir(profiles_path):
                 profile_id = str(file_path.with_suffix('').name)
-                profile_data = json.loads(file_path.read_text())
+                profile_data = cls.load(file_path)
                 yield cls(profile_data, client_id, profile_id)
         else:
             return []
@@ -112,7 +127,7 @@ class Profile(object):
         if check_uuid(profile_id):
             file_path = profiles_path.joinpath(profile_id).with_suffix('.json')
             if file_path.is_file():
-                profile_data = json.loads(file_path.read_text())
+                profile_data = cls.load(file_path)
                 return cls(profile_data, client_id, profile_id)
 
         return False
