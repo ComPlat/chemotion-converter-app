@@ -157,7 +157,7 @@ class Converter(object):
     def match_value(self, identifier, value):
         if value is not None:
             value = str(value)
-            if identifier.get('isRegex'):
+            if identifier.get('isRegex') or identifier.get('match') == 'regex':
                 pattern = identifier.get('value')
                 match = re.search(pattern, str(value))
                 logger.debug('match_value pattern="%s" value="%s" match=%s', pattern, value, bool(match))
@@ -168,7 +168,11 @@ class Converter(object):
                         return match.group(0).strip()
                 else:
                     return False
-            else:
+            elif identifier.get('match') == 'any':
+                logger.debug('match_value identifier="%s", value="any" result=%s', identifier.get('value'), bool(value))
+                return value if value else False
+
+            else:  # match == 'exact'
                 result = (value == identifier.get('value'))
                 logger.debug('match_value identifier="%s", value="%s" result=%s', identifier.get('value'), value, result)
                 return value if result else False
