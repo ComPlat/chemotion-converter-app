@@ -195,6 +195,10 @@ class Converter(object):
                         output_table_index == match_output_table_index or
                         match_output_table_index is None
                     ):
+                        match_operations = match.get('identifier', {}).get('operations', [])
+                        for match_operation in match_operations:
+                            match_value = self.run_identifier_operation(match_value, match_operation)
+
                         header[match_output_key] = match_value
 
             x_column = output_table.get('table', {}).get('xColumn')
@@ -260,17 +264,26 @@ class Converter(object):
                 op_value = operation.get('value')
 
             if op_value:
-                if operation.get('operator') == '+':
-                    row_value = float(row) + float(op_value)
-                elif operation.get('operator') == '-':
-                    row_value = float(row) - float(op_value)
-                elif operation.get('operator') == '*':
-                    row_value = float(row) * float(op_value)
-                elif operation.get('operator') == ':':
-                    row_value = float(row) / float(op_value)
-                rows[i] = str(row_value)
+                rows[i] = str(self.apply_operation(row, op_value, operation.get('operator')))
 
         return rows
+
+    def run_identifier_operation(self, value, operation):
+        op_value = operation.get('value')
+        if op_value:
+            return self.apply_operation(value, op_value, operation.get('operator'))
+        else:
+            return value
+
+    def apply_operation(self, value, op_value, op_operator):
+        if op_operator == '+':
+            return float(value) + float(op_value)
+        elif op_operator == '-':
+            return float(value) - float(op_value)
+        elif op_operator == '*':
+            return float(value) * float(op_value)
+        elif op_operator == ':':
+            return float(value) / float(op_value)
 
     def get_input_table(self, index, input_tables):
         if index is not None:
