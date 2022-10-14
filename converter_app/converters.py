@@ -276,14 +276,19 @@ class Converter(object):
             return value
 
     def apply_operation(self, value, op_value, op_operator):
-        if op_operator == '+':
-            return float(value) + float(op_value)
-        elif op_operator == '-':
-            return float(value) - float(op_value)
-        elif op_operator == '*':
-            return float(value) * float(op_value)
-        elif op_operator == ':':
-            return float(value) / float(op_value)
+        try:
+            float_value = float(self.fix_float(value))
+
+            if op_operator == '+':
+                return float_value + float(op_value)
+            elif op_operator == '-':
+                return float_value - float(op_value)
+            elif op_operator == '*':
+                return float_value * float(op_value)
+            elif op_operator == ':':
+                return float_value / float(op_value)
+        except ValueError:
+            return None
 
     def get_input_table(self, index, input_tables):
         if index is not None:
@@ -303,7 +308,10 @@ class Converter(object):
                 return i + 1
 
     def get_value(self, row, column_index):
-        return str(row[column_index]).replace(',', '.').replace('e', 'E')
+        return self.fix_float(row[column_index])
+
+    def fix_float(self, value):
+        return str(value).replace(',', '.').replace('e', 'E')
 
     @classmethod
     def match_profile(cls, client_id, file_data):
