@@ -15,7 +15,8 @@ DATA_TYPES = (
     'HPLC UV-VIS',
     'GEL PERMEATION CHROMATOGRAPHY',
     'CYCLIC VOLTAMMETRY',
-    'X-RAY DIFFRACTION'
+    'X-RAY DIFFRACTION',
+    'AIF' # Must be extened
 )
 
 DATA_CLASSES = (
@@ -26,6 +27,8 @@ DATA_CLASSES = (
 )
 
 XUNITS = (
+    'p/p0', # Normalaized dimension
+    'kPa',
     '1/CM',
     '2Theta',
     'DEGREES CELSIUS',
@@ -39,6 +42,8 @@ XUNITS = (
 )
 
 YUNITS = (
+    'ml/g',
+    'mmol/g',
     'ABSORBANCE',
     'Ampere',
     'ARBITRARY UNITS',
