@@ -10,7 +10,7 @@ UNIT_EXTENSION = "_unit"
 
 class SecReader(Reader):
     identifier = 'sec_reader'
-    priority = 1
+    priority = 95
 
     _has_header = False
     _has_first_value = False
@@ -20,8 +20,8 @@ class SecReader(Reader):
     def check(self):
         result = False
         if self.file.suffix.lower() == '.txt' and self.file.mime_type == 'text/plain':
-            first_line = self.file.string.splitlines()[0]
-            result = 'raw2aif' in first_line
+            first_lines = [self.file.string.splitlines()[0], self.file.string.splitlines()[1], self.file.string.splitlines()[2]]
+            result = 'Sample :' in first_lines[0] and 'Method settings :' in first_lines[1] and 'Sequence table :' in first_lines[2]
 
         logger.debug('result=%s', result)
         return result
