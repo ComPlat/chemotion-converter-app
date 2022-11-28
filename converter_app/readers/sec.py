@@ -33,7 +33,7 @@ class SecReader(Reader):
 
         return self.append_table(tables)
 
-    def _handle_line(self, line: str, table: dict[str, list | dict]):
+    def _handle_line(self, line, table):
         if line == 'Calibration Coefficients:':
             self._is_calibration = 2
             return False
@@ -41,7 +41,7 @@ class SecReader(Reader):
             return self._set_calibration(line, table)
         return self._split_key_val(line, table)
 
-    def _set_calibration(self, line: str, table: dict[str, list | dict]):
+    def _set_calibration(self, line, table):
         line_val = line.split(':')
         if line == '':
             self._is_calibration -= 1
@@ -52,8 +52,8 @@ class SecReader(Reader):
 
         return self._is_calibration > 0
 
-    def _split_key_val(self, line: str, table: dict[str, list | dict]):
-        line_array = line.split('\t')
+    def _split_key_val(self, line, table):
+        line_array = re.sub(r'\[%]\t', '[%] ', line).split('\t')
         key = None
         line_key = None
         counter = 0
