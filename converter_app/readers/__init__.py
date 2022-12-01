@@ -9,6 +9,7 @@ from .excel import ExcelReader
 from .jasco import JascoReader
 from .nova import NovaReader
 from .pssession import PsSessionReader
+from .sem import SemReader
 
 logger = logging.getLogger(__name__)
 
@@ -54,3 +55,4 @@ registry.register(DtaReader)
 registry.register(PsSessionReader)
 registry.register(JascoReader)
 registry.register(NovaReader)
+registry.register(SemReader)
