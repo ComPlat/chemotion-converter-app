@@ -24,7 +24,7 @@ class SemReader(AsciiReader):
         table_mode = False
         previous_count = None
         for line in self.file.fp.readlines():
-            row: str = line.decode(self.file.encoding).rstrip()
+            row = line.decode(self.file.encoding).rstrip()
             row_array = row.split(' ')
             if table_mode:
                 if previous_count + 1 != len(row_array):
