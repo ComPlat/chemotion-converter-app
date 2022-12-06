@@ -28,13 +28,25 @@ class Reader(object):
         self.tables = self.get_tables()
         self.metadata = self.get_metadata()
 
+    def validate(self):
+        for table_index, table in enumerate(self.tables):
+            for key, value in table['metadata'].items():
+                if not isinstance(value, str):
+                    class_name = type(value).__name__
+                    logger.warn(f'metadata Table #{table_index} {key}="{value}" is not of type str, but {class_name} ({self.identifier})')
+
+        for key, value in self.metadata.items():
+            if not isinstance(value, str):
+                class_name = type(value).__name__
+                logger.warn(f'metadata {key}="{value}" is not of type str, but {class_name} ({self.identifier})')
+                
     def get_tables(self):
         raise NotImplementedError
 
     def get_metadata(self):
         return {
             'file_name': self.file.name,
-            'content_type': self.file.content_type,
+            'content_type': self.file.content_type or '',
             'mime_type': self.file.mime_type,
             'extension': self.file.suffix,
             'reader': self.__class__.__name__,

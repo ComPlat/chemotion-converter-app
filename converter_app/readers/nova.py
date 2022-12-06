@@ -42,6 +42,8 @@ class NovaReader(CSVReader):
 
         self.step_size_unit = None
         self.scan_rate_unit = None
+        self.total_rows = 0
+        self.cycles = 0
 
         for csv_table in super().get_tables():
             for row in csv_table['rows']:
@@ -81,7 +83,9 @@ class NovaReader(CSVReader):
                         table['metadata']['column_{:02d}'.format(idx)] = '{} ({})'.format(name, unit) if unit else name
                         table['metadata']['column_{:02d}_unit'.format(idx)] = unit
 
-                    table['metadata']['scan'] = int(scan)
+                    self.cycles = max(int(scan), self.cycles)
+
+                    table['metadata']['scan'] = scan
                     tables.append(table)
 
                 # compute additional columns
@@ -95,14 +99,13 @@ class NovaReader(CSVReader):
                 prev = row
 
         for table in tables:
-            table['metadata']['rows'] = len(table['rows'])
-            table['metadata']['columns'] = len(table['columns'])
+            table['metadata']['rows'] = str(len(table['rows']))
+            table['metadata']['columns'] = str(len(table['columns']))
+            self.total_rows += len(table['rows'])
 
         return tables
 
     def get_metadata(self):
-        total_rows = sum([table['metadata']['rows'] for table in self.tables])
-
         v_init = self.tables[0]['rows'][0][0]
         v_end = self.tables[-1]['rows'][-1][0]
 
@@ -123,22 +126,22 @@ class NovaReader(CSVReader):
         else:
             v_limit1, v_limit2 = v_min, v_max
 
-        step_size = sum([sum([abs(float(row[-2])) for row in table['rows'][1:]]) for table in self.tables]) / total_rows
-        scan_rate = sum([sum([abs(float(row[-1])) for row in table['rows'][1:]]) for table in self.tables]) / total_rows
-        cycles = max([table['metadata']['scan'] for table in self.tables])
+        step_size = sum([sum([abs(float(row[-2])) for row in table['rows'][1:]]) for table in self.tables]) / self.total_rows
+        scan_rate = sum([sum([abs(float(row[-1])) for row in table['rows'][1:]]) for table in self.tables]) / self.total_rows
 
         metadata = super().get_metadata()
         metadata.update({
-            'v_init': v_init,
-            'v_end': v_end,
-            'v_max': v_max,
-            'v_min': v_min,
-            'v_limit1': v_limit1,
-            'v_limit2': v_limit2,
-            'step_size': step_size,
+            'v_init': str(v_init),
+            'v_end': str(v_end),
+            'v_max': str(v_max),
+            'v_min': str(v_min),
+            'v_limit1': str(v_limit1),
+            'v_limit2': str(v_limit2),
+            'step_size': str(step_size),
             'step_size_unit': self.step_size_unit,
-            'scan_rate': scan_rate,
+            'scan_rate': str(scan_rate),
             'scan_rate_unit': self.scan_rate_unit,
-            'cycles': cycles
+            'cycles': str(self.cycles)
         })
+
         return metadata
