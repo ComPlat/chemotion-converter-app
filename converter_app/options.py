@@ -16,7 +16,10 @@ DATA_TYPES = (
     'HPLC UV-VIS',
     'GEL PERMEATION CHROMATOGRAPHY',
     'CYCLIC VOLTAMMETRY',
-    'X-RAY DIFFRACTION'
+    'X-RAY DIFFRACTION',
+    'SINGLE CRYSTAL X-RAY DIFFRACTION',
+    'SORPTION-DESORPTION MEASUREMENT',
+    'SIZE EXCLUSION CHROMATOGRAPHY',
 )
 
 DATA_CLASSES = (
@@ -27,13 +30,18 @@ DATA_CLASSES = (
 )
 
 XUNITS = (
+    '%',
     '1/CM',
     '2Theta',
     'DEGREES CELSIUS',
+    'G/MOL',
     'HZ',
+    'KILOGRAM',
     'MICROMETERS',
+    'MILIMETERS',
     'MINUTES',
     'm/z',
+    'MOLECULAR MASS / DA',
     'NANOMETERS',
     'SECONDS',
     'Voltage vs Ref'
@@ -48,8 +56,10 @@ YUNITS = (
     'Intensity',
     'KUBELKA-MUNK',
     'mAU',
+    'N/M2',
     'Newton',
     'REFLECTANCE',
+    'SIGNAL',
     'TRANSMITTANCE',
     'WEIGHT',
 )
