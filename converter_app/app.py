@@ -146,6 +146,7 @@ def create_app(test_config=None):
 
             if reader:
                 reader.process()
+                reader.validate()
 
                 # only return the first 10 rows of each table
                 for index, table in enumerate(reader.tables):

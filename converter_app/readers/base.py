@@ -39,7 +39,7 @@ class Reader(object):
             if not isinstance(value, str):
                 class_name = type(value).__name__
                 logger.warn(f'metadata {key}="{value}" is not of type str, but {class_name} ({self.identifier})')
-                
+
     def get_tables(self):
         raise NotImplementedError
 
