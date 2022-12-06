@@ -104,20 +104,16 @@ def create_app(test_config=None):
                 if converter:
                     converter.process()
 
-                    if converter.tables:
-                        conversion_format = request.form.get('format', 'jcampzip')
-
-                        if conversion_format == 'jcampzip':
-                            writer = JcampZipWriter(converter)
-                        elif conversion_format == 'jcamp':
-                            if len(converter.tables) == 1:
-                                writer = JcampWriter(converter)
-                            else:
-                                return jsonify({'error': 'Conversion to a single JCAMP file is not supported for this file.'}), 400
+                    conversion_format = request.form.get('format', 'jcampzip')
+                    if conversion_format == 'jcampzip':
+                        writer = JcampZipWriter(converter)
+                    elif conversion_format == 'jcamp':
+                        if len(converter.tables) == 1:
+                            writer = JcampWriter(converter)
                         else:
-                            return jsonify({'error': 'Conversion format is not supported.'}), 400
+                            return jsonify({'error': 'Conversion to a single JCAMP file is not supported for this file.'}), 400
                     else:
-                        return jsonify({'error': 'No tables could be converted.'}), 400
+                        return jsonify({'error': 'Conversion format is not supported.'}), 400
 
                     try:
                         writer.process()
