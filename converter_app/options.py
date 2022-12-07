@@ -17,6 +17,7 @@ DATA_TYPES = (
     'GEL PERMEATION CHROMATOGRAPHY',
     'CYCLIC VOLTAMMETRY',
     'X-RAY DIFFRACTION',
+    'AIF' # Must be extened
     'SINGLE CRYSTAL X-RAY DIFFRACTION',
     'SORPTION-DESORPTION MEASUREMENT',
     'SIZE EXCLUSION CHROMATOGRAPHY',
@@ -30,6 +31,8 @@ DATA_CLASSES = (
 )
 
 XUNITS = (
+    'p/p0', # Normalaized dimension
+    'kPa',
     '%',
     '1/CM',
     '2Theta',
@@ -48,6 +51,8 @@ XUNITS = (
 )
 
 YUNITS = (
+    'ml/g',
+    'mmol/g',
     'ABSORBANCE',
     'Ampere',
     'ARBITRARY UNITS',
