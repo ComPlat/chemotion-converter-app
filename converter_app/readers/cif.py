@@ -79,11 +79,8 @@ class CifReader(Reader):
                     table['rows'].append(['R%d' % (i // len(item.loop.tags))] + item.loop.values[i:(i+len(item.loop.tags))])
 
 
-                table['metadata']['rows'] = len(table['rows'])
-                table['metadata']['columns'] = len(table['columns'])
-
-            elif item.frame is not None:
-                pass #print('frame', item.frame)
+                table['metadata']['rows'] = str(len(table['rows']))
+                table['metadata']['columns'] = str(len(table['columns']))
 
         if has_junk:
             junk_table = self.append_table(tables)
