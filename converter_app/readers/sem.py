@@ -29,8 +29,8 @@ class SemReader(AsciiReader):
             if table_mode:
                 if previous_count + 1 != len(row_array):
                     table_mode = False
-                    table['metadata']['rows'] = len(table['rows'])
-                    table['metadata']['columns'] = len(table['columns'])
+                    table['metadata']['rows'] = str(len(table['rows']))
+                    table['metadata']['columns'] = str(len(table['columns']))
                     table = self.append_table(tables)
                 else:
                     float_match = [self.get_value(float_str) for float_str in row_array]
@@ -50,7 +50,7 @@ class SemReader(AsciiReader):
                     else:
                         table['metadata'][row_array[0].replace("$", "")] = "True"
 
-        table['metadata']['rows'] = len(table['rows'])
-        table['metadata']['columns'] = len(table['columns'])
+        table['metadata']['rows'] = str(len(table['rows']))
+        table['metadata']['columns'] = str(len(table['columns']))
         return tables
 
