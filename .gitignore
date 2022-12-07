@@ -20,7 +20,11 @@ __pycache__/
 /tmp
 /profiles
 /datasets
+/.idea/.gitignore
+/.idea/chemotion-converter-app.iml
 /chemotion-converter-app.iml
-/.idea/
-playground.py
-run_client.sh
+/.idea/misc.xml
+/.idea/modules.xml
+/playground.py
+/run_client.sh
+/.idea/vcs.xml
