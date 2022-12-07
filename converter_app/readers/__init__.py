@@ -10,6 +10,9 @@ from .jasco import JascoReader
 from .nova import NovaReader
 from .pssession import PsSessionReader
 from .sem import SemReader
+from .aif import AifReader
+from .cif import CifReader
+from .sec import SecReader
 
 logger = logging.getLogger(__name__)
 
@@ -56,3 +59,6 @@ registry.register(PsSessionReader)
 registry.register(JascoReader)
 registry.register(NovaReader)
 registry.register(SemReader)
+registry.register(AifReader)
+registry.register(CifReader)
+registry.register(SecReader)

@@ -114,12 +114,19 @@ class JcampWriter(Writer):
         miny = sys.float_info.max
         maxy = sys.float_info.min
         for x_string, y_string in zip(x, y):
-            x_float, y_float = float(x_string), float(y_string)
+            try:
+                x_float = float(x_string)
+                minx = min(minx, x_float)
+                maxx = max(maxx, x_float)
+            except ValueError:
+                continue
 
-            minx = min(minx, x_float)
-            maxx = max(maxx, x_float)
-            miny = min(miny, y_float)
-            maxy = max(maxy, y_float)
+            try:
+                y_float = float(y_string)
+                miny = min(miny, y_float)
+                maxy = max(maxy, y_float)
+            except ValueError:
+                continue
 
         # write header with xydata specific values
         self.write_header({
