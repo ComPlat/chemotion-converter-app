@@ -75,7 +75,7 @@ class DtaReader(Reader):
             if row.startswith('CURVE'):
                 header = False
 
-            table['metadata']['rows'] = len(table['rows'])
-            table['metadata']['columns'] = len(table['columns'])
+            table['metadata']['rows'] = str(len(table['rows']))
+            table['metadata']['columns'] = str(len(table['columns']))
 
         return tables

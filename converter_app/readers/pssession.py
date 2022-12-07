@@ -68,8 +68,8 @@ class PsSessionReader(Reader):
             table['rows'] = list(map(list, zip(*columns)))
 
             # add number of rows and columns to metadata
-            table['metadata']['rows'] = len(table['rows'])
-            table['metadata']['columns'] = len(table['columns'])
+            table['metadata']['rows'] = str(len(table['rows']))
+            table['metadata']['columns'] = str(len(table['columns']))
 
         return tables
 

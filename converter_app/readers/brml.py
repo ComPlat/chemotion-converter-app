@@ -56,7 +56,7 @@ class BrmlReader(Reader):
 
                                 table['rows'].append(row)
 
-                    table['metadata']['rows'] = len(table['rows'])
-                    table['metadata']['columns'] = len(table['columns'])
+                    table['metadata']['rows'] = str(len(table['rows']))
+                    table['metadata']['columns'] = str(len(table['columns']))
 
         return tables
