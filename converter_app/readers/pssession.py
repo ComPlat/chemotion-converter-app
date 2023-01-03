@@ -19,11 +19,17 @@ class PsSessionReader(Reader):
         logger.debug('result=%s', result)
         return result
 
+    def parse_json(self):
+        try:
+            return json.loads(self.file.content.strip(b'\xfe\xff'))
+        except json.decoder.JSONDecodeError:
+            return {}
+
     def get_tables(self):
         tables = []
+        data = self.parse_json()
 
-        data = json.loads(self.file.content)
-        for measurement in data['measurements']:
+        for measurement in data.get('measurements', []):
             # each measurement is a table
             table = self.append_table(tables)
 
@@ -75,6 +81,6 @@ class PsSessionReader(Reader):
 
     def get_metadata(self):
         metadata = super().get_metadata()
-        data = json.loads(self.file.content)
-        metadata['type'] = data['type']
+        data = self.parse_json()
+        metadata['type'] = data.get('type')
         return metadata
