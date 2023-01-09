@@ -1,0 +1,20 @@
+Hallo
+
+
+test_4
+
+start meta
+a 1
+b 2
+c 3
+
+[start data]
+a b c
+1 2 3
+4 5 6
+
+[start meta table]
+a b c
+w 1 2
+x 10 20
+y 30 40

@@ -9,6 +9,7 @@ from .excel import ExcelReader
 from .jasco import JascoReader
 from .nova import NovaReader
 from .pssession import PsSessionReader
+from .generic import GenericReader
 from .sem import SemReader
 from .aif import AifReader
 from .cif import CifReader
@@ -35,12 +36,12 @@ class Readers:
         sorted_readers = sorted(self._registry['readers'].values(), key=lambda reader: reader.priority)
         return OrderedDict([(reader.identifier, reader) for reader in sorted_readers])
 
-    def match_reader(self, file):
+    def match_reader(self, file, client_id):
         logger.debug('file_name=%s content_type=%s mime_type=%s encoding=%s',
                      file.name, file.content_type, file.mime_type, file.encoding)
 
         for identifier, reader in self.readers.items():
-            reader = reader(file)
+            reader = reader(file, client_id)
             result = reader.check()
 
             # reset file pointer and return the reader it is the one
@@ -62,3 +63,4 @@ registry.register(SemReader)
 registry.register(AifReader)
 registry.register(CifReader)
 registry.register(SecReader)
+registry.register(GenericReader)

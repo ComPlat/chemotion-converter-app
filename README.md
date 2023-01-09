@@ -17,7 +17,7 @@ python3 -m venv env
 source env/bin/activate  # this needs to be done in each new terminal session
 ```
 
-Then, the application and its dependencies can be installed:
+Then, the application and its dependencies can[docker-compose.dev.yml](..%2Fdocker-compose.dev.yml) be installed:
 
 ```bash
 pip install -e .                     # installs the package in editable mode
