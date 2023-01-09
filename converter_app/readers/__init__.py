@@ -59,14 +59,9 @@ registry.register(DtaReader)
 registry.register(PsSessionReader)
 registry.register(JascoReader)
 registry.register(NovaReader)
-<<<<<<< HEAD
 registry.register(SemReader)
 registry.register(AifReader)
 registry.register(CifReader)
 registry.register(SecReader)
 registry.register(GenericReader)
-=======
-registry.register(AifReader)
-registry.register(CifReader)
-registry.register(SecReader)
->>>>>>> converter_sec_aif_cif
+
