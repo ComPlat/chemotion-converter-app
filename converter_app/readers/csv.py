@@ -108,19 +108,19 @@ class CSVReader(Reader):
                         'name': 'Column #{} ({})'.format(idx, name) if name else 'Column #{}'.format(idx)
                     })
 
-            table['metadata']['rows'] = len(table['rows'])
-            table['metadata']['columns'] = len(table['columns'])
+            table['metadata']['rows'] = str(len(table['rows']))
+            table['metadata']['columns'] = str(len(table['columns']))
 
         return tables
 
     def get_metadata(self):
         metadata = super().get_metadata()
         metadata['lineterminator'] = self.lineterminators.get(self.file.csv_dialect.lineterminator, self.file.csv_dialect.lineterminator)
-        metadata['quoting'] = self.file.csv_dialect.quoting
-        metadata['doublequote'] = self.file.csv_dialect.doublequote
+        metadata['quoting'] = str(self.file.csv_dialect.quoting)
+        metadata['doublequote'] = str(self.file.csv_dialect.doublequote)
         metadata['delimiter'] = self.delimiters.get(self.file.csv_dialect.delimiter, self.file.csv_dialect.delimiter)
         metadata['quotechar'] = self.file.csv_dialect.quotechar
-        metadata['skipinitialspace'] = self.file.csv_dialect.skipinitialspace
+        metadata['skipinitialspace'] = str(self.file.csv_dialect.skipinitialspace)
         return metadata
 
     def get_shape(self, row):

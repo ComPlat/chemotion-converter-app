@@ -70,8 +70,8 @@ class ExcelReader(Reader):
                     'name': 'Column #{}'.format(idx)
                 } for idx, value in enumerate(table['rows'][0])]
 
-            table['metadata']['rows'] = len(table['rows'])
-            table['metadata']['columns'] = len(table['columns'])
+            table['metadata']['rows'] = str(len(table['rows']))
+            table['metadata']['columns'] = str(len(table['columns']))
 
         return tables
 
