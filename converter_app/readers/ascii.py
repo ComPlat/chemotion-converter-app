@@ -51,9 +51,15 @@ class AsciiReader(Reader):
 
                     if table['rows'] and count != previous_count:
                         # start a new table if the shape has changed
-                        self.append_table(tables)
+                        table = self.append_table(tables)
 
                     table['rows'].append(float_match)
+                else:
+                    if table['rows']:
+                        # if a table is already there, this must be a new header
+                        table = self.append_table(tables)
+
+                    table['header'].append(row)
 
             previous_count = count
 
