@@ -81,14 +81,11 @@ class JcampWriter(Writer):
 
         # write header with xydata specific values
         self.write_header({
-            'FIRSTX': firstx,
-            'LASTX': lastx,
             'MINX': firstx,
             'MAXX': lastx,
             'MINY': miny,
             'MAXY': maxy,
             'NPOINTS': npoints,
-            'DELTAX': deltax,
             'FIRSTY': y[0],
             'XFACTOR': 1.0,
             'YFACTOR': yfactor,
