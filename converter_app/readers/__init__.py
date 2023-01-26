@@ -4,6 +4,7 @@ from collections import OrderedDict
 from .ascii import AsciiReader
 from .brml import BrmlReader
 from .csv import CSVReader
+from .dsp import DSPReader
 from .dta import DtaReader
 from .excel import ExcelReader
 from .jasco import JascoReader
@@ -54,6 +55,7 @@ registry.register(CSVReader)
 registry.register(AsciiReader)
 registry.register(ExcelReader)
 registry.register(BrmlReader)
+registry.register(DSPReader)
 registry.register(DtaReader)
 registry.register(PsSessionReader)
 registry.register(JascoReader)
