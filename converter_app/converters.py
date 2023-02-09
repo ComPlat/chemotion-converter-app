@@ -65,15 +65,7 @@ class Converter(object):
 
     def match(self):
         for identifier in self.identifiers:
-            if identifier.get('type') == 'fileMetadata':
-                match = self.match_file_metadata(identifier, self.file_metadata)
-            elif identifier.get('type') == 'tableMetadata':
-                match = self.match_table_metadata(identifier, self.input_tables)
-            elif identifier.get('type') == 'tableHeader':
-                match = self.match_table_header(identifier, self.input_tables)
-            else:
-                return False
-
+            match = self.match_identifier(identifier)
             if match is False and not identifier.get('optional'):
                 # return immediately if one (non optional) identifier does not match
                 return False
@@ -86,6 +78,16 @@ class Converter(object):
 
         # if everything matched, return how many identifiers matched
         return len(self.matches)
+
+    def match_identifier(self, identifier):
+        if identifier.get('type') == 'fileMetadata':
+            return self.match_file_metadata(identifier, self.file_metadata)
+        elif identifier.get('type') == 'tableMetadata':
+            return self.match_table_metadata(identifier, self.input_tables)
+        elif identifier.get('type') == 'tableHeader':
+            return self.match_table_header(identifier, self.input_tables)
+        else:
+            return False
 
     def match_file_metadata(self, identifier, metadata):
         input_key = identifier.get('key')
@@ -181,7 +183,15 @@ class Converter(object):
 
     def process(self):
         for output_table_index, output_table in enumerate(self.output_tables):
-            header = output_table.get('header', {})
+            header = {}
+            for key, value in output_table.get('header', {}).items():
+                if isinstance(value, dict):
+                    # this is a table identifier, e.g. FIRSTX
+                    match = self.match_identifier(value)
+                    if match:
+                        header[key] = match['value']
+                else:
+                    header[key] = value
 
             # merge the metadata from the profile (header) with the metadata
             # extracted using the identifiers (see self.match)
