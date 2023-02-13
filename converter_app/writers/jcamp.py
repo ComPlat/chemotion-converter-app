@@ -67,7 +67,11 @@ class JcampWriter(Writer):
 
         for i, string in enumerate(y):
             value = float(string)
-            index = string.index('.')
+            try:
+                index = string.index('.')
+            except ValueError:
+                index = 0
+
             decimal = len(string) - index - 1
 
             miny = min(miny, value)
@@ -77,14 +81,11 @@ class JcampWriter(Writer):
 
         # write header with xydata specific values
         self.write_header({
-            'FIRSTX': firstx,
-            'LASTX': lastx,
             'MINX': firstx,
             'MAXX': lastx,
             'MINY': miny,
             'MAXY': maxy,
             'NPOINTS': npoints,
-            'DELTAX': deltax,
             'FIRSTY': y[0],
             'XFACTOR': 1.0,
             'YFACTOR': yfactor,
@@ -215,13 +216,16 @@ class JcampWriter(Writer):
 
     def write_xydata(self, y, npoints, firstx, deltax, max_decimal):
         for i in range(0, npoints, self.nline):
-            x = float(firstx) + i * deltax
+            x = float(firstx) + i * float(deltax)
 
             line = str(x)
             for j in range(self.nline):
                 if i + j < npoints:
                     string = y[i+j]
-                    index = string.index('.')
+                    try:
+                        index = string.index('.')
+                    except ValueError:
+                        index = 0
                     decimal = len(string) - index - 1
                     line += ',' + string.replace('.', '') + (max_decimal - decimal) * '0'
 
