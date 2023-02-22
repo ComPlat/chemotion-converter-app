@@ -1,6 +1,7 @@
 import logging
 from collections import OrderedDict
 
+from .asc_zip import AscZipReader
 from .ascii import AsciiReader
 from .brml import BrmlReader
 from .csv import CSVReader
