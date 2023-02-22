@@ -53,7 +53,7 @@ class SecReader(Reader):
         return self._is_calibration > 0
 
     def _split_key_val(self, line, table):
-        line_array = line.split('\t')
+        line_array = re.sub(r'\[%]\t', '[%] ', line).split('\t')
         key = None
         line_key = None
         counter = 0
