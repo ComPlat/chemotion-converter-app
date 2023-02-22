@@ -163,21 +163,7 @@ class Reader(object):
         if 'tables' in self.data:
             if isinstance(self.data['tables'], list):
                 for table in self.data['tables']:
-                    if 'start' in table:
-                        if isinstance(table['start'], dict):
-                            pass
-                        else:
-                            self.errors['tables'].append('table.table has to be an object.')
-                    else:
-                        self.errors['table'].append('table.table has to be provided.')
-
-                    if 'content' in table:
-                        if isinstance(table['content'], list):
-                            pass
-                        else:
-                            self.errors['tables'].append('table.content field has to be an object.')
-                    else:
-                        self.errors['content'].append('table.content has to be provided.')
+                    pass
             else:
                 self.errors['tables'].append('tables have to be provided.')
 
@@ -215,8 +201,61 @@ class Reader(object):
 
     @classmethod
     def create(cls, reader_data, client_id):
+
+        def create_identifier():
+            return {
+                "match": "exact",
+                "optional": False,
+                "show": True,
+                "type": "global",
+                "value": ""
+            }
+
         reader_data['identifiers'] = {'meta': {}, 'content': []}
         reader_data['tables'] = []
+        reader_data['commend'] = {
+            'line_commend': create_identifier(),
+            'multi_line_commend_end': create_identifier(),
+            'multi_line_commend_start': create_identifier()
+        }
+        reader_data['delimiters'] = {
+            'ignore_within_quotes': True,
+            'table_delimiters': [],
+            'options': [
+                {
+                    'name': 'semicolon',
+                    'active': True,
+                    'symbol': ';'
+                },
+                {
+                    'name': 'comma',
+                    'active': True,
+                    'symbol': ','
+                },
+                {
+                    'name': 'tab',
+                    'active': True,
+                    'symbol': '\t'
+                },
+                {
+                    'name': 'space',
+                    'active': False,
+                    'symbol': ' '
+                },
+                {
+                    'name': 'equals',
+                    'active': True,
+                    'symbol': '='
+                },
+                {
+                    'name': 'own',
+                    'active': False,
+                    'symbol': ''
+                }
+            ],
+            'free_identifier': create_identifier(),
+        }
+
         return cls(reader_data, client_id)
 
     @classmethod

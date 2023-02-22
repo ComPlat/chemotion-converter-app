@@ -28,3 +28,4 @@ __pycache__/
 /playground.py
 /run_client.sh
 /.idea/vcs.xml
+.idea/

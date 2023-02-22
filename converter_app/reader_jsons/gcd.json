@@ -1,16 +1,24 @@
 {
-  "name": "gcd_reader",
+  "id": "gcd_reader",
   "identifier": {
     "meta": {
       "file_extension": ".txt"
     },
     "content": [
       {
-        "line": 0,
+        "lineNumber": 0,
+        "match": "exact",
+        "optional": false,
+        "show": true,
+        "type": "file",
         "startswith": "[Header]"
       },
       {
         "line": 1,
+        "match": "exact",
+        "optional": false,
+        "show": true,
+        "type": "file",
         "startswith": "Application Name"
       }
     ]

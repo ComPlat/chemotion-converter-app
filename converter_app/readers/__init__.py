@@ -15,6 +15,7 @@ from .sem import SemReader
 from .aif import AifReader
 from .cif import CifReader
 from .sec import SecReader
+from .asc_zip import AscZipReader
 
 logger = logging.getLogger(__name__)
 
@@ -66,4 +67,5 @@ registry.register(AifReader)
 registry.register(CifReader)
 registry.register(SecReader)
 registry.register(GenericReader)
+registry.register(AscZipReader)
 
