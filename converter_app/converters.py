@@ -70,6 +70,11 @@ class Converter(object):
                 # return immediately if one (non optional) identifier does not match
                 return False
 
+            if match and 'value' in match:
+                match_operations = identifier.get('operations', [])
+                for match_operation in match_operations:
+                    match['value'] = self.run_identifier_operation(match['value'], match_operation)
+
             # store match
             self.matches.append({
                 'identifier': identifier,
@@ -205,10 +210,6 @@ class Converter(object):
                         output_table_index == match_output_table_index or
                         match_output_table_index is None
                     ):
-                        match_operations = match.get('identifier', {}).get('operations', [])
-                        for match_operation in match_operations:
-                            match_value = self.run_identifier_operation(match_value, match_operation)
-
                         header[match_output_key] = match_value
 
             x_column = output_table.get('table', {}).get('xColumn')
