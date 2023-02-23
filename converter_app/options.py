@@ -42,6 +42,7 @@ XUNITS = (
     'KILOGRAM',
     'MICROMETERS',
     'MILIMETERS',
+    'MILLILITERS',
     'MINUTES',
     'm/z',
     'MOLECULAR MASS / DA',
