@@ -20,6 +20,12 @@ class GenericReader(Readerbase):
     mode = None
     _commend_mode = False
 
+
+    def get_metadata(self):
+        res = super(GenericReader, self).get_metadata()
+        res['reader'] = self.identifier
+        return res
+
     def _check_identifyer(self, s, i):
         if (i.get('match') == 'exact'):
             return i.get('value') == s

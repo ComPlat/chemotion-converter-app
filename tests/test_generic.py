@@ -41,7 +41,7 @@ def test_result_reader_cif_generic(app, reader_params):
         assert reader.check()
         reader.process()
         reader.validate()
-        expected_meta = {'file_name': 'SG-V3545-6-13_small.cif', 'content_type': 'chemical/x-cif', 'mime_type': 'text/plain', 'extension': '.cif', 'reader': 'GenericReader'}
+        expected_meta = {'file_name': 'SG-V3545-6-13_small.cif', 'content_type': 'chemical/x-cif', 'mime_type': 'text/plain', 'extension': '.cif', 'reader': 'generic_reader[Test_1]'}
         expected_meta['uploaded'] = reader.metadata['uploaded']
         TestCase().assertDictEqual(expected_meta, reader.metadata)
 
