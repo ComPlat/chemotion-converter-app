@@ -30,5 +30,3 @@ __pycache__/
 /.idea/vcs.xml
 .idea/
 /readers/
-
-converter_app/reader_jsons/

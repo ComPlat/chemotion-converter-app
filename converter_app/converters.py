@@ -110,9 +110,9 @@ class Converter(object):
         input_table_index = identifier.get('tableIndex')
         input_table = self.get_input_table(input_table_index, input_tables)
         if input_table is not None:
-            input_key = identifier.get('key')
-            input_value = input_table.get('metadata', {}).get(input_key)
-            if input_key and input_value:
+            input_key = identifier.get('key', None)
+            input_value = input_table.get('metadata', {}).get(input_key, None)
+            if input_key is not None and input_value is not None:
                 value = self.match_value(identifier, input_value)
                 if value:
                     return {
@@ -180,7 +180,7 @@ class Converter(object):
                 return value if value else False
 
             else:  # match == 'exact'
-                result = (value == identifier.get('value'))
+                result = (value == str(identifier.get('value')))
                 logger.debug('match_value identifier="%s", value="%s" result=%s', identifier.get('value'), value, result)
                 return value if result else False
         else:
