@@ -114,8 +114,8 @@ class SecReader(Reader):
             if line.endswith('start :') or not self._handle_line(line, table):
                 if self._is_table_empty:
                     tables.pop()
-                table['metadata']['rows'] = len(table['rows'])
-                table['metadata']['columns'] = len(table['columns'])
+                table['metadata']['rows'] = str(len(table['rows']))
+                table['metadata']['columns'] = str(len(table['columns']))
                 table_name = line.replace('start :', '') or 'Unnamed'
 
                 table = self._append_table(tables)
