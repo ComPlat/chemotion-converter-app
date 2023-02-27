@@ -26,6 +26,8 @@ class GenericReader(Readerbase):
         if (i.get('match') == 'regex'):
             rv = re.compile(i.get('value'))
             return rv.search(s)
+        if (i.get('match') == 'any'):
+            return True
         return False
 
     def check(self):
@@ -39,6 +41,9 @@ class GenericReader(Readerbase):
                 if file_ext == [''] or self.file.suffix in file_ext:
                     result = True
                     for line_check in parser_dict.get('identifiers', {}).get('content', []):
+                        if len(file_lines) <= line_check['lineNumber']:
+                            result = False
+                            break
                         line = file_lines[line_check['lineNumber'] - 1]
                         row = line.decode(self.file.encoding).rstrip()
                         if not self._check_identifyer(row, line_check):
@@ -48,7 +53,7 @@ class GenericReader(Readerbase):
                     if result:
                         self.parser_dict = parser_dict
                         self.lines = file_lines
-                        self.identifier = parser_dict['title']
+                        self.identifier += '[%s]' % parser_dict['title']
                         logger.debug('result=%s', result)
                         return result
 
@@ -136,7 +141,7 @@ class GenericReader(Readerbase):
                     if len(res) == 1:
                         return None
                 for idx in all_cols:
-                    res = re.findall(table.get('number_value_regex'), table.get('number_value_regex'))
+                    res = re.findall(table.get('number_value_regex'), row_list[idx])
                     if len(res) != 1:
                         return None
                     row_list[idx] = self.get_value(res[0][0])

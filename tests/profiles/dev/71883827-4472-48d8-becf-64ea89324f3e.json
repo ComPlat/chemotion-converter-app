@@ -1,0 +1,1153 @@
+{
+    "data": {
+        "metadata": {
+            "content_type": "text/plain",
+            "extension": ".TXT",
+            "file_name": "2021-07-22 MS139.TXT",
+            "mime_type": "text/plain",
+            "reader": "SecReader",
+            "uploaded": "2022-11-30T15:55:22.980245"
+        },
+        "tables": [
+            {
+                "columns": [],
+                "header": [
+                    "Sample: Vial   1: MS139 - 1",
+                    "Method settings: C:\\WINGPC_8#1\\PSS.ChromPilot.Method.Instrument.2.xml",
+                    "Sequence table: C:\\WINGPC_8#1\\PSS.ChromPilot.Sequence.Instrument.2.xml",
+                    "Inject date: Friday       23.07.21   02:05:58",
+                    "Inject volume:  50.000",
+                    "Inject volume_unit: ul",
+                    "Concentration:   2.000",
+                    "Concentration_unit: g/l",
+                    "Project: C:\\DATA\\AKT THF Tosoh\\20210722",
+                    "Calibration: C:\\DATA\\calibration\\20210528-SDV_THF_PMMA.CAL",
+                    "Method: C:\\WINGPC_8#1\\Instrument2.SET",
+                    "Export file: X:\\Marvin Subarew\\AETMC Polymerization\\MS139\\2021-07-22 MS139.TXT",
+                    "Operator: itcp-akt",
+                    "Calibration MH-K:  1.000000",
+                    "Calibration MH-K_unit: ml/g",
+                    "(Calibration MH-K) univ. Calibration MH-K:  0.000000",
+                    "(Calibration MH-K) univ. Calibration MH-K_unit: ml/g",
+                    "Calibration MH-A:  0.000000",
+                    "Calibration MH-A_unit: -",
+                    "(Calibration MH-A) univ. Calibration MH-A:  0.000000",
+                    "(Calibration MH-A) univ. Calibration MH-A_unit: -",
+                    "Internal Standard Calibration:  50.000",
+                    "Internal Standard Calibration_unit: ml",
+                    "Internal Standard Acquisition: -------",
+                    "Internal Standard Acquisition_unit: ml",
+                    "Data Interval:   1.000",
+                    "Data Interval_unit: s",
+                    "Eluent: THF",
+                    "Flow:   1.000",
+                    "Flow_unit: ml/min",
+                    "Column 1: PSS SDV 5\u00b5m",
+                    "(Column 1) Temperature:  35.000",
+                    "(Column 1) Temperature_unit: C",
+                    "Column 2: PSS SDV 5\u00b5m",
+                    "(Column 2) Temperature:  35.000",
+                    "(Column 2) Temperature_unit: C",
+                    "Column 3: PSS SDV 5\u00b5m",
+                    "(Column 3) Temperature:  35.000",
+                    "(Column 3) Temperature_unit: C",
+                    "Detector 1: I2: RI Detector 1, RI Signal",
+                    "(Detector 1) Delay:   0.000",
+                    "(Detector 1) Delay_unit: min",
+                    "Detector 2: I2: UV Detector 1, UV Signal",
+                    "(Detector 2) Delay:   0.033",
+                    "(Detector 2) Delay_unit: min",
+                    "Detector 3: I2: Pump 1, Sample Pump Pressure",
+                    "(Detector 3) Delay:   0.000",
+                    "(Detector 3) Delay_unit: min",
+                    "Baseline from:  20.855",
+                    "(Baseline from) to:  27.060",
+                    "(Baseline from) to_unit: ml",
+                    "Integration from:  20.855",
+                    "(Integration from) to:  27.060",
+                    "(Integration from) to_unit: ml",
+                    " I2: RI Detector 1, RI Signal",
+                    "Mn:  6.999E+3",
+                    "Mn_unit:  7.997E+3",
+                    "Mn_unit_unit: g/mol",
+                    "Mw:  9.417E+3",
+                    "Mw_unit:  8.643E+3",
+                    "Mw_unit_unit: g/mol",
+                    "Mz:  1.195E+4",
+                    "Mz_unit:  9.348E+3",
+                    "Mz_unit_unit: g/mol",
+                    "M(z+1):  1.448E+4",
+                    "M(z+1)_unit:  1.011E+4",
+                    "M(z+1)_unit_unit: g/mol",
+                    "Mv:  0.000E+0",
+                    "Mv_unit:  0.000E+0",
+                    "Mv_unit_unit: g/mol",
+                    "D:  1.346E+0",
+                    "D_unit:  1.081E+0",
+                    "[n]:  0.000E+0",
+                    "[n]_unit:  0.000E+0",
+                    "[n]_unit_unit: ml/g",
+                    "Vp:  2.301E+1",
+                    "Vp_unit:  2.319E+1",
+                    "Vp_unit_unit: ml",
+                    "Mp:  9.724E+3",
+                    "Mp_unit:  8.736E+3",
+                    "Mp_unit_unit: g/mol",
+                    "A:  5.192E+1",
+                    "A_unit:  6.606E-1",
+                    "A_unit_unit: ml*V",
+                    "< 1175:       0.00",
+                    "< 1175_unit:       0.00",
+                    "< 1175_unit_unit: %",
+                    "w%:     100.00",
+                    "w%_unit:     100.00",
+                    "w%_unit_unit: %",
+                    "> 38290:       0.00",
+                    "> 38290_unit:       0.00",
+                    "> 38290_unit_unit: %"
+                ],
+                "metadata": {
+                    " - ": "I2: RI Detector 1, RI Signal",
+                    "(Baseline from) to": " 27.060",
+                    "(Baseline from) to_unit": "ml",
+                    "(Calibration MH-A) univ. Calibration MH-A": " 0.000000",
+                    "(Calibration MH-A) univ. Calibration MH-A_unit": "-",
+                    "(Calibration MH-K) univ. Calibration MH-K": " 0.000000",
+                    "(Calibration MH-K) univ. Calibration MH-K_unit": "ml/g",
+                    "(Column 1) Temperature": " 35.000",
+                    "(Column 1) Temperature_unit": "C",
+                    "(Column 2) Temperature": " 35.000",
+                    "(Column 2) Temperature_unit": "C",
+                    "(Column 3) Temperature": " 35.000",
+                    "(Column 3) Temperature_unit": "C",
+                    "(Detector 1) Delay": "  0.000",
+                    "(Detector 1) Delay_unit": "min",
+                    "(Detector 2) Delay": "  0.033",
+                    "(Detector 2) Delay_unit": "min",
+                    "(Detector 3) Delay": "  0.000",
+                    "(Detector 3) Delay_unit": "min",
+                    "(Integration from) to": " 27.060",
+                    "(Integration from) to_unit": "ml",
+                    "< 1175": "      0.00",
+                    "< 1175_unit": "      0.00",
+                    "< 1175_unit_unit": "%",
+                    "> 38290": "      0.00",
+                    "> 38290_unit": "      0.00",
+                    "> 38290_unit_unit": "%",
+                    "A": " 5.192E+1",
+                    "A_unit": " 6.606E-1",
+                    "A_unit_unit": "ml*V",
+                    "Baseline from": " 20.855",
+                    "Calibration": "C:\\DATA\\calibration\\20210528-SDV_THF_PMMA.CAL",
+                    "Calibration MH-A": " 0.000000",
+                    "Calibration MH-A_unit": "-",
+                    "Calibration MH-K": " 1.000000",
+                    "Calibration MH-K_unit": "ml/g",
+                    "Column 1": "PSS SDV 5\u00b5m",
+                    "Column 2": "PSS SDV 5\u00b5m",
+                    "Column 3": "PSS SDV 5\u00b5m",
+                    "Concentration": "  2.000",
+                    "Concentration_unit": "g/l",
+                    "D": " 1.346E+0",
+                    "D_unit": " 1.081E+0",
+                    "Data Interval": "  1.000",
+                    "Data Interval_unit": "s",
+                    "Detector 1": "I2: RI Detector 1, RI Signal",
+                    "Detector 2": "I2: UV Detector 1, UV Signal",
+                    "Detector 3": "I2: Pump 1, Sample Pump Pressure",
+                    "Eluent": "THF",
+                    "Export file": "X:\\Marvin Subarew\\AETMC Polymerization\\MS139\\2021-07-22 MS139.TXT",
+                    "Flow": "  1.000",
+                    "Flow_unit": "ml/min",
+                    "Inject date": "Friday       23.07.21   02:05:58",
+                    "Inject volume": " 50.000",
+                    "Inject volume_unit": "ul",
+                    "Integration from": " 20.855",
+                    "Internal Standard Acquisition": "-------",
+                    "Internal Standard Acquisition_unit": "ml",
+                    "Internal Standard Calibration": " 50.000",
+                    "Internal Standard Calibration_unit": "ml",
+                    "M(z+1)": " 1.448E+4",
+                    "M(z+1)_unit": " 1.011E+4",
+                    "M(z+1)_unit_unit": "g/mol",
+                    "Method": "C:\\WINGPC_8#1\\Instrument2.SET",
+                    "Method settings": "C:\\WINGPC_8#1\\PSS.ChromPilot.Method.Instrument.2.xml",
+                    "Mn": " 6.999E+3",
+                    "Mn_unit": " 7.997E+3",
+                    "Mn_unit_unit": "g/mol",
+                    "Mp": " 9.724E+3",
+                    "Mp_unit": " 8.736E+3",
+                    "Mp_unit_unit": "g/mol",
+                    "Mv": " 0.000E+0",
+                    "Mv_unit": " 0.000E+0",
+                    "Mv_unit_unit": "g/mol",
+                    "Mw": " 9.417E+3",
+                    "Mw_unit": " 8.643E+3",
+                    "Mw_unit_unit": "g/mol",
+                    "Mz": " 1.195E+4",
+                    "Mz_unit": " 9.348E+3",
+                    "Mz_unit_unit": "g/mol",
+                    "Operator": "itcp-akt",
+                    "Project": "C:\\DATA\\AKT THF Tosoh\\20210722",
+                    "Sample": "Vial   1: MS139 - 1",
+                    "Sequence table": "C:\\WINGPC_8#1\\PSS.ChromPilot.Sequence.Instrument.2.xml",
+                    "Vp": " 2.301E+1",
+                    "Vp_unit": " 2.319E+1",
+                    "Vp_unit_unit": "ml",
+                    "[n]": " 0.000E+0",
+                    "[n]_unit": " 0.000E+0",
+                    "[n]_unit_unit": "ml/g",
+                    "columns": 0,
+                    "rows": 0,
+                    "w%": "    100.00",
+                    "w%_unit": "    100.00",
+                    "w%_unit_unit": "%"
+                },
+                "rows": []
+            },
+            {
+                "columns": [],
+                "header": [
+                    "Calibration Coefficients:",
+                    "Vol. min : 16.216170",
+                    "Vol. max : 27.799500",
+                    "R : 9.999266e-01",
+                    "Fit : Polynom 5",
+                    "Const.: 7.515388e+01",
+                    "Coef.2: -1.441337e+01",
+                    "Coef.3: 1.261567e+00",
+                    "Coef.4: -5.720729e-02",
+                    "Coef.5: 1.308085e-03",
+                    "Coef.6: -1.196962e-05",
+                    "Coef.7: 0.000000e+00",
+                    "Coef.8: 0.000000e+00"
+                ],
+                "metadata": {
+                    "Coef.2": " -1.441337e+01",
+                    "Coef.3": " 1.261567e+00",
+                    "Coef.4": " -5.720729e-02",
+                    "Coef.5": " 1.308085e-03",
+                    "Coef.6": " -1.196962e-05",
+                    "Coef.7": " 0.000000e+00",
+                    "Coef.8": " 0.000000e+00",
+                    "Const.": " 7.515388e+01",
+                    "Fit ": " Polynom 5",
+                    "R ": " 9.999266e-01",
+                    "Vol. max ": " 27.799500",
+                    "Vol. min ": " 16.216170",
+                    "columns": 0,
+                    "rows": 0,
+                    "table_name": "Calibration Coefficients:"
+                },
+                "rows": []
+            },
+            {
+                "columns": [
+                    {
+                        "key": "0",
+                        "name": "Area"
+                    },
+                    {
+                        "key": "1",
+                        "name": "Name"
+                    },
+                    {
+                        "key": "2",
+                        "name": "from"
+                    },
+                    {
+                        "key": "3",
+                        "name": "to"
+                    },
+                    {
+                        "key": "4",
+                        "name": "Unit"
+                    }
+                ],
+                "header": [
+                    "Multi area report ",
+                    "Sample: Vial   1: MS139 - 1",
+                    "Calibration: C:\\DATA\\calibration\\20210528-SDV_THF_PMMA.CAL",
+                    "Print Date: Friday       23.07.21   09:19:39",
+                    "Project: C:\\DATA\\AKT THF Tosoh\\20210722",
+                    "Method: C:\\WINGPC_8#1\\Instrument2"
+                ],
+                "metadata": {
+                    "Calibration": "C:\\DATA\\calibration\\20210528-SDV_THF_PMMA.CAL",
+                    "Method": "C:\\WINGPC_8#1\\Instrument2",
+                    "Print Date": "Friday       23.07.21   09:19:39",
+                    "Project": "C:\\DATA\\AKT THF Tosoh\\20210722",
+                    "Sample": "Vial   1: MS139 - 1",
+                    "columns": 5,
+                    "rows": 8,
+                    "table_name": "Multi area report "
+                },
+                "rows": [
+                    [
+                        "1",
+                        "",
+                        "",
+                        "",
+                        ""
+                    ],
+                    [
+                        "2",
+                        "",
+                        "",
+                        "",
+                        ""
+                    ],
+                    [
+                        "3",
+                        "",
+                        "",
+                        "",
+                        ""
+                    ],
+                    [
+                        "4",
+                        "",
+                        "",
+                        "",
+                        ""
+                    ],
+                    [
+                        "5",
+                        "",
+                        "",
+                        "",
+                        ""
+                    ],
+                    [
+                        "6",
+                        "",
+                        "",
+                        "",
+                        ""
+                    ],
+                    [
+                        "7",
+                        "",
+                        "",
+                        "",
+                        ""
+                    ],
+                    [
+                        "8",
+                        "",
+                        "",
+                        "",
+                        ""
+                    ]
+                ]
+            },
+            {
+                "columns": [
+                    {
+                        "key": "0",
+                        "name": " "
+                    },
+                    {
+                        "key": "1",
+                        "name": "Set 1"
+                    },
+                    {
+                        "key": "2",
+                        "name": "Set 2"
+                    },
+                    {
+                        "key": "3",
+                        "name": "Set 3"
+                    },
+                    {
+                        "key": "4",
+                        "name": "Set 4"
+                    },
+                    {
+                        "key": "5",
+                        "name": "Set 5"
+                    },
+                    {
+                        "key": "6",
+                        "name": "Set 6"
+                    },
+                    {
+                        "key": "7",
+                        "name": "Set 7"
+                    },
+                    {
+                        "key": "8",
+                        "name": "Set 8"
+                    }
+                ],
+                "header": [
+                    "Unnamed"
+                ],
+                "metadata": {
+                    "columns": 9,
+                    "rows": 8,
+                    "table_name": "Unnamed"
+                },
+                "rows": [
+                    [
+                        "",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                        "-"
+                    ],
+                    [
+                        "",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                        "-"
+                    ],
+                    [
+                        "",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                        "-"
+                    ],
+                    [
+                        "",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                        "-"
+                    ],
+                    [
+                        "",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                        "-"
+                    ],
+                    [
+                        "",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                        "-"
+                    ],
+                    [
+                        "",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                        "-"
+                    ],
+                    [
+                        "",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                        "-"
+                    ]
+                ]
+            },
+            {
+                "columns": [],
+                "header": [
+                    "Unnamed"
+                ],
+                "metadata": {
+                    "columns": 0,
+                    "rows": 0,
+                    "table_name": "Unnamed"
+                },
+                "rows": []
+            },
+            {
+                "columns": [
+                    {
+                        "key": "0",
+                        "name": "Time"
+                    },
+                    {
+                        "key": "1",
+                        "name": "I2: RI Detector 1, RI Signal"
+                    },
+                    {
+                        "key": "2",
+                        "name": "I2: UV Detector 1, UV Signal"
+                    },
+                    {
+                        "key": "3",
+                        "name": "Time"
+                    }
+                ],
+                "header": [
+                    "RAW"
+                ],
+                "metadata": {
+                    "columns": 4,
+                    "rows": 2400,
+                    "table_name": "RAW"
+                },
+                "rows": [
+                    [
+                        "0.00000E+0",
+                        "4.84484E-2",
+                        "-4.91658E-1",
+                        "02:05:58:04"
+                    ],
+                    [
+                        "1.66667E-2",
+                        "5.92478E-2",
+                        "-4.96613E-1",
+                        "02:05:59:04"
+                    ],
+                    [
+                        "3.33333E-2",
+                        "5.93170E-2",
+                        "-5.02558E-1",
+                        "02:06:00:04"
+                    ],
+                    [
+                        "5.00000E-2",
+                        "5.86064E-2",
+                        "-5.00128E-1",
+                        "02:06:01:04"
+                    ],
+                    [
+                        "6.66667E-2",
+                        "5.67800E-2",
+                        "-4.98998E-1",
+                        "02:06:02:04"
+                    ],
+                    [
+                        "8.33333E-2",
+                        "6.23032E-2",
+                        "-5.00891E-1",
+                        "02:06:03:04"
+                    ],
+                    [
+                        "1.00000E-1",
+                        "6.71144E-2",
+                        "-4.99485E-1",
+                        "02:06:04:04"
+                    ],
+                    [
+                        "1.16667E-1",
+                        "6.71120E-2",
+                        "-4.99678E-1",
+                        "02:06:05:04"
+                    ],
+                    [
+                        "1.33333E-1",
+                        "6.97904E-2",
+                        "-4.96942E-1",
+                        "02:06:06:04"
+                    ],
+                    [
+                        "1.50000E-1",
+                        "6.48520E-2",
+                        "-4.96882E-1",
+                        "02:06:07:04"
+                    ]
+                ]
+            },
+            {
+                "columns": [
+                    {
+                        "key": "0",
+                        "name": "Volume"
+                    },
+                    {
+                        "key": "1",
+                        "name": "Molar mass"
+                    },
+                    {
+                        "key": "2",
+                        "name": "I2: RI Detector 1, RI Signal"
+                    },
+                    {
+                        "key": "3",
+                        "name": "Integral[%]"
+                    },
+                    {
+                        "key": "4",
+                        "name": "I2: UV Detector 1, UV Signal"
+                    },
+                    {
+                        "key": "5",
+                        "name": "Integral[%]"
+                    }
+                ],
+                "header": [
+                    "ELU"
+                ],
+                "metadata": {
+                    "columns": 6,
+                    "rows": 376,
+                    "table_name": "ELU"
+                },
+                "rows": [
+                    [
+                        "2.08555E+1",
+                        "3.82890E+4",
+                        "0.00000E+0",
+                        "1.00000E+2",
+                        "0.00000E+0",
+                        "1.00000E+2"
+                    ],
+                    [
+                        "2.08720E+1",
+                        "3.78565E+4",
+                        "5.14929E-5",
+                        "1.00000E+2",
+                        "6.47883E-3",
+                        "9.99919E+1"
+                    ],
+                    [
+                        "2.08886E+1",
+                        "3.74294E+4",
+                        "9.99062E-3",
+                        "9.99998E+1",
+                        "9.23873E-4",
+                        "9.99826E+1"
+                    ],
+                    [
+                        "2.09051E+1",
+                        "3.70076E+4",
+                        "8.60308E-3",
+                        "9.99995E+1",
+                        "0.00000E+0",
+                        "9.99815E+1"
+                    ],
+                    [
+                        "2.09217E+1",
+                        "3.65910E+4",
+                        "3.07814E-2",
+                        "9.99989E+1",
+                        "0.00000E+0",
+                        "9.99815E+1"
+                    ],
+                    [
+                        "2.09382E+1",
+                        "3.61795E+4",
+                        "3.11942E-2",
+                        "9.99979E+1",
+                        "0.00000E+0",
+                        "9.99815E+1"
+                    ],
+                    [
+                        "2.09548E+1",
+                        "3.57731E+4",
+                        "4.60153E-2",
+                        "9.99967E+1",
+                        "0.00000E+0",
+                        "9.99815E+1"
+                    ],
+                    [
+                        "2.09713E+1",
+                        "3.53718E+4",
+                        "4.82632E-2",
+                        "9.99952E+1",
+                        "0.00000E+0",
+                        "9.99815E+1"
+                    ],
+                    [
+                        "2.09878E+1",
+                        "3.49754E+4",
+                        "7.53493E-2",
+                        "9.99932E+1",
+                        "0.00000E+0",
+                        "9.99815E+1"
+                    ],
+                    [
+                        "2.10044E+1",
+                        "3.45839E+4",
+                        "8.82731E-2",
+                        "9.99906E+1",
+                        "0.00000E+0",
+                        "9.99815E+1"
+                    ]
+                ]
+            },
+            {
+                "columns": [
+                    {
+                        "key": "0",
+                        "name": "Molar mass"
+                    },
+                    {
+                        "key": "1",
+                        "name": "I2: RI Detector 1, RI Signal"
+                    },
+                    {
+                        "key": "2",
+                        "name": "Integral[%]"
+                    },
+                    {
+                        "key": "3",
+                        "name": "I2: UV Detector 1, UV Signal"
+                    },
+                    {
+                        "key": "4",
+                        "name": "Integral[%]"
+                    }
+                ],
+                "header": [
+                    "MWD"
+                ],
+                "metadata": {
+                    "columns": 5,
+                    "rows": 376,
+                    "table_name": "MWD"
+                },
+                "rows": [
+                    [
+                        "1.17562E+3",
+                        "0.00000E+0",
+                        "0.00000E+0",
+                        "3.82806E-16",
+                        "1.54430E-16"
+                    ],
+                    [
+                        "1.18659E+3",
+                        "1.85399E-3",
+                        "7.47931E-4",
+                        "0.00000E+0",
+                        "1.54430E-16"
+                    ],
+                    [
+                        "1.19766E+3",
+                        "6.40963E-3",
+                        "3.33369E-3",
+                        "0.00000E+0",
+                        "1.54430E-16"
+                    ],
+                    [
+                        "1.20884E+3",
+                        "9.40598E-3",
+                        "7.12822E-3",
+                        "0.00000E+0",
+                        "1.54430E-16"
+                    ],
+                    [
+                        "1.22012E+3",
+                        "1.22682E-2",
+                        "1.20774E-2",
+                        "0.00000E+0",
+                        "1.54430E-16"
+                    ],
+                    [
+                        "1.23151E+3",
+                        "1.50615E-2",
+                        "1.81535E-2",
+                        "0.00000E+0",
+                        "1.54430E-16"
+                    ],
+                    [
+                        "1.24300E+3",
+                        "1.92948E-2",
+                        "2.59374E-2",
+                        "0.00000E+0",
+                        "1.54430E-16"
+                    ],
+                    [
+                        "1.25460E+3",
+                        "2.17525E-2",
+                        "3.47127E-2",
+                        "0.00000E+0",
+                        "1.54430E-16"
+                    ],
+                    [
+                        "1.26631E+3",
+                        "2.49598E-2",
+                        "4.47819E-2",
+                        "0.00000E+0",
+                        "1.54430E-16"
+                    ],
+                    [
+                        "1.27812E+3",
+                        "2.67075E-2",
+                        "5.55561E-2",
+                        "0.00000E+0",
+                        "1.54430E-16"
+                    ]
+                ]
+            }
+        ]
+    },
+    "description": "Size Exclusion Chromatography with two Detector Outputs",
+    "id": "71883827-4472-48d8-becf-64ea89324f3e",
+    "identifiers": [
+        {
+            "key": "Sample",
+            "match": "any",
+            "optional": true,
+            "outputKey": "sample",
+            "outputLayer": "sam_details",
+            "outputTableIndex": 0,
+            "tableIndex": 0,
+            "type": "tableMetadata",
+            "value": "Vial   1: MS139 - 1"
+        },
+        {
+            "key": "Export file",
+            "match": "any",
+            "optional": true,
+            "outputKey": "comments",
+            "outputLayer": "gener",
+            "outputTableIndex": 0,
+            "tableIndex": 0,
+            "type": "tableMetadata",
+            "value": "X:\\Marvin Subarew\\AETMC Polymerization\\MS139\\2021-07-22 MS139.TXT"
+        },
+        {
+            "key": "Mn",
+            "match": "any",
+            "optional": true,
+            "outputKey": "mn",
+            "outputLayer": "eval_data_detec_i",
+            "outputTableIndex": 0,
+            "tableIndex": 0,
+            "type": "tableMetadata",
+            "value": " 6.999E+3"
+        },
+        {
+            "key": "Mn_unit",
+            "match": "any",
+            "optional": true,
+            "outputKey": "mn",
+            "outputLayer": "eval_data_detec_ii",
+            "outputTableIndex": 0,
+            "tableIndex": 0,
+            "type": "tableMetadata",
+            "value": " 7.997E+3"
+        },
+        {
+            "key": "Mw",
+            "match": "any",
+            "optional": true,
+            "outputKey": "mw",
+            "outputLayer": "eval_data_detec_i",
+            "outputTableIndex": 0,
+            "tableIndex": 0,
+            "type": "tableMetadata",
+            "value": " 9.417E+3"
+        },
+        {
+            "key": "Mw_unit",
+            "match": "any",
+            "optional": true,
+            "outputKey": "mw",
+            "outputLayer": "eval_data_detec_ii",
+            "outputTableIndex": 0,
+            "tableIndex": 0,
+            "type": "tableMetadata",
+            "value": " 8.643E+3"
+        },
+        {
+            "key": "D",
+            "match": "any",
+            "optional": true,
+            "outputKey": "d",
+            "outputLayer": "eval_data_detec_i",
+            "outputTableIndex": 0,
+            "tableIndex": 0,
+            "type": "tableMetadata",
+            "value": " 1.346E+0"
+        },
+        {
+            "key": "D_unit",
+            "match": "any",
+            "optional": true,
+            "outputKey": "d",
+            "outputLayer": "eval_data_detec_ii",
+            "outputTableIndex": 0,
+            "tableIndex": 0,
+            "type": "tableMetadata",
+            "value": " 1.081E+0"
+        },
+        {
+            "key": "Mp",
+            "match": "any",
+            "optional": true,
+            "outputKey": "mp",
+            "outputLayer": "eval_data_detec_i",
+            "outputTableIndex": 0,
+            "tableIndex": 0,
+            "type": "tableMetadata",
+            "value": " 9.724E+3"
+        },
+        {
+            "key": "Mp_unit",
+            "match": "any",
+            "optional": true,
+            "outputKey": "mp",
+            "outputLayer": "eval_data_detec_ii",
+            "outputTableIndex": 0,
+            "tableIndex": 0,
+            "type": "tableMetadata",
+            "value": " 8.736E+3"
+        },
+        {
+            "key": "Detector 1",
+            "match": "any",
+            "optional": true,
+            "outputKey": "detec1",
+            "outputLayer": "device",
+            "outputTableIndex": 0,
+            "tableIndex": 0,
+            "type": "tableMetadata",
+            "value": "I2: RI Detector 1, RI Signal"
+        },
+        {
+            "key": "Detector 2",
+            "match": "any",
+            "optional": true,
+            "outputKey": "detec2",
+            "outputLayer": "device",
+            "outputTableIndex": 0,
+            "tableIndex": 0,
+            "type": "tableMetadata",
+            "value": "I2: UV Detector 1, UV Signal"
+        },
+        {
+            "key": "Detector 3",
+            "match": "any",
+            "optional": true,
+            "outputKey": "detec3",
+            "outputLayer": "device",
+            "outputTableIndex": 0,
+            "tableIndex": 0,
+            "type": "tableMetadata",
+            "value": "I2: Pump 1, Sample Pump Pressure"
+        },
+        {
+            "key": "reader",
+            "match": "exact",
+            "optional": false,
+            "type": "fileMetadata",
+            "value": "SecReader"
+        },
+        {
+            "key": "table_name",
+            "match": "exact",
+            "optional": false,
+            "tableIndex": 7,
+            "type": "tableMetadata",
+            "value": "MWD"
+        },
+        {
+            "key": "Column 1",
+            "match": "any",
+            "optional": true,
+            "outputKey": "col1",
+            "outputLayer": "add_equip",
+            "outputTableIndex": 0,
+            "tableIndex": 0,
+            "type": "tableMetadata",
+            "value": "PSS SDV 5\u00b5m"
+        },
+        {
+            "key": "Column 2",
+            "match": "any",
+            "optional": true,
+            "outputKey": "col2",
+            "outputLayer": "add_equip",
+            "outputTableIndex": 0,
+            "tableIndex": 0,
+            "type": "tableMetadata",
+            "value": "PSS SDV 5\u00b5m"
+        },
+        {
+            "key": "Column 3",
+            "match": "any",
+            "optional": true,
+            "outputKey": "col3",
+            "outputLayer": "add_equip",
+            "outputTableIndex": 0,
+            "tableIndex": 0,
+            "type": "tableMetadata",
+            "value": "PSS SDV 5\u00b5m"
+        },
+        {
+            "key": "Inject volume",
+            "match": "any",
+            "optional": true,
+            "outputKey": "in_vol",
+            "outputLayer": "meta",
+            "outputTableIndex": 0,
+            "tableIndex": 0,
+            "type": "tableMetadata",
+            "value": " 50.000"
+        },
+        {
+            "key": "Eluent",
+            "match": "any",
+            "optional": true,
+            "outputKey": "eluent",
+            "outputLayer": "meta",
+            "outputTableIndex": 0,
+            "tableIndex": 0,
+            "type": "tableMetadata",
+            "value": "THF"
+        },
+        {
+            "key": "Flow",
+            "match": "any",
+            "optional": true,
+            "outputKey": "flow",
+            "outputLayer": "meta",
+            "outputTableIndex": 0,
+            "tableIndex": 0,
+            "type": "tableMetadata",
+            "value": "  1.000"
+        },
+        {
+            "key": "(Column 1) Temperature",
+            "match": "any",
+            "optional": true,
+            "outputKey": "temperature",
+            "outputLayer": "meta",
+            "outputTableIndex": 0,
+            "tableIndex": 0,
+            "type": "tableMetadata",
+            "value": " 35.000"
+        },
+        {
+            "key": "Inject date",
+            "match": "regex",
+            "optional": true,
+            "outputKey": "date",
+            "outputLayer": "gener",
+            "outputTableIndex": 0,
+            "tableIndex": 0,
+            "type": "tableMetadata",
+            "value": "^\\S+\\s(.*?)(\\s\\d+\\:\\d+\\:\\d+)"
+        },
+        {
+            "key": "Inject date",
+            "match": "regex",
+            "optional": true,
+            "outputKey": "time",
+            "outputLayer": "gener",
+            "outputTableIndex": 0,
+            "tableIndex": 0,
+            "type": "tableMetadata",
+            "value": "(\\d+\\:\\d+\\:\\d+)"
+        },
+        {
+            "key": "columns",
+            "match": "exact",
+            "optional": false,
+            "tableIndex": 7,
+            "type": "tableMetadata",
+            "value": 5
+        }
+    ],
+    "ols": "CHMO:0001013",
+    "tables": [
+        {
+            "header": {
+                "DATA CLASS": "XYPOINTS",
+                "DATA TYPE": "CYCLIC VOLTAMMETRY",
+                "XUNITS": "G/MOL",
+                "YUNITS": "ARBITRARY UNITS"
+            },
+            "table": {
+                "xColumn": {
+                    "columnIndex": 0,
+                    "tableIndex": 7
+                },
+                "yColumn": {
+                    "columnIndex": 1,
+                    "tableIndex": 7
+                }
+            }
+        },
+        {
+            "header": {
+                "DATA CLASS": "XYPOINTS",
+                "DATA TYPE": "CYCLIC VOLTAMMETRY",
+                "XUNITS": "G/MOL",
+                "YUNITS": "ARBITRARY UNITS"
+            },
+            "table": {
+                "xColumn": {
+                    "columnIndex": 0,
+                    "tableIndex": 7
+                },
+                "yColumn": {
+                    "columnIndex": 3,
+                    "tableIndex": 7
+                }
+            }
+        },
+        {
+            "header": {
+                "DATA CLASS": "XYPOINTS",
+                "DATA TYPE": "CYCLIC VOLTAMMETRY",
+                "XUNITS": "MILIMETERS",
+                "YUNITS": "ARBITRARY UNITS"
+            },
+            "table": {
+                "xColumn": {
+                    "columnIndex": 0,
+                    "tableIndex": 6
+                },
+                "yColumn": {
+                    "columnIndex": 2,
+                    "tableIndex": 6
+                }
+            }
+        },
+        {
+            "header": {
+                "DATA CLASS": "XYPOINTS",
+                "DATA TYPE": "CYCLIC VOLTAMMETRY",
+                "XUNITS": "MILIMETERS",
+                "YUNITS": "ARBITRARY UNITS"
+            },
+            "table": {
+                "xColumn": {
+                    "columnIndex": 0,
+                    "tableIndex": 6
+                },
+                "yColumn": {
+                    "columnIndex": 4,
+                    "tableIndex": 6
+                }
+            }
+        }
+    ],
+    "title": "SEC 2"
+}

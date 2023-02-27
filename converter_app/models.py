@@ -3,11 +3,12 @@ import logging
 import uuid
 from collections import defaultdict
 from pathlib import Path
+from jsonschema import validate, exceptions
 
 import magic
 from flask import current_app
 
-from .utils import check_uuid
+from .utils import check_uuid, reader_json_shema
 
 logger = logging.getLogger(__name__)
 
@@ -138,34 +139,22 @@ class Reader(object):
     def __init__(self, reader_data, client_id, reader_id=None):
         self.data = reader_data
         self.client_id = client_id
-        self.id = reader_id
+        self.id = reader_id or reader_data.get('id')
 
     def clean(self):
         self.errors = defaultdict(list)
 
-        if self.id is None and 'id' in self.data:
-            profile_id = self.data['id']
-            if check_uuid(profile_id):
-                existing_profile = Profile.retrieve(self.client_id, self.data['id'])
-                if existing_profile:
-                    self.errors['id'].append('A profile with this ID already exists.')
-            else:
-                self.errors['id'].append('id is not a valid UUID4.')
-
-        if 'identifiers' in self.data:
-            if isinstance(self.data['identifiers'], dict):
-                pass
-            else:
-                self.errors['identifiers'].append('identifiers has to be a list.')
+        if self.id is not None and check_uuid(self.id):
+            existing_profile = Reader.retrieve(self.client_id, self.id)
+            if not existing_profile:
+                self.errors['id'].append('A profile with this ID already exists.')
         else:
-            self.errors['identifiers'].append('identifiers have to be provided.')
+            self.errors['id'].append('id is not a valid UUID4.')
 
-        if 'tables' in self.data:
-            if isinstance(self.data['tables'], list):
-                for table in self.data['tables']:
-                    pass
-            else:
-                self.errors['tables'].append('tables have to be provided.')
+        try:
+            validate(instance=self.data, schema=reader_json_shema())
+        except exceptions.ValidationError as ex:
+            self.errors[ex.json_path].append(ex.message)
 
         if not self.errors:
             return True

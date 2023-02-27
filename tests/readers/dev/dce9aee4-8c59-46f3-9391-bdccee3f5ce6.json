@@ -1,0 +1,131 @@
+{
+    "commend": {
+        "line_commend": {
+            "match": "exact",
+            "optional": false,
+            "show": true,
+            "type": "global",
+            "value": ";;"
+        },
+        "multi_line_commend_end": {
+            "match": "exact",
+            "optional": false,
+            "show": true,
+            "type": "global",
+            "value": ";"
+        },
+        "multi_line_commend_start": {
+            "match": "exact",
+            "optional": false,
+            "show": true,
+            "type": "global",
+            "value": ";"
+        }
+    },
+    "delimiters": {
+        "free_identifier": {
+            "match": "exact",
+            "optional": false,
+            "show": true,
+            "type": "global",
+            "value": ""
+        },
+        "ignore_within_quotes": true,
+        "options": [
+            {
+                "active": false,
+                "name": "semicolon",
+                "symbol": ";"
+            },
+            {
+                "active": false,
+                "name": "comma",
+                "symbol": ","
+            },
+            {
+                "active": true,
+                "name": "tab",
+                "symbol": "\t"
+            },
+            {
+                "active": true,
+                "name": "space",
+                "symbol": " "
+            },
+            {
+                "active": false,
+                "name": "equals",
+                "symbol": "="
+            },
+            {
+                "active": false,
+                "name": "own",
+                "symbol": ""
+            }
+        ],
+        "table_delimiters": [
+            {
+                "lineNumber": "",
+                "match": "exact",
+                "optional": false,
+                "show": true,
+                "type": "global",
+                "value": "loop_"
+            }
+        ]
+    },
+    "description": "Erstes Test Profiel",
+    "id": "dce9aee4-8c59-46f3-9391-bdccee3f5ce6",
+    "identifiers": {
+        "content": [
+            {
+                "lineNumber": 1,
+                "match": "exact",
+                "optional": false,
+                "show": true,
+                "type": "file",
+                "value": "data_sg-v3545-6-13"
+            }
+        ],
+        "meta": {
+            "file_extension": ".cif"
+        }
+    },
+    "tables": [
+        {
+            "allow_empty_col": false,
+            "allow_str_col": "2,1",
+            "has_col_header_row": false,
+            "has_row_header_col": false,
+            "has_start_identifier": true,
+            "max_number_of_col": 6,
+            "min_number_of_col": 6,
+            "number_value_regex": "^(-?[\\d.,]+([eE]-?\\d+)?)$",
+            "start_identifier": {
+                "match": "exact",
+                "optional": false,
+                "show": true,
+                "type": "global",
+                "value": ";"
+            }
+        },
+        {
+            "allow_empty_col": false,
+            "allow_str_col": "",
+            "has_col_header_row": false,
+            "has_row_header_col": true,
+            "has_start_identifier": false,
+            "max_number_of_col": 5,
+            "min_number_of_col": 3,
+            "number_value_regex": "^(-?[\\d.,]+([eE]-?\\d+)?)$",
+            "start_identifier": {
+                "match": "exact",
+                "optional": false,
+                "show": true,
+                "type": "global",
+                "value": ""
+            }
+        }
+    ],
+    "title": "Test_1"
+}

@@ -29,6 +29,6 @@ __pycache__/
 /run_client.sh
 /.idea/vcs.xml
 .idea/
-readers/
+/readers/
 
 converter_app/reader_jsons/
