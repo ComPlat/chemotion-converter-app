@@ -15,6 +15,7 @@ DATA_TYPES = (
     'UV-VIS',
     'HPLC UV-VIS',
     'GEL PERMEATION CHROMATOGRAPHY',
+    'CIRCULAR DICHROISM SPECTROSCOPY',
     'CYCLIC VOLTAMMETRY',
     'X-RAY DIFFRACTION',
     'AIF' # Must be extened
@@ -42,12 +43,14 @@ XUNITS = (
     'KILOGRAM',
     'MICROMETERS',
     'MILIMETERS',
+    'MILLILITERS',
     'MINUTES',
     'm/z',
     'MOLECULAR MASS / DA',
     'NANOMETERS',
     'SECONDS',
-    'Voltage vs Ref'
+    'Voltage vs Ref',
+    'wavelength (nm)'
 )
 
 YUNITS = (
@@ -67,6 +70,8 @@ YUNITS = (
     'SIGNAL',
     'TRANSMITTANCE',
     'WEIGHT',
+    'ellipticity (deg cm2/dmol)',
+    'Molar Extinction (cm2/mmol) '
 )
 
 OPTIONS = {
