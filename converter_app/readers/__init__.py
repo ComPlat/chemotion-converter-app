@@ -1,6 +1,7 @@
 import logging
 from collections import OrderedDict
 
+from .asc_zip import AscZipReader
 from .aif import AifReader
 from .ascii import AsciiReader
 from .brml import BrmlReader
@@ -65,4 +66,5 @@ registry.register(JascoReader)
 registry.register(NovaReader)
 registry.register(PsSessionReader)
 registry.register(SecReader)
+registry.register(AscZipReader)
 registry.register(SemReader)
