@@ -1,6 +1,7 @@
 import logging
 from collections import OrderedDict
 
+from .ae_cms import AeCmsReader
 from .asc_zip import AscZipReader
 from .aif import AifReader
 from .ascii import AsciiReader
@@ -68,3 +69,4 @@ registry.register(PsSessionReader)
 registry.register(SecReader)
 registry.register(AscZipReader)
 registry.register(SemReader)
+registry.register(AeCmsReader)
