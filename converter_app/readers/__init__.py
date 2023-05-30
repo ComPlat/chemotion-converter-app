@@ -16,6 +16,7 @@ from .nova import NovaReader
 from .pssession import PsSessionReader
 from .sec import SecReader
 from .sem import SemReader
+from .cfx import CfxReader
 
 logger = logging.getLogger(__name__)
 
@@ -68,3 +69,5 @@ registry.register(PsSessionReader)
 registry.register(SecReader)
 registry.register(AscZipReader)
 registry.register(SemReader)
+registry.register(CfxReader)
+
