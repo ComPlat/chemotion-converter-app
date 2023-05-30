@@ -148,7 +148,7 @@ class AscHelper:
         for r in results:
             for item in r:
                 if item == field:
-                    values.append(r[item])
+                    values.append(str(r[item]))
         return values
 
 

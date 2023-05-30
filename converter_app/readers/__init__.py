@@ -1,9 +1,10 @@
 import logging
 from collections import OrderedDict
 
-from .asc_zip import AscZipReader
+
 from .ascii import AsciiReader
 from .brml import BrmlReader
+from .cary import CaryReader
 from .csv import CSVReader
 from .dsp import DSPReader
 from .dta import DtaReader
@@ -54,15 +55,16 @@ class Readers:
 
 
 registry = Readers()
-registry.register(CSVReader)
 registry.register(AsciiReader)
-registry.register(ExcelReader)
 registry.register(BrmlReader)
+registry.register(CaryReader)
+registry.register(CSVReader)
 registry.register(DSPReader)
 registry.register(DtaReader)
-registry.register(PsSessionReader)
+registry.register(ExcelReader)
 registry.register(JascoReader)
 registry.register(NovaReader)
+registry.register(PsSessionReader)
 registry.register(SemReader)
 registry.register(AifReader)
 registry.register(CifReader)

@@ -64,7 +64,7 @@ class AscZipReader(Reader):
 
         # solvent = nothing, needs to be filled in manually for dls (?)
         # sample volume [ml] = nothing, needs to be filled in manually for dls (?)
-        metadata["wavelength [nm]"] = results[0]["Wavelength [nm]"]
+        metadata["wavelength [nm]"] = str(results[0]["Wavelength [nm]"])
         # measurement starting time --> earlierst "Date" in all the dates (don't hard code)
         timeObj = AscHelper.getStartdate(results)
         metadata["measurement starting time"]= str(timeObj['startdate_object'])
@@ -109,7 +109,7 @@ class AscZipReader(Reader):
 
 
         # duration [s] = Duration [s]
-        metadata["duration [s]"] = results[0]["Duration [s]"]
+        metadata["duration [s]"] = str(results[0]["Duration [s]"])
 
 
 
@@ -140,4 +140,6 @@ class AscZipReader(Reader):
         } for idx, value in enumerate(col_names)]
         for idx in range(len(formatedResults['data'][col_names[0]])):
             table['rows'].append([formatedResults['data'][name][idx] for name in col_names])
+        table['metadata']['rows'] = str(len(table['rows']))
+        table['metadata']['columns'] = str(len(table['columns']))
         return tables
