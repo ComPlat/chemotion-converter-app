@@ -14,8 +14,8 @@ class DWLReader(Reader):
     class ReaderSate():
         current_tags = []
 
-    def __init__(self, file):
-        super().__init__(file)
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
         self.state = DWLReader.ReaderSate()
         self.table_rows = {'__rows': 0, 'X in (Die(X/Y))': [], 'Y in (Die(X/Y))': []}
 
