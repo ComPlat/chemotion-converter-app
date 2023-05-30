@@ -22,11 +22,11 @@ RUN mv ./.env.doc ./.env
 
 RUN mkdir /run/chemotion-converter
 
-EXPOSE 5000
+EXPOSE 8000
 
 # USER chemotion
 # installs the package in editable mode
 RUN pip install -r requirements/common.txt
 
-CMD gunicorn --bind converter:5000 "converter_app.app:create_app()"
+CMD gunicorn --bind converter:8000 "converter_app.app:create_app()"
 
