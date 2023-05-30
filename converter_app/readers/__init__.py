@@ -19,6 +19,7 @@ from .cif import CifReader
 from .sec import SecReader
 from .dwl import DWLReader
 from .asc_zip import AscZipReader
+from .cfx import CfxReader
 
 logger = logging.getLogger(__name__)
 
@@ -73,4 +74,5 @@ registry.register(SecReader)
 registry.register(GenericReader)
 registry.register(AscZipReader)
 registry.register(DWLReader)
+registry.register(CfxReader)
 

@@ -10,6 +10,7 @@ logger = logging.getLogger(__name__)
 class CifReader(Reader):
     identifier = 'cif_reader'
     priority = 95
+    file_prefix = '.cif'
     cif = None
 
     junk_size_threshold = 500
@@ -33,7 +34,7 @@ class CifReader(Reader):
         return a[0][ : prefix_len]
 
     def check(self):
-        result = self.file.suffix.lower() == '.cif' and self.file.mime_type == 'text/plain'
+        result = self.file.suffix.lower() == self.file_prefix and self.file.mime_type == 'text/plain'
         if result:
             try:
                 self.cif = cif.read_string(self.file.content)  # copy all the data from mmCIF file
