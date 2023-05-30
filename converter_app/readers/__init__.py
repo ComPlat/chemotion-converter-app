@@ -2,9 +2,13 @@ import logging
 from collections import OrderedDict
 
 
+
+from .asc_zip import AscZipReader
+from .aif import AifReader
 from .ascii import AsciiReader
 from .brml import BrmlReader
 from .cary import CaryReader
+from .cif import CifReader
 from .csv import CSVReader
 from .dsp import DSPReader
 from .dta import DtaReader
@@ -12,13 +16,10 @@ from .excel import ExcelReader
 from .jasco import JascoReader
 from .nova import NovaReader
 from .pssession import PsSessionReader
-from .generic import GenericReader
-from .sem import SemReader
-from .aif import AifReader
-from .cif import CifReader
 from .sec import SecReader
+from .sem import SemReader
+from .generic import GenericReader
 from .dwl import DWLReader
-from .asc_zip import AscZipReader
 from .cfx import CfxReader
 
 logger = logging.getLogger(__name__)
@@ -57,9 +58,12 @@ class Readers:
 
 
 registry = Readers()
+
+registry.register(AifReader)
 registry.register(AsciiReader)
 registry.register(BrmlReader)
 registry.register(CaryReader)
+registry.register(CifReader)
 registry.register(CSVReader)
 registry.register(DSPReader)
 registry.register(DtaReader)
@@ -67,12 +71,9 @@ registry.register(ExcelReader)
 registry.register(JascoReader)
 registry.register(NovaReader)
 registry.register(PsSessionReader)
-registry.register(SemReader)
-registry.register(AifReader)
-registry.register(CifReader)
 registry.register(SecReader)
-registry.register(GenericReader)
 registry.register(AscZipReader)
+registry.register(SemReader)
+registry.register(GenericReader)
 registry.register(DWLReader)
 registry.register(CfxReader)
-
