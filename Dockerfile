@@ -1,36 +1,32 @@
-# pull official base image
+# syntax=docker/dockerfile:1
+
 FROM python:3.10.7-slim-buster
 
-
-
 RUN apt-get update && apt-get install -y -q --no-install-recommends libmagic1 apache2-utils
-
-RUN groupadd chemotion -g 2002
-RUN useradd chemotion -u 2002 -g 2002 -c Chemotion -m -d /srv/chemotion -s /bin/bash
-
-
-
+RUN mkdir /srv/chemotion
 WORKDIR /srv/chemotion
 
-# set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-
-COPY requirements ./requirements
-COPY .env.prod ./.env
-
-# install dependencies
-RUN pip install --upgrade pip
+COPY . .
+RUN pip3 install -r requirements/dev.txt
 
 RUN mkdir /var/log/chemotion-converter
+
+
+
+RUN rm -f ./.env
+
+RUN mv ./.env.doc ./.env
+
 RUN mkdir /run/chemotion-converter
 
-EXPOSE 9000
+EXPOSE 5000
 
 # USER chemotion
 # installs the package in editable mode
 RUN pip install -r requirements/common.txt
 
-CMD ${GUNICORN_BIN} --bind converter:8000 "${FLASK_APP}:create_app()"
+CMD gunicorn --bind converter:5000 "converter_app.app:create_app()"
 
