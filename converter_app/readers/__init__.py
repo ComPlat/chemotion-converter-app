@@ -21,6 +21,7 @@ from .sem import SemReader
 from .generic import GenericReader
 from .dwl import DWLReader
 from .cfx import CfxReader
+from .ebl import EblReader
 
 logger = logging.getLogger(__name__)
 
@@ -77,3 +78,4 @@ registry.register(SemReader)
 registry.register(GenericReader)
 registry.register(DWLReader)
 registry.register(CfxReader)
+registry.register(EblReader)
