@@ -3,6 +3,7 @@ DATA_TYPES = (
     'CIRCULAR DICHROISM SPECTROSCOPY',
     'CONTINUOUS MASS SPECTRUM',
     'CYCLIC VOLTAMMETRY',
+    'differential scanning calorimetry',
     'DLS ACF',
     'DLS intensity',
     'Emissions', ## to be checked
@@ -77,6 +78,7 @@ YUNITS = (
     'relative intensity (%)',
     'SIGNAL',
     'TRANSMITTANCE',
+    'W/g',
     'WEIGHT',
 )
 
