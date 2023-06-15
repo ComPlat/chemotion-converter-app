@@ -1,12 +1,12 @@
 DATA_TYPES = (
-    'AIF', # Must be extened
+    'AIF',
     'CIRCULAR DICHROISM SPECTROSCOPY',
     'CONTINUOUS MASS SPECTRUM',
     'CYCLIC VOLTAMMETRY',
-    'differential scanning calorimetry',
+    'DIFFERENTIAL SCANNING CALORIMETRY',
     'DLS ACF',
     'DLS intensity',
-    'Emissions', ## to be checked
+    'Emissions',
     'GEL PERMEATION CHROMATOGRAPHY',
     'HPLC UV-VIS',
     'INFRARED INTERFEROGRAM',
