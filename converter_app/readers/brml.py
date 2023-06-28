@@ -31,32 +31,34 @@ class BrmlReader(Reader):
                 for raw_data in data_container.findall('./RawDataReferenceList/string'):
                     raw_data_file_name = raw_data.text
 
-                    with zf.open(raw_data_file_name) as rd:
-                        raw_data = ET.fromstring(rd.read())
+                    if raw_data_file_name in zf.namelist():
+                        with zf.open(raw_data_file_name) as rd:
+                            raw_data = ET.fromstring(rd.read())
 
-                        for data_route in raw_data.findall('./DataRoutes/DataRoute'):
-                            table = self.append_table(tables)
+                            for data_route in raw_data.findall('./DataRoutes/DataRoute'):
+                                table = self.append_table(tables)
 
-                            first = True
-                            for datum in data_route.findall('./Datum'):
-                                row = datum.text.split(',')
+                                first = True
+                                for datum in data_route.findall('./Datum'):
+                                    row = datum.text.split(',')
 
-                                if first:
-                                    first = False
+                                    if first:
+                                        first = False
 
-                                    # add columns
-                                    for idx, cell in enumerate(row):
-                                        try:
-                                            table['columns'][idx]
-                                        except IndexError:
-                                            table['columns'].append({
-                                                'key': str(idx),
-                                                'name': 'Column #{}'.format(idx)
-                                            })
+                                        # add columns
+                                        for idx, cell in enumerate(row):
+                                            try:
+                                                table['columns'][idx]
+                                            except IndexError:
+                                                table['columns'].append({
+                                                    'key': str(idx),
+                                                    'name': 'Column #{}'.format(idx)
+                                                })
 
-                                table['rows'].append(row)
+                                    table['rows'].append(row)
 
-                    table['metadata']['rows'] = str(len(table['rows']))
-                    table['metadata']['columns'] = str(len(table['columns']))
-
+                        table['metadata']['rows'] = str(len(table['rows']))
+                        table['metadata']['columns'] = str(len(table['columns']))
+                    else:
+                        print(f"The file '{raw_data_file_name}' does not exist.")
         return tables
