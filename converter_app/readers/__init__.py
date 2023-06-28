@@ -22,6 +22,7 @@ from .generic import GenericReader
 from .dwl import DWLReader
 from .cfx import CfxReader
 from .ebl import EblReader
+from .gcd import GcdReader
 
 logger = logging.getLogger(__name__)
 
@@ -79,3 +80,4 @@ registry.register(GenericReader)
 registry.register(DWLReader)
 registry.register(CfxReader)
 registry.register(EblReader)
+registry.register(GcdReader)
