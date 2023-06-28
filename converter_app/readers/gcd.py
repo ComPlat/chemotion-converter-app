@@ -27,7 +27,7 @@ class GcdReader(Reader):
         return content
 
     def check(self):
-        result = self.file.suffix.lower() == '.gcd.txt'
+        result = self.file.suffix.lower() == '.txt'
         if result:
             self.lines = self._parse_input()
             result = '[Chromatogram (Ch1)]' in self.lines and '[Compound Results(Ch1)]' in self.lines
