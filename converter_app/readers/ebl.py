@@ -25,7 +25,7 @@ class EblReader(Reader):
     state = State.META
 
     class PreProcessor:
-        header_lines = 400
+        header_lines = 2000
 
         class State(Enum):
             HEADER = 0
@@ -103,16 +103,16 @@ class EblReader(Reader):
                 values = [x for x in re.split('[|\s]+', text[0].strip()) if re.match('-?[\d]*\.?[\d]+', x)]
                 if len(values) > 2 and len(values) < 5:
                     if self.state == self.__class__.State.POS_TABLE_A:
-                        pos_table['metadata']['X_Start'] = values[0]
-                        pos_table['metadata']['X_Center'] = values[1]
-                        pos_table['metadata']['X_End'] = values[2]
+                        pos_table['metadata']['A [1,2]'] = values[0]
+                        pos_table['metadata']['A [1,3]'] = values[1]
+                        pos_table['metadata']['A [1,4]'] = values[2]
                     else:
                         row =  self.state.value - self.__class__.State.END.POS_TABLE_B.value
-                        y_label = ['Y_End', 'Y_Center', 'Y_Start'][row]
-                        self._add_value(pos_table, y_label, values[0])
-                        self._add_value(pos_table, "X_Start {}".format(y_label), values[1])
-                        self._add_value(pos_table, "X_Center {}".format(y_label), values[2])
-                        self._add_value(pos_table, "X_End {}".format(y_label), values[3])
+                        y_label = ['2', '3', '4'][row]
+                        self._add_value(pos_table, f"A [{y_label},1]", values[0])
+                        self._add_value(pos_table, "A [{},2]".format(y_label), values[1])
+                        self._add_value(pos_table, "A [{},3]".format(y_label), values[2])
+                        self._add_value(pos_table, "A [{},4]".format(y_label), values[3])
                     self.state = self.__class__.State((self.state.value + 1) % self.__class__.State.END.value)
                 pos_table['header'].append(line)
                 continue
