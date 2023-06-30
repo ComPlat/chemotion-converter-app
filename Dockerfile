@@ -4,6 +4,7 @@ FROM python:3.10.7-slim-buster
 
 RUN apt-get update && apt-get install -y -q --no-install-recommends libmagic1 apache2-utils
 RUN mkdir /srv/chemotion
+RUN mkdir /srv/chemotion_profiles
 WORKDIR /srv/chemotion
 
 ENV PYTHONDONTWRITEBYTECODE 1
