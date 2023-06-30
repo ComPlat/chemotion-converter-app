@@ -25,7 +25,7 @@ class EblReader(Reader):
     state = State.META
 
     class PreProcessor:
-        header_lines = 2000
+        header_lines = 10000
 
         class State(Enum):
             HEADER = 0
