@@ -27,7 +27,7 @@ class GcdReader(Reader):
         return content
 
     def check(self):
-        result = self.file.suffix.lower() == '.gcd'
+        result = self.file.suffix.lower() == '.txt'
         if result:
             self.lines = self._parse_input()
             result = '[Chromatogram (Ch1)]' in self.lines and '[Compound Results(Ch1)]' in self.lines
@@ -68,18 +68,34 @@ class GcdReader(Reader):
                 else:
                     table['metadata'][f'{header_key}.{key}'] = value
 
+        table['columns'] = []
+        table['rows'] = []
+        table['metadata']['rows'] = str(len(table['rows']))
+        table['metadata']['columns'] = str(len(table['columns']))
+
+
         for idx in range(self._number_of_ch):
             header = f"[Compound Results(Ch{idx + 1})]"
             lines = self.lines[header]
             key, number_of_ids = [x.strip() for x in lines[0].split(',', 1)]
             table = self.append_table(tables)
+            table['header'] += lines
             table['metadata']['Header'] = header
             table['metadata'][key] = number_of_ids
             col_names = [x.strip() for x in lines[1].split(',')]
             for line in lines[2:]:
                 table_entries = line.split(',')
-                for idx, entry in enumerate(table_entries):
-                    table['metadata'][f"Ch{idx+1}.Id {table_entries[0]}.{col_names[idx]}"] = entry
+                table['rows'].append(table_entries)
+                for idx_entry, entry in enumerate(table_entries):
+                    table['metadata'][f"Ch{idx+1}.Id {table_entries[0]}.{col_names[idx_entry]}"] = entry
+
+            table['columns'] = [{
+                'key': str(idx),
+                'name': value
+            } for idx, value in enumerate(col_names)]
+            table['metadata']['rows'] = str(len(table['rows']))
+            table['metadata']['columns'] = str(len(table['columns']))
+
 
         for idx in range(self._number_of_ch):
             header = f"[Chromatogram (Ch{idx + 1})]"
