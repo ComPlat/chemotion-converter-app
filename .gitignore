@@ -24,3 +24,4 @@ __pycache__/
 /run_client.sh
 /.idea/
 /readers/
+/chemotion-converter-app.iml
