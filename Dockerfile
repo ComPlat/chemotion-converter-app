@@ -15,8 +15,6 @@ RUN pip3 install -r requirements/dev.txt
 
 RUN mkdir /var/log/chemotion-converter
 
-
-
 RUN rm -f ./.env
 
 RUN mv ./.env.doc ./.env
@@ -29,5 +27,5 @@ EXPOSE 8000
 # installs the package in editable mode
 RUN pip install -r requirements/common.txt
 
-CMD gunicorn --bind converter:8000 "converter_app.app:create_app()"
+CMD gunicorn --bind converterdev:8000 "converter_app.app:create_app()"
 
