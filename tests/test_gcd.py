@@ -6,7 +6,7 @@ from converter_app.models import File
 from converter_app.readers import registry
 
 
-def test_find_reader_cif_generic(app):
+def test_find_reader_gcd_generic(app):
     gcd_file = "./tests/sample_files/EF-R94.3-40h__GC-BID_inc-5min-30_GC-3min-40-7min-180-2min_Calibrated_292023_904_003.gcd.txt"
     with open(gcd_file, 'rb') as f:
         fs = FileStorage(stream=f, filename=os.path.basename(gcd_file), content_type='chemical/x-cif')

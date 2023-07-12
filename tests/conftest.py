@@ -1,7 +1,6 @@
 import pytest
 import json
 from converter_app.app import create_app
-from converter_app.models import Reader
 
 @pytest.fixture()
 def app():

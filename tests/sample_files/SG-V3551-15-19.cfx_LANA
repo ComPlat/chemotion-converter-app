@@ -1,0 +1,150 @@
+#===============================================================================
+data_SG-V3551-15-19
+#===============================================================================
+
+_audit_creation_date             '2022-01-17'
+_audit_creation_method           'STOE LANA'
+_audit_author_name               'J. Richter'
+_audit_contact_author            'J. Richter'
+_audit_contact_author_address 
+;
+   STOE & CIE GmbH
+   Hilpertstr. 10
+   D-64295 Darmstadt
+   Germany
+;
+_audit_contact_author_email      richter@stoe.com
+_audit_contact_author_fax        '+49 6151 988788'  
+_audit_contact_author_phone      '+49 6151 988720'
+
+#-------------------------------------------------------------------------------
+# COMPUTING DATA
+#-------------------------------------------------------------------------------
+
+_computing_data_collection        
+;
+X-Area Pilatus3_SV 1.31.170.0 (STOE, 2020)
+;
+_computing_cell_refinement
+;
+X-Area Recipe 1.36.0.0 (STOE, 2020)
+;
+_computing_data_reduction
+;
+X-Area Integrate 1.78.3.0 (STOE, 2020)
+X-Area LANA 1.83.8.0 (STOE, 2020)
+;
+_computing_publication_material
+;
+STOE & Cie GmbH, X-Area, software package for collecting single-crystal or
+multi-domain crystal data on STOE area-detector diffractometers, for image 
+processing, for the correction and scaling of reflection intensities and 
+for outlier rejection, version 1.90, Darmstadt 2020
+;
+
+#-------------------------------------------------------------------------------
+# CHEMICAL DATA
+#-------------------------------------------------------------------------------
+
+_chemical_name_systematic        ?
+_chemical_name_common            ?
+_chemical_formula_moiety         ?
+_chemical_formula_structural     ?
+_chemical_formula_analytical     ?
+_chemical_formula_sum            'C14 H8 N2 F3 Cl'
+_chemical_formula_weight         296.67
+_chemical_melting_point          ?
+_chemical_compound_source        ?
+
+#-------------------------------------------------------------------------------
+# CRYSTAL DATA
+#-------------------------------------------------------------------------------
+
+_symmetry_cell_setting           monoclinic
+_symmetry_space_group_name_H-M   'P 21/c'
+_symmetry_Int_Tables_number      14
+loop_
+    _symmetry_equiv_pos_as_xyz
+  'x,y,z'
+  '-x,1/2+y,1/2-z'
+  '-x,-y,-z'
+  'x,1/2-y,1/2+z'
+
+_cell_length_a                   10.6224(12)
+_cell_length_b                   15.1386(19)
+_cell_length_c                   8.1382(9)
+_cell_angle_alpha                90.00
+_cell_angle_beta                 108.692(8)
+_cell_angle_gamma                90.00
+_cell_volume                     1239.67(25)
+_cell_formula_units_Z            4
+_cell_measurement_temperature    150
+_cell_measurement_reflns_used    2354
+_cell_measurement_theta_min      20.66
+_cell_measurement_theta_max      63.86
+
+_exptl_crystal_description       'Platte'
+_exptl_crystal_colour            'farblos'
+_exptl_crystal_size_max          0.15
+_exptl_crystal_size_mid          0.13
+_exptl_crystal_size_min          0.03
+_exptl_crystal_density_diffrn    1.590
+_exptl_crystal_density_meas      ?
+_exptl_crystal_density_method    'not measured'
+_exptl_crystal_F_000             600
+_exptl_absorpt_coefficient_mu    2.04
+_exptl_absorpt_correction_type   multi-scan
+_exptl_absorpt_process_details
+;
+STOE LANA, absorption correction by scaling of reflection intensities.
+J. Koziskova, F. Hahn, J. Richter, J. Kozisek, "Comparison of different
+absorption corrections on the model structure of tetrakis(\m~2~-acetato)-
+diaqua-di-copper(II)", Acta Chimica Slovaca, vol. 9, no. 2, 2016, pp. 136 - 140.
+;
+_exptl_absorpt_correction_T_min  0.2316
+_exptl_absorpt_correction_T_max  1.0000
+
+#-------------------------------------------------------------------------------
+# EXPERIMENTAL DATA
+#-------------------------------------------------------------------------------
+
+_diffrn_measurement_device         'Eulerian 4-circle diffractometer'
+_diffrn_measurement_device_type    'STOE STADIVARI'
+
+_diffrn_detector                   'EIGER4M'
+_diffrn_detector_type              ?
+_diffrn_detector_area_resol_mean 13.33
+
+_diffrn_source                   'Metaljet D2'
+_diffrn_source_type              ?
+_diffrn_radiation_probe          x-ray
+_diffrn_source_target            ?
+_diffrn_source_voltage           70
+_diffrn_source_current           3.570
+_diffrn_source_power             0.250
+_diffrn_radiation_type           '1.3401270, 1.34 K\a'
+_diffrn_radiation_wavelength     1.34143
+_diffrn_radiation_monochromator  'Graded multilayer mirror'
+_diffrn_radiation_polarisn_norm  0
+_diffrn_radiation_collimation    '1.2 0.6 mm diameter'
+
+_diffrn_ambient_temperature      150
+
+_diffrn_measurement_method       'rotation method, \w scans'
+_diffrn_measurement_details
+; 770 frames, detector distance = 80 mm
+;
+_diffrn_reflns_theta_min         3.82
+_diffrn_reflns_theta_max         62.45
+_reflns_number_total             6890
+_reflns_number_gt                4390
+_reflns_threshold_expression     'I>4u(I)'
+_reflns_d_resolution_high        0.756
+_reflns_d_resolution_low         10.062
+_reflns_special_details          'reflections have not been merged'
+_reflns_limit_h_min              -11
+_reflns_limit_h_max              14
+_reflns_limit_k_min              -6
+_reflns_limit_k_max              19
+_reflns_limit_l_min              -10
+_reflns_limit_l_max              10

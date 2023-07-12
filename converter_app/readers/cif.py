@@ -1,15 +1,21 @@
 import logging
+import os
 import re
+import tempfile
+from zipfile import ZipFile
 
 from gemmi import cif
+from werkzeug.datastructures import FileStorage
+
 from .base import Reader
+from ..models import File
 
 logger = logging.getLogger(__name__)
 
 
 class CifReader(Reader):
     identifier = 'cif_reader'
-    priority = 95
+    priority = 90
     file_prefix = '.cif'
     cif = None
 
@@ -34,6 +40,21 @@ class CifReader(Reader):
         return a[0][ : prefix_len]
 
     def check(self):
+
+        if self.file.suffix.lower() == '.zip' and self.file.mime_type == 'application/zip':
+            with ZipFile(self.file.fp, 'r') as zipObj:
+                try:
+                    fileName = next(x for x in zipObj.namelist() if x.lower().endswith(self.file_prefix))
+                    zipdir = os.path.join(tempfile.TemporaryDirectory().name, self.file.name)
+                    os.makedirs(zipdir)
+                    pathFileName = zipObj.extract(fileName, zipdir)
+                    with open(pathFileName, 'rb') as f:
+                        fs = FileStorage(stream=f, filename=os.path.basename(fileName), content_type='chemical/x-cif')
+                        self.file = File(fs)
+                except:
+                    logger.debug('result=%s', False)
+                    return False
+
         result = self.file.suffix.lower() == self.file_prefix and self.file.mime_type == 'text/plain'
         if result:
             try:
