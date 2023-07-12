@@ -11,9 +11,8 @@ class Reader(object):
     float_de_pattern = re.compile(r'(-?[\d.]+,\d*[eE+\-\d]*)')
     float_us_pattern = re.compile(r'(-?[\d,]+.\d*[eE+\-\d]*)')
 
-    def __init__(self, file, client_id):
+    def __init__(self, file):
         self.file = file
-        self.client_id = client_id
 
     @property
     def as_dict(self):

@@ -18,7 +18,6 @@ from .nova import NovaReader
 from .pssession import PsSessionReader
 from .sec import SecReader
 from .sem import SemReader
-from .generic import GenericReader
 from .dwl import DWLReader
 from .cfx import CfxReader
 from .ebl import EblReader
@@ -45,12 +44,12 @@ class Readers:
         sorted_readers = sorted(self._registry['readers'].values(), key=lambda reader: reader.priority)
         return OrderedDict([(reader.identifier, reader) for reader in sorted_readers])
 
-    def match_reader(self, file, client_id):
+    def match_reader(self, file):
         logger.debug('file_name=%s content_type=%s mime_type=%s encoding=%s',
                      file.name, file.content_type, file.mime_type, file.encoding)
 
         for identifier, reader in self.readers.items():
-            reader = reader(file, client_id)
+            reader = reader(file)
             result = reader.check()
 
             # reset file pointer and return the reader it is the one
@@ -76,7 +75,6 @@ registry.register(PsSessionReader)
 registry.register(SecReader)
 registry.register(AscZipReader)
 registry.register(SemReader)
-registry.register(GenericReader)
 registry.register(DWLReader)
 registry.register(CfxReader)
 registry.register(EblReader)
