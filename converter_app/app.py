@@ -10,7 +10,7 @@ from flask_httpauth import HTTPBasicAuth
 
 from .converters import Converter
 from .datasets import Dataset
-from .models import File, Profile, Reader
+from .models import File, Profile
 from .options import OPTIONS
 from .readers import registry
 from .utils import checkpw, human2bytes
@@ -40,7 +40,6 @@ def create_app(test_config=None):
     app.config.from_mapping(
         SECRET_KEY=os.getenv('SECRET_KEY'),
         PROFILES_DIR=os.getenv('PROFILES_DIR', 'profiles'),
-        READERS_DIR=os.getenv('READERS_DIR', 'readers'),
         DATASETS_DIR=os.getenv('DATASETS_DIR', 'datasets'),
         MAX_CONTENT_LENGTH=human2bytes(os.getenv('MAX_CONTENT_LENGTH', '64M')),
         CORS=bool(os.getenv('CORS', False)),
@@ -96,7 +95,7 @@ def create_app(test_config=None):
         client_id = auth.current_user()
         if request.files.get('file'):
             file = File(request.files.get('file'))
-            reader = registry.match_reader(file, client_id)
+            reader = registry.match_reader(file)
 
             if reader:
                 reader.process()
@@ -137,11 +136,9 @@ def create_app(test_config=None):
         '''
         Step 1 (advanced): upload file and convert to table
         '''
-
-        client_id = auth.current_user()
         if request.files.get('file'):
             file = File(request.files.get('file'))
-            reader = registry.match_reader(file, client_id)
+            reader = registry.match_reader(file)
 
             if reader:
                 reader.process()
@@ -157,22 +154,6 @@ def create_app(test_config=None):
                     {'error': 'Your file could not be processed.'}), 400
         else:
             return jsonify({'error': 'No file provided.'}), 400
-
-    @app.route('/reader', methods=['GET'])
-    @auth.login_required
-    def list_reader():
-        client_id = auth.current_user()
-        profiles = Reader.list(client_id)
-        return jsonify([profile.as_dict for profile in profiles]), 200
-
-    @app.route('/reader', methods=['POST'])
-    @auth.login_required
-    def create_reader():
-        client_id = auth.current_user()
-        profile_data = json.loads(request.data)
-        profile = Reader.create(profile_data, client_id)
-        profile.save()
-        return jsonify(profile.as_dict), 201
 
     @app.route('/profiles', methods=['GET'])
     @auth.login_required
@@ -203,25 +184,6 @@ def create_app(test_config=None):
         else:
             abort(404)
 
-    @app.route('/readers/<reader_id>', methods=['PUT'])
-    @auth.login_required
-    def update_reader(reader_id):
-        client_id = auth.current_user()
-        reader = Reader.retrieve(client_id, reader_id)
-        if reader:
-            try:
-                reader.data = json.loads(request.data)
-            except json.decoder.JSONDecodeError:
-                return jsonify({'error': 'Bad request'}), 400
-
-            if reader.clean():
-                reader.save()
-                return jsonify(reader.as_dict), 200
-            else:
-                return jsonify(reader.errors), 400
-        else:
-            abort(404)
-
     @app.route('/profiles/<profile_id>', methods=['PUT'])
     @auth.login_required
     def update_profile(profile_id):
@@ -246,17 +208,6 @@ def create_app(test_config=None):
     def delete_profile(profile_id):
         client_id = auth.current_user()
         profile = Profile.retrieve(client_id, profile_id)
-        if profile:
-            profile.delete()
-            return '', 204
-        else:
-            abort(404)
-
-    @app.route('/readers/<reader_id>', methods=['DELETE'])
-    @auth.login_required
-    def delete_reader(reader_id):
-        client_id = auth.current_user()
-        profile = Reader.retrieve(client_id, reader_id)
         if profile:
             profile.delete()
             return '', 204
