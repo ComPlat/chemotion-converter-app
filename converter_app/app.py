@@ -1,6 +1,9 @@
+import datetime
+import importlib
 import json
 import logging
 import os
+import shutil
 from pathlib import Path
 
 from dotenv import load_dotenv
@@ -12,13 +15,44 @@ from .converters import Converter
 from .datasets import Dataset
 from .models import File, Profile
 from .options import OPTIONS
-from .readers import registry
+
+from git import Repo
+
+
 from .utils import checkpw, human2bytes
 from .writers.jcamp import JcampWriter
 from .writers.jcampzip import JcampZipWriter
 
+class ReaderRepo():
+
+    _repo = None
+    _registry = None
+    _last_reg_pull = datetime.datetime.now()
+
+    def get_registry(self):
+        if self._registry is not None and  datetime.datetime.now() - self._last_reg_pull < datetime.timedelta(hours=1):
+            return
+        try:
+            _last_reg_pull = datetime.datetime.now()
+            if self._repo is None:
+                self._repo = Repo('readers')
+            self._repo.remotes.origin.pull()
+            mod = importlib.import_module('readers')
+            self._registry = getattr(mod, 'registry')
+            return self._registry
+        except:
+            if os.path.exists('readers'):
+                shutil.rmtree('readers')
+            self._repo = Repo.clone_from('https://github.com/StarmanMartin/Chemotion-Converter-Reader.git', 'readers')
+            return self.get_registry()
+
 
 def create_app(test_config=None):
+
+
+    reader_repo = ReaderRepo()
+    reader_repo.get_registry()
+
     load_dotenv(Path().cwd() / '.env')
 
     # setup logging
@@ -95,7 +129,7 @@ def create_app(test_config=None):
         client_id = auth.current_user()
         if request.files.get('file'):
             file = File(request.files.get('file'))
-            reader = registry.match_reader(file)
+            reader = reader_repo.get_registry().match_reader(file)
 
             if reader:
                 reader.process()
@@ -138,7 +172,7 @@ def create_app(test_config=None):
         '''
         if request.files.get('file'):
             file = File(request.files.get('file'))
-            reader = registry.match_reader(file)
+            reader = reader_repo.get_registry().match_reader(file)
 
             if reader:
                 reader.process()

@@ -8,3 +8,4 @@ python-dotenv~=0.19.2
 python-magic~=0.4.24
 gemmi~=0.5.7
 jsonschema>=04.17.3
+GitPython>=3.1.32
