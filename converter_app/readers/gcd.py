@@ -73,10 +73,8 @@ class GcdReader(Reader):
         table['metadata']['rows'] = str(len(table['rows']))
         table['metadata']['columns'] = str(len(table['columns']))
 
-
-        for idx in range(self._number_of_ch):
-            header = f"[Compound Results(Ch{idx + 1})]"
-            lines = self.lines[header]
+        def add_peak_table(header, lines=None):
+            if lines is None: lines = self.lines[header]
             key, number_of_ids = [x.strip() for x in lines[0].split(',', 1)]
             table = self.append_table(tables)
             table['header'] += lines
@@ -96,9 +94,16 @@ class GcdReader(Reader):
             table['metadata']['rows'] = str(len(table['rows']))
             table['metadata']['columns'] = str(len(table['columns']))
 
-
         for idx in range(self._number_of_ch):
-            header = f"[Chromatogram (Ch{idx + 1})]"
+            header = f"[Compound Results(Ch{idx + 1})]"
+            add_peak_table(header)
+            header = f"[Peak Table(Ch{idx + 1})]"
+            data_lines = [x for x in self.lines[header][2:] if x.split(',')[9].strip() != '']
+            lines = self.lines[header][:2] + data_lines
+            add_peak_table(header, lines)
+
+
+        def add_value_table(header):
             lines = self.lines[header]
             table = self.append_table(tables)
             table['metadata']['Header'] = header
@@ -119,5 +124,27 @@ class GcdReader(Reader):
             table['metadata']['rows'] = str(len(table['rows']))
             table['metadata']['columns'] = str(len(table['columns']))
 
+
+        for idx in range(self._number_of_ch):
+            header = f"[Chromatogram (Ch{idx + 1})]"
+            add_value_table(header)
+
+        header = '[Status Trace (Column Oven Temperature)]'
+        add_value_table(header)
+
+        header = '[Status Trace (Injection Unit Temperature)]'
+        add_value_table(header)
+
+        header = '[Status Trace (Carrier Gas Pressure)]'
+        add_value_table(header)
+
+        header = '[Status Trace (Carrier Gas Flow)]'
+        add_value_table(header)
+
+        header = '[Status Trace (Column Flow)]'
+        add_value_table(header)
+
+        header = '[Status Trace (Linear Velocity)]'
+        add_value_table(header)
 
         return tables
