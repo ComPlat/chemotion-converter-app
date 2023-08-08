@@ -41,6 +41,7 @@ XUNITS = (
     '2Theta',
     'DEGREES CELSIUS',
     'G/MOL',
+    'Hydrodynamic diameter (nm)',
     'HZ',
     'KILOGRAM',
     'kPa',
