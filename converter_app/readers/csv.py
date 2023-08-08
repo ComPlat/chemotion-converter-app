@@ -2,6 +2,8 @@ import csv
 import io
 import logging
 
+#FIX
+
 from .base import Reader
 
 logger = logging.getLogger(__name__)
