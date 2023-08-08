@@ -29,8 +29,11 @@ class CSVReader(Reader):
         # check using seperate function for inheritance
         result = self.check_csv()
         if result:
-            self.rows = list(csv.reader(io.StringIO(self.file.string), self.file.csv_dialect))
             self.lines = self.file.string.splitlines()
+            try:
+                self.rows = list(csv.reader(io.StringIO(self.file.string), self.file.csv_dialect))
+            except:
+                self.rows = [row for row in csv.reader(self.lines, self.file.csv_dialect)]
 
         logger.debug('result=%s', result)
         return result
