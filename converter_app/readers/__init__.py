@@ -22,6 +22,7 @@ from .dwl import DWLReader
 from .cfx import CfxReader
 from .ebl import EblReader
 from .gcd import GcdReader
+from .old_excel import OldExcelReader
 
 logger = logging.getLogger(__name__)
 
@@ -79,3 +80,4 @@ registry.register(DWLReader)
 registry.register(CfxReader)
 registry.register(EblReader)
 registry.register(GcdReader)
+registry.register(OldExcelReader)
