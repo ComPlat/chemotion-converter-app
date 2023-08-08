@@ -25,15 +25,17 @@ def create_app(test_config=None):
     logging.basicConfig(level=os.getenv('LOG_LEVEL', 'INFO').upper(), filename=os.getenv('LOG_FILE'))
 
     # open (plain) htpasswd file for the clients
-    htpasswd_path = os.getenv('HTPASSWD_PATH')
-    if htpasswd_path:
-        clients = {}
-        with open(htpasswd_path) as fp:
-            for line in fp.readlines():
-                username, password = line.strip().split(':')
-                clients[username] = password
-    else:
-        clients = None
+    def get_clients():
+        htpasswd_path = os.getenv('HTPASSWD_PATH')
+        if htpasswd_path:
+            clients = {}
+            with open(htpasswd_path) as fp:
+                for line in fp.readlines():
+                    username, password = line.strip().split(':')
+                    clients[username] = password
+        else:
+            return None
+        return clients
 
     # configure app
     app = Flask(__name__, instance_relative_config=True)
@@ -43,7 +45,7 @@ def create_app(test_config=None):
         DATASETS_DIR=os.getenv('DATASETS_DIR', 'datasets'),
         MAX_CONTENT_LENGTH=human2bytes(os.getenv('MAX_CONTENT_LENGTH', '64M')),
         CORS=bool(os.getenv('CORS', False)),
-        CLIENTS=clients
+        CLIENTS=get_clients() is not None
     )
 
     # configure CORS
@@ -60,10 +62,10 @@ def create_app(test_config=None):
 
     @auth.verify_password
     def verify_password(username, password):
-        if app.config['CLIENTS'] is None:
+        if not app.config['CLIENTS']:
             return 'dev'
         else:
-            hashed_password = app.config['CLIENTS'].get(username)
+            hashed_password = get_clients().get(username)
             if hashed_password is not None:
                 if checkpw(password.encode(), hashed_password.encode()):
                     return username
