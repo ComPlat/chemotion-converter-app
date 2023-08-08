@@ -17,6 +17,7 @@ from .pssession import PsSessionReader
 from .sec import SecReader
 from .sem import SemReader
 from .gcd import GcdReader
+from .old_excel import OldExcelReader
 
 logger = logging.getLogger(__name__)
 
@@ -70,3 +71,4 @@ registry.register(SecReader)
 registry.register(AscZipReader)
 registry.register(SemReader)
 registry.register(GcdReader)
+registry.register(OldExcelReader)
