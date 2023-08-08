@@ -30,7 +30,10 @@ class CSVReader(Reader):
         result = self.check_csv()
         if result:
             self.lines = self.file.string.splitlines()
-            self.rows = [row for row in csv.reader(self.lines, self.file.csv_dialect)]
+            try:
+                self.rows = list(csv.reader(io.StringIO(self.file.string), self.file.csv_dialect))
+            except:
+                self.rows = [row for row in csv.reader(self.lines, self.file.csv_dialect)]
 
 
 
