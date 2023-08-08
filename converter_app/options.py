@@ -81,6 +81,7 @@ YUNITS = (
     'TRANSMITTANCE',
     'W/g',
     'WEIGHT',
+    'Weight %',
 )
 
 OPTIONS = {
