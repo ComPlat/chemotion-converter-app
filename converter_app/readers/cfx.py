@@ -3,8 +3,7 @@ from .cif import CifReader
 
 logger = logging.getLogger(__name__)
 
-
 class CfxReader(CifReader):
     identifier = 'cfx_reader'
     file_prefix = '.cfx_lana'
-    priority = 91
+    priority = 11
