@@ -65,6 +65,7 @@ YUNITS = (
     'Ampere',
     'ARBITRARY UNITS',
     'COUNTS',
+    'DEGREES CELSIUS',
     'DERIVATIVE WEIGHT',
     'ellipticity (deg cm2/dmol)',
     'Intensity',
