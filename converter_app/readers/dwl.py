@@ -1,16 +1,13 @@
 import re
 import logging
-
 from .base import Reader
 
 logger = logging.getLogger(__name__)
 
-
 class DWLReader(Reader):
     identifier = 'dwl-reader'
-    priority = 10
+    priority = 11
 
-    #
     class ReaderSate():
         current_tags = []
 
