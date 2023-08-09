@@ -23,6 +23,7 @@ from .ebl import EblReader
 from .gcd import GcdReader
 from .old_excel import OldExcelReader
 from .dwl import DWLReader
+from .ebl import EblReader
 
 logger = logging.getLogger(__name__)
 
@@ -81,3 +82,4 @@ registry.register(EblReader)
 registry.register(GcdReader)
 registry.register(OldExcelReader)
 registry.register(DWLReader)
+registry.register(EblReader)

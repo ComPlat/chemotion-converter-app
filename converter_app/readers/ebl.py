@@ -1,8 +1,6 @@
 import logging
 import re
 from enum import Enum
-
-from gemmi import cif
 from .base import Reader
 
 logger = logging.getLogger(__name__)
