@@ -18,6 +18,7 @@ from .sec import SecReader
 from .sem import SemReader
 from .gcd import GcdReader
 from .old_excel import OldExcelReader
+from .dwl import DWLReader
 from .ebl import EblReader
 from .cfx import CfxReader
 
@@ -74,5 +75,7 @@ registry.register(AscZipReader)
 registry.register(SemReader)
 registry.register(GcdReader)
 registry.register(OldExcelReader)
+registry.register(DWLReader)
 registry.register(EblReader)
 registry.register(CfxReader)
+
