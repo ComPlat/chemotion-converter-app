@@ -18,7 +18,6 @@ from .nova import NovaReader
 from .pssession import PsSessionReader
 from .sec import SecReader
 from .sem import SemReader
-from .dwl import DWLReader
 from .cfx import CfxReader
 from .ebl import EblReader
 from .gcd import GcdReader
@@ -77,7 +76,6 @@ registry.register(PsSessionReader)
 registry.register(SecReader)
 registry.register(AscZipReader)
 registry.register(SemReader)
-registry.register(DWLReader)
 registry.register(CfxReader)
 registry.register(EblReader)
 registry.register(GcdReader)
