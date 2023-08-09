@@ -19,6 +19,8 @@ from .sem import SemReader
 from .gcd import GcdReader
 from .old_excel import OldExcelReader
 from .dwl import DWLReader
+from .ebl import EblReader
+from .cfx import CfxReader
 
 logger = logging.getLogger(__name__)
 
@@ -74,3 +76,6 @@ registry.register(SemReader)
 registry.register(GcdReader)
 registry.register(OldExcelReader)
 registry.register(DWLReader)
+registry.register(EblReader)
+registry.register(CfxReader)
+
