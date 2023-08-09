@@ -4,7 +4,6 @@ Flask-Cors~=3.0.10
 Flask-HTTPAuth~=4.5.0
 gunicorn~=20.1.0
 openpyxl~=3.0.9
-xlrd~=2.0.1
 python-dotenv~=0.19.2
 python-magic~=0.4.24
 gemmi~=0.5.7
