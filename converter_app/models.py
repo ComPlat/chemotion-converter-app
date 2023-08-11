@@ -3,7 +3,6 @@ import logging
 import uuid
 from collections import defaultdict
 from pathlib import Path
-from jsonschema import validate, exceptions
 
 import magic
 from flask import current_app
