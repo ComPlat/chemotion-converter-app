@@ -15,7 +15,7 @@ logger = logging.getLogger(__name__)
 
 class CifReader(Reader):
     identifier = 'cif_reader'
-    priority = 90
+    priority = 10
     file_prefix = '.cif'
     cif = None
 
