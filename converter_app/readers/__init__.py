@@ -81,3 +81,4 @@ registry.register(OldExcelReader)
 registry.register(DWLReader)
 registry.register(EblReader)
 registry.register(CfxReader)
+

@@ -58,7 +58,7 @@ class ExcelReader(Reader):
 
                 else:
                     # empty lines are preserved for the header
-                    tables[-1]['header'].append(row)
+                    tables[-1]['header'].append(', '.join([str(x) for x in row]))
 
                 # store shape and row for the next iteration
                 previous_shape = shape
