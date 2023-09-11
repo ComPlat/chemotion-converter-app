@@ -94,3 +94,17 @@ The guincorn server listens on the port given in the env file (default: 9000) on
 
     client_max_body_size 64M;  # set this to the maximum file size allowed for upload
 ```
+
+
+## Acknowledgments
+
+This project has been funded by the **[DFG]**.
+
+[![DFG Logo]][DFG]
+
+
+Funded by the [Deutsche Forschungsgemeinschaft (DFG, German Research Foundation)](https://www.dfg.de/) under the [National Research Data Infrastructure – NFDI4Chem](https://nfdi4chem.de/) – Projektnummer **441958208** since 2020.
+
+
+[DFG]: https://www.dfg.de/en/
+[DFG Logo]: https://www.dfg.de/zentralablage/bilder/service/logos_corporate_design/logo_negativ_267.png
