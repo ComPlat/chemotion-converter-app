@@ -21,7 +21,10 @@ class SecReader(Reader):
         result = False
         if self.file.suffix.lower() == '.txt' and self.file.mime_type == 'text/plain':
             first_lines = [self.file.string.splitlines()[0], self.file.string.splitlines()[1], self.file.string.splitlines()[2]]
-            result = 'Sample :' in first_lines[0] and 'Method settings :' in first_lines[1] and 'Sequence table :' in first_lines[2]
+            result_a = 'Sample :' in first_lines[0] and 'Method settings :' in first_lines[1] and 'Sequence table :' in first_lines[2]
+            result_b = 'Sample :' in first_lines[0] and 'Inject date :' in first_lines[1] and 'Inject volume :' in first_lines[2]
+
+            result = result_a or result_b
 
         logger.debug('result=%s', result)
         return result
