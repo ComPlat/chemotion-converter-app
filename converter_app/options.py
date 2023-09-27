@@ -57,6 +57,7 @@ XUNITS = (
     'SECONDS',
     'Voltage vs Ref',
     'wavelength (nm)',
+    'Voltage in V',
 )
 
 YUNITS = (
