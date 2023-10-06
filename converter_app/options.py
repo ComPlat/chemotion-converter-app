@@ -1,3 +1,5 @@
+"""Array Constant definitions for dropdown select options"""
+
 DATA_TYPES = (
     'AIF',
     'CIRCULAR DICHROISM SPECTROSCOPY',
@@ -55,7 +57,9 @@ XUNITS = (
     'NANOMETERS',
     'p/p0', # Normalaized dimension
     'SECONDS',
+    'Voltage in V',
     'Voltage vs Ref',
+    'Voltage vs Ref in V',
     'wavelength (nm)',
 )
 
@@ -64,6 +68,7 @@ YUNITS = (
     'ACF (a.u.)',
     'Ampere',
     'ARBITRARY UNITS',
+    'Current in A',
     'COUNTS',
     'DEGREES CELSIUS',
     'DERIVATIVE WEIGHT',
