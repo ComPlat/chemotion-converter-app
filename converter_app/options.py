@@ -1,7 +1,6 @@
 """Array Constant definitions for dropdown select options"""
 
 DATA_TYPES = (
-    'AIF',
     'CIRCULAR DICHROISM SPECTROSCOPY',
     'CONTINUOUS MASS SPECTRUM',
     'CYCLIC VOLTAMMETRY',
@@ -71,7 +70,7 @@ YUNITS = (
     'Current in A',
     'COUNTS',
     'DEGREES CELSIUS',
-    'DERIVATIVE WEIGHT',
+    'DERIVATIVE WEIGHT (%/°C)',
     'ellipticity (deg cm2/dmol)',
     'Intensity',
     'KUBELKA-MUNK',
