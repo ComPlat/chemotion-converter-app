@@ -12,6 +12,7 @@ class GcdReader(Reader):
     priority = 5
 
     _number_of_ch = 0
+    _delimiter = ';'
 
     def _parse_input(self):
         current_header = '[NO HEADER]'
@@ -52,7 +53,7 @@ class GcdReader(Reader):
             table['header'].append(header_key)
             for line in self.lines.get(header_key, []):
                 table['header'].append(line)
-                key, value = [x.strip() for x in line.split(',', 1)]
+                key, value = [x.strip() for x in line.split(self._delimiter, 1)]
                 if datetime_re.match(value) is not None:
                     value = datetime.datetime.strptime(value, datetime_read_formate).strftime(datetime_write_formate)
                 if time_re.match(value) is not None:
@@ -61,9 +62,9 @@ class GcdReader(Reader):
                     value = datetime.datetime.strptime(value, date_read_formate).strftime(date_write_formate)
                 if key in ['Detector ID', 'Detector Name', '# of Channels']:
                     if key == '# of Channels':
-                        self._number_of_ch = sum([int(x) for x in value.split(',')])
+                        self._number_of_ch = sum([int(x) for x in value.split(self._delimiter)])
                         table['metadata'][key] = str(self._number_of_ch)
-                    for idx, val_item in enumerate(value.split(',')):
+                    for idx, val_item in enumerate(value.split(self._delimiter)):
                         table['metadata'][f'{header_key}.{key}.{idx + 1}'] = val_item
                 else:
                     table['metadata'][f'{header_key}.{key}'] = value
@@ -73,16 +74,16 @@ class GcdReader(Reader):
         table['metadata']['rows'] = str(len(table['rows']))
         table['metadata']['columns'] = str(len(table['columns']))
 
-        def add_peak_table(header, lines=None):
+        def add_peak_table(header, lines=None, idx=0):
             if lines is None: lines = self.lines[header]
-            key, number_of_ids = [x.strip() for x in lines[0].split(',', 1)]
+            key, number_of_ids = [x.strip() for x in lines[0].split(self._delimiter, 1)]
             table = self.append_table(tables)
             table['header'] += lines
             table['metadata']['Header'] = header
             table['metadata'][key] = number_of_ids
-            col_names = [x.strip() for x in lines[1].split(',')]
+            col_names = [x.strip() for x in lines[1].split(self._delimiter)]
             for line in lines[2:]:
-                table_entries = line.split(',')
+                table_entries = line.split(self._delimiter)
                 table['rows'].append(table_entries)
                 for idx_entry, entry in enumerate(table_entries):
                     table['metadata'][f"Ch{idx+1}.Id {table_entries[0]}.{col_names[idx_entry]}"] = entry
@@ -96,11 +97,11 @@ class GcdReader(Reader):
 
         for idx in range(self._number_of_ch):
             header = f"[Compound Results(Ch{idx + 1})]"
-            add_peak_table(header)
+            add_peak_table(header,idx=idx)
             header = f"[Peak Table(Ch{idx + 1})]"
-            data_lines = [x for x in self.lines[header][2:] if x.split(',')[9].strip() != '']
+            data_lines = [x for x in self.lines[header][2:] if x.split(self._delimiter)[9].strip() != '']
             lines = self.lines[header][:2] + data_lines
-            add_peak_table(header, lines)
+            add_peak_table(header, lines=lines, idx=idx)
 
 
         def add_value_table(header):
@@ -109,9 +110,9 @@ class GcdReader(Reader):
             table['metadata']['Header'] = header
 
             metas = [x for x in lines if re.match('^\d', x) is None]
-            values = [[float(y) for y in x.split(',')] for x in lines if re.match('^\d', x) is not None]
+            values = [[float(y) for y in x.split(self._delimiter)] for x in lines if re.match('^\d', x) is not None]
             for line in metas[:-1]:
-                key, value = [x.strip() for x in line.split(',', 1)]
+                key, value = [x.strip() for x in line.split(self._delimiter, 1)]
                 table['metadata'][f"{header}.{key}"] = value
             table['rows'] = values
 
@@ -119,7 +120,7 @@ class GcdReader(Reader):
             table['columns'] = [{
                 'key': str(idx),
                 'name': value
-            } for idx, value in enumerate(metas[-1].split(','))]
+            } for idx, value in enumerate(metas[-1].split(self._delimiter))]
 
             table['metadata']['rows'] = str(len(table['rows']))
             table['metadata']['columns'] = str(len(table['columns']))
