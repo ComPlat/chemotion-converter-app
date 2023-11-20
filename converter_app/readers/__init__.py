@@ -21,6 +21,7 @@ from .old_excel import OldExcelReader
 from .dwl import DWLReader
 from .ebl import EblReader
 from .cfx import CfxReader
+from .jcamp_conv_reader import JcampReader
 
 logger = logging.getLogger(__name__)
 
@@ -78,4 +79,5 @@ registry.register(OldExcelReader)
 registry.register(DWLReader)
 registry.register(EblReader)
 registry.register(CfxReader)
+registry.register(JcampReader)
 
