@@ -24,20 +24,11 @@ class JcampReader(Reader):
         res = jcamp_read(self.file.fp)
         for (k,v) in res.items():
             if isinstance(v, ndarray):
-                if len(table['rows']) == 0:
-                    table['rows'] = [[x] for x in v.tolist()]
-                else:
-                    for (i, sv) in enumerate(v):
-                        table['rows'][i].append(sv)
-
-                table['columns'].append({
-                    'key': str(len(table['columns'])),
-                    'name': k
-                })
+                pass
             else:
                 table['metadata'][k] = str(v)
 
-        table['metadata']['rows'] = str(len(table['rows']))
-        table['metadata']['columns'] = str(len(table['columns']))
+        table['metadata']['rows'] = str(0)
+        table['metadata']['columns'] = str(0)
         return tables
 
