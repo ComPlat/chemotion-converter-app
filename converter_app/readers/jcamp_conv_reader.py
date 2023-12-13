@@ -27,7 +27,6 @@ class JcampReader(Reader):
                 pass
             else:
                 table['metadata'][k] = str(v)
-                table['header'].append(f"{k}={v}")
 
         table['metadata']['rows'] = str(0)
         table['metadata']['columns'] = str(0)

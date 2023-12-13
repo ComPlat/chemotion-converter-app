@@ -25,6 +25,7 @@ from .ebl import EblReader
 from .cfx import CfxReader
 from .tif import TifReader
 from .jcamp_conv_reader import JcampReader
+from .pdf import PdfReader
 
 logger = logging.getLogger(__name__)
 
@@ -85,4 +86,5 @@ registry.register(EblReader)
 registry.register(CfxReader)
 registry.register(TifReader)
 registry.register(JcampReader)
+registry.register(PdfReader)
 
