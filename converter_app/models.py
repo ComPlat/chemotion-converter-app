@@ -7,7 +7,7 @@ from pathlib import Path
 import magic
 from flask import current_app
 
-from .utils import check_uuid
+from .utils import check_uuid, reader_json_shema
 
 logger = logging.getLogger(__name__)
 
@@ -149,4 +149,4 @@ class File(object):
         self.suffix = Path(self.name).suffix
 
         # decode file string
-        self.string = self.content.decode(self.encoding) if self.encoding != 'binary' else None
+        self.string = self.content.decode(self.encoding, errors='ignore') if self.encoding != 'binary' else None
