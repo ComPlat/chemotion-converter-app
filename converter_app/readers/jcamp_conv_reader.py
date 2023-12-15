@@ -25,7 +25,7 @@ class JcampReader(Reader):
         elif isinstance(src, ndarray) or src is None:
             return
         else:
-            table['metadata'][k] = str(src)[:20]
+            table['metadata'][k] = str(src)[:255]
             return
         for (k,v) in src_iter:
             self.add_to_meta(table, k, v)
