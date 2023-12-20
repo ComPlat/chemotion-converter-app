@@ -6,7 +6,7 @@ logger = logging.getLogger(__name__)
 
 class PdfLithozReader(PdfReader):
     identifier = 'pdf_lithoz_reader'
-    priority = 101
+    priority = 9
 
     def get_tables(self):
         tables = []
