@@ -26,6 +26,7 @@ from .cfx import CfxReader
 from .tif import TifReader
 from .jcamp_conv_reader import JcampReader
 from .pdf import PdfReader
+from .lithoz_pdf import PdfLithozReader
 
 logger = logging.getLogger(__name__)
 
@@ -87,4 +88,5 @@ registry.register(CfxReader)
 registry.register(TifReader)
 registry.register(JcampReader)
 registry.register(PdfReader)
+registry.register(PdfLithozReader)
 
