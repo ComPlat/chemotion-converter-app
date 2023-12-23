@@ -8,7 +8,7 @@ logger = logging.getLogger(__name__)
 
 class PdfReader(Reader):
     identifier = 'pdf_reader'
-    priority = 10
+    priority = 100
 
     def check(self):
         result = self.file.encoding == 'binary' and self.file.suffix == '.pdf'
