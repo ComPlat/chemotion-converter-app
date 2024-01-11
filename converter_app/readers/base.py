@@ -5,8 +5,17 @@ from datetime import datetime
 logger = logging.getLogger(__name__)
 
 
-class Reader(object):
+class MetadataContainer(dict):
+    def add_unique(self, key, value):
+        o_key = key
+        idx = 1
+        while key in self:
+            key = f"{o_key} ({idx})"
+            idx += 1
+        self[key] = value
 
+
+class Reader(object):
     float_pattern = re.compile(r'(-?\d+[,.]*\d*[eE+\-\d]*)\S*')
     float_de_pattern = re.compile(r'(-?[\d.]+,\d*[eE+\-\d]*)')
     float_us_pattern = re.compile(r'(-?[\d,]+.\d*[eE+\-\d]*)')
@@ -33,7 +42,8 @@ class Reader(object):
             for key, value in table['metadata'].items():
                 if not isinstance(value, str):
                     class_name = type(value).__name__
-                    logger.warn(f'metadata Table #{table_index} {key}="{value}" is not of type str, but {class_name} ({self.identifier})')
+                    logger.warn(
+                        f'metadata Table #{table_index} {key}="{value}" is not of type str, but {class_name} ({self.identifier})')
 
         for key, value in self.metadata.items():
             if not isinstance(value, str):
@@ -54,9 +64,10 @@ class Reader(object):
         }
 
     def append_table(self, tables):
+
         table = {
             'header': [],
-            'metadata': {},
+            'metadata': MetadataContainer({}),
             'columns': [],
             'rows': []
         }
