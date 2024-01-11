@@ -9,10 +9,12 @@ logger = logging.getLogger(__name__)
 class PdfReader(Reader):
     identifier = 'pdf_reader'
     priority = 100
+    meta_join_char = ' '
 
     def check(self):
-        result = self.file.encoding == 'binary' and self.file.suffix == '.pdf'
-
+        result = self.file.suffix == '.pdf'
+        if result:
+            self.text_data = self._read_pdf()
         logger.debug('result=%s', result)
         return result
 
@@ -55,7 +57,7 @@ class PdfReader(Reader):
                 split_line = [x for x in line.split('\n') if x != '']
                 text_obj = {'text': line.replace('\n', ' ').strip(), 'meta': {}}
                 if len(split_line) >= 2:
-                    text_obj['meta'][split_line[0]] = ' '.join(split_line[1:])
+                    text_obj['meta'][split_line[0]] = self.meta_join_char.join(split_line[1:])
                 current_section.append(text_obj)
 
         doc.close()
@@ -64,7 +66,7 @@ class PdfReader(Reader):
 
     def get_tables(self):
         tables = []
-        text_data = self._read_pdf()
+        text_data = self.text_data
         for table_name, pdf_data in text_data.items():
             table = self.append_table(tables)
 
