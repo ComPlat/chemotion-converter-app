@@ -1,6 +1,8 @@
 import logging
 from collections import OrderedDict
 
+
+
 from .asc_zip import AscZipReader
 from .aif import AifReader
 from .ascii import AsciiReader
@@ -62,6 +64,7 @@ class Readers:
 
 
 registry = Readers()
+
 registry.register(AifReader)
 registry.register(AsciiReader)
 registry.register(BrmlReader)
@@ -84,5 +87,6 @@ registry.register(EblReader)
 registry.register(CfxReader)
 registry.register(JcampReader)
 registry.register(PdfReader)
+registry.register(PdfLithozReader)
 registry.register(EaPdfReader)
 

@@ -17,6 +17,16 @@ class EaPdfReader(PdfReader):
             res = len(self.text_data) == 1 and '_' in self.text_data and self.text_data['_'][-1]['text'].strip().startswith('Signature')
         return res
 
+
+    def prepare_line(self, line):
+        split_line = [x for x in line.split('\n')]
+        text_obj = {'text': line.replace('\n', ' ').strip(), 'meta': {}}
+        if len(split_line) >= 2:
+            text_obj['meta'][split_line[0]] = '\n'.join(split_line[1:])
+
+        return text_obj
+
+
     def get_tables(self):
         tables = []
         text_data = self.text_data['_']

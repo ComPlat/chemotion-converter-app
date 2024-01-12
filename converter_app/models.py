@@ -7,7 +7,7 @@ from pathlib import Path
 import magic
 from flask import current_app
 
-from .utils import check_uuid
+from .utils import check_uuid, reader_json_shema
 
 logger = logging.getLogger(__name__)
 
@@ -145,8 +145,12 @@ class File(object):
         file.seek(0)
 
         self.mime_type = magic.Magic(mime=True).from_buffer(self.content)
-        self.encoding = magic.Magic(mime_encoding=True).from_buffer(self.content)
         self.suffix = Path(self.name).suffix
+
+        if self.suffix in ['.pdf'] :
+            self.encoding = 'binary'
+        else:
+            self.encoding = magic.Magic(mime_encoding=True).from_buffer(self.content)
 
         # decode file string
         self.string = self.content.decode(self.encoding, errors='ignore') if self.encoding != 'binary' else None
