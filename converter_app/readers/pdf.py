@@ -9,7 +9,6 @@ logger = logging.getLogger(__name__)
 class PdfReader(Reader):
     identifier = 'pdf_reader'
     priority = 100
-    meta_join_char = ' '
 
     def check(self):
         result = self.file.suffix == '.pdf'
@@ -19,7 +18,8 @@ class PdfReader(Reader):
         return result
 
     def _read_pdf(self):
-        temp_pdf = tempfile.NamedTemporaryFile(delete=False)
+
+        temp_pdf = tempfile.NamedTemporaryFile(delete=True)
 
         try:
             # Save the contents of FileStorage to the temporary file
@@ -48,21 +48,28 @@ class PdfReader(Reader):
                 current_section = {}
                 text_data[link.title] = current_section
                 link = link.next
+
             for block in blocks:
                 line = block[4]
                 if link is not None and link.y <= block[1] and link.page == page_num:
                     current_section = []
                     text_data[link.title.strip()] = current_section
                     link = link.next
-                split_line = [x for x in line.split('\n') if x != '']
-                text_obj = {'text': line.replace('\n', ' ').strip(), 'meta': {}}
-                if len(split_line) >= 2:
-                    text_obj['meta'][split_line[0]] = self.meta_join_char.join(split_line[1:])
-                current_section.append(text_obj)
+
+                current_section.append(self.prepare_line(line))
 
         doc.close()
 
         return text_data
+
+
+    def prepare_line(self, line):
+        split_line = [x for x in line.split('\n') if x != '']
+        text_obj = {'text': line.replace('\n', ' ').strip(), 'meta': {}}
+        if len(split_line) >= 2:
+            text_obj['meta'][split_line[0]] = ' '.join(split_line[1:])
+        return text_obj
+
 
     def get_tables(self):
         tables = []
