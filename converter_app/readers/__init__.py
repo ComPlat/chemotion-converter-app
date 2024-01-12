@@ -89,5 +89,6 @@ registry.register(CfxReader)
 registry.register(TifReader)
 registry.register(JcampReader)
 registry.register(PdfReader)
+registry.register(PdfLithozReader)
 registry.register(EaPdfReader)
 
