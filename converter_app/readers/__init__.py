@@ -23,6 +23,7 @@ from .old_excel import OldExcelReader
 from .dwl import DWLReader
 from .ebl import EblReader
 from .cfx import CfxReader
+from .tif import TifReader
 from .jcamp_conv_reader import JcampReader
 from .pdf import PdfReader
 from .lithoz_pdf import PdfLithozReader
@@ -85,6 +86,7 @@ registry.register(OldExcelReader)
 registry.register(DWLReader)
 registry.register(EblReader)
 registry.register(CfxReader)
+registry.register(TifReader)
 registry.register(JcampReader)
 registry.register(PdfReader)
 registry.register(PdfLithozReader)
