@@ -149,4 +149,4 @@ class File(object):
         self.suffix = Path(self.name).suffix
 
         # decode file string
-        self.string = self.content.decode(self.encoding) if self.encoding != 'binary' else None
+        self.string = self.content.decode(self.encoding, errors='ignore') if self.encoding != 'binary' else None
