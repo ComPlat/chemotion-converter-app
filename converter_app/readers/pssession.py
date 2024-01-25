@@ -29,12 +29,14 @@ class PsSessionReader(Reader):
         tables = []
         data = self.parse_json()
 
-        for measurement in data.get('measurements', []):
+        measurements = data.get('measurements') or data.get('Measurements', [])
+        for measurement in measurements:
             # each measurement is a table
             table = self.append_table(tables)
 
             # add the method field to the header
-            table['header'] = measurement['method'].splitlines()
+            method = measurement.get('method') or measurement.get('Method', '')
+            table['header'] = method.splitlines()
 
             # add key value pairs from the method field to the metadata
             for line in table['header']:
@@ -46,17 +48,29 @@ class PsSessionReader(Reader):
                         pass
 
             # add measurement fields to the metadata
-            table['metadata']['title'] = str(measurement['title'])
-            table['metadata']['timestamp'] = str(measurement['timestamp'])
-            table['metadata']['deviceused'] = str(measurement['deviceused'])
-            table['metadata']['deviceserial'] = str(measurement['deviceserial'])
-            table['metadata']['type'] = str(measurement['dataset']['type'])
+            title = measurement.get('title') or measurement.get('Title', '')
+            table['metadata']['title'] = str(title)
+
+            timestamp = measurement.get('timestamp') or measurement.get('TimeStamp', '')
+            table['metadata']['timestamp'] = str(timestamp)
+
+            deviceused = measurement.get('deviceused') or measurement.get('DeviceUsed', '')
+            table['metadata']['deviceused'] = str(deviceused)
+
+            deviceserial = measurement.get('deviceserial') or measurement.get('DeviceSerial', '')
+            table['metadata']['deviceserial'] = str(deviceserial)
+
+            dataset = measurement.get('dataset') or measurement.get('DataSet', {})
+            type_value = dataset.get('type') or dataset.get('Type', '')
+            table['metadata']['type'] = str(type_value)
 
             # exctract the columns
             columns = []
-            for idx, values in enumerate(measurement['dataset']['values']):
+            dataset = measurement.get('dataset') or measurement.get('DataSet', {})
+            values = dataset.get('values') or dataset.get('Values', [])
+            for idx, values in enumerate(values):
                 # each array is a column
-                column_name = values['description']
+                column_name = values.get('description') or values.get('Description', '')
 
                 # add the column name to the metadata
                 table['metadata']['column_{:02d}'.format(idx)] = column_name
@@ -68,7 +82,9 @@ class PsSessionReader(Reader):
                 })
 
                 # append the "datavalues" to list data list of lists
-                columns.append([datavalues['v'] for datavalues in values['datavalues']])
+                datavalues_list = values.get('datavalues') or values.get('DataValues', [])
+                columns.append([datavalues.get('v') or datavalues.get('V', None) for datavalues in datavalues_list])
+
 
             # transpose data list of lists
             table['rows'] = list(map(list, zip(*columns)))
@@ -82,5 +98,6 @@ class PsSessionReader(Reader):
     def get_metadata(self):
         metadata = super().get_metadata()
         data = self.parse_json()
-        metadata['type'] = data.get('type')
+        metadata['type'] = data.get('type') or data.get('Type', '')
         return metadata
+
