@@ -2,28 +2,38 @@ import csv
 import io
 import logging
 
-from .base import Reader
+from converter_app.readers.helper import get_shape
+from converter_app.readers.helper.reader import Readers
+from converter_app.readers.helper.base import Reader
 
 logger = logging.getLogger(__name__)
 
 
 class CSVReader(Reader):
+    """
+    Reads and fixes CSV files into metadata and data tables
+    """
     identifier = 'csv_reader'
     priority = 100
 
-    empty_values = ['', 'n.a.']
-    table_min_rows = 20
-    delimiters = {
-        '\t': 'tab',
-        ';': 'semicolon',
-        ',': 'comma',
-    }
-    lineterminators = {
-        '\r\n': '\\r\\n',
-        '\r': '\\r',
-        '\n': '\\n',
-    }
-    sniff_buffer_size = 100000
+    def __init__(self, file):
+        super().__init__(file)
+        self.lines = None
+        self.rows = None
+
+        self.empty_values = ['', 'n.a.']
+        self.table_min_rows = 20
+        self.delimiters = {
+            '\t': 'tab',
+            ';': 'semicolon',
+            ',': 'comma',
+        }
+        self.lineterminators = {
+            '\r\n': '\\r\\n',
+            '\r': '\\r',
+            '\n': '\\n',
+        }
+        self.sniff_buffer_size = 100000
 
     def check(self):
         # check using seperate function for inheritance
@@ -31,31 +41,37 @@ class CSVReader(Reader):
         if result:
             self.lines = self.file.string.splitlines()
             try:
-                self.rows = list(csv.reader(io.StringIO(self.file.string), self.file.csv_dialect))
+                self.rows = list(csv.reader(io.StringIO(self.file.string), self.file.features('csv_dialect')))
             except:
-                self.rows = [row for row in csv.reader(self.lines, self.file.csv_dialect)]
+                self.rows = list(csv.reader(self.lines, self.file.features('csv_dialect')))
 
         logger.debug('result=%s', result)
         return result
 
     def check_csv(self):
+        """
+        Checks if file is CSV readable
+        :return: True if is CSV readable
+        """
         try:
             # check if the csv dialect was already found
-            self.file.csv_dialect
+            self.file.features('csv_dialect')
             return True
         except AttributeError:
             if self.file.string is not None:
                 # check different delimiters one by one
                 for delimiter in self.delimiters.keys():
                     try:
-                        self.file.csv_dialect = csv.Sniffer().sniff(self.file.string[:self.sniff_buffer_size], delimiters=delimiter)
+                        self.file.set_features('csv_dialect',
+                                               csv.Sniffer().sniff(self.file.string[:self.sniff_buffer_size],
+                                                                   delimiters=delimiter))
                         return True
                     except csv.Error:
                         pass
 
         return False
 
-    def get_tables(self):
+    def prepare_tables(self):
         tables = []
         table = self.append_table(tables)
 
@@ -63,7 +79,7 @@ class CSVReader(Reader):
         blocks = []
         block = {}
         for index, row in enumerate(self.rows):
-            shape = self.get_shape(row)
+            shape = get_shape(row)
             if block.get('shape') is None or not self.compare_shape(shape, block.get('shape', [])):
                 block = {'indexes': [], 'shape': shape}
                 blocks.append(block)
@@ -84,14 +100,14 @@ class CSVReader(Reader):
                 # this is the table
                 if not table['rows']:
                     # if there are no tables, we can try to find the columns previous line
-                    if prev_block:
+                    if prev_block is not None:
                         this_row = self.rows[block['indexes'][0]]
                         prev_row = self.rows[prev_block['indexes'][-1]]
 
                         if len(prev_row) > 0 and len(prev_row) <= len(this_row):
                             # add the column names as metadata
                             table['metadata'] = {
-                                'column_{:02d}'.format(idx): str(value) for idx, value in enumerate(prev_row)
+                                f'column_{idx:02d}': str(value) for idx, value in enumerate(prev_row)
                             }
                             # remove the colum line from the header
                             table['header'] = table['header'][:-1]
@@ -105,44 +121,34 @@ class CSVReader(Reader):
             table['columns'] = []
             if table['rows']:
                 for idx in range(len(table['rows'][0])):
-                    name = table['metadata'].get('column_{:02d}'.format(idx))
+                    name = table['metadata'].get(f'column_{idx:02d}')
                     table['columns'].append({
                         'key': str(idx),
-                        'name': 'Column #{} ({})'.format(idx, name) if name else 'Column #{}'.format(idx)
+                        'name': f'Column #{idx} ({name})' if name else f'Column #{idx}'
                     })
-
-            table['metadata']['rows'] = str(len(table['rows']))
-            table['metadata']['columns'] = str(len(table['columns']))
 
         return tables
 
     def get_metadata(self):
+        csv_dialect = self.file.features('csv_dialect')
         metadata = super().get_metadata()
-        metadata['lineterminator'] = self.lineterminators.get(self.file.csv_dialect.lineterminator, self.file.csv_dialect.lineterminator)
-        metadata['quoting'] = str(self.file.csv_dialect.quoting)
-        metadata['doublequote'] = str(self.file.csv_dialect.doublequote)
-        metadata['delimiter'] = self.delimiters.get(self.file.csv_dialect.delimiter, self.file.csv_dialect.delimiter)
-        metadata['quotechar'] = self.file.csv_dialect.quotechar
-        metadata['skipinitialspace'] = str(self.file.csv_dialect.skipinitialspace)
+        metadata['lineterminator'] = self.lineterminators.get(csv_dialect.lineterminator, csv_dialect.lineterminator)
+        metadata['quoting'] = str(csv_dialect.quoting)
+        metadata['doublequote'] = str(csv_dialect.doublequote)
+        metadata['delimiter'] = self.delimiters.get(csv_dialect.delimiter, csv_dialect.delimiter)
+        metadata['quotechar'] = csv_dialect.quotechar
+        metadata['skipinitialspace'] = str(csv_dialect.skipinitialspace)
         return metadata
 
-    def get_shape(self, row):
-        shape = []
-        for cell in row:
-            value = cell.strip()
-            if value in self.empty_values:
-                shape.append('')
-            elif self.float_pattern.match(value):
-                shape.append('f')
-            else:
-                shape.append('s')
-
-        return shape
-
     def compare_shape(self, shape_a, shape_b):
-        # this function compares two shapes, shapes are considered equal if
-        # floats or strings are at the same positions, spaces are considered wildcards
-        # since they could be both floats or strings
+        """
+        this function compares two shapes, shapes are considered equal if
+        floats or strings are at the same positions, spaces are considered wildcards
+        since they could be both floats or strings
+        :param shape_a: encoded line/row shape
+        :param shape_b: encoded line/row shape
+        :return: True if shape_a equals shape_b
+        """
         if shape_a == shape_b:
             # both shapes are identical
             return True
@@ -165,3 +171,6 @@ class CSVReader(Reader):
                 return False
 
         return True
+
+
+Readers.instance().register(CSVReader)

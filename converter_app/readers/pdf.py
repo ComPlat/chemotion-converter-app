@@ -1,8 +1,8 @@
 import logging
 import tempfile
-from .base import Reader
-import fitz  # imports the pymupdf library
-
+import fitz
+from converter_app.readers.helper.base import Reader
+from converter_app.readers.helper.reader import Readers
 logger = logging.getLogger(__name__)
 
 
@@ -10,32 +10,38 @@ class PdfReader(Reader):
     identifier = 'pdf_reader'
     priority = 100
 
+    def __init__(self, file):
+        super().__init__(file)
+        self.text_data = None
+
     def check(self):
         result = self.file.suffix == '.pdf'
         if result:
-            self.text_data = self._read_pdf()
-        logger.debug('result=%s', result)
+            try:
+                self.text_data = self.file.features('text_data')
+            except:
+                self.text_data = self._read_pdf()
+                self.file.set_features('text_data', self.text_data)
         return result
 
     def _read_pdf(self):
 
-        temp_pdf = tempfile.NamedTemporaryFile(delete=True)
+        with tempfile.NamedTemporaryFile(delete=True) as temp_pdf:
+            try:
+                # Save the contents of FileStorage to the temporary file
+                self.file.fp.save(temp_pdf.name)
 
-        try:
-            # Save the contents of FileStorage to the temporary file
-            self.file.fp.save(temp_pdf.name)
+                # Open the PDF file using PyMuPDF
+                doc = fitz.open(temp_pdf.name)
 
-            # Open the PDF file using PyMuPDF
-            doc = fitz.open(temp_pdf.name)
+                # Access and manipulate the document using doc
 
-            # Access and manipulate the document using doc
-
-            # Close the document when you're done
-        except:
-            return {}
-        finally:
-            # Remove the temporary file
-            temp_pdf.close()
+                # Close the document when you're done
+            except:
+                return {}
+            finally:
+                # Remove the temporary file
+                temp_pdf.close()
         current_section = []
         text_data = {'_': current_section}
 
@@ -64,6 +70,10 @@ class PdfReader(Reader):
 
 
     def prepare_line(self, line):
+        """
+        :param line: PDF line string
+        :return: dict: basic construct to contain line metadata
+        """
         split_line = [x for x in line.split('\n') if x != '']
         text_obj = {'text': line.replace('\n', ' ').strip(), 'meta': {}}
         if len(split_line) >= 2:
@@ -71,7 +81,7 @@ class PdfReader(Reader):
         return text_obj
 
 
-    def get_tables(self):
+    def prepare_tables(self):
         tables = []
         text_data = self.text_data
         for table_name, pdf_data in text_data.items():
@@ -84,3 +94,6 @@ class PdfReader(Reader):
                     table['metadata'].add_unique(k, v)
 
         return tables
+
+
+Readers.instance().register(PdfReader)

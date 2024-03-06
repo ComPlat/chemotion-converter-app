@@ -1,12 +1,15 @@
 import logging
 import re
-
-from .base import Reader
+from converter_app.readers.helper.base import Reader
+from converter_app.readers.helper.reader import Readers
 
 logger = logging.getLogger(__name__)
 
 
 class AsciiReader(Reader):
+    """
+    Implementation of the Ascii Reader. It extends converter_app.readers.helper.base.Reader
+    """
     identifier = 'ascii_reader'
     priority = 1000
 
@@ -14,15 +17,12 @@ class AsciiReader(Reader):
     text_pattern = re.compile(r'[A-Za-z]{2,}')
 
     def check(self):
-        if self.file.encoding == 'binary':
-            result = False
-        else:
-            result = True
+        """
+        :return: True if it fits
+        """
+        return not self.file.encoding == 'binary'
 
-        logger.debug('result=%s', result)
-        return result
-
-    def get_tables(self):
+    def prepare_tables(self):
         tables = []
         table = self.append_table(tables)
 
@@ -63,15 +63,7 @@ class AsciiReader(Reader):
 
             previous_count = count
 
-        # loop over tables and append columns
-        for table in tables:
-            if table['rows']:
-                table['columns'] = [{
-                    'key': str(idx),
-                    'name': 'Column #{}'.format(idx)
-                } for idx, value in enumerate(table['rows'][0])]
-
-            table['metadata']['rows'] = str(len(table['rows']))
-            table['metadata']['columns'] = str(len(table['columns']))
-
         return tables
+
+
+Readers.instance().register(AsciiReader)

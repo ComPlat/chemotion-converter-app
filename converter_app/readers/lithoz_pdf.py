@@ -1,21 +1,27 @@
 import logging
 from .pdf import PdfReader
+from converter_app.readers.helper.reader import Readers
 
 logger = logging.getLogger(__name__)
 
 
 class PdfLithozReader(PdfReader):
+    """
+    Reads metadata from a lithoz PDF
+    """
     identifier = 'pdf_lithoz_reader'
     priority = 99
 
     def check(self):
+        """
+        :return: True if it fits
+        """
         res = super().check()
         if res:
             res = len(self.text_data) == 6 and 'Zusammenfassung' in self.text_data
         return res
 
-
-    def get_tables(self):
+    def prepare_tables(self):
         tables = []
         text_data = self.text_data
         for table_name, pdf_data in text_data.items():
@@ -31,3 +37,6 @@ class PdfLithozReader(PdfReader):
                     table['metadata'].add_unique(k, v)
 
         return tables
+
+
+Readers.instance().register(PdfLithozReader)

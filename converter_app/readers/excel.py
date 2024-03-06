@@ -3,7 +3,9 @@ import zipfile
 
 import openpyxl
 
-from .base import Reader
+from converter_app.readers.helper import get_shape
+from converter_app.readers.helper.reader import Readers
+from converter_app.readers.helper.base import Reader
 
 logger = logging.getLogger(__name__)
 
@@ -12,7 +14,14 @@ class ExcelReader(Reader):
     identifier = 'excel_reader'
     priority = 15
 
+    def __init__(self, file):
+        super().__init__(file)
+        self.wb = None
+
     def check(self):
+        """
+        :return: True if it fits
+        """
         if self.file.encoding != 'binary':
             result = False
         elif self.file.suffix != '.xlsx':
@@ -27,7 +36,7 @@ class ExcelReader(Reader):
         logger.debug('result=%s', result)
         return result
 
-    def get_tables(self):
+    def prepare_tables(self):
         tables = []
 
         # loop over worksheets
@@ -36,7 +45,7 @@ class ExcelReader(Reader):
 
             previous_shape = None
             for row in ws.values:
-                shape = self.get_shape(row)
+                shape = get_shape(row)
 
                 if 's' in shape:
                     # there is a string in this row, this cant be the table
@@ -63,27 +72,6 @@ class ExcelReader(Reader):
                 # store shape and row for the next iteration
                 previous_shape = shape
 
-        for table in tables:
-            if table['rows']:
-                table['columns'] = [{
-                    'key': str(idx),
-                    'name': 'Column #{}'.format(idx)
-                } for idx, value in enumerate(table['rows'][0])]
-
-            table['metadata']['rows'] = str(len(table['rows']))
-            table['metadata']['columns'] = str(len(table['columns']))
-
         return tables
 
-    def get_shape(self, row):
-        shape = []
-        for cell in row:
-            if cell is None:
-                shape.append(None)
-            else:
-
-                if isinstance(cell, (int, float)):
-                    shape.append('f')
-                else:
-                    shape.append('s')
-        return shape
+Readers.instance().register(ExcelReader)

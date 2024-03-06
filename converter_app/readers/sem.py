@@ -1,24 +1,29 @@
 import logging
-
+from converter_app.readers.helper.reader import Readers
 from .ascii import AsciiReader
 
 logger = logging.getLogger(__name__)
 
 
 class SemReader(AsciiReader):
+    """
+    Reads Sem data files
+    """
     identifier = 'sem_reader'
     priority = 95
 
     def check(self):
+        """
+        :return: True if it fits
+        """
         result = False
-        if super(SemReader, self).check():
+        if super().check():
             first_line = self.file.string.splitlines()[0]
             result = first_line.startswith('$SEM_DATA_VERSION')
 
-        logger.debug('result=%s', result)
         return result
 
-    def get_tables(self):
+    def prepare_tables(self):
         tables = []
         table = self.append_table(tables)
         table_mode = False
@@ -49,8 +54,7 @@ class SemReader(AsciiReader):
                         table['metadata'][row_array[0].replace("$", "")] = ", ".join(row_array[1:])
                     else:
                         table['metadata'][row_array[0].replace("$", "")] = "True"
-
-        table['metadata']['rows'] = str(len(table['rows']))
-        table['metadata']['columns'] = str(len(table['columns']))
         return tables
 
+
+Readers.instance().register(SemReader)

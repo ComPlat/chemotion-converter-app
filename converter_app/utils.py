@@ -5,35 +5,44 @@ import uuid
 
 
 def human2bytes(string):
+    """
+    Bytes size converter
+    :param string: input unit string for example 100kb
+    """
     if not string:
         return 0
 
     m = re.match(r'([0-9.]+)\s*([A-Za-z]+)', string)
     number, unit = float(m.group(1)), m.group(2).strip().lower()
 
-    if unit == 'kb' or unit == 'k':
-        return number * 1000
-    elif unit == 'mb' or unit == 'm':
-        return number * 1000**2
-    elif unit == 'gb' or unit == 'g':
-        return number * 1000**3
-    elif unit == 'tb' or unit == 't':
-        return number * 1000**4
-    elif unit == 'pb' or unit == 'p':
-        return number * 1000**5
+    if unit in ['kb', 'k']:
+        number = number * 1000
+    elif unit in ['mb', 'm']:
+        number = number * 1000**2
+    elif unit in ['gb', 'g']:
+        number = number * 1000**3
+    elif unit in ['tb', 't']:
+        number = number * 1000**4
+    elif unit in ['pb', 'p']:
+        number = number * 1000**5
     elif unit == 'kib':
-        return number * 1024
+        number = number * 1024
     elif unit == 'mib':
-        return number * 1024**2
+        number = number * 1024**2
     elif unit == 'gib':
-        return number * 1024**3
+        number = number * 1024**3
     elif unit == 'tib':
-        return number * 1024**4
+        number = number * 1024**4
     elif unit == 'pib':
-        return number * 1024**5
+        number = number * 1024**5
+    return number
 
 
 def check_uuid(string):
+    """
+    :param string: uuid string
+    :return: True if string is a uuid
+    """
     try:
         return uuid.UUID(string, version=4)
     except ValueError:
@@ -41,6 +50,11 @@ def check_uuid(string):
 
 
 def checkpw(password, hashed_password):
+    """
+    :param password: Password string
+    :param hashed_password: hashed password in htaccess
+    :return: True if password is correct
+    """
     m = hashlib.sha1()
     m.update(password)
     return (b'{SHA}' + base64.b64encode(m.digest())) == hashed_password

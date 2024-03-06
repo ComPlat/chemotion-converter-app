@@ -1,6 +1,7 @@
 import logging
 
-from .base import Reader
+from converter_app.readers.helper.base import Reader
+from converter_app.readers.helper.reader import Readers
 
 logger = logging.getLogger(__name__)
 
@@ -8,22 +9,29 @@ logger = logging.getLogger(__name__)
 class JascoReader(Reader):
     identifier = 'jasco_reader'
     priority = 99
-    header_length = 8
+
+
+    def __init__(self, file):
+        super().__init__(file)
+        self.lines = None
+        self.header_length = 8
 
     def check(self):
+        """
+        :return: True if it fits
+        """
         result = False
         if self.file.string is not None:
             if len(self.file.string.splitlines()) == 1:
                 file_lines = self.file.string.split(',')
                 if file_lines[self.header_length - 1] == str(len(file_lines) - self.header_length):
                     result = True
-        if result:
-            self.lines = file_lines
+                    self.lines = file_lines
 
         logger.debug('result=%s', result)
         return result
 
-    def get_tables(self):
+    def prepare_tables(self):
         tables = []
         table = self.append_table(tables)
 
@@ -34,17 +42,7 @@ class JascoReader(Reader):
                 x, y = line.split()
                 table['rows'].append((self.get_value(x), self.get_value(y)))
 
-        # build columns
-        for table in tables:
-            table['columns'] = []
-            if table['rows']:
-                for idx in range(len(table['rows'][0])):
-                    table['columns'].append({
-                        'key': str(idx),
-                        'name': 'Column #{}'.format(idx)
-                    })
-
-            table['metadata']['rows'] = str(len(table['rows']))
-            table['metadata']['columns'] = str(len(table['columns']))
-
         return tables
+
+
+Readers.instance().register(JascoReader)

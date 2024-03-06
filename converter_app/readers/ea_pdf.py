@@ -1,17 +1,23 @@
 import logging
 from itertools import chain
-
+from converter_app.readers.helper.reader import Readers
 from .pdf import PdfReader
 
 logger = logging.getLogger(__name__)
 
 
 class EaPdfReader(PdfReader):
+    """
+
+    """
     identifier = 'pdf_ea_reader'
     priority = 99
     meta_join_char = '\n'
 
     def check(self):
+        """
+        :return: True if it fits
+        """
         res = super().check()
         if res:
             res = len(self.text_data) == 1 and '_' in self.text_data and self.text_data['_'][-1]['text'].strip().startswith('Signature')
@@ -19,6 +25,11 @@ class EaPdfReader(PdfReader):
 
 
     def prepare_line(self, line):
+        """
+        overwrides the PDFreader prepare_line
+        :param line: String PDF line
+        :return:
+        """
         split_line = [x for x in line.split('\n')]
         text_obj = {'text': line.replace('\n', ' ').strip(), 'meta': {}}
         if len(split_line) >= 2:
@@ -27,7 +38,7 @@ class EaPdfReader(PdfReader):
         return text_obj
 
 
-    def get_tables(self):
+    def prepare_tables(self):
         tables = []
         text_data = self.text_data['_']
         table = self.append_table(tables)
@@ -47,3 +58,6 @@ class EaPdfReader(PdfReader):
                         table['metadata'].add_unique(f"{k}_{elem_k}", values[idx])
 
         return tables
+
+
+Readers.instance().register(EaPdfReader)

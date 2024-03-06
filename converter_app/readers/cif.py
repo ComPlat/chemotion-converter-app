@@ -3,17 +3,19 @@ import os
 import re
 import tempfile
 from zipfile import ZipFile
-
 from gemmi import cif
 from werkzeug.datastructures import FileStorage
-
-from .base import Reader
-from ..models import File
+from converter_app.models import File
+from converter_app.readers.helper.reader import Readers
+from converter_app.readers.helper.base import Reader
 
 logger = logging.getLogger(__name__)
 
 
 class CifReader(Reader):
+    """
+    Reader for .cif files. Files can be Zipped
+    """
     identifier = 'cif_reader'
     priority = 10
     file_prefix = '.cif'
@@ -28,28 +30,30 @@ class CifReader(Reader):
     data_str_pattern = r"'[^'\\]*(?:\\.[^'\\]*)*'"
     data_number_pattern = r"-?\d+\.?\d*\(?\d*\)?"
     data_symbol_pattern = r"[A-Za-z]{1,3}\d*"
-    data_pattern = re.compile(r"%s|%s|%s" % (data_str_pattern, data_symbol_pattern, data_number_pattern))
+    data_pattern = re.compile(rf"{data_str_pattern}|{data_symbol_pattern}|{data_number_pattern}")
 
     def _commonprefix(self, a):
         prefix_len = len(a[0])
-        for x in a[1 : ]:
+        for x in a[1:]:
             prefix_len = min(prefix_len, len(x))
-            while not x.startswith(a[0][ : prefix_len]):
+            while not x.startswith(a[0][: prefix_len]):
                 prefix_len -= 1
 
-        return a[0][ : prefix_len]
+        return a[0][: prefix_len]
 
     def check(self):
-
+        """
+        :return: True if it fits
+        """
         if self.file.suffix.lower() == '.zip' and self.file.mime_type == 'application/zip':
-            with ZipFile(self.file.fp, 'r') as zipObj:
+            with ZipFile(self.file.fp, 'r') as zip_obj:
                 try:
-                    fileName = next(x for x in zipObj.namelist() if x.lower().endswith(self.file_prefix))
+                    file_name = next(x for x in zip_obj.namelist() if x.lower().endswith(self.file_prefix))
                     zipdir = os.path.join(tempfile.TemporaryDirectory().name, self.file.name)
                     os.makedirs(zipdir)
-                    pathFileName = zipObj.extract(fileName, zipdir)
-                    with open(pathFileName, 'rb') as f:
-                        fs = FileStorage(stream=f, filename=os.path.basename(fileName), content_type='chemical/x-cif')
+                    path_file_name = zip_obj.extract(file_name, zipdir)
+                    with open(path_file_name, 'rb') as f:
+                        fs = FileStorage(stream=f, filename=os.path.basename(file_name), content_type='chemical/x-cif')
                         self.file = File(fs)
                 except:
                     logger.debug('result=%s', False)
@@ -62,10 +66,9 @@ class CifReader(Reader):
             except:
                 result = False
 
-        logger.debug('result=%s', result)
         return result
 
-    def get_tables(self):
+    def prepare_tables(self):
         if self.cif is None:
             return []
         block = self.cif.sole_block()  # mmCIF has exactly one block
@@ -75,17 +78,17 @@ class CifReader(Reader):
         junk_table_header = []
         has_junk = False
 
-        meta_table['header'].append("Block_name = %s" % block.name)
+        meta_table['header'].append(f"Block_name = {block.name}")
         meta_table['metadata']["Block_name"] = block.name
 
         for item in block:
             if item.pair is not None:
                 if len(item.pair[1]) > self.junk_size_threshold:
                     has_junk = True
-                    junk_table_header.append("%s = %s" % item.pair)
+                    junk_table_header.append(' = '.join(item.pair[:2]))
                 else:
-                    meta_table['header'].append("%s = %s" % item.pair)
-                    meta_table['metadata'][item.pair[0]] = re.sub(r"^[;\s']+|[;\s']+$", "", item.pair[1] )
+                    meta_table['header'].append(' = '.join(item.pair[:2]))
+                    meta_table['metadata'][item.pair[0]] = re.sub(r"^[;\s']+|[;\s']+$", "", item.pair[1])
             elif item.loop is not None:
                 table = self.append_table(tables)
                 prefix = self._commonprefix(item.loop.tags)
@@ -93,19 +96,21 @@ class CifReader(Reader):
                 for tag in item.loop.tags:
                     table['header'].append(tag)
                     table['columns'].append({
-                        'key': str(len(table['columns']) + 1) ,
+                        'key': str(len(table['columns']) + 1),
                         'name': tag
                     })
 
                 for i in range(0, len(item.loop.values), len(item.loop.tags)):
-                    table['rows'].append(['R%d' % (i // len(item.loop.tags))] + item.loop.values[i:(i+len(item.loop.tags))])
+                    table['rows'].append(
+                        [f'R{i // len(item.loop.tags)}'] + item.loop.values[i:(i + len(item.loop.tags))])
 
 
-                table['metadata']['rows'] = str(len(table['rows']))
-                table['metadata']['columns'] = str(len(table['columns']))
 
         if has_junk:
             junk_table = self.append_table(tables)
             junk_table['header'] = junk_table_header
 
         return tables
+
+
+Readers.instance().register(CifReader)
