@@ -7,9 +7,11 @@ logger = logging.getLogger(__name__)
 
 
 class JascoReader(Reader):
+    """
+    Reading rasco files
+    """
     identifier = 'jasco_reader'
     priority = 99
-
 
     def __init__(self, file):
         super().__init__(file)
@@ -24,7 +26,8 @@ class JascoReader(Reader):
         if self.file.string is not None:
             if len(self.file.string.splitlines()) == 1:
                 file_lines = self.file.string.split(',')
-                if file_lines[self.header_length - 1] == str(len(file_lines) - self.header_length):
+                if len(file_lines) > self.header_length - 1 and file_lines[self.header_length - 1] == str(
+                        len(file_lines) - self.header_length):
                     result = True
                     self.lines = file_lines
 

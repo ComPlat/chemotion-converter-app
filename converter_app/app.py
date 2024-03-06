@@ -9,19 +9,17 @@ users with the capability to effortlessly create profiles for the conversion pro
 
 import logging
 import os
-
-
-# Example usage
-
-
 from pathlib import Path
-from str2bool import str2bool
 
 import dotenv
 import flask
+from str2bool import str2bool
 
 from converter_app.router import get_clients, setup_flask_routing
 from converter_app.utils import human2bytes
+
+
+# Example usage
 
 
 def create_app():
@@ -48,6 +46,7 @@ def create_app():
         CLIENTS=get_clients() is not None
     )
 
+    app.debug = app.config['DEBUG']
     setup_flask_routing(app)
 
     return app
