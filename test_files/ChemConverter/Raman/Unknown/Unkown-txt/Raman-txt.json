@@ -1,0 +1,114 @@
+{
+  "data": {
+    "metadata": {
+      "content_type": "text/plain",
+      "delimiter": "tab",
+      "doublequote": "False",
+      "extension": ".txt",
+      "file_name": "PD-01-02_Average(1).txt",
+      "lineterminator": "\\r\\n",
+      "mime_type": "text/plain",
+      "quotechar": "\"",
+      "quoting": "0",
+      "reader": "CSVReader",
+      "skipinitialspace": "False",
+      "uploaded": "2024-01-09T09:43:45.072011"
+    },
+    "tables": [
+      {
+        "columns": [
+          {
+            "key": "0",
+            "name": "Column #0"
+          },
+          {
+            "key": "1",
+            "name": "Column #1"
+          }
+        ],
+        "header": [
+          "#Wave\t\t#Intensity"
+        ],
+        "metadata": {
+          "columns": "2",
+          "rows": "923"
+        },
+        "rows": [
+          [
+            "1298.302734",
+            "85368.257813"
+          ],
+          [
+            "1297.214844",
+            "85391.882813"
+          ],
+          [
+            "1296.126953",
+            "85369.546875"
+          ],
+          [
+            "1295.039063",
+            "85334.093750"
+          ],
+          [
+            "1293.951172",
+            "85187.406250"
+          ],
+          [
+            "1292.862305",
+            "85170.648438"
+          ],
+          [
+            "1291.773438",
+            "85082.289063"
+          ],
+          [
+            "1290.684570",
+            "85187.992188"
+          ],
+          [
+            "1289.594727",
+            "85107.851563"
+          ],
+          [
+            "1288.505859",
+            "84987.531250"
+          ]
+        ]
+      }
+    ]
+  },
+  "description": "Data only",
+  "id": "5290683c-9136-4c99-ad18-96d07294e07e",
+  "identifiers": [
+    {
+      "lineNumber": 1,
+      "match": "exact",
+      "optional": false,
+      "tableIndex": 0,
+      "type": "tableHeader",
+      "value": "#Wave\t\t#Intensity"
+    }
+  ],
+  "tables": [
+    {
+      "header": {
+        "DATA CLASS": "XYPOINTS",
+        "DATA TYPE": "RAMAN SPECTRUM",
+        "XUNITS": "1/CM",
+        "YUNITS": "Intensity"
+      },
+      "table": {
+        "xColumn": {
+          "columnIndex": 0,
+          "tableIndex": 0
+        },
+        "yColumn": {
+          "columnIndex": 1,
+          "tableIndex": 0
+        }
+      }
+    }
+  ],
+  "title": "Raman"
+}

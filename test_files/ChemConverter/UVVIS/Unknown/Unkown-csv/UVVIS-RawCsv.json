@@ -1,0 +1,144 @@
+{
+  "data": {
+    "metadata": {
+      "content_type": "text/csv",
+      "delimiter": "semicolon",
+      "doublequote": "False",
+      "extension": ".csv",
+      "file_name": "ADG_P_05.Sample.Raw(2).csv",
+      "lineterminator": "\\r\\n",
+      "mime_type": "text/plain",
+      "quotechar": "\"",
+      "quoting": "0",
+      "reader": "CSVReader",
+      "skipinitialspace": "True",
+      "uploaded": "2024-01-09T09:54:52.965383"
+    },
+    "tables": [
+      {
+        "columns": [
+          {
+            "key": "0",
+            "name": "Column #0 (nm)"
+          },
+          {
+            "key": "1",
+            "name": "Column #1 (A)"
+          }
+        ],
+        "header": [],
+        "metadata": {
+          "column_00": "nm",
+          "column_01": "A",
+          "columns": "2",
+          "rows": "551"
+        },
+        "rows": [
+          [
+            "800.000000",
+            "-0.003762"
+          ],
+          [
+            "799.000000",
+            "-0.004879"
+          ],
+          [
+            "798.000000",
+            "-0.004541"
+          ],
+          [
+            "797.000000",
+            "-0.004262"
+          ],
+          [
+            "796.000000",
+            "-0.004391"
+          ],
+          [
+            "795.000000",
+            "-0.004561"
+          ],
+          [
+            "794.000000",
+            "-0.004406"
+          ],
+          [
+            "793.000000",
+            "-0.003882"
+          ],
+          [
+            "792.000000",
+            "-0.004837"
+          ],
+          [
+            "791.000000",
+            "-0.003589"
+          ]
+        ]
+      }
+    ]
+  },
+  "description": "csv data only; filename contains \"raw\"",
+  "id": "ffddc643-0832-4e6c-8fec-645723a05d55",
+  "identifiers": [
+    {
+      "key": "column_00",
+      "match": "exact",
+      "optional": false,
+      "tableIndex": 0,
+      "type": "tableMetadata",
+      "value": "nm"
+    },
+    {
+      "key": "column_01",
+      "match": "exact",
+      "optional": false,
+      "tableIndex": 0,
+      "type": "tableMetadata",
+      "value": "A"
+    },
+    {
+      "key": "reader",
+      "match": "exact",
+      "optional": false,
+      "type": "fileMetadata",
+      "value": "CSVReader"
+    },
+    {
+      "key": "extension",
+      "match": "exact",
+      "optional": false,
+      "type": "fileMetadata",
+      "value": ".csv"
+    },
+    {
+      "key": "file_name",
+      "match": "regex",
+      "optional": false,
+      "type": "fileMetadata",
+      "value": "Raw"
+    }
+  ],
+  "ols": "CHMO:0000292",
+  "tables": [
+    {
+      "header": {
+        "DATA CLASS": "XYPOINTS",
+        "DATA TYPE": "UV-VIS",
+        "XUNITS": "NANOMETERS",
+        "YUNITS": "ABSORBANCE"
+      },
+      "table": {
+        "xColumn": {
+          "columnIndex": 0,
+          "tableIndex": 0
+        },
+        "yColumn": {
+          "columnIndex": 1,
+          "tableIndex": 0
+        }
+      }
+    }
+  ],
+  "title": "UVVIS Raw"
+}
