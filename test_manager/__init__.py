@@ -41,8 +41,7 @@ def generate_expected_results(src_path, res_path, file):
 def generate_test(src_path, res_path, file):
     global global_test_idx
     global_test_idx += 1
-    src_path = os.path.relpath(src_path, os.path.dirname(__file__))
-    res_path = os.path.relpath(res_path, os.path.dirname(__file__))
+
     test_name = re.sub(r'[^A-Za-z0-9]', '_', file)
     with open(global_test_file, 'a') as fp:
         fp.write(f'\n\n\ndef test_{global_test_idx}_{test_name}():'
