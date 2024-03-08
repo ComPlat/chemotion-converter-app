@@ -1,7 +1,6 @@
 import logging
 import os
 import tempfile
-import shutil
 from zipfile import ZipFile
 from converter_app.readers.helper.base import Reader
 from converter_app.readers.helper.reader import Readers
@@ -31,7 +30,7 @@ class AscZipReader(Reader):
                 list_of_file_names = zip_obj.namelist()
                 if any(fileName.lower().endswith('.asc') for fileName in list_of_file_names):
                     with tempfile.TemporaryDirectory() as td:
-                        zipdir = os.path.join(td.name, self.file.name)
+                        zipdir = os.path.join(td, os.path.basename(self.file.name))
                         os.makedirs(zipdir)
                         result = True
                         # Iterate over the file names
@@ -42,7 +41,7 @@ class AscZipReader(Reader):
                                 path_file_name = zip_obj.extract(file_name, zipdir)
                                 with open(path_file_name, mode="r", encoding="latin_1") as f:
                                     self.filedata[file_name] = f.readlines()
-                    shutil.rmtree(zipdir)
+
         return result
 
     ###############################################################################

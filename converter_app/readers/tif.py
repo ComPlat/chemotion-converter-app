@@ -24,7 +24,7 @@ class TifReader(Reader):
         return result
 
     def _read_img(self):
-        txt = re.sub(r'\\x[0-9a-f]{2}', '', self.file.content.__str__())
+        txt = re.sub(r'\\x[0-9a-f]{2}', '', str(self.file.content))
 
         txt = re.sub(r'^.+@@@@@@0\\r\\n', '', txt)
         lines = re.split(r'\\r\\n', txt)
@@ -48,17 +48,17 @@ class TifReader(Reader):
             if len(val) == 1:
                 num_val = self.get_value(val[0])
                 if num_val is not None:
-                    table['rows'].append([len(table['rows']), len(table['rows']), float(num_val)])
+                    table['rows'].append([len(table['rows']), float(num_val)])
             else:
                 table['metadata'][val[0]] = '='.join(val[1:])
             table['header'].append(f"{'='.join(val)}")
 
         table['columns'].append({
-            'key': '1',
+            'key': '0',
             'name': 'Idx'
         })
         table['columns'].append({
-            'key': '2',
+            'key': '1',
             'name': 'Number'
         })
 

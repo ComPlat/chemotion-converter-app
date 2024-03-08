@@ -31,7 +31,6 @@ class JascoReader(Reader):
                     result = True
                     self.lines = file_lines
 
-        logger.debug('result=%s', result)
         return result
 
     def prepare_tables(self):

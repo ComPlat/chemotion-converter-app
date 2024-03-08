@@ -6,6 +6,9 @@ logger = logging.getLogger(__name__)
 
 
 class DSPReader(Reader):
+    """
+    Reads .dsp files
+    """
     identifier = 'dsp_reader'
     priority = 95
 

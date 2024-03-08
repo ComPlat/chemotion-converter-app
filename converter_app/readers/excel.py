@@ -10,6 +10,9 @@ logger = logging.getLogger(__name__)
 
 
 class ExcelReader(Reader):
+    """
+    Reads and converts Excel Files
+    """
     identifier = 'excel_reader'
     priority = 15
 
@@ -40,7 +43,7 @@ class ExcelReader(Reader):
 
         # loop over worksheets
         for ws in self.wb:
-            table = self.append_table(tables)
+            self.append_table(tables)
 
             previous_shape = None
             for row in ws.values:
@@ -51,7 +54,7 @@ class ExcelReader(Reader):
 
                     if tables[-1]['rows']:
                         # if a table is already there, this must be a new header
-                        table = self.append_table(tables)
+                        self.append_table(tables)
 
                     tables[-1]['header'].append('\t'.join([str(cell) for cell in row]))
 

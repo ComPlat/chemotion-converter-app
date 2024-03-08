@@ -1,5 +1,5 @@
 import logging
-from .pdf import PdfReader
+from converter_app.readers.pdf import PdfReader
 from converter_app.readers.helper.reader import Readers
 
 logger = logging.getLogger(__name__)

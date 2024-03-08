@@ -17,7 +17,6 @@ global_test_file = os.path.abspath('./test_readers.py')
 
 global_test_idx = 0
 
-
 def generate_expected_results(src_path, res_path, file):
     with open(os.path.join(src_path, file), 'rb') as fp:
         file_storage = FileStorage(fp)
@@ -39,7 +38,6 @@ def generate_expected_results(src_path, res_path, file):
         finally:
             file_storage.close()
 
-
 def generate_test(src_path, res_path, file):
     global global_test_idx
     global_test_idx += 1
@@ -58,7 +56,10 @@ def generate_test(src_path, res_path, file):
                  f'\n    assert a[\'metadata\'][\'mime_type\'] == b[\'metadata\'][\'mime_type\']')
 
 
+
+
 def basic_walk(callback):
+
     for ontology in os.listdir(global_src_path):
         ontology_path = os.path.join(global_src_path, ontology)
         if os.path.isdir(ontology_path):

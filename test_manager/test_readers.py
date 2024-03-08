@@ -1591,7 +1591,124 @@ def test_122_Readme_md():
     assert a['metadata']['mime_type'] == b['metadata']['mime_type']
 
 
-def test_123_HZ_BA_1ba_5yl_xml():
+def test_123_9551_T_2037_02_A2_Lk29589_40A_log():
+    global all_reader
+    (b,a,c)=compare_reader_result('/home/martint/dev/KIT/converter/chemotion-converter-app/test_files/ChemConverter/new/unknown/lithographie','/home/martint/dev/KIT/converter/chemotion-converter-app/test_files/ConverterAutoResults/new/unknown/lithographie','9551_T_2037_02_A2_Lk29589_40A.log')
+    if not c:
+        assert a == {}
+        return
+    all_reader.add(a['metadata']['reader'])
+    assert a['tables'] == b['tables']
+    assert a['metadata']['extension'] == b['metadata']['extension']
+    assert a['metadata']['reader'] == b['metadata']['reader']
+    assert a['metadata']['mime_type'] == b['metadata']['mime_type']
+
+
+def test_124_9520_T_0603_07_A7_Gittertest_Lk31781_01_log():
+    global all_reader
+    (b,a,c)=compare_reader_result('/home/martint/dev/KIT/converter/chemotion-converter-app/test_files/ChemConverter/new/unknown/lithographie','/home/martint/dev/KIT/converter/chemotion-converter-app/test_files/ConverterAutoResults/new/unknown/lithographie','9520_T_0603_07_A7_Gittertest_Lk31781_01.log')
+    if not c:
+        assert a == {}
+        return
+    all_reader.add(a['metadata']['reader'])
+    assert a['tables'] == b['tables']
+    assert a['metadata']['extension'] == b['metadata']['extension']
+    assert a['metadata']['reader'] == b['metadata']['reader']
+    assert a['metadata']['mime_type'] == b['metadata']['mime_type']
+
+
+def test_125_031352_02_TestMultiDIE_2023_05_15_17_33_02_result():
+    global all_reader
+    (b,a,c)=compare_reader_result('/home/martint/dev/KIT/converter/chemotion-converter-app/test_files/ChemConverter/new/unknown/lithographie','/home/martint/dev/KIT/converter/chemotion-converter-app/test_files/ConverterAutoResults/new/unknown/lithographie','031352-02 TestMultiDIE_2023.05.15_17.33.02.result')
+    if not c:
+        assert a == {}
+        return
+    all_reader.add(a['metadata']['reader'])
+    assert a['tables'] == b['tables']
+    assert a['metadata']['extension'] == b['metadata']['extension']
+    assert a['metadata']['reader'] == b['metadata']['reader']
+    assert a['metadata']['mime_type'] == b['metadata']['mime_type']
+
+
+def test_126_031352_01_TestSingleDIE_2023_05_15_17_24_25_result():
+    global all_reader
+    (b,a,c)=compare_reader_result('/home/martint/dev/KIT/converter/chemotion-converter-app/test_files/ChemConverter/new/unknown/lithographie','/home/martint/dev/KIT/converter/chemotion-converter-app/test_files/ConverterAutoResults/new/unknown/lithographie','031352-01 TestSingleDIE_2023.05.15_17.24.25.result')
+    if not c:
+        assert a == {}
+        return
+    all_reader.add(a['metadata']['reader'])
+    assert a['tables'] == b['tables']
+    assert a['metadata']['extension'] == b['metadata']['extension']
+    assert a['metadata']['reader'] == b['metadata']['reader']
+    assert a['metadata']['mime_type'] == b['metadata']['mime_type']
+
+
+def test_127_SEM_AMT_0595_XY_G1_011_txt():
+    global all_reader
+    (b,a,c)=compare_reader_result('/home/martint/dev/KIT/converter/chemotion-converter-app/test_files/ChemConverter/new/unknown/SEM','/home/martint/dev/KIT/converter/chemotion-converter-app/test_files/ConverterAutoResults/new/unknown/SEM','SEM-AMT_0595_XY_G1_011.txt')
+    if not c:
+        assert a == {}
+        return
+    all_reader.add(a['metadata']['reader'])
+    assert a['tables'] == b['tables']
+    assert a['metadata']['extension'] == b['metadata']['extension']
+    assert a['metadata']['reader'] == b['metadata']['reader']
+    assert a['metadata']['mime_type'] == b['metadata']['mime_type']
+
+
+def test_128_SEM_AMT_0595_XY_G1_012_txt():
+    global all_reader
+    (b,a,c)=compare_reader_result('/home/martint/dev/KIT/converter/chemotion-converter-app/test_files/ChemConverter/new/unknown/SEM','/home/martint/dev/KIT/converter/chemotion-converter-app/test_files/ConverterAutoResults/new/unknown/SEM','SEM-AMT_0595_XY_G1_012.txt')
+    if not c:
+        assert a == {}
+        return
+    all_reader.add(a['metadata']['reader'])
+    assert a['tables'] == b['tables']
+    assert a['metadata']['extension'] == b['metadata']['extension']
+    assert a['metadata']['reader'] == b['metadata']['reader']
+    assert a['metadata']['mime_type'] == b['metadata']['mime_type']
+
+
+def test_129_DHM_15_CV_Demo_DTA():
+    global all_reader
+    (b,a,c)=compare_reader_result('/home/martint/dev/KIT/converter/chemotion-converter-app/test_files/ChemConverter/new/unknown/dta','/home/martint/dev/KIT/converter/chemotion-converter-app/test_files/ConverterAutoResults/new/unknown/dta','DHM-15-CV-Demo.DTA')
+    if not c:
+        assert a == {}
+        return
+    all_reader.add(a['metadata']['reader'])
+    assert a['tables'] == b['tables']
+    assert a['metadata']['extension'] == b['metadata']['extension']
+    assert a['metadata']['reader'] == b['metadata']['reader']
+    assert a['metadata']['mime_type'] == b['metadata']['mime_type']
+
+
+def test_130_20210118_AP_Hol5_01_zip():
+    global all_reader
+    (b,a,c)=compare_reader_result('/home/martint/dev/KIT/converter/chemotion-converter-app/test_files/ChemConverter/new/unknown/elabFTW','/home/martint/dev/KIT/converter/chemotion-converter-app/test_files/ConverterAutoResults/new/unknown/elabFTW','20210118_AP-Hol5-01.zip')
+    if not c:
+        assert a == {}
+        return
+    all_reader.add(a['metadata']['reader'])
+    assert a['tables'] == b['tables']
+    assert a['metadata']['extension'] == b['metadata']['extension']
+    assert a['metadata']['reader'] == b['metadata']['reader']
+    assert a['metadata']['mime_type'] == b['metadata']['mime_type']
+
+
+def test_131_Au_Gr_06_tif():
+    global all_reader
+    (b,a,c)=compare_reader_result('/home/martint/dev/KIT/converter/chemotion-converter-app/test_files/ChemConverter/new/unknown/tif','/home/martint/dev/KIT/converter/chemotion-converter-app/test_files/ConverterAutoResults/new/unknown/tif','Au-Gr_06.tif')
+    if not c:
+        assert a == {}
+        return
+    all_reader.add(a['metadata']['reader'])
+    assert a['tables'] == b['tables']
+    assert a['metadata']['extension'] == b['metadata']['extension']
+    assert a['metadata']['reader'] == b['metadata']['reader']
+    assert a['metadata']['mime_type'] == b['metadata']['mime_type']
+
+
+def test_132_HZ_BA_1ba_5yl_xml():
     global all_reader
     (b,a,c)=compare_reader_result('/home/martint/dev/KIT/converter/chemotion-converter-app/test_files/ChemConverter/LC/microTOFLC-Bruker/CompassDataAnalysis-xml','/home/martint/dev/KIT/converter/chemotion-converter-app/test_files/ConverterAutoResults/LC/microTOFLC-Bruker/CompassDataAnalysis-xml','HZ_BA_1ba_5yl.xml')
     if not c:
@@ -1604,7 +1721,7 @@ def test_123_HZ_BA_1ba_5yl_xml():
     assert a['metadata']['mime_type'] == b['metadata']['mime_type']
 
 
-def test_124_HZ_BA_1ba_5yl_dx():
+def test_133_HZ_BA_1ba_5yl_dx():
     global all_reader
     (b,a,c)=compare_reader_result('/home/martint/dev/KIT/converter/chemotion-converter-app/test_files/ChemConverter/LC/microTOFLC-Bruker/Unkown-dx','/home/martint/dev/KIT/converter/chemotion-converter-app/test_files/ConverterAutoResults/LC/microTOFLC-Bruker/Unkown-dx','HZ_BA_1ba_5yl.dx')
     if not c:
@@ -1617,7 +1734,7 @@ def test_124_HZ_BA_1ba_5yl_dx():
     assert a['metadata']['mime_type'] == b['metadata']['mime_type']
 
 
-def test_125_HZ_BA_1ba_5yl_ascii():
+def test_134_HZ_BA_1ba_5yl_ascii():
     global all_reader
     (b,a,c)=compare_reader_result('/home/martint/dev/KIT/converter/chemotion-converter-app/test_files/ChemConverter/LC/microTOFLC-Bruker/Unkown-ascii','/home/martint/dev/KIT/converter/chemotion-converter-app/test_files/ConverterAutoResults/LC/microTOFLC-Bruker/Unkown-ascii','HZ_BA_1ba_5yl.ascii')
     if not c:
@@ -1630,7 +1747,7 @@ def test_125_HZ_BA_1ba_5yl_ascii():
     assert a['metadata']['mime_type'] == b['metadata']['mime_type']
 
 
-def test_126_Raman_txt_json():
+def test_135_Raman_txt_json():
     global all_reader
     (b,a,c)=compare_reader_result('/home/martint/dev/KIT/converter/chemotion-converter-app/test_files/ChemConverter/Raman/Unknown/Unkown-txt','/home/martint/dev/KIT/converter/chemotion-converter-app/test_files/ConverterAutoResults/Raman/Unknown/Unkown-txt','Raman-txt.json')
     if not c:
@@ -1643,7 +1760,7 @@ def test_126_Raman_txt_json():
     assert a['metadata']['mime_type'] == b['metadata']['mime_type']
 
 
-def test_127_PD_01_02_Average_1__txt():
+def test_136_PD_01_02_Average_1__txt():
     global all_reader
     (b,a,c)=compare_reader_result('/home/martint/dev/KIT/converter/chemotion-converter-app/test_files/ChemConverter/Raman/Unknown/Unkown-txt','/home/martint/dev/KIT/converter/chemotion-converter-app/test_files/ConverterAutoResults/Raman/Unknown/Unkown-txt','PD-01-02_Average(1).txt')
     if not c:
@@ -1656,7 +1773,7 @@ def test_127_PD_01_02_Average_1__txt():
     assert a['metadata']['mime_type'] == b['metadata']['mime_type']
 
 
-def test_128_A_021_610_722_230059_pdf():
+def test_137_A_021_610_722_230059_pdf():
     global all_reader
     (b,a,c)=compare_reader_result('/home/martint/dev/KIT/converter/chemotion-converter-app/test_files/ChemConverter/3DPrinter/Lithoz/Unknown-pdf','/home/martint/dev/KIT/converter/chemotion-converter-app/test_files/ConverterAutoResults/3DPrinter/Lithoz/Unknown-pdf','A-021-610-722-230059.pdf')
     if not c:
@@ -1669,7 +1786,7 @@ def test_128_A_021_610_722_230059_pdf():
     assert a['metadata']['mime_type'] == b['metadata']['mime_type']
 
 
-def test_129_A_021_610_722_230028_pdf():
+def test_138_A_021_610_722_230028_pdf():
     global all_reader
     (b,a,c)=compare_reader_result('/home/martint/dev/KIT/converter/chemotion-converter-app/test_files/ChemConverter/3DPrinter/Lithoz/Unknown-pdf','/home/martint/dev/KIT/converter/chemotion-converter-app/test_files/ConverterAutoResults/3DPrinter/Lithoz/Unknown-pdf','A-021-610-722-230028.pdf')
     if not c:
@@ -1682,7 +1799,7 @@ def test_129_A_021_610_722_230028_pdf():
     assert a['metadata']['mime_type'] == b['metadata']['mime_type']
 
 
-def test_130_DSC_example_xlsx():
+def test_139_DSC_example_xlsx():
     global all_reader
     (b,a,c)=compare_reader_result('/home/martint/dev/KIT/converter/chemotion-converter-app/test_files/ChemConverter/Differential Scanning Calorimetry DSC/Netzsch/Proteus-Excel','/home/martint/dev/KIT/converter/chemotion-converter-app/test_files/ConverterAutoResults/Differential Scanning Calorimetry DSC/Netzsch/Proteus-Excel','DSC example.xlsx')
     if not c:
@@ -1695,7 +1812,7 @@ def test_130_DSC_example_xlsx():
     assert a['metadata']['mime_type'] == b['metadata']['mime_type']
 
 
-def test_131_ExpDat_SCH_179_3_csv():
+def test_140_ExpDat_SCH_179_3_csv():
     global all_reader
     (b,a,c)=compare_reader_result('/home/martint/dev/KIT/converter/chemotion-converter-app/test_files/ChemConverter/Differential Scanning Calorimetry DSC/Netzsch/Proteus-csv','/home/martint/dev/KIT/converter/chemotion-converter-app/test_files/ConverterAutoResults/Differential Scanning Calorimetry DSC/Netzsch/Proteus-csv','ExpDat_SCH-179-3.csv')
     if not c:
@@ -1708,7 +1825,7 @@ def test_131_ExpDat_SCH_179_3_csv():
     assert a['metadata']['mime_type'] == b['metadata']['mime_type']
 
 
-def test_132_ExpDat_SB_175_5_4_csv():
+def test_141_ExpDat_SB_175_5_4_csv():
     global all_reader
     (b,a,c)=compare_reader_result('/home/martint/dev/KIT/converter/chemotion-converter-app/test_files/ChemConverter/Differential Scanning Calorimetry DSC/Netzsch/Proteus-csv','/home/martint/dev/KIT/converter/chemotion-converter-app/test_files/ConverterAutoResults/Differential Scanning Calorimetry DSC/Netzsch/Proteus-csv','ExpDat_SB 175-5-4.csv')
     if not c:
@@ -1721,7 +1838,7 @@ def test_132_ExpDat_SB_175_5_4_csv():
     assert a['metadata']['mime_type'] == b['metadata']['mime_type']
 
 
-def test_133_SCH_179_3_ngb_odg():
+def test_142_SCH_179_3_ngb_odg():
     global all_reader
     (b,a,c)=compare_reader_result('/home/martint/dev/KIT/converter/chemotion-converter-app/test_files/ChemConverter/Differential Scanning Calorimetry DSC/Netzsch/Proteus-ngb-odg','/home/martint/dev/KIT/converter/chemotion-converter-app/test_files/ConverterAutoResults/Differential Scanning Calorimetry DSC/Netzsch/Proteus-ngb-odg','SCH-179-3.ngb-odg')
     if not c:
@@ -1734,7 +1851,7 @@ def test_133_SCH_179_3_ngb_odg():
     assert a['metadata']['mime_type'] == b['metadata']['mime_type']
 
 
-def test_134_Readme_md():
+def test_143_Readme_md():
     global all_reader
     (b,a,c)=compare_reader_result('/home/martint/dev/KIT/converter/chemotion-converter-app/test_files/ChemConverter/Differential Scanning Calorimetry DSC/Netzsch/Proteus-ngb-odg','/home/martint/dev/KIT/converter/chemotion-converter-app/test_files/ConverterAutoResults/Differential Scanning Calorimetry DSC/Netzsch/Proteus-ngb-odg','Readme.md')
     if not c:
@@ -1747,7 +1864,7 @@ def test_134_Readme_md():
     assert a['metadata']['mime_type'] == b['metadata']['mime_type']
 
 
-def test_135_SCH_179_3_pdf():
+def test_144_SCH_179_3_pdf():
     global all_reader
     (b,a,c)=compare_reader_result('/home/martint/dev/KIT/converter/chemotion-converter-app/test_files/ChemConverter/Differential Scanning Calorimetry DSC/Netzsch/pics-pdf','/home/martint/dev/KIT/converter/chemotion-converter-app/test_files/ConverterAutoResults/Differential Scanning Calorimetry DSC/Netzsch/pics-pdf','SCH-179-3.pdf')
     if not c:
@@ -1760,7 +1877,7 @@ def test_135_SCH_179_3_pdf():
     assert a['metadata']['mime_type'] == b['metadata']['mime_type']
 
 
-def test_136_SB_175_5_4_pdf():
+def test_145_SB_175_5_4_pdf():
     global all_reader
     (b,a,c)=compare_reader_result('/home/martint/dev/KIT/converter/chemotion-converter-app/test_files/ChemConverter/Differential Scanning Calorimetry DSC/Netzsch/pics-pdf','/home/martint/dev/KIT/converter/chemotion-converter-app/test_files/ConverterAutoResults/Differential Scanning Calorimetry DSC/Netzsch/pics-pdf','SB 175-5-4.pdf')
     if not c:
@@ -1773,7 +1890,7 @@ def test_136_SB_175_5_4_pdf():
     assert a['metadata']['mime_type'] == b['metadata']['mime_type']
 
 
-def test_137_EF_R205_2__GC_BID_inc_5min_30_GC_3min_40_7min_180_2min_Calibrated_11142023_1210_002_gcd_txt():
+def test_146_EF_R205_2__GC_BID_inc_5min_30_GC_3min_40_7min_180_2min_Calibrated_11142023_1210_002_gcd_txt():
     global all_reader
     (b,a,c)=compare_reader_result('/home/martint/dev/KIT/converter/chemotion-converter-app/test_files/ChemConverter/GCBID/Shimadzu/LabSolutions-gcdtxt','/home/martint/dev/KIT/converter/chemotion-converter-app/test_files/ConverterAutoResults/GCBID/Shimadzu/LabSolutions-gcdtxt','EF-R205.2__GC-BID_inc-5min-30_GC-3min-40-7min-180-2min_Calibrated_11142023_1210_002.gcd.txt')
     if not c:
@@ -1786,7 +1903,7 @@ def test_137_EF_R205_2__GC_BID_inc_5min_30_GC_3min_40_7min_180_2min_Calibrated_1
     assert a['metadata']['mime_type'] == b['metadata']['mime_type']
 
 
-def test_138_EF_R205_3__GC_BID_inc_5min_30_GC_3min_40_7min_180_2min_Calibrated_11142023_1210_003_gcd_txt():
+def test_147_EF_R205_3__GC_BID_inc_5min_30_GC_3min_40_7min_180_2min_Calibrated_11142023_1210_003_gcd_txt():
     global all_reader
     (b,a,c)=compare_reader_result('/home/martint/dev/KIT/converter/chemotion-converter-app/test_files/ChemConverter/GCBID/Shimadzu/LabSolutions-gcdtxt','/home/martint/dev/KIT/converter/chemotion-converter-app/test_files/ConverterAutoResults/GCBID/Shimadzu/LabSolutions-gcdtxt','EF-R205.3__GC-BID_inc-5min-30_GC-3min-40-7min-180-2min_Calibrated_11142023_1210_003.gcd.txt')
     if not c:
@@ -1799,7 +1916,7 @@ def test_138_EF_R205_3__GC_BID_inc_5min_30_GC_3min_40_7min_180_2min_Calibrated_1
     assert a['metadata']['mime_type'] == b['metadata']['mime_type']
 
 
-def test_139_EF_R205_1__GC_BID_inc_5min_30_GC_3min_40_7min_180_2min_Calibrated_11142023_1210_001_gcd_txt():
+def test_148_EF_R205_1__GC_BID_inc_5min_30_GC_3min_40_7min_180_2min_Calibrated_11142023_1210_001_gcd_txt():
     global all_reader
     (b,a,c)=compare_reader_result('/home/martint/dev/KIT/converter/chemotion-converter-app/test_files/ChemConverter/GCBID/Shimadzu/LabSolutions-gcdtxt','/home/martint/dev/KIT/converter/chemotion-converter-app/test_files/ConverterAutoResults/GCBID/Shimadzu/LabSolutions-gcdtxt','EF-R205.1__GC-BID_inc-5min-30_GC-3min-40-7min-180-2min_Calibrated_11142023_1210_001.gcd.txt')
     if not c:
@@ -1812,7 +1929,7 @@ def test_139_EF_R205_1__GC_BID_inc_5min_30_GC_3min_40_7min_180_2min_Calibrated_1
     assert a['metadata']['mime_type'] == b['metadata']['mime_type']
 
 
-def test_140_cm1c01804_si_004_txt():
+def test_149_cm1c01804_si_004_txt():
     global all_reader
     (b,a,c)=compare_reader_result('/home/martint/dev/KIT/converter/chemotion-converter-app/test_files/ChemConverter/Sorption/BEL/AIF-txt','/home/martint/dev/KIT/converter/chemotion-converter-app/test_files/ConverterAutoResults/Sorption/BEL/AIF-txt','cm1c01804_si_004.txt')
     if not c:
@@ -1825,7 +1942,7 @@ def test_140_cm1c01804_si_004_txt():
     assert a['metadata']['mime_type'] == b['metadata']['mime_type']
 
 
-def test_141_cm1c01804_si_003_txt():
+def test_150_cm1c01804_si_003_txt():
     global all_reader
     (b,a,c)=compare_reader_result('/home/martint/dev/KIT/converter/chemotion-converter-app/test_files/ChemConverter/Sorption/BEL/AIF-txt','/home/martint/dev/KIT/converter/chemotion-converter-app/test_files/ConverterAutoResults/Sorption/BEL/AIF-txt','cm1c01804_si_003.txt')
     if not c:

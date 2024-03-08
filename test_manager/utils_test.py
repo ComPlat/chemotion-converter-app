@@ -1,6 +1,5 @@
 import json
 import os
-import traceback
 
 from werkzeug.datastructures import FileStorage
 
@@ -21,6 +20,3 @@ def compare_reader_result(src_path, res_path, file):
                 content = reader.as_dict
                 return (expected_result, content, True)
             return (expected_result, {}, False)
-
-        f_res.close()
-        file_storage.close()

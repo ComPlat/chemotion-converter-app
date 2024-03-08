@@ -22,7 +22,6 @@ class PsSessionReader(Reader):
         except json.decoder.JSONDecodeError:
             return {}
 
-    @property
     def prepare_tables(self):
         tables = []
         data = self._parse_json()
@@ -83,7 +82,6 @@ class PsSessionReader(Reader):
                 datavalues_list = values.get('datavalues') or values.get('DataValues', [])
                 columns.append([datavalues.get('v') or datavalues.get('V', None) for datavalues in datavalues_list])
 
-
             # transpose data list of lists
             table['rows'] = list(list(x) for x in zip(*columns))
 
@@ -94,5 +92,6 @@ class PsSessionReader(Reader):
         data = self._parse_json()
         metadata['type'] = data.get('type') or data.get('Type', '')
         return metadata
+
 
 Readers.instance().register(PsSessionReader)

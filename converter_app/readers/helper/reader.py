@@ -29,7 +29,6 @@ class Readers:
             # Put any initialization here.
         return cls._instance
 
-
     def register(self, reader):
         """
         Register reader
@@ -61,7 +60,6 @@ class Readers:
         for _identifier, reader in self.readers.items():
             reader = reader(file)
             result = reader.check()
-
 
             logger.debug('For reader %s -> result=%s', reader.__class__.__name__, result)
 

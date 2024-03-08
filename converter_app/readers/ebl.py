@@ -115,7 +115,7 @@ class EblReader(Reader):
                         pos_table['metadata']['A [1,3]'] = values[1]
                         pos_table['metadata']['A [1,4]'] = values[2]
                     else:
-                        row = self.state.value - self._State.END.POS_TABLE_B.value
+                        row = self.state.value - self._State.POS_TABLE_B.value
                         y_label = ['2', '3', '4'][row]
                         self._add_value(pos_table, f"A [{y_label},1]", values[0])
                         self._add_value(pos_table, f"A [{y_label},2]", values[1])

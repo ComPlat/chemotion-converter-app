@@ -1,9 +1,11 @@
 import logging
 
 from numpy import ndarray
+from jcamp import jcamp_read
+
 from converter_app.readers.helper.reader import Readers
 from converter_app.readers.helper.base import Reader
-from jcamp import jcamp_read
+
 logger = logging.getLogger(__name__)
 
 
@@ -33,7 +35,7 @@ class JcampReader(Reader):
         else:
             table['metadata'][k] = str(src)[:255]
             return
-        for (k,v) in src_iter:
+        for (k, v) in src_iter:
             self._add_to_meta(table, k, v)
 
     def prepare_tables(self):
@@ -44,5 +46,6 @@ class JcampReader(Reader):
         table['metadata']['rows'] = str(0)
         table['metadata']['columns'] = str(0)
         return tables
+
 
 Readers.instance().register(JcampReader)

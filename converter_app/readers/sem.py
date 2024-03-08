@@ -32,7 +32,7 @@ class SemReader(AsciiReader):
             row = line.decode(self.file.encoding).rstrip()
             row_array = row.split(' ')
             if table_mode:
-                if previous_count + 1 != len(row_array):
+                if previous_count != len(row_array):
                     table_mode = False
                     table['metadata']['rows'] = str(len(table['rows']))
                     table['metadata']['columns'] = str(len(table['columns']))
@@ -41,8 +41,9 @@ class SemReader(AsciiReader):
                     float_match = [self.get_value(float_str) for float_str in row_array]
                     table['rows'].append(float_match)
             if not table_mode:
-                if len(row_array) > 1 and all([x.startswith("$") for x in row_array]):
+                if len(row_array) > 1 and all(x.startswith("$") for x in row_array):
                     table_mode = True
+                    row_array = ['LINE'] + row_array
                     previous_count = len(row_array)
                     table['columns'] = [{
                         'key': str(idx),

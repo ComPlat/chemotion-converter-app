@@ -97,7 +97,7 @@ class CSVReader(Reader):
                 # this is the table
                 if not table['rows']:
                     # if there are no tables, we can try to find the columns previous line
-                    if prev_block:
+                    if prev_block is not None:
                         this_row = self.rows[block['indexes'][0]]
                         prev_row = self.rows[prev_block['indexes'][-1]]
 
