@@ -29,3 +29,4 @@ __pycache__/
 /run_client.sh
 /.idea/vcs.xml
 .idea/
+test_manager/test_readers.py
