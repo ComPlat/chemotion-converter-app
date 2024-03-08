@@ -5,12 +5,7 @@ import re
 import shutil
 import sys
 import traceback
-
 from werkzeug.datastructures import FileStorage
-
-from converter_app.models import File
-
-from converter_app.readers import READERS as registry
 
 # Get the current script's directory
 current_dir = os.path.dirname(os.path.abspath(__file__))
@@ -18,6 +13,12 @@ current_dir = os.path.dirname(os.path.abspath(__file__))
 parent_dir = os.path.dirname(current_dir)
 # Add the parent directory to sys.path
 sys.path.append(parent_dir)
+
+
+from converter_app.models import File
+
+from converter_app.readers import READERS as registry
+
 
 global_res_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '../test_files/ConverterAutoResults'))
 global_src_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '../test_files/ChemConverter'))
