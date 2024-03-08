@@ -1,0 +1,38 @@
+<031352-01 TestSingleDIE>
+Start 17:23:31 --> End 17:24:24 --> Duration 00:00:52
+Status: Processed
+
+Logfile: C:\Users\DWL\Documents\DWL66LOG\Processing\2023\05(May)\031352-01 TestSingleDIE_2023.05.15_17.23.31.log
+
+
+ <Map for <031352-01 TestSingleDIE>>
+ Start 17:23:33 --> End 17:24:22 --> Duration 00:00:49
+ Status: Processed
+ 
+ Results for dies:
+  <Die(1/1)>
+  Start 17:23:33 --> End 17:24:22 --> Duration 00:00:49
+  Status: Processed
+  FocusOffset: 0
+  LaserPower: TheGenesis: 35[mW]
+  Intensity: 50
+  
+  Result(s) of design exposure(s):
+   <000000testhimt_10mm_5stripes>
+   Start 17:23:33 --> End 17:24:22 --> Duration 00:00:49
+   Status: Processed
+   Data:
+   Size: (0.25/12.3818)[mm]; Offset: (-0.125/-6.179999)[mm]; NOver: 1; NumberOfStripes: 5; FilledStripes: -1; Bidirectional: False; ScanWidth: 50000[nm]; SpeedScale: 1; FocalLength: 10[mm]
+   Parameter:
+   ExposureCount: 1
+   WriteMode: 10mm
+   FocusMode: Inherited
+   FocusOffset: 0
+   Intensity: 50
+   </000000testhimt_10mm_5stripes>
+  
+  </Die(1/1)>
+ 
+ </Map for <031352-01 TestSingleDIE>>
+
+</031352-01 TestSingleDIE>

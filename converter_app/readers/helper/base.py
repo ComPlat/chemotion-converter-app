@@ -51,7 +51,7 @@ class Reader:
     float_us_pattern = re.compile(r'(-?[\d,]+.\d*[eE+\-\d]*)')
 
     def __init__(self, file):
-        self.empty_values = None
+        self.empty_values = ['', 'n.a.']
         self.identifier = None
         self.metadata = None
         self.tables = None
@@ -106,11 +106,18 @@ class Reader:
         """
         tables = self.prepare_tables()
         for table in tables:
-            if table['rows'] and len(table['columns']) != len(table['rows']):
-                table['columns'] = [{
-                    'key': str(idx),
-                    'name': f'Column #{idx}'
-                } for idx, value in enumerate(table['rows'][0])]
+            if len(table['rows']) > 0:
+                start_len_c = len(table['columns'])
+                should_len_c = len(table['rows'][0])
+                if table['rows'] and start_len_c != should_len_c:
+                    max_key = max(-1, 0, *[int(x['key']) for x in table['columns']])
+                    table['columns'] += [{
+                        'key': f'{idx + max_key}',
+                        'name': f'Column #{idx + start_len_c}'
+                    } for idx, value in enumerate(table['rows'][0][start_len_c:])]
+                    table['columns'] = sorted(table['columns'], key=lambda x: int(x['key']))
+                for k,v in enumerate(table['columns'][:should_len_c]):
+                    v['key'] = f'{k}'
 
             table['metadata']['rows'] = str(len(table['rows']))
             table['metadata']['columns'] = str(len(table['columns']))
@@ -154,13 +161,16 @@ class Reader:
         """
         shape = []
         for cell in row:
-            value = cell.strip()
-            if value in self.empty_values:
-                shape.append('')
-            elif self.float_pattern.match(value):
-                shape.append('f')
+            if cell is None:
+                shape.append(None)
             else:
-                shape.append('s')
+                cell = str(cell).strip()
+                if cell in self.empty_values:
+                    shape.append('')
+                elif self.float_pattern.match(cell):
+                    shape.append('f')
+                else:
+                    shape.append('s')
 
         return shape
 

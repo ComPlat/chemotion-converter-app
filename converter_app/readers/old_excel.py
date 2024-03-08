@@ -1,7 +1,6 @@
 import logging
 import xlrd
 
-from converter_app.readers.helper import get_shape
 from converter_app.readers.helper.reader import Readers
 from converter_app.readers.helper.base import Reader
 
@@ -47,7 +46,7 @@ class OldExcelReader(Reader):
             for row in ws:
 
                 row = self._parse_row(row)
-                shape = get_shape(row)
+                shape = self.get_shape(row)
 
                 if 's' in shape:
                     # there is a string in this row, this cant be the table

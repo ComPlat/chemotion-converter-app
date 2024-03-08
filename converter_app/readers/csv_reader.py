@@ -2,7 +2,6 @@ import csv
 import io
 import logging
 
-from converter_app.readers.helper import get_shape
 from converter_app.readers.helper.reader import Readers
 from converter_app.readers.helper.base import Reader
 
@@ -20,8 +19,6 @@ class CSVReader(Reader):
         super().__init__(file)
         self.lines = None
         self.rows = None
-
-        self.empty_values = ['', 'n.a.']
         self.table_min_rows = 20
         self.delimiters = {
             '\t': 'tab',
@@ -79,7 +76,7 @@ class CSVReader(Reader):
         blocks = []
         block = {}
         for index, row in enumerate(self.rows):
-            shape = get_shape(row)
+            shape = self.get_shape(row)
             if block.get('shape') is None or not self.compare_shape(shape, block.get('shape', [])):
                 block = {'indexes': [], 'shape': shape}
                 blocks.append(block)
@@ -100,7 +97,7 @@ class CSVReader(Reader):
                 # this is the table
                 if not table['rows']:
                     # if there are no tables, we can try to find the columns previous line
-                    if prev_block is not None:
+                    if prev_block:
                         this_row = self.rows[block['indexes'][0]]
                         prev_row = self.rows[prev_block['indexes'][-1]]
 

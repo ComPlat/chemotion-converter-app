@@ -1,0 +1,280 @@
+<031352-02 TestMultiDIE>
+Start 17:27:36 --> End 17:33:02 --> Duration 00:05:26
+Status: Processed
+
+Logfile: C:\Users\DWL\Documents\DWL66LOG\Processing\2023\05(May)\031352-02 TestMultiDIE_2023.05.15_17.27.36.log
+
+
+ <Map for <031352-02 TestMultiDIE>>
+ Start 17:27:36 --> End 17:32:59 --> Duration 00:05:23
+ Status: Processed
+ 
+ Results for dies:
+  <Die(1/1)>
+  Start 17:27:36 --> End 17:28:23 --> Duration 00:00:47
+  Status: Processed
+  FocusOffset: 0
+  LaserPower: TheGenesis: 35[mW]
+  Intensity: 100
+  
+  Result(s) of design exposure(s):
+   <000000testhimt_10mm_5stripes>
+   Start 17:27:36 --> End 17:28:23 --> Duration 00:00:47
+   Status: Processed
+   Data:
+   Size: (0.25/12.3818)[mm]; Offset: (-0.125/-6.179999)[mm]; NOver: 1; NumberOfStripes: 5; FilledStripes: -1; Bidirectional: False; ScanWidth: 50000[nm]; SpeedScale: 1; FocalLength: 10[mm]
+   Parameter:
+   ExposureCount: 1
+   WriteMode: 10mm
+   FocusMode: Inherited
+   FocusOffset: 0
+   Intensity: 100
+   </000000testhimt_10mm_5stripes>
+  
+  </Die(1/1)>
+  <Die(1/2)>
+  Start 17:28:23 --> End 17:28:43 --> Duration 00:00:19
+  Status: Processed
+  FocusOffset: 0
+  LaserPower: TheGenesis: 35[mW]
+  Intensity: 100
+  
+  Result(s) of design exposure(s):
+   <000000testhimt_10mm_5stripes>
+   Start 17:28:23 --> End 17:28:43 --> Duration 00:00:19
+   Status: Processed
+   Data:
+   Size: (0.25/12.3818)[mm]; Offset: (-0.125/-6.179999)[mm]; NOver: 1; NumberOfStripes: 5; FilledStripes: -1; Bidirectional: False; ScanWidth: 50000[nm]; SpeedScale: 1; FocalLength: 10[mm]
+   Parameter:
+   ExposureCount: 1
+   WriteMode: 10mm
+   FocusMode: Inherited
+   FocusOffset: 0
+   Intensity: 100
+   </000000testhimt_10mm_5stripes>
+  
+  </Die(1/2)>
+  <Die(1/3)>
+  Start 17:28:43 --> End 17:29:02 --> Duration 00:00:19
+  Status: Processed
+  FocusOffset: 0
+  LaserPower: TheGenesis: 35[mW]
+  Intensity: 100
+  
+  Result(s) of design exposure(s):
+   <000000testhimt_10mm_5stripes>
+   Start 17:28:43 --> End 17:29:02 --> Duration 00:00:19
+   Status: Processed
+   Data:
+   Size: (0.25/12.3818)[mm]; Offset: (-0.125/-6.179999)[mm]; NOver: 1; NumberOfStripes: 5; FilledStripes: -1; Bidirectional: False; ScanWidth: 50000[nm]; SpeedScale: 1; FocalLength: 10[mm]
+   Parameter:
+   ExposureCount: 1
+   WriteMode: 10mm
+   FocusMode: Inherited
+   FocusOffset: 0
+   Intensity: 100
+   </000000testhimt_10mm_5stripes>
+  
+  </Die(1/3)>
+  <Die(2/1)>
+  Start 17:29:02 --> End 17:29:42 --> Duration 00:00:39
+  Status: Processed
+  FocusOffset: 0
+  LaserPower: TheGenesis: 40[mW]
+  Intensity: 100
+  
+  Result(s) of design exposure(s):
+   <000000testhimt_10mm_5stripes>
+   Start 17:29:02 --> End 17:29:42 --> Duration 00:00:39
+   Status: Processed
+   Data:
+   Size: (0.25/12.3818)[mm]; Offset: (-0.125/-6.179999)[mm]; NOver: 1; NumberOfStripes: 5; FilledStripes: -1; Bidirectional: False; ScanWidth: 50000[nm]; SpeedScale: 1; FocalLength: 10[mm]
+   Parameter:
+   ExposureCount: 1
+   WriteMode: 10mm
+   FocusMode: Inherited
+   FocusOffset: 0
+   Intensity: 100
+   </000000testhimt_10mm_5stripes>
+  
+  </Die(2/1)>
+  <Die(2/2)>
+  Start 17:29:42 --> End 17:30:02 --> Duration 00:00:19
+  Status: Processed
+  FocusOffset: 0
+  LaserPower: TheGenesis: 40[mW]
+  Intensity: 100
+  
+  Result(s) of design exposure(s):
+   <000000testhimt_10mm_5stripes>
+   Start 17:29:42 --> End 17:30:02 --> Duration 00:00:19
+   Status: Processed
+   Data:
+   Size: (0.25/12.3818)[mm]; Offset: (-0.125/-6.179999)[mm]; NOver: 1; NumberOfStripes: 5; FilledStripes: -1; Bidirectional: False; ScanWidth: 50000[nm]; SpeedScale: 1; FocalLength: 10[mm]
+   Parameter:
+   ExposureCount: 1
+   WriteMode: 10mm
+   FocusMode: Inherited
+   FocusOffset: 0
+   Intensity: 100
+   </000000testhimt_10mm_5stripes>
+  
+  </Die(2/2)>
+  <Die(2/3)>
+  Start 17:30:02 --> End 17:30:21 --> Duration 00:00:19
+  Status: Processed
+  FocusOffset: 0
+  LaserPower: TheGenesis: 40[mW]
+  Intensity: 100
+  
+  Result(s) of design exposure(s):
+   <000000testhimt_10mm_5stripes>
+   Start 17:30:02 --> End 17:30:21 --> Duration 00:00:19
+   Status: Processed
+   Data:
+   Size: (0.25/12.3818)[mm]; Offset: (-0.125/-6.179999)[mm]; NOver: 1; NumberOfStripes: 5; FilledStripes: -1; Bidirectional: False; ScanWidth: 50000[nm]; SpeedScale: 1; FocalLength: 10[mm]
+   Parameter:
+   ExposureCount: 1
+   WriteMode: 10mm
+   FocusMode: Inherited
+   FocusOffset: 0
+   Intensity: 100
+   </000000testhimt_10mm_5stripes>
+  
+  </Die(2/3)>
+  <Die(3/1)>
+  Start 17:30:21 --> End 17:31:01 --> Duration 00:00:39
+  Status: Processed
+  FocusOffset: 0
+  LaserPower: TheGenesis: 50[mW]
+  Intensity: 100
+  
+  Result(s) of design exposure(s):
+   <000000testhimt_10mm_5stripes>
+   Start 17:30:21 --> End 17:31:01 --> Duration 00:00:39
+   Status: Processed
+   Data:
+   Size: (0.25/12.3818)[mm]; Offset: (-0.125/-6.179999)[mm]; NOver: 1; NumberOfStripes: 5; FilledStripes: -1; Bidirectional: False; ScanWidth: 50000[nm]; SpeedScale: 1; FocalLength: 10[mm]
+   Parameter:
+   ExposureCount: 1
+   WriteMode: 10mm
+   FocusMode: Inherited
+   FocusOffset: 0
+   Intensity: 100
+   </000000testhimt_10mm_5stripes>
+  
+  </Die(3/1)>
+  <Die(3/2)>
+  Start 17:31:01 --> End 17:31:20 --> Duration 00:00:19
+  Status: Processed
+  FocusOffset: 0
+  LaserPower: TheGenesis: 50[mW]
+  Intensity: 100
+  
+  Result(s) of design exposure(s):
+   <000000testhimt_10mm_5stripes>
+   Start 17:31:01 --> End 17:31:20 --> Duration 00:00:19
+   Status: Processed
+   Data:
+   Size: (0.25/12.3818)[mm]; Offset: (-0.125/-6.179999)[mm]; NOver: 1; NumberOfStripes: 5; FilledStripes: -1; Bidirectional: False; ScanWidth: 50000[nm]; SpeedScale: 1; FocalLength: 10[mm]
+   Parameter:
+   ExposureCount: 1
+   WriteMode: 10mm
+   FocusMode: Inherited
+   FocusOffset: 0
+   Intensity: 100
+   </000000testhimt_10mm_5stripes>
+  
+  </Die(3/2)>
+  <Die(3/3)>
+  Start 17:31:20 --> End 17:31:40 --> Duration 00:00:19
+  Status: Processed
+  FocusOffset: 0
+  LaserPower: TheGenesis: 50[mW]
+  Intensity: 100
+  
+  Result(s) of design exposure(s):
+   <000000testhimt_10mm_5stripes>
+   Start 17:31:20 --> End 17:31:40 --> Duration 00:00:19
+   Status: Processed
+   Data:
+   Size: (0.25/12.3818)[mm]; Offset: (-0.125/-6.179999)[mm]; NOver: 1; NumberOfStripes: 5; FilledStripes: -1; Bidirectional: False; ScanWidth: 50000[nm]; SpeedScale: 1; FocalLength: 10[mm]
+   Parameter:
+   ExposureCount: 1
+   WriteMode: 10mm
+   FocusMode: Inherited
+   FocusOffset: 0
+   Intensity: 100
+   </000000testhimt_10mm_5stripes>
+  
+  </Die(3/3)>
+  <Die(4/1)>
+  Start 17:31:40 --> End 17:32:20 --> Duration 00:00:39
+  Status: Processed
+  FocusOffset: 0
+  LaserPower: TheGenesis: 60[mW]
+  Intensity: 100
+  
+  Result(s) of design exposure(s):
+   <000000testhimt_10mm_5stripes>
+   Start 17:31:40 --> End 17:32:20 --> Duration 00:00:39
+   Status: Processed
+   Data:
+   Size: (0.25/12.3818)[mm]; Offset: (-0.125/-6.179999)[mm]; NOver: 1; NumberOfStripes: 5; FilledStripes: -1; Bidirectional: False; ScanWidth: 50000[nm]; SpeedScale: 1; FocalLength: 10[mm]
+   Parameter:
+   ExposureCount: 1
+   WriteMode: 10mm
+   FocusMode: Inherited
+   FocusOffset: 0
+   Intensity: 100
+   </000000testhimt_10mm_5stripes>
+  
+  </Die(4/1)>
+  <Die(4/2)>
+  Start 17:32:20 --> End 17:32:39 --> Duration 00:00:19
+  Status: Processed
+  FocusOffset: 0
+  LaserPower: TheGenesis: 60[mW]
+  Intensity: 100
+  
+  Result(s) of design exposure(s):
+   <000000testhimt_10mm_5stripes>
+   Start 17:32:20 --> End 17:32:39 --> Duration 00:00:19
+   Status: Processed
+   Data:
+   Size: (0.25/12.3818)[mm]; Offset: (-0.125/-6.179999)[mm]; NOver: 1; NumberOfStripes: 5; FilledStripes: -1; Bidirectional: False; ScanWidth: 50000[nm]; SpeedScale: 1; FocalLength: 10[mm]
+   Parameter:
+   ExposureCount: 1
+   WriteMode: 10mm
+   FocusMode: Inherited
+   FocusOffset: 0
+   Intensity: 100
+   </000000testhimt_10mm_5stripes>
+  
+  </Die(4/2)>
+  <Die(4/3)>
+  Start 17:32:39 --> End 17:32:59 --> Duration 00:00:19
+  Status: Processed
+  FocusOffset: 0
+  LaserPower: TheGenesis: 60[mW]
+  Intensity: 100
+  
+  Result(s) of design exposure(s):
+   <000000testhimt_10mm_5stripes>
+   Start 17:32:39 --> End 17:32:59 --> Duration 00:00:19
+   Status: Processed
+   Data:
+   Size: (0.25/12.3818)[mm]; Offset: (-0.125/-6.179999)[mm]; NOver: 1; NumberOfStripes: 5; FilledStripes: -1; Bidirectional: False; ScanWidth: 50000[nm]; SpeedScale: 1; FocalLength: 10[mm]
+   Parameter:
+   ExposureCount: 1
+   WriteMode: 10mm
+   FocusMode: Inherited
+   FocusOffset: 0
+   Intensity: 100
+   </000000testhimt_10mm_5stripes>
+  
+  </Die(4/3)>
+ 
+ </Map for <031352-02 TestMultiDIE>>
+
+</031352-02 TestMultiDIE>

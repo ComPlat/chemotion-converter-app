@@ -3,7 +3,6 @@ import zipfile
 
 import openpyxl
 
-from converter_app.readers.helper import get_shape
 from converter_app.readers.helper.reader import Readers
 from converter_app.readers.helper.base import Reader
 
@@ -45,7 +44,7 @@ class ExcelReader(Reader):
 
             previous_shape = None
             for row in ws.values:
-                shape = get_shape(row)
+                shape = self.get_shape(row)
 
                 if 's' in shape:
                     # there is a string in this row, this cant be the table

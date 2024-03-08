@@ -102,7 +102,7 @@ class CifReader(Reader):
 
                 for i in range(0, len(item.loop.values), len(item.loop.tags)):
                     table['rows'].append(
-                        [f'R{i // len(item.loop.tags)}'] + item.loop.values[i:(i + len(item.loop.tags))])
+                        item.loop.values[i:(i + len(item.loop.tags))])
 
 
 
