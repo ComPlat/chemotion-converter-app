@@ -20,9 +20,9 @@ from converter_app.models import File
 from converter_app.readers import READERS as registry
 
 
-global_res_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '../test_files/ConverterAutoResults'))
-global_src_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '../test_files/ChemConverter'))
-global_test_file = os.path.abspath('./test_readers.py')
+global_res_path = os.path.abspath(os.path.join(current_dir, '../test_files/ConverterAutoResults'))
+global_src_path = os.path.abspath(os.path.join(current_dir, '../test_files/ChemConverter'))
+global_test_file = os.path.abspath(os.path.join(current_dir, './test_readers.py'))
 
 global_test_idx = 0
 

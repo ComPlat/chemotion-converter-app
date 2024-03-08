@@ -22,4 +22,5 @@ jobs:
     - name: Test the code with pytest
       run: |
         python test_manager/__init__.py -t
-        pytest test_manager/test_readers.py
+        ls
+        pytest ./test_manager/test_readers.py
