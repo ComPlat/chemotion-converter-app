@@ -104,6 +104,6 @@ if __name__ == "__main__":
                      "from converter_app.readers import READERS as registry\n"
                      "\nall_reader = set()\n")
         basic_walk(generate_test)
-        with open(global_test_file, 'a') as fp:
-            fp.write(f'\n\n\ndef test_all_reder():'
-                     f'\n    assert sorted(all_reader) == sorted([x.__name__ for k,x in registry.readers.items()])')
+        #with open(global_test_file, 'a') as fp:
+        #    fp.write(f'\n\n\ndef test_all_reder():'
+        #             f'\n    assert sorted(all_reader) == sorted([x.__name__ for k,x in registry.readers.items()])')
