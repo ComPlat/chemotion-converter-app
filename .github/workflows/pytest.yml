@@ -19,9 +19,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r ./requirements/dev.txt
         pip install pytest
-    - name: Build tests
-      run: |
-        python test_manager/__init__.py -t
     - name: Test the code with pytest
       run: |
+        python test_manager/__init__.py -t
         pytest test_manager/test_readers.py
