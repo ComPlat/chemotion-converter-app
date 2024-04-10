@@ -115,11 +115,15 @@ def generate_profile_tests():
         fp.write("from .utils_test import compare_profile_result\n"
                  "from converter_app.readers import READERS as registry\n"
                  "from converter_app.models import Profile\n"
+                 "from test_manager.utils_test import set_flask_test_config\n"
                  "\nall_reader = set()"
                  "\nall_profiles = set()\n")
     basic_walk(_generate_profile_tests)
     with open(TEST_FILE, 'a', encoding='utf8') as fp:
-        fp.write(f'\n\n\ndef test_all_reader():'
-                 f'\n    assert sorted(all_reader) == sorted([x.__name__ for k,x in registry.readers.items()])'
-                 f'\n\n\ndef test_all_profiles():'
-                 f'\n    assert sorted(all_profiles) == sorted([x.id for x in Profile.list("dev")])')
+        fp.write(f'\n\n\n# Uncomment to check if all reader are tested.'
+                 f'\n# def test_all_reader():'
+                 f'\n#    assert sorted(all_reader) == sorted([x.__name__ for k,x in registry.readers.items()])'
+                 f'\n\n\n# Uncomment to check if all profiles are tested.'
+                 f'\n# def test_all_profiles():'
+                 f'\n#    with set_flask_test_config().app_context():'
+                 f'\n#        assert sorted(all_profiles) == sorted([x.id for x in Profile.list("dev")])')

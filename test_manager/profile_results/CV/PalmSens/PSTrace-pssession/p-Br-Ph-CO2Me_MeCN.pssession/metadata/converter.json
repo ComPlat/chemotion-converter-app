@@ -1,0 +1,465 @@
+{
+  "profileId": "c6573972-cb06-484d-a529-9dd2424fc408",
+  "ols": "CHMO:0000025",
+  "matches": [
+    {
+      "identifier": {
+        "key": "extension",
+        "match": "exact",
+        "optional": false,
+        "type": "fileMetadata",
+        "value": ".pssession"
+      },
+      "result": {
+        "value": ".pssession"
+      }
+    },
+    {
+      "identifier": {
+        "key": "title",
+        "match": "regex",
+        "optional": false,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "(Cyclic Voltammetry)"
+      },
+      "result": {
+        "value": "Cyclic Voltammetry",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "key": "N_SCANS",
+        "match": "any",
+        "optional": true,
+        "outputKey": "cycles",
+        "outputLayer": "meas",
+        "outputTableIndex": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "1"
+      },
+      "result": {
+        "value": "1",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "lineNumber": 2,
+        "match": "regex",
+        "optional": true,
+        "outputKey": "time",
+        "outputLayer": "general",
+        "outputTableIndex": null,
+        "tableIndex": 0,
+        "type": "tableHeader",
+        "value": "\\d{1,2}:\\d{1,2}:\\d{1,2}"
+      },
+      "result": {
+        "value": "15:58:21",
+        "tableIndex": 0,
+        "lineNumber": 2
+      }
+    },
+    {
+      "identifier": {
+        "lineNumber": 2,
+        "match": "regex",
+        "optional": true,
+        "outputKey": "date",
+        "outputLayer": "general",
+        "outputTableIndex": null,
+        "tableIndex": 0,
+        "type": "tableHeader",
+        "value": "\\d{4}-\\d{1,2}-\\d{1,2}"
+      },
+      "result": {
+        "value": "2019-10-25",
+        "tableIndex": 0,
+        "lineNumber": 2
+      }
+    },
+    {
+      "identifier": {
+        "key": "deviceserial",
+        "match": "any",
+        "optional": true,
+        "outputKey": "title",
+        "outputLayer": "general",
+        "outputTableIndex": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "ES3 16X965"
+      },
+      "result": {
+        "value": "ES3 16X965",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "key": "SCAN_RATE",
+        "match": "any",
+        "optional": true,
+        "outputKey": "scan_rate",
+        "outputLayer": "meas",
+        "outputTableIndex": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "2.000E-001"
+      },
+      "result": {
+        "value": "2.000E-001",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "lineNumber": 1,
+        "match": "regex",
+        "optional": true,
+        "outputKey": "software",
+        "outputLayer": "software",
+        "outputTableIndex": null,
+        "tableIndex": 0,
+        "type": "tableHeader",
+        "value": "[a-zA-Z]+(?=,)"
+      },
+      "result": {
+        "value": "PSTrace",
+        "tableIndex": 0,
+        "lineNumber": 1
+      }
+    },
+    {
+      "identifier": {
+        "lineNumber": 1,
+        "match": "regex",
+        "optional": true,
+        "outputKey": "software_version",
+        "outputLayer": "software",
+        "outputTableIndex": null,
+        "tableIndex": 0,
+        "type": "tableHeader",
+        "value": "\\d+.\\d+.\\d+.\\d+"
+      },
+      "result": {
+        "value": "5.4.1528.18404",
+        "tableIndex": 0,
+        "lineNumber": 1
+      }
+    },
+    {
+      "identifier": {
+        "key": "E_STEP",
+        "match": "any",
+        "optional": true,
+        "outputKey": "step_size",
+        "outputLayer": "meas",
+        "outputTableIndex": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "1.000E-002"
+      },
+      "result": {
+        "value": "1.000E-002",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "key": "E_BEGIN",
+        "match": "any",
+        "optional": true,
+        "outputKey": "voltage_start",
+        "outputLayer": "meas",
+        "outputTableIndex": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "0.000E+000"
+      },
+      "result": {
+        "value": "0.000E+000",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "key": "E_VTX1",
+        "match": "any",
+        "optional": true,
+        "outputKey": "voltage_limit_one",
+        "outputLayer": "meas",
+        "outputTableIndex": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "1.800E+000"
+      },
+      "result": {
+        "value": "-2.700E+000",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "key": "E_VTX2",
+        "match": "any",
+        "optional": true,
+        "outputKey": "voltage_limit_two",
+        "outputLayer": "meas",
+        "outputTableIndex": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "-1.800E+000"
+      },
+      "result": {
+        "value": "2.000E+000",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "key": "E_END",
+        "match": "any",
+        "optional": true,
+        "outputKey": "voltage_limit_end",
+        "outputLayer": "meas",
+        "outputTableIndex": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "5.000E-001"
+      },
+      "result": {
+        "value": "5.000E-001",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "key": "file_name",
+        "match": "any",
+        "optional": true,
+        "outputKey": "comments",
+        "outputLayer": "general",
+        "outputTableIndex": 0,
+        "type": "fileMetadata",
+        "value": "File053.pssession"
+      },
+      "result": {
+        "value": "/home/martint/dev/KIT/converter/chemotion-converter-app/test_files/data_files/CV/PalmSens/PSTrace-pssession/p-Br-Ph-CO2Me_MeCN.pssession"
+      }
+    },
+    {
+      "identifier": {
+        "key": "file_name",
+        "match": "any",
+        "optional": true,
+        "outputKey": "comments",
+        "outputLayer": "general",
+        "outputTableIndex": 1,
+        "type": "fileMetadata",
+        "value": "File053.pssession"
+      },
+      "result": {
+        "value": "/home/martint/dev/KIT/converter/chemotion-converter-app/test_files/data_files/CV/PalmSens/PSTrace-pssession/p-Br-Ph-CO2Me_MeCN.pssession"
+      }
+    },
+    {
+      "identifier": {
+        "key": "file_name",
+        "match": "any",
+        "optional": true,
+        "outputKey": "comments",
+        "outputLayer": "general",
+        "outputTableIndex": 2,
+        "type": "fileMetadata",
+        "value": "File053.pssession"
+      },
+      "result": {
+        "value": "/home/martint/dev/KIT/converter/chemotion-converter-app/test_files/data_files/CV/PalmSens/PSTrace-pssession/p-Br-Ph-CO2Me_MeCN.pssession"
+      }
+    },
+    {
+      "identifier": {
+        "key": "file_name",
+        "match": "any",
+        "optional": true,
+        "outputKey": "comments",
+        "outputLayer": "general",
+        "outputTableIndex": 3,
+        "type": "fileMetadata",
+        "value": "File053.pssession"
+      },
+      "result": {
+        "value": "/home/martint/dev/KIT/converter/chemotion-converter-app/test_files/data_files/CV/PalmSens/PSTrace-pssession/p-Br-Ph-CO2Me_MeCN.pssession"
+      }
+    },
+    {
+      "identifier": {
+        "key": "file_name",
+        "match": "any",
+        "optional": true,
+        "outputKey": "comments",
+        "outputLayer": "general",
+        "outputTableIndex": 4,
+        "type": "fileMetadata",
+        "value": "File053.pssession"
+      },
+      "result": {
+        "value": "/home/martint/dev/KIT/converter/chemotion-converter-app/test_files/data_files/CV/PalmSens/PSTrace-pssession/p-Br-Ph-CO2Me_MeCN.pssession"
+      }
+    },
+    {
+      "identifier": {
+        "key": "file_name",
+        "match": "any",
+        "optional": true,
+        "outputKey": "comments",
+        "outputLayer": "general",
+        "outputTableIndex": 5,
+        "type": "fileMetadata",
+        "value": "File053.pssession"
+      },
+      "result": {
+        "value": "/home/martint/dev/KIT/converter/chemotion-converter-app/test_files/data_files/CV/PalmSens/PSTrace-pssession/p-Br-Ph-CO2Me_MeCN.pssession"
+      }
+    }
+  ],
+  "tablesCount": 6,
+  "tables": [
+    {
+      "fileName": "data/table_01.jdx",
+      "header": {
+        "DATA CLASS": "XYPOINTS",
+        "DATA TYPE": "CYCLIC VOLTAMMETRY",
+        "XUNITS": "Voltage in V",
+        "YUNITS": "Current in A",
+        "cycles": "1",
+        "time": "15:58:21",
+        "date": "2019-10-25",
+        "title": "ES3 16X965",
+        "scan_rate": "2.000E-001",
+        "software": "PSTrace",
+        "software_version": "5.4.1528.18404",
+        "step_size": "1.000E-002",
+        "voltage_start": "0.000E+000",
+        "voltage_limit_one": "-2.700E+000",
+        "voltage_limit_two": "2.000E+000",
+        "voltage_limit_end": "5.000E-001",
+        "comments": "/home/martint/dev/KIT/converter/chemotion-converter-app/test_files/data_files/CV/PalmSens/PSTrace-pssession/p-Br-Ph-CO2Me_MeCN.pssession"
+      }
+    },
+    {
+      "fileName": "data/table_02.jdx",
+      "header": {
+        "DATA CLASS": "XYPOINTS",
+        "DATA TYPE": "CYCLIC VOLTAMMETRY",
+        "XUNITS": "Voltage in V",
+        "YUNITS": "Current in A",
+        "cycles": "1",
+        "time": "15:58:21",
+        "date": "2019-10-25",
+        "title": "ES3 16X965",
+        "scan_rate": "2.000E-001",
+        "software": "PSTrace",
+        "software_version": "5.4.1528.18404",
+        "step_size": "1.000E-002",
+        "voltage_start": "0.000E+000",
+        "voltage_limit_one": "-2.700E+000",
+        "voltage_limit_two": "2.000E+000",
+        "voltage_limit_end": "5.000E-001",
+        "comments": "/home/martint/dev/KIT/converter/chemotion-converter-app/test_files/data_files/CV/PalmSens/PSTrace-pssession/p-Br-Ph-CO2Me_MeCN.pssession"
+      }
+    },
+    {
+      "fileName": "data/table_03.jdx",
+      "header": {
+        "DATA CLASS": "XYPOINTS",
+        "DATA TYPE": "CYCLIC VOLTAMMETRY",
+        "XUNITS": "Voltage in V",
+        "YUNITS": "Current in A",
+        "cycles": "1",
+        "time": "15:58:21",
+        "date": "2019-10-25",
+        "title": "ES3 16X965",
+        "scan_rate": "2.000E-001",
+        "software": "PSTrace",
+        "software_version": "5.4.1528.18404",
+        "step_size": "1.000E-002",
+        "voltage_start": "0.000E+000",
+        "voltage_limit_one": "-2.700E+000",
+        "voltage_limit_two": "2.000E+000",
+        "voltage_limit_end": "5.000E-001",
+        "comments": "/home/martint/dev/KIT/converter/chemotion-converter-app/test_files/data_files/CV/PalmSens/PSTrace-pssession/p-Br-Ph-CO2Me_MeCN.pssession"
+      }
+    },
+    {
+      "fileName": "data/table_04.jdx",
+      "header": {
+        "DATA CLASS": "XYPOINTS",
+        "DATA TYPE": "CYCLIC VOLTAMMETRY",
+        "XUNITS": "Voltage in V",
+        "YUNITS": "Current in A",
+        "cycles": "1",
+        "time": "15:58:21",
+        "date": "2019-10-25",
+        "title": "ES3 16X965",
+        "scan_rate": "2.000E-001",
+        "software": "PSTrace",
+        "software_version": "5.4.1528.18404",
+        "step_size": "1.000E-002",
+        "voltage_start": "0.000E+000",
+        "voltage_limit_one": "-2.700E+000",
+        "voltage_limit_two": "2.000E+000",
+        "voltage_limit_end": "5.000E-001",
+        "comments": "/home/martint/dev/KIT/converter/chemotion-converter-app/test_files/data_files/CV/PalmSens/PSTrace-pssession/p-Br-Ph-CO2Me_MeCN.pssession"
+      }
+    },
+    {
+      "fileName": "data/table_05.jdx",
+      "header": {
+        "DATA CLASS": "XYPOINTS",
+        "DATA TYPE": "CYCLIC VOLTAMMETRY",
+        "XUNITS": "Voltage in V",
+        "YUNITS": "Current in A",
+        "cycles": "1",
+        "time": "15:58:21",
+        "date": "2019-10-25",
+        "title": "ES3 16X965",
+        "scan_rate": "2.000E-001",
+        "software": "PSTrace",
+        "software_version": "5.4.1528.18404",
+        "step_size": "1.000E-002",
+        "voltage_start": "0.000E+000",
+        "voltage_limit_one": "-2.700E+000",
+        "voltage_limit_two": "2.000E+000",
+        "voltage_limit_end": "5.000E-001",
+        "comments": "/home/martint/dev/KIT/converter/chemotion-converter-app/test_files/data_files/CV/PalmSens/PSTrace-pssession/p-Br-Ph-CO2Me_MeCN.pssession"
+      }
+    },
+    {
+      "fileName": "data/table_06.jdx",
+      "header": {
+        "DATA CLASS": "XYPOINTS",
+        "DATA TYPE": "CYCLIC VOLTAMMETRY",
+        "XUNITS": "Voltage in V",
+        "YUNITS": "Current in A",
+        "cycles": "1",
+        "time": "15:58:21",
+        "date": "2019-10-25",
+        "title": "ES3 16X965",
+        "scan_rate": "2.000E-001",
+        "software": "PSTrace",
+        "software_version": "5.4.1528.18404",
+        "step_size": "1.000E-002",
+        "voltage_start": "0.000E+000",
+        "voltage_limit_one": "-2.700E+000",
+        "voltage_limit_two": "2.000E+000",
+        "voltage_limit_end": "5.000E-001",
+        "comments": "/home/martint/dev/KIT/converter/chemotion-converter-app/test_files/data_files/CV/PalmSens/PSTrace-pssession/p-Br-Ph-CO2Me_MeCN.pssession"
+      }
+    }
+  ]
+}

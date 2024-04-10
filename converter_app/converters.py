@@ -22,7 +22,7 @@ class Converter:
 
         if self.profile.data.get('matchTables'):
             self._prepare_identifier()
-            self._prepare_identifier()
+            self._prepare_tables()
         else:
             self.output_tables = self.profile.data.get('tables', [])
             self.identifiers = self.profile.data.get('identifiers', [])

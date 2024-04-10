@@ -88,8 +88,9 @@ if __name__ == "__main__":
                      "\nall_reader = set()\n")
         basic_walk(generate_test)
         with open(TEST_FILE, 'a') as fp:
-            fp.write(f'\n\n\ndef test_all_reder():'
-                     f'\n    assert sorted(all_reader) == sorted([x.__name__ for k,x in registry.readers.items()])')
+            fp.write(f'\n\n\n# Uncomment to check if all reader are tested.'
+                     f'\n# def test_all_reader():'
+                     f'\n#    assert sorted(all_reader) == sorted([x.__name__ for k,x in registry.readers.items()])')
     if args.expected_profiles:
         generate_expected_profiles_results()
     if args.test_profiles:

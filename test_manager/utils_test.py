@@ -2,6 +2,7 @@ import json
 import os
 import shutil
 import tempfile
+import traceback
 import zipfile
 
 import flask
@@ -62,10 +63,13 @@ def get_profile_result(reader_dict, file):
                 raise FileNotFoundError('No profile found')
         except FileNotFoundError:
             print('Reader or Profile not found')
+            print(traceback.format_exc())
         except AssertionError:
             print('Profile not matching')
+            print(traceback.format_exc())
         except AttributeError:
             print('Converter con not write')
+            print(traceback.format_exc())
         finally:
             shutil.rmtree(res_path)
     return [], [], False
