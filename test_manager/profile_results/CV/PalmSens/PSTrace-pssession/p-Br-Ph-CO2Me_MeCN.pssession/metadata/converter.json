@@ -248,7 +248,7 @@
         "value": "File053.pssession"
       },
       "result": {
-        "value": "/home/martint/dev/KIT/converter/chemotion-converter-app/test_files/data_files/CV/PalmSens/PSTrace-pssession/p-Br-Ph-CO2Me_MeCN.pssession"
+        "value": "p-Br-Ph-CO2Me_MeCN.pssession"
       }
     },
     {
@@ -263,7 +263,7 @@
         "value": "File053.pssession"
       },
       "result": {
-        "value": "/home/martint/dev/KIT/converter/chemotion-converter-app/test_files/data_files/CV/PalmSens/PSTrace-pssession/p-Br-Ph-CO2Me_MeCN.pssession"
+        "value": "p-Br-Ph-CO2Me_MeCN.pssession"
       }
     },
     {
@@ -278,7 +278,7 @@
         "value": "File053.pssession"
       },
       "result": {
-        "value": "/home/martint/dev/KIT/converter/chemotion-converter-app/test_files/data_files/CV/PalmSens/PSTrace-pssession/p-Br-Ph-CO2Me_MeCN.pssession"
+        "value": "p-Br-Ph-CO2Me_MeCN.pssession"
       }
     },
     {
@@ -293,7 +293,7 @@
         "value": "File053.pssession"
       },
       "result": {
-        "value": "/home/martint/dev/KIT/converter/chemotion-converter-app/test_files/data_files/CV/PalmSens/PSTrace-pssession/p-Br-Ph-CO2Me_MeCN.pssession"
+        "value": "p-Br-Ph-CO2Me_MeCN.pssession"
       }
     },
     {
@@ -308,7 +308,7 @@
         "value": "File053.pssession"
       },
       "result": {
-        "value": "/home/martint/dev/KIT/converter/chemotion-converter-app/test_files/data_files/CV/PalmSens/PSTrace-pssession/p-Br-Ph-CO2Me_MeCN.pssession"
+        "value": "p-Br-Ph-CO2Me_MeCN.pssession"
       }
     },
     {
@@ -323,7 +323,7 @@
         "value": "File053.pssession"
       },
       "result": {
-        "value": "/home/martint/dev/KIT/converter/chemotion-converter-app/test_files/data_files/CV/PalmSens/PSTrace-pssession/p-Br-Ph-CO2Me_MeCN.pssession"
+        "value": "p-Br-Ph-CO2Me_MeCN.pssession"
       }
     }
   ],
@@ -348,7 +348,7 @@
         "voltage_limit_one": "-2.700E+000",
         "voltage_limit_two": "2.000E+000",
         "voltage_limit_end": "5.000E-001",
-        "comments": "/home/martint/dev/KIT/converter/chemotion-converter-app/test_files/data_files/CV/PalmSens/PSTrace-pssession/p-Br-Ph-CO2Me_MeCN.pssession"
+        "comments": "p-Br-Ph-CO2Me_MeCN.pssession"
       }
     },
     {
@@ -370,7 +370,7 @@
         "voltage_limit_one": "-2.700E+000",
         "voltage_limit_two": "2.000E+000",
         "voltage_limit_end": "5.000E-001",
-        "comments": "/home/martint/dev/KIT/converter/chemotion-converter-app/test_files/data_files/CV/PalmSens/PSTrace-pssession/p-Br-Ph-CO2Me_MeCN.pssession"
+        "comments": "p-Br-Ph-CO2Me_MeCN.pssession"
       }
     },
     {
@@ -392,7 +392,7 @@
         "voltage_limit_one": "-2.700E+000",
         "voltage_limit_two": "2.000E+000",
         "voltage_limit_end": "5.000E-001",
-        "comments": "/home/martint/dev/KIT/converter/chemotion-converter-app/test_files/data_files/CV/PalmSens/PSTrace-pssession/p-Br-Ph-CO2Me_MeCN.pssession"
+        "comments": "p-Br-Ph-CO2Me_MeCN.pssession"
       }
     },
     {
@@ -414,7 +414,7 @@
         "voltage_limit_one": "-2.700E+000",
         "voltage_limit_two": "2.000E+000",
         "voltage_limit_end": "5.000E-001",
-        "comments": "/home/martint/dev/KIT/converter/chemotion-converter-app/test_files/data_files/CV/PalmSens/PSTrace-pssession/p-Br-Ph-CO2Me_MeCN.pssession"
+        "comments": "p-Br-Ph-CO2Me_MeCN.pssession"
       }
     },
     {
@@ -436,7 +436,7 @@
         "voltage_limit_one": "-2.700E+000",
         "voltage_limit_two": "2.000E+000",
         "voltage_limit_end": "5.000E-001",
-        "comments": "/home/martint/dev/KIT/converter/chemotion-converter-app/test_files/data_files/CV/PalmSens/PSTrace-pssession/p-Br-Ph-CO2Me_MeCN.pssession"
+        "comments": "p-Br-Ph-CO2Me_MeCN.pssession"
       }
     },
     {
@@ -458,7 +458,7 @@
         "voltage_limit_one": "-2.700E+000",
         "voltage_limit_two": "2.000E+000",
         "voltage_limit_end": "5.000E-001",
-        "comments": "/home/martint/dev/KIT/converter/chemotion-converter-app/test_files/data_files/CV/PalmSens/PSTrace-pssession/p-Br-Ph-CO2Me_MeCN.pssession"
+        "comments": "p-Br-Ph-CO2Me_MeCN.pssession"
       }
     }
   ]

@@ -17,7 +17,7 @@
 ##VOLTAGE_LIMIT_ONE=1.800E+000
 ##VOLTAGE_LIMIT_TWO=-1.800E+000
 ##VOLTAGE_LIMIT_END=5.000E-001
-##COMMENTS=/home/martint/dev/KIT/converter/chemotion-converter-app/test_files/data_files/CV/PalmSens/PSTrace-pssession/File053.pssession
+##COMMENTS=File053.pssession
 ##FIRSTX=4.99413E-05
 ##LASTX=-0.00994404
 ##MINX=-1.80885

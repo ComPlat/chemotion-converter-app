@@ -17,7 +17,7 @@
 ##VOLTAGE_LIMIT_ONE=-2.500E+000
 ##VOLTAGE_LIMIT_TWO=2.000E+000
 ##VOLTAGE_LIMIT_END=5.000E-001
-##COMMENTS=/home/martint/dev/KIT/converter/chemotion-converter-app/test_files/data_files/CV/PalmSens/PSTrace-pssession/p-Cl-Ph-CO2Me_MeCN.pssession
+##COMMENTS=p-Cl-Ph-CO2Me_MeCN.pssession
 ##FIRSTX=4.99413E-05
 ##LASTX=0.0100439
 ##MINX=-2.7083

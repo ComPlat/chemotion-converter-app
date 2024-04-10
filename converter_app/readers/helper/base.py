@@ -1,4 +1,5 @@
 import logging
+import os
 import re
 from datetime import datetime
 
@@ -135,7 +136,7 @@ class Reader:
         :return: dict {file_name: ...,  content_type: ..., mime_type: ..., extension: ..., reader: ..., uploaded: ...}
         """
         return {
-            'file_name': self.file.name,
+            'file_name': os.path.basename(self.file.name),
             'content_type': self.file.content_type or '',
             'mime_type': self.file.mime_type,
             'extension': self.file.suffix,
