@@ -7,13 +7,12 @@ import sys
 import traceback
 from werkzeug.datastructures import FileStorage
 
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 from test_manager.profile_test_generator import generate_profile_tests, generate_expected_profiles_results
 from test_manager.utils import basic_walk
 from test_manager.test_file_manager import PROFILE_PATH, PARENT_DIR, CURRENT_DIR, load_profiles_from_git, \
     RES_READER_PATH
-
-# Add the parent directory to sys.path
-sys.path.append(PARENT_DIR)
 
 TEST_FILE = os.path.abspath(os.path.join(CURRENT_DIR, './test_readers.py'))
 TEST_IDX = 0
