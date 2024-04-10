@@ -8,12 +8,12 @@ CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
 # Get the parent directory by going one level up
 PARENT_DIR = os.path.dirname(CURRENT_DIR)
 # Profile directory
-PROFILE_PATH = os.path.abspath(os.path.join(PARENT_DIR, 'test_files/profiles'))
+PROFILE_PATH = os.path.abspath(os.path.join(PARENT_DIR, 'test_files/profiles/dev'))
 DATA_FILE_PATH = os.path.abspath(os.path.join(PARENT_DIR, 'test_files/data_files'))
 # Path to profile result file directory
-RES_PROFILE_PATH = os.path.abspath(os.path.join(PARENT_DIR, 'test_files/profile_results'))
+RES_PROFILE_PATH = os.path.abspath(os.path.join(CURRENT_DIR, 'profile_results'))
 # Path to reader result file directory
-RES_READER_PATH = os.path.abspath(os.path.join(PARENT_DIR, 'test_files/reader_results'))
+RES_READER_PATH = os.path.abspath(os.path.join(CURRENT_DIR, 'reader_results'))
 
 
 def load_profiles_from_git():

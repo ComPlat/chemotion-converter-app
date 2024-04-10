@@ -1,0 +1,46 @@
+{
+  "profileId": "8079b064-6314-4d99-b13b-e4f590cf556f",
+  "ols": null,
+  "matches": [
+    {
+      "identifier": {
+        "key": "column_00",
+        "match": "regex",
+        "optional": false,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "Wavelength"
+      },
+      "result": {
+        "value": "Wavelength",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "key": "column_01",
+        "match": "regex",
+        "optional": false,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "Abs"
+      },
+      "result": {
+        "value": "Abs",
+        "tableIndex": 0
+      }
+    }
+  ],
+  "tablesCount": 1,
+  "tables": [
+    {
+      "fileName": "data/table_01.jdx",
+      "header": {
+        "DATA CLASS": "XYPOINTS",
+        "DATA TYPE": "UV-VIS",
+        "XUNITS": "NANOMETERS",
+        "YUNITS": "ABSORBANCE"
+      }
+    }
+  ]
+}

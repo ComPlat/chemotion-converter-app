@@ -1,0 +1,83 @@
+{
+  "profileId": "e845bc85-07b9-4e21-8bdf-4daa4a74fa15",
+  "ols": null,
+  "matches": [
+    {
+      "identifier": {
+        "key": "reader",
+        "match": "exact",
+        "optional": false,
+        "type": "fileMetadata",
+        "value": "OldExcelReader"
+      },
+      "result": {
+        "value": "OldExcelReader"
+      }
+    },
+    {
+      "identifier": {
+        "key": "Instrument Type",
+        "match": "exact",
+        "optional": false,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "TGA5500"
+      },
+      "result": {
+        "value": "TGA5500",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "lineNumber": 1,
+        "match": "regex",
+        "optional": false,
+        "tableIndex": 2,
+        "type": "tableHeader",
+        "value": "Ramp"
+      },
+      "result": {
+        "value": "Ramp",
+        "tableIndex": 2,
+        "lineNumber": 1
+      }
+    },
+    {
+      "identifier": {
+        "lineNumber": 2,
+        "match": "regex",
+        "optional": false,
+        "tableIndex": 2,
+        "type": "tableHeader",
+        "value": "Time\tTemperature\tWeight\tWeight\tDeriv. Weight"
+      },
+      "result": {
+        "value": "Time\tTemperature\tWeight\tWeight\tDeriv. Weight",
+        "tableIndex": 2,
+        "lineNumber": 2
+      }
+    }
+  ],
+  "tablesCount": 2,
+  "tables": [
+    {
+      "fileName": "data/table_01.jdx",
+      "header": {
+        "DATA CLASS": "XYPOINTS",
+        "DATA TYPE": "THERMOGRAVIMETRIC ANALYSIS",
+        "XUNITS": "DEGREES CELSIUS",
+        "YUNITS": "Weight %"
+      }
+    },
+    {
+      "fileName": "data/table_02.jdx",
+      "header": {
+        "DATA CLASS": "XYPOINTS",
+        "DATA TYPE": "THERMOGRAVIMETRIC ANALYSIS",
+        "XUNITS": "DEGREES CELSIUS",
+        "YUNITS": "DERIVATIVE WEIGHT"
+      }
+    }
+  ]
+}

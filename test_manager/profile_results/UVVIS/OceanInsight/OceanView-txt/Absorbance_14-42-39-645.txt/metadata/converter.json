@@ -1,0 +1,45 @@
+{
+  "profileId": "c7e3130f-6c23-432a-a886-a82d11632da2",
+  "ols": null,
+  "matches": [
+    {
+      "identifier": {
+        "key": "reader",
+        "match": "exact",
+        "optional": false,
+        "type": "fileMetadata",
+        "value": "CSVReader"
+      },
+      "result": {
+        "value": "CSVReader"
+      }
+    },
+    {
+      "identifier": {
+        "lineNumber": 4,
+        "match": "exact",
+        "optional": false,
+        "tableIndex": 0,
+        "type": "tableHeader",
+        "value": "User: AK Th\u00e9ato Seminar"
+      },
+      "result": {
+        "value": "User: AK Th\u00e9ato Seminar",
+        "tableIndex": 0,
+        "lineNumber": 4
+      }
+    }
+  ],
+  "tablesCount": 1,
+  "tables": [
+    {
+      "fileName": "data/table_01.jdx",
+      "header": {
+        "DATA CLASS": "XYPOINTS",
+        "DATA TYPE": "UV-VIS",
+        "XUNITS": "%",
+        "YUNITS": "ABSORBANCE"
+      }
+    }
+  ]
+}

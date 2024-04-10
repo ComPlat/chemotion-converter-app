@@ -1,0 +1,66 @@
+{
+  "profileId": "15400217-b730-47db-9d5c-a300bce7ae95",
+  "ols": null,
+  "matches": [
+    {
+      "identifier": {
+        "key": "reader",
+        "match": "exact",
+        "optional": false,
+        "type": "fileMetadata",
+        "value": "ExcelReader"
+      },
+      "result": {
+        "value": "ExcelReader"
+      }
+    },
+    {
+      "identifier": {
+        "key": "extension",
+        "match": "exact",
+        "optional": false,
+        "type": "fileMetadata",
+        "value": ".xlsx"
+      },
+      "result": {
+        "value": ".xlsx"
+      }
+    },
+    {
+      "identifier": {
+        "lineNumber": 7,
+        "match": "regex",
+        "optional": false,
+        "tableIndex": 1,
+        "type": "tableHeader",
+        "value": "Cary 300"
+      },
+      "result": {
+        "value": "Cary 300",
+        "tableIndex": 1,
+        "lineNumber": 7
+      }
+    }
+  ],
+  "tablesCount": 2,
+  "tables": [
+    {
+      "fileName": "data/table_01.jdx",
+      "header": {
+        "DATA CLASS": "XYPOINTS",
+        "DATA TYPE": "UV-VIS",
+        "XUNITS": "wavelength (nm)",
+        "YUNITS": "ABSORBANCE"
+      }
+    },
+    {
+      "fileName": "data/table_02.jdx",
+      "header": {
+        "DATA CLASS": "XYPOINTS",
+        "DATA TYPE": "UV-VIS",
+        "XUNITS": "wavelength (nm)",
+        "YUNITS": "ABSORBANCE"
+      }
+    }
+  ]
+}
