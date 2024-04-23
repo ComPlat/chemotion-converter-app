@@ -1,7 +1,7 @@
 import json
 import logging
-
-from .base import Reader
+from converter_app.readers.helper.reader import Readers
+from converter_app.readers.helper.base import Reader
 
 logger = logging.getLogger(__name__)
 
@@ -11,23 +11,20 @@ class PsSessionReader(Reader):
     priority = 10
 
     def check(self):
-        if self.file.suffix != '.pssession':
-            result = False
-        else:
-            result = True
+        """
+        :return: True if it fits
+        """
+        return self.file.suffix == '.pssession'
 
-        logger.debug('result=%s', result)
-        return result
-
-    def parse_json(self):
+    def _parse_json(self):
         try:
             return json.loads(self.file.content.strip(b'\xfe\xff'))
         except json.decoder.JSONDecodeError:
             return {}
 
-    def get_tables(self):
+    def prepare_tables(self):
         tables = []
-        data = self.parse_json()
+        data = self._parse_json()
 
         measurements = data.get('measurements') or data.get('Measurements', [])
         for measurement in measurements:
@@ -73,31 +70,28 @@ class PsSessionReader(Reader):
                 column_name = values.get('description') or values.get('Description', '')
 
                 # add the column name to the metadata
-                table['metadata']['column_{:02d}'.format(idx)] = column_name
+                table['metadata'][f'column_{idx:02d}'] = column_name
 
                 # add the column name to list of columns
                 table['columns'].append({
                     'key': str(idx),
-                    'name': 'Column #{} ({})'.format(idx, column_name)
+                    'name': f'Column #{idx} ({column_name})'
                 })
 
                 # append the "datavalues" to list data list of lists
                 datavalues_list = values.get('datavalues') or values.get('DataValues', [])
                 columns.append([datavalues.get('v') or datavalues.get('V', None) for datavalues in datavalues_list])
 
-
             # transpose data list of lists
-            table['rows'] = list(map(list, zip(*columns)))
-
-            # add number of rows and columns to metadata
-            table['metadata']['rows'] = str(len(table['rows']))
-            table['metadata']['columns'] = str(len(table['columns']))
+            table['rows'] = list(list(x) for x in zip(*columns))
 
         return tables
 
     def get_metadata(self):
         metadata = super().get_metadata()
-        data = self.parse_json()
+        data = self._parse_json()
         metadata['type'] = data.get('type') or data.get('Type', '')
         return metadata
 
+
+Readers.instance().register(PsSessionReader)

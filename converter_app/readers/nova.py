@@ -4,8 +4,8 @@ import io
 import logging
 import re
 import sys
-
-from .csv import CSVReader
+from converter_app.readers.helper.reader import Readers
+from .csv_reader import CSVReader
 
 logger = logging.getLogger(__name__)
 
@@ -13,20 +13,31 @@ unit_pattern = re.compile(r'\(([a-zA-Z])\)$')
 
 
 class NovaReader(CSVReader):
+    """
+    Nova reader reads special csv Files
+    """
     identifier = 'nova_reader'
     priority = 90
 
-    first_row = ['Potential applied (V)', 'Time (s)', 'WE(1).Current (A)', 'WE(1).Potential (V)', 'Scan', 'Index', 'Q+', 'Q-']
+    first_row = ['Potential applied (V)', 'Time (s)', 'WE(1).Current (A)', 'WE(1).Potential (V)', 'Scan', 'Index', 'Q+',
+                 'Q-']
     scan_index = 4
 
+    def __init__(self, file):
+        super().__init__(file)
+        self._step_size_unit = None
+        self._scan_rate_unit = None
+        self._total_rows = 0
+        self._cycles = 0
+
     def check(self):
-        # check using seperate function in the CSVReader
+        # check using separate function in the CSVReader
         result = self.check_csv()
         if result:
             first_line = self.file.string.splitlines()[0]
-            first_row = next(csv.reader(io.StringIO(first_line), self.file.csv_dialect))
+            first_row = next(csv.reader(io.StringIO(first_line), self.file.features('csv_dialect')))
             if first_row[:8] == self.first_row:
-                self.rows = list(csv.reader(io.StringIO(self.file.string), self.file.csv_dialect))
+                self.rows = list(csv.reader(io.StringIO(self.file.string), self.file.features('csv_dialect')))
                 self.lines = self.file.string.splitlines()
             else:
                 result = False
@@ -34,25 +45,20 @@ class NovaReader(CSVReader):
         logger.debug('result=%s', result)
         return result
 
-    def get_tables(self):
+    def prepare_tables(self):
         tables = []
         table = None
         scan = None
         prev = None
 
-        self.step_size_unit = None
-        self.scan_rate_unit = None
-        self.total_rows = 0
-        self.cycles = 0
-
-        for csv_table in super().get_tables():
+        for csv_table in super().prepare_tables():
             for row in csv_table['rows']:
                 if row[self.scan_index] != scan:
                     scan = row[self.scan_index]
                     table = {
                         'header': [],
                         'metadata': copy.deepcopy(csv_table.get('metadata', {})),
-                        'columns': copy.deepcopy(csv_table.get('columns', {})),
+                        'columns': copy.deepcopy(csv_table.get('columns', [])),
                         'rows': []
                     }
 
@@ -64,26 +70,27 @@ class NovaReader(CSVReader):
                                 table['metadata'][key + '_unit'] = match.group(1)
 
                     # add additional columns
-                    if self.step_size_unit is None and 'column_00_unit' in table['metadata']:
-                        self.step_size_unit = '{column_00_unit}'.format(**table['metadata'])
+                    if self._step_size_unit is None and 'column_00_unit' in table['metadata']:
+                        self._step_size_unit = f'{table["metadata"]["column_00_unit"]}'
 
-                    if self.scan_rate_unit is None and 'column_00_unit' in table['metadata'] and 'column_01_unit' in table['metadata']:
-                        self.scan_rate_unit = '{column_00_unit}/{column_01_unit}'.format(**table['metadata'])
+                    if self._scan_rate_unit is None and 'column_00_unit' in table['metadata'] and 'column_01_unit' in \
+                            table['metadata']:
+                        self._scan_rate_unit = f'{table["metadata"]["column_00_unit"]}/{table["metadata"]["column_01_unit"]}'
 
                     for column in [
-                        ('Step size', self.step_size_unit),
-                        ('Scan rate', self.scan_rate_unit)
+                        ('Step size', self._step_size_unit),
+                        ('Scan rate', self._scan_rate_unit)
                     ]:
                         idx = len(table['columns'])
                         name, unit = column
                         table['columns'].append({
                             'key': str(idx),
-                            'name': 'Column #{} ({} ({}))'.format(idx, name, unit)
+                            'name': f'Column #{idx} ({name} ({unit}))'
                         })
-                        table['metadata']['column_{:02d}'.format(idx)] = '{} ({})'.format(name, unit) if unit else name
-                        table['metadata']['column_{:02d}_unit'.format(idx)] = unit
+                        table['metadata'][f'column_{idx:02d}'] = f'{name} ({unit})' if unit else name
+                        table['metadata'][f'column_{idx:02d}_unit'] = unit
 
-                    self.cycles = max(int(scan), self.cycles)
+                    self._cycles = max(int(scan), self._cycles)
 
                     table['metadata']['scan'] = scan
                     tables.append(table)
@@ -99,9 +106,7 @@ class NovaReader(CSVReader):
                 prev = row
 
         for table in tables:
-            table['metadata']['rows'] = str(len(table['rows']))
-            table['metadata']['columns'] = str(len(table['columns']))
-            self.total_rows += len(table['rows'])
+            self._total_rows += len(table['rows'])
 
         return tables
 
@@ -126,8 +131,10 @@ class NovaReader(CSVReader):
         else:
             v_limit1, v_limit2 = v_min, v_max
 
-        step_size = sum([sum([abs(float(row[-2])) for row in table['rows'][1:]]) for table in self.tables]) / self.total_rows
-        scan_rate = sum([sum([abs(float(row[-1])) for row in table['rows'][1:]]) for table in self.tables]) / self.total_rows
+        step_size = sum(
+            sum(abs(float(row[-2])) for row in table['rows'][1:]) for table in self.tables) / self._total_rows
+        scan_rate = sum(
+            sum(abs(float(row[-1])) for row in table['rows'][1:]) for table in self.tables) / self._total_rows
 
         metadata = super().get_metadata()
         metadata.update({
@@ -138,10 +145,13 @@ class NovaReader(CSVReader):
             'v_limit1': str(v_limit1),
             'v_limit2': str(v_limit2),
             'step_size': str(step_size),
-            'step_size_unit': self.step_size_unit,
+            'step_size_unit': self._step_size_unit,
             'scan_rate': str(scan_rate),
-            'scan_rate_unit': self.scan_rate_unit,
-            'cycles': str(self.cycles)
+            'scan_rate_unit': self._scan_rate_unit,
+            'cycles': str(self._cycles)
         })
 
         return metadata
+
+
+Readers.instance().register(NovaReader)

@@ -1,0 +1,30 @@
+{
+  "profileId": "0cd6596c-83d2-49ab-a982-1dfec98d16ba",
+  "ols": null,
+  "matches": [
+    {
+      "identifier": {
+        "key": "extension",
+        "match": "exact",
+        "optional": false,
+        "type": "fileMetadata",
+        "value": ".dpt"
+      },
+      "result": {
+        "value": ".dpt"
+      }
+    }
+  ],
+  "tablesCount": 1,
+  "tables": [
+    {
+      "fileName": "data/table_01.jdx",
+      "header": {
+        "DATA CLASS": "XYPOINTS",
+        "DATA TYPE": "INFRARED SPECTRUM",
+        "XUNITS": "1/CM",
+        "YUNITS": "TRANSMITTANCE"
+      }
+    }
+  ]
+}

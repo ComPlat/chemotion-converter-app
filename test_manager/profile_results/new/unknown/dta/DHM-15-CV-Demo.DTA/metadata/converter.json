@@ -1,0 +1,554 @@
+{
+  "profileId": "799f3db4-fd21-4aa7-a7bd-7c5548cbe316",
+  "ols": "CHMO:0000025",
+  "matches": [
+    {
+      "identifier": {
+        "key": "extension",
+        "match": "exact",
+        "optional": false,
+        "type": "fileMetadata",
+        "value": ".DTA"
+      },
+      "result": {
+        "value": ".DTA"
+      }
+    },
+    {
+      "identifier": {
+        "key": "DATE",
+        "match": "any",
+        "optional": true,
+        "outputKey": "date",
+        "outputLayer": "gener",
+        "outputTableIndex": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "23.5.2022"
+      },
+      "result": {
+        "value": "18.9.2023",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "key": "SCANRATE",
+        "match": "any",
+        "operations": [
+          {
+            "operator": ":",
+            "value": "1000"
+          }
+        ],
+        "optional": true,
+        "outputKey": "scan_rate",
+        "outputLayer": "meas",
+        "outputTableIndex": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "([0-9\\.\\,E+]{2,})"
+      },
+      "result": {
+        "value": 0.0999998,
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "key": "STEPSIZE",
+        "match": "any",
+        "operations": [
+          {
+            "operator": ":",
+            "value": "1000"
+          }
+        ],
+        "optional": true,
+        "outputKey": "step_size",
+        "outputLayer": "meas",
+        "outputTableIndex": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "([0-9\\.\\,E+]{2,})"
+      },
+      "result": {
+        "value": 0.005,
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "key": "CYCLES",
+        "match": "any",
+        "optional": true,
+        "outputKey": "cycles",
+        "outputLayer": "meas",
+        "outputTableIndex": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "3"
+      },
+      "result": {
+        "value": "3",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "lineNumber": null,
+        "match": "regex",
+        "optional": true,
+        "outputKey": "software_version",
+        "outputLayer": "soft",
+        "outputTableIndex": null,
+        "tableIndex": 0,
+        "type": "tableHeader",
+        "value": "(\\d+\\.\\d+\\.\\d+)(\\s)(Framework)"
+      },
+      "result": {
+        "value": "7.8.6",
+        "tableIndex": 0,
+        "lineNumber": 58
+      }
+    },
+    {
+      "identifier": {
+        "lineNumber": null,
+        "match": "regex",
+        "optional": true,
+        "outputKey": "software",
+        "outputLayer": "soft",
+        "outputTableIndex": null,
+        "tableIndex": 0,
+        "type": "tableHeader",
+        "value": "(Framework)"
+      },
+      "result": {
+        "value": "Framework",
+        "tableIndex": 0,
+        "lineNumber": 58
+      }
+    },
+    {
+      "identifier": {
+        "key": "TITLE",
+        "match": "exact",
+        "optional": false,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "Cyclic"
+      },
+      "result": {
+        "value": "Cyclic",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "key": "TIME",
+        "match": "any",
+        "optional": true,
+        "outputKey": "time",
+        "outputLayer": "gener",
+        "outputTableIndex": 0,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "16:09:50"
+      },
+      "result": {
+        "value": "12:35:02",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "key": "TIME",
+        "match": "any",
+        "optional": true,
+        "outputKey": "time",
+        "outputLayer": "gener",
+        "outputTableIndex": 1,
+        "tableIndex": 1,
+        "type": "tableMetadata",
+        "value": "16:09:50"
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "key": "TIME",
+        "match": "any",
+        "optional": true,
+        "outputKey": "time",
+        "outputLayer": "gener",
+        "outputTableIndex": 2,
+        "tableIndex": 2,
+        "type": "tableMetadata",
+        "value": "16:09:50"
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "key": "TIME",
+        "match": "any",
+        "optional": true,
+        "outputKey": "time",
+        "outputLayer": "gener",
+        "outputTableIndex": 3,
+        "tableIndex": 3,
+        "type": "tableMetadata",
+        "value": "16:09:50"
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "key": "VINIT",
+        "match": "any",
+        "optional": true,
+        "outputKey": "voltage_start",
+        "outputLayer": "meas",
+        "outputTableIndex": 0,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "0,00000E+000"
+      },
+      "result": {
+        "value": "3,00000E-001",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "key": "VINIT",
+        "match": "any",
+        "optional": true,
+        "outputKey": "voltage_start",
+        "outputLayer": "meas",
+        "outputTableIndex": 1,
+        "tableIndex": 1,
+        "type": "tableMetadata",
+        "value": "0,00000E+000"
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "key": "VINIT",
+        "match": "any",
+        "optional": true,
+        "outputKey": "voltage_start",
+        "outputLayer": "meas",
+        "outputTableIndex": 2,
+        "tableIndex": 2,
+        "type": "tableMetadata",
+        "value": "0,00000E+000"
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "key": "VINIT",
+        "match": "any",
+        "optional": true,
+        "outputKey": "voltage_start",
+        "outputLayer": "meas",
+        "outputTableIndex": 3,
+        "tableIndex": 3,
+        "type": "tableMetadata",
+        "value": "0,00000E+000"
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "key": "VLIMIT1",
+        "match": "any",
+        "optional": true,
+        "outputKey": "voltage_limit_one",
+        "outputLayer": "meas",
+        "outputTableIndex": 0,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "-1,20000E+000"
+      },
+      "result": {
+        "value": "-7,00000E-001",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "key": "VLIMIT1",
+        "match": "any",
+        "optional": true,
+        "outputKey": "voltage_limit_one",
+        "outputLayer": "meas",
+        "outputTableIndex": 1,
+        "tableIndex": 1,
+        "type": "tableMetadata",
+        "value": "-1,20000E+000"
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "key": "VLIMIT1",
+        "match": "any",
+        "optional": true,
+        "outputKey": "voltage_limit_one",
+        "outputLayer": "meas",
+        "outputTableIndex": 2,
+        "tableIndex": 2,
+        "type": "tableMetadata",
+        "value": "-1,20000E+000"
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "key": "VLIMIT1",
+        "match": "any",
+        "optional": true,
+        "outputKey": "voltage_limit_one",
+        "outputLayer": "meas",
+        "outputTableIndex": 3,
+        "tableIndex": 3,
+        "type": "tableMetadata",
+        "value": "-1,20000E+000"
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "key": "VLIMIT2",
+        "match": "any",
+        "optional": true,
+        "outputKey": "voltage_limit_two",
+        "outputLayer": "meas",
+        "outputTableIndex": 0,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "1,10000E+000"
+      },
+      "result": {
+        "value": "3,00000E-001",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "key": "VLIMIT2",
+        "match": "any",
+        "optional": true,
+        "outputKey": "voltage_limit_two",
+        "outputLayer": "meas",
+        "outputTableIndex": 1,
+        "tableIndex": 1,
+        "type": "tableMetadata",
+        "value": "1,10000E+000"
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "key": "VLIMIT2",
+        "match": "any",
+        "optional": true,
+        "outputKey": "voltage_limit_two",
+        "outputLayer": "meas",
+        "outputTableIndex": 2,
+        "tableIndex": 2,
+        "type": "tableMetadata",
+        "value": "1,10000E+000"
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "key": "VLIMIT2",
+        "match": "any",
+        "optional": true,
+        "outputKey": "voltage_limit_two",
+        "outputLayer": "meas",
+        "outputTableIndex": 3,
+        "tableIndex": 3,
+        "type": "tableMetadata",
+        "value": "1,10000E+000"
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "key": "VFINAL",
+        "match": "any",
+        "optional": true,
+        "outputKey": "voltage_limit_end",
+        "outputLayer": "meas",
+        "outputTableIndex": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "0,00000E+000"
+      },
+      "result": {
+        "value": "3,00000E-001",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "key": "PSTAT",
+        "match": "any",
+        "optional": true,
+        "outputKey": "serial",
+        "outputLayer": "dev",
+        "outputTableIndex": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "IFC1010-30147"
+      },
+      "result": {
+        "value": "IFC1010-30147",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "lineNumber": "",
+        "match": "regex",
+        "optional": true,
+        "outputKey": "instrument",
+        "outputLayer": "dev",
+        "outputTableIndex": 0,
+        "tableIndex": 0,
+        "type": "tableHeader",
+        "value": "(Potentiostat)"
+      },
+      "result": {
+        "value": "Potentiostat",
+        "tableIndex": 0,
+        "lineNumber": 8
+      }
+    },
+    {
+      "identifier": {
+        "lineNumber": "",
+        "match": "regex",
+        "optional": true,
+        "outputKey": "instrument",
+        "outputLayer": "dev",
+        "outputTableIndex": 1,
+        "tableIndex": 1,
+        "type": "tableHeader",
+        "value": "(Potentiostat)"
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "lineNumber": "",
+        "match": "regex",
+        "optional": true,
+        "outputKey": "instrument",
+        "outputLayer": "dev",
+        "outputTableIndex": 2,
+        "tableIndex": 2,
+        "type": "tableHeader",
+        "value": "(Potentiostat)"
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "lineNumber": "",
+        "match": "regex",
+        "optional": true,
+        "outputKey": "instrument",
+        "outputLayer": "dev",
+        "outputTableIndex": 3,
+        "tableIndex": 3,
+        "type": "tableHeader",
+        "value": "(Potentiostat)"
+      },
+      "result": false
+    }
+  ],
+  "tablesCount": 4,
+  "tables": [
+    {
+      "fileName": "data/table_01.jdx",
+      "header": {
+        "DATA CLASS": "XYPOINTS",
+        "DATA TYPE": "CYCLIC VOLTAMMETRY",
+        "XUNITS": "Voltage in V",
+        "YUNITS": "Current in A",
+        "date": "18.9.2023",
+        "scan_rate": 0.0999998,
+        "step_size": 0.005,
+        "cycles": "3",
+        "software_version": "7.8.6",
+        "software": "Framework",
+        "time": "12:35:02",
+        "voltage_start": "3,00000E-001",
+        "voltage_limit_one": "-7,00000E-001",
+        "voltage_limit_two": "3,00000E-001",
+        "voltage_limit_end": "3,00000E-001",
+        "serial": "IFC1010-30147",
+        "instrument": "Potentiostat"
+      }
+    },
+    {
+      "fileName": "data/table_02.jdx",
+      "header": {
+        "DATA CLASS": "XYPOINTS",
+        "DATA TYPE": "CYCLIC VOLTAMMETRY",
+        "XUNITS": "Voltage in V",
+        "YUNITS": "Current in A",
+        "date": "18.9.2023",
+        "scan_rate": 0.0999998,
+        "step_size": 0.005,
+        "cycles": "3",
+        "software_version": "7.8.6",
+        "software": "Framework",
+        "voltage_limit_end": "3,00000E-001",
+        "serial": "IFC1010-30147"
+      }
+    },
+    {
+      "fileName": "data/table_03.jdx",
+      "header": {
+        "DATA CLASS": "XYPOINTS",
+        "DATA TYPE": "CYCLIC VOLTAMMETRY",
+        "XUNITS": "Voltage in V",
+        "YUNITS": "Current in A",
+        "date": "18.9.2023",
+        "scan_rate": 0.0999998,
+        "step_size": 0.005,
+        "cycles": "3",
+        "software_version": "7.8.6",
+        "software": "Framework",
+        "voltage_limit_end": "3,00000E-001",
+        "serial": "IFC1010-30147"
+      }
+    },
+    {
+      "fileName": "data/table_04.jdx",
+      "header": {
+        "DATA CLASS": "XYPOINTS",
+        "DATA TYPE": "CYCLIC VOLTAMMETRY",
+        "XUNITS": "Voltage in V",
+        "YUNITS": "Current in A",
+        "date": "18.9.2023",
+        "scan_rate": 0.0999998,
+        "step_size": 0.005,
+        "cycles": "3",
+        "software_version": "7.8.6",
+        "software": "Framework",
+        "voltage_limit_end": "3,00000E-001",
+        "serial": "IFC1010-30147"
+      }
+    }
+  ]
+}

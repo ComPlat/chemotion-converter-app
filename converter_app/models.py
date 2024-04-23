@@ -1,27 +1,53 @@
 import json
 import logging
+import pathlib
 import uuid
 from collections import defaultdict
+
 from pathlib import Path
 
 import magic
 from flask import current_app
 
-from .utils import check_uuid
+from converter_app.utils import check_uuid
 
 logger = logging.getLogger(__name__)
 
 
-class Profile(object):
+class Profile:
+    """
+    Profile objects wraps profile JSON
+
+    Attributes:
+        data        [dict] contains {identifiers:..., tables: [...]}
+        client_id   [str] id of the user
+        id          [str] id of the profile and file name
+        errors      [collections.defaultdict] contains all errors if profile is not correct
+    """
 
     def __init__(self, profile_data, client_id, profile_id=None):
         self.data = profile_data
         self.client_id = client_id
         self.id = profile_id
-
-    def clean(self):
         self.errors = defaultdict(list)
 
+    def clean(self):
+        """
+        Checks if a profile is correct. see the error
+        :return: [bool] if profile is validatable
+        """
+        self.errors.clear()
+
+        self._clean_id()
+        self._clean_identifiers()
+        self._clean_tables()
+
+        return not self.errors
+
+    def _clean_id(self):
+        """
+        Checks if the profile ID is valid
+        """
         if self.id is None and 'id' in self.data:
             profile_id = self.data['id']
             if check_uuid(profile_id):
@@ -31,6 +57,10 @@ class Profile(object):
             else:
                 self.errors['id'].append('id is not a valid UUID4.')
 
+    def _clean_identifiers(self):
+        """
+        Checks if the identifiers is valid
+        """
         if 'identifiers' in self.data:
             if isinstance(self.data['identifiers'], list):
                 pass
@@ -38,6 +68,11 @@ class Profile(object):
                 self.errors['identifiers'].append('identifiers has to be a list.')
         else:
             self.errors['identifiers'].append('identifiers have to be provided.')
+
+    def _clean_tables(self):
+        """
+        Checks if the tables is valid
+        """
 
         if 'tables' in self.data:
             if isinstance(self.data['tables'], list):
@@ -60,10 +95,10 @@ class Profile(object):
             else:
                 self.errors['tables'].append('tables have to be provided.')
 
-        if not self.errors:
-            return True
-
     def save(self):
+        """
+        Saves a profile under $PROFILES_DIR/$client_id/$id.json
+        """
         profiles_path = Path(current_app.config['PROFILES_DIR']).joinpath(self.client_id)
         profiles_path.mkdir(parents=True, exist_ok=True)
 
@@ -75,10 +110,13 @@ class Profile(object):
                 self.id = str(uuid.uuid4())
 
         file_path = profiles_path.joinpath(self.id).with_suffix('.json')
-        with open(file_path, 'w') as fp:
+        with open(file_path, 'w', encoding='utf8') as fp:
             json.dump(self.data, fp, sort_keys=True, indent=4)
 
     def delete(self):
+        """
+        deletes the profile file
+        """
         profiles_path = Path(current_app.config['PROFILES_DIR']).joinpath(self.client_id)
 
         file_path = profiles_path.joinpath(self.id).with_suffix('.json')
@@ -87,13 +125,21 @@ class Profile(object):
 
     @property
     def as_dict(self):
+        """
+        :return: Profile data as dict
+        """
         return {
             'id': self.id,
             **self.data
         }
 
     @classmethod
-    def load(cls, file_path):
+    def load(cls, file_path: pathlib.PurePath):
+        """
+        Profile factory loads profile
+        :param file_path: $PROFILES_DIR/$client_id/$id.json
+        :return: new Profile object
+        """
         profile_data = json.loads(file_path.read_text())
 
         # ensure compatibility with older isRegex flag
@@ -109,6 +155,11 @@ class Profile(object):
 
     @classmethod
     def list(cls, client_id):
+        """
+        List all profiles of one user/client
+        :param client_id: [str] Username
+        :return:
+        """
         profiles_path = Path(current_app.config['PROFILES_DIR']).joinpath(client_id)
 
         if profiles_path.exists():
@@ -116,11 +167,17 @@ class Profile(object):
                 profile_id = str(file_path.with_suffix('').name)
                 profile_data = cls.load(file_path)
                 yield cls(profile_data, client_id, profile_id)
-        else:
-            return []
+
+        return []
 
     @classmethod
     def retrieve(cls, client_id, profile_id):
+        """
+        Profile factory loads profile
+        :param client_id: [str] Username
+        :param profile_id: [str] profile id (uuid)
+        :return:
+        """
         profiles_path = Path(current_app.config['PROFILES_DIR']).joinpath(client_id)
 
         # make sure that its really a uuid, this should prevent file system traversal
@@ -133,24 +190,59 @@ class Profile(object):
         return False
 
 
-class File(object):
+class File:
+    """
+    Wraps File file stream object
+    """
 
     def __init__(self, file):
+        self._features = {}
         self.fp = file
-        self.name = file.filename
-        self.content_type = file.content_type
 
         # read the file
         self.content = file.read()
         file.seek(0)
 
         self.mime_type = magic.Magic(mime=True).from_buffer(self.content)
-        self.suffix = Path(self.name).suffix
+        self.suffix = Path(file.filename).suffix
 
-        if self.suffix in ['.pdf'] :
+        if self.suffix in ['.pdf']:
             self.encoding = 'binary'
         else:
             self.encoding = magic.Magic(mime_encoding=True).from_buffer(self.content)
 
         # decode file string
         self.string = self.content.decode(self.encoding, errors='ignore') if self.encoding != 'binary' else None
+
+    @property
+    def content_type(self):
+        """
+        :return: The content type of the file
+        """
+        return self.fp.content_type
+
+    @property
+    def name(self):
+        """
+        :return: The origin file name
+        """
+        return self.fp.filename
+
+    def features(self, name):
+        """
+        features are extensions information of the file. For example PDF content or csv_dialect
+        :param name: Name or Key of the feature
+        :return:
+        """
+        res = self._features.get(name)
+        if res is None:
+            raise AttributeError(f"{name} is no feature of this file ({self.name})!")
+        return res
+
+    def set_features(self, name, feature_content):
+        """
+        features are extensions information of the file. For example PDF content or csv_dialect
+        :param name: Name or Key of the feature
+        :param feature_content: Feature content
+        """
+        self._features[name] = feature_content

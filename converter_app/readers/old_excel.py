@@ -1,44 +1,46 @@
 import logging
-
 import xlrd
 
-from .base import Reader
+from converter_app.readers.helper.reader import Readers
+from converter_app.readers.helper.base import Reader
 
 logger = logging.getLogger(__name__)
 
 
 class OldExcelReader(Reader):
+    """
+    Reads old .xls files
+    """
     identifier = 'old_excel_reader'
     priority = 16
 
-    def check(self):
-        if self.file.encoding != 'binary':
-            result = False
-        elif self.file.suffix != '.xls':
-            result = False
-        else:
-            try:
-                self.wb = xlrd.open_workbook(file_contents=self.file.content)
-                result = True
-            except:
-                result = False
+    def __init__(self, file):
+        super().__init__(file)
+        self.wb = None
 
-        logger.debug('result=%s', result)
-        return result
+    def check(self):
+        if self.file.encoding != 'binary' or self.file.suffix != '.xls':
+            return False
+        try:
+            self.wb = xlrd.open_workbook(file_contents=self.file.content)
+            return True
+        except:
+            return False
 
     def _add_unique_key(self, key, value):
         o_key = key
         idx = 1
-        while  key in self.tables[-1]['metadata'] :
+        while key in self.tables[-1]['metadata']:
             key = f"{o_key} ({idx})"
             idx += 1
         self.tables[-1]['metadata'][key] = value
-    def get_tables(self):
+
+    def prepare_tables(self):
         self.tables = []
 
         # loop over worksheets
         for ws in self.wb:
-            table = self.append_table(self.tables)
+            self.append_table(self.tables)
 
             previous_shape = None
             for row in ws:
@@ -51,7 +53,7 @@ class OldExcelReader(Reader):
 
                     if self.tables[-1]['rows']:
                         # if a table is already there, this must be a new header
-                        table = self.append_table(self.tables)
+                        self.append_table(self.tables)
 
                     self.tables[-1]['header'].append('\t'.join([str(cell) for cell in row]))
                     for val in row[1:]:
@@ -73,30 +75,10 @@ class OldExcelReader(Reader):
                 # store shape and row for the next iteration
                 previous_shape = shape
 
-        for table in self.tables:
-            if table['rows']:
-                table['columns'] = [{
-                    'key': str(idx),
-                    'name': 'Column #{}'.format(idx)
-                } for idx, value in enumerate(table['rows'][0])]
-
-            table['metadata']['rows'] = str(len(table['rows']))
-            table['metadata']['columns'] = str(len(table['columns']))
-
         return self.tables
 
     def _parse_row(self, row):
         return [cell.value for cell in row]
 
-    def get_shape(self, row):
-        shape = []
-        for cell in row:
-            if cell is None:
-                shape.append(None)
-            else:
 
-                if isinstance(cell, (int, float)):
-                    shape.append('f')
-                else:
-                    shape.append('s')
-        return shape
+Readers.instance().register(OldExcelReader)
