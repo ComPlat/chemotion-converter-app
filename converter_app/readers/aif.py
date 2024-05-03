@@ -1,25 +1,30 @@
 import logging
 
-from .ascii import AsciiReader
+from converter_app.readers.helper.reader import Readers
+from converter_app.readers.ascii import AsciiReader
 
 logger = logging.getLogger(__name__)
 
 
 class AifReader(AsciiReader):
+    """
+    Afi Reader class.  It extends converter_app.readers.ascii.AsciiReader
+    """
     identifier = 'aif_reader'
     priority = 95
 
     def check(self):
-        result = False
+        """
+        :return: True if it fits
+        """
         if self.file.suffix.lower() == '.txt' and self.file.mime_type == 'text/plain':
             first_line = self.file.string.splitlines()[0]
-            result = 'raw2aif' in first_line
+            return 'raw2aif' in first_line
 
-        logger.debug('result=%s', result)
-        return result
+        return False
 
-    def get_tables(self):
-        tables = super(AifReader, self).get_tables()
+    def prepare_tables(self):
+        tables = super().prepare_tables()
         for table in tables:
             unit_counter = 0
             unit_section = False
@@ -31,9 +36,12 @@ class AifReader(AsciiReader):
                     unit_counter = 0
                     unit_section = True
                 elif unit_section:
-                    table['metadata']['Unit_column_#%d' % unit_counter] = entry
+                    table['metadata'][f'Unit_column_#{unit_counter}'] = entry
                     unit_counter = unit_counter + 1
                 else:
                     unit_section = False
 
         return tables
+
+
+Readers.instance().register(AifReader)

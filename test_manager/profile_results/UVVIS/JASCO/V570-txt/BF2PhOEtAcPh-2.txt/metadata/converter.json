@@ -1,0 +1,45 @@
+{
+  "profileId": "6be46fd7-59a2-4b02-829b-cbfef8c19646",
+  "ols": null,
+  "matches": [
+    {
+      "identifier": {
+        "key": "extension",
+        "match": "exact",
+        "optional": false,
+        "type": "fileMetadata",
+        "value": ".txt"
+      },
+      "result": {
+        "value": ".txt"
+      }
+    },
+    {
+      "identifier": {
+        "lineNumber": 3,
+        "match": "exact",
+        "optional": false,
+        "tableIndex": 0,
+        "type": "tableHeader",
+        "value": "ORIGIN\tJASCO"
+      },
+      "result": {
+        "value": "ORIGIN\tJASCO",
+        "tableIndex": 0,
+        "lineNumber": 3
+      }
+    }
+  ],
+  "tablesCount": 1,
+  "tables": [
+    {
+      "fileName": "data/table_01.jdx",
+      "header": {
+        "DATA CLASS": "XYPOINTS",
+        "DATA TYPE": "UV-VIS",
+        "XUNITS": "NANOMETERS",
+        "YUNITS": "ABSORBANCE"
+      }
+    }
+  ]
+}

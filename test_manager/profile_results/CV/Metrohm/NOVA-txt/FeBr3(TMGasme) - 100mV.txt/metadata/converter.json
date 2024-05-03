@@ -1,0 +1,154 @@
+{
+  "profileId": "CVprofile_Nova",
+  "ols": "CHMO:0000025",
+  "matches": [
+    {
+      "identifier": {
+        "key": "reader",
+        "match": "exact",
+        "optional": false,
+        "type": "fileMetadata",
+        "value": "NovaReader"
+      },
+      "result": {
+        "value": "NovaReader"
+      }
+    },
+    {
+      "identifier": {
+        "key": "column_00",
+        "match": "exact",
+        "optional": false,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "Potential applied (V)"
+      },
+      "result": {
+        "value": "Potential applied (V)",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "key": "column_04",
+        "match": "exact",
+        "optional": false,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "Scan"
+      },
+      "result": {
+        "value": "Scan",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "key": "scan_rate",
+        "match": "any",
+        "optional": true,
+        "outputKey": "scan_rate",
+        "outputLayer": "meas",
+        "outputTableIndex": 0,
+        "type": "fileMetadata",
+        "value": "0.09998236414401321"
+      },
+      "result": {
+        "value": "0.09980451405898713"
+      }
+    },
+    {
+      "identifier": {
+        "key": "step_size",
+        "match": "any",
+        "optional": true,
+        "outputKey": "step_size",
+        "outputLayer": "meas",
+        "outputTableIndex": 0,
+        "type": "fileMetadata",
+        "value": "0.0010679116287260553"
+      },
+      "result": {
+        "value": "0.001979722335875741"
+      }
+    },
+    {
+      "identifier": {
+        "key": "v_end",
+        "match": "any",
+        "optional": true,
+        "outputKey": "voltage_limit_end",
+        "outputLayer": "meas",
+        "outputTableIndex": 0,
+        "type": "fileMetadata",
+        "value": "0"
+      },
+      "result": {
+        "value": "1.00006103515625"
+      }
+    },
+    {
+      "identifier": {
+        "key": "v_init",
+        "match": "any",
+        "optional": true,
+        "outputKey": "voltage_start",
+        "outputLayer": "meas",
+        "outputTableIndex": 0,
+        "type": "fileMetadata",
+        "value": "0.001068115234375"
+      },
+      "result": {
+        "value": "0.998077392578125"
+      }
+    },
+    {
+      "identifier": {
+        "key": "v_limit1",
+        "match": "any",
+        "optional": true,
+        "outputKey": "voltage_limit_one",
+        "outputLayer": "meas",
+        "outputTableIndex": 0,
+        "type": "fileMetadata",
+        "value": "1.50070190429688"
+      },
+      "result": {
+        "value": "0.799713134765625"
+      }
+    },
+    {
+      "identifier": {
+        "key": "v_limit2",
+        "match": "any",
+        "optional": true,
+        "outputKey": "voltage_limit_two",
+        "outputLayer": "meas",
+        "outputTableIndex": 0,
+        "type": "fileMetadata",
+        "value": "-1.30096435546875"
+      },
+      "result": {
+        "value": "1.30157470703125"
+      }
+    }
+  ],
+  "tablesCount": 1,
+  "tables": [
+    {
+      "fileName": "data/table_01.jdx",
+      "header": {
+        "DATA CLASS": "XYPOINTS",
+        "DATA TYPE": "CYCLIC VOLTAMMETRY",
+        "XUNITS": "Voltage vs Ref",
+        "YUNITS": "Ampere",
+        "scan_rate": "0.09980451405898713",
+        "step_size": "0.001979722335875741",
+        "voltage_limit_end": "1.00006103515625",
+        "voltage_start": "0.998077392578125",
+        "voltage_limit_one": "0.799713134765625",
+        "voltage_limit_two": "1.30157470703125"
+      }
+    }
+  ]
+}

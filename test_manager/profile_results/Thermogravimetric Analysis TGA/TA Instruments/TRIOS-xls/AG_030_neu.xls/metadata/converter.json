@@ -1,0 +1,59 @@
+{
+  "profileId": "fb63e718-3842-4d45-9b39-84a53b27e483",
+  "ols": null,
+  "matches": [
+    {
+      "identifier": {
+        "key": "reader",
+        "match": "exact",
+        "optional": false,
+        "type": "fileMetadata",
+        "value": "OldExcelReader"
+      },
+      "result": {
+        "value": "OldExcelReader"
+      }
+    },
+    {
+      "identifier": {
+        "key": "Instrument Type",
+        "match": "exact",
+        "optional": false,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "TGA5500"
+      },
+      "result": {
+        "value": "TGA5500",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "lineNumber": 1,
+        "match": "regex",
+        "optional": false,
+        "tableIndex": 1,
+        "type": "tableHeader",
+        "value": "Ramp"
+      },
+      "result": {
+        "value": "Ramp",
+        "tableIndex": 1,
+        "lineNumber": 1
+      }
+    }
+  ],
+  "tablesCount": 1,
+  "tables": [
+    {
+      "fileName": "data/table_01.jdx",
+      "header": {
+        "DATA CLASS": "XYPOINTS",
+        "DATA TYPE": "THERMOGRAVIMETRIC ANALYSIS",
+        "XUNITS": "DEGREES CELSIUS",
+        "YUNITS": "Weight %"
+      }
+    }
+  ]
+}

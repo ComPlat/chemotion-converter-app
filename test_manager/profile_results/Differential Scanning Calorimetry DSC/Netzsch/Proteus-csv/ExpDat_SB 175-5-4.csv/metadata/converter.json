@@ -1,0 +1,401 @@
+{
+  "profileId": "0d04f3c5-43d4-408a-85ef-34b33975020a",
+  "ols": "CHMO:0000684",
+  "matches": [
+    {
+      "identifier": {
+        "key": "reader",
+        "match": "exact",
+        "optional": false,
+        "type": "fileMetadata",
+        "value": "CSVReader"
+      },
+      "result": {
+        "value": "CSVReader"
+      }
+    },
+    {
+      "identifier": {
+        "key": "extension",
+        "match": "exact",
+        "optional": false,
+        "type": "fileMetadata",
+        "value": ".csv"
+      },
+      "result": {
+        "value": ".csv"
+      }
+    },
+    {
+      "identifier": {
+        "key": "column_02",
+        "match": "exact",
+        "optional": false,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "DSC/(mW/mg)"
+      },
+      "result": {
+        "value": "DSC/(mW/mg)",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "key": "column_00",
+        "match": "exact",
+        "optional": false,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "##Temp./\u00b0C"
+      },
+      "result": {
+        "value": "##Temp./\u00b0C",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "lineNumber": 1,
+        "match": "exact",
+        "optional": false,
+        "tableIndex": 0,
+        "type": "tableHeader",
+        "value": "#EXPORTTYPE:                 ;DATA SINGLE"
+      },
+      "result": {
+        "value": "#EXPORTTYPE:                 ;DATA SINGLE",
+        "tableIndex": 0,
+        "lineNumber": 1
+      }
+    },
+    {
+      "identifier": {
+        "lineNumber": 18,
+        "match": "regex",
+        "optional": true,
+        "outputKey": "sample",
+        "outputLayer": "sample_details",
+        "outputTableIndex": 0,
+        "tableIndex": 0,
+        "type": "tableHeader",
+        "value": "#SAMPLE:\\s+;(\\S+)"
+      },
+      "result": {
+        "value": "SB",
+        "tableIndex": 0,
+        "lineNumber": 18
+      }
+    },
+    {
+      "identifier": {
+        "lineNumber": "",
+        "match": "regex",
+        "optional": true,
+        "outputKey": "amount",
+        "outputLayer": "sample_details",
+        "outputTableIndex": 0,
+        "tableIndex": 0,
+        "type": "tableHeader",
+        "value": "#SAMPLE MASS \\/mg:\\s+;(\\S+)"
+      },
+      "result": {
+        "value": "6,4",
+        "tableIndex": 0,
+        "lineNumber": 19
+      }
+    },
+    {
+      "identifier": {
+        "lineNumber": "",
+        "match": "regex",
+        "optional": true,
+        "outputKey": "date",
+        "outputLayer": "general",
+        "outputTableIndex": 0,
+        "tableIndex": 0,
+        "type": "tableHeader",
+        "value": "#DATE\\/TIME:\\s+;(\\d+.\\d+.\\d+)"
+      },
+      "result": {
+        "value": "31.03.2022",
+        "tableIndex": 0,
+        "lineNumber": 11
+      }
+    },
+    {
+      "identifier": {
+        "lineNumber": "",
+        "match": "regex",
+        "optional": true,
+        "outputKey": "time",
+        "outputLayer": "general",
+        "outputTableIndex": 0,
+        "tableIndex": 0,
+        "type": "tableHeader",
+        "value": "#DATE\\/TIME:\\s+;\\S+\\s(\\d+:\\d+:\\d+\\s\\S+)"
+      },
+      "result": {
+        "value": "12:47:59 (UTC+2)",
+        "tableIndex": 0,
+        "lineNumber": 11
+      }
+    },
+    {
+      "identifier": {
+        "lineNumber": "",
+        "match": "regex",
+        "optional": true,
+        "outputKey": "reference",
+        "outputLayer": "meas",
+        "outputTableIndex": 0,
+        "tableIndex": 0,
+        "type": "tableHeader",
+        "value": "#REFERENCE:\\s+;(\\S+)"
+      },
+      "result": {
+        "value": "-----",
+        "tableIndex": 0,
+        "lineNumber": 21
+      }
+    },
+    {
+      "identifier": {
+        "lineNumber": "",
+        "match": "regex",
+        "operations": [
+          {
+            "operator": ":",
+            "value": "1000"
+          }
+        ],
+        "optional": true,
+        "outputKey": "reference_mass",
+        "outputLayer": "meas",
+        "outputTableIndex": 0,
+        "tableIndex": 0,
+        "type": "tableHeader",
+        "value": "REFERENCE MASS /mg:\\s+;(\\d+)"
+      },
+      "result": {
+        "value": 0.0,
+        "tableIndex": 0,
+        "lineNumber": 11
+      }
+    },
+    {
+      "identifier": {
+        "lineNumber": "",
+        "match": "regex",
+        "optional": true,
+        "outputKey": "temp_cal",
+        "outputLayer": "meas",
+        "outputTableIndex": 0,
+        "tableIndex": 0,
+        "type": "tableHeader",
+        "value": "#TEMPCAL:\\s+;(\\S+)"
+      },
+      "result": {
+        "value": "14-03-2022",
+        "tableIndex": 0,
+        "lineNumber": 13
+      }
+    },
+    {
+      "identifier": {
+        "lineNumber": "",
+        "match": "regex",
+        "optional": true,
+        "outputKey": "sensFile",
+        "outputLayer": "meas",
+        "outputTableIndex": 0,
+        "tableIndex": 0,
+        "type": "tableHeader",
+        "value": "#SENSITIVITY:\\s+;(\\S+)"
+      },
+      "result": {
+        "value": "14-03-2022",
+        "tableIndex": 0,
+        "lineNumber": 13
+      }
+    },
+    {
+      "identifier": {
+        "lineNumber": "",
+        "match": "regex",
+        "optional": true,
+        "outputKey": "segments",
+        "outputLayer": "meas",
+        "outputTableIndex": 0,
+        "tableIndex": 0,
+        "type": "tableHeader",
+        "value": "#SEGMENT:\\s+;S(\\d*\\/\\d*)"
+      },
+      "result": {
+        "value": "4/4",
+        "tableIndex": 0,
+        "lineNumber": 33
+      }
+    },
+    {
+      "identifier": {
+        "lineNumber": "",
+        "match": "regex",
+        "optional": true,
+        "outputKey": "brand",
+        "outputLayer": "instrument",
+        "outputTableIndex": 0,
+        "tableIndex": 0,
+        "type": "tableHeader",
+        "value": "#INSTRUMENT:\\s+;(\\S+)\\s"
+      },
+      "result": {
+        "value": "NETZSCH",
+        "tableIndex": 0,
+        "lineNumber": 3
+      }
+    },
+    {
+      "identifier": {
+        "lineNumber": "",
+        "match": "regex",
+        "optional": true,
+        "outputKey": "instrument",
+        "outputLayer": "instrument",
+        "outputTableIndex": 0,
+        "tableIndex": 0,
+        "type": "tableHeader",
+        "value": "#INSTRUMENT:\\s+;\\S+\\s(\\S+\\s\\d+)"
+      },
+      "result": {
+        "value": "DSC 214",
+        "tableIndex": 0,
+        "lineNumber": 9
+      }
+    },
+    {
+      "identifier": {
+        "lineNumber": "",
+        "match": "regex",
+        "optional": true,
+        "outputKey": "crucible",
+        "outputLayer": "set",
+        "outputTableIndex": 0,
+        "tableIndex": 0,
+        "type": "tableHeader",
+        "value": "#TYPE OF CRUCIBLE:\\s+;(.*)"
+      },
+      "result": {
+        "value": "Concavus Al, pierced lid",
+        "tableIndex": 0,
+        "lineNumber": 23
+      }
+    },
+    {
+      "identifier": {
+        "lineNumber": "",
+        "match": "regex",
+        "optional": true,
+        "outputKey": "atmosphere",
+        "outputLayer": "set",
+        "outputTableIndex": 0,
+        "tableIndex": 0,
+        "type": "tableHeader",
+        "value": "#PROTECTIVE MFC:\\s+;(.*)"
+      },
+      "result": {
+        "value": "NITROGEN,250,0 ml/min",
+        "tableIndex": 0,
+        "lineNumber": 26
+      }
+    },
+    {
+      "identifier": {
+        "lineNumber": "",
+        "match": "regex",
+        "operations": [
+          {
+            "operator": ":",
+            "value": "1000"
+          }
+        ],
+        "optional": true,
+        "outputKey": "range",
+        "outputLayer": "set",
+        "outputTableIndex": 0,
+        "tableIndex": 0,
+        "type": "tableHeader",
+        "value": "#M.RANGE /\u00b5V:\\s+;(\\d*)"
+      },
+      "result": {
+        "value": 5.0,
+        "tableIndex": 0,
+        "lineNumber": 28
+      }
+    },
+    {
+      "identifier": {
+        "lineNumber": "",
+        "match": "regex",
+        "optional": true,
+        "outputKey": "temperature",
+        "outputLayer": "set",
+        "outputTableIndex": 0,
+        "tableIndex": 0,
+        "type": "tableHeader",
+        "value": "#RANGE:\\s+;(.*)"
+      },
+      "result": {
+        "value": "-80\u00b0C/10,0(K/min)/200\u00b0C",
+        "tableIndex": 0,
+        "lineNumber": 32
+      }
+    },
+    {
+      "identifier": {
+        "lineNumber": "",
+        "match": "regex",
+        "optional": true,
+        "outputKey": "operator",
+        "outputLayer": "general",
+        "outputTableIndex": 0,
+        "tableIndex": 0,
+        "type": "tableHeader",
+        "value": "#IDENTITY:\\s+;(\\S{2,3})"
+      },
+      "result": {
+        "value": "SB",
+        "tableIndex": 0,
+        "lineNumber": 2
+      }
+    }
+  ],
+  "tablesCount": 1,
+  "tables": [
+    {
+      "fileName": "data/table_01.jdx",
+      "header": {
+        "DATA CLASS": "XYPOINTS",
+        "DATA TYPE": "THERMOGRAVIMETRIC ANALYSIS",
+        "XUNITS": "DEGREES CELSIUS",
+        "YUNITS": "W/g",
+        "sample": "SB",
+        "amount": "6,4",
+        "date": "31.03.2022",
+        "time": "12:47:59 (UTC+2)",
+        "reference": "-----",
+        "reference_mass": 0.0,
+        "temp_cal": "14-03-2022",
+        "sensFile": "14-03-2022",
+        "segments": "4/4",
+        "brand": "NETZSCH",
+        "instrument": "DSC 214",
+        "crucible": "Concavus Al, pierced lid",
+        "atmosphere": "NITROGEN,250,0 ml/min",
+        "range": 5.0,
+        "temperature": "-80\u00b0C/10,0(K/min)/200\u00b0C",
+        "operator": "SB"
+      }
+    }
+  ]
+}

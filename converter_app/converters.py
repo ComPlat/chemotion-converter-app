@@ -8,7 +8,10 @@ from .models import Profile
 logger = logging.getLogger(__name__)
 
 
-class Converter(object):
+class Converter:
+    """
+    Converter object checks if profile matches to filedata and runs the converting process
+    """
 
     def __init__(self, profile, file_data):
         self.profile = profile
@@ -18,52 +21,60 @@ class Converter(object):
         self.input_tables = file_data.get('tables', [])
 
         if self.profile.data.get('matchTables'):
-            profile_identifiers = self.profile.data.get('identifiers', [])
-            profile_output_tables = self.profile.data.get('tables', [])
-
-            self.identifiers = []
-            for identifier in profile_identifiers:
-                if identifier.get('outputTableIndex') is None:
-                    # if no outputTableIndex was set this identifier is valid for every table
-                    # no adjustment has to be done
-                    self.identifiers.append(identifier)
-                else:
-                    # adjust this identifier for every input table
-                    for input_table_index, input_table in enumerate(self.input_tables):
-                        # make a copy of the identifier and adjust the outputTableIndex
-                        identifier_copy = copy.deepcopy(identifier)
-                        identifier_copy['outputTableIndex'] = input_table_index
-
-                        # adjust the (input)tableIndex as well if it was not null
-                        if identifier_copy.get('tableIndex') is not None:
-                            identifier_copy['tableIndex'] = input_table_index
-
-                        self.identifiers.append(identifier_copy)
-
-            # match the output Table to the input tables and adjust the tableIndexes to the input table
-            self.output_tables = []
-            for input_table_index, input_table in enumerate(self.input_tables):
-                output_table = copy.deepcopy(profile_output_tables[0])
-                output_table_table = output_table.get('table')
-                if output_table_table:
-                    if 'xColumn' in output_table_table:
-                        output_table_table['xColumn']['tableIndex'] = input_table_index
-                    if 'xColumn' in output_table_table:
-                        output_table_table['yColumn']['tableIndex'] = input_table_index
-                    for xOperation in output_table_table.get('xOperations', []):
-                        if 'column' in xOperation:
-                            xOperation['column']['tableIndex'] = input_table_index
-                    for yOperation in output_table_table.get('yOperations', []):
-                        if 'column' in yOperation:
-                            yOperation['column']['tableIndex'] = input_table_index
-
-                self.output_tables.append(output_table)
-
+            self._prepare_identifier()
+            self._prepare_tables()
         else:
             self.output_tables = self.profile.data.get('tables', [])
             self.identifiers = self.profile.data.get('identifiers', [])
 
+    def _prepare_tables(self):
+        profile_output_tables = self.profile.data.get('tables', [])
+
+        # match the output Table to the input tables and adjust the tableIndexes to the input table
+        self.output_tables = []
+        for input_table_index, _ in enumerate(self.input_tables):
+            output_table = copy.deepcopy(profile_output_tables[0])
+            output_table_table = output_table.get('table')
+            if output_table_table:
+                if 'xColumn' in output_table_table:
+                    output_table_table['xColumn']['tableIndex'] = input_table_index
+                if 'xColumn' in output_table_table:
+                    output_table_table['yColumn']['tableIndex'] = input_table_index
+                for x_operation in output_table_table.get('xOperations', []):
+                    if 'column' in x_operation:
+                        x_operation['column']['tableIndex'] = input_table_index
+                for y_operation in output_table_table.get('yOperations', []):
+                    if 'column' in y_operation:
+                        y_operation['column']['tableIndex'] = input_table_index
+
+            self.output_tables.append(output_table)
+
+    def _prepare_identifier(self):
+        profile_identifiers = self.profile.data.get('identifiers', [])
+        self.identifiers = []
+        for identifier in profile_identifiers:
+            if identifier.get('outputTableIndex') is None:
+                # if no outputTableIndex was set this identifier is valid for every table
+                # no adjustment has to be done
+                self.identifiers.append(identifier)
+            else:
+                # adjust this identifier for every input table
+                for input_table_index, _ in enumerate(self.input_tables):
+                    # make a copy of the identifier and adjust the outputTableIndex
+                    identifier_copy = copy.deepcopy(identifier)
+                    identifier_copy['outputTableIndex'] = input_table_index
+
+                    # adjust the (input)tableIndex as well if it was not null
+                    if identifier_copy.get('tableIndex') is not None:
+                        identifier_copy['tableIndex'] = input_table_index
+
+                    self.identifiers.append(identifier_copy)
+
     def match(self):
+        """
+
+        :return:
+        """
         for identifier in self.identifiers:
             match = self.match_identifier(identifier)
             if match is False and not identifier.get('optional'):
@@ -73,7 +84,7 @@ class Converter(object):
             if match and 'value' in match:
                 match_operations = identifier.get('operations', [])
                 for match_operation in match_operations:
-                    match['value'] = self.run_identifier_operation(match['value'], match_operation)
+                    match['value'] = self._run_identifier_operation(match['value'], match_operation)
 
             # store match
             self.matches.append({
@@ -85,20 +96,25 @@ class Converter(object):
         return len(self.matches)
 
     def match_identifier(self, identifier):
+        """
+        Checks if single identifier matches
+        :param identifier: Identifier profile object
+        :return: Boolean if matches
+        """
         if identifier.get('type') == 'fileMetadata':
-            return self.match_file_metadata(identifier, self.file_metadata)
-        elif identifier.get('type') == 'tableMetadata':
-            return self.match_table_metadata(identifier, self.input_tables)
-        elif identifier.get('type') == 'tableHeader':
-            return self.match_table_header(identifier, self.input_tables)
-        else:
-            return False
+            return self._match_file_metadata(identifier, self.file_metadata)
+        if identifier.get('type') == 'tableMetadata':
+            return self._match_table_metadata(identifier, self.input_tables)
+        if identifier.get('type') == 'tableHeader':
+            return self._match_table_header(identifier, self.input_tables)
 
-    def match_file_metadata(self, identifier, metadata):
+        return False
+
+    def _match_file_metadata(self, identifier, metadata):
         input_key = identifier.get('key')
         input_value = metadata.get(input_key)
         if input_key and input_value:
-            value = self.match_value(identifier, input_value)
+            value = self._match_value(identifier, input_value)
             if value:
                 return {
                     'value': value
@@ -106,14 +122,14 @@ class Converter(object):
 
         return False
 
-    def match_table_metadata(self, identifier, input_tables):
+    def _match_table_metadata(self, identifier, input_tables):
         input_table_index = identifier.get('tableIndex')
         input_table = self.get_input_table(input_table_index, input_tables)
         if input_table is not None:
             input_key = identifier.get('key', None)
             input_value = input_table.get('metadata', {}).get(input_key, None)
             if input_key is not None and input_value is not None:
-                value = self.match_value(identifier, input_value)
+                value = self._match_value(identifier, input_value)
                 if value:
                     return {
                         'value': value,
@@ -122,7 +138,7 @@ class Converter(object):
 
         return False
 
-    def match_table_header(self, identifier, input_tables):
+    def _match_table_header(self, identifier, input_tables):
         input_table_index = identifier.get('tableIndex')
         input_table = self.get_input_table(input_table_index, input_tables)
         if input_table is not None:
@@ -146,12 +162,12 @@ class Converter(object):
 
             if header:
                 # try to match the value
-                value = self.match_value(identifier, header)
+                value = self._match_value(identifier, header)
 
                 if value:
                     # if no line number was provided, find the line number for the value
                     if line_number is None:
-                        line_number = self.get_line_number(input_table['header'], value)
+                        line_number = self._get_line_number(input_table['header'], value)
 
                     return {
                         'value': value,
@@ -161,7 +177,7 @@ class Converter(object):
 
         return False
 
-    def match_value(self, identifier, value):
+    def _match_value(self, identifier, value):
         if value is not None:
             value = str(value)
             if identifier.get('isRegex') or identifier.get('match') == 'regex':
@@ -181,12 +197,17 @@ class Converter(object):
 
             else:  # match == 'exact'
                 result = (value == str(identifier.get('value')))
-                logger.debug('match_value identifier="%s", value="%s" result=%s', identifier.get('value'), value, result)
+                logger.debug('match_value identifier="%s", value="%s" result=%s', identifier.get('value'), value,
+                             result)
                 return value if result else False
         else:
             return False
 
     def process(self):
+        """
+        Runs converting process
+        :return:
+        """
         for output_table_index, output_table in enumerate(self.output_tables):
             header = {}
             for key, value in output_table.get('header', {}).items():
@@ -207,8 +228,8 @@ class Converter(object):
                     match_output_table_index = match.get('identifier', {}).get('outputTableIndex')
                     match_value = match_result.get('value')
                     if match_output_key and (
-                        output_table_index == match_output_table_index or
-                        match_output_table_index is None
+                            output_table_index == match_output_table_index or
+                            match_output_table_index is None
                     ):
                         header[match_output_key] = match_value
 
@@ -228,8 +249,8 @@ class Converter(object):
                     operation['rows'] = []
 
             for table_index, table in enumerate(self.input_tables):
-                for row_index, row in enumerate(table['rows']):
-                    for column_index, column in enumerate(table['columns']):
+                for _, row in enumerate(table['rows']):
+                    for column_index, _ in enumerate(table['columns']):
                         if x_column and \
                                 table_index == x_column.get('tableIndex') and \
                                 column_index == x_column.get('columnIndex'):
@@ -253,9 +274,9 @@ class Converter(object):
                                 operation['rows'].append(self.get_value(row, column_index))
 
             for operation in x_operations:
-                x_rows = self.run_operation(x_rows, operation)
+                x_rows = self._run_operation(x_rows, operation)
             for operation in y_operations:
-                y_rows = self.run_operation(y_rows, operation)
+                y_rows = self._run_operation(y_rows, operation)
 
             self.tables.append({
                 'header': header,
@@ -263,7 +284,7 @@ class Converter(object):
                 'y': y_rows
             })
 
-    def run_operation(self, rows, operation):
+    def _run_operation(self, rows, operation):
         for i, row in enumerate(rows):
             op_value = None
             if operation.get('type') == 'column':
@@ -279,7 +300,7 @@ class Converter(object):
 
         return rows
 
-    def run_identifier_operation(self, value, operation):
+    def _run_identifier_operation(self, value, operation):
         op_value = operation.get('value')
         if op_value:
             return self.apply_operation(value, op_value, operation.get('operator'))
@@ -288,18 +309,19 @@ class Converter(object):
 
     def apply_operation(self, value, op_value, op_operator):
         try:
-            float_value = float(self.fix_float(value))
+            float_value = float(self._fix_float(value))
 
             if op_operator == '+':
                 return float_value + float(op_value)
-            elif op_operator == '-':
+            if op_operator == '-':
                 return float_value - float(op_value)
-            elif op_operator == '*':
+            if op_operator == '*':
                 return float_value * float(op_value)
-            elif op_operator == ':':
+            if op_operator == ':':
                 return float_value / float(op_value)
         except ValueError:
-            return None
+            pass
+        return None
 
     def get_input_table(self, index, input_tables):
         if index is not None:
@@ -311,21 +333,35 @@ class Converter(object):
             except KeyError:
                 return None
 
-    def get_line_number(self, header, value):
+    def _get_line_number(self, header, value):
         # if line_number is None:
         for i, line in enumerate(header):
             if value in line:
                 # again we count from 1
                 return i + 1
+        return -1
 
     def get_value(self, row, column_index):
-        return self.fix_float(row[column_index])
+        """
+        Parses value in row at index into string
+        :param row:
+        :param column_index: Index
+        :return: converted value as string
+        """
+        return self._fix_float(row[column_index])
 
-    def fix_float(self, value):
+    @staticmethod
+    def _fix_float(value):
         return str(value).replace(',', '.').replace('e', 'E')
 
     @classmethod
     def match_profile(cls, client_id, file_data):
+        """
+        Iterates over all profiles and checks which matches
+        :param client_id: [str] Username
+        :param file_data: File content to be converted
+        :return: Matching converter obj
+        """
         converter = None
         matches = 0
 

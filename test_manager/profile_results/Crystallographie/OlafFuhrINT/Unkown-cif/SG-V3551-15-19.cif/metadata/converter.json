@@ -1,0 +1,777 @@
+{
+  "profileId": "df15f2b0-4133-4231-8b48-bec52fb6043c",
+  "ols": "CHMO:0000159",
+  "matches": [
+    {
+      "identifier": {
+        "key": "extension",
+        "match": "exact",
+        "optional": false,
+        "type": "fileMetadata",
+        "value": ".cif"
+      },
+      "result": {
+        "value": ".cif"
+      }
+    },
+    {
+      "identifier": {
+        "key": "reader",
+        "match": "exact",
+        "optional": false,
+        "type": "fileMetadata",
+        "value": "CifReader"
+      },
+      "result": {
+        "value": "CifReader"
+      }
+    },
+    {
+      "identifier": {
+        "key": "_cell_length_a",
+        "match": "regex",
+        "optional": true,
+        "outputKey": "a",
+        "outputLayer": "res",
+        "outputTableIndex": 0,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "\\d+.\\d+"
+      },
+      "result": {
+        "value": "10.6224",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "key": "_cell_length_b",
+        "match": "regex",
+        "optional": true,
+        "outputKey": "b",
+        "outputLayer": "res",
+        "outputTableIndex": 0,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "\\d+.\\d+"
+      },
+      "result": {
+        "value": "15.1386",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "key": "_cell_length_c",
+        "match": "regex",
+        "optional": true,
+        "outputKey": "c",
+        "outputLayer": "res",
+        "outputTableIndex": 0,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "\\d+.\\d+"
+      },
+      "result": {
+        "value": "8.1382",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "key": "_cell_angle_alpha",
+        "match": "any",
+        "optional": true,
+        "outputKey": "alpha",
+        "outputLayer": "res",
+        "outputTableIndex": 0,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "90"
+      },
+      "result": {
+        "value": "90",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "key": "_cell_angle_beta",
+        "match": "any",
+        "optional": true,
+        "outputKey": "beta",
+        "outputLayer": "res",
+        "outputTableIndex": 0,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "90"
+      },
+      "result": {
+        "value": "108.692(8)",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "key": "_cell_angle_gamma",
+        "match": "any",
+        "optional": true,
+        "outputKey": "gamma",
+        "outputLayer": "res",
+        "outputTableIndex": 0,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "90"
+      },
+      "result": {
+        "value": "90",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "key": "_space_group_crystal_system",
+        "match": "any",
+        "optional": true,
+        "outputKey": "system",
+        "outputLayer": "res",
+        "outputTableIndex": 0,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "orthorhombic"
+      },
+      "result": {
+        "value": "monoclinic",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "key": "_space_group_name_H-M_alt",
+        "match": "any",
+        "optional": true,
+        "outputKey": "space",
+        "outputLayer": "res",
+        "outputTableIndex": 0,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "P b c a"
+      },
+      "result": {
+        "value": "P 1 21/c 1",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "key": "_cell_volume",
+        "match": "any",
+        "optional": true,
+        "outputKey": "volume",
+        "outputLayer": "res",
+        "outputTableIndex": 0,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "2166.9(2)"
+      },
+      "result": {
+        "value": "1239.7(3)",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "key": "_cell_formula_units_Z",
+        "match": "any",
+        "optional": true,
+        "outputKey": "Z",
+        "outputLayer": "res",
+        "outputTableIndex": 0,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "8"
+      },
+      "result": {
+        "value": "4",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "key": "_exptl_crystal_F_000",
+        "match": "any",
+        "optional": true,
+        "outputKey": "f000",
+        "outputLayer": "res",
+        "outputTableIndex": 0,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "1088"
+      },
+      "result": {
+        "value": "600",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "key": "_exptl_crystal_size_mid",
+        "match": "any",
+        "optional": true,
+        "outputKey": "size",
+        "outputLayer": "res",
+        "outputTableIndex": 0,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "0.12"
+      },
+      "result": {
+        "value": "0.13",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "key": "_diffrn_radiation_type",
+        "match": "any",
+        "optional": true,
+        "outputKey": "radiation",
+        "outputLayer": "res",
+        "outputTableIndex": 0,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "GaK\\a"
+      },
+      "result": {
+        "value": "GaK\\a",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "key": "_diffrn_reflns_number",
+        "match": "any",
+        "optional": true,
+        "outputKey": "reflections",
+        "outputLayer": "res",
+        "outputTableIndex": 0,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "11194"
+      },
+      "result": {
+        "value": "6889",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "key": "_reflns_number_total",
+        "match": "any",
+        "optional": true,
+        "outputKey": "reflections_",
+        "outputLayer": "res",
+        "outputTableIndex": 0,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "2593"
+      },
+      "result": {
+        "value": "2902",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "key": "_refine_ls_goodness_of_fit_ref",
+        "match": "any",
+        "optional": true,
+        "outputKey": "fit",
+        "outputLayer": "res",
+        "outputTableIndex": 0,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "1.031"
+      },
+      "result": {
+        "value": "1.159",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "key": "_refine_ls_R_factor_gt",
+        "match": "any",
+        "optional": true,
+        "outputKey": "index_first",
+        "outputLayer": "res",
+        "outputTableIndex": 0,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "0.0390"
+      },
+      "result": {
+        "value": "0.0960",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "key": "_refine_ls_wR_factor_ref",
+        "match": "any",
+        "optional": true,
+        "outputKey": "index_second",
+        "outputLayer": "res",
+        "outputTableIndex": 0,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "0.1126"
+      },
+      "result": {
+        "value": "0.2756",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "lineNumber": "",
+        "match": "regex",
+        "optional": true,
+        "outputKey": "diff_hole",
+        "outputLayer": "res",
+        "outputTableIndex": 0,
+        "tableIndex": 8,
+        "type": "tableHeader",
+        "value": "Highest difference peak\\s*[\\d\\.]+,[^-\\d]+(-?[\\d\\.]+)"
+      },
+      "result": {
+        "value": "-0.808",
+        "tableIndex": 8,
+        "lineNumber": 1
+      }
+    },
+    {
+      "identifier": {
+        "lineNumber": "",
+        "match": "regex",
+        "optional": true,
+        "outputKey": "diff_peak",
+        "outputLayer": "res",
+        "outputTableIndex": 0,
+        "tableIndex": 8,
+        "type": "tableHeader",
+        "value": "Highest difference peak\\s*(-?[\\d\\.]+)"
+      },
+      "result": {
+        "value": "1.439",
+        "tableIndex": 8,
+        "lineNumber": 1
+      }
+    },
+    {
+      "identifier": {
+        "key": "_audit_creation_method",
+        "match": "regex",
+        "optional": true,
+        "outputKey": "software",
+        "outputLayer": "soft",
+        "outputTableIndex": 0,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "(\\S*)\\s"
+      },
+      "result": {
+        "value": "Olex2",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "key": "_audit_creation_method",
+        "match": "regex",
+        "optional": true,
+        "outputKey": "software_version",
+        "outputLayer": "soft",
+        "outputTableIndex": 0,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "\\S*\\s([\\d\\.]*)"
+      },
+      "result": {
+        "value": "1.2",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "key": "_diffrn_measurement_device_type",
+        "match": "any",
+        "optional": true,
+        "outputKey": "instrument",
+        "outputLayer": "dev",
+        "outputTableIndex": 0,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "Stoe StadiVari"
+      },
+      "result": {
+        "value": "Stoe StadiVari",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "key": "_diffrn_measurement_device",
+        "match": "any",
+        "optional": true,
+        "outputKey": "des",
+        "outputLayer": "dev",
+        "outputTableIndex": 0,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "Eulerian 4-circle diffractometer"
+      },
+      "result": {
+        "value": "Eulerian 4-circle diffractometer",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "key": "_audit_creation_date",
+        "match": "any",
+        "optional": true,
+        "outputKey": "date",
+        "outputLayer": "gener",
+        "outputTableIndex": 0,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "2022-01-18"
+      },
+      "result": {
+        "value": "2022-01-19",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "key": "_diffrn_ambient_temperature",
+        "match": "regex",
+        "optional": true,
+        "outputKey": "temp",
+        "outputLayer": "set",
+        "outputTableIndex": 0,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "\\d+.\\d+"
+      },
+      "result": {
+        "value": "150",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "key": "_refine_ls_number_reflns",
+        "match": "any",
+        "optional": true,
+        "outputKey": "data",
+        "outputLayer": "res",
+        "outputTableIndex": 0,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "2593"
+      },
+      "result": {
+        "value": "2902",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "key": "_refine_ls_number_restraints",
+        "match": "any",
+        "optional": true,
+        "outputKey": "restraints",
+        "outputLayer": "res",
+        "outputTableIndex": 0,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "0"
+      },
+      "result": {
+        "value": "0",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "key": "_refine_ls_number_parameters",
+        "match": "any",
+        "optional": true,
+        "outputKey": "parameters",
+        "outputLayer": "res",
+        "outputTableIndex": 0,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "145"
+      },
+      "result": {
+        "value": "181",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "key": "_diffrn_reflns_limit_h_max",
+        "match": "any",
+        "optional": true,
+        "outputKey": "h_max",
+        "outputLayer": "res",
+        "outputTableIndex": 0,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "7"
+      },
+      "result": {
+        "value": "14",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "key": "_diffrn_reflns_limit_h_min",
+        "match": "any",
+        "optional": true,
+        "outputKey": "h_min",
+        "outputLayer": "res",
+        "outputTableIndex": 0,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "-7"
+      },
+      "result": {
+        "value": "-11",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "key": "_diffrn_reflns_limit_k_max",
+        "match": "any",
+        "optional": true,
+        "outputKey": "k_max",
+        "outputLayer": "res",
+        "outputTableIndex": 0,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "8"
+      },
+      "result": {
+        "value": "19",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "key": "_diffrn_reflns_limit_k_min",
+        "match": "any",
+        "optional": true,
+        "outputKey": "k_min",
+        "outputLayer": "res",
+        "outputTableIndex": 0,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "-20"
+      },
+      "result": {
+        "value": "-6",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "key": "_diffrn_reflns_limit_l_max",
+        "match": "any",
+        "optional": true,
+        "outputKey": "l_max",
+        "outputLayer": "res",
+        "outputTableIndex": 0,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "32"
+      },
+      "result": {
+        "value": "10",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "key": "_diffrn_reflns_limit_l_min",
+        "match": "any",
+        "optional": true,
+        "outputKey": "l_min",
+        "outputLayer": "res",
+        "outputTableIndex": 0,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "-32"
+      },
+      "result": {
+        "value": "-10",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "key": "_reflns_number_gt",
+        "match": "any",
+        "optional": true,
+        "outputKey": "reflections_gt",
+        "outputLayer": "res",
+        "outputTableIndex": 0,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "2097"
+      },
+      "result": {
+        "value": "2314",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "key": "Block_name",
+        "match": "any",
+        "optional": true,
+        "outputKey": "sample_id",
+        "outputLayer": "sam_details",
+        "outputTableIndex": 0,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "sg-v3545-6-13"
+      },
+      "result": {
+        "value": "sg-v3551-15-19",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "key": "_chemical_formula_sum",
+        "match": "any",
+        "optional": true,
+        "outputKey": "emp_formular",
+        "outputLayer": "res",
+        "outputTableIndex": 0,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "C13 H9 Br N2"
+      },
+      "result": {
+        "value": "C14 H8 Cl F3 N2",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "key": "_chemical_formula_weight",
+        "match": "any",
+        "optional": true,
+        "outputKey": "formula_weight",
+        "outputLayer": "res",
+        "outputTableIndex": 0,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "273.13"
+      },
+      "result": {
+        "value": "296.67",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "key": "_diffrn_reflns_theta_max",
+        "match": "any",
+        "operations": [
+          {
+            "operator": "*",
+            "value": "2"
+          }
+        ],
+        "optional": true,
+        "outputKey": "theta_max",
+        "outputLayer": "res",
+        "outputTableIndex": 0,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "62.529"
+      },
+      "result": {
+        "value": 124.906,
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "key": "_diffrn_reflns_theta_min",
+        "match": "any",
+        "operations": [
+          {
+            "operator": "*",
+            "value": "2"
+          }
+        ],
+        "optional": true,
+        "outputKey": "theta",
+        "outputLayer": "res",
+        "outputTableIndex": 0,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "3.075"
+      },
+      "result": {
+        "value": 7.644,
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "key": "_exptl_crystal_density_diffrn",
+        "match": "any",
+        "optional": true,
+        "outputKey": "roh",
+        "outputLayer": "res",
+        "outputTableIndex": 0,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "1.674"
+      },
+      "result": {
+        "value": "1.590",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "key": "_exptl_absorpt_coefficient_mu",
+        "match": "any",
+        "optional": true,
+        "outputKey": "my",
+        "outputLayer": "res",
+        "outputTableIndex": 0,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "3.385"
+      },
+      "result": {
+        "value": "1.960",
+        "tableIndex": 0
+      }
+    }
+  ],
+  "tablesCount": 0,
+  "tables": []
+}

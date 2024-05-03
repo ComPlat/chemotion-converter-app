@@ -1,0 +1,334 @@
+{
+  "profileId": "5cb879d1-2b3f-4778-8e06-1a198500c8db",
+  "ols": "CHMO:0001167",
+  "matches": [
+    {
+      "identifier": {
+        "key": "reader",
+        "match": "exact",
+        "optional": false,
+        "type": "fileMetadata",
+        "value": "AifReader"
+      },
+      "result": {
+        "value": "AifReader"
+      }
+    },
+    {
+      "identifier": {
+        "key": "Unit_column_#0",
+        "match": "exact",
+        "optional": false,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "_adsorp_pressure"
+      },
+      "result": {
+        "value": "_adsorp_pressure",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "key": "_exptl_operator",
+        "match": "any",
+        "optional": true,
+        "outputKey": "operator",
+        "outputLayer": "meas",
+        "outputTableIndex": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "Volodymyr"
+      },
+      "result": {
+        "value": "Volodymyr",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "key": "_exptl_date",
+        "match": "regex",
+        "optional": true,
+        "outputKey": "date",
+        "outputLayer": "gener",
+        "outputTableIndex": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "\\d+-\\d+-\\d+"
+      },
+      "result": {
+        "value": "2020-04-30",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "key": "_exptl_instrument",
+        "match": "regex",
+        "optional": true,
+        "outputKey": "serial",
+        "outputLayer": "dev",
+        "outputTableIndex": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "\\d+"
+      },
+      "result": {
+        "value": "00218",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "key": "_exptl_adsorptive",
+        "match": "any",
+        "optional": true,
+        "outputKey": "adsorptive",
+        "outputLayer": "meas",
+        "outputTableIndex": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "CH4"
+      },
+      "result": {
+        "value": "CH4",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "key": "_exptl_temperature",
+        "match": "any",
+        "operations": [
+          {
+            "operator": "+",
+            "value": "273,15"
+          }
+        ],
+        "optional": true,
+        "outputKey": "temperature",
+        "outputLayer": "meas",
+        "outputTableIndex": 0,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "111.00"
+      },
+      "result": {
+        "value": null,
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "key": "_exptl_temperature",
+        "match": "any",
+        "operations": [
+          {
+            "operator": "+",
+            "value": "273,15"
+          }
+        ],
+        "optional": true,
+        "outputKey": "temperature",
+        "outputLayer": "meas",
+        "outputTableIndex": 1,
+        "tableIndex": 1,
+        "type": "tableMetadata",
+        "value": "111.00"
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "key": "_exptl_sample_mass",
+        "match": "any",
+        "optional": true,
+        "outputKey": "amount",
+        "outputLayer": "sam_details",
+        "outputTableIndex": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "0.00980"
+      },
+      "result": {
+        "value": "0.00980",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "key": "_sample_id",
+        "match": "any",
+        "optional": true,
+        "outputKey": "sample_cid",
+        "outputLayer": "custom_id",
+        "outputTableIndex": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "aus der BOX"
+      },
+      "result": {
+        "value": "aus der BOX",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "key": "_sample_material_id",
+        "match": "any",
+        "optional": true,
+        "outputKey": "sample_mat_id",
+        "outputLayer": "custom_id",
+        "outputTableIndex": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "DUT-140(Cu)"
+      },
+      "result": {
+        "value": "DUT-140(Cu)",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "lineNumber": 1,
+        "match": "regex",
+        "optional": true,
+        "outputKey": "software",
+        "outputLayer": "soft",
+        "outputTableIndex": null,
+        "tableIndex": 0,
+        "type": "tableHeader",
+        "value": "\\S*\\_\\S*_(\\S*)v"
+      },
+      "result": {
+        "value": "raw2aif",
+        "tableIndex": 0,
+        "lineNumber": 1
+      }
+    },
+    {
+      "identifier": {
+        "lineNumber": 1,
+        "match": "regex",
+        "optional": true,
+        "outputKey": "software_version",
+        "outputLayer": "soft",
+        "outputTableIndex": null,
+        "tableIndex": 0,
+        "type": "tableHeader",
+        "value": "\\S*\\_\\S*_\\S*(v\\d+)"
+      },
+      "result": {
+        "value": "v004",
+        "tableIndex": 0,
+        "lineNumber": 1
+      }
+    },
+    {
+      "identifier": {
+        "key": "_exptl_date",
+        "match": "regex",
+        "optional": true,
+        "outputKey": "time",
+        "outputLayer": "gener",
+        "outputTableIndex": 0,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "\\d+:\\d+:\\d+"
+      },
+      "result": {
+        "value": "00:00:00",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "key": "_exptl_date",
+        "match": "regex",
+        "optional": true,
+        "outputKey": "time",
+        "outputLayer": "gener",
+        "outputTableIndex": 1,
+        "tableIndex": 1,
+        "type": "tableMetadata",
+        "value": "\\d+:\\d+:\\d+"
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "key": "_exptl_instrument",
+        "match": "regex",
+        "optional": true,
+        "outputKey": "brand",
+        "outputLayer": "dev",
+        "outputTableIndex": 0,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "[^0-9\\s]+"
+      },
+      "result": {
+        "value": "BEL",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "key": "_exptl_instrument",
+        "match": "regex",
+        "optional": true,
+        "outputKey": "brand",
+        "outputLayer": "dev",
+        "outputTableIndex": 1,
+        "tableIndex": 1,
+        "type": "tableMetadata",
+        "value": "[^0-9\\s]+"
+      },
+      "result": false
+    }
+  ],
+  "tablesCount": 2,
+  "tables": [
+    {
+      "fileName": "data/table_01.jdx",
+      "header": {
+        "DATA CLASS": "XYPOINTS",
+        "DATA TYPE": "SORPTION-DESORPTION MEASUREMENT",
+        "XUNITS": "p/p0",
+        "YUNITS": "ml/g",
+        "operator": "Volodymyr",
+        "date": "2020-04-30",
+        "serial": "00218",
+        "adsorptive": "CH4",
+        "temperature": null,
+        "amount": "0.00980",
+        "sample_cid": "aus der BOX",
+        "sample_mat_id": "DUT-140(Cu)",
+        "software": "raw2aif",
+        "software_version": "v004",
+        "time": "00:00:00",
+        "brand": "BEL"
+      }
+    },
+    {
+      "fileName": "data/table_02.jdx",
+      "header": {
+        "DATA CLASS": "XYPOINTS",
+        "DATA TYPE": "SORPTION-DESORPTION MEASUREMENT",
+        "XUNITS": "p/p0",
+        "YUNITS": "ml/g",
+        "operator": "Volodymyr",
+        "date": "2020-04-30",
+        "serial": "00218",
+        "adsorptive": "CH4",
+        "amount": "0.00980",
+        "sample_cid": "aus der BOX",
+        "sample_mat_id": "DUT-140(Cu)",
+        "software": "raw2aif",
+        "software_version": "v004"
+      }
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "profileId": "0d7dd8d4-a599-4151-855e-643956a7362c",
+  "ols": null,
+  "matches": [
+    {
+      "identifier": {
+        "key": "extension",
+        "match": "exact",
+        "optional": false,
+        "type": "fileMetadata",
+        "value": ".brml"
+      },
+      "result": {
+        "value": ".brml"
+      }
+    }
+  ],
+  "tablesCount": 1,
+  "tables": [
+    {
+      "fileName": "data/table_01.jdx",
+      "header": {
+        "DATA CLASS": "XYPOINTS",
+        "DATA TYPE": "X-RAY DIFFRACTION",
+        "XUNITS": "2Theta",
+        "YUNITS": "Intensity"
+      }
+    }
+  ]
+}

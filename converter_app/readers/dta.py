@@ -1,26 +1,24 @@
 import logging
-
-from .base import Reader
+from converter_app.readers.helper.reader import Readers
+from converter_app.readers.helper.base import Reader
 
 logger = logging.getLogger(__name__)
 
 
 class DtaReader(Reader):
+    """
+    Reads and converts .dat files
+    """
     identifier = 'dta_reader'
     priority = 10
 
     def check(self):
-        if self.file.encoding == 'binary':
-            result = False
-        elif self.file.suffix.lower() == '.dta' and self.file.mime_type == 'text/plain':
-            result = True
-        else:
-            result = False
+        """
+        :return: True if it fits
+        """
+        return self.file.encoding != 'binary' and self.file.suffix.lower() == '.dta' and self.file.mime_type == 'text/plain'
 
-        logger.debug('result=%s', result)
-        return result
-
-    def get_tables(self):
+    def prepare_tables(self):
         tables = []
         table = self.append_table(tables)
 
@@ -54,18 +52,18 @@ class DtaReader(Reader):
                     # this is the row with the columns
                     for idx, column_name in enumerate(row.split()):
                         # add the column name to the metadata
-                        table['metadata']['column_{:02d}'.format(idx)] = column_name
+                        table['metadata'][f'column_{idx:02d}'] = column_name
 
                         # add the column name to list of columns
                         table['columns'].append({
                             'key': str(idx),
-                            'name': 'Column #{} ({})'.format(idx, column_name)
+                            'name': f'Column #{idx} ({column_name})'
                         })
                 elif table['metadata'].get('column_00_unit') is None:
                     # this is the row with the units
                     for idx, column_unit in enumerate(row.split()):
                         # add the column unit to the metadata
-                        table['metadata']['column_{:02d}_unit'.format(idx)] = column_unit
+                        table['metadata'][f'column_{idx:02d}_unit'] = column_unit
 
                 else:
                     # now we extract the actual table
@@ -75,7 +73,7 @@ class DtaReader(Reader):
             if row.startswith('CURVE'):
                 header = False
 
-            table['metadata']['rows'] = str(len(table['rows']))
-            table['metadata']['columns'] = str(len(table['columns']))
-
         return tables
+
+
+Readers.instance().register(DtaReader)

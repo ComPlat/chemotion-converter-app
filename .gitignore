@@ -25,3 +25,6 @@ __pycache__/
 /.idea/
 /readers/
 /chemotion-converter-app.iml
+test_manager/test_readers.py
+/test_manager/test_profiles.py
+/test_files/
