@@ -9,7 +9,6 @@ from pathlib import Path
 import magic
 from flask import current_app
 
-from .utils import check_uuid, reader_json_shema
 from converter_app.utils import check_uuid
 
 logger = logging.getLogger(__name__)

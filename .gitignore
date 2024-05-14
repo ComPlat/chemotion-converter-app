@@ -24,7 +24,7 @@ __pycache__/
 /run_client.sh
 /.idea/
 /readers/
-/chemotion-converter-app.iml
 test_manager/test_readers.py
-/test_manager/test_profiles.py
+/chemotion-converter-app.iml
 /test_files/
+/test_manager/test_profiles.py
