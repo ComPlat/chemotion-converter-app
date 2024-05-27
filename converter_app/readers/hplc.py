@@ -29,7 +29,7 @@ class HplcReader(Reader):
         result = self.file.name.endswith(".tar.gz") or self.file.name.endswith(".tar")
         if result:
             with  tempfile.TemporaryDirectory() as temp_dir:
-                self.temp_dir = temp_dir.name
+                self.temp_dir = temp_dir
             with tempfile.NamedTemporaryFile(delete=True) as temp_pdf:
                 try:
                     # Save the contents of FileStorage to the temporary file
