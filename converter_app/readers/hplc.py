@@ -50,9 +50,8 @@ class HplcReader(Reader):
                         break
                 except ValueError:
                     return False
-        if not result:
-            if os.path.exists(self.temp_dir) and os.path.isdir(self.temp_dir):
-                shutil.rmtree(self.temp_dir)
+        if not result and self.temp_dir is not None and os.path.exists(self.temp_dir) and os.path.isdir(self.temp_dir):
+            shutil.rmtree(self.temp_dir)
         return result
 
     def prepare_tables(self):
