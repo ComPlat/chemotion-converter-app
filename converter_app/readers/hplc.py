@@ -29,7 +29,7 @@ class HplcReader(Reader):
         result = self.file.name.endswith(".tar.gz") or self.file.name.endswith(".tar")
         if result:
             with  tempfile.TemporaryDirectory() as temp_dir:
-                self.temp_dir = temp_dir
+                self.temp_dir = temp_dir.name
             with tempfile.NamedTemporaryFile(delete=True) as temp_pdf:
                 try:
                     # Save the contents of FileStorage to the temporary file
@@ -50,30 +50,26 @@ class HplcReader(Reader):
                         break
                 except ValueError:
                     return False
-        if not result and self.temp_dir is not None and os.path.exists(self.temp_dir) and os.path.isdir(self.temp_dir):
-            shutil.rmtree(self.temp_dir)
+        if not result:
+            if os.path.exists(self.temp_dir) and os.path.isdir(self.temp_dir):
+                shutil.rmtree(self.temp_dir)
         return result
 
     def prepare_tables(self):
         tables = []
+        table = self.append_table(tables)
 
         keys = list(self.df.keys())
-        waves = [x for x in keys if x.startswith('Wave')]
-        waves.sort()
-        time = self.df['time']
-        for wave_key in waves:
-            wave = self.df[wave_key]
-            table = self.append_table(tables)
-            kv = wave_key.split('_')
-            table['metadata'][kv[0]] = str(kv[1])
-            table['metadata']['AllWaves'] = str(waves)
-            for i, t in enumerate(time):
-                table['rows'].append([t, float(wave[i])])
+        values = [self.df[x] for x in keys]
+        for i in range(len(values[0])):
+            table['rows'].append([])
+            for x in values:
+                table['rows'][-1].append(float(x[i]))
 
-            table['columns'] = [{
-                'key': str(idx),
-                'name': f'{value}'
-            } for idx, value in enumerate(['Time', 'Wavelength'])]
+        table['columns'] = [{
+            'key': str(idx),
+            'name': f'{value}'
+        } for idx, value in enumerate(keys)]
         return tables
 
 
