@@ -2,30 +2,20 @@
 
 FROM python:3.10.7-slim-buster
 
-RUN apt-get update && apt-get install -y -q --no-install-recommends libmagic1 apache2-utils
-RUN mkdir /srv/chemotion
+RUN apt-get update && apt-get install -y -q --no-install-recommends libmagic1 apache2-utils git nginx build-essential curl
+RUN pip install wheel setuptools pip pybind11 gunicorn --upgrade
 
-WORKDIR /srv/chemotion
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+
+
+RUN mkdir /srv/converter
 
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-COPY . .
-RUN pip3 install -r requirements/dev.txt
+WORKDIR /srv/converter
 
-RUN mkdir /var/log/chemotion-converter
+COPY ./etc_doc/entrypoint.sh ./entrypoint.sh
+RUN chmod +x ./entrypoint.sh
 
-RUN rm -f ./.env
-
-RUN mv ./.env.doc ./.env
-
-RUN mkdir /run/chemotion-converter
-
-EXPOSE 8000
-
-# USER chemotion
-# installs the package in editable mode
-RUN pip install -r requirements/common.txt
-
-CMD gunicorn --bind converterdev:8000 "converter_app.app:create_app()"
-
+CMD bash ./entrypoint.sh

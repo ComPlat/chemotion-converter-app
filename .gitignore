@@ -28,3 +28,4 @@ test_manager/test_readers.py
 /chemotion-converter-app.iml
 /test_files/
 /test_manager/test_profiles.py
+/logs/
