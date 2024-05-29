@@ -56,19 +56,23 @@ class HplcReader(Reader):
 
     def prepare_tables(self):
         tables = []
-        table = self.append_table(tables)
 
         keys = list(self.df.keys())
-        values = [self.df[x] for x in keys]
-        for i in range(len(values[0])):
-            table['rows'].append([])
-            for x in values:
-                table['rows'][-1].append(float(x[i]))
+        waves = [x for x in keys if x.startswith('Wave')]
 
-        table['columns'] = [{
-            'key': str(idx),
-            'name': f'{value}'
-        } for idx, value in enumerate(keys)]
+        time = self.df['time']
+        for wave_key in waves:
+            wave = self.df[wave_key]
+            table = self.append_table(tables)
+            kv = wave_key.split('_')
+            table['metadata'][kv[0]] = str(kv[1])
+            for i, t in enumerate(time):
+                table['rows'].append([t, float(wave[i])])
+
+            table['columns'] = [{
+                'key': str(idx),
+                'name': f'{value}'
+            } for idx, value in enumerate(['Time', 'Wavelength'])]
         return tables
 
 
