@@ -73,8 +73,7 @@ def auth_router(app: Flask) -> HTTPBasicAuth:
         if hashed_password is not None:
             if checkpw(password.encode(), hashed_password.encode()):
                 return username
-        raise PermissionError(f'User: {username} and/or password are not correct!')
-
+        return None
     return auth
 
 
@@ -205,6 +204,7 @@ def profile_router(app: Flask, auth: HTTPBasicAuth):
         if profile:
             return jsonify(profile.as_dict), 200
         abort(404)
+        return None
 
     @app.route('/profiles/<profile_id>', methods=['PUT'])
     @auth.login_required
@@ -222,6 +222,7 @@ def profile_router(app: Flask, auth: HTTPBasicAuth):
                 return jsonify(profile.as_dict), 200
             return jsonify(profile.errors), 400
         abort(404)
+        return None
 
     @app.route('/profiles/<profile_id>', methods=['DELETE'])
     @auth.login_required
@@ -232,6 +233,7 @@ def profile_router(app: Flask, auth: HTTPBasicAuth):
             profile.delete()
             return '', 204
         abort(404)
+        return None
 
 
 def utils_router(app: Flask, auth: HTTPBasicAuth):
