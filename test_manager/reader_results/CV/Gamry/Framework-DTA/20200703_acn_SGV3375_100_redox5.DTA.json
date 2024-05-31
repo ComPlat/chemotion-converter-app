@@ -48358,11 +48358,11 @@
     }
   ],
   "metadata": {
-    "file_name": "/home/martint/dev/KIT/converter/chemotion-converter-app/test_files/data_files/CV/Gamry/Framework-DTA/20200703_acn_SGV3375_100_redox5.DTA",
+    "file_name": "20200703_acn_SGV3375_100_redox5.DTA",
     "content_type": "",
     "mime_type": "text/plain",
     "extension": ".DTA",
     "reader": "DtaReader",
-    "uploaded": "2024-04-10T11:17:02.554299"
+    "uploaded": "2024-05-31T10:23:34.819750"
   }
 }
