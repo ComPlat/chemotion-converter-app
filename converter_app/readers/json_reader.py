@@ -1,4 +1,3 @@
-import copy
 import json
 import logging
 from converter_app.readers.helper.base import Reader
