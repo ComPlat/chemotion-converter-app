@@ -1,3 +1,4 @@
+import copy
 import json
 import logging
 from converter_app.readers.helper.base import Reader
@@ -14,6 +15,11 @@ class JsonReader(Reader):
     priority = 100
     _all_tables = {}
     table = None
+    _max_steps = 10
+
+    def __init__(self, file):
+        super().__init__(file)
+        self.file_as_dict = {}
 
     def check(self):
         """
@@ -21,7 +27,28 @@ class JsonReader(Reader):
         """
         return self.file.suffix.lower() == '.json'
 
-    def _rec_reader(self, elem, key):
+    def _pre_read_elem(self, link: str):
+        if not isinstance(link, str) or not link.startswith('#'):
+            return link
+        path = link.split('/')[1:]
+        current_json = self.file_as_dict
+        for step in path:
+            if isinstance(current_json, dict):
+                if step not in current_json:
+                    return link
+            elif isinstance(current_json, list):
+                step = int(step)
+                if len(current_json) <= step:
+                    return link
+            else:
+                return link
+            current_json = current_json[step]
+        return copy.deepcopy(current_json)
+
+    def _rec_reader(self, elem, key, step_count=0):
+        if step_count > self._max_steps:
+            return
+        elem = self._pre_read_elem(elem)
         if isinstance(elem, dict):
             iterator = elem.items()
         elif isinstance(elem, list):
@@ -36,7 +63,7 @@ class JsonReader(Reader):
             return
         for k, v in iterator:
             temp_key = f'{key}.{k}'
-            self._rec_reader(v, temp_key)
+            self._rec_reader(v, temp_key, step_count=step_count + 1)
 
     def prepare_tables(self):
         """
@@ -74,8 +101,8 @@ class JsonReader(Reader):
         """
         tables = []
         self.table = self.append_table(tables)
-        as_dict = json.loads(self.file.content)
-        self._rec_reader(as_dict, '#')
+        self.file_as_dict = json.loads(self.file.content)
+        self._rec_reader(self.file_as_dict, '#')
 
         for table_len, table_col in self._all_tables.items():
             table = self.append_table(tables)
