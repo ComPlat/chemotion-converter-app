@@ -59,13 +59,14 @@ class HplcReader(Reader):
 
         keys = list(self.df.keys())
         waves = [x for x in keys if x.startswith('Wave')]
-
+        waves.sort()
         time = self.df['time']
         for wave_key in waves:
             wave = self.df[wave_key]
             table = self.append_table(tables)
             kv = wave_key.split('_')
             table['metadata'][kv[0]] = str(kv[1])
+            table['metadata']['AllWaves'] = str(waves)
             for i, t in enumerate(time):
                 table['rows'].append([t, float(wave[i])])
 
