@@ -1,6 +1,6 @@
 
 clone_repo () {
-  LOCALREPO_VC_DIR=$1/.git
+  LOCALREPO_VC_DIR=$3/.git
   if [ ! -d "$LOCALREPO_VC_DIR" ]
   then
       git clone -b $2 "$1" "$3"
