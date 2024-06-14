@@ -12,7 +12,7 @@ class JsonReader(Reader):
     Implementation of the Json Reader. It is a basic json file reader
     """
     identifier = 'json_reader'
-    priority = 100
+    priority = 20
     _all_tables = {}
     table = None
     _max_steps = 10
