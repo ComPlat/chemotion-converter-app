@@ -1,11 +1,14 @@
 import re
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent
 
 from setuptools import find_packages, setup
 
-with open('converter_app/__init__.py') as f:
+with open(BASE_DIR / 'converter_app/__init__.py') as f:
     metadata = dict(re.findall(r'__(.*)__ = [\']([^\']*)[\']', f.read()))
 
-with open('requirements/common.txt') as f:
+with open(BASE_DIR / 'requirements/common.txt') as f:
     install_requires = f.readlines()
 
 setup(
@@ -22,9 +25,9 @@ setup(
     install_requires=install_requires,
     classifiers=[
         # https://pypi.org/classifiers/
-        'Programming Language :: Python :: 3.6',
-        'Programming Language :: Python :: 3.7',
-        'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3.9',
+        'Programming Language :: Python :: 3.10',
+        'Programming Language :: Python :: 3.11',
         'Operating System :: OS Independent',
         'License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)'
     ],
