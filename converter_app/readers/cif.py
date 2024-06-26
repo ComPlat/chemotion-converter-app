@@ -49,12 +49,13 @@ class CifReader(Reader):
             with ZipFile(self.file.fp, 'r') as zip_obj:
                 try:
                     file_name = next(x for x in zip_obj.namelist() if x.lower().endswith(self.file_prefix))
-                    zipdir = os.path.join(tempfile.TemporaryDirectory().name, self.file.name)
-                    os.makedirs(zipdir)
-                    path_file_name = zip_obj.extract(file_name, zipdir)
-                    with open(path_file_name, 'rb') as f:
-                        fs = FileStorage(stream=f, filename=os.path.basename(file_name), content_type='chemical/x-cif')
-                        self.file = File(fs)
+                    with os.path.join(tempfile.TemporaryDirectory().name, self.file.name) as zipdir:
+                        os.makedirs(zipdir)
+                        path_file_name = zip_obj.extract(file_name, zipdir)
+                        with open(path_file_name, 'rb') as f:
+                            fs = FileStorage(stream=f, filename=os.path.basename(file_name),
+                                             content_type='chemical/x-cif')
+                            self.file = File(fs)
                 except:
                     logger.debug('result=%s', False)
                     return False
@@ -63,8 +64,13 @@ class CifReader(Reader):
         if result:
             try:
                 self.cif = cif.read_string(self.file.content)  # copy all the data from mmCIF file
-            except:
-                result = False
+            except ValueError as e:
+                if str(e).endswith('expected block header (data_)'):
+                    content = 'data_' + re.split('^data_', self.file.string, flags=re.M)[-1]
+                    try:
+                        self.cif = cif.read_string(content)  # copy all the data from mmCIF file
+                    except ValueError:
+                        result = False
 
         return result
 
