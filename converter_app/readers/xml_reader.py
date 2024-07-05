@@ -130,5 +130,7 @@ class XMLReader(Reader):
             for k, v in table_col['node'].attrib.items():
                 self._table.add_metadata(f'{tag_name}.{k}', v)
 
+        return tables
+
 
 Readers.instance().register(XMLReader)
