@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 {"tables": [{"header": ["no Metadata", "", "different column separators"], "metadata": {"rows": "0", "columns": "0"}, "columns": [], "rows": []}], "metadata": {"file_name": "Readme.md", "content_type": "", "mime_type": "text/plain", "extension": ".md", "reader": "AsciiReader", "uploaded": "2024-06-05T06:50:51.969980"}}
+=======
+{"tables": [{"header": ["no Metadata", "", "different column separators"], "metadata": {"rows": "0", "columns": "0"}, "columns": [], "rows": []}], "metadata": {"file_name": "Readme.md", "content_type": "", "mime_type": "text/plain", "extension": ".md", "reader": "AsciiReader", "uploaded": "2024-07-08T08:19:17.908717"}}
+>>>>>>> 100-new-powerxrd-reader
