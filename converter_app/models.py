@@ -1,16 +1,13 @@
 import json
 import logging
-import os
 import pathlib
-import tarfile
-import tempfile
 import uuid
 from collections import defaultdict
+
 from pathlib import Path
 
 import magic
 from flask import current_app
-from werkzeug.datastructures import FileStorage
 
 from converter_app.utils import check_uuid
 
@@ -27,18 +24,12 @@ class Profile:
         id          [str] id of the profile and file name
         errors      [collections.defaultdict] contains all errors if profile is not correct
     """
-    
-    def __init__(self, profile_data, client_id, profile_id=None, is_default_profile: bool = False):
-        self.isDisabled = profile_data.get('isDisabled', False)
+
+    def __init__(self, profile_data, client_id, profile_id=None):
         self.data = profile_data
         self.client_id = client_id
         self.id = profile_id
         self.errors = defaultdict(list)
-        self._is_default_profile = is_default_profile
-
-    @property
-    def is_default_profile(self):
-        return self._is_default_profile
 
     def clean(self):
         """
@@ -119,10 +110,7 @@ class Profile:
                 self.id = str(uuid.uuid4())
 
         file_path = profiles_path.joinpath(self.id).with_suffix('.json')
-        if 'isDefaultProfile' in self.data:
-            del self.data['isDefaultProfile']
-
-        with open(file_path, 'w+', encoding='utf8') as fp:
+        with open(file_path, 'w', encoding='utf8') as fp:
             json.dump(self.data, fp, sort_keys=True, indent=4)
 
     def delete(self):
@@ -141,9 +129,8 @@ class Profile:
         :return: Profile data as dict
         """
         return {
-            **self.data,
             'id': self.id,
-            'isDefaultProfile': self._is_default_profile
+            **self.data
         }
 
     @classmethod
@@ -167,24 +154,9 @@ class Profile:
         return profile_data
 
     @classmethod
-    def profile_from_file_path(cls, file_path: Path, client_id: str = ''):
-        """
-        Factor to construct a Profile object from file path
-
-        :param file_path: to .json file
-        :param client_id: client id [optional]
-        :return: Profile object
-        """
-        profile_id = str(file_path.with_suffix('').name)
-        profile_data = cls.load(file_path)
-        return cls(profile_data, client_id, profile_id)
-
-
-    @classmethod
     def list(cls, client_id):
         """
         List all profiles of one user/client
-
         :param client_id: [str] Username
         :return:
         """
@@ -192,27 +164,9 @@ class Profile:
 
         if profiles_path.exists():
             for file_path in sorted(Path.iterdir(profiles_path)):
-                yield cls.profile_from_file_path(file_path, client_id)
-        return []
-
-    @classmethod
-    def list_including_default(cls, client_id):
-        """
-        List all profiles of one user/client and adds the default profiles
-        :param client_id: [str] Username
-        :return:
-        """
-        all_ids = []
-        for p in cls.list(client_id):
-            all_ids.append(p.id)
-            yield p
-        default_profiles_path = Path(os.path.join(os.path.dirname(__file__), 'profiles'))
-        if default_profiles_path.exists():
-            for file_path in sorted(Path.iterdir(default_profiles_path)):
-                if file_path.suffix == '.json':
-                    profile_id = str(file_path.with_suffix('').name)
-                    if next((x for x in all_ids if x == profile_id), None) is None:
-                        yield cls.profile_from_file_path(file_path, client_id)
+                profile_id = str(file_path.with_suffix('').name)
+                profile_data = cls.load(file_path)
+                yield cls(profile_data, client_id, profile_id)
 
         return []
 
@@ -225,13 +179,10 @@ class Profile:
         :return:
         """
         profiles_path = Path(current_app.config['PROFILES_DIR']).joinpath(client_id)
-        default_profiles_path = Path(os.path.join(os.path.dirname(__file__), 'profiles'))
 
         # make sure that its really a uuid, this should prevent file system traversal
         if check_uuid(profile_id):
             file_path = profiles_path.joinpath(profile_id).with_suffix('.json')
-            if not file_path.is_file():
-                file_path = default_profiles_path.joinpath(profile_id).with_suffix('.json')
             if file_path.is_file():
                 profile_data = cls.load(file_path)
                 return cls(profile_data, client_id, profile_id)
@@ -275,15 +226,7 @@ class File:
         """
         :return: The origin file name
         """
-        return os.path.basename(self.fp.filename)
-
-    @property
-    def file_path(self):
-        """
-        This is only required for subfiles of a tar archive file
-        :return: The origin file path
-        """
-        return os.path.dirname(self.fp.filename)
+        return self.fp.filename
 
     def features(self, name):
         """
@@ -303,50 +246,3 @@ class File:
         :param feature_content: Feature content
         """
         self._features[name] = feature_content
-
-    @property
-    def is_tar_archive(self) -> bool:
-        """
-        Checks if the file is a tar archive
-        :return: True if the file is a tar archive
-        """
-        return self.name.endswith(".gz") or self.name.endswith(".xz") or self.name.endswith(".tar")
-
-
-def extract_tar_archive(file: File, temp_dir: str) -> list[File]:
-    """
-    If the file is a tar archive, this function extracts it and returns a list of all files
-    :param file: Input file from the client
-    :return: A list of all files extracted
-    """
-    if not file.is_tar_archive:
-        return []
-    file_list = []
-    with tempfile.NamedTemporaryFile(delete=True) as temp_archive:
-        try:
-            # Save the contents of FileStorage to the temporary file
-            file.fp.save(temp_archive.name)
-            if file.name.endswith(".gz"):
-                mode = "r:gz"
-            elif file.name.endswith(".xz"):
-                mode = "r:xz"
-            elif file.name.endswith(".tar"):
-                mode = "r:"
-            else:
-                return []
-            with tarfile.open(temp_archive.name, mode) as tar:
-                tar.extractall(temp_dir)
-                tar.close()
-        except ValueError:
-            return []
-
-        for root, _, files in os.walk(temp_dir, topdown=False):
-            for name in files:
-                path_file_name = os.path.join(root, name)
-                content_type = magic.Magic(mime=True).from_file(path_file_name)
-                f = open(path_file_name, 'rb')
-                fs = FileStorage(stream=f, filename=path_file_name,
-                                 content_type=content_type)
-                file_list.append(File(fs))
-
-    return file_list
