@@ -26,7 +26,7 @@ class HplcReader(Reader):
         """
         :return: True if it fits
         """
-        result = self.file.name.endswith(".tar.gz") or self.file.name.endswith(".tar")
+        result = self.file.name.endswith(".tar.gz") or self.file.name.endswith(".tar.xz") or self.file.name.endswith(".tar")
         if result:
             with  tempfile.TemporaryDirectory() as temp_dir:
                 self.temp_dir = temp_dir
@@ -38,6 +38,8 @@ class HplcReader(Reader):
                         mode = "r:gz"
                     elif self.file.name.endswith("tar"):
                         mode = "r:"
+                    elif self.file.name.endswith(".tar.xz"):
+                        mode = "r:xz"
                     else:
                         return False
                     with tarfile.open(temp_pdf.name, mode) as tar:
