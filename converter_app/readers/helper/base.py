@@ -179,7 +179,14 @@ class Reader:
         return shape
 
     def as_number(self, value: str) -> float | int:
-        if re.match(r'[+-]?\d+', value) is not None:
+        """
+        Returns a numeric value if possible:
+
+        :raises ValueError: If not convertable
+        :param value: as string
+        :return: numeric value either int or float
+        """
+        if re.match(r'^[+-]?\d+$', value) is not None:
             return int(value)
         return float(self.get_value(value))
 
