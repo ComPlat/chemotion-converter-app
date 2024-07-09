@@ -8,6 +8,7 @@ DATA_TYPES = (
     'DLS ACF',
     'DLS intensity',
     'Emissions',
+    'GAS CHROMATOGRAPHY',
     'GEL PERMEATION CHROMATOGRAPHY',
     'HPLC UV-VIS',
     'INFRARED INTERFEROGRAM',
