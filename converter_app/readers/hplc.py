@@ -40,8 +40,6 @@ class HplcReader(Reader):
                         mode = "r:xz"
                     elif self.file.name.endswith(".tar"):
                         mode = "r:"
-                    elif self.file.name.endswith(".tar.xz"):
-                        mode = "r:xz"
                     else:
                         return False
                     with tarfile.open(temp_pdf.name, mode) as tar:
