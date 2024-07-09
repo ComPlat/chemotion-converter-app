@@ -1,5 +1,1 @@
-<<<<<<< HEAD
-{"tables": [{"header": ["no Metadata", "", "different column separators"], "metadata": {"rows": "0", "columns": "0"}, "columns": [], "rows": []}], "metadata": {"file_name": "Readme.md", "content_type": "", "mime_type": "text/plain", "extension": ".md", "reader": "AsciiReader", "uploaded": "2024-07-09T08:12:41.207140"}}
-=======
-{"tables": [{"header": ["no Metadata", "", "different column separators"], "metadata": {"rows": "0", "columns": "0"}, "columns": [], "rows": []}], "metadata": {"file_name": "Readme.md", "content_type": "", "mime_type": "text/plain", "extension": ".md", "reader": "AsciiReader", "uploaded": "2024-07-09T11:37:32.947341"}}
->>>>>>> 100-new-powerxrd-reader
+{"tables": [{"header": ["no Metadata", "", "different column separators"], "metadata": {"rows": "0", "columns": "0"}, "columns": [], "rows": []}], "metadata": {"file_name": "Readme.md", "content_type": "", "mime_type": "text/plain", "extension": ".md", "reader": "AsciiReader", "uploaded": "2024-07-09T11:42:28.350959"}}
