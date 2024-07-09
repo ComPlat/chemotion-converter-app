@@ -13,3 +13,4 @@ jcamp~=1.2.2
 PyMuPDF==1.23.7
 pylint==3.0.3
 str2bool~=1.1
+parser-binary @ git+https://github.com/ComPlat/BinaryParser@main
