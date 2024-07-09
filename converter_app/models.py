@@ -163,7 +163,7 @@ class Profile:
         profiles_path = Path(current_app.config['PROFILES_DIR']).joinpath(client_id)
 
         if profiles_path.exists():
-            for file_path in Path.iterdir(profiles_path):
+            for file_path in sorted(Path.iterdir(profiles_path)):
                 profile_id = str(file_path.with_suffix('').name)
                 profile_data = cls.load(file_path)
                 yield cls(profile_data, client_id, profile_id)
