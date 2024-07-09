@@ -1,1 +1,71 @@
-{"tables": [{"header": ["0.0", "0.5", "1.0", "1.5", "2.0", "Molar Mass [Da]", "1*10 3 5*10 3 1*10 4 5*10 4", "W(log M)", "PSS WinGPC UniChrom, Build 9050, ITCP-AKT-029, Instanz #1", "Vial   1: MS170_crude - 1 Freitag      04/02/22   12:01:11  20.401 ml", "Freitag      04/02/22   12:09:11  28.390 ml", "\\20210528-SDV_THF_PMMA.CAL THF", "0.000E+0  1.000E+0 ml/g", "50.000 ml ------- ml", "Tosoh EcoSEC   1.000 ml/min", "1.000 g/l  50.000 ul", "PSS SDV 5\u00b5m  35.000 \u00b0C", "PSS SDV 5\u00b5m  35.000 \u00b0C", "PSS SDV 5\u00b5m  35.000 \u00b0C", "I2: RI Detector 1, RI Signal   0.000 ml", "I2: UV Detector 1, UV Signal   0.033 ml", "I2: Pump 1, Sample Pump Pressure   0.000 ml", "itcp-akt   1.000 sec", "2.3821e3  7.9853e3  2.0757e4  0.000000  3.3522e0  0.000000  2.6401e1  1.6314e3  4.5544e1       0.00     100.00       0.00", "1.8562e3  7.3765e3  2.1710e4  0.000000  3.9740e0  0.000000  2.8068e1  6.9033e2  1.1546e1       0.00     100.00       0.00", "g/mol g/mol g/mol g/mol", "ml/g ml g/mol ml*V", "C:\\DATA\\AKT THF Tosoh\\20220204.LDX Freitag      04/02/22   14:57:41"], "metadata": {"___SECTION": "_", "1*10 3": "5*10 3 1*10 4 5*10 4", "Vial   1: MS170_crude - 1": "Freitag      04/02/22   12:01:11  20.401 ml", "Freitag      04/02/22   12:09:11": " 28.390 ml", "\\20210528-SDV_THF_PMMA.CAL": "THF", " 0.000E+0": " 1.000E+0 ml/g", " 50.000 ml": "------- ml", "Tosoh EcoSEC": "  1.000 ml/min", "  1.000 g/l": " 50.000 ul", "PSS SDV 5\u00b5m": " 35.000 \u00b0C", "PSS SDV 5\u00b5m (1)": " 35.000 \u00b0C", "PSS SDV 5\u00b5m (2)": " 35.000 \u00b0C", "I2: RI Detector 1, RI Signal": "  0.000 ml", "I2: UV Detector 1, UV Signal": "  0.033 ml", "I2: Pump 1, Sample Pump Pressure": "  0.000 ml", "itcp-akt": "  1.000 sec", " 2.3821e3": " 7.9853e3  2.0757e4  0.000000  3.3522e0  0.000000  2.6401e1  1.6314e3  4.5544e1       0.00     100.00       0.00", " 1.8562e3": " 7.3765e3  2.1710e4  0.000000  3.9740e0  0.000000  2.8068e1  6.9033e2  1.1546e1       0.00     100.00       0.00", "g/mol": "g/mol g/mol g/mol", "ml/g": "ml g/mol ml*V", "C:\\DATA\\AKT THF Tosoh\\20220204.LDX": "Freitag      04/02/22   14:57:41", "rows": "0", "columns": "0"}, "columns": [], "rows": []}], "metadata": {"file_name": "/home/martint/dev/KIT/converter/chemotion-converter-app/test_files/data_files/Size-exclusion chromatography SEC/Agilent/pics-pdf/2022-02-04 MS170_crudefull.pdf", "content_type": "", "mime_type": "application/pdf", "extension": ".pdf", "reader": "PdfReader", "uploaded": "2024-04-10T11:16:59.084265"}}
+{
+  "tables": [
+    {
+      "header": [
+        "0.0",
+        "0.5",
+        "1.0",
+        "1.5",
+        "2.0",
+        "Molar Mass [Da]",
+        "1*10 3 5*10 3 1*10 4 5*10 4",
+        "W(log M)",
+        "PSS WinGPC UniChrom, Build 9050, ITCP-AKT-029, Instanz #1",
+        "Vial   1: MS170_crude - 1 Freitag      04/02/22   12:01:11  20.401 ml",
+        "Freitag      04/02/22   12:09:11  28.390 ml",
+        "\\20210528-SDV_THF_PMMA.CAL THF",
+        "0.000E+0  1.000E+0 ml/g",
+        "50.000 ml ------- ml",
+        "Tosoh EcoSEC   1.000 ml/min",
+        "1.000 g/l  50.000 ul",
+        "PSS SDV 5\u00b5m  35.000 \u00b0C",
+        "PSS SDV 5\u00b5m  35.000 \u00b0C",
+        "PSS SDV 5\u00b5m  35.000 \u00b0C",
+        "I2: RI Detector 1, RI Signal   0.000 ml",
+        "I2: UV Detector 1, UV Signal   0.033 ml",
+        "I2: Pump 1, Sample Pump Pressure   0.000 ml",
+        "itcp-akt   1.000 sec",
+        "2.3821e3  7.9853e3  2.0757e4  0.000000  3.3522e0  0.000000  2.6401e1  1.6314e3  4.5544e1       0.00     100.00       0.00",
+        "1.8562e3  7.3765e3  2.1710e4  0.000000  3.9740e0  0.000000  2.8068e1  6.9033e2  1.1546e1       0.00     100.00       0.00",
+        "g/mol g/mol g/mol g/mol",
+        "ml/g ml g/mol ml*V",
+        "C:\\DATA\\AKT THF Tosoh\\20220204.LDX Freitag      04/02/22   14:57:41"
+      ],
+      "metadata": {
+        "___SECTION": "_",
+        "1*10 3": "5*10 3 1*10 4 5*10 4",
+        "Vial   1: MS170_crude - 1": "Freitag      04/02/22   12:01:11  20.401 ml",
+        "Freitag      04/02/22   12:09:11": " 28.390 ml",
+        "\\20210528-SDV_THF_PMMA.CAL": "THF",
+        " 0.000E+0": " 1.000E+0 ml/g",
+        " 50.000 ml": "------- ml",
+        "Tosoh EcoSEC": "  1.000 ml/min",
+        "  1.000 g/l": " 50.000 ul",
+        "PSS SDV 5\u00b5m": " 35.000 \u00b0C",
+        "PSS SDV 5\u00b5m (1)": " 35.000 \u00b0C",
+        "PSS SDV 5\u00b5m (2)": " 35.000 \u00b0C",
+        "I2: RI Detector 1, RI Signal": "  0.000 ml",
+        "I2: UV Detector 1, UV Signal": "  0.033 ml",
+        "I2: Pump 1, Sample Pump Pressure": "  0.000 ml",
+        "itcp-akt": "  1.000 sec",
+        " 2.3821e3": " 7.9853e3  2.0757e4  0.000000  3.3522e0  0.000000  2.6401e1  1.6314e3  4.5544e1       0.00     100.00       0.00",
+        " 1.8562e3": " 7.3765e3  2.1710e4  0.000000  3.9740e0  0.000000  2.8068e1  6.9033e2  1.1546e1       0.00     100.00       0.00",
+        "g/mol": "g/mol g/mol g/mol",
+        "ml/g": "ml g/mol ml*V",
+        "C:\\DATA\\AKT THF Tosoh\\20220204.LDX": "Freitag      04/02/22   14:57:41",
+        "rows": "0",
+        "columns": "0"
+      },
+      "columns": [],
+      "rows": []
+    }
+  ],
+  "metadata": {
+    "file_name": "2022-02-04 MS170_crudefull.pdf",
+    "content_type": "",
+    "mime_type": "application/pdf",
+    "extension": ".pdf",
+    "reader": "PdfReader",
+    "uploaded": "2024-06-05T06:50:49.698560"
+  }
+}
