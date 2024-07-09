@@ -127,6 +127,13 @@ class XMLReader(Reader):
             for i, v in enumerate(table_col['values']):
                 self._table['rows'][i].append(v)
 
+            for path, values in self._step_sizes.items():
+                if table_col['path'].startswith(path) and 'endPosition' in values and 'startPosition' in values:
+                    v = (values['endPosition'] - values['startPosition']) / len(self._table['rows'])
+                    self._table.add_metadata(f'{path}.stepSize', v)
+                    self._table.add_metadata(f'{path}.startPosition', values['startPosition'])
+                    self._table.add_metadata(f'{path}.endPosition', values['endPosition'])
+
             for k, v in table_col['node'].attrib.items():
                 self._table.add_metadata(f'{tag_name}.{k}', v)
 
