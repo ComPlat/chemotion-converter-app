@@ -26,7 +26,7 @@ class HplcReader(Reader):
         """
         :return: True if it fits
         """
-        result = self.file.name.endswith(".tar.gz") or self.file.name.endswith(".tar.xz") or self.file.name.endswith(".tar")
+        result = self.file.name.endswith(".gz") or self.file.name.endswith(".xz") or self.file.name.endswith(".tar")
         if result:
             with  tempfile.TemporaryDirectory() as temp_dir:
                 self.temp_dir = temp_dir
@@ -34,9 +34,11 @@ class HplcReader(Reader):
                 try:
                     # Save the contents of FileStorage to the temporary file
                     self.file.fp.save(temp_pdf.name)
-                    if self.file.name.endswith("tar.gz"):
+                    if self.file.name.endswith(".gz"):
                         mode = "r:gz"
-                    elif self.file.name.endswith("tar"):
+                    if self.file.name.endswith(".xz"):
+                        mode = "r:xz"
+                    elif self.file.name.endswith(".tar"):
                         mode = "r:"
                     elif self.file.name.endswith(".tar.xz"):
                         mode = "r:xz"
