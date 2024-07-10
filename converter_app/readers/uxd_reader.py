@@ -68,6 +68,10 @@ class UXDReader(Reader):
         for row in data_rows:
             self._read_data(row)
 
+        if 'START' in self._table['metadata'] and 'STEPSIZE' in self._table['metadata']:
+            end = self.as_number(self._table['metadata']['START']) + (self.as_number(self._table['metadata']['STEPSIZE']) * (len(self._table['rows']) - 1))
+            self._table.add_metadata("END", end)
+
         return tables
 
 
