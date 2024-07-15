@@ -1,5 +1,1 @@
-<<<<<<< HEAD
-{"tables": [{"header": ["no Metadata", "", "different column separators"], "metadata": {"rows": "0", "columns": "0"}, "columns": [], "rows": []}], "metadata": {"file_name": "Readme.md", "content_type": "", "mime_type": "text/plain", "extension": ".md", "reader": "AsciiReader", "uploaded": "2024-07-15T09:41:13.954740"}}
-=======
-{"tables": [{"header": ["no Metadata", "", "different column separators"], "metadata": {"rows": "0", "columns": "0"}, "columns": [], "rows": []}], "metadata": {"file_name": "Readme.md", "content_type": "", "mime_type": "text/plain", "extension": ".md", "reader": "AsciiReader", "uploaded": "2024-07-15T10:22:10.344240"}}
->>>>>>> origin/110-new-cif-files-are-not-read-by-cif-reader
+{"tables": [{"header": ["no Metadata", "", "different column separators"], "metadata": {"rows": "0", "columns": "0"}, "columns": [], "rows": []}], "metadata": {"file_name": "Readme.md", "content_type": "", "mime_type": "text/plain", "extension": ".md", "reader": "AsciiReader", "uploaded": "2024-07-15T10:27:19.664129"}}
