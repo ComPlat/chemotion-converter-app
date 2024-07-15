@@ -42,12 +42,13 @@ class XRDMLReader(XMLReader):
                 if mt_p.startswith(path):
                     for v in values:
                         if 'endPosition' in v and 'startPosition' in v:
+                            col_length += 1
                             step_size = (v['endPosition'] - v['startPosition']) / (len(self._table['rows']) - 1)
-                            self._table.add_metadata(f'COL #{col_length + i}.stepSize', step_size)
-                            self._table.add_metadata(f'COL #{col_length + i}.startPosition', v['startPosition'])
-                            self._table.add_metadata(f'COL #{col_length + i}.endPosition', v['endPosition'])
-                            self._table.add_metadata(f'COL #{col_length + i}.unit', v['unit'])
-                            self._table.add_metadata(f'COL #{col_length + i}.axis', v['axis'])
+                            self._table.add_metadata(f'COL #{col_length}.stepSize', step_size)
+                            self._table.add_metadata(f'COL #{col_length}.startPosition', v['startPosition'])
+                            self._table.add_metadata(f'COL #{col_length}.endPosition', v['endPosition'])
+                            self._table.add_metadata(f'COL #{col_length}.unit', v['unit'])
+                            self._table.add_metadata(f'COL #{col_length}.axis', v['axis'])
     def prepare_tables(self):
         tables = super().prepare_tables()
         for table in tables:
