@@ -89,7 +89,9 @@ class CifReader(Reader):
 
         for item in block:
             if item.pair is not None:
-                if len(item.pair[1]) > self.junk_size_threshold:
+                if 'highest difference peak' in ''.join(item.pair).lower():
+                    meta_table['header'].append(' = '.join(item.pair[:2]))
+                elif len(item.pair[1]) > self.junk_size_threshold:
                     has_junk = True
                     junk_table_header.append(' = '.join(item.pair[:2]))
                 else:

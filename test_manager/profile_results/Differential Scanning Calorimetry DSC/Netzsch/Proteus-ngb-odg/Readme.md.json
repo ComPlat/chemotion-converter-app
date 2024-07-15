@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 {"tables": [{"header": ["Binary file"], "metadata": {"rows": "0", "columns": "0"}, "columns": [], "rows": []}], "metadata": {"file_name": "Readme.md", "content_type": "", "mime_type": "text/plain", "extension": ".md", "reader": "AsciiReader", "uploaded": "2024-07-15T09:41:21.979056"}}
+=======
+{"tables": [{"header": ["Binary file"], "metadata": {"rows": "0", "columns": "0"}, "columns": [], "rows": []}], "metadata": {"file_name": "Readme.md", "content_type": "", "mime_type": "text/plain", "extension": ".md", "reader": "AsciiReader", "uploaded": "2024-07-15T10:22:38.249053"}}
+>>>>>>> origin/110-new-cif-files-are-not-read-by-cif-reader

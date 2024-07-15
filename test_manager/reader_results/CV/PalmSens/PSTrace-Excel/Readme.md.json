@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 {"tables": [{"header": ["not recommended, because metadata will be lost!"], "metadata": {"rows": "0", "columns": "0"}, "columns": [], "rows": []}], "metadata": {"file_name": "Readme.md", "content_type": "", "mime_type": "text/plain", "extension": ".md", "reader": "CSVReader", "uploaded": "2024-07-15T09:41:15.045999", "lineterminator": "\\r\\n", "quoting": "0", "doublequote": "False", "delimiter": "comma", "quotechar": "\"", "skipinitialspace": "True"}}
+=======
+{"tables": [{"header": ["not recommended, because metadata will be lost!"], "metadata": {"rows": "0", "columns": "0"}, "columns": [], "rows": []}], "metadata": {"file_name": "Readme.md", "content_type": "", "mime_type": "text/plain", "extension": ".md", "reader": "CSVReader", "uploaded": "2024-07-15T10:22:11.282516", "lineterminator": "\\r\\n", "quoting": "0", "doublequote": "False", "delimiter": "comma", "quotechar": "\"", "skipinitialspace": "True"}}
+>>>>>>> origin/110-new-cif-files-are-not-read-by-cif-reader

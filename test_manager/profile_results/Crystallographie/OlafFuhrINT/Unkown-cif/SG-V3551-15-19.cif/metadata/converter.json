@@ -344,11 +344,7 @@
         "type": "tableHeader",
         "value": "Highest difference peak\\s*[\\d\\.]+,[^-\\d]+(-?[\\d\\.]+)"
       },
-      "result": {
-        "value": "-0.808",
-        "tableIndex": 8,
-        "lineNumber": 1
-      }
+      "result": false
     },
     {
       "identifier": {
@@ -362,11 +358,7 @@
         "type": "tableHeader",
         "value": "Highest difference peak\\s*(-?[\\d\\.]+)"
       },
-      "result": {
-        "value": "1.439",
-        "tableIndex": 8,
-        "lineNumber": 1
-      }
+      "result": false
     },
     {
       "identifier": {
