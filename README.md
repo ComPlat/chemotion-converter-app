@@ -32,6 +32,15 @@ The Flask development server can be started now:
 flask run
 ```
 
+Troubleshooting (when unsing Windows, updated 25.07.2024)
+---------------
+1. Please make sure that you are using a fresh Python3.10 virtual environment (without any packages installed, 3.12 and 3.9 are not supported)
+2. Before installing the requirements ```pip install wheel setuptools pip pybind11 # always using pip of your virtual environment ```
+3. After installing all requirements via ```pip install -e .``` and ```pip install -r requirements/dev.txt``` check if you have ```python-magic-bin``` and / or ```python-magic``` installed. If not ```pip install python-magic-bin```
+4. Now try starting it with the following env variables ```PYTHONUNBUFFERED=1;FLASK_APP=converter_app/app.py;FLASK_ENV=development;FLASK_DEBUG=1```
+5. If you are still getting ERRORS containing "libmagic" try uninstalling ```python-magic``` but keeping ```python-magic-bin```  
+
+
 Production setup
 ----------------
 
