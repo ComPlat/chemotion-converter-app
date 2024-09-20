@@ -54,7 +54,7 @@
         "value": "0.09998236414401321"
       },
       "result": {
-        "value": "0.09987838172697448"
+        "value": "0.09987838172697441"
       }
     },
     {
@@ -142,7 +142,7 @@
         "DATA TYPE": "CYCLIC VOLTAMMETRY",
         "XUNITS": "Voltage vs Ref",
         "YUNITS": "Ampere",
-        "scan_rate": "0.09987838172697448",
+        "scan_rate": "0.09987838172697441",
         "step_size": "0.0019811875749342514",
         "voltage_limit_end": "1.00006103515625",
         "voltage_start": "0.998077392578125",
