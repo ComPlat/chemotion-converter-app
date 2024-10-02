@@ -10,7 +10,7 @@ logger = logging.getLogger(__name__)
 class CsmReader(Reader):
     """
         Implementation of the Csm Reader. It extends converter_app.readers.helper.base.Reader
-        """
+    """
     identifier = 'csm_reader'
     priority = 10
 
@@ -20,7 +20,6 @@ class CsmReader(Reader):
     def prepare_tables(self):
         tables = []
         table = self.append_table(tables)
-        table['header'].append('CSM')
         begin = False
         key = ''
         for line in self.file.fp.readlines():
