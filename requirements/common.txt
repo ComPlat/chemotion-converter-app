@@ -12,10 +12,6 @@ Werkzeug~=2.2.2
 jcamp~=1.2.2
 PyMuPDF==1.23.7
 pylint==3.0.3
-<<<<<<< HEAD
 str2bool~=1.1
 lxml~=5.2.2
 parser-binary @ git+https://github.com/ComPlat/BinaryParser@main
-=======
-str2bool~=1.1
->>>>>>> 100-new-powerxrd-reader
