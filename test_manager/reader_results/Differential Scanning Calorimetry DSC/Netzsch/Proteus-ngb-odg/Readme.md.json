@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 {"tables": [{"header": ["Binary file"], "metadata": {"rows": "0", "columns": "0"}, "columns": [], "rows": []}], "metadata": {"file_name": "Readme.md", "content_type": "", "mime_type": "text/plain", "extension": ".md", "reader": "AsciiReader", "uploaded": "2024-09-20T11:50:29.653116"}}
+=======
+{"tables": [{"header": ["Binary file"], "metadata": {"rows": "0", "columns": "0"}, "columns": [], "rows": []}], "metadata": {"file_name": "Readme.md", "content_type": "", "mime_type": "text/plain", "extension": ".md", "reader": "AsciiReader", "uploaded": "2024-10-07T07:39:40.822473"}}
+>>>>>>> 100-new-powerxrd-reader

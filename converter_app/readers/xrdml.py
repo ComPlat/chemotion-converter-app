@@ -1,4 +1,4 @@
-from lxml import etree
+import xml.etree.ElementTree as ET
 
 from converter_app.models import File
 from converter_app.readers.xml_reader import XMLReader
@@ -17,7 +17,7 @@ class XRDMLReader(XMLReader):
         self._file_extensions = ['.xrdml']
         self._step_sizes = {}
 
-    def _handle_node(self, node: etree._Element, xml_path: str, node_name: str):
+    def _handle_node(self, node: ET.Element, xml_path: str, node_name: str):
 
         try:
             if node_name == 'positions':
@@ -27,7 +27,7 @@ class XRDMLReader(XMLReader):
                     'axis': node.attrib.get('axis', '-'),
                     'unit': node.attrib.get('unit', '-'),
                 })
-                for child in node.getchildren():
+                for child in node:
                     if child.tag.endswith('startPosition'):
                         self._step_sizes[xml_path][-1]['startPosition'] = self.as_number(child.text.strip())
                     if child.tag.endswith('endPosition'):
