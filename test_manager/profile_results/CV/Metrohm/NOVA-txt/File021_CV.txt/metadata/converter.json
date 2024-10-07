@@ -54,7 +54,11 @@
         "value": "0.09998236414401321"
       },
       "result": {
+<<<<<<< HEAD
         "value": "0.09994812089406006"
+=======
+        "value": "0.09994812"
+>>>>>>> Test-case-generator-fixes
       }
     },
     {
@@ -69,7 +73,11 @@
         "value": "0.09998236414401321"
       },
       "result": {
+<<<<<<< HEAD
         "value": "0.09994812089406006"
+=======
+        "value": "0.09994812"
+>>>>>>> Test-case-generator-fixes
       }
     },
     {
@@ -84,7 +92,11 @@
         "value": "0.09998236414401321"
       },
       "result": {
+<<<<<<< HEAD
         "value": "0.09994812089406006"
+=======
+        "value": "0.09994812"
+>>>>>>> Test-case-generator-fixes
       }
     },
     {
@@ -99,7 +111,7 @@
         "value": "0.0010679116287260553"
       },
       "result": {
-        "value": "0.0010675458765741605"
+        "value": "0.00106754"
       }
     },
     {
@@ -114,7 +126,7 @@
         "value": "0.0010679116287260553"
       },
       "result": {
-        "value": "0.0010675458765741605"
+        "value": "0.00106754"
       }
     },
     {
@@ -129,7 +141,7 @@
         "value": "0.0010679116287260553"
       },
       "result": {
-        "value": "0.0010675458765741605"
+        "value": "0.00106754"
       }
     },
     {
@@ -144,7 +156,7 @@
         "value": "0"
       },
       "result": {
-        "value": "0.500030517578125"
+        "value": "0.50003051"
       }
     },
     {
@@ -159,7 +171,7 @@
         "value": "0"
       },
       "result": {
-        "value": "0.500030517578125"
+        "value": "0.50003051"
       }
     },
     {
@@ -174,7 +186,7 @@
         "value": "0"
       },
       "result": {
-        "value": "0.500030517578125"
+        "value": "0.50003051"
       }
     },
     {
@@ -189,7 +201,7 @@
         "value": "0.001068115234375"
       },
       "result": {
-        "value": "0.5010986328125"
+        "value": "0.50109863"
       }
     },
     {
@@ -204,7 +216,7 @@
         "value": "0.001068115234375"
       },
       "result": {
-        "value": "0.5010986328125"
+        "value": "0.50109863"
       }
     },
     {
@@ -219,7 +231,7 @@
         "value": "0.001068115234375"
       },
       "result": {
-        "value": "0.5010986328125"
+        "value": "0.50109863"
       }
     },
     {
@@ -234,7 +246,7 @@
         "value": "1.50070190429688"
       },
       "result": {
-        "value": "1.0009765625"
+        "value": "1.00097656"
       }
     },
     {
@@ -249,7 +261,7 @@
         "value": "1.50070190429688"
       },
       "result": {
-        "value": "1.0009765625"
+        "value": "1.00097656"
       }
     },
     {
@@ -264,7 +276,7 @@
         "value": "1.50070190429688"
       },
       "result": {
-        "value": "1.0009765625"
+        "value": "1.00097656"
       }
     },
     {
@@ -279,7 +291,7 @@
         "value": "-1.30096435546875"
       },
       "result": {
-        "value": "-0.00091552734375"
+        "value": "-0.0009155"
       }
     },
     {
@@ -294,7 +306,7 @@
         "value": "-1.30096435546875"
       },
       "result": {
-        "value": "-0.00091552734375"
+        "value": "-0.0009155"
       }
     },
     {
@@ -309,7 +321,7 @@
         "value": "-1.30096435546875"
       },
       "result": {
-        "value": "-0.00091552734375"
+        "value": "-0.0009155"
       }
     }
   ],
@@ -322,12 +334,21 @@
         "DATA TYPE": "CYCLIC VOLTAMMETRY",
         "XUNITS": "Voltage vs Ref",
         "YUNITS": "Ampere",
+<<<<<<< HEAD
         "scan_rate": "0.09994812089406006",
         "step_size": "0.0010675458765741605",
         "voltage_limit_end": "0.500030517578125",
         "voltage_start": "0.5010986328125",
         "voltage_limit_one": "1.0009765625",
         "voltage_limit_two": "-0.00091552734375"
+=======
+        "scan_rate": "0.09994812",
+        "step_size": "0.00106754",
+        "voltage_limit_end": "0.50003051",
+        "voltage_start": "0.50109863",
+        "voltage_limit_one": "1.00097656",
+        "voltage_limit_two": "-0.0009155"
+>>>>>>> Test-case-generator-fixes
       }
     },
     {
@@ -337,12 +358,21 @@
         "DATA TYPE": "CYCLIC VOLTAMMETRY",
         "XUNITS": "Voltage vs Ref",
         "YUNITS": "Ampere",
+<<<<<<< HEAD
         "scan_rate": "0.09994812089406006",
         "step_size": "0.0010675458765741605",
         "voltage_limit_end": "0.500030517578125",
         "voltage_start": "0.5010986328125",
         "voltage_limit_one": "1.0009765625",
         "voltage_limit_two": "-0.00091552734375"
+=======
+        "scan_rate": "0.09994812",
+        "step_size": "0.00106754",
+        "voltage_limit_end": "0.50003051",
+        "voltage_start": "0.50109863",
+        "voltage_limit_one": "1.00097656",
+        "voltage_limit_two": "-0.0009155"
+>>>>>>> Test-case-generator-fixes
       }
     },
     {
@@ -352,12 +382,21 @@
         "DATA TYPE": "CYCLIC VOLTAMMETRY",
         "XUNITS": "Voltage vs Ref",
         "YUNITS": "Ampere",
+<<<<<<< HEAD
         "scan_rate": "0.09994812089406006",
         "step_size": "0.0010675458765741605",
         "voltage_limit_end": "0.500030517578125",
         "voltage_start": "0.5010986328125",
         "voltage_limit_one": "1.0009765625",
         "voltage_limit_two": "-0.00091552734375"
+=======
+        "scan_rate": "0.09994812",
+        "step_size": "0.00106754",
+        "voltage_limit_end": "0.50003051",
+        "voltage_start": "0.50109863",
+        "voltage_limit_one": "1.00097656",
+        "voltage_limit_two": "-0.0009155"
+>>>>>>> Test-case-generator-fixes
       }
     }
   ]

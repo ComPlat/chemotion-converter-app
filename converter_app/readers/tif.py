@@ -14,7 +14,11 @@ class TifReader(Reader):
     """
     identifier = 'tif_reader'
     priority = 96
-    _parsed_values = None
+
+
+    def __init__(self, file):
+        super().__init__(file)
+        self._parsed_values = None
 
     def check(self):
         result = False

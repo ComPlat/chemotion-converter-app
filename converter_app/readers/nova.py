@@ -138,17 +138,17 @@ class NovaReader(CSVReader):
 
         metadata = super().get_metadata()
         metadata.update({
-            'v_init': str(v_init),
-            'v_end': str(v_end),
-            'v_max': str(v_max),
-            'v_min': str(v_min),
-            'v_limit1': str(v_limit1),
-            'v_limit2': str(v_limit2),
-            'step_size': str(step_size),
+            'v_init': str(v_init)[:10],
+            'v_end': str(v_end)[:10],
+            'v_max': str(v_max)[:10],
+            'v_min': str(v_min)[:10],
+            'v_limit1': str(v_limit1)[:10],
+            'v_limit2': str(v_limit2)[:10],
+            'step_size': str(step_size)[:10],
             'step_size_unit': self._step_size_unit,
-            'scan_rate': str(scan_rate),
+            'scan_rate': str(scan_rate)[:10],
             'scan_rate_unit': self._scan_rate_unit,
-            'cycles': str(self._cycles)
+            'cycles': str(self._cycles)[:10]
         })
 
         return metadata
