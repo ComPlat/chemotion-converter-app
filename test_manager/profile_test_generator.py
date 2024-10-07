@@ -38,7 +38,7 @@ def _generate_profile_tests(src_path, file, _unused, res_path):
     TEST_DICT[os.path.join(src_path, file)] = test_name
 
     with open(TEST_FILE, 'a', encoding='utf8') as test_file:
-        test_file.write(f'\n\n\ndef {test_name}():'
+        test_file.write(f'\n\n\ndef test_{TEST_IDX}_{test_name}():'
                         f'\n    global all_reader'
                         f'\n    (a, b)=compare_profile_result(r\'{src_path}\',r\'{res_path}\',r\'{file}\')'
                         f'\n    assert len(a) == len(b)'
