@@ -54,11 +54,7 @@
         "value": "0.09998236414401321"
       },
       "result": {
-<<<<<<< HEAD
-        "value": "0.09998236414402034"
-=======
         "value": "0.09998236"
->>>>>>> Test-case-generator-fixes
       }
     },
     {
@@ -146,13 +142,8 @@
         "DATA TYPE": "CYCLIC VOLTAMMETRY",
         "XUNITS": "Voltage vs Ref",
         "YUNITS": "Ampere",
-<<<<<<< HEAD
-        "scan_rate": "0.09998236414402034",
-        "step_size": "0.0010679116287260553",
-=======
         "scan_rate": "0.09998236",
         "step_size": "0.00106791",
->>>>>>> Test-case-generator-fixes
         "voltage_limit_end": "0",
         "voltage_start": "0.00106811",
         "voltage_limit_one": "1.50070190",

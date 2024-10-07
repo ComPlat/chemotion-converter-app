@@ -1,7 +1,2 @@
-<<<<<<< HEAD
-7c25bce60154de459769b2141ebe69f5d57d7bf6774b52641f0844633076d096 data/table_01.jdx
-e44d3e36df0cc637d294a64db81bbecc26d1141f85d0e43d93708089d34efaa2 metadata/converter.json
-=======
 7a9f90d936f2757505b33f3bfcf1911a382bd8223984b0d4770fb461efabd46d data/table_01.jdx
 1fbcccd814a0a87130cee00f231f8ac0ad77fc1ae1f728c0b15534920d32cb8b metadata/converter.json
->>>>>>> Test-case-generator-fixes
