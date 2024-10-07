@@ -50,7 +50,7 @@ class Reader:
     """
     Base reader. Any reader needs to extend this abstract reader.
     """
-    float_pattern = re.compile(r'(-?\d+[,.]*\d*[eE+\-\d]*)\S*')
+    float_pattern = re.compile(r'^(-?\d+[,.]*\d*[eE+\-\d]*)\s*$')
     float_de_pattern = re.compile(r'(-?[\d.]+,\d*[eE+\-\d]*)')
     float_us_pattern = re.compile(r'(-?[\d,]+.\d*[eE+\-\d]*)')
 

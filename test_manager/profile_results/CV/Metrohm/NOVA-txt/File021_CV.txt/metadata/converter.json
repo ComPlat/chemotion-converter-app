@@ -54,7 +54,7 @@
         "value": "0.09998236414401321"
       },
       "result": {
-        "value": "0.09994812089405922"
+        "value": "0.09994812089406006"
       }
     },
     {
@@ -69,7 +69,7 @@
         "value": "0.09998236414401321"
       },
       "result": {
-        "value": "0.09994812089405922"
+        "value": "0.09994812089406006"
       }
     },
     {
@@ -84,7 +84,7 @@
         "value": "0.09998236414401321"
       },
       "result": {
-        "value": "0.09994812089405922"
+        "value": "0.09994812089406006"
       }
     },
     {
@@ -322,7 +322,7 @@
         "DATA TYPE": "CYCLIC VOLTAMMETRY",
         "XUNITS": "Voltage vs Ref",
         "YUNITS": "Ampere",
-        "scan_rate": "0.09994812089405922",
+        "scan_rate": "0.09994812089406006",
         "step_size": "0.0010675458765741605",
         "voltage_limit_end": "0.500030517578125",
         "voltage_start": "0.5010986328125",
@@ -337,7 +337,7 @@
         "DATA TYPE": "CYCLIC VOLTAMMETRY",
         "XUNITS": "Voltage vs Ref",
         "YUNITS": "Ampere",
-        "scan_rate": "0.09994812089405922",
+        "scan_rate": "0.09994812089406006",
         "step_size": "0.0010675458765741605",
         "voltage_limit_end": "0.500030517578125",
         "voltage_start": "0.5010986328125",
@@ -352,7 +352,7 @@
         "DATA TYPE": "CYCLIC VOLTAMMETRY",
         "XUNITS": "Voltage vs Ref",
         "YUNITS": "Ampere",
-        "scan_rate": "0.09994812089405922",
+        "scan_rate": "0.09994812089406006",
         "step_size": "0.0010675458765741605",
         "voltage_limit_end": "0.500030517578125",
         "voltage_start": "0.5010986328125",

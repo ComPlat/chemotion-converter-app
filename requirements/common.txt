@@ -13,4 +13,3 @@ jcamp~=1.2.2
 PyMuPDF==1.23.7
 pylint==3.0.3
 str2bool~=1.1
-lxml~=5.2.2
