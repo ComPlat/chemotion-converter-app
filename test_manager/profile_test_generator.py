@@ -5,6 +5,7 @@ import re
 import shutil
 import traceback
 import zipfile
+from json import JSONDecodeError
 
 from converter_app.writers.jcampzip import JcampZipWriter
 from test_manager.test_file_manager import CURRENT_DIR, RES_PROFILE_PATH
@@ -67,7 +68,7 @@ def _generate_expected_profiles_results(src_path, file, _unused, res_path):
             mod = importlib.import_module('test_manager.test_profiles')
             getattr(mod, TEST_DICT[src_path_file])()
             return
-        except (ModuleNotFoundError, FileNotFoundError, AssertionError):
+        except (ModuleNotFoundError, FileNotFoundError, AssertionError, JSONDecodeError):
             pass
     print(f"Generating expected profiles results for {src_path_file}")
     with open(os.path.join(src_path, file), 'rb') as file_pointer:

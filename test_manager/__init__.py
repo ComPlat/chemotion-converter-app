@@ -5,6 +5,8 @@ import os
 import re
 import sys
 import traceback
+from json import JSONDecodeError
+
 from werkzeug.datastructures import FileStorage
 
 
@@ -30,7 +32,7 @@ def generate_expected_results(src_path, file, res_path, _unused):
             mod = importlib.import_module('test_manager.test_readers')
             getattr(mod, TEST_DICT[src_path_file])()
             return
-        except (ModuleNotFoundError, FileNotFoundError, AssertionError):
+        except (ModuleNotFoundError, FileNotFoundError, AssertionError, JSONDecodeError):
             pass
     print(f"Generating expected results for {src_path_file}")
     with open(src_path_file, 'rb') as file_pointer:
