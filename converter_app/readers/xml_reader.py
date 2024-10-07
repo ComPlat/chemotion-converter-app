@@ -1,6 +1,6 @@
 import logging
 
-from lxml import etree
+import xml.etree.ElementTree as ET
 
 from converter_app.models import File
 from converter_app.readers.helper.reader import Readers
@@ -26,7 +26,11 @@ class XMLReader(Reader):
     def check(self):
         return self.file.suffix.lower() in self._file_extensions
 
-    def _filter_data_rows(self, node: etree._Element, text: str, xml_path: str) -> bool:
+    def _get_tag_name(self, node:  ET.Element):
+        return node.tag.split('}', 1)[-1]
+
+
+    def _filter_data_rows(self, node:  ET.Element, text: str, xml_path: str) -> bool:
         text_array = [x for x in text.strip().split(' ') if x != '']
         shape = self.get_shape(text_array)
         if all(x == 'f' for x in shape) and len(shape) > 1:
@@ -39,15 +43,15 @@ class XMLReader(Reader):
             return True
         return False
 
-    def _handle_node(self, node: etree._Element, xml_path: str, node_name: str):
+    def _handle_node(self, node:  ET.Element, xml_path: str, node_name: str):
         pass
 
-    def _read_node(self, node: etree._Element, xml_path: str = '#'):
+    def _read_node(self, node: ET.Element, xml_path: str = '#'):
         for child in node:
             text = child.text
 
             try:
-                local_name = etree.QName(child).localname
+                local_name = self._get_tag_name(child)
                 new_path = f'{xml_path}.{local_name}'
             except ValueError:
                 new_path = 'Unknown'
@@ -66,10 +70,12 @@ class XMLReader(Reader):
         tables = []
         # xml_str = re.sub(r'\sxmlns\s*([:=])', r' xmlns_removed\g<1>', self.file.string)
         self._table = self.append_table(tables)
-        root = etree.fromstring(self.file.string)
+        root = ET.XML(self.file.content)
+        # self._read_node(root)
+        # root = etree.XML(self.file.content)
 
         # Remove unused namespace declarations
-        etree.cleanup_namespaces(root)
+        # ET.cleanup_namespaces(root)
 
         self._read_node(root)
 
@@ -80,7 +86,7 @@ class XMLReader(Reader):
                 self._table = self.append_table(tables)
                 self._table['rows'] = [[] for x in range(len(table_col['values']))]
 
-            tag_name = etree.QName(table_col['node']).localname
+            tag_name =  self._get_tag_name(table_col['node'])
             self._table.add_metadata(f"COL #{len(self._table['rows'][0])}", tag_name)
             self._table.add_metadata(f"COL #{len(self._table['rows'][0])} XML PATH", table_col['path'])
 
