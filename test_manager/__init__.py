@@ -3,12 +3,10 @@ import importlib
 import json
 import os
 import re
-import shutil
 import sys
 import traceback
 from werkzeug.datastructures import FileStorage
 
-import test_manager.test_readers
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
