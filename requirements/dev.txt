@@ -2,6 +2,7 @@
 
 coverage
 pytest
+fluskr
 pytest-dotenv
 pytest-cov
 pytest-flask
