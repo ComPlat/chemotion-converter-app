@@ -1,6 +1,8 @@
 import pytest
 import json
 from converter_app.app import create_app
+from converter_app.readers.helper.base import Reader
+
 
 @pytest.fixture()
 def app():
@@ -27,6 +29,7 @@ def client(app):
 def runner(app):
     return app.test_cli_runner()
 
+
 @pytest.fixture()
 def reader_params():
     client_id = 'dev'
@@ -36,10 +39,11 @@ def reader_params():
         data = json.loads(f.read())
 
     return {
-       'client_id': client_id,
-       'reader_data': data,
-       'reader_id': reader_id,
+        'client_id': client_id,
+        'reader_data': data,
+        'reader_id': reader_id,
     }
+
 
 @pytest.fixture()
 def test_reader(reader_params):
