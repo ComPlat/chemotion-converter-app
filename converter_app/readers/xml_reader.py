@@ -55,6 +55,7 @@ class XMLReader(Reader):
         if key in self._potential_data_tables:
             if m and  self._potential_data_tables[key] is not None:
                 self._potential_data_tables[key]['values'].append(self.as_number(val))
+                self._potential_data_tables[key]['shape'] += 'f'
             else:
                 self._potential_data_tables[key] = None
         elif m:
@@ -94,14 +95,25 @@ class XMLReader(Reader):
 
         self._read_node(root)
 
+        self._merge_tables(self._data_tables, tables)
+
+
+        potential_tables = [x for k, x in self._potential_data_tables.items() if len(x['values']) > 1]
+        potential_tables.sort(key= lambda x : len(x['values']))
+        self._merge_tables(potential_tables, tables)
+
+
+        return tables
+
+    def _merge_tables(self, data_tables: list, tables):
         current_shape = ''
-        for table_col in self._data_tables:
+        for table_col in data_tables:
             if current_shape != table_col['shape']:
                 current_shape = table_col['shape']
                 self._table = self.append_table(tables)
                 self._table['rows'] = [[] for x in range(len(table_col['values']))]
 
-            tag_name =  self._get_tag_name(table_col['node'])
+            tag_name = self._get_tag_name(table_col['node'])
             self._table.add_metadata(f"COL #{len(self._table['rows'][0])}", tag_name)
             self._table.add_metadata(f"COL #{len(self._table['rows'][0])} XML PATH", table_col['path'])
 
@@ -110,8 +122,6 @@ class XMLReader(Reader):
 
             for k, v in table_col['node'].attrib.items():
                 self._table.add_metadata(f'{tag_name}.{k}', v)
-
-        return tables
 
 
 Readers.instance().register(XMLReader)
