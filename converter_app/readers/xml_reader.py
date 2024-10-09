@@ -22,6 +22,7 @@ class XMLReader(Reader):
         self._file_extensions = ['.xml']
         self._table = None
         self._data_tables = []
+        self._potential_data_tables = {}
 
     def check(self):
         return self.file.suffix.lower() in self._file_extensions
@@ -34,17 +35,31 @@ class XMLReader(Reader):
         text_array = [x for x in text.strip().split(' ') if x != '']
         shape = self.get_shape(text_array)
         if all(x == 'f' for x in shape) and len(shape) > 1:
-            self._data_tables.append({
-                'shape': ''.join(shape),
-                'path': xml_path,
-                'values': [self.as_number(x) for x in text_array],
-                'node': node
-            })
+            self._data_tables.append(self._generate_data_table(shape, xml_path, text_array, node))
             return True
         return False
 
+    def _generate_data_table(self, shape: list[str], xml_path: str, text_array: list[str], node: ET.Element):
+        return {
+            'shape': ''.join(shape),
+            'path': xml_path,
+            'values': [self.as_number(x) for x in text_array],
+            'node': node
+        }
+
     def _handle_node(self, node:  ET.Element, xml_path: str, node_name: str):
         pass
+
+    def _add_metadata(self, key: str, val: any, node: ET.Element):
+        m = self.float_pattern.fullmatch(val)
+        if key in self._potential_data_tables:
+            if m and  self._potential_data_tables[key] is not None:
+                self._potential_data_tables[key]['values'].append(self.as_number(val))
+            else:
+                self._potential_data_tables[key] = None
+        elif m:
+            self._potential_data_tables[key] = self._generate_data_table(['f'], key, [val], node)
+        self._table.add_metadata(key, val)
 
     def _read_node(self, node: ET.Element, xml_path: str = '#'):
         for child in node:
@@ -59,10 +74,10 @@ class XMLReader(Reader):
 
             self._handle_node(child, xml_path, local_name)
 
-            if text is not None and not self._filter_data_rows(node, text, new_path):
-                self._table.add_metadata(new_path, text.strip())
+            if text is not None and not self._filter_data_rows(child, text, new_path):
+                self._add_metadata(new_path, text.strip(), node)
             for k, v in child.attrib.items():
-                self._table.add_metadata(f'{new_path}.{k}', v)
+                self._add_metadata(f'{new_path}.{k}', v, node)
 
             self._read_node(child, new_path)
 

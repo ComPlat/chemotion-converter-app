@@ -20,6 +20,12 @@ class Table(dict):
         })
 
     def add_metadata(self, key, value):
+        """
+        Add metadata to table
+        :param key: Key of the metadata
+        :param value: Value of the metadata
+        :return:
+        """
         self['metadata'].add_unique(key, value)
 
     def __add__(self, other):
@@ -50,7 +56,7 @@ class Reader:
     """
     Base reader. Any reader needs to extend this abstract reader.
     """
-    float_pattern = re.compile(r'^(-?\d+[,.]*\d*[eE+\-\d]*)\s*$')
+    float_pattern = re.compile(r'[-+]?[0-9]*[.,]?[0-9]+(?:[eE][-+]?[0-9]+)?\s*')
     float_de_pattern = re.compile(r'(-?[\d.]+,\d*[eE+\-\d]*)')
     float_us_pattern = re.compile(r'(-?[\d,]+.\d*[eE+\-\d]*)')
 
@@ -171,7 +177,7 @@ class Reader:
                 cell = str(cell).strip()
                 if cell in self.empty_values:
                     shape.append('')
-                elif self.float_pattern.match(cell):
+                elif self.float_pattern.fullmatch(cell):
                     shape.append('f')
                 else:
                     shape.append('s')
