@@ -36,7 +36,7 @@ class HplcReader(Reader):
                     self.file.fp.save(temp_pdf.name)
                     if self.file.name.endswith(".gz"):
                         mode = "r:gz"
-                    if self.file.name.endswith(".xz"):
+                    elif self.file.name.endswith(".xz"):
                         mode = "r:xz"
                     elif self.file.name.endswith(".tar"):
                         mode = "r:"
