@@ -17,8 +17,6 @@ class UXDReader(Reader):
     identifier = 'uxd_reader'
     priority = 10
 
-
-
     def __init__(self, file: File):
         super().__init__(file)
         self._file_extensions = ['.uxd']
@@ -42,6 +40,11 @@ class UXDReader(Reader):
             except ValueError:
                 pass
 
+    def _add_metadata(self, key, val):
+        if self.float_pattern.fullmatch(val):
+            val = self.get_value(val)
+        self._table.add_metadata(key, val)
+
     def prepare_tables(self):
         tables = []
         tables = []
@@ -57,7 +60,7 @@ class UXDReader(Reader):
                     data = line.split('=')
                     key = data[0].strip()[1:]
                     value = data[1].strip().replace('\n', '')
-                    self._table.add_metadata(key, value)
+                    self._add_metadata(key, value)
             else:
                 data_rows.append(line)
         try:
@@ -69,11 +72,11 @@ class UXDReader(Reader):
             self._read_data(row)
 
         if 'START' in self._table['metadata'] and 'STEPSIZE' in self._table['metadata']:
-            end = self.as_number(self._table['metadata']['START']) + (self.as_number(self._table['metadata']['STEPSIZE']) * (len(self._table['rows']) - 1))
+            end = self.as_number(self._table['metadata']['START']) + (
+                        self.as_number(self._table['metadata']['STEPSIZE']) * (len(self._table['rows']) - 1))
             self._table.add_metadata("END", end)
 
         return tables
 
 
 Readers.instance().register(UXDReader)
-
