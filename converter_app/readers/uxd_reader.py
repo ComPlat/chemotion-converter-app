@@ -22,6 +22,7 @@ class UXDReader(Reader):
         self._file_extensions = ['.uxd']
         self._table = None
         self._version = 2
+        self._max_table_length = 0
 
     def check(self):
         return self.file.suffix.lower() in self._file_extensions
@@ -29,8 +30,10 @@ class UXDReader(Reader):
     def _read_data(self, line: str):
         if self._version == 2:
             try:
-                for value in [self.as_number(x.strip()) for x in line.split(' ') if x != '']:
-                    self._table['rows'].append([value])
+                new_row = [self.as_number(x.strip()) for x in line.split(' ') if x != '']
+                if len(new_row) > 0:
+                    self._max_table_length = max(self._max_table_length, len(new_row))
+                    self._table['rows'].append(new_row)
             except ValueError:
                 pass
         elif self._version == 3:
@@ -47,8 +50,6 @@ class UXDReader(Reader):
 
     def prepare_tables(self):
         tables = []
-        tables = []
-        # xml_str = re.sub(r'\sxmlns\s*([:=])', r' xmlns_removed\g<1>', self.file.string)
         self._table = self.append_table(tables)
         data_rows = []
         for row in self.file.fp.readlines():
@@ -70,6 +71,10 @@ class UXDReader(Reader):
 
         for row in data_rows:
             self._read_data(row)
+
+        for row in self._table['rows']:
+            while len(row) < self._max_table_length:
+                row.append('')
 
         if 'START' in self._table['metadata'] and 'STEPSIZE' in self._table['metadata']:
             end = self.as_number(self._table['metadata']['START']) + (
