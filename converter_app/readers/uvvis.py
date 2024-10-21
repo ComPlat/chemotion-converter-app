@@ -26,7 +26,7 @@ class UvvisReader(CSVReader):
         """
         result = super().check()
         if result:
-            metadata_begin = self.lines[-2]
+            metadata_begin = self.lines[-2] if len(self.lines) > 1 else ''
             return 'Properties' in metadata_begin
 
         return result
