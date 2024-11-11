@@ -54,7 +54,7 @@ def is_match(s: str):
     ("1e", False),             # Scientific notation without exponent
 
     # 6. Numbers with Commas (International)
-    ("1,000", True),          # Number with commas as thousands separators (invalid)
+    ("1,000", True),          # Number with commas as thousands separators
     ("1,000.5", False),        # Mixed usage of commas and dots (invalid)
 
     # 7. Leading and Trailing Spaces

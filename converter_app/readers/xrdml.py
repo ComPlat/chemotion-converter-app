@@ -17,7 +17,7 @@ class XRDMLReader(XMLReader):
         self._file_extensions = ['.xrdml']
         self._step_sizes = {}
 
-    def _handle_node(self, node: ET.Element, xml_path: str, node_name: str):
+    def handle_node(self, node: ET.Element, xml_path: str, node_name: str):
 
         try:
             if node_name == 'positions':
