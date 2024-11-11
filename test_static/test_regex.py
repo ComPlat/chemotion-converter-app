@@ -38,29 +38,29 @@ def is_match(s: str):
     ("e10", False),            # No digits before exponent (invalid)
 
     # 4. Edge Cases
-    ("", False),               # Empty string
-    ("   ", False),            # Whitespace-only
-    (" 42 ", False),            # Spaces around number
+    ("", False),               # Empty string (invalid)
+    ("   ", False),            # Whitespace-only (invalid)
+    (" 42 ", False),            # Spaces around number (invalid)
     ("+", False),              # Only sign (invalid)
     ("-", False),              # Only sign (invalid)
     ("++42", False),           # Multiple signs (invalid)
     ("--42", False),           # Multiple signs (invalid)
-    ("42abc", False),          # Invalid characters in the number
+    ("42abc", False),          # Invalid characters in the number (invalid)
 
     # 5. Invalid Formats
-    ("42.5.1", False),         # Multiple decimal separators
-    (".", False),              # Only decimal separator
+    ("42.5.1", False),         # Multiple decimal separators (invalid)
+    (".", False),              # Only decimal separator (invalid)
     ("1e", False),             # Only scientific notation sign (invalid)
-    ("1e", False),             # Scientific notation without exponent
+    ("e", False),             # Scientific notation without exponent (invalid)
 
     # 6. Numbers with Commas (International)
     ("1,000", True),          # Number with commas as thousands separators
     ("1,000.5", False),        # Mixed usage of commas and dots (invalid)
 
     # 7. Leading and Trailing Spaces
-    (" 42", False),             # Leading space
+    (" 42", False),             # Leading space (invalid)
     ("42 ", True),             # Trailing space
-    ("  42.5  ", False),        # Leading and trailing spaces
+    ("  42.5  ", False),        # Leading and trailing spaces (invalid)
 ])
 
 def test_regex_match(test_input, expected):
