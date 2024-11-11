@@ -72,7 +72,7 @@ class MprReader(Reader):
                     units = ''
 
                 table['columns'].append({
-                    'key': f'{len(table['columns'])}',
+                    'key': str(len(table['columns'])),
                     'name': str(v.get('attrs', {}).get('standard_name', k)) + units
                 })
 
