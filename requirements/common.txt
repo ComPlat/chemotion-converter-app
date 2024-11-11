@@ -15,3 +15,5 @@ pylint==3.0.3
 str2bool~=1.1
 lxml~=5.2.2
 parser-binary @ git+https://github.com/ComPlat/BinaryParser@main
+
+yadg~=5.1.5
