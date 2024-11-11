@@ -47,7 +47,14 @@ class XMLReader(Reader):
             'node': node
         }
 
-    def _handle_node(self, node:  ET.Element, xml_path: str, node_name: str):
+    def handle_node(self, node:  ET.Element, xml_path: str, node_name: str):
+        """
+        This method can be overridden to handle special nodes separately.
+
+        :param node: XML node Object
+        :param xml_path: Path in global XML-file to this node
+        :param node_name: Name of the Node
+        """
         pass
 
     def _add_metadata(self, key: str, val: any, node: ET.Element):
@@ -73,7 +80,7 @@ class XMLReader(Reader):
                 new_path = 'Unknown'
                 local_name = ''
 
-            self._handle_node(child, xml_path, local_name)
+            self.handle_node(child, xml_path, local_name)
 
             if text is not None and not self._filter_data_rows(child, text, new_path):
                 self._add_metadata(new_path, text.strip(), node)
@@ -84,19 +91,10 @@ class XMLReader(Reader):
 
     def prepare_tables(self):
         tables = []
-        # xml_str = re.sub(r'\sxmlns\s*([:=])', r' xmlns_removed\g<1>', self.file.string)
         self._table = self.append_table(tables)
         root = ET.XML(self.file.content)
-        # self._read_node(root)
-        # root = etree.XML(self.file.content)
-
-        # Remove unused namespace declarations
-        # ET.cleanup_namespaces(root)
-
         self._read_node(root)
-
         self._merge_tables(self._data_tables, tables)
-
 
         potential_tables = [x for k, x in self._potential_data_tables.items() if len(x['values']) > 1]
         potential_tables.sort(key= lambda x : len(x['values']))
