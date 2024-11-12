@@ -89,7 +89,7 @@ if __name__ == "__main__":
     parser.add_argument('-tp', '--test_profiles', action='store_true')
     parser.add_argument('-g', '--github', action='store_true')
     args = parser.parse_args()
-    if args.github or args.expected or args.tests or args.test_profiles or args.expected_profiles:
+    if args.github:
         load_profiles_from_git()
     if args.tests or args.expected:
         TEST_IDX = 0
