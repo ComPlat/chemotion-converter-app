@@ -50,8 +50,8 @@ def is_match(s: str):
     # 5. Invalid Formats
     ("42.5.1", False),         # Multiple decimal separators (invalid)
     (".", False),              # Only decimal separator (invalid)
-    ("1e", False),             # Only scientific notation sign (invalid)
-    ("e", False),             # Scientific notation without exponent (invalid)
+    ("e", False),             # Only scientific notation sign (invalid)
+    ("1e", False),             # Scientific notation without exponent (invalid)
 
     # 6. Numbers with Commas (International)
     ("1,000", True),          # Number with commas as thousands separators
