@@ -3,18 +3,18 @@ version: '3.7'
 
 
 x-envs: &envs
-  CONVERTER_URL: "${CONVERTER_URL:-http://127.0.0.1}"
+  CONVERTER_URL: "${CONVERTER_URL:-http://127.0.0.1:8080}"
 
 services:
   web:
     build:
       context: .
-    image: mstarman/testconverter:0.1.1
+    image: mstarman/testconverter:0.1.2
     restart: unless-stopped
     environment:
       <<: *envs
     ports:
-      - ${PROJECT_WEB_PORT:-80}:80
+      - ${PROJECT_WEB_PORT:-8080}:80
     volumes:
       - ./profiles/profiles:/var/share/profiles
       - ./datasets:/var/share/datasets

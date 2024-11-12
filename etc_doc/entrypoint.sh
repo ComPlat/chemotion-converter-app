@@ -69,6 +69,7 @@ export GUNICORN_TIMEOUT=180
 export GUNICORN_PID_FILE=/run/chemotion-converter/pid
 export GUNICORN_ACCESS_LOG_FILE=/var/log/converter/access.log
 export GUNICORN_ERROR_LOG_FILE=/var/log/converter/error.log
+export MAX_CONTENT_LENGTH=250G
 
 pip install -r requirements/dev.txt
 # tail -f /dev/null
