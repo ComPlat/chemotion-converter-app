@@ -17,8 +17,8 @@ class XMLReader(Reader):
     identifier = 'xml_reader'
     priority = 10
 
-    def __init__(self, file: File):
-        super().__init__(file)
+    def __init__(self, file: File, *tar_content):
+        super().__init__(file, *tar_content)
         self._file_extensions = ['.xml']
         self._table = None
         self._data_tables = []
