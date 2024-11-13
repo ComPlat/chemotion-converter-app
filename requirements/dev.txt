@@ -6,3 +6,4 @@ pytest-dotenv
 pytest-cov
 pytest-flask
 GitPython
+pytest_timeout

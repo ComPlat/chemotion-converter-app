@@ -39,7 +39,8 @@ def _generate_profile_tests(src_path, file, _unused, res_path):
     TEST_DICT[os.path.join(src_path, file)] = test_name
 
     with open(TEST_FILE, 'a', encoding='utf8') as test_file:
-        test_file.write(f'\n\n\ndef {test_name}():'
+        test_file.write(f'\n\n\n@pytest.mark.timeout(300)'
+                        f'\ndef {test_name}():'
                         f'\n    global all_reader'
                         f'\n    (a, b)=compare_profile_result(r\'{src_path}\',r\'{res_path}\',r\'{file}\')'
                         f'\n    assert len(a) == len(b)'
@@ -128,7 +129,8 @@ def generate_profile_tests():
     TEST_IDX = 0
     TEST_DICT = {}
     with open(TEST_FILE, 'w+', encoding='utf8') as fp:
-        fp.write("from .utils_test import compare_profile_result\n"
+        fp.write("import pytest\n"
+                 "from .utils_test import compare_profile_result\n"
                  "from converter_app.readers import READERS as registry\n"
                  "from converter_app.models import Profile\n"
                  "from test_manager.utils_test import set_flask_test_config\n"
