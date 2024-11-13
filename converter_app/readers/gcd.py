@@ -15,8 +15,8 @@ class GcdReader(Reader):
     identifier = 'gcd_reader'
     priority = 5
 
-    def __init__(self, file):
-        super().__init__(file)
+    def __init__(self, file, *tar_content):
+        super().__init__(file, *tar_content)
         self.lines = None
 
         self._number_of_ch = 0
