@@ -68,7 +68,7 @@ def _generate_expected_profiles_results(src_path, file, _unused, res_path):
             mod = importlib.import_module('test_manager.test_profiles')
             getattr(mod, TEST_DICT[src_path_file])()
             return
-        except (ModuleNotFoundError, FileNotFoundError, AssertionError, JSONDecodeError):
+        except:
             pass
     print(f"Generating expected profiles results for {src_path_file}")
     with open(os.path.join(src_path, file), 'rb') as file_pointer:

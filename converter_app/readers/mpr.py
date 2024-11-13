@@ -3,11 +3,14 @@ import logging
 import tempfile
 
 import yadg
+from yadg.extractors.eclab.techniques import param_map
 
 from converter_app.readers.helper.base import Reader
 from converter_app.readers.helper.reader import Readers
 
 logger = logging.getLogger(__name__)
+if not any(x[1] == 2 for x in param_map["set_I/C"]):
+    param_map["set_I/C"] += ("UNKNWON", 2),  # guess
 
 
 class MprReader(Reader):
@@ -54,7 +57,6 @@ class MprReader(Reader):
 
             for _ in range(list(dict_value['dims'].values())[0]):
                 table['rows'].append([])
-
             self._convert_data_table(dict_value, table, 'coords')
             self._convert_data_table(dict_value, table, 'data_vars')
 
