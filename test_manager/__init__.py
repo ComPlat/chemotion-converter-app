@@ -32,7 +32,7 @@ def generate_expected_results(src_path, file, res_path, _unused):
             mod = importlib.import_module('test_manager.test_readers')
             getattr(mod, TEST_DICT[src_path_file])()
             return
-        except (ModuleNotFoundError, FileNotFoundError, AssertionError, JSONDecodeError):
+        except:
             pass
     print(f"Generating expected results for {src_path_file}")
     with open(src_path_file, 'rb') as file_pointer:
@@ -65,7 +65,8 @@ def generate_test(src_path, file, res_path, _unused):
     TEST_DICT[os.path.join(src_path, file)] = test_name
     with open(TEST_FILE, 'a', encoding='utf8') as test_file:
 
-        test_file.write(f'\n\n\ndef {test_name}():'
+        test_file.write(f'\n\n\n@pytest.mark.timeout(300)'
+                        f'\ndef {test_name}():'
                         f'\n    global all_reader'
                         f'\n    (b,a,c)=compare_reader_result(\'{src_path}\',\'{res_path}\',\'{file}\')'
                         f'\n    if not c:'
@@ -95,7 +96,8 @@ if __name__ == "__main__":
         TEST_IDX = 0
         TEST_DICT = {}
         with open(TEST_FILE, 'w+', encoding='utf8') as fp:
-            fp.write("from .utils_test import compare_reader_result\n"
+            fp.write("import pytest\n"
+                     "from .utils_test import compare_reader_result\n"
                      "from converter_app.readers import READERS as registry\n"
                      "\nall_reader = set()\n")
         basic_walk(generate_test)
