@@ -72,7 +72,8 @@ def generate_test(src_path, file, res_path, _unused):
     TEST_DICT[os.path.join(src_path, file)] = test_name
     with open(TEST_FILE, 'a', encoding='utf8') as test_file:
 
-        test_file.write(f'\n\n\ndef {test_name}():'
+        test_file.write(f'\n\n\n@pytest.mark.timeout(300)'
+                        f'\ndef {test_name}():'
                         f'\n    global all_reader'
                         f'\n    (b,a,c)=compare_reader_result(r\'{src_path}\',r\'{res_path}\',r\'{file}\')'
                         f'\n    if not c:'
