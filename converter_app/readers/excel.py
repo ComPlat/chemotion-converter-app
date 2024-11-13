@@ -40,10 +40,12 @@ class ExcelReader(Reader):
 
     def prepare_tables(self):
         tables = []
+        keys = []
 
         # loop over worksheets
         for ws in self.wb:
             self.append_table(tables)
+            keys = []
 
             previous_shape = None
             for row in ws.values:
@@ -55,13 +57,30 @@ class ExcelReader(Reader):
                     if tables[-1]['rows']:
                         # if a table is already there, this must be a new header
                         self.append_table(tables)
+                        keys = []
 
                     tables[-1]['header'].append('\t'.join([str(cell) for cell in row]))
+                    if len(keys) == 0:
+                        for cell in row:
+                            keys.append(str(cell))
+                    else:
+                        for cell in row:
+                            key = keys.pop(0)
+                            keys.append(str(cell))
+                            if key != 'None':
+                                tables[-1]['metadata'].add_unique(key, str(cell))
 
                 elif 'f' in shape:
                     if tables[-1]['rows'] and shape != previous_shape:
                         # start a new table if the shape has changed
                         self.append_table(tables)
+                        keys = []
+                    else:
+                        if len(keys) > 0:
+                            for cell in row:
+                                key = keys.pop(0)
+                                if key != 'None':
+                                    tables[-1]['metadata'].add_unique(key, str(cell))
 
                     # this row has floats but no strings, this is the "real" table
                     values = [row[i] for i, value in enumerate(shape) if value == 'f']

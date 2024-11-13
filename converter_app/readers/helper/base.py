@@ -174,6 +174,9 @@ class Reader:
             if cell is None:
                 shape.append(None)
             else:
+                if isinstance(cell, datetime):
+                    shape.append('f')
+                    continue
                 cell = str(cell).strip()
                 if cell in self.empty_values:
                     shape.append('')
