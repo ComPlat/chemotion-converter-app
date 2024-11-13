@@ -24,4 +24,4 @@ jobs:
           python test_manager/__init__.py -t -g -tp
       - name: Test the code with pytest
         run: |
-          pytest .
+          pytest -v --maxfail=3 .
