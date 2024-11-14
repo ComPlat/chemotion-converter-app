@@ -39,7 +39,7 @@ def _generate_profile_tests(src_path, file, _unused, res_path):
     TEST_DICT[os.path.join(src_path, file)] = test_name
 
     with open(TEST_FILE, 'a', encoding='utf8') as test_file:
-        test_file.write(f'\n\n\n@pytest.mark.timeout(300)'
+        test_file.write(f'\n\n\n@pytest.mark.timeout(60)'
                         f'\ndef {test_name}():'
                         f'\n    global all_reader'
                         f'\n    (a, b)=compare_profile_result(r\'{src_path}\',r\'{res_path}\',r\'{file}\')'
@@ -49,7 +49,8 @@ def _generate_profile_tests(src_path, file, _unused, res_path):
                         f'\n    if len(a) > 1:'
                         f'\n        all_profiles.add(a[1].get("profileId"))'
                         f'\n    for idx, is_val in enumerate(a):'
-                        f'\n        assert is_val == b[idx]')
+                        f'\n        is_equal =Simplifyed  is_val == b[idx]'
+                        f'\n        assert is_equal')
 
 
 def _generate_expected_profiles_results(src_path, file, _unused, res_path):
