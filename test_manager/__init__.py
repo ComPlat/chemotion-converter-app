@@ -1,11 +1,14 @@
 import argparse
+import importlib
 import json
 import os
 import re
-import shutil
 import sys
 import traceback
+from json import JSONDecodeError
+
 from werkzeug.datastructures import FileStorage
+
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
@@ -16,13 +19,23 @@ from test_manager.test_file_manager import PROFILE_PATH, PARENT_DIR, CURRENT_DIR
 
 TEST_FILE = os.path.abspath(os.path.join(CURRENT_DIR, './test_readers.py'))
 TEST_IDX = 0
+TEST_DICT = {}
 
 from converter_app.models import File
 from converter_app.readers import READERS as registry
 
 
 def generate_expected_results(src_path, file, res_path, _unused):
-    with open(os.path.join(src_path, file), 'rb') as file_pointer:
+    src_path_file = os.path.join(src_path, file)
+    if src_path_file in TEST_DICT:
+        try:
+            mod = importlib.import_module('test_manager.test_readers')
+            getattr(mod, TEST_DICT[src_path_file])()
+            return
+        except (ModuleNotFoundError, FileNotFoundError, AssertionError, JSONDecodeError):
+            pass
+    print(f"Generating expected results for {src_path_file}")
+    with open(src_path_file, 'rb') as file_pointer:
         file_storage = FileStorage(file_pointer)
         try:
             reader = registry.match_reader(File(file_storage))
@@ -48,8 +61,11 @@ def generate_test(src_path, file, res_path, _unused):
     TEST_IDX += 1
 
     test_name = re.sub(r'[^A-Za-z0-9]', '_', file)
+    test_name = f'test_{TEST_IDX}_{test_name}'
+    TEST_DICT[os.path.join(src_path, file)] = test_name
     with open(TEST_FILE, 'a', encoding='utf8') as test_file:
-        test_file.write(f'\n\n\ndef test_{TEST_IDX}_{test_name}():'
+
+        test_file.write(f'\n\n\ndef {test_name}():'
                         f'\n    global all_reader'
                         f'\n    (b,a,c)=compare_reader_result(\'{src_path}\',\'{res_path}\',\'{file}\')'
                         f'\n    if not c:'
@@ -75,12 +91,9 @@ if __name__ == "__main__":
     args = parser.parse_args()
     if args.github:
         load_profiles_from_git()
-    if args.expected:
-        if os.path.isdir(RES_READER_PATH):
-            shutil.rmtree(RES_READER_PATH)
-        basic_walk(generate_expected_results)
-    if args.tests:
+    if args.tests or args.expected:
         TEST_IDX = 0
+        TEST_DICT = {}
         with open(TEST_FILE, 'w+', encoding='utf8') as fp:
             fp.write("from .utils_test import compare_reader_result\n"
                      "from converter_app.readers import READERS as registry\n"
@@ -90,7 +103,9 @@ if __name__ == "__main__":
             fp.write(f'\n\n\n# Uncomment to check if all reader are tested.'
                      f'\n# def test_all_reader():'
                      f'\n#    assert sorted(all_reader) == sorted([x.__name__ for k,x in registry.readers.items()])')
+    if args.expected:
+        basic_walk(generate_expected_results)
+    if args.test_profiles or args.expected_profiles:
+        generate_profile_tests()
     if args.expected_profiles:
         generate_expected_profiles_results()
-    if args.test_profiles:
-        generate_profile_tests()

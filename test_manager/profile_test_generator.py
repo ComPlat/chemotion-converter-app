@@ -1,9 +1,11 @@
+import importlib
 import json
 import os
 import re
 import shutil
 import traceback
 import zipfile
+from json import JSONDecodeError
 
 from converter_app.writers.jcampzip import JcampZipWriter
 from test_manager.test_file_manager import CURRENT_DIR, RES_PROFILE_PATH
@@ -16,6 +18,7 @@ from converter_app.converters import Converter
 from test_manager.utils_test import set_flask_test_config
 
 TEST_IDX = 0
+TEST_DICT = {}
 TEST_FILE = os.path.abspath(os.path.join(CURRENT_DIR, './test_profiles.py'))
 
 
@@ -32,8 +35,11 @@ def _generate_profile_tests(src_path, file, _unused, res_path):
     TEST_IDX += 1
 
     test_name = re.sub(r'[^A-Za-z0-9]', '_', file)
+    test_name = f'test_{TEST_IDX}_{test_name}'
+    TEST_DICT[os.path.join(src_path, file)] = test_name
+
     with open(TEST_FILE, 'a', encoding='utf8') as test_file:
-        test_file.write(f'\n\n\ndef test_{TEST_IDX}_{test_name}():'
+        test_file.write(f'\n\n\ndef {test_name}():'
                         f'\n    global all_reader'
                         f'\n    (a, b)=compare_profile_result(\'{src_path}\',\'{res_path}\',\'{file}\')'
                         f'\n    assert len(a) == len(b)'
@@ -55,6 +61,16 @@ def _generate_expected_profiles_results(src_path, file, _unused, res_path):
     :return:
     """
 
+
+    src_path_file = os.path.join(src_path, file)
+    if src_path_file in TEST_DICT:
+        try:
+            mod = importlib.import_module('test_manager.test_profiles')
+            getattr(mod, TEST_DICT[src_path_file])()
+            return
+        except (ModuleNotFoundError, FileNotFoundError, AssertionError, JSONDecodeError):
+            pass
+    print(f"Generating expected profiles results for {src_path_file}")
     with open(os.path.join(src_path, file), 'rb') as file_pointer:
         file_storage = FileStorage(file_pointer)
         # os.makedirs(os.path.join(res_path, file) , exist_ok=True)
@@ -102,15 +118,15 @@ def _generate_expected_profiles_results(src_path, file, _unused, res_path):
 def generate_expected_profiles_results():
     app = set_flask_test_config()
     with app.app_context():
-        if os.path.isdir(RES_PROFILE_PATH):
-            shutil.rmtree(RES_PROFILE_PATH)
         basic_walk(_generate_expected_profiles_results)
 
 
 def generate_profile_tests():
     global TEST_IDX
+    global TEST_DICT
 
     TEST_IDX = 0
+    TEST_DICT = {}
     with open(TEST_FILE, 'w+', encoding='utf8') as fp:
         fp.write("from .utils_test import compare_profile_result\n"
                  "from converter_app.readers import READERS as registry\n"

@@ -1,4 +1,5 @@
 import copy
+import datetime
 import logging
 import os
 import re
@@ -364,15 +365,21 @@ class Converter:
         """
         converter = None
         matches = 0
-
+        latest_profile_uploaded = 0
         for profile in Profile.list(client_id):
             current_converter = cls(profile, file_data)
             current_matches = current_converter.match()
-
+            try:
+                profile_uploaded = datetime.datetime.fromisoformat(
+                    profile.as_dict['data']['metadata'].get('uploaded')).timestamp()
+            except (ValueError, TypeError):
+                profile_uploaded = 1
             logger.info('profile=%s matches=%s', profile.id, current_matches)
-
-            if current_matches is not False and current_matches > matches:
+            if (current_matches is not False and
+                    (current_matches > matches or current_matches == matches and
+                    profile_uploaded > latest_profile_uploaded)):
+                matches = max(matches, current_matches)
+                latest_profile_uploaded = profile_uploaded
                 converter = current_converter
-                matches = current_matches
 
         return converter

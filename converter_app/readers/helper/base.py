@@ -19,6 +19,15 @@ class Table(dict):
             'rows': []
         })
 
+    def add_metadata(self, key, value):
+        """
+        Add metadata to table
+        :param key: Key of the metadata
+        :param value: Value of the metadata
+        :return:
+        """
+        self['metadata'].add_unique(key, value)
+
     def __add__(self, other):
         raise NotImplementedError
 
@@ -47,7 +56,7 @@ class Reader:
     """
     Base reader. Any reader needs to extend this abstract reader.
     """
-    float_pattern = re.compile(r'(-?\d+[,.]*\d*[eE+\-\d]*)\S*')
+    float_pattern = re.compile(r'[-+]?[0-9]*[.,]?[0-9]+(?:[eE][-+]?[0-9]+)?\s*')
     float_de_pattern = re.compile(r'(-?[\d.]+,\d*[eE+\-\d]*)')
     float_us_pattern = re.compile(r'(-?[\d,]+.\d*[eE+\-\d]*)')
 
@@ -117,7 +126,7 @@ class Reader:
                         'name': f'Column #{idx + start_len_c}'
                     } for idx, value in enumerate(table['rows'][0][start_len_c:])]
                     table['columns'] = sorted(table['columns'], key=lambda x: int(x['key']))
-                for k,v in enumerate(table['columns'][:should_len_c]):
+                for k, v in enumerate(table['columns'][:should_len_c]):
                     v['key'] = f'{k}'
 
             table['metadata']['rows'] = str(len(table['rows']))
@@ -168,12 +177,24 @@ class Reader:
                 cell = str(cell).strip()
                 if cell in self.empty_values:
                     shape.append('')
-                elif self.float_pattern.match(cell):
+                elif self.float_pattern.fullmatch(cell):
                     shape.append('f')
                 else:
                     shape.append('s')
 
         return shape
+
+    def as_number(self, value: str) -> float | int:
+        """
+        Returns a numeric value if possible:
+
+        :raises ValueError: If not convertable
+        :param value: as string
+        :return: numeric value either int or float
+        """
+        if re.match(r'^[+-]?\d+$', value) is not None:
+            return int(value)
+        return float(self.get_value(value))
 
     def get_value(self, value: str) -> str:
         """

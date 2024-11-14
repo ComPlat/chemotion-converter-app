@@ -13,13 +13,13 @@ class JsonReader(Reader):
     """
     identifier = 'json_reader'
     priority = 20
-    _all_tables = {}
-    table = None
-    _max_steps = 10
 
     def __init__(self, file):
         super().__init__(file)
         self.file_as_dict = {}
+        self._all_tables = {}
+        self.table = None
+        self._max_steps = 10
 
     def check(self):
         """
