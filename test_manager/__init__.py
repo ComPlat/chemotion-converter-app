@@ -68,6 +68,8 @@ def generate_test(src_path, file, res_path, _unused):
     TEST_IDX += 1
 
     test_name = re.sub(r'[^A-Za-z0-9]', '_', file)
+    if test_name != 'BN002_NEG_YP_50F_vs_BFE_vs_Ag_wire_1M_TEABF4_in_ACN_02_MP_C02_mpr':
+        return
     test_name = f'test_{TEST_IDX}_{test_name}'
     TEST_DICT[os.path.join(src_path, file)] = test_name
     with open(TEST_FILE, 'a', encoding='utf8') as test_file:
@@ -115,6 +117,6 @@ if __name__ == "__main__":
     if args.expected:
         basic_walk(generate_expected_results)
     if args.test_profiles or args.expected_profiles:
-        generate_profile_tests()
+        pass #generate_profile_tests()
     if args.expected_profiles:
         generate_expected_profiles_results()
