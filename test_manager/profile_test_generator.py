@@ -49,7 +49,7 @@ def _generate_profile_tests(src_path, file, _unused, res_path):
                         f'\n    if len(a) > 1:'
                         f'\n        all_profiles.add(a[1].get("profileId"))'
                         f'\n    for idx, is_val in enumerate(a):'
-                        f'\n        is_equal =Simplifyed  is_val == b[idx]'
+                        f'\n        is_equal = is_val == b[idx]'
                         f'\n        assert is_equal')
 
 
