@@ -30,3 +30,5 @@ test_manager/test_readers.py
 /test_manager/test_profiles.py
 /logs/
 /.venv/
+
+logs/
