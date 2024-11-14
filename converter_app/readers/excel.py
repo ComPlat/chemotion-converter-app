@@ -40,7 +40,6 @@ class ExcelReader(Reader):
 
     def prepare_tables(self):
         tables = []
-        keys = []
 
         # loop over worksheets
         for ws in self.wb:
@@ -60,15 +59,7 @@ class ExcelReader(Reader):
                         keys = []
 
                     tables[-1]['header'].append('\t'.join([str(cell) for cell in row]))
-                    if len(keys) == 0:
-                        for cell in row:
-                            keys.append(str(cell))
-                    else:
-                        for cell in row:
-                            key = keys.pop(0)
-                            keys.append(str(cell))
-                            if key != 'None':
-                                tables[-1]['metadata'].add_unique(key, str(cell))
+                    self.set_metadata(keys, row, tables[-1])
 
                 elif 'f' in shape:
                     if tables[-1]['rows'] and shape != previous_shape:
@@ -76,12 +67,7 @@ class ExcelReader(Reader):
                         self.append_table(tables)
                         keys = []
                     else:
-                        if len(keys) > 0:
-                            for cell in row:
-                                key = keys.pop(0)
-                                if key != 'None':
-                                    tables[-1]['metadata'].add_unique(key, str(cell))
-
+                        self.set_metadata(keys, row, tables[-1], False)
                     # this row has floats but no strings, this is the "real" table
                     values = [row[i] for i, value in enumerate(shape) if value == 'f']
                     tables[-1]['rows'].append(values)
@@ -94,5 +80,19 @@ class ExcelReader(Reader):
                 previous_shape = shape
 
         return tables
+
+    def set_metadata(self, keys, row, table, set_keys=True):
+        """Sets the metadata for the table."""
+        if len(keys) == 0:
+            if set_keys:
+                for cell in row:
+                    keys.append(str(cell))
+        else:
+            for cell in row:
+                key = keys.pop(0)
+                if set_keys:
+                    keys.append(str(cell))
+                if key != 'None':
+                    table['metadata'].add_unique(key, str(cell))
 
 Readers.instance().register(ExcelReader)
