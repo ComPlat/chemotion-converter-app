@@ -73,8 +73,7 @@ def generate_test(src_path, file, res_path, _unused):
                         f'\n        assert a == {{}}'
                         f'\n        return'
                         f'\n    all_reader.add(a[\'metadata\'][\'reader\'])'
-                        f'\n    is_tables_equal = hash(json.dumps(a[\'tables\'], sort_keys=True)) == hash(json.dumps(b[\'tables\'], sort_keys=True))'
-                        f'\n    assert is_tables_equal'
+                        f'\n    compare_tables(a[\'tables\'], b[\'tables\'])'
                         f'\n    assert a[\'metadata\'][\'extension\'] == b[\'metadata\'][\'extension\']'
                         f'\n    assert a[\'metadata\'][\'reader\'] == b[\'metadata\'][\'reader\']'
                         f'\n    assert a[\'metadata\'][\'mime_type\'] == b[\'metadata\'][\'mime_type\']')
@@ -98,8 +97,7 @@ if __name__ == "__main__":
         TEST_DICT = {}
         with open(TEST_FILE, 'w+', encoding='utf8') as fp:
             fp.write("import pytest\n"
-                     "import json\n"
-                     "from .utils_test import compare_reader_result\n"
+                     "from .utils_test import compare_reader_result, compare_tables\n"
                      "from converter_app.readers import READERS as registry\n"
                      "\nall_reader = set()\n")
         basic_walk(generate_test)

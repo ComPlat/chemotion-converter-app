@@ -18,6 +18,25 @@ from converter_app.writers.jcampzip import JcampZipWriter
 
 FLASK_APP = None
 
+def _compare_row_val(val_res:str, val_exp:str):
+    assert val_res[:3] == val_exp[:3]
+
+def _compare_row(row_res, row_exp):
+    for idx, val_res in enumerate([str(x) for x in row_res]):
+        _compare_row_val(val_res, str(row_exp[idx]))
+
+def compare_tables(tables_res, tables_exp):
+    assert len(tables_res) == len(tables_exp)
+    for idx, table_res in enumerate(tables_res):
+        assert '\n'.join(table_res['header']) == '\n'.join(tables_exp[idx]['header'])
+        for key, value_res in table_res['metadata'].items():
+            assert value_res == tables_exp[idx]['metadata'][key]
+        assert table_res['columns'] == tables_exp[idx]['columns']
+        assert len(table_res['rows']) == len(tables_exp[idx]['rows'])
+        for row_idx, row_res in enumerate(table_res['rows']):
+            _compare_row(row_res,tables_exp[idx]['rows'][row_idx])
+
+
 def compare_reader_result(src_path, res_path, file):
     expected_result = {}
     try:
