@@ -65,7 +65,7 @@ def generate_test(src_path, file, res_path, _unused):
     TEST_DICT[os.path.join(src_path, file)] = test_name
     with open(TEST_FILE, 'a', encoding='utf8') as test_file:
 
-        test_file.write(f'\n\n\n@pytest.mark.timeout(300)'
+        test_file.write(f'\n\n\n@pytest.mark.timeout(60)'
                         f'\ndef {test_name}():'
                         f'\n    global all_reader'
                         f'\n    (b,a,c)=compare_reader_result(\'{src_path}\',\'{res_path}\',\'{file}\')'
@@ -73,7 +73,8 @@ def generate_test(src_path, file, res_path, _unused):
                         f'\n        assert a == {{}}'
                         f'\n        return'
                         f'\n    all_reader.add(a[\'metadata\'][\'reader\'])'
-                        f'\n    assert a[\'tables\'] == b[\'tables\']'
+                        f'\n    is_tables_equal = a[\'tables\'] == b[\'tables\']'
+                        f'\n    assert is_tables_equal'
                         f'\n    assert a[\'metadata\'][\'extension\'] == b[\'metadata\'][\'extension\']'
                         f'\n    assert a[\'metadata\'][\'reader\'] == b[\'metadata\'][\'reader\']'
                         f'\n    assert a[\'metadata\'][\'mime_type\'] == b[\'metadata\'][\'mime_type\']')
@@ -108,6 +109,6 @@ if __name__ == "__main__":
     if args.expected:
         basic_walk(generate_expected_results)
     if args.test_profiles or args.expected_profiles:
-        pass #generate_profile_tests()
+        generate_profile_tests()
     if args.expected_profiles:
         generate_expected_profiles_results()
