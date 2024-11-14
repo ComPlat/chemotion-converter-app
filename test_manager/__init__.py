@@ -73,7 +73,7 @@ def generate_test(src_path, file, res_path, _unused):
                         f'\n        assert a == {{}}'
                         f'\n        return'
                         f'\n    all_reader.add(a[\'metadata\'][\'reader\'])'
-                        f'\n    is_tables_equal = json.dumps(a[\'tables\'], sort_keys=True) == json.dumps(b[\'tables\'], sort_keys=True)'
+                        f'\n    is_tables_equal = hash(json.dumps(a[\'tables\'], sort_keys=True)) == hash(json.dumps(b[\'tables\'], sort_keys=True))'
                         f'\n    assert is_tables_equal'
                         f'\n    assert a[\'metadata\'][\'extension\'] == b[\'metadata\'][\'extension\']'
                         f'\n    assert a[\'metadata\'][\'reader\'] == b[\'metadata\'][\'reader\']'
