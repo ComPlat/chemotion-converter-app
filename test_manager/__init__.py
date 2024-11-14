@@ -68,8 +68,6 @@ def generate_test(src_path, file, res_path, _unused):
     TEST_IDX += 1
 
     test_name = re.sub(r'[^A-Za-z0-9]', '_', file)
-    if test_name.endswith('mpr'):
-        return
     test_name = f'test_{TEST_IDX}_{test_name}'
     TEST_DICT[os.path.join(src_path, file)] = test_name
     with open(TEST_FILE, 'a', encoding='utf8') as test_file:
