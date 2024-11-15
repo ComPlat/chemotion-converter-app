@@ -4,7 +4,7 @@ import zipfile
 import openpyxl
 
 from converter_app.readers.helper.reader import Readers
-from converter_app.readers.helper.base import Reader
+from converter_app.readers.helper.base import Reader, Table
 
 logger = logging.getLogger(__name__)
 
@@ -19,6 +19,8 @@ class ExcelReader(Reader):
     def __init__(self, file):
         super().__init__(file)
         self.wb = None
+        self._table_row_meta = Table()
+        self._table_col_meta = Table()
 
     def check(self):
         """
@@ -40,7 +42,8 @@ class ExcelReader(Reader):
 
     def prepare_tables(self):
         tables = []
-
+        # A, B, C
+        # C , C ,C ,C
         # loop over worksheets
         for ws in self.wb:
             self.append_table(tables)
@@ -52,14 +55,14 @@ class ExcelReader(Reader):
 
                 if 's' in shape:
                     # there is a string in this row, this cant be the table
-
+                    self._set_col_metadata(row)
                     if tables[-1]['rows']:
                         # if a table is already there, this must be a new header
                         self.append_table(tables)
                         keys = []
 
                     tables[-1]['header'].append('\t'.join([str(cell) for cell in row]))
-                    self.set_metadata(keys, row, tables[-1])
+                    self._set_row_metadata(keys, row, True)
 
                 elif 'f' in shape:
                     if tables[-1]['rows'] and shape != previous_shape:
@@ -67,7 +70,7 @@ class ExcelReader(Reader):
                         self.append_table(tables)
                         keys = []
                     else:
-                        self.set_metadata(keys, row, tables[-1], False)
+                        self._set_row_metadata(keys, row, False)
                     # this row has floats but no strings, this is the "real" table
                     values = [row[i] for i, value in enumerate(shape) if value == 'f']
                     tables[-1]['rows'].append(values)
@@ -78,10 +81,11 @@ class ExcelReader(Reader):
 
                 # store shape and row for the next iteration
                 previous_shape = shape
-
+        tables.append(self._table_row_meta)
+        tables.append(self._table_col_meta)
         return tables
 
-    def set_metadata(self, keys, row, table, set_keys=True):
+    def _set_row_metadata(self, keys, row, set_keys):
         """Sets the metadata for the table."""
         if len(keys) == 0:
             if set_keys:
@@ -93,6 +97,13 @@ class ExcelReader(Reader):
                 if set_keys:
                     keys.append(str(cell))
                 if key != 'None':
-                    table['metadata'].add_unique(key, str(cell))
+                    self._table_row_meta['metadata'].add_unique(key, str(cell))
+
+    def _set_col_metadata(self, row):
+        row = [x for x in row if x != 'None']
+        shape = self.get_shape(row)
+        if len(shape) < 4 and shape[0] == 's':
+            for val in row[1:]:
+                self._table_col_meta['metadata'].add_unique(row[0], str(val))
 
 Readers.instance().register(ExcelReader)
