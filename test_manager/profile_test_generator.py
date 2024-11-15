@@ -42,7 +42,7 @@ def _generate_profile_tests(src_path, file, _unused, res_path):
         test_file.write(f'\n\n\n@pytest.mark.timeout(60)'
                         f'\ndef {test_name}():'
                         f'\n    global all_reader'
-                        f'\n    (a, b)=compare_profile_result(\'{src_path}\',\'{res_path}\',\'{file}\')'
+                        f'\n    (a, b)=compare_profile_result(r\'{src_path}\',r\'{res_path}\',r\'{file}\')'
                         f'\n    assert len(a) == len(b)'
                         f'\n    if len(a) > 0:'
                         f'\n        all_reader.add(a[0])'

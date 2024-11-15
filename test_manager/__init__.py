@@ -68,7 +68,7 @@ def generate_test(src_path, file, res_path, _unused):
         test_file.write(f'\n\n\n@pytest.mark.timeout(60)'
                         f'\ndef {test_name}():'
                         f'\n    global all_reader'
-                        f'\n    (b,a,c)=compare_reader_result(\'{src_path}\',\'{res_path}\',\'{file}\')'
+                        f'\n    (b,a,c)=compare_reader_result(r\'{src_path}\',r\'{res_path}\',r\'{file}\')'
                         f'\n    if not c:'
                         f'\n        assert a == {{}}'
                         f'\n        return'
