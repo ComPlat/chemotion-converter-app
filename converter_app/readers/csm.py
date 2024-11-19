@@ -1,13 +1,13 @@
 import logging
 
 from converter_app.readers.helper.reader import Readers
-from converter_app.readers.helper.base import Reader
 from converter_app.readers.helper.unit_converter import convert_units, search_terms_matrix
+from converter_app.readers.html import HtmlReader
 
 logger = logging.getLogger(__name__)
 
 
-class CsmReader(Reader):
+class CsmReader(HtmlReader):
     """
         Implementation of the Csm Reader. It extends converter_app.readers.helper.base.Reader
     """
@@ -15,32 +15,19 @@ class CsmReader(Reader):
     priority = 10
 
     def check(self):
-        return self.file.suffix.lower() == '.html'
+        is_check = super().check()
+        if is_check:
+            return '<div id="metainfo">' in self.file.string
 
     def prepare_tables(self):
-        tables = []
+        tables = super().prepare_tables()
         table = self.append_table(tables)
-        begin = False
-        key = ''
-        for line in self.file.fp.readlines():
-            row = line.decode('utf-8').strip()
-            if not begin:
-                if row.find('<tbody>') >= 0:
-                    begin = True
-            else:
-                if row.find('</tbody>') >= 0:
-                    break
-                if row.find('<td>') >= 0:
-                    if key == '':
-                        key = row[4:-5]
-                        for term in search_terms_matrix:
-                            if key == term[1]:
-                                key = term[0]
-                    else:
-                        value = row[4:-5]
-                        table['metadata'][key] = value
-                        key = ''
-        table['metadata'] = convert_units(table['metadata'], 1)
+        for term in search_terms_matrix:
+            for key, val in tables[-2]['metadata'].items():
+                if key == term[1]:
+                    table['metadata'].add_unique(term[0], val)
+        table = self.append_table(tables)
+        table['metadata'] = convert_units(tables[-1]['metadata'] | tables[-2]['metadata'], 1)
         return tables
 
 
