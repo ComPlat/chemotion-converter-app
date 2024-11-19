@@ -67,12 +67,12 @@ def generate_test(src_path, file, res_path, _unused):
 
         test_file.write(f'\n\n\ndef {test_name}():'
                         f'\n    global all_reader'
-                        f'\n    (b,a,c)=compare_reader_result(\'{src_path}\',\'{res_path}\',\'{file}\')'
+                        f'\n    (b,a,c)=compare_reader_result(r\'{src_path}\',r\'{res_path}\',r\'{file}\')'
                         f'\n    if not c:'
                         f'\n        assert a == {{}}'
                         f'\n        return'
                         f'\n    all_reader.add(a[\'metadata\'][\'reader\'])'
-                        f'\n    assert a[\'tables\'] == b[\'tables\']'
+                        f'\n    compare_tables(a[\'tables\'], b[\'tables\'])'
                         f'\n    assert a[\'metadata\'][\'extension\'] == b[\'metadata\'][\'extension\']'
                         f'\n    assert a[\'metadata\'][\'reader\'] == b[\'metadata\'][\'reader\']'
                         f'\n    assert a[\'metadata\'][\'mime_type\'] == b[\'metadata\'][\'mime_type\']')
@@ -95,7 +95,8 @@ if __name__ == "__main__":
         TEST_IDX = 0
         TEST_DICT = {}
         with open(TEST_FILE, 'w+', encoding='utf8') as fp:
-            fp.write("from .utils_test import compare_reader_result\n"
+            fp.write("import pytest\n"
+                     "from .utils_test import compare_reader_result, compare_tables\n"
                      "from converter_app.readers import READERS as registry\n"
                      "\nall_reader = set()\n")
         basic_walk(generate_test)
