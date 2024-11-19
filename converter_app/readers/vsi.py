@@ -23,7 +23,10 @@ class VsiReader(XMLReader):
     def check(self):
         if not super().check():
             return False
-        return self.file.string.find('<![CDATA[')
+        text = self.file.string[:500]
+        result = '<DataContainer key="MetaData" typeid=' in text
+        result &= '<DataContainer typeid=' in text
+        return result
 
     def handle_node(self, node: ET.Element, xml_path: str, node_name: str):
         """

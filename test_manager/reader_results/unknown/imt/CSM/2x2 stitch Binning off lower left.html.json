@@ -1,0 +1,53 @@
+{
+  "tables": [
+    {
+      "header": [],
+      "metadata": {
+        "File created on": "2024-07-22T14:46:59",
+        "Operator": "DESKTOP-T5HEH2J",
+        "Device manufacturer": "NanoFocus",
+        "Device model": "",
+        "Serial number": "600330",
+        "Measurement device type": "NonContacting",
+        "Measurement method": "confocal DSCM",
+        "Software version": "8.8.2.34760",
+        "Length X": "3138 \u00b5m",
+        "Point distance X": "1.353 \u00b5m",
+        "Length Y": "3133 \u00b5m",
+        "Point distance Y": "1.352",
+        "Measurement position X": "28180",
+        "Measurement position Y": "66940",
+        "Measurement position Z": "2527",
+        "Optik": "1600.0 S",
+        "z Measurement Travel UL": "116.3",
+        "z Step width": "0.2344",
+        "Z drive": "Piezo",
+        "Light Intensity": "23.3 %",
+        "Exposure time": "40 ms",
+        "Gain": "0",
+        "Binning": "1.0 x",
+        "Algorithm": "MaxPeakCenterOfGravity",
+        "Stitching YN": "2.0 x",
+        "Stitching AlphaX": "-0.05139",
+        "Stitching AlphaY": "-0.0571",
+        "Stitching Mode": "2",
+        "Stitching PreprocessingAlgo": "Nulltransform",
+        "Stitching Overlapp": "80",
+        "Last calibration": "2024-06-27T13:29:37",
+        "Hardware version": "1105232__NF_CTRL /5.0.0.5",
+        "rows": "0",
+        "columns": "0"
+      },
+      "columns": [],
+      "rows": []
+    }
+  ],
+  "metadata": {
+    "file_name": "2x2 stitch Binning off lower left.html",
+    "content_type": "",
+    "mime_type": "text/html",
+    "extension": ".html",
+    "reader": "CsmReader",
+    "uploaded": "2024-11-15T12:53:06.230596"
+  }
+}

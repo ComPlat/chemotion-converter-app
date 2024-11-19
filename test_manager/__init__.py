@@ -27,7 +27,8 @@ from converter_app.readers import READERS as registry
 
 def generate_expected_results(src_path, file, res_path, _unused):
     src_path_file = os.path.join(src_path, file)
-    if src_path_file in TEST_DICT:
+    final_targe_file = os.path.join(res_path, file + '.json')
+    if os.path.exists(final_targe_file) and src_path_file in TEST_DICT:
         try:
             mod = importlib.import_module('test_manager.test_readers')
             getattr(mod, TEST_DICT[src_path_file])()
@@ -42,7 +43,7 @@ def generate_expected_results(src_path, file, res_path, _unused):
             if reader:
                 reader.process()
                 content = json.dumps(reader.as_dict)
-                with open(os.path.join(res_path, file + '.json'), 'w+', encoding='utf8') as f_res:
+                with open(final_targe_file, 'w+', encoding='utf8') as f_res:
                     f_res.write(content)
                     f_res.close()
             else:
