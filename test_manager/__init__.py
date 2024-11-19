@@ -1,4 +1,5 @@
 import argparse
+import datetime
 import importlib
 import json
 import os
@@ -24,6 +25,10 @@ TEST_DICT = {}
 from converter_app.models import File
 from converter_app.readers import READERS as registry
 
+def _json_default(o):
+    if isinstance(o, (datetime.date, datetime.datetime)):
+        return o.isoformat()
+
 
 def generate_expected_results(src_path, file, res_path, _unused):
     src_path_file = os.path.join(src_path, file)
@@ -42,7 +47,8 @@ def generate_expected_results(src_path, file, res_path, _unused):
             reader = registry.match_reader(File(file_storage))
             if reader:
                 reader.process()
-                content = json.dumps(reader.as_dict)
+                content = json.dumps(reader.as_dict,
+                                     default=_json_default)
                 with open(final_targe_file, 'w+', encoding='utf8') as f_res:
                     f_res.write(content)
                     f_res.close()
