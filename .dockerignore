@@ -1,0 +1,7 @@
+.idea
+chemotion_converter_app.egg-info
+profiles
+chemotion-converter-app.iml
+run_client.sh
+playground.py
+venv

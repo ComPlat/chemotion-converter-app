@@ -1,0 +1,26 @@
+[Unit]
+Description=chemotion-converter-app gunicorn daemon
+After=network.target
+
+[Service]
+User=chemotion
+Group=chemotion
+
+WorkingDirectory=/srv/chemotion
+EnvironmentFile=/srv/chemotion/.env
+
+ExecStart=/bin/sh -c '${GUNICORN_BIN} \
+  --workers ${GUNICORN_WORKER} \
+  --bind localhost:${GUNICORN_PORT} \
+  --timeout ${GUNICORN_TIMEOUT} \
+  --pid ${GUNICORN_PID_FILE} \
+  --access-logfile ${GUNICORN_ACCESS_LOG_FILE} \
+  --error-logfile ${GUNICORN_ERROR_LOG_FILE} \
+  "${FLASK_APP}:create_app()"'
+
+ExecReload=/bin/sh -c '/usr/bin/pkill -HUP -F ${GUNICORN_PID_FILE}'
+
+ExecStop=/bin/sh -c '/usr/bin/pkill -TERM -F ${GUNICORN_PID_FILE}'
+
+[Install]
+WantedBy=multi-user.target
