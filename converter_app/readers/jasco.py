@@ -13,8 +13,8 @@ class JascoReader(Reader):
     identifier = 'jasco_reader'
     priority = 99
 
-    def __init__(self, file):
-        super().__init__(file)
+    def __init__(self, file, *tar_content):
+        super().__init__(file, *tar_content)
         self.lines = None
         self.header_length = 8
 

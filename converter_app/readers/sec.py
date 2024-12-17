@@ -15,8 +15,8 @@ class SecReader(Reader):
     identifier = 'sec_reader'
     priority = 95
 
-    def __init__(self, file):
-        super().__init__(file)
+    def __init__(self, file, *tar_content):
+        super().__init__(file, *tar_content)
         self._has_header = False
         self._has_first_value = False
         self._is_table_empty = True

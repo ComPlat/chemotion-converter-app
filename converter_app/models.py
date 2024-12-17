@@ -1,6 +1,9 @@
 import json
 import logging
+import os
 import pathlib
+import tarfile
+import tempfile
 import uuid
 from collections import defaultdict
 
@@ -8,6 +11,7 @@ from pathlib import Path
 
 import magic
 from flask import current_app
+from werkzeug.datastructures import FileStorage
 
 from converter_app.utils import check_uuid
 
@@ -226,7 +230,15 @@ class File:
         """
         :return: The origin file name
         """
-        return self.fp.filename
+        return os.path.basename(self.fp.filename)
+
+    @property
+    def file_path(self):
+        """
+        This is only required for subfiles of a tar archive file
+        :return: The origin file path
+        """
+        return os.path.dirname(self.fp.filename)
 
     def features(self, name):
         """
@@ -246,3 +258,50 @@ class File:
         :param feature_content: Feature content
         """
         self._features[name] = feature_content
+
+    @property
+    def is_tar_archive(self) -> bool:
+        """
+        Checks if the file is a tar archive
+        :return: True if the file is a tar archive
+        """
+        return self.name.endswith(".gz") or self.name.endswith(".xz") or self.name.endswith(".tar")
+
+
+def extract_tar_archive(file: File, temp_dir: str) -> list[File]:
+    """
+    If the file is a tar archive, this function extracts it and returns a list of all files
+    :param file: Input file from the client
+    :return: A list of all files extracted
+    """
+    if not file.is_tar_archive:
+        return []
+    file_list = []
+    with tempfile.NamedTemporaryFile(delete=True) as temp_archive:
+        try:
+            # Save the contents of FileStorage to the temporary file
+            file.fp.save(temp_archive.name)
+            if file.name.endswith(".gz"):
+                mode = "r:gz"
+            elif file.name.endswith(".xz"):
+                mode = "r:xz"
+            elif file.name.endswith(".tar"):
+                mode = "r:"
+            else:
+                return []
+            with tarfile.open(temp_archive.name, mode) as tar:
+                tar.extractall(temp_dir)
+                tar.close()
+        except ValueError:
+            return []
+
+        for root, _, files in os.walk(temp_dir, topdown=False):
+            for name in files:
+                path_file_name = os.path.join(root, name)
+                content_type = magic.Magic(mime=True).from_file(path_file_name)
+                f = open(path_file_name, 'rb')
+                fs = FileStorage(stream=f, filename=path_file_name,
+                                 content_type=content_type)
+                file_list.append(File(fs))
+
+    return file_list
