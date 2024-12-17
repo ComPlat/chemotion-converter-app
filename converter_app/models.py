@@ -238,7 +238,7 @@ class File:
         This is only required for subfiles of a tar archive file
         :return: The origin file path
         """
-        return os.path.basename(self.fp.filename)
+        return os.path.dirname(self.fp.filename)
 
     def features(self, name):
         """
@@ -267,6 +267,7 @@ class File:
         """
         return self.name.endswith(".gz") or self.name.endswith(".xz") or self.name.endswith(".tar")
 
+
 def extract_tar_archive(file: File, temp_dir: str) -> list[File]:
     """
     If the file is a tar archive, this function extracts it and returns a list of all files
@@ -276,10 +277,10 @@ def extract_tar_archive(file: File, temp_dir: str) -> list[File]:
     if not file.is_tar_archive:
         return []
     file_list = []
-    with tempfile.NamedTemporaryFile(delete=True) as temp_pdf:
+    with tempfile.NamedTemporaryFile(delete=True) as temp_archive:
         try:
             # Save the contents of FileStorage to the temporary file
-            file.fp.save(temp_pdf.name)
+            file.fp.save(temp_archive.name)
             if file.name.endswith(".gz"):
                 mode = "r:gz"
             elif file.name.endswith(".xz"):
@@ -288,7 +289,7 @@ def extract_tar_archive(file: File, temp_dir: str) -> list[File]:
                 mode = "r:"
             else:
                 return []
-            with tarfile.open(temp_pdf.name, mode) as tar:
+            with tarfile.open(temp_archive.name, mode) as tar:
                 tar.extractall(temp_dir)
                 tar.close()
         except ValueError:
@@ -304,5 +305,3 @@ def extract_tar_archive(file: File, temp_dir: str) -> list[File]:
                 file_list.append(File(fs))
 
     return file_list
-
-
