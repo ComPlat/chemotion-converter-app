@@ -39,6 +39,11 @@ class GcdReader(Reader):
         """
         :return: True if it fits
         """
+        if self.is_tar_ball:
+            self.file = next((x for x in self.file_content if x.name.lower().endswith('.gcd.txt')), None)
+            if self.file is None:
+                return False
+
         result = self.file.suffix.lower() == '.txt'
         if result:
             self.lines = self._parse_input()
