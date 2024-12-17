@@ -16,8 +16,8 @@ class AscZipReader(Reader):
     identifier = 'asc_zip_reader'
     priority = 10
 
-    def __init__(self, file):
-        super().__init__(file)
+    def __init__(self, file, *tar_content):
+        super().__init__(file, *tar_content)
         self.filedata = {}
 
     # two or more chars in row

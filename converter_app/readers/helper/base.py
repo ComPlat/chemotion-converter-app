@@ -55,17 +55,28 @@ class MetadataContainer(dict[str:any]):
 class Reader:
     """
     Base reader. Any reader needs to extend this abstract reader.
+
+    Attributes:
+        identifier (str): The manufacturer of the car.
+        metadata (dict): Auto generated bsed on the convertion results.
+        tables (int): Auto generated bsed on the convertion results.
+        file (converter_app.modelsFile): Received File from the client (Chemotion)
+        file_content ([]converter_app.modelsFile): file_content contains all files archived in the 'file' if it is a tarball file.
+        is_tar_ball (bool): Ture if 'file' is a tarball file.
     """
+
     float_pattern = re.compile(r'[-+]?[0-9]*[.,]?[0-9]+(?:[eE][-+]?[0-9]+)?\s*')
     float_de_pattern = re.compile(r'(-?[\d.]+,\d*[eE+\-\d]*)')
     float_us_pattern = re.compile(r'(-?[\d,]+.\d*[eE+\-\d]*)')
 
-    def __init__(self, file):
-        self.empty_values = ['', 'n.a.']
+    def __init__(self, file, *tar_content):
+        self._empty_values = ['', 'n.a.']
         self.identifier = None
         self.metadata = None
         self.tables = None
         self.file = file
+        self.file_content = tar_content
+        self.is_tar_ball = len(tar_content) > 0
 
     @property
     def as_dict(self):
@@ -79,7 +90,7 @@ class Reader:
 
     def check(self):
         """
-        Abstract method check if the reader matches a file
+        Abstract method check if the reader matches a filelist
         :return: [bool] true if the Reader checks a file
         """
         raise NotImplementedError
@@ -178,7 +189,7 @@ class Reader:
                     shape.append('f')
                     continue
                 cell = str(cell).strip()
-                if cell in self.empty_values:
+                if cell in self._empty_values:
                     shape.append('')
                 elif self.float_pattern.fullmatch(cell):
                     shape.append('f')

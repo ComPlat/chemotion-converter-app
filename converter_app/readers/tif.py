@@ -16,8 +16,8 @@ class TifReader(Reader):
     priority = 96
 
 
-    def __init__(self, file):
-        super().__init__(file)
+    def __init__(self, file, *tar_content):
+        super().__init__(file, *tar_content)
         self._parsed_values = None
 
     def check(self):
