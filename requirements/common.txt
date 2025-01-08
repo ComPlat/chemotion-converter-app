@@ -10,6 +10,6 @@ gemmi~=0.6.6
 xlrd~=2.0.1
 Werkzeug~=2.2.2
 jcamp~=1.2.2
-PyMuPDF==1.23.7
+PyMuPDF==1.24.14
 pylint==3.0.3
 str2bool~=1.1

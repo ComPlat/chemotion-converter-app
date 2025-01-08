@@ -1,6 +1,6 @@
 import logging
 import tempfile
-import fitz
+import pymupdf
 from converter_app.readers.helper.base import Reader
 from converter_app.readers.helper.reader import Readers
 
@@ -34,13 +34,13 @@ class PdfReader(Reader):
                     self.file.fp.save(temp_pdf.name)
 
                     # Open the PDF file using PyMuPDF
-                    res = fitz.open(temp_pdf.name)
+                    res = pymupdf.open(temp_pdf.name)
                     self.file.set_features('text_data', res)
                     return res
                     # Access and manipulate the document using doc
 
                     # Close the document when you're done
-                except:
+                except (TypeError, pymupdf.EmptyFileError, pymupdf.FileNotFoundError, pymupdf.FileDataError, ValueError):
                     return {}
                 finally:
                     # Remove the temporary file
@@ -55,10 +55,15 @@ class PdfReader(Reader):
         for page_num in range(doc.page_count):
             page = doc[page_num]
             blocks = page.get_text('blocks')
-
+            try:
+                title = link.title.strip()
+            except AttributeError:
+                title = '_'
+            # DEBUG
+            print(title)
             if link is not None and link.page < page_num:
                 current_section = {}
-                text_data[link.title] = current_section
+                text_data[title] = current_section
                 link = link.next
 
             for block in blocks:
