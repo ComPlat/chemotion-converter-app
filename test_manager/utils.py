@@ -7,6 +7,7 @@ BLACK_LIST = [
     "EIS/BioLogic/ECLab-mgr/CHD048_CHD050_60C_C06.mgr",
     "EIS/BioLogic/ECLab-mpr/CHD048_CHD050_60C_C07.mpr",
     "EIS/BioLogic/ECLab-mgr/testCHD048_CHD050_401_201_60C_C01.mgr",
+    "UVVIS/Agilent/Cary300-Excel/MX33_MCell-KS_C-Rate-5C-Cycling-1C-LP30_WE-GEcc-n2-1p1784mg_CE-Li_Channel_22.xlsx",
 ]
 
 def _walk_step(src_path: str):
