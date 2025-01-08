@@ -1,0 +1,41 @@
+services:
+  dind:
+    image: docker:dind
+    privileged: true
+    container_name: dind
+    environment:
+      - DOCKER_TLS_CERTDIR=
+    ports:
+      - "2375:2375"  # Expose Docker daemon port
+    volumes:
+      - /tmp:/tmp
+      - dind-storage:/var/lib/docker
+      - ms-converter-home:/app
+    networks:
+      - shared_network
+    command: ["dockerd", "--host=tcp://0.0.0.0:2375", "--host=unix:///var/run/docker.sock"]
+
+  ms_test_converter:
+    image: lincoln1010/mass_spectrometry_file_converter:v1.0
+    container_name: ms_test_converter
+    ports:
+      - "5000:5000"
+    stdin_open: true
+    tty: true
+    depends_on:
+      - dind
+    environment:
+      - DOCKER_HOST=tcp://dind:2375  # Point to the dind service
+    volumes:
+      - /tmp:/tmp
+      - ms-converter-home:/app
+    networks:
+      - shared_network
+
+networks:
+  shared_network:
+    driver: bridge
+
+volumes:
+  dind-storage:
+  ms-converter-home:
