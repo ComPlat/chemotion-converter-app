@@ -78,7 +78,7 @@ class PdfReader(Reader):
         :return: dict: basic construct to contain line metadata
         """
         split_line = [x for x in line.split('\n') if x != '']
-        text_obj = {'text': line.replace('\n', ' ').strip(), 'meta': {}}
+        text_obj = {'text': line.replace('\n', ' ').strip(), 'meta': {}, 'line_split': split_line}
         if len(split_line) >= 2:
             text_obj['meta'][split_line[0]] = ' '.join(split_line[1:])
         return text_obj

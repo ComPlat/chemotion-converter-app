@@ -30,7 +30,7 @@ def compare_tables(tables_res, tables_exp):
     for idx, table_res in enumerate(tables_res):
         assert '\n'.join(table_res['header']) == '\n'.join(tables_exp[idx]['header'])
         for key, value_res in table_res['metadata'].items():
-            assert value_res == tables_exp[idx]['metadata'][key]
+            assert value_res == tables_exp[idx]['metadata'].get(key)
         assert table_res['columns'] == tables_exp[idx]['columns']
         assert len(table_res['rows']) == len(tables_exp[idx]['rows'])
         for row_idx, row_res in enumerate(table_res['rows']):
