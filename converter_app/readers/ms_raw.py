@@ -1,11 +1,16 @@
 import logging
+import os.path
+import tempfile
+import xml.etree.ElementTree as ET
 
 import requests
 from flask import current_app
+from werkzeug.datastructures import FileStorage
 
+from converter_app.models import File
 from converter_app.readers.helper.base import Reader
 from converter_app.readers.helper.reader import Readers
-from converter_app.readers.helper.asc_helper import AscHelper
+from converter_app.readers.xml_reader import XMLReader
 
 logger = logging.getLogger(__name__)
 
@@ -19,8 +24,7 @@ class MsRawReader(Reader):
 
     def __init__(self, file):
         super().__init__(file)
-
-    # two or more chars in row
+        self._xml_table = []
 
     def check(self):
         """
@@ -29,22 +33,50 @@ class MsRawReader(Reader):
         result = False
 
         if self.file.suffix.lower() == '.raw' and self.file.encoding == 'binary':
-            parsed_url = current_app.config.get('MS_CONVERTER')
+            try:
+                parsed_url = current_app.config.get('MS_CONVERTER')
+            except RuntimeError:
+                parsed_url = 'http://127.0.0.1:5050/'
+
             files = {
                 "main_file": (self.file.name, self.file.content, "image/x-panasonic-rw")
             }
 
-            res = requests.post(parsed_url + 'msconvert_conversion', data={'test':''}, files=files, timeout=60)
+            try:
+                res = requests.post(parsed_url + 'msconvert_conversion', data={'test': ''}, files=files, timeout=(5, 60))
+            except requests.exceptions.ConnectionError:
+                return False
             if res.status_code == 200:
+                try:
+                    self._pre_prepare_tables(res.content)
+                except ET.ParseError:
+                    return False
                 return True
 
         return result
 
-    def prepare_tables(self):
-        tables = []
-        table = self.append_table(tables)
+    def prepare_tables(self)-> list:
+        """
+        Abstract method converts the content of a file.
+        """
 
-        return tables
+        return self._xml_table
+
+    def _pre_prepare_tables(self, mz_xml_content):
+        with tempfile.TemporaryDirectory() as tmpdirname:
+            tmp_file_name = os.path.join(tmpdirname, os.path.basename(self.file.name) + '.xml')
+            with open(tmp_file_name, 'wb+') as f:
+                f.write(mz_xml_content)
+            with open(tmp_file_name, 'rb') as f:
+                content_type = "application/octet-stream"
+
+                fs = FileStorage(stream=f, filename=tmp_file_name,
+                                 content_type=content_type)
+                xml_file = File(fs)
+
+                xml_reader = XMLReader(xml_file)
+                xml_reader.check()
+                self._xml_table = xml_reader.prepare_tables()
 
 
 Readers.instance().register(MsRawReader)
