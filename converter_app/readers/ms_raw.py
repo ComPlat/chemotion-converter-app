@@ -36,7 +36,7 @@ class MsRawReader(Reader):
             try:
                 parsed_url = current_app.config.get('MS_CONVERTER')
             except RuntimeError:
-                parsed_url = 'http://127.0.0.1:5050/'
+                parsed_url = 'http://127.0.0.1:5000/'
 
             files = {
                 "main_file": (self.file.name, self.file.content, "image/x-panasonic-rw")
