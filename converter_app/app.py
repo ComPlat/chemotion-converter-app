@@ -10,11 +10,13 @@ users with the capability to effortlessly create profiles for the conversion pro
 import logging
 import os
 from pathlib import Path
+from urllib.parse import urlparse
 
 import dotenv
 import flask
+import requests
 from str2bool import str2bool
-from urllib.parse import urlparse
+
 from converter_app.router import get_clients, setup_flask_routing
 from converter_app.utils import human2bytes
 
@@ -33,14 +35,25 @@ def create_app():
     # setup logging
     logging.basicConfig(level=os.getenv('LOG_LEVEL', 'INFO').upper(),
                         filename=os.getenv('LOG_FILE'))
-    parsed_uri = urlparse(os.getenv('MS_CONVERTER', 'http://127.0.0.1:5050'))
+
+    logger = logging.getLogger(__name__)
+
+    parsed_url = urlparse(os.getenv('MS_CONVERTER', 'http://127.0.0.1:5050'))
+    parsed_host_uri = '{uri.scheme}://{uri.netloc}/'.format(uri=parsed_url)
+    try:
+        res = requests.get(parsed_host_uri, timeout=(5, 10))
+        assert res.text.replace('\n', '') == '{  "detail": {},  "message": "Not Found"}'
+    except requests.exceptions.ConnectionError:
+        logger.warning("MS_CONVERTER: MS converter HOST url not available!")
+    except AssertionError:
+        logger.warning("MS_CONVERTER: Unexpected return from MS converter! Most likely the MS converter is not available")
     # configure app
     app = flask.Flask(__name__, instance_relative_config=True)
     app.config.from_mapping(
         SECRET_KEY=os.getenv('SECRET_KEY'),
         PROFILES_DIR=os.getenv('PROFILES_DIR', 'profiles'),
         DATASETS_DIR=os.getenv('DATASETS_DIR', 'datasets'),
-        MS_CONVERTER='{uri.scheme}://{uri.netloc}/'.format(uri=parsed_uri),
+        MS_CONVERTER=parsed_host_uri,
         MAX_CONTENT_LENGTH=human2bytes(os.getenv('MAX_CONTENT_LENGTH', '64M')),
         CORS=str2bool(os.getenv('CORS', 'False').lower()),
         DEBUG=str2bool(os.getenv('DEBUG', 'False').lower()),
