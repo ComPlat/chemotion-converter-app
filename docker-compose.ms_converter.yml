@@ -2,7 +2,6 @@ services:
   dind:
     image: docker:dind
     privileged: true
-    container_name: dind
     environment:
       - DOCKER_TLS_CERTDIR=
     ports:
@@ -17,9 +16,8 @@ services:
 
   ms_test_converter:
     image: lincoln1010/mass_spectrometry_file_converter:v1.0
-    container_name: ms_test_converter
     ports:
-      - "5000:5000"
+      - "5050:5000"
     stdin_open: true
     tty: true
     depends_on:
