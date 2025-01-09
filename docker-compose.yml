@@ -1,6 +1,6 @@
 x-envs: &envs
   CONVERTER_URL: "${CONVERTER_URL:-http://127.0.0.1:8080}"
-  MS_CONVERTER: "${MS_CONVERTER:-http://ms_test_converter:5050}"
+  MS_CONVERTER: "http://ms_test_converter:5000"
 
 services:
   web:
@@ -17,6 +17,8 @@ services:
       - ./datasets:/var/share/datasets
       - ./logs:/var/log/converter
       - ./htpasswd:/var/share/htpasswd
+    networks:
+      - shared_network  # Add this line
   dind:
     image: docker:dind
     privileged: true
@@ -34,8 +36,9 @@ services:
 
   ms_test_converter:
     image: lincoln1010/mass_spectrometry_file_converter:v1.0
+    container_name: ms_test_converter
     ports:
-      - "5050:5000"
+      - "5000:5000"
     stdin_open: true
     tty: true
     depends_on:
