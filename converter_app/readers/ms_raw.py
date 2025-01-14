@@ -10,7 +10,7 @@ from werkzeug.datastructures import FileStorage
 from converter_app.models import File
 from converter_app.readers.helper.base import Reader
 from converter_app.readers.helper.reader import Readers
-from converter_app.readers.xml_reader import XMLReader
+from converter_app.readers.mzml import MSXmlReader
 
 logger = logging.getLogger(__name__)
 
@@ -36,26 +36,27 @@ class MsRawReader(Reader):
             try:
                 parsed_url = current_app.config.get('MS_CONVERTER')
             except RuntimeError:
-                parsed_url = 'http://127.0.0.1:5000/'
+                parsed_url = 'http://127.0.0.1:5050/'
 
             files = {
                 "main_file": (self.file.name, self.file.content, "image/x-panasonic-rw")
             }
 
             try:
-                res = requests.post(parsed_url + 'msconvert_conversion', data={'test': ''}, files=files, timeout=(5, 60))
+                res = requests.post(parsed_url + 'msconvert_conversion', data={'test': ''}, files=files,
+                                    timeout=(5, 60))
             except requests.exceptions.ConnectionError:
                 return False
+
             if res.status_code == 200:
                 try:
                     self._pre_prepare_tables(res.content)
                 except ET.ParseError:
                     return False
-                return True
 
         return result
 
-    def prepare_tables(self)-> list:
+    def prepare_tables(self) -> list:
         """
         Abstract method converts the content of a file.
         """
@@ -64,7 +65,7 @@ class MsRawReader(Reader):
 
     def _pre_prepare_tables(self, mz_xml_content):
         with tempfile.TemporaryDirectory() as tmpdirname:
-            tmp_file_name = os.path.join(tmpdirname, os.path.basename(self.file.name) + '.xml')
+            tmp_file_name = os.path.join(tmpdirname, os.path.basename(self.file.name) + '.mzML')
             with open(tmp_file_name, 'wb+') as f:
                 f.write(mz_xml_content)
             with open(tmp_file_name, 'rb') as f:
@@ -74,7 +75,7 @@ class MsRawReader(Reader):
                                  content_type=content_type)
                 xml_file = File(fs)
 
-                xml_reader = XMLReader(xml_file)
+                xml_reader = MSXmlReader(xml_file)
                 xml_reader.check()
                 self._xml_table = xml_reader.prepare_tables()
 

@@ -6,15 +6,13 @@ import traceback
 import zipfile
 
 import flask
-
 from werkzeug.datastructures import FileStorage
 
-from converter_app.models import File
-
-from converter_app.readers import READERS as registry
-from test_manager.test_file_manager import PROFILE_PATH
 from converter_app.converters import Converter
+from converter_app.models import File
+from converter_app.readers import READERS as registry
 from converter_app.writers.jcampzip import JcampZipWriter
+from test_manager.test_file_manager import PROFILE_PATH
 
 FLASK_APP = None
 
