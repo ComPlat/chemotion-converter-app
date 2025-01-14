@@ -14,3 +14,4 @@ PyMuPDF==1.23.7
 pylint==3.0.3
 str2bool~=1.1
 requests~=2.32.3
+pymzml~=2.5.10

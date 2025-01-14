@@ -1,10 +1,9 @@
 import logging
-
 import xml.etree.ElementTree as ET
 
 from converter_app.models import File
+from converter_app.readers.helper.base import Reader, MetadataContainer
 from converter_app.readers.helper.reader import Readers
-from converter_app.readers.helper.base import Reader
 
 logger = logging.getLogger(__name__)
 
@@ -22,7 +21,7 @@ class XMLReader(Reader):
         self._file_extensions = ['.xml']
         self._table = None
         self._data_tables = []
-        self._potential_data_tables = {}
+        self._potential_data_tables = MetadataContainer({})
 
     def check(self):
         return self.file.suffix.lower() in self._file_extensions
@@ -76,7 +75,7 @@ class XMLReader(Reader):
             else:
                 self._potential_data_tables[key] = None
         elif m:
-            self._potential_data_tables[key] = self._generate_data_table(['f'], key, [val], node)
+            self._potential_data_tables.add_unique(key, self._generate_data_table(['f'], key, [val], node))
         self._table.add_metadata(key, val)
 
     def _read_node(self, node: ET.Element, xml_path: str = '#'):
@@ -128,8 +127,10 @@ class XMLReader(Reader):
             for i, v in enumerate(table_col['values']):
                 self._table['rows'][i].append(v)
 
-            for k, v in table_col['node'].attrib.items():
-                self._table.add_metadata(f'{tag_name}.{k}', v)
+            self._read_node(table_col['node'])
+
+            #for k, v in table_col['node'].attrib.items():
+            #    self._table.add_metadata(f'{tag_name}.{k}', v)
 
 
 Readers.instance().register(XMLReader)
