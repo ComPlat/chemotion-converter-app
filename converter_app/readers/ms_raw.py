@@ -51,6 +51,7 @@ class MsRawReader(Reader):
             if res.status_code == 200:
                 try:
                     self._pre_prepare_tables(res.content)
+                    result = True
                 except ET.ParseError:
                     return False
 
