@@ -1,12 +1,13 @@
 x-envs: &envs
   CONVERTER_URL: "${CONVERTER_URL:-http://127.0.0.1:8080}"
   MS_CONVERTER: "http://ms_test_converter:5000"
+  TIMEOUT: 500
 
 services:
   web:
     build:
       context: .
-    image: mstarman/testconverter:0.1.3
+    image: mstarman/testconverter:0.1.4
     restart: unless-stopped
     environment:
       <<: *envs
