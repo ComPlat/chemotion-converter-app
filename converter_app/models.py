@@ -190,7 +190,6 @@ class Profile:
                 if file_path.suffix == '.json':
                     profile_id = str(file_path.with_suffix('').name)
                     profile_data = cls.load(file_path)
-                    profile_id = profile_data.get('id', profile_id)
                     if next((x for x in all_ids if x == profile_id), None) is None:
                         yield cls(profile_data, client_id, profile_id)
 
