@@ -36,7 +36,7 @@ services:
     command: ["dockerd", "--host=tcp://0.0.0.0:2375", "--host=unix:///var/run/docker.sock"]
 
   ms_test_converter:
-    image: lincoln1010/mass_spectrometry_file_converter:v1.0
+    image: lincoln1010/mass_spectrometry_file_converter:v2.1
     container_name: ms_test_converter
     ports:
       - "5000:5000"
@@ -45,7 +45,9 @@ services:
     depends_on:
       - dind
     environment:
-      - DOCKER_HOST=tcp://dind:2375  # Point to the dind service
+      - DOCKER_HOST=tcp://dind:2375 # Point to the dind service
+      - CPU = 2
+      - THREAD = 2
     volumes:
       - /tmp:/tmp
       - ms-converter-home:/app
