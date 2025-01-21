@@ -6,7 +6,6 @@ import tarfile
 import tempfile
 import uuid
 from collections import defaultdict
-
 from pathlib import Path
 
 import magic
@@ -114,7 +113,7 @@ class Profile:
                 self.id = str(uuid.uuid4())
 
         file_path = profiles_path.joinpath(self.id).with_suffix('.json')
-        with open(file_path, 'w', encoding='utf8') as fp:
+        with open(file_path, 'w+', encoding='utf8') as fp:
             json.dump(self.data, fp, sort_keys=True, indent=4)
 
     def delete(self):
@@ -175,6 +174,29 @@ class Profile:
         return []
 
     @classmethod
+    def list_including_default(cls, client_id):
+        """
+        List all profiles of one user/client and adds the default profiles
+        :param client_id: [str] Username
+        :return:
+        """
+        all_ids = []
+        for p in cls.list(client_id):
+            all_ids.append(p.id)
+            yield p
+        default_profiles_path = Path(os.path.join(os.path.dirname(__file__), 'profiles'))
+        if default_profiles_path.exists():
+            for file_path in sorted(Path.iterdir(default_profiles_path)):
+                if file_path.suffix == '.json':
+                    profile_id = str(file_path.with_suffix('').name)
+                    profile_data = cls.load(file_path)
+                    profile_id = profile_data.get('id', profile_id)
+                    if next((x for x in all_ids if x == profile_id), None) is None:
+                        yield cls(profile_data, client_id, profile_id)
+
+        return []
+
+    @classmethod
     def retrieve(cls, client_id, profile_id):
         """
         Profile factory loads profile
@@ -183,11 +205,15 @@ class Profile:
         :return:
         """
         profiles_path = Path(current_app.config['PROFILES_DIR']).joinpath(client_id)
+        default_profiles_path = Path(os.path.join(os.path.dirname(__file__), 'profiles'))
 
         # make sure that its really a uuid, this should prevent file system traversal
         if check_uuid(profile_id):
             file_path = profiles_path.joinpath(profile_id).with_suffix('.json')
+            if not file_path.is_file():
+                file_path = default_profiles_path.joinpath(profile_id).with_suffix('.json')
             if file_path.is_file():
+
                 profile_data = cls.load(file_path)
                 return cls(profile_data, client_id, profile_id)
 
