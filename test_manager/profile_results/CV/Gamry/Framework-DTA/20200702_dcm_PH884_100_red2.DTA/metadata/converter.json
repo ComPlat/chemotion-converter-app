@@ -216,7 +216,7 @@
         "value": "0,00000E+000"
       },
       "result": {
-        "value": "0,00000E+000",
+        "value": "0.00000E+000",
         "tableIndex": 0
       }
     },
@@ -275,7 +275,7 @@
         "value": "-1,20000E+000"
       },
       "result": {
-        "value": "4,00000E-001",
+        "value": "4.00000E-001",
         "tableIndex": 0
       }
     },
@@ -334,7 +334,7 @@
         "value": "1,10000E+000"
       },
       "result": {
-        "value": "-1,00000E+000",
+        "value": "-1.00000E+000",
         "tableIndex": 0
       }
     },
@@ -393,7 +393,7 @@
         "value": "0,00000E+000"
       },
       "result": {
-        "value": "0,00000E+000",
+        "value": "0.00000E+000",
         "tableIndex": 0
       }
     },
@@ -491,10 +491,10 @@
         "software_version": "7.8.1",
         "software": "Framework",
         "time": "18:22:48",
-        "voltage_start": "0,00000E+000",
-        "voltage_limit_one": "4,00000E-001",
-        "voltage_limit_two": "-1,00000E+000",
-        "voltage_limit_end": "0,00000E+000",
+        "voltage_start": "0.00000E+000",
+        "voltage_limit_one": "4.00000E-001",
+        "voltage_limit_two": "-1.00000E+000",
+        "voltage_limit_end": "0.00000E+000",
         "serial": "IFC1010-23191",
         "instrument": "Potentiostat"
       }
@@ -512,7 +512,7 @@
         "cycles": "3",
         "software_version": "7.8.1",
         "software": "Framework",
-        "voltage_limit_end": "0,00000E+000",
+        "voltage_limit_end": "0.00000E+000",
         "serial": "IFC1010-23191"
       }
     },
@@ -529,7 +529,7 @@
         "cycles": "3",
         "software_version": "7.8.1",
         "software": "Framework",
-        "voltage_limit_end": "0,00000E+000",
+        "voltage_limit_end": "0.00000E+000",
         "serial": "IFC1010-23191"
       }
     },
@@ -546,7 +546,7 @@
         "cycles": "3",
         "software_version": "7.8.1",
         "software": "Framework",
-        "voltage_limit_end": "0,00000E+000",
+        "voltage_limit_end": "0.00000E+000",
         "serial": "IFC1010-23191"
       }
     }
