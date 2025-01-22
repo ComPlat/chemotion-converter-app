@@ -66,8 +66,10 @@ class Reader:
     """
 
     float_pattern = re.compile(r'[-+]?[0-9]*[.,]?[0-9]+(?:[eE][-+]?[0-9]+)?\s*')
+    int_pattern = re.compile(r'[+-]?\d+')
     float_de_pattern = re.compile(r'(-?[\d.]+,\d*[eE+\-\d]*)')
     float_us_pattern = re.compile(r'(-?[\d,]+.\d*[eE+\-\d]*)')
+    float_on_zeros = re.compile(r'.0*$')
 
     def __init__(self, file, *tar_content):
         self._empty_values = ['', 'n.a.']
@@ -142,6 +144,15 @@ class Reader:
 
             table['metadata']['rows'] = str(len(table['rows']))
             table['metadata']['columns'] = str(len(table['columns']))
+            # Necessary: dictionary changed size during iteration
+            keys_vals = list(table['metadata'].items())
+            for key, value in keys_vals:
+                if isinstance(value, str):
+                    origin_val = table['metadata'][key]
+                    new_val = self._get_value_as_decimal(value)
+                    if origin_val != new_val:
+                        table['metadata'][key] = new_val
+
         return tables
 
     def prepare_tables(self) -> list[Table]:
@@ -206,7 +217,7 @@ class Reader:
         :param value: as string
         :return: numeric value either int or float
         """
-        if re.match(r'^[+-]?\d+$', value) is not None:
+        if self.int_pattern.fullmatch(value) is not None:
             return int(value)
         return float(self.get_value(value))
 
@@ -216,11 +227,28 @@ class Reader:
         :param value: Sting value
         :return: The argument as standard float if necessary
         """
-        if self.float_de_pattern.match(value):
-            # remove any digit group seperators and replace the comma with a period
-            return value.replace('.', '').replace(',', '.')
-        if self.float_us_pattern.match(value):
-            # just remove the digit group seperators
-            return value.replace(',', '')
+        return self._get_value(value)
 
+    def _get_value_as_decimal(self, value: str) -> any:
+        if value is None:
+            return value
+        val = self._get_value(str(value))
+        if self.float_pattern.fullmatch(val) is not None and 'e' in value.lower() and ',' in value.lower():
+            return val
         return value
+
+    def _get_value(self, value: str) -> str:
+        """
+        Checks if values is a stringified float and makes it to a standard.
+        :param value: Sting value
+        :return: The argument as standard float if necessary
+        """
+        if isinstance(value, str) and self.float_pattern.fullmatch(value):
+            if self.float_de_pattern.match(value):
+                # remove any digit group seperators and replace the comma with a period
+                return value.replace('.', '').replace(',', '.')
+            if self.float_us_pattern.match(value):
+                # just remove the digit group seperators
+                return value.replace(',', '')
+
+        return str(value)
