@@ -1,10 +1,10 @@
 import logging
 
-from numpy import ndarray
 from jcamp import jcamp_read
+from numpy import ndarray
 
-from converter_app.readers.helper.reader import Readers
 from converter_app.readers.helper.base import Reader
+from converter_app.readers.helper.reader import Readers
 
 logger = logging.getLogger(__name__)
 
@@ -20,12 +20,20 @@ class JcampReader(Reader):
         """
         :return: True if it fits
         """
-        result = self.file.suffix.lower() in ['.dx', '.jdx', '.jcm']
+
+        jsamp_extentions = ['.dx', '.jdx', '.jcm']
+
+        if self.is_tar_ball:
+            self.file = next((x for x in self.file_content if x.suffix.lower() in jsamp_extentions), None)
+            if self.file is None:
+                return False
+
+        result = self.file.suffix.lower() in jsamp_extentions
 
         logger.debug('result=%s', result)
         return result
 
-    def _add_to_meta(self, table, k, src):
+    def _add_to_meta(self, table, key, src):
         if isinstance(src, list):
             src_iter = enumerate(src)
         elif isinstance(src, dict):
@@ -33,7 +41,7 @@ class JcampReader(Reader):
         elif isinstance(src, ndarray) or src is None:
             return
         else:
-            table['metadata'][k] = str(src)[:255]
+            table['metadata'][key] = str(src)[:255]
             return
         for (k, v) in src_iter:
             self._add_to_meta(table, k, v)
@@ -43,8 +51,8 @@ class JcampReader(Reader):
         table = self.append_table(tables)
         res = jcamp_read(self.file.fp)
         self._add_to_meta(table, None, res)
-        table['metadata']['rows'] = str(0)
-        table['metadata']['columns'] = str(0)
+        table['rows'] = [[res['y'][i], val] for i, val in enumerate(res['x'])]
+
         return tables
 
 
