@@ -51,7 +51,8 @@ class JcampReader(Reader):
         table = self.append_table(tables)
         res = jcamp_read(self.file.fp)
         self._add_to_meta(table, None, res)
-        table['rows'] = [[res['y'][i], val] for i, val in enumerate(res['x'])]
+        if self.is_tar_ball:
+            table['rows'] = [[res['y'][i], val] for i, val in enumerate(res['x'])]
 
         return tables
 
