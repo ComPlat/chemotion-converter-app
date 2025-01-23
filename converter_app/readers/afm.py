@@ -31,6 +31,9 @@ class AfmReader(Reader):
             except UnicodeDecodeError:
                 continue
 
+            if len(row) < 2 or row[0] != '\\':
+                continue
+
             if re.search(r'[^-<|>!?+*:.,#@%&~_"\'/\\a-zA-Z0-9\[\](){}\s]', row):
                 continue
 
@@ -42,6 +45,8 @@ class AfmReader(Reader):
                 header = False
             else:
                 k_v = [x.strip() for x in row[1:].split(':', 1)]
+                if len(k_v) != 2:
+                    continue
                 table['metadata'].add_unique(k_v[0], k_v[-1])
 
         extracted_table = self.append_table(tables)
