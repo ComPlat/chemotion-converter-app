@@ -1,4 +1,5 @@
 import argparse
+import datetime
 import importlib
 import json
 import os
@@ -8,7 +9,6 @@ import traceback
 from json import JSONDecodeError
 
 from werkzeug.datastructures import FileStorage
-
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
@@ -24,10 +24,15 @@ TEST_DICT = {}
 from converter_app.models import File
 from converter_app.readers import READERS as registry
 
+def _json_default(o):
+    if isinstance(o, (datetime.date, datetime.datetime)):
+        return o.isoformat()
+
 
 def generate_expected_results(src_path, file, res_path, _unused):
     src_path_file = os.path.join(src_path, file)
-    if src_path_file in TEST_DICT:
+    final_targe_file = os.path.join(res_path, file + '.json')
+    if os.path.exists(final_targe_file) and src_path_file in TEST_DICT:
         try:
             mod = importlib.import_module('test_manager.test_readers')
             getattr(mod, TEST_DICT[src_path_file])()
@@ -41,8 +46,9 @@ def generate_expected_results(src_path, file, res_path, _unused):
             reader = registry.match_reader(File(file_storage))
             if reader:
                 reader.process()
-                content = json.dumps(reader.as_dict)
-                with open(os.path.join(res_path, file + '.json'), 'w+', encoding='utf8') as f_res:
+                content = json.dumps(reader.as_dict,
+                                     default=_json_default)
+                with open(final_targe_file, 'w+', encoding='utf8') as f_res:
                     f_res.write(content)
                     f_res.close()
             else:
@@ -67,12 +73,12 @@ def generate_test(src_path, file, res_path, _unused):
 
         test_file.write(f'\n\n\ndef {test_name}():'
                         f'\n    global all_reader'
-                        f'\n    (b,a,c)=compare_reader_result(\'{src_path}\',\'{res_path}\',\'{file}\')'
+                        f'\n    (b,a,c)=compare_reader_result(r\'{src_path}\',r\'{res_path}\',r\'{file}\')'
                         f'\n    if not c:'
                         f'\n        assert a == {{}}'
                         f'\n        return'
                         f'\n    all_reader.add(a[\'metadata\'][\'reader\'])'
-                        f'\n    assert a[\'tables\'] == b[\'tables\']'
+                        f'\n    compare_tables(a[\'tables\'], b[\'tables\'])'
                         f'\n    assert a[\'metadata\'][\'extension\'] == b[\'metadata\'][\'extension\']'
                         f'\n    assert a[\'metadata\'][\'reader\'] == b[\'metadata\'][\'reader\']'
                         f'\n    assert a[\'metadata\'][\'mime_type\'] == b[\'metadata\'][\'mime_type\']')
@@ -89,13 +95,14 @@ if __name__ == "__main__":
     parser.add_argument('-tp', '--test_profiles', action='store_true')
     parser.add_argument('-g', '--github', action='store_true')
     args = parser.parse_args()
-    if args.github or args.expected or args.tests or args.test_profiles or args.expected_profiles:
+    if args.github:
         load_profiles_from_git()
     if args.tests or args.expected:
         TEST_IDX = 0
         TEST_DICT = {}
         with open(TEST_FILE, 'w+', encoding='utf8') as fp:
-            fp.write("from .utils_test import compare_reader_result\n"
+            fp.write("import pytest\n"
+                     "from .utils_test import compare_reader_result, compare_tables\n"
                      "from converter_app.readers import READERS as registry\n"
                      "\nall_reader = set()\n")
         basic_walk(generate_test)

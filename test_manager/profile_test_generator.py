@@ -2,19 +2,18 @@ import importlib
 import json
 import os
 import re
-import shutil
 import traceback
 import zipfile
 from json import JSONDecodeError
 
-from converter_app.writers.jcampzip import JcampZipWriter
-from test_manager.test_file_manager import CURRENT_DIR, RES_PROFILE_PATH
-from test_manager.utils import basic_walk
 from werkzeug.datastructures import FileStorage
 
+from converter_app.converters import Converter
 from converter_app.models import File
 from converter_app.readers import READERS as registry
-from converter_app.converters import Converter
+from converter_app.writers.jcampzip import JcampZipWriter
+from test_manager.test_file_manager import CURRENT_DIR
+from test_manager.utils import basic_walk
 from test_manager.utils_test import set_flask_test_config
 
 TEST_IDX = 0
@@ -41,7 +40,7 @@ def _generate_profile_tests(src_path, file, _unused, res_path):
     with open(TEST_FILE, 'a', encoding='utf8') as test_file:
         test_file.write(f'\n\n\ndef {test_name}():'
                         f'\n    global all_reader'
-                        f'\n    (a, b)=compare_profile_result(\'{src_path}\',\'{res_path}\',\'{file}\')'
+                        f'\n    (a, b)=compare_profile_result(r\'{src_path}\',r\'{res_path}\',r\'{file}\')'
                         f'\n    assert len(a) == len(b)'
                         f'\n    if len(a) > 0:'
                         f'\n        all_reader.add(a[0])'

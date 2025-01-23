@@ -1,6 +1,8 @@
 import logging
 import tempfile
+
 import fitz
+
 from converter_app.readers.helper.base import Reader
 from converter_app.readers.helper.reader import Readers
 
@@ -14,8 +16,8 @@ class PdfReader(Reader):
     identifier = 'pdf_reader'
     priority = 100
 
-    def __init__(self, file):
-        super().__init__(file)
+    def __init__(self, file, *tar_content):
+        super().__init__(file, *tar_content)
         self.text_data = None
 
     def check(self):

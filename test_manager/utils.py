@@ -2,6 +2,12 @@ import os
 
 from test_manager.test_file_manager import DATA_FILE_PATH, RES_PROFILE_PATH, RES_READER_PATH
 
+BLACK_LIST = [
+    "EIS/BioLogic/ECLab-mgr/CHD048_CHD050_60C_C05.mgr",
+    "EIS/BioLogic/ECLab-mgr/CHD048_CHD050_60C_C06.mgr",
+    "EIS/BioLogic/ECLab-mpr/CHD048_CHD050_60C_C07.mpr",
+    "EIS/BioLogic/ECLab-mgr/testCHD048_CHD050_401_201_60C_C01.mgr",
+]
 
 def _walk_step(src_path: str):
     for entry in os.listdir(src_path):
@@ -28,5 +34,9 @@ def basic_walk(callback):
                 os.makedirs(res_profile_path, exist_ok=True)
                 os.makedirs(res_reader_path, exist_ok=True)
                 for file in os.listdir(software_path):
-                    print('/'.join([ontology, device, software, file]))
-                    callback(software_path, file, res_reader_path, res_profile_path)
+                    file_path = '/'.join([ontology, device, software, file])
+                    print(file_path)
+                    if file_path not in BLACK_LIST:
+                        callback(software_path, file, res_reader_path, res_profile_path)
+                    else:
+                        print(f"Blacklisted: {file_path}")

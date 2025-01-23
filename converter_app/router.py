@@ -8,11 +8,11 @@ users with the capability to effortlessly create profiles for the conversion pro
 """
 import json
 import os
-
 from pathlib import Path
+
 from flask import Flask, Response, abort, jsonify, make_response, request
-from flask_httpauth import HTTPBasicAuth
 from flask_cors import CORS
+from flask_httpauth import HTTPBasicAuth
 
 from converter_app.converters import Converter
 from converter_app.datasets import Dataset
@@ -74,6 +74,7 @@ def auth_router(app: Flask) -> HTTPBasicAuth:
             if checkpw(password.encode(), hashed_password.encode()):
                 return username
         return None
+
     return auth
 
 
@@ -108,43 +109,47 @@ def converting_router(app: Flask, auth: HTTPBasicAuth):
         return jcamp based on profile
         '''
         client_id = auth.current_user()
+        error_msg = 'No file provided.'
         if request.files.get('file'):
             file = File(request.files.get('file'))
             reader = registry.match_reader(file)
+            error_msg = 'Your file could not be processed. No Reader available!'
 
             if reader:
                 reader.process()
                 converter = Converter.match_profile(client_id, reader.as_dict)
 
-                if converter:
-                    converter.process()
+                return _run_conversion(converter, file)
+        return jsonify({'error': error_msg}), 400
 
-                    conversion_format = request.form.get('format', 'jcampzip')
-                    if conversion_format == 'jcampzip':
-                        writer = JcampZipWriter(converter)
-                    elif conversion_format == 'jcamp':
-                        if len(converter.tables) == 1:
-                            writer = JcampWriter(converter)
-                        else:
-                            return jsonify({
-                                'error':
-                                    'Conversion to a single JCAMP file is not supported for this file.'
-                            }), 400
-                    else:
-                        return jsonify({'error': 'Conversion format is not supported.'}), 400
-                    try:
-                        writer.process()
-                    except AssertionError:
-                        return jsonify({'error': 'There was an error while converting your file.'}), 400
+    def _run_conversion(converter, file):
+        if converter:
+            converter.process()
 
-                    file_name = Path(file.name).with_suffix(writer.suffix)
+            conversion_format = request.form.get('format', 'jcampzip')
+            if conversion_format == 'jcampzip':
+                writer = JcampZipWriter(converter)
+            elif conversion_format == 'jcamp':
+                if len(converter.tables) == 1:
+                    writer = JcampWriter(converter)
+                else:
+                    return jsonify({
+                        'error':
+                            'Conversion to a single JCAMP file is not supported for this file.'
+                    }), 400
+            else:
+                return jsonify({'error': 'Conversion format is not supported.'}), 400
+            try:
+                writer.process()
+            except AssertionError:
+                return jsonify({'error': 'There was an error while converting your file.'}), 400
 
-                    response = Response(writer.write(), mimetype=writer.mimetype)
-                    response.headers['Content-Disposition'] = f'attachment;filename={file_name}'
-                    return response
+            file_name = Path(file.name).with_suffix(writer.suffix)
 
-            return jsonify({'error': 'Your file could not be processed.'}), 400
-        return jsonify({'error': 'No file provided.'}), 400
+            response = Response(writer.write(), mimetype=writer.mimetype)
+            response.headers['Content-Disposition'] = f'attachment;filename={file_name}'
+            return response
+        return jsonify({'error': 'Your file could not be processed. No Profile available!'}), 400
 
     @app.route('/tables', methods=['POST'])
     @auth.login_required

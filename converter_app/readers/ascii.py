@@ -1,5 +1,6 @@
 import logging
 import re
+
 from converter_app.readers.helper.base import Reader
 from converter_app.readers.helper.reader import Readers
 
@@ -46,7 +47,7 @@ class AsciiReader(Reader):
                 row = row.replace('n.a.', '')
                 float_match = self.float_pattern.findall(row)
                 if float_match:
-                    float_match = [self.get_value(float_str) for float_str in float_match]
+                    float_match = [self.get_value(float_str.strip()) for float_str in float_match]
                     count = len(float_match)
 
                     if table['rows'] and count != previous_count:

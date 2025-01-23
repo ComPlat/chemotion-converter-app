@@ -2,8 +2,8 @@ import csv
 import io
 import logging
 
-from converter_app.readers.helper.reader import Readers
 from converter_app.readers.helper.base import Reader
+from converter_app.readers.helper.reader import Readers
 
 logger = logging.getLogger(__name__)
 
@@ -15,8 +15,8 @@ class CSVReader(Reader):
     identifier = 'csv_reader'
     priority = 100
 
-    def __init__(self, file):
-        super().__init__(file)
+    def __init__(self, file, *tar_content):
+        super().__init__(file, *tar_content)
         self.lines = None
         self.rows = None
         self.table_min_rows = 20

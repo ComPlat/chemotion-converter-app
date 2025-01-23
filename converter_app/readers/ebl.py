@@ -1,6 +1,7 @@
 import logging
 import re
 from enum import Enum
+
 from converter_app.readers.helper.base import Reader
 from converter_app.readers.helper.reader import Readers
 
@@ -22,8 +23,8 @@ class EblReader(Reader):
         POS_TABLE_D = 4
         END = 5
 
-    def __init__(self, file):
-        super().__init__(file)
+    def __init__(self, file, *tar_content):
+        super().__init__(file, *tar_content)
         self.lines = None
         self.pre_header = None
         self.pre_script = None

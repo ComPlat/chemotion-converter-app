@@ -1,7 +1,8 @@
 import logging
 import re
-from converter_app.readers.helper.reader import Readers
+
 from converter_app.readers.helper.base import Reader
+from converter_app.readers.helper.reader import Readers
 
 logger = logging.getLogger(__name__)
 
@@ -15,8 +16,8 @@ class SecReader(Reader):
     identifier = 'sec_reader'
     priority = 95
 
-    def __init__(self, file):
-        super().__init__(file)
+    def __init__(self, file, *tar_content):
+        super().__init__(file, *tar_content)
         self._has_header = False
         self._has_first_value = False
         self._is_table_empty = True
