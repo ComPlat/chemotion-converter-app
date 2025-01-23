@@ -28,11 +28,12 @@ class Profile:
         errors      [collections.defaultdict] contains all errors if profile is not correct
     """
 
-    def __init__(self, profile_data, client_id, profile_id=None):
+    def __init__(self, profile_data, client_id, profile_id=None, is_default_profile: bool = False):
         self.data = profile_data
         self.client_id = client_id
         self.id = profile_id
         self.errors = defaultdict(list)
+        self._is_default_profile = is_default_profile
 
     def clean(self):
         """
@@ -133,6 +134,7 @@ class Profile:
         """
         return {
             'id': self.id,
+            'is_default_profile': self._is_default_profile,
             **self.data
         }
 
@@ -191,7 +193,7 @@ class Profile:
                     profile_id = str(file_path.with_suffix('').name)
                     profile_data = cls.load(file_path)
                     if next((x for x in all_ids if x == profile_id), None) is None:
-                        yield cls(profile_data, client_id, profile_id)
+                        yield cls(profile_data, client_id, profile_id, True)
 
         return []
 
@@ -212,7 +214,6 @@ class Profile:
             if not file_path.is_file():
                 file_path = default_profiles_path.joinpath(profile_id).with_suffix('.json')
             if file_path.is_file():
-
                 profile_data = cls.load(file_path)
                 return cls(profile_data, client_id, profile_id)
 
