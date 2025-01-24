@@ -13,4 +13,5 @@ jcamp~=1.2.2
 PyMuPDF==1.23.7
 pylint==3.0.3
 str2bool~=1.1
-parser-binary @ git+https://github.com/ComPlat/BinaryParser@main
+requirements/BinaryParser-0.0.1-cp312-cp312-linux_x86_64.whl ; sys_platform == "linux"
+parser-binary @ git+https://github.com/ComPlat/BinaryParser@main ; sys_platform != "linux"
