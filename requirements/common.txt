@@ -1,25 +1,3 @@
-defusedxml~=0.7.1
-Flask~=2.0.2
-Flask-Cors~=3.0.10
-Flask-HTTPAuth~=4.5.0
-gunicorn~=20.1.0
-openpyxl~=3.0.9
-python-dotenv~=0.19.2
-python-magic~=0.4.24
-gemmi~=0.6.6
-xlrd~=2.0.1
-Werkzeug~=2.2.2
-jcamp~=1.2.2
-PyMuPDF==1.23.7
-pylint==3.0.3
-str2bool~=1.1
-yadg~=5.1.5
-requests~=2.32.3
-pymzml~=2.5.10
-brukeropusreader~=1.3.4
-parser-binary @ https://github.com/ComPlat/BinaryParser/releases/download/v1.0.0/BinaryParser-0.0.1-cp312-cp312-linux_x86_64.whl ; sys_platform == "linux" and python_version == "3.12"
-requirements/BinaryParser_wheels/BinaryParser-0.0.1-cp311-cp311-linux_x86_64.whl ; sys_platform == "linux" and python_version == "3.11"
-requirements/BinaryParser_wheels/BinaryParser-0.0.1-cp310-cp310-linux_x86_64.whl ; sys_platform == "linux" and python_version == "3.10"
-parser-binary @ git+https://github.com/ComPlat/BinaryParser@main ; sys_platform == "win32"
-parser-binary @ git+https://github.com/ComPlat/BinaryParser@main ; sys_platform == "darwin"
-opusFC~=1.4.0
+-r default.txt
+
+binaryparser @ https://github.com/ComPlat/BinaryParser/releases/download/v1.0.0/BinaryParser-0.0.1-cp312-cp312-linux_x86_64.whl ; sys_platform == "linux" and python_version == "3.12"
