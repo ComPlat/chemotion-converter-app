@@ -6,3 +6,7 @@ pytest-dotenv
 pytest-cov
 pytest-flask
 GitPython
+wheel
+setuptools
+pybind11
+binaryparser @ git+https://github.com/ComPlat/BinaryParser@main
