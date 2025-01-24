@@ -13,7 +13,7 @@ jcamp~=1.2.2
 PyMuPDF==1.23.7
 pylint==3.0.3
 str2bool~=1.1
-requirements/BinaryParser_wheels/BinaryParser-0.0.1-cp312-cp312-linux_x86_64.whl ; sys_platform == "linux" and python_version == "3.12"
+parser-binary @ https://github.com/ComPlat/BinaryParser/releases/download/v1.0.0/BinaryParser-0.0.1-cp312-cp312-linux_x86_64.whl ; sys_platform == "linux" and python_version == "3.12"
 requirements/BinaryParser_wheels/BinaryParser-0.0.1-cp311-cp311-linux_x86_64.whl ; sys_platform == "linux" and python_version == "3.11"
 requirements/BinaryParser_wheels/BinaryParser-0.0.1-cp310-cp310-linux_x86_64.whl ; sys_platform == "linux" and python_version == "3.10"
 parser-binary @ git+https://github.com/ComPlat/BinaryParser@main ; sys_platform == "win32"
