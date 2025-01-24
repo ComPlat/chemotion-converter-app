@@ -1,4 +1,4 @@
--r common.txt
+-r default.txt
 
 coverage
 pytest

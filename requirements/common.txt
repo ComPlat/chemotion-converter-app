@@ -1,17 +1,4 @@
-defusedxml~=0.7.1
-Flask~=2.0.2
-Flask-Cors~=3.0.10
-Flask-HTTPAuth~=4.5.0
-gunicorn~=20.1.0
-openpyxl~=3.0.9
-python-dotenv~=0.19.2
-python-magic~=0.4.24
-gemmi~=0.6.6
-xlrd~=2.0.1
-Werkzeug~=2.2.2
-jcamp~=1.2.2
-PyMuPDF==1.23.7
-pylint==3.0.3
-str2bool~=1.1
+-r default.txt
+
 binaryparser @ https://github.com/ComPlat/BinaryParser/releases/download/v1.0.0/BinaryParser-0.0.1-cp312-cp312-linux_x86_64.whl ; sys_platform == "linux" and python_version == "3.12"
 
