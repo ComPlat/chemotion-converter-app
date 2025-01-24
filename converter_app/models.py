@@ -2,11 +2,11 @@ import json
 import logging
 import os
 import pathlib
+import shutil
 import tarfile
 import tempfile
 import uuid
 from collections import defaultdict
-
 from pathlib import Path
 
 import magic
@@ -202,6 +202,7 @@ class File:
     def __init__(self, file):
         self._features = {}
         self.fp = file
+        self._temp_dir = None
 
         # read the file
         self.content = file.read()
@@ -217,6 +218,24 @@ class File:
 
         # decode file string
         self.string = self.content.decode(self.encoding, errors='ignore') if self.encoding != 'binary' else None
+
+    def __enter__(self):
+        # Create the temporary directory when the context is entered
+        self._temp_dir = tempfile.mkdtemp()
+        print(f"Temporary directory created: {self._temp_dir}")
+        return self._temp_dir
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        # Cleanup: Remove the temporary directory when the context is exited
+        if self._temp_dir and os.path.exists(self._temp_dir):
+            shutil.rmtree(self._temp_dir)
+
+    @property
+    def temp_dir(self):
+        """Returns temporary directory path for tar extraction"""
+        if not self._temp_dir or not os.path.exists(self._temp_dir):
+            self.__enter__()
+        return self._temp_dir
 
     @property
     def content_type(self):
@@ -267,8 +286,13 @@ class File:
         """
         return self.name.endswith(".gz") or self.name.endswith(".xz") or self.name.endswith(".tar")
 
+    def __del__(self):
+        self.__exit__(None, None, None)
+        print(f"Object {self.name} is being destroyed.")
 
-def extract_tar_archive(file: File, temp_dir: str) -> list[File]:
+
+
+def extract_tar_archive(file: File) -> list[File]:
     """
     If the file is a tar archive, this function extracts it and returns a list of all files
     :param file: Input file from the client
@@ -276,6 +300,7 @@ def extract_tar_archive(file: File, temp_dir: str) -> list[File]:
     """
     if not file.is_tar_archive:
         return []
+    temp_dir = file.temp_dir
     file_list = []
     with tempfile.NamedTemporaryFile(delete=True) as temp_archive:
         try:
