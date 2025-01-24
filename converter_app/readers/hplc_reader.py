@@ -1,5 +1,4 @@
 import logging
-import os.path
 
 import hplc as ph
 
@@ -28,15 +27,11 @@ class HplcReader(Reader):
 
         if self.is_tar_ball:
             try:
-                if len(self.file_content) == 1 and os.path.isdir(self.file_content[0].file_path):
-                    self.df = ph.read_chromatograms(self.file_content[0].file_path)
-                elif len(self.file_content) > 1:
+                if len(self.file_content) > 1:
                     self.df = ph.read_chromatograms(self.file_content[0].file_path)
                 else:
                     return False
                 return True
-            except Exception as e:
-                pass
             except ValueError:
                 pass
         return False
