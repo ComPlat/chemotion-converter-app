@@ -1,6 +1,6 @@
 import logging
 
-from brukeropusreader.opus_parser import parse_meta, parse_data
+import opusFC
 from numpy import ndarray
 
 from converter_app.readers import Readers
@@ -18,7 +18,7 @@ class DotZeroReader(Reader):
 
     def __init__(self, file, *tar_files):
         super().__init__(file, *tar_files)
-        self._dotzero_file = []
+        self._dotzero_file = None
         self._dx_name = None
 
     def check(self):
@@ -29,15 +29,22 @@ class DotZeroReader(Reader):
         dotzero_extentions = ['.0']
 
         if self.is_tar_ball:
-            self._dotzero_file = [x for x in self.file_content if x.suffix.lower() in dotzero_extentions]
+            for x in self.file_content:
+                try:
+                    if opusFC.isOpusFile(x.fp.filename):
+                        self._dotzero_file = x.fp.filename
+                        return True
+                except (ValueError, TypeError, FileNotFoundError):
+                    pass
+
             dx_file = next((x for x in self.file_content if x.suffix.lower() == '.dx'), None)
             if dx_file is not None:
                 self._dx_name = dx_file.name[:-3]
 
-        if self.file.suffix.lower() in dotzero_extentions:
-            self._dotzero_file.append(self.file)
+        elif self.file.suffix.lower() in dotzero_extentions and opusFC.isOpusFile(self.file.fp.filename):
+            self._dotzero_file = self.file.fp.filename
 
-        return len(self._dotzero_file) > 0
+        return self._dotzero_file is not None
 
     def _add_to_meta(self, table, src, k=None):
         if k is None:
@@ -57,24 +64,22 @@ class DotZeroReader(Reader):
     def prepare_tables(self):
         tables = []
 
-        for dotzero_file in self._dotzero_file:
-            data = dotzero_file.content
-            meta_data = parse_meta(data)
-            opus_data = parse_data(data, meta_data)
-            if dotzero_file.name == self._dx_name:
-                table = self.append_table([])
-                tables.insert(0, table)
-            else:
-                table = self.append_table(tables)
-            table['metadata']['__FILE_NAME__'] = dotzero_file.name
-            self._add_to_meta(table, opus_data)
-            ab_x = opus_data.get_range("AB")
-            table['rows'] = [[val,  opus_data["AB"][i], opus_data["ScSm"][i], opus_data["ScRf"][i]] for i, val in enumerate(ab_x)]
+        dbs = opusFC.listContents(self._dotzero_file)  # List all data blocks in the file
+        for block in dbs:
+            table = self.append_table(tables)
+            data = opusFC.getOpusData( self._dotzero_file, block)  # Retrieve data from the specific block
+            for x in block:
+                table.add_metadata('__BLOCK__', str(x))
 
-            table['columns'] += [{
-                'key': f'{idx}',
-                'name': value
-            } for idx, value in enumerate(["X", "AB", "ScSm", "ScRf"])]
+            for key, value in data.parameters.items():
+                table.add_metadata(str(key), str(value))
+
+            table['rows'] = [[float(val), float(data.y[i])] for i, val in enumerate(data.x)]
+            table['columns'] = [{
+                        'key': f'{idx}',
+                        'name': name
+                    } for idx, name in enumerate(['X', 'Y'])]
+
         return tables
 
 
