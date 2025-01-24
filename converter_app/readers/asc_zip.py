@@ -2,9 +2,10 @@ import logging
 import os
 import tempfile
 from zipfile import ZipFile
+
+from converter_app.readers.helper.asc_helper import AscHelper
 from converter_app.readers.helper.base import Reader
 from converter_app.readers.helper.reader import Readers
-from converter_app.readers.helper.asc_helper import AscHelper
 
 logger = logging.getLogger(__name__)
 

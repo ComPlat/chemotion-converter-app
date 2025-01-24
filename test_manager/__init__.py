@@ -10,7 +10,6 @@ from json import JSONDecodeError
 
 from werkzeug.datastructures import FileStorage
 
-
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from test_manager.profile_test_generator import generate_profile_tests, generate_expected_profiles_results

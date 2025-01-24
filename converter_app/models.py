@@ -6,7 +6,6 @@ import tarfile
 import tempfile
 import uuid
 from collections import defaultdict
-
 from pathlib import Path
 
 import magic
