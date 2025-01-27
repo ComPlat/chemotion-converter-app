@@ -334,6 +334,34 @@
     },
     {
       "identifier": {
+        "lineNumber": "",
+        "match": "regex",
+        "optional": true,
+        "outputKey": "diff_hole",
+        "outputLayer": "res",
+        "outputTableIndex": 0,
+        "tableIndex": 8,
+        "type": "tableHeader",
+        "value": "Highest difference peak\\s*[\\d\\.]+,[^-\\d]+(-?[\\d\\.]+)"
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "lineNumber": "",
+        "match": "regex",
+        "optional": true,
+        "outputKey": "diff_peak",
+        "outputLayer": "res",
+        "outputTableIndex": 0,
+        "tableIndex": 8,
+        "type": "tableHeader",
+        "value": "Highest difference peak\\s*(-?[\\d\\.]+)"
+      },
+      "result": false
+    },
+    {
+      "identifier": {
         "key": "_audit_creation_method",
         "match": "regex",
         "optional": true,
@@ -342,7 +370,7 @@
         "outputTableIndex": 0,
         "tableIndex": 0,
         "type": "tableMetadata",
-        "value": "(\\S+)[\\s|-]"
+        "value": "(\\S*)\\s"
       },
       "result": {
         "value": "Olex2",
@@ -359,7 +387,7 @@
         "outputTableIndex": 0,
         "tableIndex": 0,
         "type": "tableMetadata",
-        "value": "[\\s-](\\d+(\\.\\d+)?(\\/\\d+)?)(\\s*)(.*)$"
+        "value": "\\S*\\s([\\d\\.]*)"
       },
       "result": {
         "value": "1.2",
@@ -732,40 +760,6 @@
       },
       "result": {
         "value": "3.385",
-        "tableIndex": 0
-      }
-    },
-    {
-      "identifier": {
-        "key": "_refine_diff_density_max",
-        "match": "any",
-        "optional": true,
-        "outputKey": "diff_peak",
-        "outputLayer": "res",
-        "outputTableIndex": 0,
-        "tableIndex": 0,
-        "type": "tableMetadata",
-        "value": "0.970"
-      },
-      "result": {
-        "value": "0.970",
-        "tableIndex": 0
-      }
-    },
-    {
-      "identifier": {
-        "key": "_refine_diff_density_min",
-        "match": "any",
-        "optional": true,
-        "outputKey": "diff_hole",
-        "outputLayer": "res",
-        "outputTableIndex": 0,
-        "tableIndex": 0,
-        "type": "tableMetadata",
-        "value": "-0.591"
-      },
-      "result": {
-        "value": "-0.591",
         "tableIndex": 0
       }
     }
