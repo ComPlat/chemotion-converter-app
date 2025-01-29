@@ -3,8 +3,8 @@ import zipfile
 
 import openpyxl
 
-from converter_app.readers.helper.reader import Readers
 from converter_app.readers.helper.base import Reader, Table
+from converter_app.readers.helper.reader import Readers
 
 logger = logging.getLogger(__name__)
 
