@@ -11,6 +11,8 @@ class MpsReader(Reader):
     """
     identifier = 'mps_reader'
     priority = 10
+    prev_key = ''
+    values = ''
 
     def check(self):
         """
@@ -33,6 +35,8 @@ class MpsReader(Reader):
 
             if new_table:
                 table = self.append_table(tables)
+                MpsReader.prev_key = ''
+                MpsReader.values = ''
                 new_table = False
 
             if re.search(r'^\t.*', row):
@@ -53,6 +57,9 @@ class MpsReader(Reader):
                     key, new_table = self.handle_colon(key, row, table)
                 else:
                     self.handle_equation_list(row, table)
+
+        MpsReader.prev_key = ''
+        MpsReader.values = ''
         return tables
 
     @staticmethod
@@ -67,7 +74,7 @@ class MpsReader(Reader):
         if k_v[1] == '':
             key = k_v[0]
         else:
-            table['metadata'].add_unique(k_v[0], k_v[1])
+            table['metadata'][k_v[0]] = k_v[1]
         return key, False
 
     @staticmethod
@@ -79,7 +86,7 @@ class MpsReader(Reader):
         value = k_v[1]
         for v in k_v[2:]:
             value += ',' + v
-        table['metadata'].add_unique(k_v[0], '[' + value + ']')
+        table['metadata'][k_v[0]] = '[' + value + ']'
 
     @staticmethod
     def handle_multiline(key, row, table):
@@ -90,9 +97,16 @@ class MpsReader(Reader):
         if key != '':
             if ':' in row:
                 k_v = [x.strip() for x in row.lstrip().split(':', 1)]
-                table['metadata'].add_unique(key + '.' + k_v[0], k_v[1])
+                table['metadata'][key + '.' + k_v[0]] = k_v[1]
             else:
-                table['metadata'].add_unique(key, row.lstrip())
+                if MpsReader.prev_key != key:
+                    MpsReader.values = ''
+                    MpsReader.prev_key = key
+                    MpsReader.values = row.lstrip()
+                else:
+                    MpsReader.values += ', ' + row.lstrip()
+
+                table['metadata'][key] = MpsReader.values
         else:
             table['header'].append(row)  # Header with leading tab or missing ':' in previous line
 
@@ -104,7 +118,7 @@ class MpsReader(Reader):
         eqs = [x.strip() for x in eql.split(',', 1)]
         for eq in eqs:
             k_v = [x.strip() for x in eq.split('=', 1)]
-            table['metadata'].add_unique(k_v[0], k_v[1])
+            table['metadata'][k_v[0]] = k_v[1]
 
 
 Readers.instance().register(MpsReader)
