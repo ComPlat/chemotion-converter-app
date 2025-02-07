@@ -17,8 +17,7 @@ class MSXmlReader(Reader):
     identifier = 'mzml_reader'
     priority = 8
 
-    data = ['i', 'mz']
-    data_2 = ['t_mz_set','transformed_mz_with_error' ]
+    data = ['i', 'mz', 't_mz_set','transformed_mz_with_error' ]
     ignore_fields = [None, '', 'obo_translator', 'transformed_peaks']
 
     def __init__(self, *args, **kwargs):
@@ -70,28 +69,20 @@ class MSXmlReader(Reader):
             runs = pymzml.run.Reader(tmp_file_name, build_index_from_scratch=True)
 
             tables = []
-            table = self.append_table(tables)
-
-            self._extract_meta_data(runs, table)
             for run in runs:
-                table = self.append_table(tables)
+                self.append_table(tables)
+
+            self._extract_meta_data(runs, tables[0])
+            tables[0].add_metadata('__IDENTIFIER', self.__class__.identifier)
+            for i, run in enumerate(runs):
+                table = tables[i]
                 table['header'].append('-')
                 d = self._extract_meta_data(run, table)
 
-                def add_data_table(table, data_set, d):
-                    table['columns'] = []
-                    for col_idx, data_key in enumerate(data_set):
 
-                        for idx, val in enumerate(d[data_key]):
-                            while len(table['rows']) <= idx:
-                                table['rows'].append([])
-                            table['rows'][idx].append(str(val))
-                        table['columns'].append({'key': str(col_idx), 'name': data_key})
-
-                add_data_table(table, self.data, d)
-                table = self.append_table(tables)
-                table['header'].append(f'ID - {d["ID"]}')
-                add_data_table(table, self.data_2, d)
+                table['rows'] = d['centroidedPeaks'].tolist()
+                table['columns'].append({'key': '0', 'name': 'mz'})
+                table['columns'].append({'key': '1', 'name': 'i'})
 
             return tables
 
@@ -99,9 +90,9 @@ class MSXmlReader(Reader):
         d = {k: getattr(run, k, '') for k in run.__dir__() if
              k[:1] != '_' and type(getattr(run, k, '')).__name__ != 'method'}
         for key, val in d.items():
-            if key not in self.data + self.data_2 + self.ignore_fields:
+            if key not in self.data + self.ignore_fields:
                 if isinstance(val, ndarray):
-                    table.add_metadata(key, str(val.tolist()))
+                    pass #table.add_metadata(key, str(val.tolist()))
                 elif isinstance(val, dict):
                     self._reade_meta_data_dict(key, table, val)
                 elif isinstance(val, tuple):
