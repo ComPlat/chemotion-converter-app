@@ -35,6 +35,7 @@ class MpsReader(Reader):
 
             if new_table:
                 table = self.append_table(tables)
+                table['header'].append('Technique : ' + MpsReader.values)
                 MpsReader.prev_key = ''
                 MpsReader.values = ''
                 new_table = False
@@ -44,32 +45,47 @@ class MpsReader(Reader):
             elif not re.search(r'[:=]', row) and not re.search(r'\s{2,}', row):
                 header = True
 
+            if not multiline:
+                MpsReader.prev_key = ''
+                MpsReader.values = ''
+
             if header:
-                table['header'].append(row)
+                self._handle_header(row, table)
                 header = False
             elif multiline:
-                self.handle_multiline(key, row, table)
+                self._handle_multiline(key, row, table)
                 multiline = False
             else:
                 if re.search(r'\s{2,}', row):
-                    self.handle_sub_table(row, table)
+                    self._handle_sub_table(row, table)
                 elif ':' in row:
-                    key, new_table = self.handle_colon(key, row, table)
+                    key, new_table = self._handle_colon(key, row, table)
                 else:
-                    self.handle_equation_list(row, table)
+                    self._handle_equation_list(row, table)
 
         MpsReader.prev_key = ''
         MpsReader.values = ''
         return tables
 
     @staticmethod
-    def handle_colon(key, row, table):
+    def _handle_header(row, table):
+        if re.search(r'^Record', row):
+            if 'Record' in table['metadata']:
+                table['metadata']['Record'] += ', ' + row[7:]
+            else:
+                table['metadata']['Record'] = row[7:]
+        else:
+            table['header'].append(row)
+
+    @staticmethod
+    def _handle_colon(key, row, table):
         """
          handles metadata e.g. x: 5
          and detects multiline attempts
         """
         k_v = [x.strip() for x in row.split(':', 1)]
         if k_v[0] == 'Technique':
+            MpsReader.values = k_v[1]
             return key, True
         if k_v[1] == '':
             key = k_v[0]
@@ -78,10 +94,7 @@ class MpsReader(Reader):
         return key, False
 
     @staticmethod
-    def handle_sub_table(row, table):
-        """
-         handles tables separated by multiple spaces
-        """
+    def _handle_sub_table(row, table):
         k_v = re.split(r'\s{2,}', row)
         value = k_v[1]
         for v in k_v[2:]:
@@ -89,11 +102,7 @@ class MpsReader(Reader):
         table['metadata'][k_v[0]] = '[' + value + ']'
 
     @staticmethod
-    def handle_multiline(key, row, table):
-        """
-         handles multiline metadata e.g. x:
-            5
-        """
+    def _handle_multiline(key, row, table):
         if key != '':
             if ':' in row:
                 k_v = [x.strip() for x in row.lstrip().split(':', 1)]
@@ -111,10 +120,7 @@ class MpsReader(Reader):
             table['header'].append(row)  # Header with leading tab or missing ':' in previous line
 
     @staticmethod
-    def handle_equation_list(eql, table):
-        """
-         handles list of equations, e.q. a=5,b=3,c=8
-        """
+    def _handle_equation_list(eql, table):
         eqs = [x.strip() for x in eql.split(',', 1)]
         for eq in eqs:
             k_v = [x.strip() for x in eq.split('=', 1)]
