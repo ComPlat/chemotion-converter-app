@@ -16,4 +16,4 @@ str2bool~=1.1
 pymzml~=2.5.10
 requests~=2.32.3
 opusFC~=1.4.0
-yadg~=5.1.5
+yadg~=5.1.8
