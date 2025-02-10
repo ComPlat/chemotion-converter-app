@@ -14,8 +14,8 @@ class OldExcelReader(Reader):
     identifier = 'old_excel_reader'
     priority = 16
 
-    def __init__(self, file):
-        super().__init__(file)
+    def __init__(self, file, *tar_content):
+        super().__init__(file, *tar_content)
         self.wb = None
 
     def check(self):
