@@ -8,11 +8,11 @@ users with the capability to effortlessly create profiles for the conversion pro
 """
 import json
 import os
-
 from pathlib import Path
+
 from flask import Flask, Response, abort, jsonify, make_response, request
-from flask_httpauth import HTTPBasicAuth
 from flask_cors import CORS
+from flask_httpauth import HTTPBasicAuth
 
 from converter_app.converters import Converter
 from converter_app.datasets import Dataset

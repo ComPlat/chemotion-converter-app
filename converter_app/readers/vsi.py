@@ -1,5 +1,4 @@
 import logging
-
 import xml.etree.ElementTree as ET
 
 from converter_app.models import File

@@ -1,8 +1,8 @@
 import xml.etree.ElementTree as ET
 
 from converter_app.models import File
-from converter_app.readers.xml_reader import XMLReader
 from converter_app.readers.helper.reader import Readers
+from converter_app.readers.xml_reader import XMLReader
 
 
 class XRDMLReader(XMLReader):
