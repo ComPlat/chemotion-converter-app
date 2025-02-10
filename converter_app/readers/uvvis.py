@@ -1,7 +1,7 @@
 import logging
 
-from converter_app.readers.helper.reader import Readers
 from converter_app.readers.csv_reader import CSVReader
+from converter_app.readers.helper.reader import Readers
 
 logger = logging.getLogger(__name__)
 
