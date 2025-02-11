@@ -202,7 +202,7 @@
         "value": "0,00000E+000"
       },
       "result": {
-        "value": "0,00000E+000",
+        "value": "0.00000E+000",
         "tableIndex": 0
       }
     },
@@ -247,7 +247,7 @@
         "value": "-1,20000E+000"
       },
       "result": {
-        "value": "1,00000E+000",
+        "value": "1.00000E+000",
         "tableIndex": 0
       }
     },
@@ -292,7 +292,7 @@
         "value": "1,10000E+000"
       },
       "result": {
-        "value": "-1,00000E+000",
+        "value": "-1.00000E+000",
         "tableIndex": 0
       }
     },
@@ -337,7 +337,7 @@
         "value": "0,00000E+000"
       },
       "result": {
-        "value": "0,00000E+000",
+        "value": "0.00000E+000",
         "tableIndex": 0
       }
     },
@@ -421,10 +421,10 @@
         "software_version": "7.8.1",
         "software": "Framework",
         "time": "14:45:01",
-        "voltage_start": "0,00000E+000",
-        "voltage_limit_one": "1,00000E+000",
-        "voltage_limit_two": "-1,00000E+000",
-        "voltage_limit_end": "0,00000E+000",
+        "voltage_start": "0.00000E+000",
+        "voltage_limit_one": "1.00000E+000",
+        "voltage_limit_two": "-1.00000E+000",
+        "voltage_limit_end": "0.00000E+000",
         "serial": "IFC1010-23191",
         "instrument": "Potentiostat"
       }
@@ -442,7 +442,7 @@
         "cycles": "2",
         "software_version": "7.8.1",
         "software": "Framework",
-        "voltage_limit_end": "0,00000E+000",
+        "voltage_limit_end": "0.00000E+000",
         "serial": "IFC1010-23191"
       }
     },
@@ -459,7 +459,7 @@
         "cycles": "2",
         "software_version": "7.8.1",
         "software": "Framework",
-        "voltage_limit_end": "0,00000E+000",
+        "voltage_limit_end": "0.00000E+000",
         "serial": "IFC1010-23191"
       }
     }

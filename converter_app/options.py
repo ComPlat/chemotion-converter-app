@@ -28,6 +28,7 @@ DATA_TYPES = (
     'THERMOGRAVIMETRIC ANALYSIS',
     'UV-VIS',
     'X-RAY DIFFRACTION',
+    'LINEAR SWEEP VOLTAMMETRY',
 )
 
 DATA_CLASSES = (
@@ -41,6 +42,7 @@ XUNITS = (
     '%',
     '1/CM',
     '2Theta',
+    'Ampere',
     'DEGREES CELSIUS',
     'G/MOL',
     'Hydrodynamic diameter (nm)',
@@ -55,6 +57,7 @@ XUNITS = (
     'MINUTES',
     'MOLECULAR MASS / DA',
     'NANOMETERS',
+    'OHM',
     'p/p0', # Normalaized dimension
     'SECONDS',
     'Voltage in V',
@@ -81,10 +84,12 @@ YUNITS = (
     'Molar Extinction (cm2/mmol) ',
     'Newton',
     'N/M2',
+    'OHM',
     'REFLECTANCE',
     'relative intensity (%)',
     'SIGNAL',
     'TRANSMITTANCE',
+    'Voltage in V',
     'W/g',
     'WEIGHT',
     'Weight %',

@@ -216,7 +216,7 @@
         "value": "0,00000E+000"
       },
       "result": {
-        "value": "3,00000E-001",
+        "value": "3.00000E-001",
         "tableIndex": 0
       }
     },
@@ -275,7 +275,7 @@
         "value": "-1,20000E+000"
       },
       "result": {
-        "value": "-7,00000E-001",
+        "value": "-7.00000E-001",
         "tableIndex": 0
       }
     },
@@ -334,7 +334,7 @@
         "value": "1,10000E+000"
       },
       "result": {
-        "value": "3,00000E-001",
+        "value": "3.00000E-001",
         "tableIndex": 0
       }
     },
@@ -393,7 +393,7 @@
         "value": "0,00000E+000"
       },
       "result": {
-        "value": "3,00000E-001",
+        "value": "3.00000E-001",
         "tableIndex": 0
       }
     },
@@ -491,10 +491,10 @@
         "software_version": "7.8.6",
         "software": "Framework",
         "time": "12:35:02",
-        "voltage_start": "3,00000E-001",
-        "voltage_limit_one": "-7,00000E-001",
-        "voltage_limit_two": "3,00000E-001",
-        "voltage_limit_end": "3,00000E-001",
+        "voltage_start": "3.00000E-001",
+        "voltage_limit_one": "-7.00000E-001",
+        "voltage_limit_two": "3.00000E-001",
+        "voltage_limit_end": "3.00000E-001",
         "serial": "IFC1010-30147",
         "instrument": "Potentiostat"
       }
@@ -512,7 +512,7 @@
         "cycles": "3",
         "software_version": "7.8.6",
         "software": "Framework",
-        "voltage_limit_end": "3,00000E-001",
+        "voltage_limit_end": "3.00000E-001",
         "serial": "IFC1010-30147"
       }
     },
@@ -529,7 +529,7 @@
         "cycles": "3",
         "software_version": "7.8.6",
         "software": "Framework",
-        "voltage_limit_end": "3,00000E-001",
+        "voltage_limit_end": "3.00000E-001",
         "serial": "IFC1010-30147"
       }
     },
@@ -546,7 +546,7 @@
         "cycles": "3",
         "software_version": "7.8.6",
         "software": "Framework",
-        "voltage_limit_end": "3,00000E-001",
+        "voltage_limit_end": "3.00000E-001",
         "serial": "IFC1010-30147"
       }
     }
