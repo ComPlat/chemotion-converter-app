@@ -293,7 +293,7 @@ class Converter:
                     op_value = operation['rows'][i]
                 except IndexError:
                     pass
-            elif operation.get('type') == 'value':
+            elif 'value' in operation.get('type'):
                 op_value = operation.get('value')
 
             if op_value:
