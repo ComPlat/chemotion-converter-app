@@ -1,7 +1,6 @@
 import json
 import logging
 import tempfile
-
 import yadg
 from yadg.extractors.eclab.techniques import param_map  # needs yagd version > 6.0.2
 
@@ -10,8 +9,8 @@ from converter_app.readers.helper.reader import Readers
 
 logger = logging.getLogger(__name__)
 
-# if not any(x[1] == 2 for x in param_map["Set I/C"]):
-#     param_map["Set I/C"] += ("UNKNWON", 2),  # guess
+if not any(x[1] == 2 for x in param_map["set_I/C"]):
+     param_map["set_I/C"] += ("UNKNWON", 2),  # guess
 
 
 class MprReader(Reader):
