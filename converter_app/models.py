@@ -222,7 +222,6 @@ class File:
     def __enter__(self):
         # Create the temporary directory when the context is entered
         self._temp_dir = tempfile.mkdtemp()
-        print(f"Temporary directory created: {self._temp_dir}")
         return self._temp_dir
 
     def __exit__(self, exc_type, exc_val, exc_tb):
@@ -288,7 +287,6 @@ class File:
 
     def __del__(self):
         self.__exit__(None, None, None)
-        print(f"Object {self.name} is being destroyed.")
 
 
 

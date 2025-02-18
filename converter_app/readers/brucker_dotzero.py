@@ -1,4 +1,6 @@
 import logging
+import os
+import tempfile
 
 import opusFC
 from numpy import ndarray
@@ -20,6 +22,7 @@ class DotZeroReader(Reader):
         super().__init__(file, *tar_files)
         self._dotzero_file = None
         self._dx_name = None
+        self._has_temp_copy = False
 
     def check(self):
         """
@@ -40,11 +43,20 @@ class DotZeroReader(Reader):
             dx_file = next((x for x in self.file_content if x.suffix.lower() == '.dx'), None)
             if dx_file is not None:
                 self._dx_name = dx_file.name[:-3]
-
-        elif self.file.suffix.lower() in dotzero_extentions and opusFC.isOpusFile(self.file.fp.filename):
-            self._dotzero_file = self.file.fp.filename
+        elif self.file.suffix.lower() in dotzero_extentions:
+            with tempfile.NamedTemporaryFile(suffix='.0', delete=False) as temp_file:
+                self._dotzero_file = temp_file.name  # You can now access the file path
+                self.file.fp.save(self._dotzero_file)
+                self._has_temp_copy = True
+                if opusFC.isOpusFile(self._dotzero_file):
+                    return True
+                return False
 
         return self._dotzero_file is not None
+
+    def __del__(self):
+        if  self._has_temp_copy:
+            os.remove(self._dotzero_file)
 
     def _add_to_meta(self, table, src, k=None):
         if k is None:
