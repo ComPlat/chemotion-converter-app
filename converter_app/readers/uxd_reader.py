@@ -1,4 +1,5 @@
 import logging
+import re
 
 from converter_app.models import File
 from converter_app.readers.helper.base import Reader
@@ -19,6 +20,8 @@ class UXDReader(Reader):
 
     def __init__(self, file: File, *tar_content):
         super().__init__(file, *tar_content)
+        self._step_size = None
+        self._start = None
         self._file_extensions = ['.uxd']
         self._table = None
         self._version = 2
@@ -27,21 +30,26 @@ class UXDReader(Reader):
     def check(self):
         return self.file.suffix.lower() in self._file_extensions
 
-    def _read_data(self, line: str):
-        if self._version == 2:
-            try:
-                new_row = [self.as_number(x.strip()) for x in line.split(' ') if x != '']
-                if len(new_row) > 0:
-                    self._max_table_length = max(self._max_table_length, len(new_row))
-                    self._table['rows'].append(new_row)
-            except ValueError:
-                pass
-        elif self._version == 3:
-            try:
-                value = [self.as_number(x.strip()) for x in line.split('\t')]
-                self._table['rows'].append([value[0], value[1]])
-            except ValueError:
-                pass
+    def _read_data(self, data_rows: list[str]):
+        if '_COUNTS' in self._table['header'][-2:]:
+            for line in data_rows:
+                try:
+                    new_row = [self.as_number(x.strip()) for x in line.split(' ') if x != '']
+                    if len(new_row) > 0:
+                        self._max_table_length = 1
+                        for val in new_row:
+                            self._table['rows'].append([self._start + self._step_size * len(self._table['rows']), val])
+                except ValueError:
+                    pass
+        else:
+            for line in data_rows:
+                try:
+                    line = line.strip()
+                    if line != '':
+                        value = [self.as_number(x) for x in re.split(r'[\t\s]+', line) if x != '']
+                        self._table['rows'].append([value[0], value[1]])
+                except (ValueError, IndexError):
+                    pass
 
     def _add_metadata(self, key, val):
         if self.float_pattern.fullmatch(val):
@@ -69,17 +77,18 @@ class UXDReader(Reader):
         except ValueError:
             self._version = 0
 
-        for row in data_rows:
-            self._read_data(row)
-
-        for row in self._table['rows']:
-            while len(row) < self._max_table_length:
-                row.append('')
-
         if 'START' in self._table['metadata'] and 'STEPSIZE' in self._table['metadata']:
-            end = self.as_number(self._table['metadata']['START']) + (
-                        self.as_number(self._table['metadata']['STEPSIZE']) * (len(self._table['rows']) - 1))
-            self._table.add_metadata("END", end)
+            self._step_size = self.as_number(self._table['metadata']['STEPSIZE'])
+            self._start = self.as_number(self._table['metadata']['START'])
+        else:
+            self._step_size = self._start = 0
+
+        self._read_data(data_rows)
+
+        self._table.add_metadata("END", self._table['rows'][-1][0])
+
+
+
 
         return tables
 
