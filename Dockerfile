@@ -30,6 +30,8 @@ RUN chmod +x /bin/yq
 FROM scratch AS converter-base
 COPY --from=base / /
 
+ARG BUILD_CONVERTER=v1.3.0
+
 # install system packages
 RUN apt-get update && \
     apt-get install -y --no-install-recommends --autoremove --fix-missing python3-pip python3-venv libmagic1 curl git
@@ -38,7 +40,11 @@ WORKDIR /srv
 RUN git clone --single-branch --branch dev-deploy-1 --depth=1 https://github.com/ComPlat/chemotion-converter-app chemotion
 
 WORKDIR /srv/chemotion
-RUN python3 -m venv env && . env/bin/activate && \
+
+ADD https://github.com/ComPlat/chemotion-converter-app/archive/refs/tags/${BUILD_CONVERTER}.tar.gz /tmp/code.tar.gz
+
+RUN tar -xzf /tmp/code.tar.gz --strip-components=1 -C /srv/chemotion && rm /tmp/code.tar.gz && \
+    python3 -m venv env && . env/bin/activate && \
     pip install --no-cache-dir -r /srv/chemotion/requirements/common.txt
 
 RUN test -f "/srv/chemotion/.env.prod" && mv "/srv/chemotion/.env.prod" "/srv/chemotion/.env" && mkdir -p /var/log/chemotion-converter/ && chmod a+wrx /var/log/chemotion-converter/
