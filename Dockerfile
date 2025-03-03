@@ -1,6 +1,5 @@
 # Private variables, not passed in from outside, but helpful for this file
 ARG BASE=ubuntu:22.04
-ARG TINI_VERSION="v0.19.0"
 
 # Stage 1: the base image
 FROM ${BASE} AS base
@@ -21,18 +20,17 @@ RUN echo "LANG=${LANG}" >/etc/locale.conf && \
 RUN apt-get -y update && apt-get -y upgrade && \
     apt-get install -y --no-install-recommends --autoremove --fix-missing locales && \
     apt-get clean && \
-    locale-gen en_US.UTF-8
+    locale-gen ${LC_ALL}
 
-# install tini and yq
-ARG TINI_VERSION
-ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
+# install yq
 ADD https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 /bin/yq
-RUN chmod +x /bin/yq && chmod +x /tini
+RUN chmod +x /bin/yq
 
+# Stage 2: the converter image
 FROM scratch AS converter-base
 COPY --from=base / /
 
-# Stage 1: prepare the converter image
+# install system packages
 RUN apt-get update && \
     apt-get install -y --no-install-recommends --autoremove --fix-missing python3-pip python3-venv libmagic1 curl git
 
@@ -45,7 +43,7 @@ RUN python3 -m venv env && . env/bin/activate && \
 
 RUN test -f "/srv/chemotion/.env.prod" && mv "/srv/chemotion/.env.prod" "/srv/chemotion/.env" && mkdir -p /var/log/chemotion-converter/ && chmod a+wrx /var/log/chemotion-converter/
 
-ADD https://github.com/ptrxyz/chemotion/raw/refs/heads/v180rc4/converter/pass /bin/genpass
+ADD https://github.com/ptrxyz/chemotion/raw/e6af03a3fa25c2a830d2e98fd08552b624a77e30/converter/pass /bin/genpass
 RUN chmod +x /bin/genpass && echo "$(/bin/genpass chemotion chemotion)" > /srv/chemotion/htpasswd   # use echo to append newline.
 
 ENV PATH=/srv/chemotion/env/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin \
@@ -59,7 +57,7 @@ ENV PATH=/srv/chemotion/env/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bi
 RUN apt-get remove -y git && apt-get -y clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-# Stage 4: finalize the image
+# Stage 3: finalize the image
 FROM converter-base AS app
 
 EXPOSE 4000
