@@ -22,9 +22,7 @@ setup(
     install_requires=install_requires,
     classifiers=[
         # https://pypi.org/classifiers/
-        'Programming Language :: Python :: 3.6',
-        'Programming Language :: Python :: 3.7',
-        'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3.12',
         'Operating System :: OS Independent',
         'License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)'
     ],

@@ -109,11 +109,11 @@ The guincorn server listens on the port given in the env file (default: 9000) on
 
 This project has been funded by the **[DFG]**.
 
-[![DFG Logo]][DFG]
+<a href="https://www.dfg.de/en/" rel="nofollow">
+<img src="https://camo.githubusercontent.com/5fe1aa739846b5d9bbf6a9ac935176c659b5d735c44bf4072a70252f607f53ef/68747470733a2f2f6368656d6f74696f6e2e6e65742f696d672f6c6f676f732f4446475f6c6f676f2e706e67" alt="DFG Logo" data-canonical-src="https://chemotion.net/img/logos/DFG_logo.png" style="max-width: 100%;">
+</a>
 
 
 Funded by the [Deutsche Forschungsgemeinschaft (DFG, German Research Foundation)](https://www.dfg.de/) under the [National Research Data Infrastructure – NFDI4Chem](https://nfdi4chem.de/) – Projektnummer **441958208** since 2020.
 
-
 [DFG]: https://www.dfg.de/en/
-[DFG Logo]: https://www.dfg.de/zentralablage/bilder/service/logos_corporate_design/logo_negativ_267.png
