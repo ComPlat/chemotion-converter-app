@@ -287,14 +287,25 @@ class Converter:
 
     def _run_operation(self, rows, operation):
         for i, row in enumerate(rows):
-            op_value = None
+            str_value = None
             if operation.get('type') == 'column':
                 try:
-                    op_value = operation['rows'][i]
+                    str_value = operation['rows'][i]
                 except IndexError:
                     pass
             elif operation.get('type') == 'value':
-                op_value = operation.get('value')
+                str_value = operation.get('value')
+            elif operation.get('type') == 'metadata_value':
+                str_value = self.input_tables[int(operation.get('table'))]['metadata'].get(operation.get('value'))
+            else:
+                raise ValueError(f"Unknown operation type: {operation.get('type')}")
+            try:
+                op_value = float(str_value)
+            except TypeError:
+                if operation.get('operator') in ('+', '-'):
+                    op_value = 0
+                else:
+                    op_value = 1
 
             if op_value:
                 rows[i] = str(self.apply_operation(row, op_value, operation.get('operator')))
