@@ -34,7 +34,7 @@ ARG BUILD_CONVERTER=v1.3.0
 
 # install system packages
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends --autoremove --fix-missing python3-pip python3-venv libmagic1 curl git
+    apt-get install -y --no-install-recommends --autoremove --fix-missing python3.10 python3-pip python3-venv libmagic1 curl git
 
 WORKDIR /srv
 RUN git clone --single-branch --branch dev-deploy-1 --depth=1 https://github.com/ComPlat/chemotion-converter-app chemotion
