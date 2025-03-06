@@ -16,7 +16,7 @@ class DtaReader(Reader):
         """
         :return: True if it fits
         """
-        return self.file.encoding != 'binary' and self.file.suffix.lower() == '.dta' and self.file.mime_type == 'text/plain'
+        return self.file.encoding != 'binary' and self.file.suffix.lower() == '.dta'
 
     def prepare_tables(self):
         tables = []
