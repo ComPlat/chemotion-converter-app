@@ -30,8 +30,6 @@ RUN chmod +x /bin/yq
 FROM scratch AS converter-base
 COPY --from=base / /
 
-ARG BUILD_CONVERTER=v1.3.0
-
 # install system packages
 RUN apt-get update && \
     apt-get install -y --no-install-recommends --autoremove --fix-missing python3.12 python3-pip python3-dev python3-venv build-essential libmagic1 curl git
@@ -41,17 +39,14 @@ RUN git clone --single-branch --branch dev-deploy-1 --depth=1 https://github.com
 
 WORKDIR /srv/chemotion
 
-ADD https://github.com/ComPlat/chemotion-converter-app/archive/refs/tags/${BUILD_CONVERTER}.tar.gz /tmp/code.tar.gz
-
-RUN tar -xzf /tmp/code.tar.gz --strip-components=1 -C /srv/chemotion && rm /tmp/code.tar.gz && \
-    python3 -m venv env && . env/bin/activate && \
+RUN python3 -m venv env && . env/bin/activate && \
     pip install git+https://github.com/ComPlat/BinaryParser.git && \
     pip install --no-cache-dir -r /srv/chemotion/requirements/default.txt
 
 RUN test -f "/srv/chemotion/.env.prod" && mv "/srv/chemotion/.env.prod" "/srv/chemotion/.env" && mkdir -p /var/log/chemotion-converter/ && chmod a+wrx /var/log/chemotion-converter/
 
-ADD https://github.com/ptrxyz/chemotion/raw/e6af03a3fa25c2a830d2e98fd08552b624a77e30/converter/pass /bin/genpass
-RUN chmod +x /bin/genpass && echo "$(/bin/genpass chemotion chemotion)" > /srv/chemotion/htpasswd   # use echo to append newline.
+# create empty htpasswd file
+RUN touch /srv/chemotion/htpasswd
 
 ENV PATH=/srv/chemotion/env/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin \
     VIRTUAL_ENV=/srv/chemotion/env       \
