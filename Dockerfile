@@ -35,7 +35,8 @@ RUN apt-get update && \
     apt-get install -y --no-install-recommends --autoremove --fix-missing python3.12 python3-pip python3-dev python3-venv build-essential libmagic1 curl git
 
 WORKDIR /srv
-RUN git clone --single-branch --branch dev-deploy-1 --depth=1 https://github.com/ComPlat/chemotion-converter-app chemotion
+RUN git clone --single-branch --branch dev-deploy-1 --depth=1 https://github.com/ComPlat/chemotion-converter-app chemotion && \
+    rm -rf /srv/chemotion/.git
 
 WORKDIR /srv/chemotion
 
@@ -56,7 +57,7 @@ ENV PATH=/srv/chemotion/env/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bi
     DATASETS_DIR=/srv/chemotion/datasets \
     HTPASSWD_PATH=/srv/chemotion/htpasswd
 
-RUN apt-get remove -y git && apt-get -y clean && \
+RUN apt-get remove -y git build-essential && apt-get -y clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Stage 3: finalize the image
@@ -70,9 +71,3 @@ CMD ["gunicorn", "--bind", "0.0.0.0:4000", "converter_app.app:create_app()", "--
 
 HEALTHCHECK --interval=5s --timeout=3s --start-period=5s --retries=3 \
     CMD curl --fail http://localhost:4000/
-
-LABEL \
-    "org.opencontainers.image.authors"="Chemotion Team" \
-    "org.opencontainers.image.title"="Chemotion Converter" \
-    "org.opencontainers.image.description"="Image for Chemotion Converter" \
-    "chemotion.internal.service.id"="converter"
