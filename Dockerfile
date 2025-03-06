@@ -34,7 +34,7 @@ ARG BUILD_CONVERTER=v1.3.0
 
 # install system packages
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends --autoremove --fix-missing python3.12 python3-pip python3-venv libmagic1 curl git
+    apt-get install -y --no-install-recommends --autoremove --fix-missing python3.12 python3-pip python3-dev python3-venv build-essential libmagic1 curl git
 
 WORKDIR /srv
 RUN git clone --single-branch --branch dev-deploy-1 --depth=1 https://github.com/ComPlat/chemotion-converter-app chemotion
@@ -45,7 +45,8 @@ ADD https://github.com/ComPlat/chemotion-converter-app/archive/refs/tags/${BUILD
 
 RUN tar -xzf /tmp/code.tar.gz --strip-components=1 -C /srv/chemotion && rm /tmp/code.tar.gz && \
     python3 -m venv env && . env/bin/activate && \
-    pip install --no-cache-dir -r /srv/chemotion/requirements/common.txt
+    pip install git+https://github.com/ComPlat/BinaryParser.git && \
+    pip install --no-cache-dir -r /srv/chemotion/requirements/default.txt
 
 RUN test -f "/srv/chemotion/.env.prod" && mv "/srv/chemotion/.env.prod" "/srv/chemotion/.env" && mkdir -p /var/log/chemotion-converter/ && chmod a+wrx /var/log/chemotion-converter/
 
@@ -70,6 +71,7 @@ EXPOSE 4000
 
 WORKDIR /srv/chemotion
 CMD ["gunicorn", "--bind", "0.0.0.0:4000", "converter_app.app:create_app()", "--preload"]
+# gunicorn --bind 0.0.0.0:4000 "converter_app.app:create_app()" --preload
 
 HEALTHCHECK --interval=5s --timeout=3s --start-period=5s --retries=3 \
     CMD curl --fail http://localhost:4000/
