@@ -32,8 +32,21 @@ The Flask development server can be started now:
 flask run
 ```
 
-Troubleshooting (when unsing Windows, updated 25.07.2024)
+Troubleshooting (when unsing Windows, updated 04.03.2024)
 ---------------
+
+### as of version 1.4
+
+> [!CAUTION]
+> ChemConverter no longer supports Windows and requires Python 3.12 due to "little endian" binary parsing used by some binary readers.
+
+Currently there are no further Windows version planed. If you really need one, please get in touch with us.
+
+> [!TIP]
+> If you are rely on Windows you could still use a Python Interpreter on WSL2.
+> Further instructions and tips how to do so will follow soon. 
+
+### before version 1.4 (added 25.07.2024)
 1. Please make sure that you are using a fresh Python3.10 virtual environment (without any packages installed, 3.12 and 3.9 are not supported)
 2. Before installing the requirements ```pip install wheel setuptools pip pybind11 # always using pip of your virtual environment ```
 3. After installing all requirements via ```pip install -e .``` and ```pip install -r requirements/dev.txt``` check if you have ```python-magic-bin``` and / or ```python-magic``` installed. If not ```pip install python-magic-bin```
@@ -114,6 +127,5 @@ This project has been funded by the **[DFG]**.
 
 Funded by the [Deutsche Forschungsgemeinschaft (DFG, German Research Foundation)](https://www.dfg.de/) under the [National Research Data Infrastructure – NFDI4Chem](https://nfdi4chem.de/) – Projektnummer **441958208** since 2020.
 
-
 [DFG]: https://www.dfg.de/en/
-[DFG Logo]: https://www.dfg.de/zentralablage/bilder/service/logos_corporate_design/logo_negativ_267.png
+[DFG Logo]: https://chemotion.net/img/logos/DFG_logo.png
