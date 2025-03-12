@@ -301,10 +301,14 @@ class Converter:
                 table = 0
                 if operation.get('table') is not None:
                     table = int(operation.get('table'))
-                line = operation.get('line')
+                try:
+                    line_number = int(operation.get('line', ''))
+                    header = self.input_tables[table]['header'][line_number - 1].rstrip()
+                except (TypeError, ValueError, IndexError):
+                    header = os.linesep.join(self.input_tables[table]['header']).rstrip()
                 pattern = operation.get('regex')
-                if line is not None and pattern is not None:
-                    str_value = self.input_tables[table]['header'][int(operation.get('line'))-1]
+                if header is not None and pattern is not None:
+                    str_value = header
                     match = re.search(pattern, str_value)
                     if match is not None:
                         if len(match.regs) > 1:
