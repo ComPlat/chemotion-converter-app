@@ -17,7 +17,7 @@ class AifReader(AsciiReader):
         """
         :return: True if it fits
         """
-        if self.file.suffix.lower() == '.txt' and self.file.mime_type == 'text/plain':
+        if self.file.suffix.lower() in ('.txt','.aif') and self.file.mime_type == 'text/plain':
             first_line = self.file.string.splitlines()[0]
             return 'raw2aif' in first_line
 
