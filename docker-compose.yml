@@ -1,0 +1,63 @@
+x-envs: &envs
+  CONVERTER_URL: "${CONVERTER_URL:-http://127.0.0.1:8080}"
+  MS_CONVERTER: "http://ms_test_converter:5000"
+  TIMEOUT: 500
+
+services:
+  web:
+    build:
+      context: .
+    image: mstarman/testconverter:0.1.4
+    restart: unless-stopped
+    environment:
+      <<: *envs
+    ports:
+      - ${PROJECT_WEB_PORT:-8080}:80
+    volumes:
+      - ./profiles/profiles:/var/share/profiles
+      - ./datasets:/var/share/datasets
+      - ./logs:/var/log/converter
+      - ./htpasswd:/var/share/htpasswd
+    networks:
+      - shared_network  # Add this line
+  dind:
+    image: docker:dind
+    privileged: true
+    environment:
+      - DOCKER_TLS_CERTDIR=
+    ports:
+      - "2375:2375"  # Expose Docker daemon port
+    volumes:
+      - /tmp:/tmp
+      - dind-storage:/var/lib/docker
+      - ms-converter-home:/app
+    networks:
+      - shared_network
+    command: ["dockerd", "--host=tcp://0.0.0.0:2375", "--host=unix:///var/run/docker.sock"]
+
+  ms_test_converter:
+    image: lincoln1010/mass_spectrometry_file_converter:v2.1
+    container_name: ms_test_converter
+    ports:
+      - "5000:5000"
+    stdin_open: true
+    tty: true
+    depends_on:
+      - dind
+    environment:
+      - DOCKER_HOST=tcp://dind:2375 # Point to the dind service
+      - CPU = 2
+      - THREAD = 2
+    volumes:
+      - /tmp:/tmp
+      - ms-converter-home:/app
+    networks:
+      - shared_network
+
+networks:
+  shared_network:
+    driver: bridge
+
+volumes:
+  dind-storage:
+  ms-converter-home:
