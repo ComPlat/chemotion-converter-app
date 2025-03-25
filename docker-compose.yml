@@ -1,0 +1,11 @@
+services:
+  web:
+    image: mstarman/repo_converter:0.0.1
+    restart: unless-stopped
+    ports:
+      - ${PROJECT_WEB_PORT:-8080}:80
+    volumes:
+      - ./profiles/profiles:/var/share/profiles
+      - ./datasets:/var/share/datasets
+      - ./logs:/var/log/converter
+      - ./htpasswd:/var/share/htpasswd

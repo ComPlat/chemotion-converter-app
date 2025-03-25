@@ -15,7 +15,7 @@ services:
     command: ["dockerd", "--host=tcp://0.0.0.0:2375", "--host=unix:///var/run/docker.sock"]
 
   ms_test_converter:
-    image: lincoln1010/mass_spectrometry_file_converter:v2.1
+    image: lincoln1010/mass_spectrometry_file_converter:v2.1.2
     ports:
       - "5050:5000"
     stdin_open: true
