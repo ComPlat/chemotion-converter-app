@@ -9,6 +9,10 @@ from .models import Profile
 logger = logging.getLogger(__name__)
 
 
+class CalculationError(Exception):
+    pass
+
+
 class Converter:
     """
     Converter object checks if profile matches to filedata and runs the converting process
@@ -273,17 +277,28 @@ class Converter:
                                     table_index == operation.get('column', {}).get('tableIndex') and \
                                     column_index == operation.get('column', {}).get('columnIndex'):
                                 operation['rows'].append(self.get_value(row, column_index))
+            applied_operators = {
+                "applied_x_operator": False,
+                "applied_y_operator": False,
+                "applied_operator_failed": False
+            }
+            try:
+                for operation in x_operations:
+                    applied_operators["applied_x_operator"] |= self._run_operation(x_rows, operation)
+                for operation in y_operations:
+                    applied_operators["applied_y_operator"] |= self._run_operation(y_rows, operation)
+            except CalculationError:
+                applied_operators['applied_x_operator'] = applied_operators['applied_y_operator'] =  False
+                applied_operators['applied_operator_failed'] =  True
+                x_rows = []
+                y_rows = []
 
-            for operation in x_operations:
-                x_rows = self._run_operation(x_rows, operation)
-            for operation in y_operations:
-                y_rows = self._run_operation(y_rows, operation)
 
             self.tables.append({
                 'header': header,
                 'x': x_rows,
                 'y': y_rows
-            })
+            } | applied_operators)
 
     def _run_operation(self, rows, operation):
         for i, row in enumerate(rows):
@@ -320,15 +335,14 @@ class Converter:
             try:
                 op_value = float(str_value)
             except (TypeError, ValueError):
-                if operation.get('operator') in ('+', '-'):
-                    op_value = 0
-                else:
-                    op_value = 1
+                if not operation.get('ignore_missing_values'):
+                    raise CalculationError("Calculation could not be executed")
+                return False
 
             if op_value:
                 rows[i] = str(self.apply_operation(row, op_value, operation.get('operator')))
 
-        return rows
+        return True
 
     def _run_identifier_operation(self, value, operation):
         op_value = operation.get('value')
