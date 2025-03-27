@@ -1,4 +1,4 @@
--r common.txt
+-r default.txt
 
 coverage
 pytest
@@ -6,4 +6,7 @@ pytest-dotenv
 pytest-cov
 pytest-flask
 GitPython
-pytest_timeout
+wheel
+setuptools
+pybind11
+binaryparser @ git+https://github.com/ComPlat/BinaryParser@main

@@ -1,9 +1,8 @@
 import logging
-
-from converter_app.readers.helper.reader import Readers
-from converter_app.readers.helper.base import Reader
-from converter_app.readers.helper.unit_converter import convert_units, search_terms_matrix
 from html.parser import HTMLParser
+
+from converter_app.readers.helper.base import Reader
+from converter_app.readers.helper.reader import Readers
 
 logger = logging.getLogger(__name__)
 

@@ -16,18 +16,12 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Install dependencies
         run: |
-          pip install wheel setuptools pip pybind11 --upgrade
+          pip install pip --upgrade
           pip install -r ./requirements/dev.txt
           pip install pytest
       - name: Build tests
         run: |
           python test_manager/__init__.py -t -g -tp
-      - name: Test readers with pytest
+      - name: Test the code with pytest
         run: |
-          pytest -v ./test_manager/test_readers.py
-      - name: Test profiles with pytest
-        run: |
-          pytest -v ./test_manager/test_profiles.py
-      - name: Test static test
-        run: |
-          pytest -v ./test_static
+          pytest .
