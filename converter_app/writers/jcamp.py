@@ -35,9 +35,13 @@ class JcampWriter(Writer):
 
         if table.get('applied_x_operator'):
             jcamp_header['CALCULATION_APPLIED_X'] = True
+            if table.get('x_operations_description'):
+                self.write_comment_header(['X operations description:'] + table.get('x_operations_description'))
 
         if table.get('applied_y_operator'):
             jcamp_header['CALCULATION_APPLIED_Y'] = True
+            if table.get('y_operations_description'):
+                self.write_comment_header(['Y operations description:'] + table.get('y_operations_description'))
 
         if table.get('applied_operator_failed'):
             jcamp_header['CALCULATION_FAILED'] = True
@@ -227,6 +231,14 @@ class JcampWriter(Writer):
         for key, value in header.items():
             if value is not None:
                 self.buffer.write('##{}={}'.format(key, value) + os.linesep)
+
+    def write_comment_header(self, header):
+        self.buffer.write('$$ ' + '-' * 20 + '\n')
+        for value in header:
+            if value is not None:
+                for line in value.split('\n'):
+                    self.buffer.write(f'$$ {line}{os.linesep}')
+        self.buffer.write('$$ ' + '-' * 20 + '\n')
 
     def write_xydata(self, y, npoints, firstx, deltax, max_decimal):
         for i in range(0, npoints, self.nline):

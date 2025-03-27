@@ -280,7 +280,9 @@ class Converter:
             applied_operators = {
                 "applied_x_operator": False,
                 "applied_y_operator": False,
-                "applied_operator_failed": False
+                "applied_operator_failed": False,
+                "x_operations_description": output_table.get('table', {}).get('xOperationsDescription'),
+                "y_operations_description": output_table.get('table', {}).get('yOperationsDescription')
             }
             try:
                 for operation in x_operations:
