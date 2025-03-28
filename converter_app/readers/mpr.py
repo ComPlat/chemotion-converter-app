@@ -1,6 +1,7 @@
 import json
 import logging
 import tempfile
+
 import yadg
 from yadg.extractors.eclab.techniques import param_map  # needs yagd version > 6.0.2
 
@@ -9,8 +10,8 @@ from converter_app.readers.helper.reader import Readers
 
 logger = logging.getLogger(__name__)
 
-if not any(x[1] == 2 for x in param_map["set_I/C"]):
-     param_map["set_I/C"] += ("UNKNWON", 2),  # guess
+if not any(x[1] == 2 for x in param_map["Set I/C"]):
+     param_map["Set I/C"] += ("UNKNWON", 2),  # guess
 
 
 class MprReader(Reader):
@@ -87,12 +88,18 @@ class MprReader(Reader):
             attrs = json.loads(attrs.get('original_metadata', '{}'))
             self._handle_metadata(attrs, table, 'settings')
             self._handle_metadata(attrs, table, 'log')
-            for param in attrs.get('params', []):
-                self._handle_metadata({'params': param}, table, 'params')
+            self._handle_metadata(attrs, table, 'params')
 
     def _handle_metadata(self, attrs, table, man_key):
         for k, v in attrs.get(man_key, {}).items():
-            table['metadata'].add_unique(f'{man_key}.{k}', str(v))
+            if isinstance(v, list):
+                for i, lv in enumerate(v):
+                    table['metadata'].add_unique(f'{man_key}.{k}.{i}', str(lv))
+            elif isinstance(v, dict):
+                for i, lv in v.keys():
+                    table['metadata'].add_unique(f'{man_key}.{k}.{i}', str(lv))
+            else:
+                table['metadata'].add_unique(f'{man_key}.{k}', str(v))
 
 
 Readers.instance().register(MprReader)
