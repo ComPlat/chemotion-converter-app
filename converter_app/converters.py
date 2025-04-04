@@ -24,26 +24,29 @@ class Converter:
         self.tables = []
         self.file_metadata = file_data.get('metadata', {})
         self.input_tables = file_data.get('tables', [])
+        self.profile_output_tables = self.profile.data.get('tables', [])
+        self.output_tables = []
 
         if self.profile.data.get('matchTables'):
             self._prepare_identifier()
             self._prepare_tables()
         else:
-            self.output_tables = self.profile.data.get('tables', [])
             self.identifiers = self.profile.data.get('identifiers', [])
+            for output_table_index, output_table in enumerate(self.profile_output_tables):
+                if output_table.get('matchTables'):
+                    self._prepare_tables(output_table_index)
+                else:
+                    self.output_tables.append(output_table)
 
-    def _prepare_tables(self):
-        profile_output_tables = self.profile.data.get('tables', [])
-
+    def _prepare_tables(self, index=0):
         # match the output Table to the input tables and adjust the tableIndexes to the input table
-        self.output_tables = []
         for input_table_index, _ in enumerate(self.input_tables):
-            output_table = copy.deepcopy(profile_output_tables[0])
+            output_table = copy.deepcopy(self.profile_output_tables[index])
             output_table_table = output_table.get('table')
             if output_table_table:
                 if 'xColumn' in output_table_table:
                     output_table_table['xColumn']['tableIndex'] = input_table_index
-                if 'xColumn' in output_table_table:
+                if 'yColumn' in output_table_table:
                     output_table_table['yColumn']['tableIndex'] = input_table_index
                 for x_operation in output_table_table.get('xOperations', []):
                     if 'column' in x_operation:
