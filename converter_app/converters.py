@@ -26,12 +26,11 @@ class Converter:
         self.input_tables = file_data.get('tables', [])
         self.profile_output_tables = self.profile.data.get('tables', [])
         self.output_tables = []
+        self._prepare_identifier()
 
         if self.profile.data.get('matchTables'):
-            self._prepare_identifier()
             self._prepare_tables()
         else:
-            self.identifiers = self.profile.data.get('identifiers', [])
             for output_table_index, output_table in enumerate(self.profile_output_tables):
                 if output_table.get('matchTables'):
                     self._prepare_tables(output_table_index)
@@ -66,17 +65,34 @@ class Converter:
                 # no adjustment has to be done
                 self.identifiers.append(identifier)
             else:
-                # adjust this identifier for every input table
-                for input_table_index, _ in enumerate(self.input_tables):
-                    # make a copy of the identifier and adjust the outputTableIndex
-                    identifier_copy = copy.deepcopy(identifier)
-                    identifier_copy['outputTableIndex'] = input_table_index
+                if (self.profile.data.get('matchTables')
+                        or self.profile_output_tables[identifier.get('outputTableIndex')].get('matchTables')):
+                    # adjust this identifier for every input table
+                    for input_table_index, _ in enumerate(self.input_tables):
+                        # make a copy of the identifier and adjust the outputTableIndex
+                        identifier_copy = copy.deepcopy(identifier)
+                        identifier_copy['outputTableIndex'] = (input_table_index
+                                                               + self._get_output_table_index(identifier['outputTableIndex']))
 
-                    # adjust the (input)tableIndex as well if it was not null
-                    if identifier_copy.get('tableIndex') is not None:
-                        identifier_copy['tableIndex'] = input_table_index
+                        # adjust the (input)tableIndex as well if it was not null
+                        if identifier_copy.get('tableIndex') is not None:
+                            identifier_copy['tableIndex'] = input_table_index
 
-                    self.identifiers.append(identifier_copy)
+                        self.identifiers.append(identifier_copy)
+                else:
+                    identifier['outputTableIndex'] = self._get_output_table_index(identifier['outputTableIndex'])
+                    self.identifiers.append(identifier)
+
+    def _get_output_table_index(self, index: int):
+        result_index = 0
+        for output_table_index, output_table in enumerate(self.profile_output_tables):
+            if output_table_index == index:
+                return result_index
+            if output_table.get('matchTables'):
+                result_index += len(self.input_tables)
+            else:
+                result_index += 1
+        return result_index
 
     def match(self):
         """
