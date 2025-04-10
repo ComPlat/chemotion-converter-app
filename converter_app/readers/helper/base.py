@@ -79,6 +79,7 @@ class Reader:
         self.file = file
         self.file_content = tar_content
         self.is_tar_ball = len(tar_content) > 0
+        self.attachment_files = []
 
     @property
     def as_dict(self):
