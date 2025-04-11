@@ -32,7 +32,8 @@ class DelfinReader(Reader):
         """
         :return: True if it fits
         """
-        result = self.file.suffix.lower() == '.txt'
+        custom_suffix = [".delf", ".delfo", ".delfout"]
+        result = self.file.suffix.lower() == '.txt' or any(self.file.suffix.lower().endswith(ext) for ext in custom_suffix)
         if result:
             self.lines = self._parse_input()
             result = any("DELFIN" in line for line in self.lines.get('[NO HEADER]', []))
@@ -40,7 +41,20 @@ class DelfinReader(Reader):
 
     def prepare_tables(self):
         tables = []
+
         table = self.append_table(tables)
+
+        for line in self.file.fp.readlines():
+            line = line.decode(self.file.encoding).rstrip()
+            if line.endswith(':'):
+                table = self.append_table(tables)
+                table['metadata']["block"] = line.replace(":", " ")
+                table['header'].append(line[:-1])
+            elif ":" in line:
+                table['header'].append(line)
+            if "=" in line:
+                table['metadata'][line.split("=")[0]] = line.split("=")[1]
+
         table['metadata'] = {"test": "test"}
         return tables
 
