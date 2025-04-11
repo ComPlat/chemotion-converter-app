@@ -50,10 +50,10 @@ class Converter:
                 if 'yColumn' in output_table_table:
                     output_table_table['yColumn']['tableIndex'] = input_table_index
                 for x_operation in output_table_table.get('xOperations', []):
-                    if 'column' in x_operation:
+                    if 'column' in x_operation and x_operation['column']:
                         x_operation['column']['tableIndex'] = input_table_index
                 for y_operation in output_table_table.get('yOperations', []):
-                    if 'column' in y_operation:
+                    if 'column' in y_operation and y_operation['column']:
                         y_operation['column']['tableIndex'] = input_table_index
 
             self.output_tables.append(output_table)
@@ -102,11 +102,13 @@ class Converter:
 
     def _check_loop_condition(self, index, input_table_index):
         if self.profile_output_tables[index].get('loopType') == 'header':
-            loop_header = self.profile_output_tables[index].get('table').get('loop_header')
+            loop_header = self.profile_output_tables[index].get('table').get('loop_header', [])
             for header in loop_header:
+                if not header.get('column'):
+                    return False
                 table_index = header.get('column').get('tableIndex')
                 column_index = header.get('column').get('columnIndex')
-                if (len(self.input_tables) <= table_index
+                if (table_index is None or column_index is None or len(self.input_tables) <= table_index
                         or len(self.input_tables[table_index].get('columns', [])) <= column_index):
                     # No Input Table Column with given Ids found
                     return False
@@ -332,13 +334,13 @@ class Converter:
                         y_rows.append(self.get_value(row, column_index))
 
                     for operation in x_operations:
-                        if operation.get('type') == 'column' and \
+                        if operation.get('type') == 'column' and operation.get('column') and \
                                 table_index == operation.get('column', {}).get('tableIndex') and \
                                 column_index == operation.get('column', {}).get('columnIndex'):
                             operation['rows'].append(self.get_value(row, column_index))
 
                     for operation in y_operations:
-                        if operation.get('type') == 'column' and \
+                        if operation.get('type') == 'column' and operation.get('column') and \
                                 table_index == operation.get('column', {}).get('tableIndex') and \
                                 column_index == operation.get('column', {}).get('columnIndex'):
                             operation['rows'].append(self.get_value(row, column_index))
