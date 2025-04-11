@@ -28,11 +28,11 @@ class Converter:
         self.output_tables = []
         self._prepare_identifier()
 
-        if self.profile.data.get('matchTables'):
+        if self._has_loop():
             self._prepare_tables()
         else:
             for output_table_index, output_table in enumerate(self.profile_output_tables):
-                if output_table.get('matchTables'):
+                if self._has_loop(output_table_index):
                     self._prepare_tables(output_table_index)
                 else:
                     self.output_tables.append(output_table)
@@ -40,6 +40,8 @@ class Converter:
     def _prepare_tables(self, index=0):
         # match the output Table to the input tables and adjust the tableIndexes to the input table
         for input_table_index, _ in enumerate(self.input_tables):
+            if not self._check_loop_condition(index, input_table_index):
+                continue
             output_table = copy.deepcopy(self.profile_output_tables[index])
             output_table_table = output_table.get('table')
             if output_table_table:
@@ -60,15 +62,17 @@ class Converter:
         profile_identifiers = self.profile.data.get('identifiers', [])
         self.identifiers = []
         for identifier in profile_identifiers:
-            if identifier.get('outputTableIndex') is None:
+            output_table_index = identifier.get('outputTableIndex')
+            if output_table_index is None:
                 # if no outputTableIndex was set this identifier is valid for every table
                 # no adjustment has to be done
                 self.identifiers.append(identifier)
             else:
-                if (self.profile.data.get('matchTables')
-                        or self.profile_output_tables[identifier.get('outputTableIndex')].get('matchTables')):
+                if self._has_loop() or self._has_loop(output_table_index):
                     # adjust this identifier for every input table
                     for input_table_index, _ in enumerate(self.input_tables):
+                        if not self._check_loop_condition(output_table_index, input_table_index):
+                            continue
                         # make a copy of the identifier and adjust the outputTableIndex
                         identifier_copy = copy.deepcopy(identifier)
                         identifier_copy['outputTableIndex'] = (input_table_index
@@ -83,13 +87,47 @@ class Converter:
                     identifier['outputTableIndex'] = self._get_output_table_index(identifier['outputTableIndex'])
                     self.identifiers.append(identifier)
 
+    def _has_loop(self, index=-1):
+        if index == -1:
+            return self.profile.data.get('matchTables')
+        match self.profile_output_tables[index].get('loopType'):
+            case 'all':
+                return self.profile_output_tables[index].get('matchTables')
+            case 'header':
+                loop_header = self.profile_output_tables[index].get('table').get('loop_header')
+                return loop_header is not None and len(loop_header) > 0
+            case _:
+                # Invalid loopType
+                return False
+
+    def _check_loop_condition(self, index, input_table_index):
+        if self.profile_output_tables[index].get('loopType') == 'header':
+            loop_header = self.profile_output_tables[index].get('table').get('loop_header')
+            for header in loop_header:
+                table_index = header.get('column').get('tableIndex')
+                column_index = header.get('column').get('columnIndex')
+                if (len(self.input_tables) <= table_index
+                        or len(self.input_tables[table_index].get('columns', [])) <= column_index):
+                    # No Input Table Column with given Ids found
+                    return False
+                if table_index == input_table_index:
+                    continue
+                column_name = self.input_tables[table_index].get('columns')[column_index].get('name')
+                if (len(self.input_tables[input_table_index].get('columns', [])) <= column_index
+                or column_name != self.input_tables[input_table_index].get('columns')[column_index].get('name')):
+                    return False
+            return True
+        return True
+
     def _get_output_table_index(self, index: int):
         result_index = 0
         for output_table_index, output_table in enumerate(self.profile_output_tables):
             if output_table_index == index:
                 return result_index
-            if output_table.get('matchTables'):
-                result_index += len(self.input_tables)
+            if self._has_loop(output_table_index):
+                for input_table_index, _ in enumerate(self.input_tables):
+                    if self._check_loop_condition(output_table_index, input_table_index):
+                        result_index += 1
             else:
                 result_index += 1
         return result_index
