@@ -2,9 +2,9 @@ import io
 import os
 import sys
 
+from .base import Writer
 from .. import __title__, __version__
 from ..options import DATA_TYPES, DATA_CLASSES, XUNITS, YUNITS
-from .base import Writer
 
 
 class JcampWriter(Writer):
@@ -16,6 +16,7 @@ class JcampWriter(Writer):
     def __init__(self, converter):
         self.table = converter.tables[0]
         self.buffer = io.StringIO()
+
 
     def process(self):
         self.process_table(self.table)
@@ -31,11 +32,28 @@ class JcampWriter(Writer):
             'ORIGIN': header.get('ORIGIN', ''),
             'OWNER': header.get('OWNER', '')
         }
+
+        if table.get('applied_x_operator'):
+            jcamp_header['CALCULATION_APPLIED_X'] = True
+            if table.get('x_operations_description'):
+                self.write_comment_header(['X operations description:'] + table.get('x_operations_description'))
+
+        if table.get('applied_y_operator'):
+            jcamp_header['CALCULATION_APPLIED_Y'] = True
+            if table.get('y_operations_description'):
+                self.write_comment_header(['Y operations description:'] + table.get('y_operations_description'))
+
+        if table.get('applied_operator_failed'):
+            jcamp_header['CALCULATION_FAILED'] = True
+
         for key in header:
             key_upper = key.upper()
             if key_upper not in jcamp_header:
                 jcamp_header[key_upper] = header[key]
         self.write_header(jcamp_header)
+
+        if not table.get('y') or not table.get('x'):
+            return
 
         data_class = header.get('DATA CLASS', DATA_CLASSES[0])
         if data_class == 'XYDATA':
@@ -213,6 +231,14 @@ class JcampWriter(Writer):
         for key, value in header.items():
             if value is not None:
                 self.buffer.write('##{}={}'.format(key, value) + os.linesep)
+
+    def write_comment_header(self, header):
+        self.buffer.write('$$ ' + '-' * 20 + '\n')
+        for value in header:
+            if value is not None:
+                for line in value.split('\n'):
+                    self.buffer.write(f'$$ {line}{os.linesep}')
+        self.buffer.write('$$ ' + '-' * 20 + '\n')
 
     def write_xydata(self, y, npoints, firstx, deltax, max_decimal):
         for i in range(0, npoints, self.nline):
