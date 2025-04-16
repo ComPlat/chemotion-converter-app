@@ -125,7 +125,7 @@ class DelfinReader(Reader):
                     duration_in_hours = time_interpreter.time_string_to_hours(line)
                     table['metadata']['total run time [h]'] = str(duration_in_hours)
             if "=" in line:
-                table['metadata'][line.split("=")[0]] = line.split("=")[1]
+                table['metadata'][(line.split("=")[0]).strip()] = (line.split("=")[1]).strip()
             if match := re.match(xyz_pattern, line.strip()):
                 self.__extract_xyz(match)
 
