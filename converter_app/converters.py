@@ -96,6 +96,9 @@ class Converter:
             case 'header':
                 loop_header = self.profile_output_tables[index].get('table').get('loop_header')
                 return loop_header is not None and len(loop_header) > 0
+            case 'metadata':
+                loop_metadata = self.profile_output_tables[index].get('table').get('loop_metadata')
+                return loop_metadata is not None and len(loop_metadata) > 0
             case _:
                 # Invalid loopType
                 return False
@@ -118,6 +121,21 @@ class Converter:
                 if (len(self.input_tables[input_table_index].get('columns', [])) <= column_index
                 or column_name != self.input_tables[input_table_index].get('columns')[column_index].get('name')):
                     return False
+            return True
+        if self.profile_output_tables[index].get('loopType') == 'metadata':
+            loop_metadata = self.profile_output_tables[index].get('table').get('loop_metadata', [])
+            for metadata in loop_metadata:
+                if not metadata.get('value') or not metadata.get('table'):
+                    return False
+                key = metadata.get('value')
+                if metadata.get('ignoreValue'):
+                    if not key in self.input_tables[input_table_index].get('metadata', {}):
+                        return False
+                else:
+                    table_index = int(metadata.get('table'))
+                    value = self.input_tables[table_index].get('metadata', {}).get(key, None)
+                    if value != self.input_tables[input_table_index].get('metadata', {}).get(key, None):
+                        return False
             return True
         return True
 
