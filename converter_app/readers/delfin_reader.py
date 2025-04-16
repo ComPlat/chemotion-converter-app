@@ -14,21 +14,8 @@ class DelfinReader(Reader):
 
     def __init__(self, file, *tar_content):
         super().__init__(file, *tar_content)
-        self.lines = None
+        self.all_lines = []
         self.atom_list = []
-
-    def _parse_input(self):
-        current_header = '[NO HEADER]'
-        header_re = re.compile(r'^\[.+]$')
-        content = {current_header: []}
-        for x in self.file.string.splitlines():
-            if x != '':
-                if header_re.match(x) is not None:
-                    current_header = x
-                    content[x] = []
-                else:
-                    content[current_header].append(x)
-        return content
 
     def __extract_xyz(self, data):
         if isinstance(data, str):
@@ -54,9 +41,7 @@ class DelfinReader(Reader):
 
         self.atom_list.append((atom, x, y, z))
 
-    import re
-
-    def parse_key_value_blocks(self, lines, excluded_keys=None):
+    def parse_key_value_blocks(self, excluded_keys=None):
         if excluded_keys is None:
             excluded_keys = {"Coordinates"}  # add more if needed
 
@@ -64,19 +49,19 @@ class DelfinReader(Reader):
         current_key = None
         value_lines = []
 
-        for line in lines:
-            stripped = line.rstrip()
+        for line in self.all_lines:
+            stripped = line.strip()
 
             # If this line starts with an excluded key, finish current block and skip
             if any(stripped.startswith(key + ":") for key in excluded_keys):
                 if current_key and value_lines:
-                    result[current_key] = value_lines
+                    result[current_key] = str(" -- ".join(value_lines))
                 current_key = None
                 value_lines = []
                 continue
 
             # Check for a new header line like "Some Key: value"
-            if match := re.match(r'^([A-Za-z ]+):\s*(.*)', stripped):
+            if match := re.match(r'^(?!#)([^:]+):\s*(.*)', stripped):
                 candidate_key = match.group(1).strip()
                 if candidate_key in excluded_keys:
                     continue
@@ -108,8 +93,8 @@ class DelfinReader(Reader):
         custom_suffix = [".delf", ".delfo", ".delfout"]
         result = self.file.suffix.lower() == '.txt' or any(self.file.suffix.lower().endswith(ext) for ext in custom_suffix)
         if result:
-            self.lines = self._parse_input()
-            result = any("DELFIN" in line for line in self.lines.get('[NO HEADER]', []))
+            self.all_lines = re.split(r'[\r\n]+', self.file.content.decode(self.file.encoding))
+            result = any("DELFIN" in line for line in self.all_lines)
         return result
 
     def prepare_tables(self):
@@ -117,12 +102,19 @@ class DelfinReader(Reader):
         xyz_pattern = r'^([A-Za-z]+)\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)$'
 
         table = self.append_table(tables)
+        table['metadata']['program'] = 'DELFIN'
 
-        all_lines = re.split(r'[\r\n]+', self.file.content.decode(self.file.encoding))
-        table['metadata'].update(self.parse_key_value_blocks(all_lines))
+        table['metadata'].update(self.parse_key_value_blocks())
 
-        for line in self.file.fp.readlines():
-            line = line.decode(self.file.encoding).rstrip()
+        for line in self.all_lines:
+            line = line.rstrip()
+            if "SMILES" in line:
+                continue
+            if "Version" in line:
+                table['metadata']["version"] = line.split()[2].strip()
+            if "This program automates" in line:
+                table['metadata']["target"] = line.split()[4].strip()
+                table['metadata']["target version"] = line.split()[5].strip()
             if line.endswith(':'):
                 table = self.append_table(tables)
                 table['metadata']["block"] = line.replace(":", " ")
@@ -131,15 +123,12 @@ class DelfinReader(Reader):
                 table['header'].append(line)
                 if "time" in line.lower():
                     duration_in_hours = time_interpreter.time_string_to_hours(line)
-                    table['metadata']['total run time'] = duration_in_hours
-                    print("Done")
+                    table['metadata']['total run time [h]'] = str(duration_in_hours)
             if "=" in line:
                 table['metadata'][line.split("=")[0]] = line.split("=")[1]
             if match := re.match(xyz_pattern, line.strip()):
                 self.__extract_xyz(match)
 
-        # table['metadata']['test'] = 'test'
-        # table['header'] = str(self.atom_list)
         return tables
 
 Readers.instance().register(DelfinReader)
