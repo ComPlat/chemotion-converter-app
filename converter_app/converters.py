@@ -90,21 +90,16 @@ class Converter:
     def _has_loop(self, index=-1):
         if index == -1:
             return self.profile.data.get('matchTables')
-        match self.profile_output_tables[index].get('loopType'):
-            case 'all':
+        if self.profile_output_tables[index].get('loopType') == 'all':
                 return self.profile_output_tables[index].get('matchTables')
-            case 'header':
-                loop_header = self.profile_output_tables[index].get('table').get('loop_header')
-                return loop_header is not None and len(loop_header) > 0
-            case 'metadata':
-                loop_metadata = self.profile_output_tables[index].get('table').get('loop_metadata')
-                return loop_metadata is not None and len(loop_metadata) > 0
-            case _:
-                # Invalid loopType
-                return False
+        else:
+            loop_header = self.profile_output_tables[index].get('table').get('loop_header')
+            loop_metadata = self.profile_output_tables[index].get('table').get('loop_metadata')
+            return ((loop_header is not None and len(loop_header) > 0)
+                    or (loop_metadata is not None and len(loop_metadata) > 0))
 
     def _check_loop_condition(self, index, input_table_index):
-        if self.profile_output_tables[index].get('loopType') == 'header':
+        if self.profile_output_tables[index].get('loopType') != 'all':
             loop_header = self.profile_output_tables[index].get('table').get('loop_header', [])
             for header in loop_header:
                 if not header.get('column'):
@@ -121,8 +116,7 @@ class Converter:
                 if (len(self.input_tables[input_table_index].get('columns', [])) <= column_index
                 or column_name != self.input_tables[input_table_index].get('columns')[column_index].get('name')):
                     return False
-            return True
-        if self.profile_output_tables[index].get('loopType') == 'metadata':
+
             loop_metadata = self.profile_output_tables[index].get('table').get('loop_metadata', [])
             for metadata in loop_metadata:
                 if not metadata.get('value') or not metadata.get('table'):
