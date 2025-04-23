@@ -107,14 +107,15 @@ class DelfinReader(Reader):
         table['metadata'].update(self.parse_key_value_blocks())
 
         for line in self.all_lines:
-            line = line.rstrip()
+            line = line.strip()
             if "SMILES" in line:
                 continue
             if "Version" in line:
                 table['metadata']["version"] = line.split()[2].strip()
             if "This program automates" in line:
-                table['metadata']["target"] = line.split()[4].strip()
-                table['metadata']["target version"] = line.split()[5].strip()
+                line_split = line.split()
+                table['metadata']["target"] = line_split[4].strip()
+                table['metadata']["target version"] = line_split[5].strip()
             if line.endswith(':'):
                 table = self.append_table(tables)
                 table['metadata']["block"] = line.replace(":", " ")
@@ -125,8 +126,9 @@ class DelfinReader(Reader):
                     duration_in_hours = time_interpreter.time_string_to_hours(line)
                     table['metadata']['total run time [h]'] = str(duration_in_hours)
             if "=" in line:
-                table['metadata'][(line.split("=")[0]).strip()] = (line.split("=")[1]).strip()
-            if match := re.match(xyz_pattern, line.strip()):
+                (key, value) = line.split("=", maxsplit=1)
+                table['metadata'][key.strip()] = value.strip()
+            if match := re.match(xyz_pattern, line):
                 self.__extract_xyz(match)
 
         return tables
