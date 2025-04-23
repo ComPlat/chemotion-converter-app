@@ -95,8 +95,10 @@ class Converter:
         else:
             loop_header = self.profile_output_tables[index].get('table').get('loop_header')
             loop_metadata = self.profile_output_tables[index].get('table').get('loop_metadata')
+            loop_theader = self.profile_output_tables[index].get('table').get('loop_theader')
             return ((loop_header is not None and len(loop_header) > 0)
-                    or (loop_metadata is not None and len(loop_metadata) > 0))
+                    or (loop_metadata is not None and len(loop_metadata) > 0)
+                    or (loop_theader is not None and len(loop_theader) > 0))
 
     def _check_loop_condition(self, index, input_table_index):
         if self.profile_output_tables[index].get('loopType') != 'all':
@@ -115,6 +117,12 @@ class Converter:
                 column_name = self.input_tables[table_index].get('columns')[column_index].get('name')
                 if (len(self.input_tables[input_table_index].get('columns', [])) <= column_index
                 or column_name != self.input_tables[input_table_index].get('columns')[column_index].get('name')):
+                    return False
+
+            loop_theader = self.profile_output_tables[index].get('table').get('loop_theader', [])
+            for theader in loop_theader:
+                match, _ = self._search_regex(theader, input_table_index)
+                if match is None:
                     return False
 
             loop_metadata = self.profile_output_tables[index].get('table').get('loop_metadata', [])
@@ -400,23 +408,15 @@ class Converter:
             elif operation.get('type') == 'metadata_value':
                 str_value = self.input_tables[int(operation.get('table'))]['metadata'].get(operation.get('value'))
             elif operation.get('type') == 'header_value':
-                table = 0
+                table_id = 0
                 if operation.get('table') is not None:
-                    table = int(operation.get('table'))
-                try:
-                    line_number = int(operation.get('line', ''))
-                    header = self.input_tables[table]['header'][line_number - 1].rstrip()
-                except (TypeError, ValueError, IndexError):
-                    header = os.linesep.join(self.input_tables[table]['header']).rstrip()
-                pattern = operation.get('regex')
-                if header is not None and pattern is not None:
-                    str_value = header
-                    match = re.search(pattern, str_value)
-                    if match is not None:
-                        if len(match.regs) > 1:
-                            str_value = match[1]
-                        else:
-                            str_value = match[0]
+                    table_id = int(operation.get('table'))
+                match, str_value = self._search_regex(operation, table_id)
+                if match is not None:
+                    if len(match.regs) > 1:
+                        str_value = match[1]
+                    else:
+                        str_value = match[0]
             else:
                 raise ValueError(f"Unknown operation type: {operation.get('type')}")
             try:
@@ -431,6 +431,19 @@ class Converter:
 
         return True
 
+    def _search_regex(self, operation, table_id):
+        match = None
+        str_value = None
+        try:
+            line_number = int(operation.get('line', ''))
+            header = self.input_tables[table_id]['header'][line_number - 1].rstrip()
+        except (TypeError, ValueError, IndexError):
+            header = os.linesep.join(self.input_tables[table_id]['header']).rstrip()
+        pattern = operation.get('regex')
+        if header is not None and pattern is not None:
+            str_value = header
+            match = re.search(pattern, str_value)
+        return match, str_value
 
     def _run_identifier_operation(self, value, operation):
         op_value = operation.get('value')
