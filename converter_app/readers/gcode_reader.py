@@ -16,7 +16,7 @@ class GCodeReader(Reader):
         """
         :return: True if it fits
         """
-        return self.file.suffix == '.gcode'
+        return self.file.suffix == '.gcode' or self.file.suffix == '.gx'
 
     def prepare_tables(self):
         tables = []
@@ -29,11 +29,14 @@ class GCodeReader(Reader):
         table = self.append_table(tables)
         for line in all_lines:
             line = line.rstrip()
-            result = translator.explain_gcode_line(line, gcode_mapping, True, True)
-            translator.translated_line_to_dict(result)
-            match = re.match(r';\s*([^:]+):(.+)', line)
-            if match:
-                table['metadata'][match.group(1)] = match.group(2)
+            result, in_header = translator.explain_gcode_line(line, gcode_mapping, True, True)
+            if in_header:
+                table["header"].append(result)
+            else:
+                translator.translated_line_to_dict(result)
+                match = re.match(r';\s*([^:]+):(.+)', line)
+                if match:
+                    table['metadata'][match.group(1)] = match.group(2)
         translator.clean_str_from_dict()
         for values in translator.sort_and_filter_dict(True):
             table = self.append_table(tables)

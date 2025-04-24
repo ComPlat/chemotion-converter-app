@@ -1,4 +1,5 @@
 import base64
+import re
 
 import converter_app.readers.helper.g_code_translator_package.helper as helper
 from converter_app.readers.helper.g_code_translator_package.GCode_Mapping import MarlinGcodeScraper, GCode_Mapping, GCodeFlavor
@@ -10,7 +11,7 @@ class GCodeTranslator:
         self.line_is_a_picture = False
         self.picture_code = []
         self.output_dict = {}
-        print("Initializing GCode Translator")
+        # print("Initializing GCode Translator")
 
     def init_mapping(self):
         scraper = GCode_Mapping()
@@ -25,21 +26,24 @@ class GCodeTranslator:
             scraper.close()
         return mapping
 
-    def explain_gcode_line(self, line_to_translate, mapping, preview_picture_needed=True, preview_pic_as_file=True):
+    def explain_gcode_line(self, line_to_translate, mapping, preview_picture_needed=True, preview_pic_as_file=True) -> tuple[str, bool]:
         if line_to_translate.startswith("; thumbnail end"):
             self.line_is_a_picture = False
             if preview_picture_needed and preview_pic_as_file:
                 self.transform_preview_picture()
-            return ""
+            return "", False
         if line_to_translate.startswith("; thumbnail begin") or self.line_is_a_picture:
             if not self.line_is_a_picture:
                 self.picture_code = []
                 self.line_is_a_picture = True
             if preview_picture_needed:
                 self.extract_preview_picture(line_to_translate)
-            return ""
+            return "", False
+        blacklist = ["thumbnail", "base64", "preview", "width:", "height:", "layer", "type:", "time_elapsed:", "mesh:", "gimage", "simage"]
+        if self.is_valid_comment(line_to_translate, blacklist):
+            return line_to_translate[1:200].strip(), True
         if line_to_translate.startswith(";") or line_to_translate.strip() == "":
-            return line_to_translate
+            return line_to_translate, False
 
         parts = line_to_translate.strip().split()
         cmd = parts[0]
@@ -48,12 +52,12 @@ class GCodeTranslator:
         if mapping is not None:
             explanation = mapping.get(cmd, "Unknown command")
             param_str = "True" if not params else " ".join(params)
-            if param_str == "True":
-                print(f"{cmd}: {explanation} | Parameter: {param_str}")
-            return f"{cmd}: {explanation} | Parameter: {param_str}"
+            # if param_str == "True":
+                # print(f"{cmd}: {explanation} | Parameter: {param_str}")
+            return f"{cmd}: {explanation} | Parameter: {param_str}", False
         else:
             param_str = "True" if not params else " ".join(params)
-            return f"{cmd}: Unknown mapping | Parameter: {param_str}"
+            return f"{cmd}: Unknown mapping | Parameter: {param_str}", False
 
     def translated_line_to_dict(self, translated_line):
         if "|" in translated_line:
@@ -96,7 +100,8 @@ class GCodeTranslator:
             def my_gcode_sort_key(key_: str):
                 # inner function to extract sortable key
                 prefix = key_[0]
-                number = int(''.join(filter((lambda c: c.isdigit()), key_)))
+                digits = ''.join(filter(lambda c: c.isdigit(), key_))
+                number = int(digits) if digits else 77777 # Magic Number / WTF-Marker: Fallback case for no number Codes
                 return prefix, number
 
             self.output_dict = dict(sorted(self.output_dict.items(), key=lambda item: my_gcode_sort_key(item[0])))
@@ -141,6 +146,30 @@ class GCodeTranslator:
         with open(pic_name, "wb") as img_file:
             img_file.write(image_data)
         print(f"✅ Thumbnail saved as '{pic_name}'.")
+
+    def is_valid_comment(self, com_line: str, blacklist: list[str]) -> bool:
+        """
+        Checks whether a line is a meaningful G-code comment.
+        - Accepts comments that start with ';' or '; ' and contain real content.
+        - Ignores lines that contain any blacklisted words.
+
+        :param com_line: The line to check (typically from a G-code file)
+        :param blacklist: List of lowercase terms to reject (e.g. ['thumbnail', 'base64'])
+        :return: True if the line is a meaningful comment and not blacklisted
+        """
+        # Normalize line for easier checks
+        com_line = com_line.strip()
+
+        # Rule 1: Comment starts with '; ' and contains more than just one word
+        has_comment_structure = (
+                (com_line.startswith("; ") and " " in com_line[2:]) or
+                (com_line.startswith(";") and len(com_line) > 1 and com_line[1] != " ")
+        )
+
+        # Rule 2: Blacklist check (case-insensitive)
+        not_blacklisted = not any(bad_word in com_line.lower() for bad_word in blacklist)
+
+        return has_comment_structure and not_blacklisted
 
 
 if __name__ == "__main__":

@@ -17,7 +17,7 @@ class GCodeFlavor(Enum):
 class GCode_Mapping(ABC):
     def __init__(self):
         self.gcode_type = GCodeFlavor.GENERIC
-        print("Initializing GCode Mapping for ...")
+        # print("Initializing GCode Mapping for ...")
 
     def fetch_gcode_mapping(self):
         pass
@@ -33,7 +33,7 @@ class MarlinGcodeScraper(GCode_Mapping):
         to load JavaScript-based content from the Marlin G-code page.
         """
         super().__init__()
-        print("... Marlin")
+        # print("... Marlin")
         self.url = url
         chrome_options = Options()
         chrome_options.add_argument("--headless")  # Run browser in headless mode
