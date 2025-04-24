@@ -9,6 +9,10 @@ from .models import Profile
 logger = logging.getLogger(__name__)
 
 
+class CalculationError(Exception):
+    pass
+
+
 class Converter:
     """
     Converter object checks if profile matches to filedata and runs the converting process
@@ -231,16 +235,46 @@ class Converter:
 
             self._process_prepare_data(x_column, x_operations, x_rows, y_column, y_operations, y_rows)
 
-            for operation in x_operations:
-                x_rows = self._run_operation(x_rows, operation)
-            for operation in y_operations:
-                y_rows = self._run_operation(y_rows, operation)
+                        if y_column and \
+                                table_index == y_column.get('tableIndex') and \
+                                column_index == y_column.get('columnIndex'):
+                            y_rows.append(self.get_value(row, column_index))
+
+                        for operation in x_operations:
+                            if operation.get('type') == 'column' and \
+                                    table_index == operation.get('column', {}).get('tableIndex') and \
+                                    column_index == operation.get('column', {}).get('columnIndex'):
+                                operation['rows'].append(self.get_value(row, column_index))
+
+                        for operation in y_operations:
+                            if operation.get('type') == 'column' and \
+                                    table_index == operation.get('column', {}).get('tableIndex') and \
+                                    column_index == operation.get('column', {}).get('columnIndex'):
+                                operation['rows'].append(self.get_value(row, column_index))
+            applied_operators = {
+                "applied_x_operator": False,
+                "applied_y_operator": False,
+                "applied_operator_failed": False,
+                "x_operations_description": output_table.get('table', {}).get('xOperationsDescription'),
+                "y_operations_description": output_table.get('table', {}).get('yOperationsDescription')
+            }
+            try:
+                for operation in x_operations:
+                    applied_operators["applied_x_operator"] |= self._run_operation(x_rows, operation)
+                for operation in y_operations:
+                    applied_operators["applied_y_operator"] |= self._run_operation(y_rows, operation)
+            except CalculationError:
+                applied_operators['applied_x_operator'] = applied_operators['applied_y_operator'] =  False
+                applied_operators['applied_operator_failed'] =  True
+                x_rows = []
+                y_rows = []
+
 
             self.tables.append({
                 'header': header,
                 'x': x_rows,
                 'y': y_rows
-            })
+            } | applied_operators)
 
     def _process_prepare_data(self, x_column, x_operations, x_rows, y_column, y_operations, y_rows):
         for table_index, table in enumerate(self.input_tables):
@@ -297,19 +331,47 @@ class Converter:
 
     def _run_operation(self, rows, operation):
         for i, row in enumerate(rows):
-            op_value = None
+            str_value = None
             if operation.get('type') == 'column':
                 try:
-                    op_value = operation['rows'][i]
+                    str_value = operation['rows'][i]
                 except IndexError:
                     pass
             elif operation.get('type') == 'value':
-                op_value = operation.get('value')
+                str_value = operation.get('value')
+            elif operation.get('type') == 'metadata_value':
+                str_value = self.input_tables[int(operation.get('table'))]['metadata'].get(operation.get('value'))
+            elif operation.get('type') == 'header_value':
+                table = 0
+                if operation.get('table') is not None:
+                    table = int(operation.get('table'))
+                try:
+                    line_number = int(operation.get('line', ''))
+                    header = self.input_tables[table]['header'][line_number - 1].rstrip()
+                except (TypeError, ValueError, IndexError):
+                    header = os.linesep.join(self.input_tables[table]['header']).rstrip()
+                pattern = operation.get('regex')
+                if header is not None and pattern is not None:
+                    str_value = header
+                    match = re.search(pattern, str_value)
+                    if match is not None:
+                        if len(match.regs) > 1:
+                            str_value = match[1]
+                        else:
+                            str_value = match[0]
+            else:
+                raise ValueError(f"Unknown operation type: {operation.get('type')}")
+            try:
+                op_value = float(str_value)
+            except (TypeError, ValueError):
+                if not operation.get('ignore_missing_values'):
+                    raise CalculationError("Calculation could not be executed")
+                return False
 
             if op_value:
                 rows[i] = str(self.apply_operation(row, op_value, operation.get('operator')))
 
-        return rows
+        return True
 
     def _run_identifier_operation(self, value, operation):
         op_value = operation.get('value')

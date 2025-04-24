@@ -6,15 +6,13 @@ import traceback
 import zipfile
 
 import flask
-
 from werkzeug.datastructures import FileStorage
 
-from converter_app.models import File
-
-from converter_app.readers import READERS as registry
-from test_manager.test_file_manager import PROFILE_PATH
 from converter_app.converters import Converter
+from converter_app.models import File
+from converter_app.readers import READERS as registry
 from converter_app.writers.jcampzip import JcampZipWriter
+from test_manager.test_file_manager import PROFILE_PATH
 
 FLASK_APP = None
 
@@ -30,7 +28,7 @@ def compare_tables(tables_res, tables_exp):
     for idx, table_res in enumerate(tables_res):
         assert '\n'.join(table_res['header']) == '\n'.join(tables_exp[idx]['header'])
         for key, value_res in table_res['metadata'].items():
-            assert value_res == tables_exp[idx]['metadata'][key]
+            assert value_res == tables_exp[idx]['metadata'].get(key)
         assert table_res['columns'] == tables_exp[idx]['columns']
         assert len(table_res['rows']) == len(tables_exp[idx]['rows'])
         for row_idx, row_res in enumerate(table_res['rows']):
