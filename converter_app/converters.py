@@ -4,7 +4,7 @@ import logging
 import os
 import re
 
-from .models import Profile
+from converter_app.models import Profile
 
 logger = logging.getLogger(__name__)
 
@@ -235,22 +235,6 @@ class Converter:
 
             self._process_prepare_data(x_column, x_operations, x_rows, y_column, y_operations, y_rows)
 
-                        if y_column and \
-                                table_index == y_column.get('tableIndex') and \
-                                column_index == y_column.get('columnIndex'):
-                            y_rows.append(self.get_value(row, column_index))
-
-                        for operation in x_operations:
-                            if operation.get('type') == 'column' and \
-                                    table_index == operation.get('column', {}).get('tableIndex') and \
-                                    column_index == operation.get('column', {}).get('columnIndex'):
-                                operation['rows'].append(self.get_value(row, column_index))
-
-                        for operation in y_operations:
-                            if operation.get('type') == 'column' and \
-                                    table_index == operation.get('column', {}).get('tableIndex') and \
-                                    column_index == operation.get('column', {}).get('columnIndex'):
-                                operation['rows'].append(self.get_value(row, column_index))
             applied_operators = {
                 "applied_x_operator": False,
                 "applied_y_operator": False,
@@ -264,8 +248,8 @@ class Converter:
                 for operation in y_operations:
                     applied_operators["applied_y_operator"] |= self._run_operation(y_rows, operation)
             except CalculationError:
-                applied_operators['applied_x_operator'] = applied_operators['applied_y_operator'] =  False
-                applied_operators['applied_operator_failed'] =  True
+                applied_operators['applied_x_operator'] = applied_operators['applied_y_operator'] = False
+                applied_operators['applied_operator_failed'] = True
                 x_rows = []
                 y_rows = []
 
@@ -302,6 +286,7 @@ class Converter:
                                 column_index == operation.get('column', {}).get('columnIndex'):
                             operation['rows'].append(self.get_value(row, column_index))
 
+
     def _process_prepare_metadata(self, header, output_table_index):
         # merge the metadata from the profile (header) with the metadata
         # extracted using the identifiers (see self.match)
@@ -317,6 +302,7 @@ class Converter:
                 ):
                     header[match_output_key] = match_value
 
+
     def _process_prepare_header(self, output_table):
         header = {}
         for key, value in output_table.get('header', {}).items():
@@ -328,6 +314,7 @@ class Converter:
             else:
                 header[key] = value
         return header
+
 
     def _run_operation(self, rows, operation):
         for i, row in enumerate(rows):
@@ -373,11 +360,13 @@ class Converter:
 
         return True
 
+
     def _run_identifier_operation(self, value, operation):
         op_value = operation.get('value')
         if op_value:
             return self.apply_operation(value, op_value, operation.get('operator'))
         return value
+
 
     def apply_operation(self, value, op_value, op_operator):
         """
@@ -402,6 +391,7 @@ class Converter:
             pass
         return None
 
+
     def get_input_table(self, index, input_tables):
         if index is not None:
             try:
@@ -411,6 +401,7 @@ class Converter:
             except KeyError:
                 return None
 
+
     def _get_line_number(self, header, value):
         # if line_number is None:
         for i, line in enumerate(header):
@@ -418,6 +409,7 @@ class Converter:
                 # again we count from 1
                 return i + 1
         return -1
+
 
     def get_value(self, row, column_index):
         """
@@ -428,9 +420,11 @@ class Converter:
         """
         return self._fix_float(row[column_index])
 
+
     @staticmethod
     def _fix_float(value):
         return str(value).replace(',', '.').replace('e', 'E')
+
 
     @classmethod
     def match_profile(cls, client_id, file_data):
@@ -454,7 +448,7 @@ class Converter:
             logger.info('profile=%s matches=%s', profile.id, current_matches)
             if (current_matches is not False and
                     (current_matches > matches or current_matches == matches and
-                    profile_uploaded > latest_profile_uploaded)):
+                     profile_uploaded > latest_profile_uploaded)):
                 matches = max(matches, current_matches)
                 latest_profile_uploaded = profile_uploaded
                 converter = current_converter
