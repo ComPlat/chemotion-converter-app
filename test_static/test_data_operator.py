@@ -2,9 +2,9 @@ from pathlib import Path
 
 from werkzeug.datastructures import FileStorage
 
-from converters import Converter
-from models import File, Profile
-from readers import READERS
+from converter_app.converters import Converter
+from converter_app.models import File, Profile
+from converter_app.readers import READERS
 
 
 def test_is_operator_sample():
