@@ -90,6 +90,9 @@ class Converter:
     def _has_loop(self, index=-1):
         if index == -1:
             return self.profile.data.get('matchTables')
+
+        if len(self.profile_output_tables) <= index:
+            return False
         if self.profile_output_tables[index].get('loopType') == 'all':
                 return self.profile_output_tables[index].get('matchTables')
         else:
