@@ -38,13 +38,46 @@ python -m test_manager -g
 
 It fetches the profiles and test files from the added_data_files branch of the repository: https://github.com/ComPlat/chemotion_saurus.git
 
-
 ###  Generate black box tests
 
-Get a brief docu:  
+Generate files:  
 
 ```shell
 python -m test_manager -t -tp
+```
+
+This generates two files:
+
+- test_manager/test_profiles.py
+- test_manager/test_readers.py
+
+### Overwrites expected test results
+
+To overwrite the expected test results run:
+
+```shell
+python -m test_manager -t -tp
+```
+
+This generates a directory test_manager/profile_results and a directory test_manager/reader_results.
+
+Make sure that you check the changes in the git diff before you commit the results of this command.
+
+### All Options
+
+| Short | Long | Help |
+| -h | --help | show this help message and exit |
+| -e | --expected | Overwrites expected test results for reader tests. Be careful. May permanently falsify the test results! |
+| -ep | --expected_profiles | Overwrites expected test results for profile tests. Be careful. May permanently falsify the test results! |
+| -t | --tests | Generates all reader tests in: test_readers.py |
+| -tp | --test_profiles | Generates all profile tests in: test_profiles.py |
+| -g | --github | Reloads profiles and test files from the Git Repository: https://github.com/ComPlat/chemotion_saurus.git branch=added_data_files |
+
+
+### Run tests:
+
+```shell
+pytest .
 ```
 
 ## Setup Python Virtual Environment
