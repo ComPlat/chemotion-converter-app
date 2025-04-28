@@ -66,6 +66,7 @@ Make sure that you check the changes in the git diff before you commit the resul
 ### All Options
 
 | Short | Long | Help |
+| ---    | ---   | ---     |
 | -h | --help | show this help message and exit |
 | -e | --expected | Overwrites expected test results for reader tests. Be careful. May permanently falsify the test results! |
 | -ep | --expected_profiles | Overwrites expected test results for profile tests. Be careful. May permanently falsify the test results! |
@@ -79,6 +80,27 @@ Make sure that you check the changes in the git diff before you commit the resul
 ```shell
 pytest .
 ```
+
+## Test Drive Develop 
+
+You can simply develop a new reader by running the following command:
+
+```shell
+python -m converter_app new_reader -n [READER_NAME] -p [PRIORITY] -f [TEST_FILE]
+```
+
+- replace \[READER_NAME\] with the name of the reader in CamelCase.
+- replace \[PRIORITY\] with the priority of the reader. The lower the number, the earlier the reader is checked. Therefore, the probability that it will be used increases!
+  -profile PROFILE      A test Profile if existing!
+- replace \[TEST_FILE\] with the path to a test file for test drive development!
+
+This command performs the following functions:
+
+-	It creates a new reader in the _converter_app/reader_ directory.
+-	It copies the test file into _test_static/test_files_.
+-	It creates a new test script in _test_static_.
+
+It is now possible to define the metadata and data you expect in the test cases in the test script, and develop the reader from there.
 
 ## Setup Python Virtual Environment
 
@@ -120,7 +142,7 @@ After activation, your terminal prompt should change, showing the virtual enviro
 Once the environment is activated, install the required packages:
 
 ```shell
-pip install -r requirements.txt
+pip install -r requirements/dev.txt
 ```
 
 This reads the requirements.txt file and installs all listed Python packages into the virtual environment.
@@ -130,5 +152,5 @@ This reads the requirements.txt file and installs all listed Python packages int
 ```shell
 python -m venv venv
 source venv/bin/activate   # or venv\Scripts\activate on Windows
-pip install -r requirements.txt
+pip install -r requirements/dev.txt
 ```
