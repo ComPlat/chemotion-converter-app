@@ -29,7 +29,7 @@ class Profile:
     """
 
     def __init__(self, profile_data, client_id, profile_id=None):
-        self.isisDisabled = profile_data.get('isDisabled', False)
+        self.isDisabled = profile_data.get('isDisabled', False)
         self.data = profile_data
         self.client_id = client_id
         self.id = profile_id
