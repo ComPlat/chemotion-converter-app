@@ -56,7 +56,7 @@ This generates two files:
 To overwrite the expected test results run:
 
 ```shell
-python -m test_manager -t -tp
+python -m test_manager -e -ep
 ```
 
 This generates a directory test_manager/profile_results and a directory test_manager/reader_results.
