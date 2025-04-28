@@ -114,6 +114,9 @@ class Profile:
                 self.id = str(uuid.uuid4())
 
         file_path = profiles_path.joinpath(self.id).with_suffix('.json')
+        if 'isDefaultProfile' in self.data:
+            del self.data['isDefaultProfile']
+
         with open(file_path, 'w+', encoding='utf8') as fp:
             json.dump(self.data, fp, sort_keys=True, indent=4)
 
@@ -133,9 +136,9 @@ class Profile:
         :return: Profile data as dict
         """
         return {
+            **self.data,
             'id': self.id,
-            'is_default_profile': self._is_default_profile,
-            **self.data
+            'isDefaultProfile': self._is_default_profile
         }
 
     @classmethod
