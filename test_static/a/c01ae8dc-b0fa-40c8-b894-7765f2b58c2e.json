@@ -1,0 +1,148 @@
+{
+    "data": {
+        "metadata": {
+            "content_type": "text/csv",
+            "extension": ".csv",
+            "file_name": "test_file.csv",
+            "mime_type": "text/plain",
+            "reader": "AsciiReader",
+            "uploaded": "2025-04-24T10:15:46.864812"
+        },
+        "tables": [
+            {
+                "columns": [
+                    {
+                        "key": "0",
+                        "name": "Column #0"
+                    },
+                    {
+                        "key": "1",
+                        "name": "Column #1"
+                    },
+                    {
+                        "key": "2",
+                        "name": "Column #2"
+                    },
+                    {
+                        "key": "3",
+                        "name": "Column #3"
+                    }
+                ],
+                "header": [
+                    "Mata_a;1",
+                    "Meta_b;Test",
+                    "Meta_c;45"
+                ],
+                "metadata": {
+                    "columns": "4",
+                    "rows": "5"
+                },
+                "rows": [
+                    [
+                        "1",
+                        "2",
+                        "3",
+                        "4"
+                    ],
+                    [
+                        "0",
+                        "2",
+                        "4",
+                        "6"
+                    ],
+                    [
+                        "1",
+                        "3",
+                        "5",
+                        "7"
+                    ],
+                    [
+                        "22",
+                        "33",
+                        "44",
+                        "55"
+                    ],
+                    [
+                        "80",
+                        "90",
+                        "100",
+                        "110"
+                    ]
+                ]
+            }
+        ]
+    },
+    "description": "",
+    "identifiers": [
+        {
+            "key": "content_type",
+            "match": "exact",
+            "optional": false,
+            "type": "fileMetadata",
+            "value": "text/csv"
+        },
+        {
+            "key": "file_name",
+            "match": "exact",
+            "optional": false,
+            "type": "fileMetadata",
+            "value": "test_file.csv"
+        }
+    ],
+    "tables": [
+        {
+            "header": {
+                "DATA CLASS": "XYPOINTS",
+                "DATA TYPE": "CIRCULAR DICHROISM SPECTROSCOPY",
+                "XUNITS": "%",
+                "YUNITS": "ABSORBANCE"
+            },
+            "table": {
+                "xColumn": {
+                    "columnIndex": 0,
+                    "tableIndex": 0
+                },
+                "xOperations": [
+                    {
+                        "ignore_missing_values": false,
+                        "metadata": "0",
+                        "operator": "+",
+                        "table": "0",
+                        "type": "metadata_value",
+                        "value": "columns"
+                    },
+                    {
+                        "ignore_missing_values": false,
+                        "line": "1",
+                        "operator": "+",
+                        "regex": "Mata_a;(\\d)",
+                        "table": "0",
+                        "type": "header_value"
+                    },
+                    {
+                        "operator": "+",
+                        "type": "value",
+                        "value": "2"
+                    },
+                    {
+                        "column": {
+                            "columnIndex": 0,
+                            "tableIndex": 0
+                        },
+                        "operator": "+",
+                        "type": "column"
+                    }
+                ],
+                "xOperationsDescription": [
+                    "+ [Metadata value (Table # 0 columns)] + [File regexp value (Table # 0 @line 1: Regex: \"Mata_a;(\\d)\")] + [Scalar value: 2] + [Table column (Table # 0 Column # 0)]",
+                    ""
+                ],
+                "yColumn": {
+                    "columnIndex": 1,
+                    "tableIndex": 0
+                }
+            }
+        }
+    ],
+    "title": "TST"
+}
