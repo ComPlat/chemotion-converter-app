@@ -4,7 +4,7 @@ import logging
 import os
 import re
 
-from .models import Profile
+from converter_app.models import Profile
 
 logger = logging.getLogger(__name__)
 
@@ -214,29 +214,9 @@ class Converter:
         :return:
         """
         for output_table_index, output_table in enumerate(self.output_tables):
-            header = {}
-            for key, value in output_table.get('header', {}).items():
-                if isinstance(value, dict):
-                    # this is a table identifier, e.g. FIRSTX
-                    match = self.match_identifier(value)
-                    if match:
-                        header[key] = match['value']
-                else:
-                    header[key] = value
+            header = self._process_prepare_header(output_table)
 
-            # merge the metadata from the profile (header) with the metadata
-            # extracted using the identifiers (see self.match)
-            for match in self.matches:
-                match_result = match.get('result')
-                if match_result:
-                    match_output_key = match.get('identifier', {}).get('outputKey')
-                    match_output_table_index = match.get('identifier', {}).get('outputTableIndex')
-                    match_value = match_result.get('value')
-                    if match_output_key and (
-                            output_table_index == match_output_table_index or
-                            match_output_table_index is None
-                    ):
-                        header[match_output_key] = match_value
+            self._process_prepare_metadata(header, output_table_index)
 
             x_column = output_table.get('table', {}).get('xColumn')
             y_column = output_table.get('table', {}).get('yColumn')
@@ -253,30 +233,8 @@ class Converter:
                 if operation.get('type') == 'column':
                     operation['rows'] = []
 
-            for table_index, table in enumerate(self.input_tables):
-                for _, row in enumerate(table['rows']):
-                    for column_index, _ in enumerate(table['columns']):
-                        if x_column and \
-                                table_index == x_column.get('tableIndex') and \
-                                column_index == x_column.get('columnIndex'):
-                            x_rows.append(self.get_value(row, column_index))
+            self._process_prepare_data(x_column, x_operations, x_rows, y_column, y_operations, y_rows)
 
-                        if y_column and \
-                                table_index == y_column.get('tableIndex') and \
-                                column_index == y_column.get('columnIndex'):
-                            y_rows.append(self.get_value(row, column_index))
-
-                        for operation in x_operations:
-                            if operation.get('type') == 'column' and \
-                                    table_index == operation.get('column', {}).get('tableIndex') and \
-                                    column_index == operation.get('column', {}).get('columnIndex'):
-                                operation['rows'].append(self.get_value(row, column_index))
-
-                        for operation in y_operations:
-                            if operation.get('type') == 'column' and \
-                                    table_index == operation.get('column', {}).get('tableIndex') and \
-                                    column_index == operation.get('column', {}).get('columnIndex'):
-                                operation['rows'].append(self.get_value(row, column_index))
             applied_operators = {
                 "applied_x_operator": False,
                 "applied_y_operator": False,
@@ -290,8 +248,8 @@ class Converter:
                 for operation in y_operations:
                     applied_operators["applied_y_operator"] |= self._run_operation(y_rows, operation)
             except CalculationError:
-                applied_operators['applied_x_operator'] = applied_operators['applied_y_operator'] =  False
-                applied_operators['applied_operator_failed'] =  True
+                applied_operators['applied_x_operator'] = applied_operators['applied_y_operator'] = False
+                applied_operators['applied_operator_failed'] = True
                 x_rows = []
                 y_rows = []
 
@@ -301,6 +259,62 @@ class Converter:
                 'x': x_rows,
                 'y': y_rows
             } | applied_operators)
+
+    def _process_prepare_data(self, x_column, x_operations, x_rows, y_column, y_operations, y_rows):
+        for table_index, table in enumerate(self.input_tables):
+            for _, row in enumerate(table['rows']):
+                for column_index, _ in enumerate(table['columns']):
+                    if x_column and \
+                            table_index == x_column.get('tableIndex') and \
+                            column_index == x_column.get('columnIndex'):
+                        x_rows.append(self.get_value(row, column_index))
+
+                    if y_column and \
+                            table_index == y_column.get('tableIndex') and \
+                            column_index == y_column.get('columnIndex'):
+                        y_rows.append(self.get_value(row, column_index))
+
+                    for operation in x_operations:
+                        if operation.get('type') == 'column' and \
+                                table_index == operation.get('column', {}).get('tableIndex') and \
+                                column_index == operation.get('column', {}).get('columnIndex'):
+                            operation['rows'].append(self.get_value(row, column_index))
+
+                    for operation in y_operations:
+                        if operation.get('type') == 'column' and \
+                                table_index == operation.get('column', {}).get('tableIndex') and \
+                                column_index == operation.get('column', {}).get('columnIndex'):
+                            operation['rows'].append(self.get_value(row, column_index))
+
+
+    def _process_prepare_metadata(self, header, output_table_index):
+        # merge the metadata from the profile (header) with the metadata
+        # extracted using the identifiers (see self.match)
+        for match in self.matches:
+            match_result = match.get('result')
+            if match_result:
+                match_output_key = match.get('identifier', {}).get('outputKey')
+                match_output_table_index = match.get('identifier', {}).get('outputTableIndex')
+                match_value = match_result.get('value')
+                if match_output_key and (
+                        output_table_index == match_output_table_index or
+                        match_output_table_index is None
+                ):
+                    header[match_output_key] = match_value
+
+
+    def _process_prepare_header(self, output_table):
+        header = {}
+        for key, value in output_table.get('header', {}).items():
+            if isinstance(value, dict):
+                # this is a table identifier, e.g. FIRSTX
+                match = self.match_identifier(value)
+                if match:
+                    header[key] = match['value']
+            else:
+                header[key] = value
+        return header
+
 
     def _run_operation(self, rows, operation):
         for i, row in enumerate(rows):
@@ -346,14 +360,22 @@ class Converter:
 
         return True
 
+
     def _run_identifier_operation(self, value, operation):
         op_value = operation.get('value')
         if op_value:
             return self.apply_operation(value, op_value, operation.get('operator'))
-        else:
-            return value
+        return value
+
 
     def apply_operation(self, value, op_value, op_operator):
+        """
+        Apply mathematical operator
+        :param value: numeric value left
+        :param op_value: numeric value right
+        :param op_operator: mathematical operator
+        :return:
+        """
         try:
             float_value = float(self._fix_float(value))
 
@@ -369,15 +391,16 @@ class Converter:
             pass
         return None
 
+
     def get_input_table(self, index, input_tables):
         if index is not None:
             try:
                 if int(index) >= len(input_tables):
                     return None
-                else:
-                    return input_tables[int(index)]
+                return input_tables[int(index)]
             except KeyError:
                 return None
+
 
     def _get_line_number(self, header, value):
         # if line_number is None:
@@ -386,6 +409,7 @@ class Converter:
                 # again we count from 1
                 return i + 1
         return -1
+
 
     def get_value(self, row, column_index):
         """
@@ -396,9 +420,11 @@ class Converter:
         """
         return self._fix_float(row[column_index])
 
+
     @staticmethod
     def _fix_float(value):
         return str(value).replace(',', '.').replace('e', 'E')
+
 
     @classmethod
     def match_profile(cls, client_id, file_data):
@@ -411,7 +437,7 @@ class Converter:
         converter = None
         matches = 0
         latest_profile_uploaded = 0
-        for profile in Profile.list(client_id):
+        for profile in Profile.list_including_default(client_id):
             if profile.isDisabled:
                 continue
             current_converter = cls(profile, file_data)
@@ -424,7 +450,7 @@ class Converter:
             logger.info('profile=%s matches=%s', profile.id, current_matches)
             if (current_matches is not False and
                     (current_matches > matches or current_matches == matches and
-                    profile_uploaded > latest_profile_uploaded)):
+                     profile_uploaded > latest_profile_uploaded)):
                 matches = max(matches, current_matches)
                 latest_profile_uploaded = profile_uploaded
                 converter = current_converter
