@@ -1,9 +1,10 @@
 ##TITLE=Spectrum
-##JCAMP-DX=5.00 $$ chemotion-converter-app (1.4.0)
+##JCAMP-DX=5.00 $$ chemotion-converter-app (1.5.0)
 ##DATA TYPE=SORPTION-DESORPTION MEASUREMENT
 ##DATA CLASS=XYPOINTS
 ##ORIGIN=
 ##OWNER=
+##CALCULATION_APPLIED_X=True
 ##XUNITS=p/p0
 ##YUNITS=ml/g
 ##OPERATOR=Francesco

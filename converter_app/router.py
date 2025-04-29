@@ -106,7 +106,7 @@ def converting_router(app: Flask, auth: HTTPBasicAuth):
     def retrieve_conversion():
         '''
         Simple View: upload file, convert to table, search for profile,
-        return jcamp based on profile
+        return jcamp based on profiledescription
         '''
         client_id = auth.current_user()
         error_msg = 'No file provided.'
@@ -187,7 +187,7 @@ def profile_router(app: Flask, auth: HTTPBasicAuth):
     @auth.login_required
     def list_profiles():
         client_id = auth.current_user()
-        profiles = Profile.list(client_id)
+        profiles = Profile.list_including_default(client_id)
         return jsonify([profile.as_dict for profile in profiles]), 200
 
     @app.route('/profiles', methods=['POST'])
