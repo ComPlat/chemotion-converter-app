@@ -59,9 +59,15 @@ To overwrite the expected test results run:
 python -m test_manager -e -ep
 ```
 
+
 This generates a directory test_manager/profile_results and a directory test_manager/reader_results.
 
-Make sure that you check the changes in the git diff before you commit the results of this command.
+> [!CAUTION]
+> Make sure that you check the changes in the git diff before you commit the results of this command.
+> If you commit false changes it may permanently falsify the test results!
+
+> [!TIP]
+> This is a prerequisite if you have modified an existing reader or updated the version of the converter. In such cases, the tests are likely to fail and the expected results will need to be updated.
 
 ### All Options
 
