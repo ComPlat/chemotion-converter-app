@@ -36,6 +36,10 @@ class Profile:
         self.errors = defaultdict(list)
         self._is_default_profile = is_default_profile
 
+    @property
+    def is_default_profile(self):
+        return self._is_default_profile
+
     def clean(self):
         """
         Checks if a profile is correct. see the error
@@ -163,9 +167,24 @@ class Profile:
         return profile_data
 
     @classmethod
+    def profile_from_file_path(cls, file_path: Path, client_id: str = ''):
+        """
+        Factor to construct a Profile object from file path
+
+        :param file_path: to .json file
+        :param client_id: client id [optional]
+        :return: Profile object
+        """
+        profile_id = str(file_path.with_suffix('').name)
+        profile_data = cls.load(file_path)
+        return cls(profile_data, client_id, profile_id)
+
+
+    @classmethod
     def list(cls, client_id):
         """
         List all profiles of one user/client
+
         :param client_id: [str] Username
         :return:
         """
@@ -173,10 +192,7 @@ class Profile:
 
         if profiles_path.exists():
             for file_path in sorted(Path.iterdir(profiles_path)):
-                profile_id = str(file_path.with_suffix('').name)
-                profile_data = cls.load(file_path)
-                yield cls(profile_data, client_id, profile_id)
-
+                yield cls.profile_from_file_path(file_path, client_id)
         return []
 
     @classmethod
@@ -195,9 +211,8 @@ class Profile:
             for file_path in sorted(Path.iterdir(default_profiles_path)):
                 if file_path.suffix == '.json':
                     profile_id = str(file_path.with_suffix('').name)
-                    profile_data = cls.load(file_path)
                     if next((x for x in all_ids if x == profile_id), None) is None:
-                        yield cls(profile_data, client_id, profile_id, True)
+                        yield cls.profile_from_file_path(file_path, client_id)
 
         return []
 

@@ -1,0 +1,34 @@
+from converter_app.profile_migration import ProfileMigration
+
+
+class ProfileMigrationScript(ProfileMigration):
+    """
+    ToDo: Add a comment
+    """
+
+    def up(self, profile: dict):
+        """
+        Updates the profile.
+        """
+
+        # ToDo: Updated the profile
+        raise NotImplementedError()
+
+    def to_be_applied_after_migration(self) -> str:
+        """
+        Uses the unique identifier of the last script to tell the migration process in which order
+        the migration script must be applied.
+        """
+
+        return '{{ LAST_IDENTIFIER }}'
+
+    @property
+    def identifier(self):
+        """
+        A unique identifier for the migration script.
+        This identifier will be used:
+         A) in the Profile to determine if a migration has been applied to a certain Profile.
+         B) must be returned by the to_be_applied_after_migration method of the following script
+        """
+
+        return '{{ IDENTIFIER }}'

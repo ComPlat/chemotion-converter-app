@@ -4,9 +4,13 @@ import os
 import re
 import shutil
 import uuid
+from datetime import datetime
 from pathlib import Path
 
 from jinja2 import Template
+
+from app import create_app
+from profile_migration.utils.registration import Migrations
 
 
 class FileAction(argparse.Action):
@@ -64,7 +68,7 @@ class PrioAction(argparse.Action):
 
 
 class MethodAction(argparse.Action):
-    methods = ['new_reader']
+    methods = ['new_reader', 'migrate', 'new_migrate']
 
     def __call__(self, parser, namespace, value, option_string=None):
         self.validate(parser, value)
@@ -77,13 +81,14 @@ class MethodAction(argparse.Action):
 
 
 def main_cli():
+
     parser = argparse.ArgumentParser(
         prog='python -m converter_app',
         description='Helps to develop new reader')
 
     parser.add_argument('methode', help=f'Must one of: {MethodAction.methods}!', action=MethodAction)
 
-    admin_group = parser.add_argument_group('New reader')
+    admin_group = parser.add_argument_group('new_reader')
     name_arg = admin_group.add_argument('-n' , '--name', action=NameAction,
                         help='Reader name. The name must be in CamelCase!')
     priority_arg = admin_group.add_argument('-p', '--priority', action=PrioAction,
@@ -94,7 +99,33 @@ def main_cli():
                         help='A test file for test drive development!')
 
     args = parser.parse_args()
-    for arg in [name_arg, priority_arg, file_arg]:
+
+    if args.methode == 'new_reader':
+        _new_reader(args, parser, [name_arg, priority_arg, file_arg])
+    elif args.methode == 'migrate':
+        Migrations().run_migration(create_app().config['PROFILES_DIR'])
+    elif args.methode == 'new_migrate':
+        _new_migration()
+
+
+def _new_migration():
+    timestamp = datetime.now().strftime('%Y%m%d%H%M%S')
+    context = {
+        'LAST_IDENTIFIER': Migrations().last,
+        'IDENTIFIER': timestamp,
+    }
+
+    template_path = Path(__file__).parent / 'profile_migration/utils/MIGRATION_TEMPLATE.py.txt'
+    targe_reader_path = Path(__file__).parent / f'profile_migration/{timestamp}_migration.py'
+
+    with open(str(template_path), 'r', encoding='utf-8') as f:
+        template = Template(f.read())
+
+    with open(targe_reader_path, 'w+', encoding='utf-8') as f:
+        f.write(template.render(**context))
+
+def _new_reader(args, parser, arg_objets):
+    for arg in arg_objets:
         if getattr(args, arg.dest, None) is None:
             setattr(args, arg.dest, input(f'{arg.help}\n Enter {arg.dest}:'))
             arg.validate(parser, getattr(args, arg.dest, None))

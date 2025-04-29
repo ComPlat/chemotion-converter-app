@@ -26,7 +26,6 @@ class Readers:
         :return: Readers Singleton
         """
         if cls._instance is None:
-            print('Creating new instance')
             cls._instance = cls.__new__(cls)
             # Put any initialization here.
         return cls._instance

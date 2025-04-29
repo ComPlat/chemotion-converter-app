@@ -22,6 +22,7 @@ from converter_app.readers import READERS as registry
 from converter_app.utils import checkpw
 from converter_app.writers.jcamp import JcampWriter
 from converter_app.writers.jcampzip import JcampZipWriter
+from profile_migration.utils.registration import Migrations
 
 
 def get_clients() -> dict[str:str] | None:
@@ -197,6 +198,7 @@ def profile_router(app: Flask, auth: HTTPBasicAuth):
         profile_data = json.loads(request.data)
         profile = Profile(profile_data, client_id)
         if profile.clean():
+            Migrations().migrate_profile(profile)
             profile.save()
             return jsonify(profile.as_dict), 201
         return jsonify(profile.errors), 400
@@ -223,6 +225,7 @@ def profile_router(app: Flask, auth: HTTPBasicAuth):
                 return jsonify({'error': 'Bad request'}), 400
 
             if profile.clean():
+                Migrations().migrate_profile(profile)
                 profile.save()
                 return jsonify(profile.as_dict), 200
             return jsonify(profile.errors), 400
