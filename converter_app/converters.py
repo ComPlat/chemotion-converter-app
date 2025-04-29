@@ -438,6 +438,8 @@ class Converter:
         matches = 0
         latest_profile_uploaded = 0
         for profile in Profile.list_including_default(client_id):
+            if profile.isDisabled:
+                continue
             current_converter = cls(profile, file_data)
             current_matches = current_converter.match()
             try:

@@ -27,8 +27,9 @@ class Profile:
         id          [str] id of the profile and file name
         errors      [collections.defaultdict] contains all errors if profile is not correct
     """
-
+    
     def __init__(self, profile_data, client_id, profile_id=None, is_default_profile: bool = False):
+        self.isDisabled = profile_data.get('isDisabled', False)
         self.data = profile_data
         self.client_id = client_id
         self.id = profile_id
