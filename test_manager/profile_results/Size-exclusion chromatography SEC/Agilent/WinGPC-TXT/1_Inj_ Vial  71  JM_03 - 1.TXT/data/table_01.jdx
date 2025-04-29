@@ -8,10 +8,6 @@
 ##YUNITS=ARBITRARY UNITS
 ##LABEL=Vial  71: JM_03 - 1
 ##COMMENTS=Z:\Jennifer\JM-03\1_Inj_ Vial  71  JM_03 - 1.TXT
-##MN= 5.646E+4
-##MW= 6.301E+4
-##D= 1.116E+0
-##MP= 5.286E+4
 ##DETEC1=I1: RID 1, RI Signal
 ##DETEC2=I1: IsoPump 1, Pressure
 ##COL1=PLgel Precolumn
@@ -19,8 +15,8 @@
 ##COL3=PLgel 5µm Mixed-C
 ##IN_VOL=100.000
 ##ELUENT=DMAc 0.79g/2.5L LiBr
-##FLOW=  0.500
-##TEMPERATURE= 50.000
+##FLOW=0.500
+##TEMPERATURE=50.000
 ##DATE=21/07/22
 ##TIME=14:30:57
 ##NO_DEC=1
