@@ -85,5 +85,5 @@ class Migrations:
         if 'isDefaultProfile' in profile.data:
             del profile.data['isDefaultProfile']
 
-        with open(file_path, 'w+', encoding='utf8') as fp:
+        with open(file_path, 'w') as fp:
             json.dump(profile.data, fp, sort_keys=True, indent=4)
