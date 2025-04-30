@@ -7,9 +7,12 @@ from werkzeug.datastructures import FileStorage
 from converter_app.models import File
 from converter_app.readers import Readers
 from converter_app.readers.helper.base import Reader
-from converter_app.readers.helper.g_code_translator_package.Binary_GCode_Translator import \
-    extract_picture_bytes_from_content, binary_gcode_to_gcode
-from converter_app.readers.helper.g_code_translator_package.GCode_Translator import GCodeTranslator
+# from converter_app.readers.helper.g_code_translator_package.Binary_GCode_Translator import \
+    # extract_picture_bytes_from_content, binary_gcode_to_gcode
+# from converter_app.readers.helper.g_code_translator_package.GCode_Translator import GCodeTranslator
+
+from gcode_translator.GCode_Translator import GCodeTranslator
+from gcode_translator.Binary_GCode_Translator import binary_gcode_to_gcode, extract_picture_bytes_from_content
 
 
 class GCodeReader(Reader):
@@ -44,8 +47,7 @@ class GCodeReader(Reader):
                 tmp.write(self.file.content)
                 self.tmp_path = tmp.name
                 # print("Starting C++ EXE...")
-                self._out = binary_gcode_to_gcode(self.tmp_path,
-                                            "converter_app/readers/helper/g_code_translator_package/bgcode")
+                self._out = binary_gcode_to_gcode(self.tmp_path)
                 f = open(self._out, 'rb')
                 fs = FileStorage(stream=f, filename=self._out,
                                  content_type="text/plain")
@@ -66,7 +68,7 @@ class GCodeReader(Reader):
         table = self.append_table(tables)
         for line in all_lines:
             line = line.rstrip()
-            result, in_header = translator.explain_gcode_line(line, gcode_mapping, True, True)
+            result, in_header = translator.explain_gcode_line(line, gcode_mapping, True, False)
             if in_header:
                 table["header"].append(result)
             else:
@@ -78,7 +80,6 @@ class GCodeReader(Reader):
         for values in translator.sort_and_filter_dict(True):
             table = self.append_table(tables)
             table['metadata'] = values
-            table["header"].append("Test")
         if not image_data:
             image_data = translator.get_preview_as_stream()
         if image_data:
