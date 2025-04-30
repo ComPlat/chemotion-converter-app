@@ -47,6 +47,7 @@ def create_app():
         CLIENTS=get_clients() is not None
     )
 
+    os.makedirs(app.config['PROFILES_DIR'], exist_ok=True)
     Migrations().run_migration(app.config['PROFILES_DIR'])
 
     app.debug = app.config['DEBUG']
