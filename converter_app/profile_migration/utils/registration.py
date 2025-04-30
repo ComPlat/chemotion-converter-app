@@ -52,13 +52,14 @@ class Migrations:
         for profile in Path(__file__).parent.parent.parent.joinpath('profiles').iterdir():
             self._prepare_migration('', profile, force)
 
-    def _prepare_migration(self, client_id, profile, force):
-        if profile.is_file() and profile.suffix == '.json':
+    def _prepare_migration(self, client_id, profile_path, force):
+        if profile_path.is_file() and profile_path.suffix == '.json':
             try:
-                self.migrate_profile(Profile.profile_from_file_path(profile, client_id), force)
+                profile = Profile.profile_from_file_path(profile_path, client_id)
+                self.migrate_profile(profile, force)
                 self._save_profile(profile)
             except Exception as e:
-                print(f'{profile} cannot be migrated: {e}')
+                print(f'{profile_path} cannot be migrated: {e}')
 
     def migrate_profile(self, profile: Profile, force: bool = False):
         if force:
