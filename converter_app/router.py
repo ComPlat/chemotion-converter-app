@@ -18,11 +18,11 @@ from converter_app.converters import Converter
 from converter_app.datasets import Dataset
 from converter_app.models import File, Profile
 from converter_app.options import OPTIONS
+from converter_app.profile_migration.utils.registration import Migrations
 from converter_app.readers import READERS as registry
 from converter_app.utils import checkpw
 from converter_app.writers.jcamp import JcampWriter
 from converter_app.writers.jcampzip import JcampZipWriter
-from profile_migration.utils.registration import Migrations
 
 
 def get_clients() -> dict[str:str] | None:
