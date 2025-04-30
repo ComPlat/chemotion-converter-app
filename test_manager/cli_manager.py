@@ -10,7 +10,7 @@ from json import JSONDecodeError
 
 from werkzeug.datastructures import FileStorage
 
-from profile_migration.utils.registration import Migrations
+from converter_app.profile_migration.utils.registration import Migrations
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
