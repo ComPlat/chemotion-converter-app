@@ -11,7 +11,8 @@ class ProfileMigrationScript(ProfileMigration):
         Updates the profile.
         """
 
-        pass
+        if profile.get('title') is None:
+            profile['title'] = '## Nameless'
 
     def to_be_applied_after_migration(self) -> str:
         """

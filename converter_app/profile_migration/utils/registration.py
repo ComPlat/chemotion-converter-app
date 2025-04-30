@@ -43,29 +43,32 @@ class Migrations:
         self._registry[script_id] = migration_obj
         self._registry_tree[migration_obj.to_be_applied_after_migration()] = script_id
 
-    def run_migration(self, profile_dir: str):
+    def run_migration(self, profile_dir: str, force: bool = False):
         self.profile_dir = profile_dir
         for client_path in Path(profile_dir).iterdir():
             client_id = client_path.stem
             for profile in client_path.iterdir():
-                self._prepare_migration(client_id, profile)
+                self._prepare_migration(client_id, profile, force)
         for profile in Path(__file__).parent.parent.parent.joinpath('profiles').iterdir():
-            self._prepare_migration('', profile)
+            self._prepare_migration('', profile, force)
 
-    def _prepare_migration(self, client_id, profile):
+    def _prepare_migration(self, client_id, profile, force):
         if profile.is_file() and profile.suffix == '.json':
             try:
-                self.migrate_profile(Profile.profile_from_file_path(profile, client_id))
+                self.migrate_profile(Profile.profile_from_file_path(profile, client_id), force)
+                self._save_profile(profile)
             except Exception as e:
                 print(f'{profile} cannot be migrated: {e}')
 
-    def migrate_profile(self, profile: Profile):
-        current_migration = profile.data.get('last_migration', '')
+    def migrate_profile(self, profile: Profile, force: bool = False):
+        if force:
+            current_migration = ''
+        else:
+            current_migration = profile.data.get('current_migration', '')
         while current_migration in self._registry_tree:
             current_migration = self._registry_tree[current_migration]
             self._registry[current_migration].up(profile.data)
             profile.data['last_migration'] = current_migration
-        self._save_profile(profile)
 
 
     def _save_profile(self, profile: Profile):
