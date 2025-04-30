@@ -54,6 +54,16 @@ Currently there are no further Windows version planed. If you really need one, p
 5. If you are still getting ERRORS containing "libmagic" try uninstalling ```python-magic``` but keeping ```python-magic-bin```  
 
 
+### Develop new reader
+
+To develop a new reader run:
+
+```shell
+python -m converter_app new_reader
+```
+
+For more details see the _Test Drive Development_ section in  [Test Strategy](TEST_STRATEGY.md). It explains how to develop a reader test drive.
+
 Production setup
 ----------------
 
