@@ -1,7 +1,7 @@
 import json
 from pathlib import Path
 
-from models import Profile
+from converter_app.models import Profile
 
 
 class Migrations:
