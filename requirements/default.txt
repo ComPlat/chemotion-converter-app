@@ -14,4 +14,4 @@ PyMuPDF==1.23.7
 pylint==3.0.3
 str2bool~=1.1
 
-git+https://github.com/herrdivad/GCode_Translator.git@v0.1.0
+git+https://github.com/herrdivad/GCode_Translator.git@v0.1.1
