@@ -3,7 +3,7 @@ import inspect
 import os
 from pathlib import Path
 
-from profile_migration.utils.base_migration import ProfileMigration
+from converter_app.profile_migration.utils.base_migration import ProfileMigration
 
 for file in Path(__file__).parent.glob('*.py'):
     if not file.name.endswith('_migration.py'):

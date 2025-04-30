@@ -10,7 +10,7 @@ from pathlib import Path
 from jinja2 import Template
 
 from app import create_app
-from profile_migration.utils.registration import Migrations
+from converter_app.profile_migration.utils.registration import Migrations
 
 
 class FileAction(argparse.Action):

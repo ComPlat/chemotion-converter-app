@@ -15,9 +15,9 @@ import dotenv
 import flask
 from str2bool import str2bool
 
+from converter_app.profile_migration.utils.registration import Migrations
 from converter_app.router import get_clients, setup_flask_routing
 from converter_app.utils import human2bytes
-from profile_migration.utils.registration import Migrations
 
 
 # Example usage

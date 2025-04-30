@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-from profile_migration.utils.registration import Migrations
+from converter_app.profile_migration.utils.registration import Migrations
 
 
 class ProfileMigration(ABC):
