@@ -10,11 +10,13 @@ from json import JSONDecodeError
 
 from werkzeug.datastructures import FileStorage
 
+from profile_migration.utils.registration import Migrations
+
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from test_manager.profile_test_generator import generate_profile_tests, generate_expected_profiles_results
 from test_manager.utils import basic_walk
-from test_manager.test_file_manager import CURRENT_DIR, load_profiles_from_git
+from test_manager.test_file_manager import CURRENT_DIR, load_profiles_from_git, PROFILE_PATH
 
 TEST_FILE = os.path.abspath(os.path.join(CURRENT_DIR, './test_readers.py'))
 TEST_IDX = 0
@@ -96,6 +98,7 @@ def main_cli():
     args = parser.parse_args()
     if args.github:
         load_profiles_from_git()
+        Migrations().run_migration(os.path.dirname(PROFILE_PATH))
     if args.tests or args.expected:
         TEST_IDX = 0
         TEST_DICT = {}

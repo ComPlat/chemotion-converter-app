@@ -78,6 +78,7 @@ class Migrations:
         else:
             profiles_path = Path(self.profile_dir).joinpath(profile.client_id)
 
+        profile.data['id'] = profile.id
         profiles_path.mkdir(parents=True, exist_ok=True)
 
         file_path = profiles_path.joinpath(profile.id).with_suffix('.json')

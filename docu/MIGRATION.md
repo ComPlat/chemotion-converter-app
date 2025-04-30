@@ -26,6 +26,7 @@ To create a new migration script run:
 ```shell
 python -m converter_app new_migration
 ```
+
 This action generates a new migration Python script in the _converter_app/profile_migration_ folder. It is essential to work only in the method _up_.
 It is possible to modify all values in the profile; however, the _id_ is read-only.
 
