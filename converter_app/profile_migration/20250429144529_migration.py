@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from converter_app.profile_migration import ProfileMigration
 
 
@@ -11,8 +13,8 @@ class ProfileMigrationScript(ProfileMigration):
         Updates the profile.
         """
 
-        if profile.get('title') is None:
-            profile['title'] = '## Nameless'
+        if profile.get('title', '') == '':
+            profile['title'] = f'## Nameless ({datetime.now().strftime("%d/%m/%Y %H:%M:%S")})'
 
     def to_be_applied_after_migration(self) -> str:
         """
