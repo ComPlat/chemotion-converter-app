@@ -68,7 +68,7 @@ class PrioAction(argparse.Action):
 
 
 class MethodAction(argparse.Action):
-    methods = ['new_reader', 'migrate', 'new_migrate']
+    methods = ['new_reader', 'migrate', 'new_migration']
 
     def __call__(self, parser, namespace, value, option_string=None):
         self.validate(parser, value)
@@ -95,8 +95,11 @@ def main_cli():
                         help='The lower the number, the earlier the reader is checked. Therefore, the probability that it will be used increases!')
     admin_group.add_argument('-profile', action=ProfileAction,
                         help='A test Profile if existing!')
-    file_arg = admin_group.add_argument('-f', '--test_file', action=FileAction,
+    file_arg = admin_group.add_argument('-t', '--test_file', action=FileAction,
                         help='A test file for test drive development!')
+
+    migrate_group = parser.add_argument_group('migrate')
+    migrate_group.add_argument('-f' , '--force', action='store_true', help="If force is set all migration scripts will be appl")
 
     args = parser.parse_args()
 
@@ -104,7 +107,7 @@ def main_cli():
         _new_reader(args, parser, [name_arg, priority_arg, file_arg])
     elif args.methode == 'migrate':
         Migrations().run_migration(create_app().config['PROFILES_DIR'])
-    elif args.methode == 'new_migrate':
+    elif args.methode == 'new_migration':
         _new_migration()
 
 

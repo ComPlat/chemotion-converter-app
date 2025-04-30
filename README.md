@@ -62,7 +62,18 @@ To develop a new reader run:
 python -m converter_app new_reader
 ```
 
-For more details see the _Test Drive Development_ section in  [Test Strategy](TEST_STRATEGY.md). It explains how to develop a reader test drive.
+For more details see the _Test Drive Development_ section in  [Test Strategy](docu/TEST_STRATEGY.md). It explains how to develop a reader test drive.
+
+
+### Profile Versioning 
+
+To change the structure of profiles, you can create a new profile migration script with the following command:
+
+```shell
+python -m converter_app new_migration
+```
+
+For more details see: [Profile Versioning](docu/MIGRATION.md)
 
 Production setup
 ----------------
