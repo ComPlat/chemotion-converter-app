@@ -46,14 +46,16 @@ class Migrations:
         self._registry[script_id] = migration_obj
         applied_after = migration_obj.to_be_applied_after_migration()
         if applied_after in self._registry_tree:
-            raise ValueError(f'{self._registry_tree[applied_after]} already has {applied_after} as to_be_applied_after_migration')
+            raise ValueError(
+                f'{self._registry_tree[applied_after]} already has {applied_after} as to_be_applied_after_migration')
         if applied_after == script_id:
-            raise ValueError(f'to_be_applied_after_migration: {applied_after} must not be identifier{script_id} of the same script')
+            raise ValueError(
+                f'to_be_applied_after_migration: {applied_after} must not be identifier{script_id} of the same script')
         self._registry_tree[applied_after] = script_id
 
     def validate_tree(self):
         res = list(set(self._registry_tree.keys()) - set(self._registry_tree.values()))
-        assert res ==['']
+        assert res == ['']
 
     def run_migration(self, profile_dir: str, force: bool = False):
         self.profile_dir = profile_dir
@@ -85,7 +87,6 @@ class Migrations:
             self._registry[last_migration].up(profile.data)
             profile.data['last_migration'] = last_migration
         return is_migration_applied
-
 
     def _save_profile(self, profile: Profile):
         if profile.is_default_profile:
