@@ -47,6 +47,8 @@ class Migrations:
         applied_after = migration_obj.to_be_applied_after_migration()
         if applied_after in self._registry_tree:
             raise ValueError(f'{self._registry_tree[applied_after]} already has {applied_after} as to_be_applied_after_migration')
+        if applied_after == script_id:
+            raise ValueError(f'to_be_applied_after_migration: {applied_after} must not be identifier{script_id} of the same script')
         self._registry_tree[applied_after] = script_id
 
     def validate_tree(self):

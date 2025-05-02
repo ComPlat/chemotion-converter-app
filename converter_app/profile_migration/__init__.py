@@ -24,4 +24,7 @@ for file in Path(__file__).parent.glob('*.py'):
 
 
 
-Migrations().validate_tree()
+try:
+    Migrations().validate_tree()
+except AssertionError:
+    raise EnvironmentError('Validation of migration scripts failed')
