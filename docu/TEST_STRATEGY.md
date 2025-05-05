@@ -92,7 +92,7 @@ pytest .
 You can simply develop a new reader by running the following command:
 
 ```shell
-python -m converter_app new_reader -n [READER_NAME] -p [PRIORITY] -f [TEST_FILE]
+python -m converter_app new_reader -n [READER_NAME] -p [PRIORITY] -t [TEST_FILE]
 ```
 
 - replace \[READER_NAME\] with the name of the reader in CamelCase.
