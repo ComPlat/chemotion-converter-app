@@ -38,7 +38,7 @@ class GCodeReader(Reader):
         image_data = None
 
         translator = GCodeTranslator()
-        gcode_mapping = translator.init_mapping()
+        gcode_mapping = translator.init_mapping("local")
 
 
 
