@@ -28,16 +28,14 @@ class Converter:
         self.output_tables = []
         self._prepare_identifier()
 
-        if self._has_loop():
-            self._prepare_tables()
-        else:
-            for output_table_index, output_table in enumerate(self.profile_output_tables):
-                if self._has_loop(output_table_index):
-                    self._prepare_tables(output_table_index)
-                else:
-                    self.output_tables.append(output_table)
 
-    def _prepare_tables(self, index=0):
+        for output_table_index, output_table in enumerate(self.profile_output_tables):
+            if self._has_loop(output_table_index):
+                self._prepare_tables(output_table_index)
+            else:
+                self.output_tables.append(output_table)
+
+    def _prepare_tables(self, index):
         # match the output Table to the input tables and adjust the tableIndexes to the input table
         for input_table_index, _ in enumerate(self.input_tables):
             if not self._check_loop_condition(index, input_table_index):
@@ -68,7 +66,7 @@ class Converter:
                 # no adjustment has to be done
                 self.identifiers.append(identifier)
             else:
-                if self._has_loop() or self._has_loop(output_table_index):
+                if self._has_loop(output_table_index):
                     # adjust this identifier for every input table
                     for input_table_index, _ in enumerate(self.input_tables):
                         if not self._check_loop_condition(output_table_index, input_table_index):
@@ -87,10 +85,7 @@ class Converter:
                     identifier['outputTableIndex'] = self._get_output_table_index(identifier['outputTableIndex'])
                     self.identifiers.append(identifier)
 
-    def _has_loop(self, index=-1):
-        if index == -1:
-            return self.profile.data.get('matchTables')
-
+    def _has_loop(self, index):
         if len(self.profile_output_tables) <= index:
             return False
         if self.profile_output_tables[index].get('loopType') == 'all':
