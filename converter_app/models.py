@@ -2,7 +2,6 @@ import json
 import logging
 import os
 import pathlib
-import shutil
 import tarfile
 import tempfile
 import uuid
@@ -28,12 +27,18 @@ class Profile:
         id          [str] id of the profile and file name
         errors      [collections.defaultdict] contains all errors if profile is not correct
     """
-
-    def __init__(self, profile_data, client_id, profile_id=None):
+    
+    def __init__(self, profile_data, client_id, profile_id=None, is_default_profile: bool = False):
+        self.isDisabled = profile_data.get('isDisabled', False)
         self.data = profile_data
         self.client_id = client_id
         self.id = profile_id
         self.errors = defaultdict(list)
+        self._is_default_profile = is_default_profile
+
+    @property
+    def is_default_profile(self):
+        return self._is_default_profile
 
     def clean(self):
         """
@@ -114,7 +119,10 @@ class Profile:
                 self.id = str(uuid.uuid4())
 
         file_path = profiles_path.joinpath(self.id).with_suffix('.json')
-        with open(file_path, 'w', encoding='utf8') as fp:
+        if 'isDefaultProfile' in self.data:
+            del self.data['isDefaultProfile']
+
+        with open(file_path, 'w+', encoding='utf8') as fp:
             json.dump(self.data, fp, sort_keys=True, indent=4)
 
     def delete(self):
@@ -133,8 +141,9 @@ class Profile:
         :return: Profile data as dict
         """
         return {
+            **self.data,
             'id': self.id,
-            **self.data
+            'isDefaultProfile': self._is_default_profile
         }
 
     @classmethod
@@ -158,9 +167,24 @@ class Profile:
         return profile_data
 
     @classmethod
+    def profile_from_file_path(cls, file_path: Path, client_id: str = ''):
+        """
+        Factor to construct a Profile object from file path
+
+        :param file_path: to .json file
+        :param client_id: client id [optional]
+        :return: Profile object
+        """
+        profile_id = str(file_path.with_suffix('').name)
+        profile_data = cls.load(file_path)
+        return cls(profile_data, client_id, profile_id)
+
+
+    @classmethod
     def list(cls, client_id):
         """
         List all profiles of one user/client
+
         :param client_id: [str] Username
         :return:
         """
@@ -168,9 +192,27 @@ class Profile:
 
         if profiles_path.exists():
             for file_path in sorted(Path.iterdir(profiles_path)):
-                profile_id = str(file_path.with_suffix('').name)
-                profile_data = cls.load(file_path)
-                yield cls(profile_data, client_id, profile_id)
+                yield cls.profile_from_file_path(file_path, client_id)
+        return []
+
+    @classmethod
+    def list_including_default(cls, client_id):
+        """
+        List all profiles of one user/client and adds the default profiles
+        :param client_id: [str] Username
+        :return:
+        """
+        all_ids = []
+        for p in cls.list(client_id):
+            all_ids.append(p.id)
+            yield p
+        default_profiles_path = Path(os.path.join(os.path.dirname(__file__), 'profiles'))
+        if default_profiles_path.exists():
+            for file_path in sorted(Path.iterdir(default_profiles_path)):
+                if file_path.suffix == '.json':
+                    profile_id = str(file_path.with_suffix('').name)
+                    if next((x for x in all_ids if x == profile_id), None) is None:
+                        yield cls.profile_from_file_path(file_path, client_id)
 
         return []
 
@@ -183,10 +225,13 @@ class Profile:
         :return:
         """
         profiles_path = Path(current_app.config['PROFILES_DIR']).joinpath(client_id)
+        default_profiles_path = Path(os.path.join(os.path.dirname(__file__), 'profiles'))
 
         # make sure that its really a uuid, this should prevent file system traversal
         if check_uuid(profile_id):
             file_path = profiles_path.joinpath(profile_id).with_suffix('.json')
+            if not file_path.is_file():
+                file_path = default_profiles_path.joinpath(profile_id).with_suffix('.json')
             if file_path.is_file():
                 profile_data = cls.load(file_path)
                 return cls(profile_data, client_id, profile_id)
@@ -202,7 +247,6 @@ class File:
     def __init__(self, file):
         self._features = {}
         self.fp = file
-        self._temp_dir = None
 
         # read the file
         self.content = file.read()
@@ -218,23 +262,6 @@ class File:
 
         # decode file string
         self.string = self.content.decode(self.encoding, errors='ignore') if self.encoding != 'binary' else None
-
-    def __enter__(self):
-        # Create the temporary directory when the context is entered
-        self._temp_dir = tempfile.mkdtemp()
-        return self._temp_dir
-
-    def __exit__(self, exc_type, exc_val, exc_tb):
-        # Cleanup: Remove the temporary directory when the context is exited
-        if self._temp_dir and os.path.exists(self._temp_dir):
-            shutil.rmtree(self._temp_dir)
-
-    @property
-    def temp_dir(self):
-        """Returns temporary directory path for tar extraction"""
-        if not self._temp_dir or not os.path.exists(self._temp_dir):
-            self.__enter__()
-        return self._temp_dir
 
     @property
     def content_type(self):
@@ -285,12 +312,8 @@ class File:
         """
         return self.name.endswith(".gz") or self.name.endswith(".xz") or self.name.endswith(".tar")
 
-    def __del__(self):
-        self.__exit__(None, None, None)
 
-
-
-def extract_tar_archive(file: File) -> list[File]:
+def extract_tar_archive(file: File, temp_dir: str) -> list[File]:
     """
     If the file is a tar archive, this function extracts it and returns a list of all files
     :param file: Input file from the client
@@ -298,7 +321,6 @@ def extract_tar_archive(file: File) -> list[File]:
     """
     if not file.is_tar_archive:
         return []
-    temp_dir = file.temp_dir
     file_list = []
     with tempfile.NamedTemporaryFile(delete=True) as temp_archive:
         try:

@@ -1,4 +1,5 @@
 import inspect
+import tempfile
 from collections import OrderedDict
 
 from converter_app.converters import logger
@@ -57,24 +58,26 @@ class Readers:
         logger.debug('file_name=%s content_type=%s mime_type=%s encoding=%s',
                      file.name, file.content_type, file.mime_type, file.encoding)
 
-        archive_file_list = extract_tar_archive(file)
+        with tempfile.TemporaryDirectory() as tmpdir:
 
-        for _identifier, reader in self.readers.items():
-            params = inspect.signature(reader).parameters
-            if len(params) > 1:
-                reader = reader(file, *archive_file_list)
-            else:
-                reader = reader(file)
+            archive_file_list = extract_tar_archive(file, tmpdir)
 
-            result = reader.check()
+            for _identifier, reader in self.readers.items():
+                params = inspect.signature(reader).parameters
+                if len(params) > 1:
+                    reader = reader(file, *archive_file_list)
+                else:
+                    reader = reader(file)
 
-            logger.debug('For reader %s -> result=%s', reader.__class__.__name__, result)
+                result = reader.check()
 
-            # reset file pointer and return the reader it is the one
-            file.fp.seek(0)
-            for archive_file in archive_file_list:
-                archive_file.fp.seek(0)
-            if result:
-                return reader
+                logger.debug('For reader %s -> result=%s', reader.__class__.__name__, result)
+
+                # reset file pointer and return the reader it is the one
+                file.fp.seek(0)
+                for archive_file in archive_file_list:
+                    archive_file.fp.seek(0)
+                if result:
+                    return reader
 
         return None
