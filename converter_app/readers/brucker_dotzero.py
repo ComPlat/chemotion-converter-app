@@ -3,7 +3,6 @@ import os
 import tempfile
 
 import opusFC
-from numpy import ndarray
 
 from converter_app.readers import Readers
 from converter_app.readers.helper.base import Reader
@@ -57,21 +56,6 @@ class DotZeroReader(Reader):
     def __del__(self):
         if  self._has_temp_copy:
             os.remove(self._dotzero_file)
-
-    def _add_to_meta(self, table, src, k=None):
-        if k is None:
-            k = []
-        if isinstance(src, list):
-            src_iter = enumerate([])
-        elif isinstance(src, dict):
-            src_iter = src.items()
-        elif isinstance(src, ndarray) or src is None:
-            return
-        else:
-            table['metadata']['.'.join(k)] = str(src)[:255]
-            return
-        for (key, v) in src_iter:
-            self._add_to_meta(table, v, k + [key])
 
     def prepare_tables(self):
         tables = []
