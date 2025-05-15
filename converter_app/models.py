@@ -320,7 +320,7 @@ class File:
 
     def get_temp_dir(self):
         if not self._temp_dir:
-            self._temp_dir = tempfile.TemporaryDirectory(delete=False).name
+            self._temp_dir = tempfile.TemporaryDirectory().name
         return self._temp_dir
 
 
@@ -335,7 +335,7 @@ def extract_tar_archive(file: File) -> list[File]:
     temp_dir = file.get_temp_dir()
     temp_unzipped_dir = os.path.join(temp_dir, file.name)
     file_list = []
-    with tempfile.TemporaryDirectory(delete=True) as temp_archive:
+    with tempfile.TemporaryDirectory() as temp_archive:
         try:
             # Save the contents of FileStorage to the temporary file
             temp_tar_file_name = os.path.join(temp_archive, file.name)
