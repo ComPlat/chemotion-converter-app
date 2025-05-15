@@ -2,6 +2,7 @@ import json
 import logging
 import os
 import pathlib
+import shutil
 import tarfile
 import tempfile
 import uuid
@@ -247,6 +248,7 @@ class File:
     def __init__(self, file):
         self._features = {}
         self.fp = file
+        self._temp_dir = None
 
         # read the file
         self.content = file.read()
@@ -262,6 +264,10 @@ class File:
 
         # decode file string
         self.string = self.content.decode(self.encoding, errors='ignore') if self.encoding != 'binary' else None
+
+    def __del__(self):
+        if self._temp_dir and os.path.exists(self._temp_dir):
+            shutil.rmtree(self._temp_dir)
 
     @property
     def content_type(self):
@@ -312,8 +318,13 @@ class File:
         """
         return self.name.endswith(".gz") or self.name.endswith(".xz") or self.name.endswith(".tar")
 
+    def get_temp_dir(self):
+        if not self._temp_dir:
+            self._temp_dir = tempfile.TemporaryDirectory(delete=False).name
+        return self._temp_dir
 
-def extract_tar_archive(file: File, temp_dir: str) -> list[File]:
+
+def extract_tar_archive(file: File) -> list[File]:
     """
     If the file is a tar archive, this function extracts it and returns a list of all files
     :param file: Input file from the client
@@ -321,11 +332,14 @@ def extract_tar_archive(file: File, temp_dir: str) -> list[File]:
     """
     if not file.is_tar_archive:
         return []
+    temp_dir = file.get_temp_dir()
+    temp_unzipped_dir = os.path.join(temp_dir, file.name)
     file_list = []
-    with tempfile.NamedTemporaryFile(delete=True) as temp_archive:
+    with tempfile.TemporaryDirectory(delete=True) as temp_archive:
         try:
             # Save the contents of FileStorage to the temporary file
-            file.fp.save(temp_archive.name)
+            temp_tar_file_name = os.path.join(temp_archive, file.name)
+            file.fp.save(temp_tar_file_name)
             if file.name.endswith(".gz"):
                 mode = "r:gz"
             elif file.name.endswith(".xz"):
@@ -334,13 +348,13 @@ def extract_tar_archive(file: File, temp_dir: str) -> list[File]:
                 mode = "r:"
             else:
                 return []
-            with tarfile.open(temp_archive.name, mode) as tar:
-                tar.extractall(temp_dir)
+            with tarfile.open(temp_tar_file_name, mode) as tar:
+                tar.extractall(temp_unzipped_dir)
                 tar.close()
         except ValueError:
             return []
 
-        for root, _, files in os.walk(temp_dir, topdown=False):
+        for root, _, files in os.walk(temp_unzipped_dir, topdown=False):
             for name in files:
                 path_file_name = os.path.join(root, name)
                 content_type = magic.Magic(mime=True).from_file(path_file_name)
