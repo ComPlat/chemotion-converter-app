@@ -106,7 +106,7 @@ def main_cli():
     if args.methode == 'new_reader':
         _new_reader(args, parser, [name_arg, priority_arg, file_arg])
     elif args.methode == 'migrate':
-        Migrations().run_migration(create_app().config['PROFILES_DIR'])
+        Migrations().run_migration(create_app().config['PROFILES_DIR'], args.force)
     elif args.methode == 'new_migration':
         _new_migration()
 
