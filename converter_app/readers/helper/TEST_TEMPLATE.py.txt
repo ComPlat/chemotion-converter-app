@@ -1,0 +1,8 @@
+from pathlib import Path
+from utils import TestReader
+
+
+def test_{{ READER_NAME_CC }}():
+    test_file = Path(__file__).parent.parent / '{{ TEST_FILE }}'
+    with TestReader(test_file.__str__(), '{{ READER_NAME_SC }}_{{UUID}}') as reader:
+        assert reader.as_dict['tables'] == []

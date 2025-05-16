@@ -18,6 +18,7 @@ from converter_app.converters import Converter
 from converter_app.datasets import Dataset
 from converter_app.models import File, Profile
 from converter_app.options import OPTIONS
+from converter_app.profile_migration.utils.registration import Migrations
 from converter_app.readers import READERS as registry
 from converter_app.utils import checkpw
 from converter_app.writers.jcamp import JcampWriter
@@ -106,7 +107,7 @@ def converting_router(app: Flask, auth: HTTPBasicAuth):
     def retrieve_conversion():
         '''
         Simple View: upload file, convert to table, search for profile,
-        return jcamp based on profile
+        return jcamp based on profiledescription
         '''
         client_id = auth.current_user()
         error_msg = 'No file provided.'
@@ -187,7 +188,7 @@ def profile_router(app: Flask, auth: HTTPBasicAuth):
     @auth.login_required
     def list_profiles():
         client_id = auth.current_user()
-        profiles = Profile.list(client_id)
+        profiles = Profile.list_including_default(client_id)
         return jsonify([profile.as_dict for profile in profiles]), 200
 
     @app.route('/profiles', methods=['POST'])
@@ -197,6 +198,7 @@ def profile_router(app: Flask, auth: HTTPBasicAuth):
         profile_data = json.loads(request.data)
         profile = Profile(profile_data, client_id)
         if profile.clean():
+            Migrations().migrate_profile(profile)
             profile.save()
             return jsonify(profile.as_dict), 201
         return jsonify(profile.errors), 400
@@ -223,6 +225,7 @@ def profile_router(app: Flask, auth: HTTPBasicAuth):
                 return jsonify({'error': 'Bad request'}), 400
 
             if profile.clean():
+                Migrations().migrate_profile(profile)
                 profile.save()
                 return jsonify(profile.as_dict), 200
             return jsonify(profile.errors), 400

@@ -15,6 +15,7 @@ import dotenv
 import flask
 from str2bool import str2bool
 
+from converter_app.profile_migration.utils.registration import Migrations
 from converter_app.router import get_clients, setup_flask_routing
 from converter_app.utils import human2bytes
 
@@ -45,6 +46,9 @@ def create_app():
         DEBUG=str2bool(os.getenv('DEBUG', 'False').lower()),
         CLIENTS=get_clients() is not None
     )
+
+    os.makedirs(app.config['PROFILES_DIR'], exist_ok=True)
+    Migrations().run_migration(app.config['PROFILES_DIR'])
 
     app.debug = app.config['DEBUG']
     setup_flask_routing(app)

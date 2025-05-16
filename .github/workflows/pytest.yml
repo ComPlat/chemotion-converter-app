@@ -21,7 +21,7 @@ jobs:
           pip install pytest
       - name: Build tests
         run: |
-          python test_manager/__init__.py -t -g -tp
+          python -m test_manager -t -g -tp
       - name: Test the code with pytest
         run: |
           pytest .
