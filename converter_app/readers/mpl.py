@@ -4,9 +4,9 @@ from converter_app.readers.helper.base import Reader
 from converter_app.readers.helper.reader import Readers
 
 
-class MpsReader(Reader):
+class MplReader(Reader):
     """
-    Implementation of the MPS Reader. It extends converter_app.readers.helper.base.Reader
+    Implementation of the MPL Reader. It extends converter_app.readers.helper.base.Reader
     Also reads MPL Files.
     """
     identifier = 'mps_reader'
@@ -18,7 +18,7 @@ class MpsReader(Reader):
         """
         :return: True if it fits
         """
-        return self.file.suffix in ('.mps', '.mpl')
+        return self.file.suffix in ('.mpl',)
 
     def prepare_tables(self):
         tables = []
@@ -35,9 +35,9 @@ class MpsReader(Reader):
 
             if new_table:
                 table = self.append_table(tables)
-                table['header'].append('Technique : ' + MpsReader.values)
-                MpsReader.prev_key = ''
-                MpsReader.values = ''
+                table['header'].append('Technique : ' + MplReader.values)
+                MplReader.prev_key = ''
+                MplReader.values = ''
                 new_table = False
 
             if re.search(r'^\t.*', row):
@@ -46,8 +46,8 @@ class MpsReader(Reader):
                 header = True
 
             if not multiline:
-                MpsReader.prev_key = ''
-                MpsReader.values = ''
+                MplReader.prev_key = ''
+                MplReader.values = ''
 
             if header:
                 self._handle_header(row, table)
@@ -63,8 +63,8 @@ class MpsReader(Reader):
                 else:
                     self._handle_equation_list(row, table)
 
-        MpsReader.prev_key = ''
-        MpsReader.values = ''
+        MplReader.prev_key = ''
+        MplReader.values = ''
         return tables
 
     @staticmethod
@@ -85,7 +85,7 @@ class MpsReader(Reader):
         """
         k_v = [x.strip() for x in row.split(':', 1)]
         if k_v[0] == 'Technique':
-            MpsReader.values = k_v[1]
+            MplReader.values = k_v[1]
             return key, True
         if k_v[1] == '':
             key = k_v[0]
@@ -96,9 +96,12 @@ class MpsReader(Reader):
     @staticmethod
     def _handle_sub_table(row, table):
         k_v = re.split(r'\s{2,}', row)
-        value = k_v[1]
-        for v in k_v[2:]:
-            value += ',' + v
+        if len(k_v) == 2:
+            value = k_v[1]
+        else:
+            value = ','.join(k_v[1:])
+            for i, v in enumerate(k_v[1:]):
+                table['metadata'][f'{k_v[0]} [COLUMN: {i}]'] = v
         table['metadata'][k_v[0]] = '[' + value + ']'
 
     @staticmethod
@@ -108,14 +111,14 @@ class MpsReader(Reader):
                 k_v = [x.strip() for x in row.lstrip().split(':', 1)]
                 table['metadata'][key + '.' + k_v[0]] = k_v[1]
             else:
-                if MpsReader.prev_key != key:
-                    MpsReader.values = ''
-                    MpsReader.prev_key = key
-                    MpsReader.values = row.lstrip()
+                if MplReader.prev_key != key:
+                    MplReader.values = ''
+                    MplReader.prev_key = key
+                    MplReader.values = row.lstrip()
                 else:
-                    MpsReader.values += ', ' + row.lstrip()
+                    MplReader.values += ', ' + row.lstrip()
 
-                table['metadata'][key] = MpsReader.values
+                table['metadata'][key] = MplReader.values
         else:
             table['header'].append(row)  # Header with leading tab or missing ':' in previous line
 
@@ -127,4 +130,4 @@ class MpsReader(Reader):
             table['metadata'][k_v[0]] = k_v[1]
 
 
-Readers.instance().register(MpsReader)
+Readers.instance().register(MplReader)

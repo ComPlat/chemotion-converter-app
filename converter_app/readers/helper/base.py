@@ -1,7 +1,7 @@
 import logging
 import os
 import re
-from datetime import datetime
+from datetime import datetime, UTC
 
 logger = logging.getLogger(__name__)
 
@@ -71,9 +71,11 @@ class Reader:
     float_us_pattern = re.compile(r'(-?[\d,]+.\d*[eE+\-\d]*)')
     float_on_zeros = re.compile(r'.0*$')
 
+    identifier = None
+    priority = 100
+
     def __init__(self, file, *tar_content):
         self._empty_values = ['', 'n.a.']
-        self.identifier = None
         self.metadata = None
         self.tables = None
         self.file = file
@@ -172,7 +174,7 @@ class Reader:
             'mime_type': self.file.mime_type,
             'extension': self.file.suffix,
             'reader': self.__class__.__name__,
-            'uploaded': datetime.utcnow().isoformat()
+            'uploaded': datetime.now(UTC).isoformat()
         }
 
     def append_table(self, tables: list) -> Table:

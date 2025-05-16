@@ -11,7 +11,7 @@ from converter_app.readers.helper.reader import Readers
 logger = logging.getLogger(__name__)
 
 if not any(x[1] == 2 for x in param_map["Set I/C"]):
-     param_map["Set I/C"] += ("UNKNWON", 2),  # guess
+    param_map["Set I/C"] += ("UNKNWON", 2),  # guess
 
 
 class MprReader(Reader):
@@ -42,7 +42,6 @@ class MprReader(Reader):
                     return False
         return check_result
 
-
     def _append_table(self, tables, table_name):
         table = self.append_table(tables)
         table['metadata'].add_unique('___TABLE_NAME__', table_name)
@@ -61,12 +60,11 @@ class MprReader(Reader):
             self._convert_data_table(dict_value, table, 'coords')
             self._convert_data_table(dict_value, table, 'data_vars')
 
-
         return tables
 
     def _convert_data_table(self, dict_value, table, value_name):
         if value_name in dict_value:
-            for k,v in dict_value[value_name].items():
+            for k, v in dict_value[value_name].items():
                 units = v.get('attrs', {}).get('units')
                 if units is not None:
                     table['metadata'].add_unique(f'unit.{value_name}.{k}', str(units))
