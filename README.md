@@ -4,6 +4,7 @@ chemotion-converter-app
 Development setup
 -----------------
 
+
 First, ensure that basic Python development prerequisites are installed on the system. For Debian or Ubuntu this can be done using:
 
 ```bash
