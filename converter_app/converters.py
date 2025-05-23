@@ -24,32 +24,34 @@ class Converter:
         self.tables = []
         self.file_metadata = file_data.get('metadata', {})
         self.input_tables = file_data.get('tables', [])
-
-        if self.profile.data.get('matchTables'):
-            self._prepare_identifier()
-            self._prepare_tables()
-        else:
-            self.output_tables = self.profile.data.get('tables', [])
-            self.identifiers = self.profile.data.get('identifiers', [])
-
-    def _prepare_tables(self):
-        profile_output_tables = self.profile.data.get('tables', [])
-
-        # match the output Table to the input tables and adjust the tableIndexes to the input table
+        self.profile_output_tables = self.profile.data.get('tables', [])
         self.output_tables = []
+        self._prepare_identifier()
+
+
+        for output_table_index, output_table in enumerate(self.profile_output_tables):
+            if self._has_loop(output_table_index):
+                self._prepare_tables(output_table_index)
+            else:
+                self.output_tables.append(output_table)
+
+    def _prepare_tables(self, index):
+        # match the output Table to the input tables and adjust the tableIndexes to the input table
         for input_table_index, _ in enumerate(self.input_tables):
-            output_table = copy.deepcopy(profile_output_tables[0])
+            if not self._check_loop_condition(index, input_table_index):
+                continue
+            output_table = copy.deepcopy(self.profile_output_tables[index])
             output_table_table = output_table.get('table')
             if output_table_table:
                 if 'xColumn' in output_table_table:
                     output_table_table['xColumn']['tableIndex'] = input_table_index
-                if 'xColumn' in output_table_table:
+                if 'yColumn' in output_table_table:
                     output_table_table['yColumn']['tableIndex'] = input_table_index
                 for x_operation in output_table_table.get('xOperations', []):
-                    if 'column' in x_operation:
+                    if x_operation.get('column', False):
                         x_operation['column']['tableIndex'] = input_table_index
                 for y_operation in output_table_table.get('yOperations', []):
-                    if 'column' in y_operation:
+                    if y_operation.get('column', False):
                         y_operation['column']['tableIndex'] = input_table_index
 
             self.output_tables.append(output_table)
@@ -58,22 +60,96 @@ class Converter:
         profile_identifiers = self.profile.data.get('identifiers', [])
         self.identifiers = []
         for identifier in profile_identifiers:
-            if identifier.get('outputTableIndex') is None:
+            output_table_index = identifier.get('outputTableIndex')
+            if output_table_index is None:
                 # if no outputTableIndex was set this identifier is valid for every table
                 # no adjustment has to be done
                 self.identifiers.append(identifier)
             else:
-                # adjust this identifier for every input table
+                if self._has_loop(output_table_index):
+                    # adjust this identifier for every input table
+                    for input_table_index, _ in enumerate(self.input_tables):
+                        if not self._check_loop_condition(output_table_index, input_table_index):
+                            continue
+                        # make a copy of the identifier and adjust the outputTableIndex
+                        identifier_copy = copy.deepcopy(identifier)
+                        identifier_copy['outputTableIndex'] = (input_table_index
+                                                               + self._get_output_table_index(identifier['outputTableIndex']))
+
+                        # adjust the (input)tableIndex as well if it was not null
+                        if identifier_copy.get('tableIndex') is not None:
+                            identifier_copy['tableIndex'] = input_table_index
+
+                        self.identifiers.append(identifier_copy)
+                else:
+                    identifier['outputTableIndex'] = self._get_output_table_index(output_table_index)
+                    self.identifiers.append(identifier)
+
+    def _has_loop(self, index):
+        if len(self.profile_output_tables) <= index:
+            return False
+        if self.profile_output_tables[index].get('loopType') == 'all':
+                return self.profile_output_tables[index].get('matchTables')
+        else:
+            loop_header = self.profile_output_tables[index]['table'].get('loop_header')
+            loop_metadata = self.profile_output_tables[index]['table'].get('loop_metadata')
+            loop_theader = self.profile_output_tables[index]['table'].get('loop_theader')
+            return any(x for x in [loop_header, loop_metadata, loop_theader])
+
+
+    def _check_loop_condition(self, index, input_table_index):
+        if self.profile_output_tables[index].get('loopType') != 'all':
+            loop_header = self.profile_output_tables[index]['table'].get('loop_header', [])
+            for header in loop_header:
+                if not header.get('column'):
+                    return False
+                table_index = header['column'].get('tableIndex')
+                column_index = header['column'].get('columnIndex')
+                if (table_index is None or column_index is None or len(self.input_tables) <= table_index
+                        or len(self.input_tables[table_index].get('columns', [])) <= column_index):
+                    # No Input Table Column with given Ids found
+                    return False
+                if table_index == input_table_index:
+                    continue
+                column_name = self.input_tables[table_index].get('columns')[column_index].get('name')
+                if (len(self.input_tables[input_table_index].get('columns', [])) <= column_index
+                or column_name != self.input_tables[input_table_index].get('columns')[column_index].get('name')):
+                    return False
+
+            loop_theader = self.profile_output_tables[index]['table'].get('loop_theader', [])
+            for theader in loop_theader:
+                match, _ = self._search_regex(theader, input_table_index)
+                if match is None:
+                    return False
+
+            loop_metadata = self.profile_output_tables[index]['table'].get('loop_metadata', [])
+            for metadata in loop_metadata:
+                if not metadata.get('value') or not metadata.get('table'):
+                    return False
+                key = metadata.get('value')
+                if metadata.get('ignoreValue'):
+                    if not key in self.input_tables[input_table_index].get('metadata', {}):
+                        return False
+                else:
+                    table_index = int(metadata.get('table'))
+                    value = self.input_tables[table_index].get('metadata', {}).get(key, None)
+                    if value != self.input_tables[input_table_index].get('metadata', {}).get(key, None):
+                        return False
+            return True
+        return True
+
+    def _get_output_table_index(self, index: int):
+        result_index = 0
+        for output_table_index, output_table in enumerate(self.profile_output_tables):
+            if output_table_index == index:
+                return result_index
+            if self._has_loop(output_table_index):
                 for input_table_index, _ in enumerate(self.input_tables):
-                    # make a copy of the identifier and adjust the outputTableIndex
-                    identifier_copy = copy.deepcopy(identifier)
-                    identifier_copy['outputTableIndex'] = input_table_index
-
-                    # adjust the (input)tableIndex as well if it was not null
-                    if identifier_copy.get('tableIndex') is not None:
-                        identifier_copy['tableIndex'] = input_table_index
-
-                    self.identifiers.append(identifier_copy)
+                    if self._check_loop_condition(output_table_index, input_table_index):
+                        result_index += 1
+            else:
+                result_index += 1
+        return result_index
 
     def match(self):
         """
@@ -275,13 +351,13 @@ class Converter:
                         y_rows.append(self.get_value(row, column_index))
 
                     for operation in x_operations:
-                        if operation.get('type') == 'column' and \
+                        if operation.get('type') == 'column' and operation.get('column') and \
                                 table_index == operation.get('column', {}).get('tableIndex') and \
                                 column_index == operation.get('column', {}).get('columnIndex'):
                             operation['rows'].append(self.get_value(row, column_index))
 
                     for operation in y_operations:
-                        if operation.get('type') == 'column' and \
+                        if operation.get('type') == 'column' and operation.get('column') and \
                                 table_index == operation.get('column', {}).get('tableIndex') and \
                                 column_index == operation.get('column', {}).get('columnIndex'):
                             operation['rows'].append(self.get_value(row, column_index))
@@ -329,23 +405,15 @@ class Converter:
             elif operation.get('type') == 'metadata_value':
                 str_value = self.input_tables[int(operation.get('table'))]['metadata'].get(operation.get('value'))
             elif operation.get('type') == 'header_value':
-                table = 0
+                table_id = 0
                 if operation.get('table') is not None:
-                    table = int(operation.get('table'))
-                try:
-                    line_number = int(operation.get('line', ''))
-                    header = self.input_tables[table]['header'][line_number - 1].rstrip()
-                except (TypeError, ValueError, IndexError):
-                    header = os.linesep.join(self.input_tables[table]['header']).rstrip()
-                pattern = operation.get('regex')
-                if header is not None and pattern is not None:
-                    str_value = header
-                    match = re.search(pattern, str_value)
-                    if match is not None:
-                        if len(match.regs) > 1:
-                            str_value = match[1]
-                        else:
-                            str_value = match[0]
+                    table_id = int(operation.get('table'))
+                match, str_value = self._search_regex(operation, table_id)
+                if match is not None:
+                    if len(match.regs) > 1:
+                        str_value = match[1]
+                    else:
+                        str_value = match[0]
             else:
                 raise ValueError(f"Unknown operation type: {operation.get('type')}")
             try:
@@ -360,6 +428,19 @@ class Converter:
 
         return True
 
+    def _search_regex(self, operation, table_id):
+        match = None
+        str_value = None
+        try:
+            line_number = int(operation.get('line', ''))
+            header = self.input_tables[table_id]['header'][line_number - 1].rstrip()
+        except (TypeError, ValueError, IndexError):
+            header = os.linesep.join(self.input_tables[table_id]['header']).rstrip()
+        pattern = operation.get('regex')
+        if header is not None and pattern is not None:
+            str_value = header
+            match = re.search(pattern, str_value)
+        return match, str_value
 
     def _run_identifier_operation(self, value, operation):
         op_value = operation.get('value')
