@@ -41,12 +41,17 @@ class BioLogic(Reader):
                 file.fp.seek(0)
                 self.mpl_reader = MplReader(file)
                 if self.mpl_reader.check():
-                    return True
+                    break
+                self.mpl_reader = None
+            return True
         return False
 
     def prepare_tables(self):
-        tables = self.mpl_reader.prepare_tables()
-        tables += self.mpr_reader.prepare_tables()
+        tables = self.mpr_reader.prepare_tables()
+        while len(tables) < 5:
+            self.append_table(tables)['header'].append('PLACEHOLDER')
+        if self.mpl_reader:
+            tables += self.mpl_reader.prepare_tables()
         return tables
 
 

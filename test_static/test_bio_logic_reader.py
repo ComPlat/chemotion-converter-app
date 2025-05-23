@@ -8,12 +8,12 @@ def test_bio_logic():
         __file__).parent.parent / 'test_static/test_files/bio_logic_FK155_JLGU_GE_50-2_15_m1p233mg_Li_LP30_RT_rate_stability_20230906.tar.xz'
     with ManageTestReader(test_file.__str__(), 'bio_logic_080ecac4-8fa2-4c47-b7cc-4ef5db082b07') as reader:
         tables = reader.as_dict['tables']
-        assert tables[0]['header'] == ['EC-Lab LOG FILE', 'Galvanostatic Cycling with Potential Limitation',
+        assert tables[5]['header'] == ['EC-Lab LOG FILE', 'Galvanostatic Cycling with Potential Limitation',
                                        'CE vs. WE compliance from -10 V to 10 V',
                                        'EC-Lab for windows v11.43 (software)', 'Internet server v11.40 (firmware)',
                                        'Command interpretor v11.40 (firmware)']
 
-        assert tables[0]['metadata'] == {"Run on channel": "7 (SN 67339)",
+        assert tables[5]['metadata'] == {"Run on channel": "7 (SN 67339)",
                                          "Electrode connection": "standard",
                                          "Potential control": "Ewe",
                                          "Ewe ctrl range": "min = -10.00 V, max = 10.00 V",
@@ -183,8 +183,8 @@ def test_bio_logic():
                                          "rows": "0",
                                          "columns": "0"}
 
-        assert len(tables[1]['rows']) == 16154
-        assert tables[1]['columns'] == [{"key": "0", "name": "uts"}, {"key": "1", "name": "Ns"},
+        assert len(tables[0]['rows']) == 16154
+        assert tables[0]['columns'] == [{"key": "0", "name": "uts"}, {"key": "1", "name": "Ns"},
                                         {"key": "2", "name": "time (s)"},
                                         {"key": "3", "name": "time standard_error (s)"},
                                         {"key": "4", "name": "dq (mA\u00b7h)"},
@@ -201,7 +201,7 @@ def test_bio_logic():
                                         {"key": "19", "name": "counter inc."}, {"key": "20", "name": "control_V (V)"},
                                         {"key": "21", "name": "control_V standard_error (V)"}]
 
-        assert tables[1]['metadata'] == {"___TABLE_NAME__": "/", "settings.technique": "GCPL",
+        assert tables[0]['metadata'] == {"___TABLE_NAME__": "/", "settings.technique": "GCPL",
                                          "settings.comments": "60\u00b0C\r\nrate + cyclability",
                                          "settings.active_material_mass": "1.2599999904632568", "settings.at_x": "0.0",
                                          "settings.molecular_weight": "0.0010000000474974513",
