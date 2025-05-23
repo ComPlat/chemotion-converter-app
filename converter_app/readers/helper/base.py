@@ -2,6 +2,7 @@ import logging
 import os
 import re
 from datetime import datetime
+from enum import Enum
 
 logger = logging.getLogger(__name__)
 
@@ -51,6 +52,13 @@ class MetadataContainer(dict[str:any]):
             idx += 1
         self[key] = value
 
+class AttachmentType(Enum):
+    PNG = 'png'
+    JPG = 'jpg'
+    BMP = 'bmp'
+    TEXT = 'txt'
+    PDF = 'pdf'
+
 
 class Reader:
     """
@@ -79,7 +87,10 @@ class Reader:
         self.file = file
         self.file_content = tar_content
         self.is_tar_ball = len(tar_content) > 0
-        self.attachment_files = []
+        self._attachment_files = []
+
+    def add_attachment(self, file_content: bytes, filename: str, file_type: AttachmentType):
+        self._attachment_files.append((file_content, filename, file_type))
 
     @property
     def as_dict(self):
@@ -88,7 +99,8 @@ class Reader:
         """
         return {
             'tables': self.tables,
-            'metadata': self.metadata
+            'metadata': self.metadata,
+            'attachments': [x for x in self._attachment_files]
         }
 
     def check(self):

@@ -24,6 +24,7 @@ class Converter:
         self.tables = []
         self.file_metadata = file_data.get('metadata', {})
         self.input_tables = file_data.get('tables', [])
+        self.attachments = file_data.get('attachments', [])
 
         if self.profile.data.get('matchTables'):
             self._prepare_identifier()

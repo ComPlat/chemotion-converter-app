@@ -14,12 +14,14 @@ class JcampWriter(Writer):
     mimetype = 'chemical/x-jcamp-dx'
 
     def __init__(self, converter):
-        self.table = converter.tables[0]
-        self.buffer = io.StringIO()
+        super().__init__(converter)
+        self.buffer = None
 
 
     def process(self):
-        self.process_table(self.table)
+        table = self.converter.tables[0]
+        self.buffer = io.StringIO()
+        self.process_table(table)
 
     def process_table(self, table):
         header = table.get('header', {})

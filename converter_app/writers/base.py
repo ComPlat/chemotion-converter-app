@@ -1,7 +1,7 @@
 class Writer(object):
 
     def __init__(self, converter):
-        raise NotImplementedError
+        self.converter = converter
 
     def write(self):
         return self.buffer.getvalue()

@@ -1,8 +1,9 @@
-import io
 import hashlib
+import io
 import json
-import zipfile
 import logging
+import tempfile
+import zipfile
 
 from .jcamp import JcampWriter
 
@@ -15,6 +16,7 @@ class JcampZipWriter(JcampWriter):
     mimetype = 'application/zip'
 
     def __init__(self, converter):
+        super().__init__(converter)
         self.profile = converter.profile
         self.matches = converter.matches
         self.tables = converter.tables
@@ -33,6 +35,17 @@ class JcampZipWriter(JcampWriter):
         sha512_string = ''
 
         zf = zipfile.ZipFile(self.zipbuffer, 'w')
+
+
+        for (attachment_file, filename, file_type) in self.converter.attachments:
+            file_path = f'attachments/{filename}'
+            with tempfile.NamedTemporaryFile(delete=True) as temp:
+                temp.write(attachment_file)
+                zf.write(temp.name, file_path)
+
+                sha256_string += '{} {}\n'.format(hashlib.sha256(attachment_file).hexdigest(), file_path)
+                sha512_string += '{} {}\n'.format(hashlib.sha512(attachment_file).hexdigest(), file_path)
+
         for table_id, table in enumerate(self.tables):
             self.buffer = io.StringIO()
             self.process_table(table)

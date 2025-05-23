@@ -1,18 +1,19 @@
+import os
 import re
 import tempfile
-import os
 
+from gcode_translator.Binary_GCode_Translator import binary_gcode_to_gcode, extract_picture_bytes_from_content
+from gcode_translator.GCode_Translator import GCodeTranslator
 from werkzeug.datastructures import FileStorage
 
 from converter_app.models import File
 from converter_app.readers import Readers
-from converter_app.readers.helper.base import Reader
-# from converter_app.readers.helper.g_code_translator_package.Binary_GCode_Translator import \
-    # extract_picture_bytes_from_content, binary_gcode_to_gcode
-# from converter_app.readers.helper.g_code_translator_package.GCode_Translator import GCodeTranslator
+from converter_app.readers.helper.base import Reader, AttachmentType
 
-from gcode_translator.GCode_Translator import GCodeTranslator
-from gcode_translator.Binary_GCode_Translator import binary_gcode_to_gcode, extract_picture_bytes_from_content
+
+# from converter_app.readers.helper.g_code_translator_package.Binary_GCode_Translator import \
+# extract_picture_bytes_from_content, binary_gcode_to_gcode
+# from converter_app.readers.helper.g_code_translator_package.GCode_Translator import GCodeTranslator
 
 
 class GCodeReader(Reader):
@@ -39,31 +40,18 @@ class GCodeReader(Reader):
 
         translator = GCodeTranslator()
         gcode_mapping = translator.init_mapping("local")
+        file = self._prepare_file()
 
-
-
-        if self.file.suffix == '.bgcode':
-            with tempfile.NamedTemporaryFile(delete=False, suffix=".bgcode") as tmp:
-                tmp.write(self.file.content)
-                self.tmp_path = tmp.name
-                # print("Starting C++ EXE...")
-                self._out = binary_gcode_to_gcode(self.tmp_path)
-                f = open(self._out, 'rb')
-                fs = FileStorage(stream=f, filename=self._out,
-                                 content_type="text/plain")
-                self.file = File(fs)
-            # print("...Finished C++ EXE")
-
-        if self.file.suffix == '.gx':
-            image_data, remaining_data = extract_picture_bytes_from_content(self.file.content)
-            encoding = self.file.encoding
+        if file.suffix == '.gx':
+            image_data, remaining_data = extract_picture_bytes_from_content(file.content, as_file=False)
+            encoding = file.encoding
 
             if encoding.lower() == "binary" or encoding not in ["utf-8", "latin-1", "ascii"]:
                 encoding = "utf-8"  # fallback
 
             all_lines = re.split(r'[\r\n]+', remaining_data.decode(encoding))
         else: # normal .gcode case or after transformation from bgcode to gcode
-            all_lines = re.split(r'[\r\n]+', self.file.content.decode(self.file.encoding)) # for file line only ends with \r and not with \n
+            all_lines = re.split(r'[\r\n]+', file.content.decode(file.encoding)) # for file line only ends with \r and not with \n
 
         table = self.append_table(tables)
         for line in all_lines:
@@ -83,7 +71,7 @@ class GCodeReader(Reader):
         if not image_data:
             image_data = translator.get_preview_as_stream()
         if image_data:
-            self.attachment_files.append({'preview.png': image_data})
+            self.add_attachment(image_data, 'preview.png', AttachmentType.PNG)
 
         return tables
 
@@ -92,6 +80,20 @@ class GCodeReader(Reader):
             os.remove(self._out)
         if self.tmp_path and os.path.exists(self.tmp_path):
             os.remove(self.tmp_path)
+
+
+    def _prepare_file(self) -> File:
+        if self.file.suffix == '.bgcode':
+            with tempfile.NamedTemporaryFile(delete=False, suffix=".bgcode") as tmp:
+                tmp.write(self.file.content)
+                self.tmp_path = tmp.name
+                # print("Starting C++ EXE...")
+                self._out = binary_gcode_to_gcode(self.tmp_path)
+                f = open(self._out, 'rb')
+                fs = FileStorage(stream=f, filename=self._out,
+                                 content_type="text/plain")
+                return File(fs)
+        return self.file
 
 
 Readers.instance().register(GCodeReader)
