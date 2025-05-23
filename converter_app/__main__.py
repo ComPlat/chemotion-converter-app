@@ -9,7 +9,7 @@ from pathlib import Path
 
 from jinja2 import Template
 
-from app import create_app
+from converter_app.app import create_app
 from converter_app.profile_migration.utils.registration import Migrations
 
 
