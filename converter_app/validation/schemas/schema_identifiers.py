@@ -1,6 +1,6 @@
 from converter_app.validation.registry import SchemaRegistry
 
-tables_schema = {
+identifiers_schema = {
     "$schema": "http://json-schema.org/draft/2020-12/schema",
     "$id": "chemconverter://profile/tables/draft-01",
     "title": "Schema for ChemConverter profile tables",

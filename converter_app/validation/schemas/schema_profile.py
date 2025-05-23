@@ -6,6 +6,15 @@ profile_schema = {
     "title": "Schema for ChemConverter Profiles",
     "type": "object",
     "properties": {
+        "id": {
+            "type": "string"
+        },
+        "identifiers": {
+            "type": "array",
+            "items": {
+                "$ref": "#/components/schemas/Identifier"
+            }
+        },
         "data": {
             "type": "object",
             "properties": {
@@ -18,6 +27,12 @@ profile_schema = {
         "title": {
             "type": "string"
         },
+        "isDisabled": {
+            "type": "boolean"
+        },
+        "ols": {
+            "type": "string"
+        },
         "tables": {
             "type": "array",
             "items": {
@@ -28,7 +43,13 @@ profile_schema = {
     },
     "additionalProperties": False,
     "required": [
-        "data"
+        "id",
+        "data",
+        "description",
+        "title",
+        "isDisabled",
+        "ols",
+        "tables"
     ]
 
 }
