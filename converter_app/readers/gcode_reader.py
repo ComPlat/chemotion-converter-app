@@ -71,7 +71,7 @@ class GCodeReader(Reader):
         if not image_data:
             image_data = translator.get_preview_as_stream()
         if image_data:
-            self.add_attachment(image_data, 'preview.png', AttachmentType.PNG)
+            self.add_attachment(image_data, 'preview.png', AttachmentType.PNG) # TODO: Always convert or save as png, not bmp
 
         return tables
 
