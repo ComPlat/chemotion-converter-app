@@ -31,7 +31,9 @@ profile_schema = {
                     "type": "array",
                     "items": {"$ref": "chemconverter://profile/input_tables/draft-01"}
                 }
-            }
+            },
+            "required": ["metadata", "tables"]
+
         },
         "last_migration": {
             "type": "string"
@@ -76,7 +78,6 @@ profile_schema = {
         "description",
         "title",
         "isDisabled",
-        "ols",
         "ontology",
         "devices",
         "software",
