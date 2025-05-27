@@ -1,7 +1,7 @@
 from converter_app.validation.registry import SchemaRegistry
 
 tables_schema = {
-    "$schema": "http://json-schema.org/draft/2020-12/schema",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
     "$id": "chemconverter://profile/tables/draft-01",
     "title": "Schema for ChemConverter profile tables",
     "type": "object",
@@ -10,7 +10,7 @@ tables_schema = {
             "type": "object",
             "patternProperties": {
                 "^[^\n]+$": {
-                    "type": "string"
+                    "type": ["number", "string"]
                 }
             }
         },
@@ -23,7 +23,7 @@ tables_schema = {
         "table": {
             "type": "object",
             "properties": {
-                "$ref": "chemconverter://profile/tables/draft-01"
+                "$ref": "chemconverter://profile/data_tables/draft-01"
             }
         },
 
@@ -31,8 +31,6 @@ tables_schema = {
     "additionalProperties": False,
     "required": [
         "header",
-        "loopType",
-        "matchTables",
         "table"
     ]
 

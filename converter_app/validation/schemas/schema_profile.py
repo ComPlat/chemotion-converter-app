@@ -1,7 +1,7 @@
 from converter_app.validation.registry import SchemaRegistry
 
 profile_schema = {
-    "$schema": "http://json-schema.org/draft/2020-12/schema",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
     "$id": "chemconverter://profile/base/draft-01",
     "title": "Schema for ChemConverter Profiles",
     "type": "object",
@@ -9,17 +9,32 @@ profile_schema = {
         "id": {
             "type": "string"
         },
+        "converter_version": {
+            "type": "string"
+        },
         "identifiers": {
             "type": "array",
             "items": {
-                "$ref": "#/components/schemas/Identifier"
+                "$ref": "chemconverter://profile/identifiers/draft-01"
             }
         },
         "data": {
             "type": "object",
             "properties": {
+                "metadata": {
+                    "type": "object",
+                    "properties": {
 
+                    }
+                },
+                "tables": {
+                    "type": "array",
+                    "items": {"$ref": "chemconverter://profile/input_tables/draft-01"}
+                }
             }
+        },
+        "last_migration": {
+            "type": "string"
         },
         "description": {
             "type": "string"
@@ -33,6 +48,17 @@ profile_schema = {
         "ols": {
             "type": "string"
         },
+        "ontology": {
+            "type": "string"
+        },
+        "devices": {
+            "type": "array",
+            "items": {"type": "string"}
+        },
+        "software": {
+            "type": "array",
+            "items": {"type": "string"}
+        },
         "tables": {
             "type": "array",
             "items": {
@@ -45,10 +71,15 @@ profile_schema = {
     "required": [
         "id",
         "data",
+        "converter_version",
+        "last_migration",
         "description",
         "title",
         "isDisabled",
         "ols",
+        "ontology",
+        "devices",
+        "software",
         "tables"
     ]
 

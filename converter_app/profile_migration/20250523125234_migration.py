@@ -28,6 +28,9 @@ class ProfileMigrationScript(ProfileMigration):
         """
 
         profile['converter_version'] = self.app_config.get('VERSION')
+        profile['ontology'] = profile.get('ontology', '')
+        profile['devices'] = profile.get('devices', [])
+        profile['software'] = profile.get('software', [])
 
     def to_be_applied_after_migration(self) -> str:
         """
