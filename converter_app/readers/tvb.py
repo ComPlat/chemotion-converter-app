@@ -72,15 +72,15 @@ class TvbReader(AsciiReader):
         tables = []
         table = self.append_table(tables)
 
-        contentTVBfile = self.file.content
+        content_tvb_file = self.file.content
 
-        # print(f'Length TVB files (bytes): {len(contentTVBfile)} ({hex(len(contentTVBfile))})')
-        _bytes_length = (len(contentTVBfile), hex(len(contentTVBfile)))
+        # print(f'Length TVB files (bytes): {len(content_tvb_file)} ({hex(len(content_tvb_file))})')
+        _bytes_length = (len(content_tvb_file), hex(len(content_tvb_file)))
 
         ###
         # File Type Version
         ###
-        datasplice = contentTVBfile[0x0000:0x003]  # this should be 'tvb'
+        datasplice = content_tvb_file[0x0000:0x003]  # this should be 'tvb'
         # 'b': Signed char (1 byte)
         count = len(datasplice) // 1  # Number of bytes to unpack (1 for char)
         # print(count)
@@ -94,7 +94,7 @@ class TvbReader(AsciiReader):
         ###
         # File Info - Frames and Dataset Length
         ###
-        datasplice = contentTVBfile[0x0004:0x0016]
+        datasplice = content_tvb_file[0x0004:0x0016]
         # 'i': Integer (4 bytes)
         # 'f': Float (4 bytes)
         # 'd': Double (8 bytes)
@@ -103,63 +103,63 @@ class TvbReader(AsciiReader):
         # print(count)
         unpacked_data = self.unpack_repeated_bytes(datasplice, 'h', count, littleEndianEncoding=True)
 
-        numDatasetLength = int(unpacked_data[1])
-        numFrames = int(unpacked_data[5])
+        num_dataset_length = int(unpacked_data[1])
+        num_frames = int(unpacked_data[5])
 
         table['metadata']['Unpacked data'] = str(unpacked_data)
         # print(unpacked_data)
-        # print(f'Datalength: {numDatasetLength}', f'Frames: {numFrames}')
-        table['metadata']['Datalength'] = str(numDatasetLength)
-        table['metadata']['Frames'] = str(numFrames)
+        # print(f'Datalength: {num_dataset_length}', f'Frames: {num_frames}')
+        table['metadata']['Datalength'] = str(num_dataset_length)
+        table['metadata']['Frames'] = str(num_frames)
 
         ###
-        # LaserExcitationWavelength
+        # laser_excitation_wavelength
         ###
-        datasplice = contentTVBfile[0x0025:0x002D]
+        datasplice = content_tvb_file[0x0025:0x002D]
         # 'd': double (8 byte)
         count = len(datasplice) // 8  # Number of bytes to unpack (1 for char)
         unpacked_data = self.unpack_repeated_bytes(datasplice, 'd', count)
 
-        LaserExcitationWavelength = float(unpacked_data[0])  # in nanometer
-        # print(f'LaserExcitationWavelength [nm]: {LaserExcitationWavelength}')
-        table['metadata']['LaserExcitationWavelength [nm]'] = str(LaserExcitationWavelength)
+        laser_excitation_wavelength = float(unpacked_data[0])  # in nanometer
+        # print(f'laser_excitation_wavelength [nm]: {laser_excitation_wavelength}')
+        table['metadata']['Laser excitation wavelength [nm]'] = str(laser_excitation_wavelength)
 
         ###
-        # Number of Raman Wavelength entries = NRWE
+        # Number of Raman Wavelength entries = nrwe
         ###
-        datasplice = contentTVBfile[0x002D:0x0031]
+        datasplice = content_tvb_file[0x002D:0x0031]
         # 'I': unsigned integer (4 byte)
         count = len(datasplice) // 4  # Number of bytes to unpack (1 for char)
 
         unpacked_data = self.unpack_repeated_bytes(datasplice, 'I', count)
 
-        NRWE = int(unpacked_data[0])
-        # print(f'Number of Raman Wavelength entries: {NRWE}')
-        table['metadata']['Number of Raman Wavelength entries'] = str(NRWE)
+        nrwe = int(unpacked_data[0])
+        # print(f'Number of Raman Wavelength entries: {nrwe}')
+        table['metadata']['Number of Raman Wavelength entries'] = str(nrwe)
 
         ###
         # List of Raman Wavelength [in nm] convert to Raman Shift = Raman Wavenumber [1/nm]
         # $$\Delta \omega [cm^{-1}] = ( \frac{1}{\lambda_{laser}} - \frac{1}{\lambda_{}}) \cdot 10⁷   $$
         ###
-        datasplice = contentTVBfile[0x0031:0x0031 + 4 * NRWE]
+        datasplice = content_tvb_file[0x0031:0x0031 + 4 * nrwe]
         # 'f': float (4 byte)
         count = len(datasplice) // 4  # Number of bytes to unpack (1 for char)
 
         unpacked_data = self.unpack_repeated_bytes(datasplice, 'f', count)
-        RamanWavenumber = (1.0 / LaserExcitationWavelength - 1.0 / np.asarray(unpacked_data,
+        raman_wavenumber = (1.0 / laser_excitation_wavelength - 1.0 / np.asarray(unpacked_data,
                                                                               dtype=np.float64)) * 1E7  # in 1/cm
-        # print(RamanWavenumber)
+        # print(raman_wavenumber)
 
         ###
-        # Character Length of XML section = CLXML
+        # Character Length of XML section = clxml
         ###
-        datasplice = contentTVBfile[0x1534:0x1538]
+        datasplice = content_tvb_file[0x1534:0x1538]
         # 'I': unsigned integer (4 byte)
         count = len(datasplice) // 4  # Number of bytes to unpack (1 for char)
         unpacked_data = self.unpack_repeated_bytes(datasplice, 'I', count)
 
-        CLXML = int(unpacked_data[0])
-        # print(f'Character Length of XML section: {CLXML}')
+        clxml = int(unpacked_data[0])
+        # print(f'Character Length of XML section: {clxml}')
 
         def ensure_list(obj):
             if isinstance(obj, list):
@@ -172,7 +172,7 @@ class TvbReader(AsciiReader):
         ###
         # XML part -> Date, LaserPower, Ramification Objective, Groove Density, Exposure_time, Number_Accumlations
         ###
-        datasplice = contentTVBfile[0x1538:0x1538 + 1 * CLXML]
+        datasplice = content_tvb_file[0x1538:0x1538 + 1 * clxml]
         # 'b': Signed char (1 byte)
         count = len(datasplice) // 1  # Number of bytes to unpack (1 for char)
         unpacked_data = self.unpack_repeated_bytes(datasplice, 'b', count)
@@ -191,23 +191,23 @@ class TvbReader(AsciiReader):
         ###
         # List of Intensity counts for every frame in file
         ###
-        offsetHeader = 0x1538 + 1 * CLXML + 3 * 4 + 8 + 101
+        offset_header = 0x1538 + 1 * clxml + 3 * 4 + 8 + 101
 
         # Do this for every frame in file
-        for frame in range(0, numFrames, 1):
+        for frame in range(0, num_frames, 1):
             table = self.append_table(tables)
             # print(frame)
-            table['metadata']['frame'] = str(frame)
-            datasplice = contentTVBfile[offsetHeader:offsetHeader + 4 * NRWE]
+            table['metadata']['frame'] = str(frame+1) # starting with Frame 1 and is going to table 1, table 0 contains Metadata
+            datasplice = content_tvb_file[offset_header:offset_header + 4 * nrwe]
             # 'f': float (4 byte)
             count = len(datasplice) // 4  # Number of bytes to unpack (1 for char)
             unpacked_data = self.unpack_repeated_bytes(datasplice, 'f', count)
 
-            IntensityCount = np.asarray(unpacked_data, dtype=np.float64)
-            # print(IntensityCount)
+            intensity_count = np.asarray(unpacked_data, dtype=np.float64)
+            # print(intensity_count)
 
-            offsetHeader += 4 * NRWE + 3 * 4 + 8 + 101  # specific after every frame
-            columns = [RamanWavenumber, IntensityCount]
+            offset_header += 4 * nrwe + 3 * 4 + 8 + 101  # specific after every frame
+            columns = [raman_wavenumber, intensity_count]
             table['rows'] = list(list(x) for x in zip(*columns))
 
         return tables

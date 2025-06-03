@@ -14,3 +14,5 @@ PyMuPDF==1.23.7
 pylint==3.0.3
 str2bool~=1.1
 opusFC~=1.5.0
+numpy~=2.2.4
+xmltodict~=0.14.2

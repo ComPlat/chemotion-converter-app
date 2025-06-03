@@ -7,7 +7,6 @@ logger = logging.getLogger(__name__)
 
 import struct
 import numpy as np
-import xmltodict
 
 
 
@@ -183,8 +182,8 @@ class StoeRawReader(AsciiReader):
         count = len(datasplice) // 2  # Number of bytes to unpack (1 for char)
         # print(count)
         unpacked_data = self.unpack_repeated_bytes(datasplice, 'h', count)
-        countDataEntries = int(unpacked_data[0])
-        table['metadata']['Data entries'] = str(countDataEntries)
+        count_data_entries = int(unpacked_data[0])
+        table['metadata']['Data entries'] = str(count_data_entries)
 
         ###
         # x-range: 2Theta
@@ -201,13 +200,13 @@ class StoeRawReader(AsciiReader):
         x_start = unpacked_data[0]
         x_end = unpacked_data[2]
 
-        x_range = np.linspace(x_start, x_end, countDataEntries, True)
+        x_range = np.linspace(x_start, x_end, count_data_entries, True)
 
         ###
         # Data: Intensity counts
         ###
 
-        datasplice = self.contentrawfile[0x40800:0x40800 + 4 * countDataEntries]
+        datasplice = self.contentrawfile[0x40800:0x40800 + 4 * count_data_entries]
         # 'i': Integer (4 bytes)
         # 'f': Float (4 bytes)
         # 'd': Double (8 bytes)
