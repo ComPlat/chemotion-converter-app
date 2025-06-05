@@ -74,7 +74,6 @@ class TvbReader(AsciiReader):
 
         content_tvb_file = self.file.content
 
-        # print(f'Length TVB files (bytes): {len(content_tvb_file)} ({hex(len(content_tvb_file))})')
         _bytes_length = (len(content_tvb_file), hex(len(content_tvb_file)))
 
         ###
@@ -83,11 +82,9 @@ class TvbReader(AsciiReader):
         datasplice = content_tvb_file[0x0000:0x003]  # this should be 'tvb'
         # 'b': Signed char (1 byte)
         count = len(datasplice) // 1  # Number of bytes to unpack (1 for char)
-        # print(count)
         unpacked_data = self.unpack_repeated_bytes(datasplice, 'b', count)
         string_output_file_type = ''.join(chr(b) for b in unpacked_data)
         table['metadata']['File Type'] = str(string_output_file_type)
-        # print(string_output_file_type)
         if not string_output_file_type == "tvb":
             return []
 
@@ -95,20 +92,13 @@ class TvbReader(AsciiReader):
         # File Info - Frames and Dataset Length
         ###
         datasplice = content_tvb_file[0x0004:0x0016]
-        # 'i': Integer (4 bytes)
-        # 'f': Float (4 bytes)
-        # 'd': Double (8 bytes)
-        # 'h': Short (2 bytes)
         count = len(datasplice) // 2  # Number of bytes to unpack (1 for char)
-        # print(count)
         unpacked_data = self.unpack_repeated_bytes(datasplice, 'h', count, littleEndianEncoding=True)
 
         num_dataset_length = int(unpacked_data[1])
         num_frames = int(unpacked_data[5])
 
         table['metadata']['Unpacked data'] = str(unpacked_data)
-        # print(unpacked_data)
-        # print(f'Datalength: {num_dataset_length}', f'Frames: {num_frames}')
         table['metadata']['Datalength'] = str(num_dataset_length)
         table['metadata']['Frames'] = str(num_frames)
 
@@ -121,7 +111,6 @@ class TvbReader(AsciiReader):
         unpacked_data = self.unpack_repeated_bytes(datasplice, 'd', count)
 
         laser_excitation_wavelength = float(unpacked_data[0])  # in nanometer
-        # print(f'laser_excitation_wavelength [nm]: {laser_excitation_wavelength}')
         table['metadata']['Laser excitation wavelength [nm]'] = str(laser_excitation_wavelength)
 
         ###
@@ -134,7 +123,6 @@ class TvbReader(AsciiReader):
         unpacked_data = self.unpack_repeated_bytes(datasplice, 'I', count)
 
         nrwe = int(unpacked_data[0])
-        # print(f'Number of Raman Wavelength entries: {nrwe}')
         table['metadata']['Number of Raman Wavelength entries'] = str(nrwe)
 
         ###
@@ -142,24 +130,20 @@ class TvbReader(AsciiReader):
         # $$\Delta \omega [cm^{-1}] = ( \frac{1}{\lambda_{laser}} - \frac{1}{\lambda_{}}) \cdot 10⁷   $$
         ###
         datasplice = content_tvb_file[0x0031:0x0031 + 4 * nrwe]
-        # 'f': float (4 byte)
         count = len(datasplice) // 4  # Number of bytes to unpack (1 for char)
 
         unpacked_data = self.unpack_repeated_bytes(datasplice, 'f', count)
         raman_wavenumber = (1.0 / laser_excitation_wavelength - 1.0 / np.asarray(unpacked_data,
                                                                               dtype=np.float64)) * 1E7  # in 1/cm
-        # print(raman_wavenumber)
 
         ###
         # Character Length of XML section = clxml
         ###
         datasplice = content_tvb_file[0x1534:0x1538]
-        # 'I': unsigned integer (4 byte)
         count = len(datasplice) // 4  # Number of bytes to unpack (1 for char)
         unpacked_data = self.unpack_repeated_bytes(datasplice, 'I', count)
 
         clxml = int(unpacked_data[0])
-        # print(f'Character Length of XML section: {clxml}')
 
         def ensure_list(obj):
             if isinstance(obj, list):
@@ -177,7 +161,6 @@ class TvbReader(AsciiReader):
         count = len(datasplice) // 1  # Number of bytes to unpack (1 for char)
         unpacked_data = self.unpack_repeated_bytes(datasplice, 'b', count)
         string_output_xml = ''.join(chr(b) for b in unpacked_data)
-        # print(string_output_xml) # can be parsed with xmltodict
         xml_to_dic = xmltodict.parse(string_output_xml)
         xml_metadata_group = xml_to_dic['Info']['Groups']['Group']
         for group in xml_metadata_group:
@@ -196,15 +179,12 @@ class TvbReader(AsciiReader):
         # Do this for every frame in file
         for frame in range(0, num_frames, 1):
             table = self.append_table(tables)
-            # print(frame)
             table['metadata']['frame'] = str(frame+1) # starting with Frame 1 and is going to table 1, table 0 contains Metadata
             datasplice = content_tvb_file[offset_header:offset_header + 4 * nrwe]
-            # 'f': float (4 byte)
             count = len(datasplice) // 4  # Number of bytes to unpack (1 for char)
             unpacked_data = self.unpack_repeated_bytes(datasplice, 'f', count)
 
             intensity_count = np.asarray(unpacked_data, dtype=np.float64)
-            # print(intensity_count)
 
             offset_header += 4 * nrwe + 3 * 4 + 8 + 101  # specific after every frame
             columns = [raman_wavenumber, intensity_count]

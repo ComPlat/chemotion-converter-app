@@ -71,8 +71,6 @@ class StoeRawReader(AsciiReader):
         # Convert unpacked data to a string
         string_output_file_type = ''.join(chr(b) for b in unpacked_data)
 
-        # print(f'Raw file with header: "{string_output_file_type}"')
-
         return string_output_file_type
 
     def check(self):
@@ -80,11 +78,15 @@ class StoeRawReader(AsciiReader):
         :return: True if it fits
         """
 
-        self.file_type = self.get_file_type_version()
+        return (
+                self.file.suffix.lower() == ".raw"
+                and self.file.encoding.lower() == "binary"
+                and self._cache_file_type() == "RAW_1.06Powdat"
+        )
 
-        return (self.file.suffix.lower() == ".raw" and
-                self.file.encoding.lower() == "binary" and
-                self.file_type == "RAW_1.06Powdat")
+    def _cache_file_type(self) -> str:
+        self.file_type = self.get_file_type_version()
+        return self.file_type
 
     def prepare_tables(self):
         tables = []
@@ -98,13 +100,11 @@ class StoeRawReader(AsciiReader):
 
         datasplice = self.contentrawfile[0x0010:0x001F + 1]
         count = len(datasplice) // 1  # Number of bytes to unpack
-        # print(count)
         unpacked_data = self.unpack_repeated_bytes(datasplice, 'b', count)
 
         # Convert unpacked data to a string
         string_output_day = ''.join(chr(b) for b in unpacked_data)
 
-        # print(f'Date Experiment: "{string_output_day}"')
         table['metadata']['Ex date'] = string_output_day.split()[0].strip()
         table['metadata']['Ex time'] = string_output_day.split()[1].strip()
 
@@ -138,14 +138,8 @@ class StoeRawReader(AsciiReader):
         # Copper K Alpha1 x-ray wavelength of 1.5406 Angstrom used by the experiment.
         ###
         datasplice = self.contentrawfile[0x0142:0x014A]
-        # 'i': Integer (4 bytes)
-        # 'f': Float (4 bytes)
-        # 'd': Double (8 bytes)
-        # 'h': Short (2 bytes)
         count = len(datasplice) // 4  # Number of bytes to unpack (4 for float)
-        # print(count)
         unpacked_data = self.unpack_repeated_bytes(datasplice, 'f', count)
-        # print(unpacked_data)
 
         table['metadata']['Alpha1 x-ray wavelength'] = str(unpacked_data[0])
 
@@ -156,9 +150,7 @@ class StoeRawReader(AsciiReader):
         # Get all chunks separated by NULL bytes in the data slice
         chunks = self.get_non_empty_chunks_separated_by_null(datasplice)
 
-        # Print the result chunks
         for i, chunk in enumerate(chunks):
-            # print(f'Chunk {i}: {chunk}')
             count = len(chunk) // 1  # Number of bytes to unpack (1 for char)
             unpacked_data = self.unpack_repeated_bytes(chunk, 'b', count)
             string_output_time = ''.join(chr(b) for b in unpacked_data)
@@ -168,19 +160,12 @@ class StoeRawReader(AsciiReader):
             if i == 1:
                 table['metadata']['End date'] = string_output_time.split()[0].strip()
                 table['metadata']['End time'] = string_output_time.split()[1].strip()
-            # Print the unpacked data as a string
-            # print(string_output_time)
 
         ###
         # Number of Data Entries
         ###
         datasplice = self.contentrawfile[4 * 0x10000 + 0x0622:4 * 0x10000 + 0x0624]
-        # 'i': Integer (4 bytes)
-        # 'f': Float (4 bytes)
-        # 'd': Double (8 bytes)
-        # 'h': Short (2 bytes)
         count = len(datasplice) // 2  # Number of bytes to unpack (1 for char)
-        # print(count)
         unpacked_data = self.unpack_repeated_bytes(datasplice, 'h', count)
         count_data_entries = int(unpacked_data[0])
         table['metadata']['Data entries'] = str(count_data_entries)
@@ -190,10 +175,6 @@ class StoeRawReader(AsciiReader):
         ###
         datasplice = self.contentrawfile[4 * 0x10000 + 0x062C:4 * 0x10000 + 0x0638]
 
-        # 'i': Integer (4 bytes)
-        # 'f': Float (4 bytes)
-        # 'd': Double (8 bytes)
-        # 'h': Short (2 bytes)
         count = len(datasplice) // 4  # Number of bytes to unpack (1 for char)
         unpacked_data = self.unpack_repeated_bytes(datasplice, 'f', count)
 
@@ -207,9 +188,7 @@ class StoeRawReader(AsciiReader):
         ###
 
         datasplice = self.contentrawfile[0x40800:0x40800 + 4 * count_data_entries]
-        # 'i': Integer (4 bytes)
-        # 'f': Float (4 bytes)
-        # 'd': Double (8 bytes)
+
         count = len(datasplice) // 4  # Number of bytes to unpack (1 for char)
         unpacked_data = self.unpack_repeated_bytes(datasplice, 'i', count)
 
