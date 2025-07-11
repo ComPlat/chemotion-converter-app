@@ -48,10 +48,7 @@
         "type": "tableMetadata",
         "value": " 6.999E+3"
       },
-      "result": {
-        "value": " 2.382E+3",
-        "tableIndex": 0
-      }
+      "result": false
     },
     {
       "identifier": {
@@ -66,7 +63,7 @@
         "value": " 7.997E+3"
       },
       "result": {
-        "value": " 1.856E+3",
+        "value": "g/mol",
         "tableIndex": 0
       }
     },
@@ -82,10 +79,7 @@
         "type": "tableMetadata",
         "value": " 9.417E+3"
       },
-      "result": {
-        "value": " 7.985E+3",
-        "tableIndex": 0
-      }
+      "result": false
     },
     {
       "identifier": {
@@ -100,7 +94,7 @@
         "value": " 8.643E+3"
       },
       "result": {
-        "value": " 7.377E+3",
+        "value": "g/mol",
         "tableIndex": 0
       }
     },
@@ -116,10 +110,7 @@
         "type": "tableMetadata",
         "value": " 1.346E+0"
       },
-      "result": {
-        "value": " 3.352E+0",
-        "tableIndex": 0
-      }
+      "result": false
     },
     {
       "identifier": {
@@ -133,10 +124,7 @@
         "type": "tableMetadata",
         "value": " 1.081E+0"
       },
-      "result": {
-        "value": " 3.974E+0",
-        "tableIndex": 0
-      }
+      "result": false
     },
     {
       "identifier": {
@@ -150,10 +138,7 @@
         "type": "tableMetadata",
         "value": " 9.724E+3"
       },
-      "result": {
-        "value": " 1.631E+3",
-        "tableIndex": 0
-      }
+      "result": false
     },
     {
       "identifier": {
@@ -168,7 +153,7 @@
         "value": " 8.736E+3"
       },
       "result": {
-        "value": " 6.903E+2",
+        "value": "g/mol",
         "tableIndex": 0
       }
     },
@@ -313,7 +298,7 @@
         "value": " 50.000"
       },
       "result": {
-        "value": " 50.000",
+        "value": "50.000",
         "tableIndex": 0
       }
     },
@@ -347,7 +332,7 @@
         "value": "  1.000"
       },
       "result": {
-        "value": "  1.000",
+        "value": "1.000",
         "tableIndex": 0
       }
     },
@@ -364,7 +349,7 @@
         "value": " 35.000"
       },
       "result": {
-        "value": " 35.000",
+        "value": "35.000",
         "tableIndex": 0
       }
     },
@@ -499,20 +484,19 @@
         "YUNITS": "ARBITRARY UNITS",
         "label": "Vial   1: MS170_crude - 1",
         "comments": "X:\\Marvin Subarew\\PAETMC Thiol-ene\\MS170\\2022-02-04 MS170_crudefull.TXT",
-        "mn": " 1.856E+3",
-        "mw": " 7.377E+3",
-        "d": " 3.974E+0",
-        "mp": " 6.903E+2",
+        "mn": "g/mol",
+        "mw": "g/mol",
+        "mp": "g/mol",
         "detec1": "I2: RI Detector 1, RI Signal",
         "detec2": "I2: UV Detector 1, UV Signal",
         "detec3": "I2: Pump 1, Sample Pump Pressure",
         "col1": "PSS SDV 5\u00b5m",
         "col2": "PSS SDV 5\u00b5m",
         "col3": "PSS SDV 5\u00b5m",
-        "in_vol": " 50.000",
+        "in_vol": "50.000",
         "eluent": "THF",
-        "flow": "  1.000",
-        "temperature": " 35.000",
+        "flow": "1.000",
+        "temperature": "35.000",
         "date": "04/02/22",
         "time": "11:40:47",
         "no_dec": "2",
