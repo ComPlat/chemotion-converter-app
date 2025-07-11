@@ -46,7 +46,10 @@ class GcdReader(Reader):
 
         result = self.file.suffix.lower() == '.txt'
         if result:
-            self.lines = self._parse_input()
+            try:
+                self.lines = self._parse_input()
+            except AttributeError:
+                return False
             result = '[Chromatogram (Ch1)]' in self.lines and '[Compound Results(Ch1)]' in self.lines
         return result
 
