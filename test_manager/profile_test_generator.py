@@ -79,7 +79,7 @@ def _generate_expected_profiles_results(src_path, file, _unused, res_path):
             if reader:
                 reader.process()
                 reader_dict = reader.as_dict
-                reader_content_str = json.dumps(reader_dict)
+                reader_content_str = json.dumps(reader_dict, indent=4)
                 converter = Converter.match_profile('dev', reader_dict)
                 if converter:
                     converter.process()
