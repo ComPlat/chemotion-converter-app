@@ -5,8 +5,11 @@ from setuptools import find_packages, setup
 with open('converter_app/__init__.py') as f:
     metadata = dict(re.findall(r'__(.*)__ = [\']([^\']*)[\']', f.read()))
 
-with open('requirements/common.txt') as f:
+with open('requirements/default.txt') as f:
     install_requires = f.readlines()
+
+with open('requirements/common.txt') as f:
+    install_requires += f.readlines()[1:]
 
 setup(
     name=metadata['title'],

@@ -117,7 +117,7 @@ class Profile:
                 self.id = self.data['id']
             else:
                 # create a uuid for new profiles
-                self.id = str(uuid.uuid4())
+                self.data['id'] = self.id = str(uuid.uuid4())
 
         file_path = profiles_path.joinpath(self.id).with_suffix('.json')
         if 'isDefaultProfile' in self.data:

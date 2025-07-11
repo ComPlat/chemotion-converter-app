@@ -10,6 +10,7 @@ import json
 import os
 from pathlib import Path
 
+import jsonschema
 from flask import Flask, Response, abort, jsonify, make_response, request
 from flask_cors import CORS
 from flask_httpauth import HTTPBasicAuth
@@ -21,6 +22,7 @@ from converter_app.options import OPTIONS
 from converter_app.profile_migration.utils.registration import Migrations
 from converter_app.readers import READERS as registry
 from converter_app.utils import checkpw
+from converter_app.validation import validate_profile
 from converter_app.writers.jcamp import JcampWriter
 from converter_app.writers.jcampzip import JcampZipWriter
 
@@ -202,8 +204,12 @@ def profile_router(app: Flask, auth: HTTPBasicAuth):
         profile = Profile(profile_data, client_id)
         if profile.clean():
             Migrations().migrate_profile(profile)
-            profile.save()
-            return jsonify(profile.as_dict), 201
+            try:
+                validate_profile(profile.data)
+                profile.save()
+                return jsonify(profile.as_dict), 201
+            except jsonschema.exceptions.ValidationError as e:
+                profile.errors['id'] = "Profile is not valid!"
         return jsonify(profile.errors), 400
 
     @app.route('/profiles/<profile_id>', methods=['GET'])
@@ -229,8 +235,13 @@ def profile_router(app: Flask, auth: HTTPBasicAuth):
 
             if profile.clean():
                 Migrations().migrate_profile(profile)
-                profile.save()
-                return jsonify(profile.as_dict), 200
+
+                try:
+                    validate_profile(profile.data)
+                    profile.save()
+                    return jsonify(profile.as_dict), 200
+                except jsonschema.exceptions.ValidationError as e:
+                    profile.errors['id'] = "Profile is not valid!"
             return jsonify(profile.errors), 400
         abort(404)
         return None
