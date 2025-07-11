@@ -48,7 +48,7 @@ def generate_expected_results(src_path, file, res_path, _unused):
             if reader:
                 reader.process()
                 content = json.dumps(reader.as_dict,
-                                     default=_json_default)
+                                     default=_json_default, indent=4)
                 with open(final_targe_file, 'w+', encoding='utf8') as f_res:
                     f_res.write(content)
                     f_res.close()

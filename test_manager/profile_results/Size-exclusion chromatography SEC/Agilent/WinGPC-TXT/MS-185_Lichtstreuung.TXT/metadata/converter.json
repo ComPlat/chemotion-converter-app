@@ -48,10 +48,7 @@
         "type": "tableMetadata",
         "value": " 6.999E+3"
       },
-      "result": {
-        "value": " 9.867E+4",
-        "tableIndex": 0
-      }
+      "result": false
     },
     {
       "identifier": {
@@ -65,10 +62,7 @@
         "type": "tableMetadata",
         "value": " 9.417E+3"
       },
-      "result": {
-        "value": " 1.484E+5",
-        "tableIndex": 0
-      }
+      "result": false
     },
     {
       "identifier": {
@@ -82,10 +76,7 @@
         "type": "tableMetadata",
         "value": " 1.346E+0"
       },
-      "result": {
-        "value": " 1.504E+0",
-        "tableIndex": 0
-      }
+      "result": false
     },
     {
       "identifier": {
@@ -99,10 +90,7 @@
         "type": "tableMetadata",
         "value": " 9.724E+3"
       },
-      "result": {
-        "value": " 1.412E+5",
-        "tableIndex": 0
-      }
+      "result": false
     },
     {
       "identifier": {
@@ -273,7 +261,7 @@
         "value": "  1.000"
       },
       "result": {
-        "value": "  1.000",
+        "value": "1.000",
         "tableIndex": 0
       }
     },
@@ -290,7 +278,7 @@
         "value": " 35.000"
       },
       "result": {
-        "value": " 25.000",
+        "value": "25.000",
         "tableIndex": 0
       }
     },
@@ -425,18 +413,14 @@
         "YUNITS": "ARBITRARY UNITS",
         "label": "Vial   8: MS-185 - 1",
         "comments": "\\\\129.13.136.127\\Shared_Folder\\Analysis\\GPC_THF_CS_R311\\Marvin Subarew\\MS-185\\MS-185_Lichtstreuung.TXT",
-        "mn": " 9.867E+4",
-        "mw": " 1.484E+5",
-        "d": " 1.504E+0",
-        "mp": " 1.412E+5",
         "detec1": "I1: RID 1, RI Signal",
         "detec2": "I1: VWD 1, Signal A",
         "detec3": "I1: IsoPump 1, Pressure",
         "col1": "default",
         "in_vol": "100.000",
         "eluent": "THF",
-        "flow": "  1.000",
-        "temperature": " 25.000",
+        "flow": "1.000",
+        "temperature": "25.000",
         "date": "15.08.22",
         "time": "21:06:30",
         "no_dec": "1",
