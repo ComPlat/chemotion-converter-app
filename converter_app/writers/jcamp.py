@@ -259,6 +259,8 @@ class JcampWriter(Writer):
 
     def write_xypoints(self, x, y):
         for x_string, y_string in zip(x, y):
+            if not x_string.strip() and not y_string.strip():
+                continue
             line = x_string + ', ' + y_string
             self.buffer.write(line + os.linesep)
 
