@@ -28,6 +28,8 @@ class Profile:
         id          [str] id of the profile and file name
         errors      [collections.defaultdict] contains all errors if profile is not correct
     """
+
+    cli_profiles_dir = Path.home().joinpath('.ChemConverter/profiles/cli')
     
     def __init__(self, profile_data, client_id, profile_id=None, is_default_profile: bool = False):
         self.isDisabled = profile_data.get('isDisabled', False)
@@ -180,6 +182,13 @@ class Profile:
         profile_data = cls.load(file_path)
         return cls(profile_data, client_id, profile_id)
 
+    @classmethod
+    def download_profiles(cls, profiles_path):
+        if profiles_path.exists():
+            return
+
+
+
 
     @classmethod
     def list(cls, client_id):
@@ -189,7 +198,10 @@ class Profile:
         :param client_id: [str] Username
         :return:
         """
-        profiles_path = Path(current_app.config['PROFILES_DIR']).joinpath(client_id)
+        if not current_app:
+            profiles_path = cls.cli_profiles_dir
+        else:
+            profiles_path = Path(current_app.config['PROFILES_DIR']).joinpath(client_id)
 
         if profiles_path.exists():
             for file_path in sorted(Path.iterdir(profiles_path)):

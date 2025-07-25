@@ -8,9 +8,14 @@ from datetime import datetime
 from pathlib import Path
 
 from jinja2 import Template
+from werkzeug.datastructures import FileStorage
 
 from converter_app.app import create_app
 from converter_app.profile_migration.utils.registration import Migrations
+from converters import Converter
+from models import File, Profile
+from readers import Readers
+from utils import run_conversion, load_public_profiles
 
 
 class FileAction(argparse.Action):
@@ -37,6 +42,7 @@ class ProfileAction(FileAction):
         if 'identifier' not in content:
             parser.error(f'{value} is missing "identifier" key!')
 
+
 class NameAction(argparse.Action):
     regex = re.compile(r'^[A-Za-z]+$')
 
@@ -50,6 +56,21 @@ class NameAction(argparse.Action):
     def validate(cls, parser, value):
         if not cls.regex.match(value):
             parser.error(f'{value} is not a valid name!')
+
+
+class OutputTypeAction(argparse.Action):
+    output_types = ['jcampzip', 'owl', 'jcamp']
+
+    def __call__(self, parser, namespace, value, option_string=None):
+        self.validate(parser, value)
+        setattr(namespace, self.dest, value)
+
+    @classmethod
+    def validate(cls, parser, value):
+        if value not in cls.output_types:
+            parser.error(f'{value} is not a valid name!')
+
+
 
 class PrioAction(argparse.Action):
     def __call__(self, parser, namespace, value, option_string=None):
@@ -68,7 +89,7 @@ class PrioAction(argparse.Action):
 
 
 class MethodAction(argparse.Action):
-    methods = ['new_reader', 'migrate', 'new_migration']
+    methods = ['convert', 'new_reader', 'migrate', 'new_migration']
 
     def __call__(self, parser, namespace, value, option_string=None):
         self.validate(parser, value)
@@ -99,12 +120,23 @@ def main_cli():
                         help='A test file for test drive development!')
 
     migrate_group = parser.add_argument_group('migrate')
-    migrate_group.add_argument('-f' , '--force', action='store_true', help="If force is set all migration scripts will be appl")
+    migrate_group.add_argument('-f' , '--force', action='store_true', help="If force is set all migration scripts will be applyed")
+
+
+
+
+    convert_group = parser.add_argument_group('convert')
+    convert_group.add_argument('-i', '--input_file', action=FileAction,
+                        help='A file to be converted test drive development!')
+    convert_group.add_argument('-o', '--output', action=OutputTypeAction,
+                        help=f'Output type must be in {OutputTypeAction.output_types}')
 
     args = parser.parse_args()
 
     if args.methode == 'new_reader':
         _new_reader(args, parser, [name_arg, priority_arg, file_arg])
+    elif args.methode == 'convert':
+        _run_conversation(Path(args.input_file), args.output)
     elif args.methode == 'migrate':
         Migrations().run_migration(create_app().config['PROFILES_DIR'], args.force)
     elif args.methode == 'new_migration':
@@ -126,6 +158,27 @@ def _new_migration():
 
     with open(targe_reader_path, 'w+', encoding='utf-8') as f:
         f.write(template.render(**context))
+
+def _run_conversation(input_file_arg, output_type_arg):
+    if not input_file_arg.exists():
+        raise FileNotFoundError(f'{input_file_arg.absolute()} does not exist!')
+    if not Profile.cli_profiles_dir.exists():
+        load_public_profiles(Profile.cli_profiles_dir)
+    with open(input_file_arg, 'rb') as test_file:
+        fs = FileStorage(stream=test_file, filename=input_file_arg.name)
+        file = File(fs)
+        reader = Readers.instance().match_reader(file)
+
+        if not reader:
+            raise ValueError(f'{input_file_arg.absolute()} could not be processed. No Reader available!')
+        reader.process()
+        converter = Converter.match_profile('cli', reader.as_dict)
+
+        writer = run_conversion(converter, output_type_arg)
+        file_name = input_file_arg.with_suffix(writer.suffix)
+        with open(file_name.name, 'wb+') as f:
+            f.write(writer.write())
+
 
 def _new_reader(args, parser, arg_objets):
     for arg in arg_objets:

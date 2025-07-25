@@ -21,10 +21,8 @@ from converter_app.models import File, Profile
 from converter_app.options import OPTIONS
 from converter_app.profile_migration.utils.registration import Migrations
 from converter_app.readers import READERS as registry
-from converter_app.utils import checkpw
+from converter_app.utils import checkpw, run_conversion
 from converter_app.validation import validate_profile
-from converter_app.writers.jcamp import JcampWriter
-from converter_app.writers.jcampzip import JcampZipWriter
 
 
 def get_clients() -> dict[str:str] | None:
@@ -126,33 +124,19 @@ def converting_router(app: Flask, auth: HTTPBasicAuth):
         return jsonify({'error': error_msg}), 400
 
     def _run_conversion(converter, file):
-        if converter:
-            converter.process()
+        conversion_format = request.form.get('format', 'jcampzip')
+        try:
+            writer = run_conversion(converter, conversion_format)
+        except AssertionError as e:
+            return jsonify({'error': 'There was an error while converting your file.'}), 400
+        except ValueError as e:
+            return jsonify({'error': e.__str__()}), 400
 
-            conversion_format = request.form.get('format', 'jcampzip')
-            if conversion_format == 'jcampzip':
-                writer = JcampZipWriter(converter)
-            elif conversion_format == 'jcamp':
-                if len(converter.tables) == 1:
-                    writer = JcampWriter(converter)
-                else:
-                    return jsonify({
-                        'error':
-                            'Conversion to a single JCAMP file is not supported for this file.'
-                    }), 400
-            else:
-                return jsonify({'error': 'Conversion format is not supported.'}), 400
-            try:
-                writer.process()
-            except AssertionError:
-                return jsonify({'error': 'There was an error while converting your file.'}), 400
+        file_name = Path(file.name).with_suffix(writer.suffix)
 
-            file_name = Path(file.name).with_suffix(writer.suffix)
-
-            response = Response(writer.write(), mimetype=writer.mimetype)
-            response.headers['Content-Disposition'] = f'attachment;filename={file_name}'
-            return response
-        return jsonify({'error': 'Your file could not be processed. No Profile available!'}), 400
+        response = Response(writer.write(), mimetype=writer.mimetype)
+        response.headers['Content-Disposition'] = f'attachment;filename={file_name}'
+        return response
 
     @app.route('/tables', methods=['POST'])
     @auth.login_required

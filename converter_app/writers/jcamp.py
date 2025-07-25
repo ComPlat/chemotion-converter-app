@@ -2,9 +2,9 @@ import io
 import os
 import sys
 
-from .base import Writer
-from .. import __title__, __version__
-from ..options import DATA_TYPES, DATA_CLASSES, XUNITS, YUNITS
+from converter_app.writers.base import Writer
+from converter_app import __title__, __version__
+from converter_app.options import DATA_TYPES, DATA_CLASSES, XUNITS, YUNITS
 
 
 class JcampWriter(Writer):
@@ -14,19 +14,47 @@ class JcampWriter(Writer):
     mimetype = 'chemical/x-jcamp-dx'
 
     def __init__(self, converter):
-        self.table = converter.tables[0]
-        self.buffer = io.StringIO()
-
+        super().__init__(converter)
+        self.buffer: io.StringIO | None = None
 
     def process(self):
-        self.process_table(self.table)
+        self.process_table(self.tables[0])
+
+    def process_ntuples_tables(self) -> list:
+        """
+        Prepares single jdx for all NTUPLES data tables
+        """
+        tables = [table for table in self.tables if table.get('header', {}).get('DATA CLASS') == 'NTUPLES']
+        if len(tables) == 0:
+            return tables
+        self.buffer = io.StringIO()
+        header = tables[0].get('header', {})
+        self._prepare_main_header(header, tables[0])
+        self._process_ntuples(header, tables)
+        return tables
 
     def process_table(self, table):
+        """
+        Prepares single jdx for one file
+        :param table: Converted table to be processed
+        """
+        self.buffer = io.StringIO()
         header = table.get('header', {})
 
+        self._prepare_main_header(header, table)
+
+        data_class = header.get('DATA CLASS', DATA_CLASSES[0])
+        if data_class == 'XYDATA':
+            self._process_xydata(header, table.get('y'))
+        elif data_class in ['XYPOINTS', 'PEAK TABLE']:
+            self._process_xypoints(header, table.get('x'), table.get('y'))
+        elif data_class == 'NTUPLES':
+            self._process_ntuples(header, [table])
+
+    def _prepare_main_header(self, header, table):
         jcamp_header = {
             'TITLE': header.get('TITLE', 'Spectrum'),
-            'JCAMP-DX': '5.00 $$ {} ({})'.format(__title__, __version__),
+            'JCAMP-DX': f'5.00 $$ {__title__} ({__version__})',
             'DATA TYPE': header.get('DATA TYPE', DATA_TYPES[0]),
             'DATA CLASS': header.get('DATA CLASS', DATA_CLASSES[0]),
             'ORIGIN': header.get('ORIGIN', ''),
@@ -50,20 +78,9 @@ class JcampWriter(Writer):
             key_upper = key.upper()
             if key_upper not in jcamp_header:
                 jcamp_header[key_upper] = header[key]
-        self.write_header(jcamp_header)
+        self._write_header(jcamp_header)
 
-        if not table.get('y') or not table.get('x'):
-            return
-
-        data_class = header.get('DATA CLASS', DATA_CLASSES[0])
-        if data_class == 'XYDATA':
-            self.process_xydata(header, table.get('y'))
-        elif data_class in ['XYPOINTS', 'PEAK TABLE']:
-            self.process_xypoints(header, table.get('x'), table.get('y'))
-        elif data_class == 'NTUPLES':
-            self.process_ntuples(header, table.get('x'), table.get('y'))
-
-    def process_xydata(self, header, y):
+    def _process_xydata(self, header, y):
         firstx = header.get('FIRSTX')
         lastx = header.get('LASTX')
         deltax = header.get('DELTAX')
@@ -83,7 +100,7 @@ class JcampWriter(Writer):
         maxy = sys.float_info.min
         max_decimal = 0
 
-        for i, string in enumerate(y):
+        for string in y:
             value = float(string)
             try:
                 index = string.index('.')
@@ -95,10 +112,10 @@ class JcampWriter(Writer):
             miny = min(miny, value)
             maxy = max(maxy, value)
             max_decimal = max(max_decimal, decimal)
-        yfactor = 10**(-decimal)
+        yfactor = 10 ** (-max_decimal)
 
         # write header with xydata specific values
-        self.write_header({
+        self._write_header({
             'MINX': firstx,
             'MAXX': lastx,
             'MINY': miny,
@@ -113,12 +130,12 @@ class JcampWriter(Writer):
         })
 
         # write the xydata
-        self.write_xydata(y, npoints, firstx, deltax, max_decimal)
+        self._write_xydata(y, npoints, firstx, deltax, max_decimal)
 
         # write the end
         self.buffer.write('##END=$$ End of the data block' + os.linesep)
 
-    def process_xypoints(self, header, x, y):
+    def _process_xypoints(self, header, x, y):
         assert x
         assert y
 
@@ -148,7 +165,7 @@ class JcampWriter(Writer):
                 continue
 
         # write header with xydata specific values
-        self.write_header({
+        self._write_header({
             'FIRSTX': firstx,
             'LASTX': lastx,
             'MINX': minx,
@@ -163,74 +180,51 @@ class JcampWriter(Writer):
         })
 
         # write the xypoints
-        self.write_xypoints(x, y)
+        self._write_xypoints(x, y)
 
         # write the end
         self.buffer.write('##END=$$ End of the data block' + os.linesep)
 
-    def process_ntuples(self, header, x, y):
-        assert x
-        assert y
-
-        firstx = x[0]
-        firsty = y[0]
-        lastx = x[-1]
-        npoints = len(x)
-
-        # find MINX, MAXX, MINY, MAXY
-        minx = sys.float_info.max
-        maxx = sys.float_info.min
-        miny = sys.float_info.max
-        maxy = sys.float_info.min
-        for x_string, y_string in zip(x, y):
-            x_float, y_float = float(x_string), float(y_string)
-
-            minx = min(minx, x_float)
-            maxx = max(maxx, x_float)
-            miny = min(miny, y_float)
-            maxy = max(maxy, y_float)
-
-        # write header with ntuples specific values
-        data_class = header.get('DATA CLASS', DATA_CLASSES[0])
-        self.write_header({
-            'FIRSTX': firstx,
-            'LASTX': lastx,
-            'MINX': minx,
-            'MAXX': maxx,
-            'MINY': miny,
-            'MAXY': maxy,
-            'FIRSTY': firsty,
-            'XUNITS': header.get('XUNITS', XUNITS[0]),
-            'YUNITS': header.get('YUNITS', YUNITS[0]),
-            'NTUPLES': data_class,
+    def _process_ntuples(self, header, tables):
+        data_type = header.get('DATA TYPE', DATA_TYPES[0])
+        self._write_header({
+            'NTUPLES': data_type,
             'VAR_NAME': '',
-            'SYMBOL': '',
-            'VAR_TYPE': '',
-            'VAR_FORM': '',
-            'VAR_DIM': '',
-            'UNITS': '',
+            'SYMBOL': 'X, Y',
+            'VAR_TYPE': 'INDEPENDENT, DEPENDENT',
+            'VAR_FORM': 'AFFN, AFFN',
+            'VAR_DIM': ', ',
+            'UNITS': f'{header.get('XUNITS', XUNITS[0])}, {header.get('YUNITS', YUNITS[0])}',
             'FIRST': '',
             'LAST': '',
         })
+        for i, table in enumerate(tables):
+            x = table.get('x')
+            y = table.get('y')
+            assert x
+            assert y
 
-        # write header for one page
-        self.write_header({
-            'PAGE': '1',
-            'NPOINTS': npoints,
-            'DATA TABLE': '(XY..XY), PEAKS'
-        })
+            npoints = len(x)
+            # write header for one page
 
-        # write the xypoints
-        self.write_xypoints(x, y)
+            self._write_header({
+                'PAGE': f'{i + 1}',
+                'NPOINTS': npoints,
+                'DATA TABLE': '(XY..XY), PEAKS'
+
+            })
+
+            # write the xypoints
+            self._write_xypoints(x, y)
 
         # write the end
-        self.buffer.write('##END NTUPLES={}'.format(data_class) + os.linesep)
+        self.buffer.write(f'##END NTUPLES={data_type}' + os.linesep)
         self.buffer.write('##END=$$ End of the data block' + os.linesep)
 
-    def write_header(self, header):
+    def _write_header(self, header):
         for key, value in header.items():
             if value is not None:
-                self.buffer.write('##{}={}'.format(key, value) + os.linesep)
+                self.buffer.write(f'##{key}={value}' + os.linesep)
 
     def write_comment_header(self, header):
         self.buffer.write('$$ ' + '-' * 20 + '\n')
@@ -240,14 +234,14 @@ class JcampWriter(Writer):
                     self.buffer.write(f'$$ {line}{os.linesep}')
         self.buffer.write('$$ ' + '-' * 20 + '\n')
 
-    def write_xydata(self, y, npoints, firstx, deltax, max_decimal):
+    def _write_xydata(self, y, npoints, firstx, deltax, max_decimal):
         for i in range(0, npoints, self.nline):
             x = float(firstx) + i * float(deltax)
 
             line = str(x)
             for j in range(self.nline):
                 if i + j < npoints:
-                    string = y[i+j]
+                    string = y[i + j]
                     try:
                         index = string.index('.')
                     except ValueError:
@@ -257,12 +251,12 @@ class JcampWriter(Writer):
 
             self.buffer.write(line + os.linesep)
 
-    def write_xypoints(self, x, y):
+    def _write_xypoints(self, x, y):
         for x_string, y_string in zip(x, y):
-            if not x_string.strip() and not y_string.strip():
-                continue
             line = x_string + ', ' + y_string
             self.buffer.write(line + os.linesep)
 
-    def write(self):
-        return self.buffer.getvalue()
+    def write(self) -> bytes:
+        if self.buffer is None:
+            return b''
+        return self.buffer.getvalue().encode('utf-8')
