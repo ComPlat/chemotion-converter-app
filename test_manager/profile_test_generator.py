@@ -127,10 +127,9 @@ def generate_profile_tests():
     TEST_IDX = 0
     TEST_DICT = {}
     with open(TEST_FILE, 'w+', encoding='utf8') as fp:
-        fp.write("from .utils_test import compare_profile_result\n"
-                 "from converter_app.readers import READERS as registry\n"
+        fp.write("from converter_app.readers import READERS as registry\n"
                  "from converter_app.models import Profile\n"
-                 "from test_manager.utils_test import set_flask_test_config\n"
+                 "from test_manager.utils_test import set_flask_test_config, compare_profile_result\n"
                  "\nall_reader = set()"
                  "\nall_profiles = set()\n")
     basic_walk(_generate_profile_tests)

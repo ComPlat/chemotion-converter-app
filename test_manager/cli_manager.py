@@ -104,7 +104,7 @@ def main_cli():
         TEST_DICT = {}
         with open(TEST_FILE, 'w+', encoding='utf8') as fp:
             fp.write("import pytest\n"
-                     "from .utils_test import compare_reader_result, compare_tables\n"
+                     "from test_manager.utils_test import compare_reader_result, compare_tables\n"
                      "from converter_app.readers import READERS as registry\n"
                      "\nall_reader = set()\n")
         basic_walk(generate_test)

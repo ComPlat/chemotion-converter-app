@@ -44,12 +44,15 @@ class JcampWriter(Writer):
         self._prepare_main_header(header, table)
 
         data_class = header.get('DATA CLASS', DATA_CLASSES[0])
-        if data_class == 'XYDATA':
-            self._process_xydata(header, table.get('y'))
-        elif data_class in ['XYPOINTS', 'PEAK TABLE']:
-            self._process_xypoints(header, table.get('x'), table.get('y'))
-        elif data_class == 'NTUPLES':
-            self._process_ntuples(header, [table])
+        try:
+            if data_class == 'XYDATA':
+                self._process_xydata(header, table.get('y'))
+            elif data_class in ['XYPOINTS', 'PEAK TABLE']:
+                self._process_xypoints(header, table.get('x'), table.get('y'))
+            elif data_class == 'NTUPLES':
+                self._process_ntuples(header, [table])
+        except AssertionError:
+            return
 
     def _prepare_main_header(self, header, table):
         jcamp_header = {
