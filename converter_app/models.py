@@ -33,7 +33,7 @@ class Profile:
         self.isDisabled = profile_data.get('isDisabled', False)
         self.data = profile_data
         self.client_id = client_id
-        self.id = profile_id
+        self._id = profile_id
         self.errors = defaultdict(list)
         self._is_default_profile = is_default_profile
 
@@ -112,13 +112,6 @@ class Profile:
         profiles_path = Path(current_app.config['PROFILES_DIR']).joinpath(self.client_id)
         profiles_path.mkdir(parents=True, exist_ok=True)
 
-        if self.id is None:
-            if 'id' in self.data:
-                self.id = self.data['id']
-            else:
-                # create a uuid for new profiles
-                self.data['id'] = self.id = str(uuid.uuid4())
-
         file_path = profiles_path.joinpath(self.id).with_suffix('.json')
         if 'isDefaultProfile' in self.data:
             del self.data['isDefaultProfile']
@@ -146,6 +139,16 @@ class Profile:
             'id': self.id,
             'isDefaultProfile': self._is_default_profile
         }
+
+    @property
+    def id(self):
+        if self._id is None:
+            if 'id' in self.data:
+                self._id = self.data['id']
+            else:
+                # create a uuid for new profiles
+                self.data['id'] = self._id = str(uuid.uuid4())
+        return self._id
 
     @classmethod
     def load(cls, file_path: pathlib.PurePath):

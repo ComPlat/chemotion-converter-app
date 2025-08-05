@@ -47,6 +47,9 @@ profile_schema = {
         "isDisabled": {
             "type": "boolean"
         },
+        "isDefaultProfile": {
+            "type": "boolean"
+        },
         "ols": {
             "type": "string"
         },
