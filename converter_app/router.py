@@ -206,7 +206,7 @@ def profile_router(app: Flask, auth: HTTPBasicAuth):
         if profile.clean():
             Migrations().migrate_profile(profile)
             try:
-                validate_profile(profile.data)
+                validate_profile(profile.as_dict)
                 profile.save()
                 return jsonify(profile.as_dict), 201
             except jsonschema.exceptions.ValidationError as e:
