@@ -48,12 +48,16 @@ class Readers:
         sorted_readers = sorted(self._registry['readers'].values(), key=lambda reader: reader.priority)
         return OrderedDict([(reader.identifier, reader) for reader in sorted_readers])
 
-    def match_reader(self, file: File):
+    def match_reader(self, file: File, ontology: str = None):
         """
         Checks which reader fits to a File
         :param file:
+        :param ontology:
         :return:
         """
+
+        print(f"Hello from match_reader: {file.name} as {ontology or 'unspecified'} file")
+
         logger.debug('file_name=%s content_type=%s mime_type=%s encoding=%s',
                      file.name, file.content_type, file.mime_type, file.encoding)
 
