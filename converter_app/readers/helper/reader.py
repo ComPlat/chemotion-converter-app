@@ -7,7 +7,7 @@ from converter_app.models import File, extract_tar_archive
 
 class Readers:
     """
-    This calls manages all reader. It must be used as Singleton
+    This call manages all readers. It must be used as Singleton
     """
     _instance = None
 
@@ -43,7 +43,7 @@ class Readers:
     def readers(self) -> OrderedDict:
         """
         Collects and lists all registered reader
-        :return: A list of all reader
+        :return: A list of all readers
         """
         sorted_readers = sorted(self._registry['readers'].values(), key=lambda reader: reader.priority)
         return OrderedDict([(reader.identifier, reader) for reader in sorted_readers])
@@ -70,7 +70,13 @@ class Readers:
             else:
                 reader = reader(file)
 
-            result = reader.check()
+            try:
+                result = reader.check(ontology=ontology)
+            except TypeError as e:
+                if "unexpected keyword argument 'ontology'" in str(e):
+                    result = reader.check()
+                else:
+                    raise  # other TypeErrors
 
             logger.debug('For reader %s -> result=%s', reader.__class__.__name__, result)
 
