@@ -12,6 +12,7 @@ class SquidReader(Reader):
     """
 
     identifier = 'squid_reader'
+    uuid = 'd5b8807e-deb2-465a-aaae-b0e613ece18e'
     priority = 10
 
     def check(self):
