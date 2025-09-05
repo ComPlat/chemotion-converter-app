@@ -56,8 +56,6 @@ class Readers:
         :return:
         """
 
-        print(f"Hello from match_reader: {file.name} as {ontology or 'unspecified'} file")
-
         logger.debug('file_name=%s content_type=%s mime_type=%s encoding=%s',
                      file.name, file.content_type, file.mime_type, file.encoding)
 
