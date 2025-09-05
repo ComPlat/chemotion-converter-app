@@ -10,7 +10,7 @@ identifiers_schema = {
             "type": "string"
         },
         "lineNumber": {
-            "type": "string"
+            "type": ["string", "number", "null"],
         },
         "match": {
             "type": "string",
