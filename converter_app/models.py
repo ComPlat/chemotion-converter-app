@@ -28,7 +28,7 @@ class Profile:
         id          [str] id of the profile and file name
         errors      [collections.defaultdict] contains all errors if profile is not correct
     """
-    
+
     def __init__(self, profile_data, client_id, profile_id=None, is_default_profile: bool = False):
         self.isDisabled = profile_data.get('isDisabled', False)
         self.data = profile_data
@@ -147,8 +147,12 @@ class Profile:
                 self._id = self.data['id']
             else:
                 # create a uuid for new profiles
-                self.data['id'] = self._id = str(uuid.uuid4())
+                self.id = str(uuid.uuid4())
         return self._id
+
+    @id.setter
+    def id(self, new_id):
+        self.data['id'] = self._id = new_id
 
     @classmethod
     def load(cls, file_path: pathlib.PurePath):
@@ -182,7 +186,6 @@ class Profile:
         profile_id = str(file_path.with_suffix('').name)
         profile_data = cls.load(file_path)
         return cls(profile_data, client_id, profile_id)
-
 
     @classmethod
     def list(cls, client_id):
