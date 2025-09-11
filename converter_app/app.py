@@ -19,6 +19,7 @@ from converter_app.profile_migration.utils.registration import Migrations
 from converter_app.router import get_clients, setup_flask_routing
 from converter_app.utils import human2bytes
 from converter_app.validation import validate_all_profiles
+from converter_app.rdf import refresh_rdf_summery
 
 
 # Example usage
@@ -31,6 +32,7 @@ def create_app():
     :return: Flask app
     """
     dotenv.load_dotenv(Path().cwd() / '.env')
+    rdf_json_path = refresh_rdf_summery()
 
     # setup logging
     logging.basicConfig(level=os.getenv('LOG_LEVEL', 'INFO').upper(),
@@ -45,7 +47,8 @@ def create_app():
         MAX_CONTENT_LENGTH=human2bytes(os.getenv('MAX_CONTENT_LENGTH', '64M')),
         CORS=str2bool(os.getenv('CORS', 'False').lower()),
         DEBUG=str2bool(os.getenv('DEBUG', 'False').lower()),
-        CLIENTS=get_clients() is not None
+        CLIENTS=get_clients() is not None,
+        RDF_JSON=rdf_json_path
     )
 
     os.makedirs(app.config['PROFILES_DIR'], exist_ok=True)

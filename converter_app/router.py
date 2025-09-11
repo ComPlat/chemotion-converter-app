@@ -11,14 +11,14 @@ import os
 from pathlib import Path
 
 import jsonschema
-from flask import Flask, Response, abort, jsonify, make_response, request
+from flask import Flask, Response, abort, jsonify, make_response, request, send_file
 from flask_cors import CORS
 from flask_httpauth import HTTPBasicAuth
 
 from converter_app.converters import Converter
 from converter_app.datasets import Dataset
 from converter_app.models import File, Profile
-from converter_app.options import OPTIONS
+from converter_app.options import compose_options
 from converter_app.profile_migration.utils.registration import Migrations
 from converter_app.readers import READERS as registry
 from converter_app.utils import checkpw, run_conversion
@@ -255,7 +255,7 @@ def utils_router(app: Flask, auth: HTTPBasicAuth):
     @app.route('/options', methods=['GET'])
     @auth.login_required
     def list_options():
-        return jsonify(OPTIONS), 200
+        return jsonify(compose_options(app.config['RDF_JSON'])), 200
 
 
 def setup_flask_routing(app: Flask):

@@ -33,3 +33,4 @@ test_manager/test_readers.py
 /test_manager/test_profiles.py
 /test_files/
 /.venv/
+/converter_app/rdf/rdf_terms_info.json

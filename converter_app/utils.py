@@ -12,6 +12,7 @@ import git
 
 from writers.jcamp import JcampWriter
 from writers.jcampzip import JcampZipWriter
+from writers.rdf import RDFWriter
 
 
 def human2bytes(string):
@@ -74,8 +75,8 @@ def run_conversion(converter, conversion_format):
         converter.process()
         if conversion_format == 'jcampzip':
             writer = JcampZipWriter(converter)
-        elif conversion_format == 'owl':
-            writer = JcampZipWriter(converter)
+        elif conversion_format == 'rdf':
+            writer = RDFWriter(converter)
         elif conversion_format == 'jcamp':
             if len(converter.tables) == 1:
                 writer = JcampWriter(converter)

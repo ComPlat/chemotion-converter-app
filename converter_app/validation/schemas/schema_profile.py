@@ -1,4 +1,46 @@
 from converter_app.validation.registry import SchemaRegistry
+from validation.schemas.schema_identifiers import ontology_id
+
+ontology_properties = {
+    "properties": {
+        "id": {
+            "type": "string",
+        },
+        "iri": {
+            "type": "string",
+        },
+        "namespace": {
+            "type": "string",
+        },
+        "label": {
+            "type": "string",
+        },
+        "obo_id": {
+            "type": "string",
+        },
+        "ontology_name": {
+            "type": "string",
+        },
+        "ontology_prefix": {
+            "type": "string",
+        },
+        "short_form": {
+            "type": "string",
+        },
+        "description": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "type": {
+            "type": "string",
+        }
+    },
+    "additionalProperties": False,
+    "type": ["object", "null"],
+    "required": ["id", "namespace", "iri", "label", "obo_id", "ontology_name", "ontology_prefix", "short_form", "type"]
+}
 
 profile_schema = {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
@@ -50,8 +92,9 @@ profile_schema = {
         "isDefaultProfile": {
             "type": "boolean"
         },
+        "rootOntology": ontology_properties,
         "ols": {
-            "type": "string"
+            "type": ["string", "null"]
         },
         "ontology": {
             "type": "string"
@@ -70,6 +113,39 @@ profile_schema = {
                 "$ref": "chemconverter://profile/tables/draft-01"
             }
         },
+        "subjects": {
+            "type": "array",
+            "items": ontology_properties
+        },
+        "predicates": {
+            "type": "array",
+            "items": ontology_properties
+        },
+        "datatypes": {
+            "type": "array",
+            "items": ontology_properties
+        },
+        "subjectInstances": {
+            "type": "object",
+            "patternProperties": {
+                "^.+$": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "name": {
+                                "type": "string"
+                            },
+                            "predicate": {
+                                "type": ["null", "string"]
+                            }
+                        },
+                        "additionalProperties": False,
+                        "required": ["name", "predicate"]
+                    }
+                }
+            }
+        }
 
     },
     "additionalProperties": False,
@@ -84,7 +160,11 @@ profile_schema = {
         "ontology",
         "devices",
         "software",
-        "tables"
+        "tables",
+        "subjectInstances",
+        "predicates",
+        "datatypes",
+        "subjects"
     ]
 
 }

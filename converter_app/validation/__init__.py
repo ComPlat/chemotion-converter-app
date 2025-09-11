@@ -37,5 +37,5 @@ def validate_all_profiles(profile_dir: str | Path):
                     logger.info(f'✅ {profile.name}')
                 except jsonschema.exceptions.ValidationError as e:
                     logger.error(f'⚠️ {profile.name}')
-                    print(e.message)
+                    print(f"{profile.name}: {'->'.join(str(x) for x in e.path)}, {e.message}")
 
