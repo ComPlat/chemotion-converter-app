@@ -10,9 +10,9 @@ from typing import Optional
 
 import git
 
-from writers.jcamp import JcampWriter
-from writers.jcampzip import JcampZipWriter
-from writers.rdf import RDFWriter
+from converter_app.writers.jcamp import JcampWriter
+from converter_app.writers.jcampzip import JcampZipWriter
+from converter_app.writers.rdf import RDFWriter
 
 
 def human2bytes(string):
