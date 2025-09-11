@@ -30,12 +30,15 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "key": "_exptl_operator",
         "match": "any",
         "optional": true,
         "outputKey": "operator",
         "outputLayer": "meas",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "Volodymyr"
@@ -47,12 +50,15 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "key": "_exptl_date",
         "match": "regex",
         "optional": true,
         "outputKey": "date",
         "outputLayer": "gener",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "\\d+-\\d+-\\d+"
@@ -64,12 +70,15 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "key": "_exptl_instrument",
         "match": "regex",
         "optional": true,
         "outputKey": "serial",
         "outputLayer": "dev",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "\\d+"
@@ -81,12 +90,15 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "key": "_exptl_adsorptive",
         "match": "any",
         "optional": true,
         "outputKey": "adsorptive",
         "outputLayer": "meas",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "CH4"
@@ -98,6 +110,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "key": "_exptl_temperature",
         "match": "any",
         "operations": [
@@ -110,6 +123,8 @@
         "outputKey": "temperature",
         "outputLayer": "meas",
         "outputTableIndex": 0,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "111.00"
@@ -121,6 +136,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "key": "_exptl_temperature",
         "match": "any",
         "operations": [
@@ -133,6 +149,8 @@
         "outputKey": "temperature",
         "outputLayer": "meas",
         "outputTableIndex": 1,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 1,
         "type": "tableMetadata",
         "value": "111.00"
@@ -141,12 +159,15 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "key": "_exptl_sample_mass",
         "match": "any",
         "optional": true,
         "outputKey": "amount",
         "outputLayer": "sam_details",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "0.00980"
@@ -158,12 +179,15 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "key": "_sample_id",
         "match": "any",
         "optional": true,
         "outputKey": "sample_cid",
         "outputLayer": "custom_id",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "aus der BOX"
@@ -175,12 +199,15 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "key": "_sample_material_id",
         "match": "any",
         "optional": true,
         "outputKey": "sample_mat_id",
         "outputLayer": "custom_id",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "DUT-140(Cu)"
@@ -192,12 +219,15 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "lineNumber": 1,
         "match": "regex",
         "optional": true,
         "outputKey": "software",
         "outputLayer": "soft",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableHeader",
         "value": "\\S*\\_\\S*_(\\S*)v"
@@ -210,12 +240,15 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "lineNumber": 1,
         "match": "regex",
         "optional": true,
         "outputKey": "software_version",
         "outputLayer": "soft",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableHeader",
         "value": "\\S*\\_\\S*_\\S*(v\\d+)"
@@ -228,12 +261,15 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "key": "_exptl_date",
         "match": "regex",
         "optional": true,
         "outputKey": "time",
         "outputLayer": "gener",
         "outputTableIndex": 0,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "\\d+:\\d+:\\d+"
@@ -245,12 +281,15 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "key": "_exptl_date",
         "match": "regex",
         "optional": true,
         "outputKey": "time",
         "outputLayer": "gener",
         "outputTableIndex": 1,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 1,
         "type": "tableMetadata",
         "value": "\\d+:\\d+:\\d+"
@@ -259,12 +298,15 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "key": "_exptl_instrument",
         "match": "regex",
         "optional": true,
         "outputKey": "brand",
         "outputLayer": "dev",
         "outputTableIndex": 0,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "[^0-9\\s]+"
@@ -276,12 +318,15 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "key": "_exptl_instrument",
         "match": "regex",
         "optional": true,
         "outputKey": "brand",
         "outputLayer": "dev",
         "outputTableIndex": 1,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 1,
         "type": "tableMetadata",
         "value": "[^0-9\\s]+"

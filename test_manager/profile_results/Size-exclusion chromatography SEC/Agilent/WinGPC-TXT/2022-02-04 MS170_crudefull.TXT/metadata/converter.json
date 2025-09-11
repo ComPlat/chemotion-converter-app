@@ -4,12 +4,15 @@
   "matches": [
     {
       "identifier": {
+        "datatype": null,
         "key": "Sample",
         "match": "any",
         "optional": true,
         "outputKey": "label",
         "outputLayer": "sample_details",
         "outputTableIndex": 0,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "Vial   1: MS139 - 1"
@@ -21,12 +24,15 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "key": "Export file",
         "match": "any",
         "optional": true,
         "outputKey": "comments",
         "outputLayer": "general",
         "outputTableIndex": 0,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "X:\\Marvin Subarew\\AETMC Polymerization\\MS139\\2021-07-22 MS139.TXT"
@@ -38,12 +44,15 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "key": "Mn",
         "match": "any",
         "optional": true,
         "outputKey": "mn",
         "outputLayer": "eval_data_detec_i",
         "outputTableIndex": 0,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": " 6.999E+3"
@@ -52,12 +61,15 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "key": "Mn_unit",
         "match": "any",
         "optional": true,
         "outputKey": "mn",
         "outputLayer": "eval_data_detec_ii",
         "outputTableIndex": 0,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": " 7.997E+3"
@@ -69,12 +81,15 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "key": "Mw",
         "match": "any",
         "optional": true,
         "outputKey": "mw",
         "outputLayer": "eval_data_detec_i",
         "outputTableIndex": 0,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": " 9.417E+3"
@@ -83,12 +98,15 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "key": "Mw_unit",
         "match": "any",
         "optional": true,
         "outputKey": "mw",
         "outputLayer": "eval_data_detec_ii",
         "outputTableIndex": 0,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": " 8.643E+3"
@@ -100,12 +118,15 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "key": "D",
         "match": "any",
         "optional": true,
         "outputKey": "d",
         "outputLayer": "eval_data_detec_i",
         "outputTableIndex": 0,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": " 1.346E+0"
@@ -114,12 +135,15 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "key": "D_unit",
         "match": "any",
         "optional": true,
         "outputKey": "d",
         "outputLayer": "eval_data_detec_ii",
         "outputTableIndex": 0,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": " 1.081E+0"
@@ -128,12 +152,15 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "key": "Mp",
         "match": "any",
         "optional": true,
         "outputKey": "mp",
         "outputLayer": "eval_data_detec_i",
         "outputTableIndex": 0,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": " 9.724E+3"
@@ -142,12 +169,15 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "key": "Mp_unit",
         "match": "any",
         "optional": true,
         "outputKey": "mp",
         "outputLayer": "eval_data_detec_ii",
         "outputTableIndex": 0,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": " 8.736E+3"
@@ -159,12 +189,15 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "key": "Detector 1",
         "match": "any",
         "optional": true,
         "outputKey": "detec1",
         "outputLayer": "instrument",
         "outputTableIndex": 0,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "I2: RI Detector 1, RI Signal"
@@ -176,12 +209,15 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "key": "Detector 2",
         "match": "any",
         "optional": true,
         "outputKey": "detec2",
         "outputLayer": "instrument",
         "outputTableIndex": 0,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "I2: UV Detector 1, UV Signal"
@@ -193,12 +229,15 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "key": "Detector 3",
         "match": "any",
         "optional": true,
         "outputKey": "detec3",
         "outputLayer": "instrument",
         "outputTableIndex": 0,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "I2: Pump 1, Sample Pump Pressure"
@@ -236,12 +275,15 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "key": "Column 1",
         "match": "any",
         "optional": true,
         "outputKey": "col1",
         "outputLayer": "equipment",
         "outputTableIndex": 0,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "PSS SDV 5\u00b5m"
@@ -253,12 +295,15 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "key": "Column 2",
         "match": "any",
         "optional": true,
         "outputKey": "col2",
         "outputLayer": "equipment",
         "outputTableIndex": 0,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "PSS SDV 5\u00b5m"
@@ -270,12 +315,15 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "key": "Column 3",
         "match": "any",
         "optional": true,
         "outputKey": "col3",
         "outputLayer": "equipment",
         "outputTableIndex": 0,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "PSS SDV 5\u00b5m"
@@ -287,12 +335,15 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "key": "Inject volume",
         "match": "any",
         "optional": true,
         "outputKey": "in_vol",
         "outputLayer": "meta",
         "outputTableIndex": 0,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": " 50.000"
@@ -304,12 +355,15 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "key": "Eluent",
         "match": "any",
         "optional": true,
         "outputKey": "eluent",
         "outputLayer": "meta",
         "outputTableIndex": 0,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "THF"
@@ -321,12 +375,15 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "key": "Flow",
         "match": "any",
         "optional": true,
         "outputKey": "flow",
         "outputLayer": "meta",
         "outputTableIndex": 0,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "  1.000"
@@ -338,12 +395,15 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "key": "(Column 1) Temperature",
         "match": "any",
         "optional": true,
         "outputKey": "temperature",
         "outputLayer": "meta",
         "outputTableIndex": 0,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": " 35.000"
@@ -355,12 +415,15 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "key": "Inject date",
         "match": "regex",
         "optional": true,
         "outputKey": "date",
         "outputLayer": "general",
         "outputTableIndex": 0,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "^\\S+\\s(.*?)(\\s\\d+\\:\\d+\\:\\d+)"
@@ -372,12 +435,15 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "key": "Inject date",
         "match": "regex",
         "optional": true,
         "outputKey": "time",
         "outputLayer": "general",
         "outputTableIndex": 0,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "(\\d+\\:\\d+\\:\\d+)"
@@ -389,12 +455,15 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "lineNumber": "",
         "match": "regex",
         "optional": true,
         "outputKey": "no_dec",
         "outputLayer": "instrument",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableHeader",
         "value": "2"
@@ -407,12 +476,15 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "lineNumber": "",
         "match": "regex",
         "optional": true,
         "outputKey": "software",
         "outputLayer": "software",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableHeader",
         "value": "WINGPC"
@@ -425,12 +497,15 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "lineNumber": "",
         "match": "regex",
         "optional": true,
         "outputKey": "version",
         "outputLayer": "software",
         "outputTableIndex": 0,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableHeader",
         "value": "WINGPC_(\\d+#\\d+)"
@@ -443,12 +518,15 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "key": "Operator",
         "match": "any",
         "optional": true,
         "outputKey": "operator",
         "outputLayer": "general",
         "outputTableIndex": 0,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "itcp-akt"

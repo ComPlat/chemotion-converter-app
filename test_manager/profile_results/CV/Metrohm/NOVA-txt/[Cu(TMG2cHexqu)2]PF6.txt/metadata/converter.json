@@ -44,12 +44,15 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "key": "scan_rate",
         "match": "any",
         "optional": true,
         "outputKey": "scan_rate",
         "outputLayer": "meas",
         "outputTableIndex": 0,
+        "predicate": null,
+        "subject": null,
         "type": "fileMetadata",
         "value": "0.09998236414401321"
       },
@@ -59,12 +62,15 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "key": "step_size",
         "match": "any",
         "optional": true,
         "outputKey": "step_size",
         "outputLayer": "meas",
         "outputTableIndex": 0,
+        "predicate": null,
+        "subject": null,
         "type": "fileMetadata",
         "value": "0.0010679116287260553"
       },
@@ -74,12 +80,15 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "key": "v_end",
         "match": "any",
         "optional": true,
         "outputKey": "voltage_limit_end",
         "outputLayer": "meas",
         "outputTableIndex": 0,
+        "predicate": null,
+        "subject": null,
         "type": "fileMetadata",
         "value": "0"
       },
@@ -89,12 +98,15 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "key": "v_init",
         "match": "any",
         "optional": true,
         "outputKey": "voltage_start",
         "outputLayer": "meas",
         "outputTableIndex": 0,
+        "predicate": null,
+        "subject": null,
         "type": "fileMetadata",
         "value": "0.001068115234375"
       },
@@ -104,12 +116,15 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "key": "v_limit1",
         "match": "any",
         "optional": true,
         "outputKey": "voltage_limit_one",
         "outputLayer": "meas",
         "outputTableIndex": 0,
+        "predicate": null,
+        "subject": null,
         "type": "fileMetadata",
         "value": "1.50070190429688"
       },
@@ -119,12 +134,15 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "key": "v_limit2",
         "match": "any",
         "optional": true,
         "outputKey": "voltage_limit_two",
         "outputLayer": "meas",
         "outputTableIndex": 0,
+        "predicate": null,
+        "subject": null,
         "type": "fileMetadata",
         "value": "-1.30096435546875"
       },
