@@ -1,5 +1,4 @@
 from converter_app.validation.registry import SchemaRegistry
-from validation.schemas.schema_identifiers import ontology_id
 
 ontology_properties = {
     "properties": {
