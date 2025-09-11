@@ -31,7 +31,7 @@ identifiers_schema = {
             "type": "string"
         },
         "lineNumber": {
-            "type": ["number", "string"]
+            "type": ["string", "number", "null"],
         },
         "match": {
             "type": "string",
