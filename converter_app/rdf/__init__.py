@@ -12,11 +12,13 @@ def prepare_entry(st, ontology_prefix):
     name = st.attrib.get("name")
     ontology_prefix_upper = ontology_prefix.upper()
     if name:
-        iri = f"http://www.w3.org/2001/XMLSchema#{name}"
+        namespace = 'http://www.w3.org/2001/XMLSchema#'
+        iri = f"{namespace}{name}"
         entry = {
             "id": f'{ontology_prefix_upper}:property:{iri}',
             "iri": iri,
             "ontology_name": ontology_prefix,
+            "namespace": namespace,
             "ontology_prefix": ontology_prefix_upper,
             "short_form": f'{ontology_prefix_upper}_{name}',
             "description": [f"The XML Schema datatype '{name}'."],
