@@ -157,11 +157,14 @@ class TifReader(Reader):
         for val in self._parsed_values:
             # Try XML first (returns True if the line was XML-like and handled)
             if self._xml_handle_line(val):
+                table['header'].append(f"{'='.join(val)}")
                 continue
             if len(val) == 1:
                 num_val = self.get_value(val[0])
                 if num_val is not None:
                     table['rows'].append([len(table['rows']), float(num_val)])
+            elif str(val).count("@") > 5: # skip picture code itself
+                continue
             else:
                 table['metadata'][val[0]] = '='.join(val[1:])
             table['header'].append(f"{'='.join(val)}")
