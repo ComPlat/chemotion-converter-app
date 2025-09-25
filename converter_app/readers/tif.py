@@ -1,6 +1,6 @@
 import logging
 import re
-from typing import List, Dict, Any
+from typing import List, Dict
 
 from converter_app.readers.helper.base import Reader
 from converter_app.readers.helper.reader import Readers
@@ -31,28 +31,31 @@ class TifReader(Reader):
 
     # xml-tag parser ------------------------------------------------------------------------------
     def _xml_init_state(self):
-        # Call this once per file/section before the loop if needed
         self._xml_stack: List[str] = []
-        self._xml_kv: Dict[str, Any] = {}
+        # store raw values as lists per key (path)
+        self._xml_vals: Dict[str, List[str]] = {}
+        # per-element text buffer until the closing tag happens
+        self._xml_buf: Dict[str, List[str]] = {}
+
+    def _xml_put(self, path: str, value: str) -> None:
+        # collapse inner whitespace once
+        value = re.sub(r"\s+", " ", value).strip()
+        if not value:
+            return
+        self._xml_vals.setdefault(path, []).append(value)
 
     def _xml_norm(self, s: str) -> str:
-        # Normalize "<\tag>" -> "</tag>", trim stray spaces before '>'
         s = s.strip()
-        s = re.sub(r"<\\\s*([A-Za-z0-9:_\-]+)\s*>", r"</\1>", s)
+        s = re.sub(r"<\\\s*([A-Za-z0-9:_\-]+)\s*>", r"</\1>", s)  # <\b> -> </b>
         s = re.sub(r"\s+>", ">", s)
         return s
 
     def _xml_is_taglike(self, text: str) -> bool:
-        # Heuristic: looks like XML-ish content
         return text.lstrip().startswith("<") and ">" in text
 
     def _xml_tag_name(self, tag: str) -> str:
-        # Extract element name without namespace and without attributes
-        # e.g. "<TemReporter xmlns:xsd" -> "TemReporter"
-        # e.g. "<a>" -> "a"
         tag = tag.strip("<>/ ")
         tag = tag.split()[0]
-        # strip namespace prefix "x:Tag" -> "Tag" (keep local part)
         if ":" in tag:
             tag = tag.split(":", 1)[1]
         return tag
@@ -63,68 +66,70 @@ class TifReader(Reader):
             parts.append(leaf)
         return ".".join(parts)
 
-    def _xml_put(self, path: str, value: str) -> None:
-        if path in self._xml_kv:
-            if isinstance(self._xml_kv[path], list):
-                self._xml_kv[path].append(value)
-            else:
-                self._xml_kv[path] = [self._xml_kv[path], value]
-        else:
-            self._xml_kv[path] = value
+    def _xml_open(self, name: str) -> None:
+        self._xml_stack.append(name)
+        path = self._xml_path()
+        # start a fresh buffer for this element
+        self._xml_buf[path] = []
+
+    def _xml_text(self, text: str) -> None:
+        text = text  # raw; normalize at commit time
+        path = self._xml_path()
+        if path in self._xml_buf:
+            self._xml_buf[path].append(text)
+
+    def _xml_close(self, name: str) -> None:
+        # pop until we close 'name' (lenient)
+        while self._xml_stack:
+            curr = self._xml_stack[-1]
+            path = self._xml_path()  # path BEFORE popping (current element)
+            # commit buffered text for current element (if any)
+            if path in self._xml_buf:
+                joined = "".join(self._xml_buf.pop(path))
+                # normalize whitespace now and emit to _xml_kv
+                self._xml_put(path, joined)
+            self._xml_stack.pop()
+            if curr == name:
+                break
+
+    def _xml_selfclose(self, name: str) -> None:
+        # open -> commit empty -> close
+        self._xml_open(name)
+        self._xml_close(name)
 
     def _xml_handle_line(self, parts: List[str]) -> bool:
         """
-        Try to consume one tokenized line as XML.
-        Returns True if handled as XML, else False (so caller can process non-XML cases).
+        Consume one tokenized line as XML.
+        Returns True if handled as XML (so caller should skip non-XML handling).
         """
         line = "".join(str(p) for p in parts)
         line = self._xml_norm(line)
         if not self._xml_is_taglike(line):
             return False
 
-        # Handle compact forms: <a>text</a>, <b>, </b>, self-closing <a/>
-        # There may also be multiple tags on one line; iterate.
-        i = 0
-        handled_any = False
-        for m in re.finditer(r"<[^>]+>|[^<]+", line):
-            tok = m.group(0)
-            if tok.startswith("<"):
-                handled_any = True
-                if tok.startswith("</"):  # closing
-                    name = self._xml_tag_name(tok)
-                    if self._xml_stack and self._xml_stack[-1] == name:
-                        self._xml_stack.pop()
+        # Tokenize into tags and text
+        for tok in re.finditer(r"<[^>]+>|[^<]+", line):
+            s = tok.group(0)
+            if s.startswith("<"):
+                # classify tag
+                if s.startswith("</"):  # closing tag
+                    name = self._xml_tag_name(s)
+                    self._xml_close(name)
+                else:
+                    selfclosing = s.endswith("/>")
+                    name = self._xml_tag_name(s)
+                    if selfclosing:
+                        self._xml_selfclose(name)
                     else:
-                        # lenient: try to pop until match
-                        if name in self._xml_stack:
-                            while self._xml_stack and self._xml_stack[-1] != name:
-                                self._xml_stack.pop()
-                            if self._xml_stack and self._xml_stack[-1] == name:
-                                self._xml_stack.pop()
-                    continue
-
-                # opening or self-closing
-                selfclosing = tok.endswith("/>")
-                name = self._xml_tag_name(tok)
-                if name:
-                    self._xml_stack.append(name)
-                if selfclosing:
-                    # Immediately emit empty value for self-closing element if no text follows
-                    path = self._xml_path()
-                    # record empty string if not present yet (only if meaningful to you)
-                    if path not in self._xml_kv:
-                        self._xml_put(path, "")
-                    # Pop the self-closed tag
-                    if self._xml_stack and self._xml_stack[-1] == name:
-                        self._xml_stack.pop()
+                        self._xml_open(name)
             else:
-                # text node between tags
-                text = tok.strip()
-                if text:
-                    path = self._xml_path()
-                    # If text belongs to an element like <a>text</a>, the current path is correct.
-                    self._xml_put(path, text)
-        return handled_any
+                # text between tags -> append to current element buffer
+                t = s
+                # preserve spaces; final normalization happens at commit
+                if t.strip():  # ignore pure whitespace nodes
+                    self._xml_text(t)
+
+        return True
 
     # end of xml-tag parser ------------------------------------------------------------------------------
 
@@ -178,8 +183,11 @@ class TifReader(Reader):
             'name': 'Number'
         })
 
-        for k, v in self._xml_kv.items():
-            table['metadata'][k] = v
+        for k, arr in self._xml_vals.items():
+            if len(arr) == 1:
+                table['metadata'][k] = str(arr[0])
+            else:
+                table['metadata'][k] = str(arr)
 
         return tables
 
