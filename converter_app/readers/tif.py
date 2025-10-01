@@ -4,6 +4,7 @@ from typing import List, Dict
 
 from converter_app.readers.helper.base import Reader
 from converter_app.readers.helper.reader import Readers
+from converter_app.readers.xml_reader import XMLReader
 
 logger = logging.getLogger(__name__)
 
@@ -21,6 +22,11 @@ class TifReader(Reader):
     def __init__(self, file, *tar_content):
         super().__init__(file, *tar_content)
         self._parsed_values = None
+        self._xml_stack: List[str] = []
+        # store raw values as lists per key (path)
+        self._xml_vals: Dict[str, List[str]] = {}
+        # per-element text buffer until the closing tag happens
+        self._xml_buf: Dict[str, List[str]] = {}
 
     def check(self):
         result = False
@@ -29,13 +35,6 @@ class TifReader(Reader):
             result = self._parsed_values is not None and len(self._parsed_values) > 0
         return result
 
-    # xml-tag parser ------------------------------------------------------------------------------
-    def _xml_init_state(self):
-        self._xml_stack: List[str] = []
-        # store raw values as lists per key (path)
-        self._xml_vals: Dict[str, List[str]] = {}
-        # per-element text buffer until the closing tag happens
-        self._xml_buf: Dict[str, List[str]] = {}
 
     def _xml_put(self, path: str, value: str) -> None:
         # collapse inner whitespace once
@@ -136,8 +135,8 @@ class TifReader(Reader):
     def _read_img(self):
         txt = re.sub(r'\\x[0-9a-f]{2}', '', str(self.file.content))
 
-        txt = re.sub(r'^.+@@@@@@0\\r\\n', '', txt)
-        lines = re.split(r'\\r\\n', txt)
+        # txt = re.sub(r'^.+@@@@@{5,9}0\\r\\n', '', txt)
+        lines = [l for l in re.split(r'\\r\\n', txt) if str(l).count("@") <= 5]
         del lines[-1]
         return [x.split('=') for x in lines]
 
@@ -153,8 +152,6 @@ class TifReader(Reader):
 
     def prepare_tables(self):
         # Initialize XML state once per run
-        if not hasattr(self, "_xml_stack"):
-            self._xml_init_state()
 
         tables = []
         table = self.append_table(tables)
@@ -168,8 +165,6 @@ class TifReader(Reader):
                 num_val = self.get_value(val[0])
                 if num_val is not None:
                     table['rows'].append([len(table['rows']), float(num_val)])
-            elif str(val).count("@") > 5: # skip picture code itself
-                continue
             else:
                 table['metadata'][val[0]] = '='.join(val[1:])
             table['header'].append(f"{'='.join(val)}")
@@ -183,11 +178,13 @@ class TifReader(Reader):
             'name': 'Number'
         })
 
+        test_result = XMLReader(self.file, *self.file_content).prepare_tables_from_content(''.join(table['header']))
+
         for k, arr in self._xml_vals.items():
             if len(arr) == 1:
                 table['metadata'][k] = str(arr[0])
             else:
-                table['metadata'][k] = str(arr)
+                table['metadata'][k] = ', '.join(arr)
 
         return tables
 

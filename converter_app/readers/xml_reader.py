@@ -99,9 +99,12 @@ class XMLReader(Reader):
             self._read_node(child, new_path)
 
     def prepare_tables(self):
+        return self.prepare_tables_from_content(self.file.conent)
+
+    def prepare_tables_from_content(self, content):
+        root = ET.XML(content)
         tables = []
         self._table = self.append_table(tables)
-        root = ET.XML(self.file.content)
         self._read_node(root)
         self._merge_tables(self._data_tables, tables)
 
