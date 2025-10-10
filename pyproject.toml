@@ -18,24 +18,24 @@ classifiers = [
 ]
 
 dependencies = [
-    "defusedxml~=0.7.1",
-    "Flask~=2.0.2",
-    "Flask-Cors~=3.0.10",
-    "Flask-HTTPAuth~=4.5.0",
-    "gunicorn~=20.1.0",
-    "openpyxl~=3.0.9",
-    "python-dotenv~=0.19.2",
-    "python-magic~=0.4.24",
-    "gemmi~=0.6.6",
-    "xlrd~=2.0.1",
-    "Werkzeug~=2.2.2",
-    "jcamp~=1.2.2",
-    "PyMuPDF==1.23.7",
-    "pylint==3.0.3",
-    "str2bool~=1.1",
-    "opusFC~=1.5.0",
-    "referencing~=0.36.2",
-    "jsonschema~=4.23.0",
+    "defusedxml==0.*",
+    "Flask==2.*",
+    "Flask-Cors==3.*",
+    "Flask-HTTPAuth==4.*",
+    "gunicorn==20.*",
+    "openpyxl==3.*",
+    "python-dotenv==0.*",
+    "python-magic==0.*",
+    "gemmi==0.*",
+    "xlrd==2.*",
+    "Werkzeug==2.*",
+    "jcamp==1.*",
+    "PyMuPDF==1.*",
+    "pylint==3.*",
+    "str2bool==1.*",
+    "opusFC==1.*",
+    "referencing==0.*",
+    "jsonschema==4.*",
 ]
 
 [project.optional-dependencies]
@@ -53,7 +53,7 @@ dev = [
     "wheel",
     "setuptools",
     "pybind11",
-    "jinja2~=3.1.6",
+    "jinja2",
     "binaryparser @ git+https://github.com/ComPlat/BinaryParser@main",
 ]
 
