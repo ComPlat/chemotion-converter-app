@@ -54,22 +54,25 @@ class Migrations:
         self._registry_tree[applied_after] = script_id
 
     def validate_tree(self):
-        res = list(set(self._registry_tree.keys()) - set(self._registry_tree.values()))
+        res = list(set(self._registry_tree.keys()) -
+                   set(self._registry_tree.values()))
         assert res == ['']
 
     def run_migration(self, profile_dir: str, force: bool = False):
         self.profile_dir = profile_dir
         for client_path in Path(profile_dir).iterdir():
             client_id = client_path.stem
-            for profile in client_path.iterdir():
-                self._prepare_migration(client_id, profile, force)
+            if client_path.is_dir():
+                for profile in client_path.iterdir():
+                    self._prepare_migration(client_id, profile, force)
         for profile in Path(__file__).parent.parent.parent.joinpath('profiles').iterdir():
             self._prepare_migration('', profile, force)
 
     def _prepare_migration(self, client_id, profile_path, force):
         if profile_path.is_file() and profile_path.suffix == '.json':
             try:
-                profile = Profile.profile_from_file_path(profile_path, client_id)
+                profile = Profile.profile_from_file_path(
+                    profile_path, client_id)
                 if self.migrate_profile(profile, force):
                     self._save_profile(profile)
             except Exception as e:
@@ -90,7 +93,8 @@ class Migrations:
 
     def _save_profile(self, profile: Profile):
         if profile.is_default_profile:
-            profiles_path = Path(__file__).parent.parent.parent.joinpath('profiles')
+            profiles_path = Path(
+                __file__).parent.parent.parent.joinpath('profiles')
         else:
             profiles_path = Path(self.profile_dir).joinpath(profile.client_id)
 
