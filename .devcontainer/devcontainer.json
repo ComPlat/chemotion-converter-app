@@ -10,7 +10,7 @@
   ],
   "onCreateCommand": "pip install --upgrade pip && pip install .[dev] && pip freeze > requirements.txt",
   // Ensure the environment
-  "postStartCommand": "pip install --upgrade . && pip freeze > requirements.txt",
+  "postStartCommand": "pip install --upgrade .[dev] && pip freeze > requirements.txt",
   // Configure tool-specific properties.
   "customizations": {
     // Configure properties specific to VS Code.
