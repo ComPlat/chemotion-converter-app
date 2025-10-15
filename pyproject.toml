@@ -36,6 +36,7 @@ dependencies = [
     "opusFC==1.*",
     "referencing==0.*",
     "jsonschema==4.*",
+    "pybind11==3.*",
 ]
 
 [project.optional-dependencies]
@@ -52,7 +53,6 @@ dev = [
     "GitPython",
     "wheel",
     "setuptools",
-    "pybind11",
     "jinja2",
     "binaryparser @ git+https://github.com/ComPlat/BinaryParser@main",
 ]

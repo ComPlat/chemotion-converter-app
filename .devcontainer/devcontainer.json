@@ -6,11 +6,16 @@
   },
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
   "forwardPorts": [
-    8000 // Port for the web server
+    5000, // Port for Flask interface
+    8000 // Port for the web server, 8000 is default for gunicorn
   ],
-  "onCreateCommand": "pip install --upgrade pip && pip install .[dev] && pip freeze > requirements.txt",
   // Ensure the environment
-  "postStartCommand": "pip install --upgrade .[dev] && pip freeze > requirements.txt",
+  "postStartCommand": "pip install --upgrade pip && pip install --upgrade .[dev] && pip freeze > requirements.txt",
+  "remoteUser": "debian",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/home/debian/chem_converter,type=bind",
+  "workspaceFolder": "/home/debian/chem_converter",
+  // Inject variables from file into the container.
+  "runArgs": ["--env-file", "${localWorkspaceFolder}/.env.dev"],
   // Configure tool-specific properties.
   "customizations": {
     // Configure properties specific to VS Code.
