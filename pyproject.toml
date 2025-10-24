@@ -1,0 +1,65 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "chemotion-converter-app"
+version = "1.6.2"
+authors = [{ name = "Nicole Jung", email = "nicole.jung@kit.edu" }]
+requires-python = ">= 3.12"
+description = "A backend service to interconvert chemistry-related files."
+license = "AGPL-3.0-or-later"
+license-files = ["LICENSE"]
+readme = "README.md"
+keywords = ["chemistry", "convert", "file", "format"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+
+dependencies = [
+    "defusedxml==0.*",
+    "Flask==2.*",
+    "Flask-Cors==3.*",
+    "Flask-HTTPAuth==4.*",
+    "gunicorn==20.*",
+    "openpyxl==3.*",
+    "python-dotenv==0.*",
+    "python-magic==0.*",
+    "gemmi==0.*",
+    "xlrd==2.*",
+    "Werkzeug==2.*",
+    "jcamp==1.*",
+    "PyMuPDF==1.23.7",
+    "pylint==3.*",
+    "str2bool==1.*",
+    "opusFC==1.*",
+    "referencing==0.*",
+    "jsonschema==4.*",
+    "pybind11==3.*",
+]
+
+[project.optional-dependencies]
+# prod is the production installation till https://github.com/pypa/pip/issues/11440 gets solved
+prod = [
+    "binaryparser @ https://github.com/ComPlat/BinaryParser/releases/download/v1.0.0/BinaryParser-0.0.1-cp312-cp312-linux_x86_64.whl ; sys_platform == 'linux' and python_version == '3.12'"
+    ]
+dev = [
+    "coverage",
+    "pytest",
+    "pytest-dotenv",
+    "pytest-cov",
+    "pytest-flask",
+    "GitPython",
+    "wheel",
+    "setuptools",
+    "jinja2",
+    "binaryparser @ git+https://github.com/ComPlat/BinaryParser@main",
+]
+
+[project.urls]
+homepage = "https://chemotion.net/docs/services/chemconverter"
+repository = "https://github.com/ComPlat/chemotion-converter-app"
+
+[tool.setuptools]
+py-modules = []

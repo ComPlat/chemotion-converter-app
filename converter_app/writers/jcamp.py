@@ -3,7 +3,7 @@ import os
 import sys
 
 from .base import Writer
-from .. import __title__, __version__
+from .. import TITLE, VERSION
 from ..options import DATA_TYPES, DATA_CLASSES, XUNITS, YUNITS
 
 
@@ -17,7 +17,6 @@ class JcampWriter(Writer):
         self.table = converter.tables[0]
         self.buffer = io.StringIO()
 
-
     def process(self):
         self.process_table(self.table)
 
@@ -26,7 +25,7 @@ class JcampWriter(Writer):
 
         jcamp_header = {
             'TITLE': header.get('TITLE', 'Spectrum'),
-            'JCAMP-DX': '5.00 $$ {} ({})'.format(__title__, __version__),
+            'JCAMP-DX': '5.00 $$ {} ({})'.format(TITLE, VERSION),
             'DATA TYPE': header.get('DATA TYPE', DATA_TYPES[0]),
             'DATA CLASS': header.get('DATA CLASS', DATA_CLASSES[0]),
             'ORIGIN': header.get('ORIGIN', ''),
@@ -36,12 +35,14 @@ class JcampWriter(Writer):
         if table.get('applied_x_operator'):
             jcamp_header['CALCULATION_APPLIED_X'] = True
             if table.get('x_operations_description'):
-                self.write_comment_header(['X operations description:'] + table.get('x_operations_description'))
+                self.write_comment_header(
+                    ['X operations description:'] + table.get('x_operations_description'))
 
         if table.get('applied_y_operator'):
             jcamp_header['CALCULATION_APPLIED_Y'] = True
             if table.get('y_operations_description'):
-                self.write_comment_header(['Y operations description:'] + table.get('y_operations_description'))
+                self.write_comment_header(
+                    ['Y operations description:'] + table.get('y_operations_description'))
 
         if table.get('applied_operator_failed'):
             jcamp_header['CALCULATION_FAILED'] = True
@@ -253,7 +254,8 @@ class JcampWriter(Writer):
                     except ValueError:
                         index = 0
                     decimal = len(string) - index - 1
-                    line += ',' + string.replace('.', '') + (max_decimal - decimal) * '0'
+                    line += ',' + \
+                        string.replace('.', '') + (max_decimal - decimal) * '0'
 
             self.buffer.write(line + os.linesep)
 
