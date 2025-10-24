@@ -28,7 +28,7 @@ dependencies = [
     "python-magic==0.*",
     "gemmi==0.*",
     "xlrd==2.*",
-    "Werkzeug==2.*",
+    "Werkzeug==3.*",
     "jcamp==1.*",
     "PyMuPDF==1.23.7",
     "pylint==3.*",
