@@ -30,7 +30,7 @@ dependencies = [
     "xlrd==2.*",
     "Werkzeug==2.*",
     "jcamp==1.*",
-    "PyMuPDF==1.*",
+    "PyMuPDF==1.23.7",
     "pylint==3.*",
     "str2bool==1.*",
     "opusFC==1.*",
