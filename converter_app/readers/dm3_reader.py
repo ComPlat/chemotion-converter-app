@@ -29,14 +29,13 @@ class DM3Reader(Reader):
         table = self.append_table(tables)
 
         file = self.file.content
-        with tempfile.NamedTemporaryFile(delete=False, suffix=".dm3") as tmp:
+        with tempfile.NamedTemporaryFile(delete=True, suffix=".dm3") as tmp:
             tmp.write(file)
             tmp_path = tmp.name
+            dm3f = dm3.DM3(tmp_path)
+            table['metadata'] = {self._ensure_str(k): self._ensure_str(v) for k, v in dm3f.info.items()}
 
-        dm3f = dm3.DM3(tmp_path)
-        table['metadata'] = {self._ensure_str(k): self._ensure_str(v) for k, v in dm3f.info.items()}
-
-        os.remove(tmp_path)
+        # os.remove(tmp_path)
 
 
         return tables
