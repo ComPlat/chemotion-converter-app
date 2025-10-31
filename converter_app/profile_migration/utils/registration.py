@@ -45,18 +45,20 @@ class Migrations:
             raise ValueError(f'Script {script_id} already registered')
         self._registry[script_id] = migration_obj
         applied_after = migration_obj.to_be_applied_after_migration()
-        if applied_after in self._registry_tree:
-            raise ValueError(
-                f'{self._registry_tree[applied_after]} already has {applied_after} as to_be_applied_after_migration')
         if applied_after == script_id:
             raise ValueError(
                 f'to_be_applied_after_migration: {applied_after} must not be identifier{script_id} of the same script')
-        self._registry_tree[applied_after] = script_id
+        if applied_after in self._registry_tree:
+            self._registry_tree[applied_after].append(script_id)
+        else :
+            self._registry_tree[applied_after] = [script_id]
 
     def validate_tree(self):
-        res = list(set(self._registry_tree.keys()) -
-                   set(self._registry_tree.values()))
-        assert res == ['']
+        to_be_applied_after = set(x for after_list in self._registry_tree.values() for x  in after_list)
+        week_all_registered_registry_not_reachable = list(set(self._registry_tree.keys()) - to_be_applied_after)
+        all_registered_registry_not_reachable = list(set(self._registry.keys()) - to_be_applied_after)
+        assert week_all_registered_registry_not_reachable == ['']
+        assert all_registered_registry_not_reachable == []
 
     def run_migration(self, profile_dir: str, force: bool = False):
         self.profile_dir = profile_dir
@@ -79,17 +81,23 @@ class Migrations:
                 print(f'{profile_path} cannot be migrated: {e}')
 
     def migrate_profile(self, profile: Profile, force: bool = False):
-        is_migration_applied = False
         if force:
             last_migration = ''
         else:
             last_migration = profile.data.get('last_migration', '')
-        while last_migration in self._registry_tree:
-            is_migration_applied = True
-            last_migration = self._registry_tree[last_migration]
-            self._registry[last_migration].up(profile.data)
-            profile.data['last_migration'] = last_migration
+        is_migration_applied = self._up_migration(last_migration, profile)
         return is_migration_applied
+
+    def _up_migration(self, last_migration, profile):
+        if last_migration not in self._registry_tree:
+            return False
+
+        for next_migration in self._registry_tree[last_migration]:
+            self._registry[next_migration].up(profile.data)
+            profile.data['last_migration'] = next_migration
+        for next_migration in self._registry_tree[last_migration]:
+            self._up_migration(next_migration, profile)
+        return True
 
     def _save_profile(self, profile: Profile):
         if profile.is_default_profile:
