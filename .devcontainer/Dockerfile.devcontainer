@@ -26,4 +26,4 @@ RUN mkdir -p ${PIP_CACHE_DIR}
 COPY pyproject.toml .
 
 RUN --mount=type=cache,target=${PIP_CACHE_DIR},sharing=locked,id=pip-cache \
-    touch README.md && pip install --upgrade pip && pip install .[dev] && rm -rf README.md pyproject.toml build *.egg-info
+    touch README.md && pip install --upgrade pip && pip install --config-settings="cmake.args=-DFETCH_ZLIB_NG=ON" .[dev] && rm -rf README.md pyproject.toml build *.egg-info
