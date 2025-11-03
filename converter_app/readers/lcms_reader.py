@@ -1,6 +1,7 @@
 import logging
 
 import openlab as ol
+import pandas as pd
 
 from converter_app.readers.helper.base import Reader
 from converter_app.readers.helper.reader import Readers
@@ -38,6 +39,68 @@ class LcmsReader(Reader):
     def prepare_tables(self):
         tables = []
         table = self.append_table(tables)
+
+        # Extract metadata with:
+        # - key = value if only one unique, non-null string exists
+        # - key[i] = value_i for multiple unique values
+        mdf = ol.read_attr(self.file_content[0].file_path)
+
+        metadata_raw = mdf.to_dict(orient='list')
+
+        table['metadata'] = {}
+
+        for col, values in metadata_raw.items():
+            unique_vals = list(map(str, pd.Series(values).dropna().unique()))
+            if len(unique_vals) == 1:
+                table['metadata'][col] = unique_vals[0]
+            else:
+                for i, val in enumerate(unique_vals):
+                    table['metadata'][f"{col}[{i}]"] = val
+
+
+        # MS Spectrum m/z & time --> Intensities
+        for index, spectrum in enumerate(self.df):
+            table = self.append_table(tables)
+            if index == 0:
+                table['metadata']['internal_reader_type'] = "ms negativ scan" # defined by read_ms fkt
+            if index == 1:
+                table['metadata']['internal_reader_type'] = "ms positive scan" # defined by read_ms fkt
+            table['metadata']['internal_reader_name'] = "openlab"
+            table['columns'] = [
+                {'key': str(idx), 'name': str(col)}
+                for idx, col in enumerate(spectrum.columns)
+            ]
+            table['rows'] = spectrum.values.tolist()
+
+        # UVVIS data
+        # Read the UV/Vis DataFrame from file
+        uvvis_frame = ol.read_lc(self.file_content[0].file_path)
+
+        # Get sorted list of unique wavelengths (as float, ascending)
+        unique_wavelengths = sorted(uvvis_frame['wavelength'].dropna().unique().tolist())
+
+        for wavelength in unique_wavelengths:
+            # Create a new table for this wavelength
+            table = self.append_table(tables)
+
+            # Add metadata
+            table['metadata']['AllWaves'] = str(unique_wavelengths)  # store all wavelengths as list
+            table['metadata']['internal_reader_type'] = "lc - uv/vis"
+            table['metadata']['internal_reader_name'] = "openlab"
+            table['metadata']['Wavelength'] = wavelength  # current wavelength
+
+            # Filter rows for this wavelength and drop the 'wavelength' column (already in metadata)
+            filtered = uvvis_frame[uvvis_frame['wavelength'] == wavelength].drop(columns='wavelength')
+
+            # Define table columns (with index and name for each column)
+            table['columns'] = [
+                {'key': str(idx), 'name': str(col)}
+                for idx, col in enumerate(filtered.columns)
+            ]
+
+            # Store data rows as list of lists (no column names)
+            table['rows'] = filtered.values.tolist()
+
         """
         table['columns'] = [{
             'key': str(idx),
