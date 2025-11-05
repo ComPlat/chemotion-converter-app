@@ -26,12 +26,27 @@ class Migrations:
 
     @property
     def last(self) -> str:
-        key = ''
-        for _ in range(len(self._registry_tree) + 1):
-            if key not in self._registry_tree:
-                return key
-            key = self._registry_tree[key]
-        return ''
+        def longest_path(graph, node='', memo=None):
+            if memo is None:
+                memo = {}
+            if node in memo:
+                return memo[node]
+
+            children = graph.get(node, [])
+            if not children:
+                memo[node] = [node]
+                return memo[node]
+
+            # find the longest path among all children
+            max_path = []
+            for child in children:
+                path = longest_path(graph, child, memo)
+                if len(path) > len(max_path):
+                    max_path = path
+
+            memo[node] = [node] + max_path
+            return memo[node]
+        return longest_path(self._registry_tree)[-1]
 
     def register(self, migration_obj):
         """
