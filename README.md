@@ -21,7 +21,7 @@ Then, the application and its dependencies can be installed:
 
 ```bash
 pip install -e .                     # installs the package in editable mode
-pip install -r requirements/dev.txt  # only needed for the development setup
+pip install .[dev]  # only needed for the development setup
 ```
 
 The application is configured using environment variables, which can be read from a `.env` file. The file `.env.dev` can be used as template. At least `FLASK_APP=converter_app.app` needs to be set.
