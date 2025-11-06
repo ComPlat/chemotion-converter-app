@@ -13,7 +13,7 @@ class LcmsReader(Reader):
     Reads tarballed lcms files / folders with extension .tar.gz
     """
     identifier = 'lcms_reader'
-    priority = 4
+    priority = 10
 
     def __init__(self, file, *tar_files):
         super().__init__(file, *tar_files)
@@ -32,8 +32,13 @@ class LcmsReader(Reader):
                 else:
                     return False
                 return True
+
+            except AssertionError:  # no cdf File in container
+                return False
+
             except ValueError:
-                pass
+                return False
+
         return False
 
     def prepare_tables(self):
@@ -61,16 +66,19 @@ class LcmsReader(Reader):
         # MS Spectrum m/z & time --> Intensities
         for index, spectrum in enumerate(self.df):
             table = self.append_table(tables)
-            if index == 0:
-                table['metadata']['internal_reader_type'] = "ms negativ scan" # defined by read_ms fkt
-            if index == 1:
-                table['metadata']['internal_reader_type'] = "ms positive scan" # defined by read_ms fkt
-            table['metadata']['internal_reader_name'] = "openlab"
-            table['columns'] = [
-                {'key': str(idx), 'name': str(col)}
-                for idx, col in enumerate(spectrum.columns)
-            ]
-            table['rows'] = spectrum.values.tolist()
+            self.dataframe_to_ui(index, spectrum, table, "mass spectrum")
+
+            # MS Spectrum time --> TIC
+            # ensure columns are numeric
+            table = self.append_table(tables)
+            spectrum['intensities'] = pd.to_numeric(spectrum['intensities'], errors='coerce')
+            spectrum['time'] = pd.to_numeric(spectrum['time'], errors='coerce')
+
+            # compute TIC = sum of intensities per time point
+            tic = spectrum.groupby('time', as_index=False)['intensities'].sum()
+            tic = tic.rename(columns={'intensities': 'TIC'})
+
+            self.dataframe_to_ui(index, tic, table, "ms chromatogramm")
 
         # UVVIS data
         # Read the UV/Vis DataFrame from file
@@ -87,7 +95,7 @@ class LcmsReader(Reader):
             table['metadata']['AllWaves'] = str(unique_wavelengths)  # store all wavelengths as list
             table['metadata']['internal_reader_type'] = "lc - uv/vis"
             table['metadata']['internal_reader_name'] = "openlab"
-            table['metadata']['Wavelength'] = wavelength  # current wavelength
+            table['metadata']['Wavelength'] = str(wavelength)  # current wavelength
 
             # Filter rows for this wavelength and drop the 'wavelength' column (already in metadata)
             filtered = uvvis_frame[uvvis_frame['wavelength'] == wavelength].drop(columns='wavelength')
@@ -101,13 +109,20 @@ class LcmsReader(Reader):
             # Store data rows as list of lists (no column names)
             table['rows'] = filtered.values.tolist()
 
-        """
-        table['columns'] = [{
-            'key': str(idx),
-            'name': f'{value}'
-        } for idx, value in enumerate(['Time', 'Wavelength'])]
-        """
-
         return tables
+
+    def dataframe_to_ui(self, index, spectrum, table, reader_type: str):
+        table['metadata']['internal_reader_type'] = reader_type
+        if index == 0:
+            table['metadata']['internal_scan_direction'] = "negativ"  # defined by read_ms fkt
+        if index == 1:
+            table['metadata']['internal_scan_direction'] = "positiv"  # defined by read_ms fkt
+        table['metadata']['internal_reader_name'] = "openlab"
+        table['columns'] = [
+            {'key': str(idx), 'name': str(col)}
+            for idx, col in enumerate(spectrum.columns)
+        ]
+        table['rows'] = spectrum.values.tolist()
+
 
 Readers.instance().register(LcmsReader)
