@@ -15,7 +15,7 @@ class CalculationError(Exception):
 
 class Converter:
     """
-    Converter object checks if profile matches to filedata and runs the converting process
+    Converter object checks if the profile matches to filedata and runs the converting process
     """
 
     def __init__(self, profile, file_data):
@@ -68,13 +68,13 @@ class Converter:
             else:
                 if self._has_loop(output_table_index):
                     # adjust this identifier for every input table
-                    for input_table_index, _ in enumerate(self.input_tables):
-                        if not self._check_loop_condition(output_table_index, input_table_index):
-                            continue
+                    for i, input_table_index in enumerate(
+                            idx for idx in range(len(self.input_tables))
+                            if self._check_loop_condition(output_table_index, idx)
+                    ):
                         # make a copy of the identifier and adjust the outputTableIndex
                         identifier_copy = copy.deepcopy(identifier)
-                        identifier_copy['outputTableIndex'] = (input_table_index
-                                                               + self._get_output_table_index(identifier['outputTableIndex']))
+                        identifier_copy['outputTableIndex'] = (i + self._get_output_table_index(output_table_index))
 
                         # adjust the (input)tableIndex as well if it was not null
                         if identifier_copy.get('tableIndex') is not None:
@@ -263,7 +263,10 @@ class Converter:
             value = str(value)
             if identifier.get('isRegex') or identifier.get('match') == 'regex':
                 pattern = identifier.get('value')
-                match = re.search(pattern, str(value))
+                if str(pattern).startswith('^') or str(pattern).endswith('$'):
+                    match = re.search(pattern, str(value), re.MULTILINE)
+                else:
+                    match = re.search(pattern, str(value))
                 logger.debug('match_value pattern="%s" value="%s" match=%s', pattern, value, bool(match))
                 if match:
                     try:
@@ -481,7 +484,7 @@ class Converter:
                 return input_tables[int(index)]
             except KeyError:
                 return None
-
+        return None
 
     def _get_line_number(self, header, value):
         # if line_number is None:

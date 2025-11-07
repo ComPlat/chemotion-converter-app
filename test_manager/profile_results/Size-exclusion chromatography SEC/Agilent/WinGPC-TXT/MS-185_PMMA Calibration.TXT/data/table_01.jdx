@@ -1,5 +1,5 @@
 ##TITLE=Spectrum
-##JCAMP-DX=5.00 $$ chemotion-converter-app (1.5.0)
+##JCAMP-DX=5.00 $$ chemotion-converter-app (1.6.2)
 ##DATA TYPE=SIZE EXCLUSION CHROMATOGRAPHY
 ##DATA CLASS=XYPOINTS
 ##ORIGIN=
@@ -8,18 +8,14 @@
 ##YUNITS=ARBITRARY UNITS
 ##LABEL=Vial   8: MS-185 - 1
 ##COMMENTS=\\129.13.136.127\Shared_Folder\Analysis\GPC_THF_CS_R311\Marvin Subarew\MS-185\MS-185_PMMA Calibration.TXT
-##MN= 2.787E+4
-##MW= 3.870E+4
-##D= 1.389E+0
-##MP= 3.736E+4
 ##DETEC1=I1: RID 1, RI Signal
 ##DETEC2=I1: VWD 1, Signal A
 ##DETEC3=I1: IsoPump 1, Pressure
 ##COL1=default
 ##IN_VOL=100.000
 ##ELUENT=THF
-##FLOW=  1.000
-##TEMPERATURE= 25.000
+##FLOW=1.000
+##TEMPERATURE=25.000
 ##DATE=15.08.22
 ##TIME=21:06:30
 ##NO_DEC=1
