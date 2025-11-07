@@ -37,6 +37,7 @@ dependencies = [
     "referencing==0.*",
     "jsonschema==4.*",
     "pybind11==3.*",
+    "yadg==6.0.*",
 ]
 
 [project.optional-dependencies]
