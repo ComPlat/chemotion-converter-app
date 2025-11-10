@@ -48,17 +48,27 @@ class MprReader(Reader):
         return table
 
     def prepare_tables(self):
+        """
+        Converts numpy-like extracted data from YADG into Chemotion-compatible tables.
+        If a 'cycle number' column exists, split the data by cycle into separate tables.
+        """
         tables = []
 
-        for k, numpy_value in self._numpy_data.items():
-            table = self._append_table(tables, k)
+        for key, numpy_value in self._numpy_data.items():
+            base_table = self._append_table(tables, key)
             dict_value = numpy_value.to_dict()
-            self._convert_attrs(dict_value, table)
+            self._convert_attrs(dict_value, base_table)
 
+            # Prepare table structure
             for _ in range(list(dict_value['dims'].values())[0]):
-                table['rows'].append([])
-            self._convert_data_table(dict_value, table, 'coords')
-            self._convert_data_table(dict_value, table, 'data_vars')
+                base_table['rows'].append([])
+
+            # Fill coordinate and data variables
+            self._convert_data_table(dict_value, base_table, 'coords')
+            self._convert_data_table(dict_value, base_table, 'data_vars')
+
+            # Handle potential cycle-based split
+            self._split_by_cycle(base_table, tables, key)
 
         return tables
 
@@ -98,6 +108,37 @@ class MprReader(Reader):
                     table['metadata'].add_unique(f'{man_key}.{k}.{i}', str(lv))
             else:
                 table['metadata'].add_unique(f'{man_key}.{k}', str(v))
+
+    def _split_by_cycle(self, base_table: dict, tables: list, table_name: str) -> None:
+        """
+        Splits the given base_table into multiple tables by 'cycle number' column
+        if that column exists. Each resulting table is appended to 'tables'.
+
+        :param base_table: The table containing all rows before splitting
+        :param tables: The global list of tables to append to
+        :param table_name: Name of the original dataset (used for naming new tables)
+        """
+        # Extract column names and check if 'cycle number' exists
+        column_names = [col['name'] for col in base_table['columns']]
+        if 'cycle number' not in column_names:
+            # No cycle column → keep table as-is
+            # tables.append(base_table)
+            return
+
+        cycle_idx = column_names.index('cycle number')
+
+        # Group rows by cycle number
+        cycle_groups = {}
+        for row in base_table['rows']:
+            cycle_value = row[cycle_idx]
+            cycle_groups.setdefault(cycle_value, []).append(row)
+
+        # Create new tables per cycle
+        for cycle_value, rows in sorted(cycle_groups.items(), key=lambda x: x[0]):
+            cycle_table = self._append_table(tables, f"{table_name}_cycle_{cycle_value}")
+            cycle_table['columns'] = list(base_table['columns'])  # Copy columns
+            cycle_table['rows'] = rows
+            cycle_table['metadata'].add_unique('cycle_number', str(cycle_value))
 
 
 Readers.instance().register(MprReader)
