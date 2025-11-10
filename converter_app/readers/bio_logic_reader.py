@@ -48,7 +48,7 @@ class BioLogic(Reader):
 
     def prepare_tables(self):
         tables = self.mpr_reader.prepare_tables()
-        while len(tables) < 5:
+        while len(tables) < 12:
             self.append_table(tables)['header'].append('PLACEHOLDER')
         if self.mpl_reader:
             tables += self.mpl_reader.prepare_tables()
