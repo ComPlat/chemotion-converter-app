@@ -263,7 +263,10 @@ class Converter:
             value = str(value)
             if identifier.get('isRegex') or identifier.get('match') == 'regex':
                 pattern = identifier.get('value')
-                match = re.search(pattern, str(value))
+                if str(pattern).startswith('^') or str(pattern).endswith('$'):
+                    match = re.search(pattern, str(value), re.MULTILINE)
+                else:
+                    match = re.search(pattern, str(value))
                 logger.debug('match_value pattern="%s" value="%s" match=%s', pattern, value, bool(match))
                 if match:
                     try:
