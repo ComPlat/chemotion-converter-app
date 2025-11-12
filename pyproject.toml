@@ -22,7 +22,7 @@ dependencies = [
     "Flask==2.*",
     "Flask-Cors==6.*",
     "Flask-HTTPAuth==4.*",
-    "gunicorn==20.*",
+    "gunicorn==22.*",
     "openpyxl==3.*",
     "python-dotenv==0.*",
     "python-magic==0.*",
