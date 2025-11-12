@@ -68,7 +68,7 @@ tomlkit==0.13.3
 typeguard==4.4.4
 typing_extensions==4.15.0
 tzdata==2025.2
-Werkzeug==2.3.8
+Werkzeug==3.0.6
 wheel==0.45.1
 xlrd==2.0.2
 zope.interface==8.0.1
