@@ -6,6 +6,12 @@ identifiers_schema = {
     "title": "Schema for ChemConverter profile tables",
     "type": "object",
     "properties": {
+        "id": {
+            "type": "string"
+        },
+        "editable": {
+            "type": "boolean"
+        },
         "key": {
             "type": "string"
         },

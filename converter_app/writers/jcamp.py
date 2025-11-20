@@ -208,6 +208,7 @@ class JcampWriter(Writer):
             #'FIRST': '',
             #'LAST': '',
         })
+
         for i, table in enumerate(tables):
             x = table.get('x')
             y = table.get('y')
@@ -218,7 +219,7 @@ class JcampWriter(Writer):
             # write header for one page
 
             self._write_header({
-                'PAGE': f'{i + 1}',
+                'PAGE': header['NTUPLES_PAGE_HEADER_VALUE'],
                 'NPOINTS': npoints,
                 'DATA TABLE': '(XY..XY)'
 

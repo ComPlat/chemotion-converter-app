@@ -332,6 +332,18 @@ class Converter:
                 x_rows = []
                 y_rows = []
 
+            if header['DATA CLASS'] == 'NTUPLES':
+                if header['NTUPLES_PAGE_HEADER'] == '___TABLE_NAME':
+                    header['NTUPLES_PAGE_HEADER_VALUE'] = f'TABLE: {x_column["tableIndex"]}'
+                elif header['NTUPLES_PAGE_HEADER'] == '___+':
+                    this_id = header['NTUPLES_ID']
+                    header['NTUPLES_PAGE_HEADER_VALUE'] = len([x for x in self.tables if x['header']['NTUPLES_ID'] == this_id])
+                try:
+                    key_value = self.input_tables[x_column["tableIndex"]]['metadata'][header['NTUPLES_PAGE_HEADER']]
+                except KeyError:
+                    key_value = 'UNKNOWN'
+                header['NTUPLES_PAGE_HEADER_VALUE'] = f"{header['NTUPLES_PAGE_HEADER']}: {key_value}"
+
 
             self.tables.append({
                 'header': header,
