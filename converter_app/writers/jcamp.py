@@ -1,6 +1,8 @@
 import io
 import os
 import sys
+from collections import defaultdict
+from typing import Any, Generator
 
 from .base import Writer
 from .. import TITLE, VERSION
@@ -20,18 +22,25 @@ class JcampWriter(Writer):
     def process(self):
         self.process_table(self.tables[0])
 
-    def process_ntuples_tables(self) -> list:
+    def process_ntuples_tables(self) -> Generator[list, Any, None]:
         """
         Prepares single jdx for all NTUPLES data tables
         """
-        tables = [table for table in self.tables if table.get('header', {}).get('DATA CLASS') == 'NTUPLES']
-        if len(tables) == 0:
-            return tables
-        self.buffer = io.StringIO()
-        header = tables[0].get('header', {})
-        self._prepare_main_header(header)
-        self._process_ntuples(header, tables)
-        return tables
+        ntuples_tables = [table for table in self.tables if table.get('header', {}).get('DATA CLASS') == 'NTUPLES']
+
+        # 1. Group the objects using a defaultdict
+        grouped_tables = defaultdict(list)
+
+        for table in ntuples_tables:
+            # Use the 'header' attribute as the key to group by
+            grouped_tables[table['header']['NTUPLES_ID']].append(table)
+
+        for tables in grouped_tables.values():
+            self.buffer = io.StringIO()
+            header = tables[0].get('header', {})
+            self._prepare_main_header(header)
+            self._process_ntuples(header, tables)
+            yield tables
 
     def process_table(self, table):
         """
@@ -214,6 +223,8 @@ class JcampWriter(Writer):
             y = table.get('y')
             assert x
             assert y
+
+            header = table.get('header')
 
             npoints = len(x)
             # write header for one page

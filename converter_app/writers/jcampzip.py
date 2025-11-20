@@ -34,10 +34,9 @@ class JcampZipWriter(Writer):
 
         with zipfile.ZipFile(self.zipbuffer, 'w') as zf:
 
-            file_name = 'data/table.jdx'
             jc = JcampWriter(self._converter)
-            tables = jc.process_ntuples_tables()
-            if len(tables) > 0:
+            for idx, tables in enumerate(jc.process_ntuples_tables()):
+                file_name = f'data/table_NTUPLES{idx}.jdx'
                 string = self._add_table_to_zip(metadata, tables[0], file_name, zf, jc)
                 self._update_sha_strings(sha_strings, string, file_name)
 
