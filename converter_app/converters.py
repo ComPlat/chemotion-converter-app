@@ -343,7 +343,7 @@ class Converter:
                         key_value = self.input_tables[x_column["tableIndex"]]['metadata'][header['NTUPLES_PAGE_HEADER']]
                     except KeyError:
                         key_value = 'UNKNOWN'
-                    header['NTUPLES_PAGE_HEADER_VALUE'] = f"{header['NTUPLES_PAGE_HEADER']}: {key_value}"
+                    header['NTUPLES_PAGE_HEADER_VALUE'] = f"{header['NTUPLES_PAGE_HEADER']}= {key_value}"
 
 
             self.tables.append({

@@ -73,10 +73,10 @@ class JcampWriter(Writer):
             'ORIGIN': header.get('ORIGIN', ''),
             'OWNER': header.get('OWNER', '')
         }
-
+        black_list = ['NTUPLES_PAGE_HEADER_VALUE']
         for key in header:
             key_upper = key.upper()
-            if key_upper not in jcamp_header:
+            if key_upper not in black_list and key_upper not in jcamp_header:
                 jcamp_header[key_upper] = header[key]
         self._write_header(jcamp_header)
 
