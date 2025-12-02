@@ -43,7 +43,7 @@ class BrmlReader(Reader):
 
                                     table['rows'].append(row)
                     else:
-                        print(f"The file '{raw_data_file_name}' does not exist.")
+                        pass #print(f"The file '{raw_data_file_name}' does not exist.")
         return tables
 
 
