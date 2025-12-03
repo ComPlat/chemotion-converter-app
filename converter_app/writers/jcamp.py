@@ -80,17 +80,17 @@ class JcampWriter(Writer):
                 jcamp_header[key_upper] = header[key]
         self._write_header(jcamp_header)
 
-    def _prepare_calculation_header(self, table):
+    def _prepare_calculation_header(self, table, add_comment = True):
         jcamp_header = {}
         if table.get('applied_x_operator'):
             jcamp_header['CALCULATION_APPLIED_X'] = True
-            if table.get('x_operations_description'):
+            if add_comment and table.get('x_operations_description'):
                 self.write_comment_header(
                     ['X operations description:'] + table.get('x_operations_description'))
 
         if table.get('applied_y_operator'):
             jcamp_header['CALCULATION_APPLIED_Y'] = True
-            if table.get('y_operations_description'):
+            if add_comment and table.get('y_operations_description'):
                 self.write_comment_header(
                     ['Y operations description:'] + table.get('y_operations_description'))
 
@@ -204,8 +204,7 @@ class JcampWriter(Writer):
         self.buffer.write('##END=$$ End of the data block' + os.linesep)
 
     def _process_ntuples(self, header, tables):
-        data_type = header.get('DATA TYPE', DATA_TYPES[0])
-        self._prepare_calculation_header(tables[0])
+        self._prepare_calculation_header(tables[0], False)
         self._write_header({
             'NTUPLES': '(XY..XY)',
             #'VAR_NAME': '',
@@ -250,7 +249,6 @@ class JcampWriter(Writer):
 
 
     def write_comment_header(self, header):
-        return
         self.buffer.write('$$ ' + '-' * 20 + '\n')
         for value in header:
             if value is not None:

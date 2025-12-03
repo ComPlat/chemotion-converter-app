@@ -17,7 +17,7 @@ class ProfileMigrationScript(ProfileMigration):
         # ToDo: Updated the profile
         for table in profile.get('tables', []):
             if table['header']['DATA CLASS'] == 'NTUPLES':
-                table['header']['NTUPLES_PAGE_HEADER'] = table['header'].get('NTUPLES_PAGE_HEADER', '+')
+                table['header']['NTUPLES_PAGE_HEADER'] = table['header'].get('NTUPLES_PAGE_HEADER', '___+')
                 table['header']['NTUPLES_ID'] = table['header'].get('NTUPLES_ID', uuid.uuid4().__str__())
         for idx, identifier in enumerate(profile['identifiers']):
             if identifier.get('editable', True):
