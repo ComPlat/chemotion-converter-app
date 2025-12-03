@@ -4,6 +4,8 @@
   "matches": [
     {
       "identifier": {
+        "editable": true,
+        "id": "#0fileMetadata",
         "key": "reader",
         "match": "exact",
         "optional": false,
@@ -16,6 +18,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#1tableMetadata",
         "key": "column_00",
         "match": "exact",
         "optional": false,
@@ -30,6 +34,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#2tableMetadata",
         "key": "column_04",
         "match": "exact",
         "optional": false,
@@ -44,6 +50,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#3fileMetadata",
         "key": "scan_rate",
         "match": "any",
         "optional": true,
@@ -59,6 +67,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#4fileMetadata",
         "key": "step_size",
         "match": "any",
         "optional": true,
@@ -74,6 +84,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#5fileMetadata",
         "key": "v_end",
         "match": "any",
         "optional": true,
@@ -89,6 +101,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#6fileMetadata",
         "key": "v_init",
         "match": "any",
         "optional": true,
@@ -104,6 +118,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#7fileMetadata",
         "key": "v_limit1",
         "match": "any",
         "optional": true,
@@ -119,6 +135,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#8fileMetadata",
         "key": "v_limit2",
         "match": "any",
         "optional": true,

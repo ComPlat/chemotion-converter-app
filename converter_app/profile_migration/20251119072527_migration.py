@@ -19,13 +19,13 @@ class ProfileMigrationScript(ProfileMigration):
             if table['header']['DATA CLASS'] == 'NTUPLES':
                 table['header']['NTUPLES_PAGE_HEADER'] = table['header'].get('NTUPLES_PAGE_HEADER', '+')
                 table['header']['NTUPLES_ID'] = table['header'].get('NTUPLES_ID', uuid.uuid4().__str__())
-        for identifier in profile['identifiers']:
+        for idx, identifier in enumerate(profile['identifiers']):
             if identifier.get('editable', True):
                 identifier['editable'] = True
             else:
                 identifier['editable'] = False
-            if identifier.get('id') is None:
-                identifier['id'] = f'#{uuid.uuid4().__str__()}'
+            if identifier.get('id') is None or identifier.get('id') == '':
+                identifier['id'] = f'#{idx}{identifier["type"]}'
 
     def to_be_applied_after_migration(self) -> str:
         """
