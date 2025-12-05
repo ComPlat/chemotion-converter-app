@@ -1,8 +1,7 @@
 import logging
 
+from converter_app.readers.helper.base import Reader
 from converter_app.readers.helper.reader import Readers
-from converter_app.readers.ascii import AsciiReader
-
 logger = logging.getLogger(__name__)
 
 import struct
@@ -10,7 +9,7 @@ import numpy as np
 
 
 
-class StoeRawReader(AsciiReader):
+class StoeRawReader(Reader):
     """
     Implementation of the TVB Reader for reading Stoe raw binary data file.
     Code was extracted from the TVB jupiter Notebook by Ron Dockhorn.
@@ -21,16 +20,18 @@ class StoeRawReader(AsciiReader):
     identifier = 'stoe_raw_reader'
     priority = 5
 
-    contentrawfile = ''
-    file_type = ''
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.contentrawfile = ''
+        self._file_type = None
 
-    def unpack_repeated_bytes(self, byte_data, data_type, count):
+    @staticmethod
+    def unpack_repeated_bytes(byte_data, data_type):
         """
         Unpack a series of bytes into a tuple of the same data type.
 
         :param byte_data: The bytes to unpack.
         :param data_type: The format character for the data type (e.g., 'b' for signed char).
-        :param count: The number of items to unpack.
         :return: A tuple of unpacked values.
         """
         # Create the format string based on the data type and count
@@ -42,12 +43,23 @@ class StoeRawReader(AsciiReader):
         # 'B': Unsigned char (1 byte)
         # 'q': Long long (8 bytes)
         # 'Q': Unsigned long long (8 bytes)
+
+        if data_type == 'b':
+            count = len(byte_data)
+        elif data_type == 'h':
+            count = len(byte_data) // 2
+        elif data_type in ['i', 'f']:
+            count = len(byte_data) // 4
+        else:
+            raise ValueError(f'{data_type} not supported')
+
         format_string = f'{count}{data_type}'
 
         # Unpack the byte data using the constructed format string
         return struct.unpack(format_string, byte_data)
 
-    def get_non_empty_chunks_separated_by_null(self, data_slice):
+    @staticmethod
+    def get_non_empty_chunks_separated_by_null(data_slice):
         """
         Get all non-empty chunks of data separated by NULL bytes.
 
@@ -64,9 +76,7 @@ class StoeRawReader(AsciiReader):
 
         self.contentrawfile = self.file.content
 
-        count = len(self.contentrawfile[0x00:0x0D + 1]) // 1  # Number of bytes to unpack
-
-        unpacked_data = self.unpack_repeated_bytes(self.contentrawfile[0x00:0x0D + 1], 'b', count)
+        unpacked_data = self.unpack_repeated_bytes(self.contentrawfile[0x00:0x0D + 1], 'b')
 
         # Convert unpacked data to a string
         string_output_file_type = ''.join(chr(b) for b in unpacked_data)
@@ -81,12 +91,14 @@ class StoeRawReader(AsciiReader):
         return (
                 self.file.suffix.lower() == ".raw"
                 and self.file.encoding.lower() == "binary"
-                and self._cache_file_type() == "RAW_1.06Powdat"
+                and self.file_type == "RAW_1.06Powdat"
         )
 
-    def _cache_file_type(self) -> str:
-        self.file_type = self.get_file_type_version()
-        return self.file_type
+    @property
+    def file_type(self):
+        if self._file_type is None:
+            self._file_type = self.get_file_type_version()
+        return self._file_type
 
     def prepare_tables(self):
         tables = []
@@ -99,8 +111,7 @@ class StoeRawReader(AsciiReader):
         ###
 
         datasplice = self.contentrawfile[0x0010:0x001F + 1]
-        count = len(datasplice) // 1  # Number of bytes to unpack
-        unpacked_data = self.unpack_repeated_bytes(datasplice, 'b', count)
+        unpacked_data = self.unpack_repeated_bytes(datasplice, 'b')
 
         # Convert unpacked data to a string
         string_output_day = ''.join(chr(b) for b in unpacked_data)
@@ -121,8 +132,7 @@ class StoeRawReader(AsciiReader):
 
         # Print the result chunks
         for i, chunk in enumerate(chunks):
-            count = len(chunk) // 1  # Number of bytes to unpack (1 for char)
-            unpacked_data = self.unpack_repeated_bytes(chunk, 'b', count)
+            unpacked_data = self.unpack_repeated_bytes(chunk, 'b')
             string_output_description = ''.join(chr(b) for b in unpacked_data)
             # Print the unpacked data as a string
             # The comments in the file is not needed - uncomment if necessary
@@ -138,8 +148,7 @@ class StoeRawReader(AsciiReader):
         # Copper K Alpha1 x-ray wavelength of 1.5406 Angstrom used by the experiment.
         ###
         datasplice = self.contentrawfile[0x0142:0x014A]
-        count = len(datasplice) // 4  # Number of bytes to unpack (4 for float)
-        unpacked_data = self.unpack_repeated_bytes(datasplice, 'f', count)
+        unpacked_data = self.unpack_repeated_bytes(datasplice, 'f')
 
         table['metadata']['Alpha1 x-ray wavelength'] = str(unpacked_data[0])
 
@@ -151,8 +160,7 @@ class StoeRawReader(AsciiReader):
         chunks = self.get_non_empty_chunks_separated_by_null(datasplice)
 
         for i, chunk in enumerate(chunks):
-            count = len(chunk) // 1  # Number of bytes to unpack (1 for char)
-            unpacked_data = self.unpack_repeated_bytes(chunk, 'b', count)
+            unpacked_data = self.unpack_repeated_bytes(chunk, 'b')
             string_output_time = ''.join(chr(b) for b in unpacked_data)
             if i == 0:
                 table['metadata']['Start date'] = string_output_time.split()[0].strip()
@@ -165,8 +173,7 @@ class StoeRawReader(AsciiReader):
         # Number of Data Entries
         ###
         datasplice = self.contentrawfile[4 * 0x10000 + 0x0622:4 * 0x10000 + 0x0624]
-        count = len(datasplice) // 2  # Number of bytes to unpack (1 for char)
-        unpacked_data = self.unpack_repeated_bytes(datasplice, 'h', count)
+        unpacked_data = self.unpack_repeated_bytes(datasplice, 'h')
         count_data_entries = int(unpacked_data[0])
         table['metadata']['Data entries'] = str(count_data_entries)
 
@@ -175,8 +182,7 @@ class StoeRawReader(AsciiReader):
         ###
         datasplice = self.contentrawfile[4 * 0x10000 + 0x062C:4 * 0x10000 + 0x0638]
 
-        count = len(datasplice) // 4  # Number of bytes to unpack (1 for char)
-        unpacked_data = self.unpack_repeated_bytes(datasplice, 'f', count)
+        unpacked_data = self.unpack_repeated_bytes(datasplice, 'f')
 
         x_start = unpacked_data[0]
         x_end = unpacked_data[2]
@@ -189,14 +195,12 @@ class StoeRawReader(AsciiReader):
 
         datasplice = self.contentrawfile[0x40800:0x40800 + 4 * count_data_entries]
 
-        count = len(datasplice) // 4  # Number of bytes to unpack (1 for char)
-        unpacked_data = self.unpack_repeated_bytes(datasplice, 'i', count)
+        unpacked_data = self.unpack_repeated_bytes(datasplice, 'i')
 
         y_data = np.array(unpacked_data, dtype=np.int64)
 
         columns = [x_range, y_data]
         table['rows'] = [[float(x), int(y)] for x, y in zip(*columns)]
-
 
         return tables
 
