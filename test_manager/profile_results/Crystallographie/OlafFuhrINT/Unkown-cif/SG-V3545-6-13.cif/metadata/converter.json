@@ -4,6 +4,8 @@
   "matches": [
     {
       "identifier": {
+        "editable": true,
+        "id": "#0fileMetadata",
         "key": "extension",
         "match": "exact",
         "optional": false,
@@ -16,6 +18,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#1fileMetadata",
         "key": "reader",
         "match": "exact",
         "optional": false,
@@ -28,6 +32,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#2tableMetadata",
         "key": "_cell_length_a",
         "match": "regex",
         "optional": true,
@@ -45,6 +51,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#3tableMetadata",
         "key": "_cell_length_b",
         "match": "regex",
         "optional": true,
@@ -62,6 +70,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#4tableMetadata",
         "key": "_cell_length_c",
         "match": "regex",
         "optional": true,
@@ -79,6 +89,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#5tableMetadata",
         "key": "_cell_angle_alpha",
         "match": "any",
         "optional": true,
@@ -96,6 +108,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#6tableMetadata",
         "key": "_cell_angle_beta",
         "match": "any",
         "optional": true,
@@ -113,6 +127,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#7tableMetadata",
         "key": "_cell_angle_gamma",
         "match": "any",
         "optional": true,
@@ -130,6 +146,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#8tableMetadata",
         "key": "_space_group_crystal_system",
         "match": "any",
         "optional": true,
@@ -147,6 +165,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#9tableMetadata",
         "key": "_space_group_name_H-M_alt",
         "match": "any",
         "optional": true,
@@ -164,6 +184,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#10tableMetadata",
         "key": "_cell_volume",
         "match": "any",
         "optional": true,
@@ -181,6 +203,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#11tableMetadata",
         "key": "_cell_formula_units_Z",
         "match": "any",
         "optional": true,
@@ -198,6 +222,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#12tableMetadata",
         "key": "_exptl_crystal_F_000",
         "match": "any",
         "optional": true,
@@ -215,6 +241,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#13tableMetadata",
         "key": "_exptl_crystal_size_mid",
         "match": "any",
         "optional": true,
@@ -232,6 +260,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#14tableMetadata",
         "key": "_diffrn_radiation_type",
         "match": "any",
         "optional": true,
@@ -249,6 +279,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#15tableMetadata",
         "key": "_diffrn_reflns_number",
         "match": "any",
         "optional": true,
@@ -266,6 +298,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#16tableMetadata",
         "key": "_reflns_number_total",
         "match": "any",
         "optional": true,
@@ -283,6 +317,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#17tableMetadata",
         "key": "_refine_ls_goodness_of_fit_ref",
         "match": "any",
         "optional": true,
@@ -300,6 +336,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#18tableMetadata",
         "key": "_refine_ls_R_factor_gt",
         "match": "any",
         "optional": true,
@@ -317,6 +355,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#19tableMetadata",
         "key": "_refine_ls_wR_factor_ref",
         "match": "any",
         "optional": true,
@@ -334,6 +374,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#20tableHeader",
         "lineNumber": "",
         "match": "regex",
         "optional": true,
@@ -348,6 +390,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#21tableHeader",
         "lineNumber": "",
         "match": "regex",
         "optional": true,
@@ -362,6 +406,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#22tableMetadata",
         "key": "_audit_creation_method",
         "match": "regex",
         "optional": true,
@@ -379,6 +425,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#23tableMetadata",
         "key": "_audit_creation_method",
         "match": "regex",
         "optional": true,
@@ -396,6 +444,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#24tableMetadata",
         "key": "_diffrn_measurement_device_type",
         "match": "any",
         "optional": true,
@@ -413,6 +463,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#25tableMetadata",
         "key": "_diffrn_measurement_device",
         "match": "any",
         "optional": true,
@@ -430,6 +482,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#26tableMetadata",
         "key": "_audit_creation_date",
         "match": "any",
         "optional": true,
@@ -447,6 +501,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#27tableMetadata",
         "key": "_diffrn_ambient_temperature",
         "match": "regex",
         "optional": true,
@@ -464,6 +520,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#28tableMetadata",
         "key": "_refine_ls_number_reflns",
         "match": "any",
         "optional": true,
@@ -481,6 +539,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#29tableMetadata",
         "key": "_refine_ls_number_restraints",
         "match": "any",
         "optional": true,
@@ -498,6 +558,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#30tableMetadata",
         "key": "_refine_ls_number_parameters",
         "match": "any",
         "optional": true,
@@ -515,6 +577,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#31tableMetadata",
         "key": "_diffrn_reflns_limit_h_max",
         "match": "any",
         "optional": true,
@@ -532,6 +596,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#32tableMetadata",
         "key": "_diffrn_reflns_limit_h_min",
         "match": "any",
         "optional": true,
@@ -549,6 +615,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#33tableMetadata",
         "key": "_diffrn_reflns_limit_k_max",
         "match": "any",
         "optional": true,
@@ -566,6 +634,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#34tableMetadata",
         "key": "_diffrn_reflns_limit_k_min",
         "match": "any",
         "optional": true,
@@ -583,6 +653,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#35tableMetadata",
         "key": "_diffrn_reflns_limit_l_max",
         "match": "any",
         "optional": true,
@@ -600,6 +672,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#36tableMetadata",
         "key": "_diffrn_reflns_limit_l_min",
         "match": "any",
         "optional": true,
@@ -617,6 +691,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#37tableMetadata",
         "key": "_reflns_number_gt",
         "match": "any",
         "optional": true,
@@ -634,6 +710,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#38tableMetadata",
         "key": "Block_name",
         "match": "any",
         "optional": true,
@@ -651,6 +729,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#39tableMetadata",
         "key": "_chemical_formula_sum",
         "match": "any",
         "optional": true,
@@ -668,6 +748,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#40tableMetadata",
         "key": "_chemical_formula_weight",
         "match": "any",
         "optional": true,
@@ -685,6 +767,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#41tableMetadata",
         "key": "_diffrn_reflns_theta_max",
         "match": "any",
         "operations": [
@@ -708,6 +792,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#42tableMetadata",
         "key": "_diffrn_reflns_theta_min",
         "match": "any",
         "operations": [
@@ -731,6 +817,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#43tableMetadata",
         "key": "_exptl_crystal_density_diffrn",
         "match": "any",
         "optional": true,
@@ -748,6 +836,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#44tableMetadata",
         "key": "_exptl_absorpt_coefficient_mu",
         "match": "any",
         "optional": true,

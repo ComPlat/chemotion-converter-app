@@ -6,11 +6,17 @@ identifiers_schema = {
     "title": "Schema for ChemConverter profile tables",
     "type": "object",
     "properties": {
+        "id": {
+            "type": "string"
+        },
+        "editable": {
+            "type": "boolean"
+        },
         "key": {
             "type": "string"
         },
         "lineNumber": {
-            "type": "string"
+            "type": ["string", "number", "null"],
         },
         "match": {
             "type": "string",
@@ -27,7 +33,7 @@ identifiers_schema = {
             "enum": ["fileMetadata", "tableMetadata", "tableHeader"]
         },
         "value": {
-            "type": "string"
+            "type": ["string", "number"]
         }
     },
     "additionalProperties": True,

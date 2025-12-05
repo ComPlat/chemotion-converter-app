@@ -4,6 +4,8 @@
   "matches": [
     {
       "identifier": {
+        "editable": true,
+        "id": "#0fileMetadata",
         "key": "reader",
         "match": "exact",
         "optional": false,
@@ -16,6 +18,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#1tableMetadata",
         "key": "Instrument Type",
         "match": "exact",
         "optional": false,
@@ -30,6 +34,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#2tableHeader",
         "lineNumber": 1,
         "match": "regex",
         "optional": false,
@@ -45,6 +51,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#3tableHeader",
         "lineNumber": 2,
         "match": "regex",
         "optional": false,

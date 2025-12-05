@@ -1,12 +1,12 @@
 ##TITLE=Spectrum
-##JCAMP-DX=5.00 $$ chemotion-converter-app (1.5.0)
+##JCAMP-DX=5.00 $$ chemotion-converter-app (1.7.0)
 ##DATA TYPE=X-RAY DIFFRACTION
 ##DATA CLASS=XYPOINTS
 ##ORIGIN=
 ##OWNER=
-##CALCULATION_APPLIED_Y=True
 ##XUNITS=2Theta
 ##YUNITS=Intensity
+##CALCULATION_APPLIED_Y=True
 ##FIRSTX=5
 ##LASTX=105.0014
 ##MINX=5.0

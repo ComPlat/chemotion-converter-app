@@ -53,7 +53,11 @@ class TifReader(Reader):
             if len(val) == 1:
                 num_val = self.get_value(val[0])
                 if num_val is not None:
-                    table['rows'].append([len(table['rows']), float(num_val)])
+                    try:
+                       num_val = float(num_val)
+                    except ValueError:
+                        pass
+                    table['rows'].append([len(table['rows']), num_val])
             else:
                 table['metadata'][val[0]] = '='.join(val[1:])
             table['header'].append(f"{'='.join(val)}")

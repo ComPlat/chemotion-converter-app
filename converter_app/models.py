@@ -28,12 +28,12 @@ class Profile:
         id          [str] id of the profile and file name
         errors      [collections.defaultdict] contains all errors if profile is not correct
     """
-    
+
     def __init__(self, profile_data, client_id, profile_id=None, is_default_profile: bool = False):
         self.isDisabled = profile_data.get('isDisabled', False)
         self.data = profile_data
         self.client_id = client_id
-        self.id = profile_id
+        self._id = profile_id
         self.errors = defaultdict(list)
         self._is_default_profile = is_default_profile
 
@@ -112,13 +112,6 @@ class Profile:
         profiles_path = Path(current_app.config['PROFILES_DIR']).joinpath(self.client_id)
         profiles_path.mkdir(parents=True, exist_ok=True)
 
-        if self.id is None:
-            if 'id' in self.data:
-                self.id = self.data['id']
-            else:
-                # create a uuid for new profiles
-                self.data['id'] = self.id = str(uuid.uuid4())
-
         file_path = profiles_path.joinpath(self.id).with_suffix('.json')
         if 'isDefaultProfile' in self.data:
             del self.data['isDefaultProfile']
@@ -147,6 +140,20 @@ class Profile:
             'isDefaultProfile': self._is_default_profile
         }
 
+    @property
+    def id(self):
+        if self._id is None:
+            if 'id' in self.data:
+                self._id = self.data['id']
+            else:
+                # create a uuid for new profiles
+                self.id = str(uuid.uuid4())
+        return self._id
+
+    @id.setter
+    def id(self, new_id):
+        self.data['id'] = self._id = new_id
+        
     @classmethod
     def load(cls, file_path: pathlib.PurePath):
         """
@@ -179,7 +186,6 @@ class Profile:
         profile_id = str(file_path.with_suffix('').name)
         profile_data = cls.load(file_path)
         return cls(profile_data, client_id, profile_id)
-
 
     @classmethod
     def list(cls, client_id):

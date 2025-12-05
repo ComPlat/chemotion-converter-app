@@ -4,6 +4,8 @@
   "matches": [
     {
       "identifier": {
+        "editable": true,
+        "id": "#0fileMetadata",
         "key": "reader",
         "match": "exact",
         "optional": false,
@@ -16,6 +18,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#1tableMetadata",
         "key": "column_01",
         "match": "exact",
         "optional": false,
@@ -30,6 +34,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#2tableMetadata",
         "key": "column_00",
         "match": "exact",
         "optional": false,
@@ -44,6 +50,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#3tableHeader",
         "lineNumber": 1,
         "match": "exact",
         "optional": false,
@@ -59,6 +67,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#4tableHeader",
         "lineNumber": 18,
         "match": "regex",
         "optional": true,
@@ -77,6 +87,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#5tableHeader",
         "lineNumber": "",
         "match": "regex",
         "optional": true,
@@ -95,6 +107,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#6tableHeader",
         "lineNumber": "",
         "match": "regex",
         "optional": true,
@@ -113,6 +127,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#7tableHeader",
         "lineNumber": "",
         "match": "regex",
         "optional": true,
@@ -131,6 +147,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#8tableHeader",
         "lineNumber": "",
         "match": "regex",
         "optional": true,
@@ -149,6 +167,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#9tableHeader",
         "lineNumber": "",
         "match": "regex",
         "operations": [
@@ -173,6 +193,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#10tableHeader",
         "lineNumber": "",
         "match": "regex",
         "optional": true,
@@ -191,6 +213,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#11tableHeader",
         "lineNumber": "",
         "match": "regex",
         "optional": true,
@@ -209,6 +233,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#12tableHeader",
         "lineNumber": "",
         "match": "regex",
         "optional": true,
@@ -227,6 +253,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#13tableHeader",
         "lineNumber": "",
         "match": "regex",
         "optional": true,
@@ -245,6 +273,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#14tableHeader",
         "lineNumber": "",
         "match": "regex",
         "optional": true,
@@ -263,6 +293,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#15tableHeader",
         "lineNumber": "",
         "match": "regex",
         "optional": true,
@@ -281,6 +313,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#16tableHeader",
         "lineNumber": "",
         "match": "regex",
         "optional": true,
@@ -299,6 +333,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#17tableHeader",
         "lineNumber": "",
         "match": "regex",
         "operations": [
@@ -323,6 +359,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#18tableHeader",
         "lineNumber": "",
         "match": "regex",
         "optional": true,
@@ -341,6 +379,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#19tableHeader",
         "lineNumber": "",
         "match": "regex",
         "optional": true,
@@ -359,6 +399,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#20fileMetadata",
         "key": "extension",
         "match": "exact",
         "optional": false,
