@@ -3,6 +3,7 @@ import logging
 import openlab as ol
 import pandas as pd
 
+from converter_app.readers.helper.ms_helper import MsHelper
 from converter_app.readers.helper.base import Reader
 from converter_app.readers.helper.reader import Readers
 
@@ -19,6 +20,7 @@ class LcmsReader(Reader):
         super().__init__(file, *tar_files)
         self.df = None
         self.temp_dir = None
+        self.internal_name = "openlab"
 
     def check(self):
         """
@@ -62,24 +64,6 @@ class LcmsReader(Reader):
                 for i, val in enumerate(unique_vals):
                     table['metadata'][f"{col}[{i}]"] = val
 
-
-        # MS Spectrum m/z & time --> Intensities
-        for index, spectrum in enumerate(self.df):
-            table = self.append_table(tables)
-            self.dataframe_to_ui(index, spectrum, table, "mass spectrum")
-
-            # MS Spectrum time --> TIC
-            # ensure columns are numeric
-            table = self.append_table(tables)
-            spectrum['intensities'] = pd.to_numeric(spectrum['intensities'], errors='coerce')
-            spectrum['time'] = pd.to_numeric(spectrum['time'], errors='coerce')
-
-            # compute TIC = sum of intensities per time point
-            tic = spectrum.groupby('time', as_index=False)['intensities'].sum()
-            tic = tic.rename(columns={'intensities': 'TIC'})
-
-            self.dataframe_to_ui(index, tic, table, "ms chromatogramm")
-
         # UVVIS data
         # Read the UV/Vis DataFrame from file
         uvvis_frame = ol.read_lc(self.file_content[0].file_path)
@@ -109,20 +93,10 @@ class LcmsReader(Reader):
             # Store data rows as list of lists (no column names)
             table['rows'] = filtered.values.tolist()
 
-        return tables
+            ms_tables = MsHelper.create_ms_tables(self.df, self.internal_name)
+            tables.extend(ms_tables)
 
-    def dataframe_to_ui(self, index, spectrum, table, reader_type: str):
-        table['metadata']['internal_reader_type'] = reader_type
-        if index == 0:
-            table['metadata']['internal_scan_direction'] = "negativ"  # defined by read_ms fkt
-        if index == 1:
-            table['metadata']['internal_scan_direction'] = "positiv"  # defined by read_ms fkt
-        table['metadata']['internal_reader_name'] = "openlab"
-        table['columns'] = [
-            {'key': str(idx), 'name': str(col)}
-            for idx, col in enumerate(spectrum.columns)
-        ]
-        table['rows'] = spectrum.values.tolist()
+        return tables
 
 
 Readers.instance().register(LcmsReader)
