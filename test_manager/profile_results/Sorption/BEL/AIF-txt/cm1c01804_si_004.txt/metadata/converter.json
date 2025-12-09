@@ -4,6 +4,8 @@
   "matches": [
     {
       "identifier": {
+        "editable": true,
+        "id": "#0fileMetadata",
         "key": "reader",
         "match": "exact",
         "optional": false,
@@ -16,6 +18,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#1tableMetadata",
         "key": "Unit_column_#0",
         "match": "exact",
         "optional": false,
@@ -30,6 +34,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#2tableMetadata",
         "key": "_exptl_operator",
         "match": "any",
         "optional": true,
@@ -47,6 +53,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#3tableMetadata",
         "key": "_exptl_date",
         "match": "regex",
         "optional": true,
@@ -64,6 +72,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#4tableMetadata",
         "key": "_exptl_instrument",
         "match": "regex",
         "optional": true,
@@ -81,6 +91,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#5tableMetadata",
         "key": "_exptl_adsorptive",
         "match": "any",
         "optional": true,
@@ -98,6 +110,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#6tableMetadata",
         "key": "_exptl_temperature",
         "match": "any",
         "operations": [
@@ -121,6 +135,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#6tableMetadata",
         "key": "_exptl_temperature",
         "match": "any",
         "operations": [
@@ -141,6 +157,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#7tableMetadata",
         "key": "_exptl_sample_mass",
         "match": "any",
         "optional": true,
@@ -158,6 +176,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#8tableMetadata",
         "key": "_sample_id",
         "match": "any",
         "optional": true,
@@ -175,6 +195,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#9tableMetadata",
         "key": "_sample_material_id",
         "match": "any",
         "optional": true,
@@ -192,6 +214,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#10tableHeader",
         "lineNumber": 1,
         "match": "regex",
         "optional": true,
@@ -210,6 +234,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#11tableHeader",
         "lineNumber": 1,
         "match": "regex",
         "optional": true,
@@ -228,6 +254,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#12tableMetadata",
         "key": "_exptl_date",
         "match": "regex",
         "optional": true,
@@ -245,6 +273,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#12tableMetadata",
         "key": "_exptl_date",
         "match": "regex",
         "optional": true,
@@ -259,6 +289,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#13tableMetadata",
         "key": "_exptl_instrument",
         "match": "regex",
         "optional": true,
@@ -276,6 +308,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#13tableMetadata",
         "key": "_exptl_instrument",
         "match": "regex",
         "optional": true,

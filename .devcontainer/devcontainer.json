@@ -10,7 +10,7 @@
     8000 // Port for the web server, 8000 is default for gunicorn
   ],
   // Ensure the environment
-  "postStartCommand": "pip install --upgrade pip && pip install --upgrade .[dev] && pip freeze > requirements.txt",
+  "postStartCommand": "pip install --upgrade pip && pip install --upgrade --config-settings=\"cmake.args=-DFETCH_ZLIB_NG=ON\" .[dev] && pip freeze > dependencies.list",
   "remoteUser": "debian",
   "workspaceMount": "source=${localWorkspaceFolder},target=/home/debian/chem_converter,type=bind",
   "workspaceFolder": "/home/debian/chem_converter",

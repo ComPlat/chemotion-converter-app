@@ -4,6 +4,8 @@
   "matches": [
     {
       "identifier": {
+        "editable": true,
+        "id": "#0fileMetadata",
         "key": "extension",
         "match": "exact",
         "optional": false,
@@ -16,6 +18,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#1tableMetadata",
         "key": "title",
         "match": "regex",
         "optional": false,
@@ -30,6 +34,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#2tableMetadata",
         "key": "N_SCANS",
         "match": "any",
         "optional": true,
@@ -47,6 +53,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#3tableHeader",
         "lineNumber": 2,
         "match": "regex",
         "optional": true,
@@ -65,6 +73,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#4tableHeader",
         "lineNumber": 2,
         "match": "regex",
         "optional": true,
@@ -83,6 +93,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#5tableMetadata",
         "key": "deviceserial",
         "match": "any",
         "optional": true,
@@ -100,6 +112,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#6tableMetadata",
         "key": "SCAN_RATE",
         "match": "any",
         "optional": true,
@@ -117,6 +131,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#7tableHeader",
         "lineNumber": 1,
         "match": "regex",
         "optional": true,
@@ -135,6 +151,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#8tableHeader",
         "lineNumber": 1,
         "match": "regex",
         "optional": true,
@@ -153,6 +171,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#9tableMetadata",
         "key": "E_STEP",
         "match": "any",
         "optional": true,
@@ -170,6 +190,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#10tableMetadata",
         "key": "E_BEGIN",
         "match": "any",
         "optional": true,
@@ -187,6 +209,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#11tableMetadata",
         "key": "E_VTX1",
         "match": "any",
         "optional": true,
@@ -204,6 +228,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#12tableMetadata",
         "key": "E_VTX2",
         "match": "any",
         "optional": true,
@@ -221,6 +247,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#13tableMetadata",
         "key": "E_END",
         "match": "any",
         "optional": true,
@@ -238,6 +266,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#14fileMetadata",
         "key": "file_name",
         "match": "any",
         "optional": true,
@@ -253,6 +283,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#14fileMetadata",
         "key": "file_name",
         "match": "any",
         "optional": true,
@@ -268,6 +300,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#14fileMetadata",
         "key": "file_name",
         "match": "any",
         "optional": true,
