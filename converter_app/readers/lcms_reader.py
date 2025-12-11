@@ -30,7 +30,7 @@ class LcmsReader(Reader):
         if self.is_tar_ball:
             try:
                 if len(self.file_content) > 1:
-                    self.df = ol.read_ms(self.file_content[0].file_path)
+                    self.df = ol.read_ms(self.file_content[0].file_path) # MS Data
                 else:
                     return False
                 return True
@@ -93,8 +93,10 @@ class LcmsReader(Reader):
             # Store data rows as list of lists (no column names)
             table['rows'] = filtered.values.tolist()
 
-            ms_tables = MsHelper.create_ms_tables(self.df, self.internal_name)
-            tables.extend(ms_tables)
+
+        # MS Data
+        ms_tables = MsHelper.create_ms_tables(self.df, self.internal_name)
+        tables.extend(ms_tables)
 
         return tables
 
