@@ -1,5 +1,5 @@
 from pathlib import Path
-from .utils import TestReader
+from test_static.utils import TestReader
 
 
 def test_Tif7():
