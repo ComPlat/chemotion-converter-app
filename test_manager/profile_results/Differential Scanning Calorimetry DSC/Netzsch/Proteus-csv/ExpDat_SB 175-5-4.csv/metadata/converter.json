@@ -4,6 +4,8 @@
   "matches": [
     {
       "identifier": {
+        "editable": true,
+        "id": "#0fileMetadata",
         "key": "reader",
         "match": "exact",
         "optional": false,
@@ -16,6 +18,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#1fileMetadata",
         "key": "extension",
         "match": "exact",
         "optional": false,
@@ -28,6 +32,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#2tableMetadata",
         "key": "column_02",
         "match": "exact",
         "optional": false,
@@ -42,6 +48,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#3tableMetadata",
         "key": "column_00",
         "match": "exact",
         "optional": false,
@@ -56,6 +64,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#4tableHeader",
         "lineNumber": 1,
         "match": "exact",
         "optional": false,
@@ -71,15 +81,14 @@
     },
     {
       "identifier": {
-        "datatype": null,
+        "editable": true,
+        "id": "#5tableHeader",
         "lineNumber": 18,
         "match": "regex",
         "optional": true,
         "outputKey": "sample",
         "outputLayer": "sample_details",
         "outputTableIndex": 0,
-        "predicate": null,
-        "subject": null,
         "tableIndex": 0,
         "type": "tableHeader",
         "value": "#SAMPLE:\\s+;(\\S+)"
@@ -92,15 +101,14 @@
     },
     {
       "identifier": {
-        "datatype": null,
+        "editable": true,
+        "id": "#6tableHeader",
         "lineNumber": "",
         "match": "regex",
         "optional": true,
         "outputKey": "amount",
         "outputLayer": "sample_details",
         "outputTableIndex": 0,
-        "predicate": null,
-        "subject": null,
         "tableIndex": 0,
         "type": "tableHeader",
         "value": "#SAMPLE MASS \\/mg:\\s+;(\\S+)"
@@ -113,15 +121,14 @@
     },
     {
       "identifier": {
-        "datatype": null,
+        "editable": true,
+        "id": "#7tableHeader",
         "lineNumber": "",
         "match": "regex",
         "optional": true,
         "outputKey": "date",
         "outputLayer": "general",
         "outputTableIndex": 0,
-        "predicate": null,
-        "subject": null,
         "tableIndex": 0,
         "type": "tableHeader",
         "value": "#DATE\\/TIME:\\s+;(\\d+.\\d+.\\d+)"
@@ -134,15 +141,14 @@
     },
     {
       "identifier": {
-        "datatype": null,
+        "editable": true,
+        "id": "#8tableHeader",
         "lineNumber": "",
         "match": "regex",
         "optional": true,
         "outputKey": "time",
         "outputLayer": "general",
         "outputTableIndex": 0,
-        "predicate": null,
-        "subject": null,
         "tableIndex": 0,
         "type": "tableHeader",
         "value": "#DATE\\/TIME:\\s+;\\S+\\s(\\d+:\\d+:\\d+\\s\\S+)"
@@ -155,15 +161,14 @@
     },
     {
       "identifier": {
-        "datatype": null,
+        "editable": true,
+        "id": "#9tableHeader",
         "lineNumber": "",
         "match": "regex",
         "optional": true,
         "outputKey": "reference",
         "outputLayer": "meas",
         "outputTableIndex": 0,
-        "predicate": null,
-        "subject": null,
         "tableIndex": 0,
         "type": "tableHeader",
         "value": "#REFERENCE:\\s+;(\\S+)"
@@ -176,7 +181,8 @@
     },
     {
       "identifier": {
-        "datatype": null,
+        "editable": true,
+        "id": "#10tableHeader",
         "lineNumber": "",
         "match": "regex",
         "operations": [
@@ -189,8 +195,6 @@
         "outputKey": "reference_mass",
         "outputLayer": "meas",
         "outputTableIndex": 0,
-        "predicate": null,
-        "subject": null,
         "tableIndex": 0,
         "type": "tableHeader",
         "value": "REFERENCE MASS /mg:\\s+;(\\d+)"
@@ -203,15 +207,14 @@
     },
     {
       "identifier": {
-        "datatype": null,
+        "editable": true,
+        "id": "#11tableHeader",
         "lineNumber": "",
         "match": "regex",
         "optional": true,
         "outputKey": "temp_cal",
         "outputLayer": "meas",
         "outputTableIndex": 0,
-        "predicate": null,
-        "subject": null,
         "tableIndex": 0,
         "type": "tableHeader",
         "value": "#TEMPCAL:\\s+;(\\S+)"
@@ -224,15 +227,14 @@
     },
     {
       "identifier": {
-        "datatype": null,
+        "editable": true,
+        "id": "#12tableHeader",
         "lineNumber": "",
         "match": "regex",
         "optional": true,
         "outputKey": "sensFile",
         "outputLayer": "meas",
         "outputTableIndex": 0,
-        "predicate": null,
-        "subject": null,
         "tableIndex": 0,
         "type": "tableHeader",
         "value": "#SENSITIVITY:\\s+;(\\S+)"
@@ -245,15 +247,14 @@
     },
     {
       "identifier": {
-        "datatype": null,
+        "editable": true,
+        "id": "#13tableHeader",
         "lineNumber": "",
         "match": "regex",
         "optional": true,
         "outputKey": "segments",
         "outputLayer": "meas",
         "outputTableIndex": 0,
-        "predicate": null,
-        "subject": null,
         "tableIndex": 0,
         "type": "tableHeader",
         "value": "#SEGMENT:\\s+;S(\\d*\\/\\d*)"
@@ -266,15 +267,14 @@
     },
     {
       "identifier": {
-        "datatype": null,
+        "editable": true,
+        "id": "#14tableHeader",
         "lineNumber": "",
         "match": "regex",
         "optional": true,
         "outputKey": "brand",
         "outputLayer": "instrument",
         "outputTableIndex": 0,
-        "predicate": null,
-        "subject": null,
         "tableIndex": 0,
         "type": "tableHeader",
         "value": "#INSTRUMENT:\\s+;(\\S+)\\s"
@@ -287,15 +287,14 @@
     },
     {
       "identifier": {
-        "datatype": null,
+        "editable": true,
+        "id": "#15tableHeader",
         "lineNumber": "",
         "match": "regex",
         "optional": true,
         "outputKey": "instrument",
         "outputLayer": "instrument",
         "outputTableIndex": 0,
-        "predicate": null,
-        "subject": null,
         "tableIndex": 0,
         "type": "tableHeader",
         "value": "#INSTRUMENT:\\s+;\\S+\\s(\\S+\\s\\d+)"
@@ -308,15 +307,14 @@
     },
     {
       "identifier": {
-        "datatype": null,
+        "editable": true,
+        "id": "#16tableHeader",
         "lineNumber": "",
         "match": "regex",
         "optional": true,
         "outputKey": "crucible",
         "outputLayer": "set",
         "outputTableIndex": 0,
-        "predicate": null,
-        "subject": null,
         "tableIndex": 0,
         "type": "tableHeader",
         "value": "#TYPE OF CRUCIBLE:\\s+;(.*)"
@@ -329,15 +327,14 @@
     },
     {
       "identifier": {
-        "datatype": null,
+        "editable": true,
+        "id": "#17tableHeader",
         "lineNumber": "",
         "match": "regex",
         "optional": true,
         "outputKey": "atmosphere",
         "outputLayer": "set",
         "outputTableIndex": 0,
-        "predicate": null,
-        "subject": null,
         "tableIndex": 0,
         "type": "tableHeader",
         "value": "#PROTECTIVE MFC:\\s+;(.*)"
@@ -350,7 +347,8 @@
     },
     {
       "identifier": {
-        "datatype": null,
+        "editable": true,
+        "id": "#18tableHeader",
         "lineNumber": "",
         "match": "regex",
         "operations": [
@@ -363,8 +361,6 @@
         "outputKey": "range",
         "outputLayer": "set",
         "outputTableIndex": 0,
-        "predicate": null,
-        "subject": null,
         "tableIndex": 0,
         "type": "tableHeader",
         "value": "#M.RANGE /\u00b5V:\\s+;(\\d*)"
@@ -377,15 +373,14 @@
     },
     {
       "identifier": {
-        "datatype": null,
+        "editable": true,
+        "id": "#19tableHeader",
         "lineNumber": "",
         "match": "regex",
         "optional": true,
         "outputKey": "temperature",
         "outputLayer": "set",
         "outputTableIndex": 0,
-        "predicate": null,
-        "subject": null,
         "tableIndex": 0,
         "type": "tableHeader",
         "value": "#RANGE:\\s+;(.*)"
@@ -398,15 +393,14 @@
     },
     {
       "identifier": {
-        "datatype": null,
+        "editable": true,
+        "id": "#20tableHeader",
         "lineNumber": "",
         "match": "regex",
         "optional": true,
         "outputKey": "operator",
         "outputLayer": "general",
         "outputTableIndex": 0,
-        "predicate": null,
-        "subject": null,
         "tableIndex": 0,
         "type": "tableHeader",
         "value": "#IDENTITY:\\s+;(\\S{2,3})"

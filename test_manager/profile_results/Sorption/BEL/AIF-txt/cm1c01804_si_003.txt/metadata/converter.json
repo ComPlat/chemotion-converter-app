@@ -4,6 +4,8 @@
   "matches": [
     {
       "identifier": {
+        "editable": true,
+        "id": "#0fileMetadata",
         "key": "reader",
         "match": "exact",
         "optional": false,
@@ -16,6 +18,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#1tableMetadata",
         "key": "Unit_column_#0",
         "match": "exact",
         "optional": false,
@@ -30,15 +34,14 @@
     },
     {
       "identifier": {
-        "datatype": null,
+        "editable": true,
+        "id": "#2tableMetadata",
         "key": "_exptl_operator",
         "match": "any",
         "optional": true,
         "outputKey": "operator",
         "outputLayer": "meas",
         "outputTableIndex": null,
-        "predicate": null,
-        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "Volodymyr"
@@ -50,15 +53,14 @@
     },
     {
       "identifier": {
-        "datatype": null,
+        "editable": true,
+        "id": "#3tableMetadata",
         "key": "_exptl_date",
         "match": "regex",
         "optional": true,
         "outputKey": "date",
         "outputLayer": "gener",
         "outputTableIndex": null,
-        "predicate": null,
-        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "\\d+-\\d+-\\d+"
@@ -70,15 +72,14 @@
     },
     {
       "identifier": {
-        "datatype": null,
+        "editable": true,
+        "id": "#4tableMetadata",
         "key": "_exptl_instrument",
         "match": "regex",
         "optional": true,
         "outputKey": "serial",
         "outputLayer": "dev",
         "outputTableIndex": null,
-        "predicate": null,
-        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "\\d+"
@@ -90,15 +91,14 @@
     },
     {
       "identifier": {
-        "datatype": null,
+        "editable": true,
+        "id": "#5tableMetadata",
         "key": "_exptl_adsorptive",
         "match": "any",
         "optional": true,
         "outputKey": "adsorptive",
         "outputLayer": "meas",
         "outputTableIndex": null,
-        "predicate": null,
-        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "CH4"
@@ -110,7 +110,8 @@
     },
     {
       "identifier": {
-        "datatype": null,
+        "editable": true,
+        "id": "#6tableMetadata",
         "key": "_exptl_temperature",
         "match": "any",
         "operations": [
@@ -123,8 +124,6 @@
         "outputKey": "temperature",
         "outputLayer": "meas",
         "outputTableIndex": 0,
-        "predicate": null,
-        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "111.00"
@@ -136,7 +135,8 @@
     },
     {
       "identifier": {
-        "datatype": null,
+        "editable": true,
+        "id": "#6tableMetadata",
         "key": "_exptl_temperature",
         "match": "any",
         "operations": [
@@ -149,8 +149,6 @@
         "outputKey": "temperature",
         "outputLayer": "meas",
         "outputTableIndex": 1,
-        "predicate": null,
-        "subject": null,
         "tableIndex": 1,
         "type": "tableMetadata",
         "value": "111.00"
@@ -159,15 +157,14 @@
     },
     {
       "identifier": {
-        "datatype": null,
+        "editable": true,
+        "id": "#7tableMetadata",
         "key": "_exptl_sample_mass",
         "match": "any",
         "optional": true,
         "outputKey": "amount",
         "outputLayer": "sam_details",
         "outputTableIndex": null,
-        "predicate": null,
-        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "0.00980"
@@ -179,15 +176,14 @@
     },
     {
       "identifier": {
-        "datatype": null,
+        "editable": true,
+        "id": "#8tableMetadata",
         "key": "_sample_id",
         "match": "any",
         "optional": true,
         "outputKey": "sample_cid",
         "outputLayer": "custom_id",
         "outputTableIndex": null,
-        "predicate": null,
-        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "aus der BOX"
@@ -199,15 +195,14 @@
     },
     {
       "identifier": {
-        "datatype": null,
+        "editable": true,
+        "id": "#9tableMetadata",
         "key": "_sample_material_id",
         "match": "any",
         "optional": true,
         "outputKey": "sample_mat_id",
         "outputLayer": "custom_id",
         "outputTableIndex": null,
-        "predicate": null,
-        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "DUT-140(Cu)"
@@ -219,15 +214,14 @@
     },
     {
       "identifier": {
-        "datatype": null,
+        "editable": true,
+        "id": "#10tableHeader",
         "lineNumber": 1,
         "match": "regex",
         "optional": true,
         "outputKey": "software",
         "outputLayer": "soft",
         "outputTableIndex": null,
-        "predicate": null,
-        "subject": null,
         "tableIndex": 0,
         "type": "tableHeader",
         "value": "\\S*\\_\\S*_(\\S*)v"
@@ -240,15 +234,14 @@
     },
     {
       "identifier": {
-        "datatype": null,
+        "editable": true,
+        "id": "#11tableHeader",
         "lineNumber": 1,
         "match": "regex",
         "optional": true,
         "outputKey": "software_version",
         "outputLayer": "soft",
         "outputTableIndex": null,
-        "predicate": null,
-        "subject": null,
         "tableIndex": 0,
         "type": "tableHeader",
         "value": "\\S*\\_\\S*_\\S*(v\\d+)"
@@ -261,15 +254,14 @@
     },
     {
       "identifier": {
-        "datatype": null,
+        "editable": true,
+        "id": "#12tableMetadata",
         "key": "_exptl_date",
         "match": "regex",
         "optional": true,
         "outputKey": "time",
         "outputLayer": "gener",
         "outputTableIndex": 0,
-        "predicate": null,
-        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "\\d+:\\d+:\\d+"
@@ -281,15 +273,14 @@
     },
     {
       "identifier": {
-        "datatype": null,
+        "editable": true,
+        "id": "#12tableMetadata",
         "key": "_exptl_date",
         "match": "regex",
         "optional": true,
         "outputKey": "time",
         "outputLayer": "gener",
         "outputTableIndex": 1,
-        "predicate": null,
-        "subject": null,
         "tableIndex": 1,
         "type": "tableMetadata",
         "value": "\\d+:\\d+:\\d+"
@@ -298,15 +289,14 @@
     },
     {
       "identifier": {
-        "datatype": null,
+        "editable": true,
+        "id": "#13tableMetadata",
         "key": "_exptl_instrument",
         "match": "regex",
         "optional": true,
         "outputKey": "brand",
         "outputLayer": "dev",
         "outputTableIndex": 0,
-        "predicate": null,
-        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "[^0-9\\s]+"
@@ -318,15 +308,14 @@
     },
     {
       "identifier": {
-        "datatype": null,
+        "editable": true,
+        "id": "#13tableMetadata",
         "key": "_exptl_instrument",
         "match": "regex",
         "optional": true,
         "outputKey": "brand",
         "outputLayer": "dev",
         "outputTableIndex": 1,
-        "predicate": null,
-        "subject": null,
         "tableIndex": 1,
         "type": "tableMetadata",
         "value": "[^0-9\\s]+"

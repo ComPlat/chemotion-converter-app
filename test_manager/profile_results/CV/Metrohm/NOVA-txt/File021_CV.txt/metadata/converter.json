@@ -4,6 +4,8 @@
   "matches": [
     {
       "identifier": {
+        "editable": true,
+        "id": "#0fileMetadata",
         "key": "reader",
         "match": "exact",
         "optional": false,
@@ -16,6 +18,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#1tableMetadata",
         "key": "column_00",
         "match": "exact",
         "optional": false,
@@ -30,6 +34,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#2tableMetadata",
         "key": "column_04",
         "match": "exact",
         "optional": false,
@@ -44,15 +50,14 @@
     },
     {
       "identifier": {
-        "datatype": null,
+        "editable": true,
+        "id": "#3fileMetadata",
         "key": "scan_rate",
         "match": "any",
         "optional": true,
         "outputKey": "scan_rate",
         "outputLayer": "meas",
         "outputTableIndex": 0,
-        "predicate": null,
-        "subject": null,
         "type": "fileMetadata",
         "value": "0.09998236414401321"
       },
@@ -62,15 +67,14 @@
     },
     {
       "identifier": {
-        "datatype": null,
+        "editable": true,
+        "id": "#3fileMetadata",
         "key": "scan_rate",
         "match": "any",
         "optional": true,
         "outputKey": "scan_rate",
         "outputLayer": "meas",
         "outputTableIndex": 1,
-        "predicate": null,
-        "subject": null,
         "type": "fileMetadata",
         "value": "0.09998236414401321"
       },
@@ -80,15 +84,14 @@
     },
     {
       "identifier": {
-        "datatype": null,
+        "editable": true,
+        "id": "#3fileMetadata",
         "key": "scan_rate",
         "match": "any",
         "optional": true,
         "outputKey": "scan_rate",
         "outputLayer": "meas",
         "outputTableIndex": 2,
-        "predicate": null,
-        "subject": null,
         "type": "fileMetadata",
         "value": "0.09998236414401321"
       },
@@ -98,15 +101,14 @@
     },
     {
       "identifier": {
-        "datatype": null,
+        "editable": true,
+        "id": "#4fileMetadata",
         "key": "step_size",
         "match": "any",
         "optional": true,
         "outputKey": "step_size",
         "outputLayer": "meas",
         "outputTableIndex": 0,
-        "predicate": null,
-        "subject": null,
         "type": "fileMetadata",
         "value": "0.0010679116287260553"
       },
@@ -116,15 +118,14 @@
     },
     {
       "identifier": {
-        "datatype": null,
+        "editable": true,
+        "id": "#4fileMetadata",
         "key": "step_size",
         "match": "any",
         "optional": true,
         "outputKey": "step_size",
         "outputLayer": "meas",
         "outputTableIndex": 1,
-        "predicate": null,
-        "subject": null,
         "type": "fileMetadata",
         "value": "0.0010679116287260553"
       },
@@ -134,15 +135,14 @@
     },
     {
       "identifier": {
-        "datatype": null,
+        "editable": true,
+        "id": "#4fileMetadata",
         "key": "step_size",
         "match": "any",
         "optional": true,
         "outputKey": "step_size",
         "outputLayer": "meas",
         "outputTableIndex": 2,
-        "predicate": null,
-        "subject": null,
         "type": "fileMetadata",
         "value": "0.0010679116287260553"
       },
@@ -152,15 +152,14 @@
     },
     {
       "identifier": {
-        "datatype": null,
+        "editable": true,
+        "id": "#5fileMetadata",
         "key": "v_end",
         "match": "any",
         "optional": true,
         "outputKey": "voltage_limit_end",
         "outputLayer": "meas",
         "outputTableIndex": 0,
-        "predicate": null,
-        "subject": null,
         "type": "fileMetadata",
         "value": "0"
       },
@@ -170,15 +169,14 @@
     },
     {
       "identifier": {
-        "datatype": null,
+        "editable": true,
+        "id": "#5fileMetadata",
         "key": "v_end",
         "match": "any",
         "optional": true,
         "outputKey": "voltage_limit_end",
         "outputLayer": "meas",
         "outputTableIndex": 1,
-        "predicate": null,
-        "subject": null,
         "type": "fileMetadata",
         "value": "0"
       },
@@ -188,15 +186,14 @@
     },
     {
       "identifier": {
-        "datatype": null,
+        "editable": true,
+        "id": "#5fileMetadata",
         "key": "v_end",
         "match": "any",
         "optional": true,
         "outputKey": "voltage_limit_end",
         "outputLayer": "meas",
         "outputTableIndex": 2,
-        "predicate": null,
-        "subject": null,
         "type": "fileMetadata",
         "value": "0"
       },
@@ -206,15 +203,14 @@
     },
     {
       "identifier": {
-        "datatype": null,
+        "editable": true,
+        "id": "#6fileMetadata",
         "key": "v_init",
         "match": "any",
         "optional": true,
         "outputKey": "voltage_start",
         "outputLayer": "meas",
         "outputTableIndex": 0,
-        "predicate": null,
-        "subject": null,
         "type": "fileMetadata",
         "value": "0.001068115234375"
       },
@@ -224,15 +220,14 @@
     },
     {
       "identifier": {
-        "datatype": null,
+        "editable": true,
+        "id": "#6fileMetadata",
         "key": "v_init",
         "match": "any",
         "optional": true,
         "outputKey": "voltage_start",
         "outputLayer": "meas",
         "outputTableIndex": 1,
-        "predicate": null,
-        "subject": null,
         "type": "fileMetadata",
         "value": "0.001068115234375"
       },
@@ -242,15 +237,14 @@
     },
     {
       "identifier": {
-        "datatype": null,
+        "editable": true,
+        "id": "#6fileMetadata",
         "key": "v_init",
         "match": "any",
         "optional": true,
         "outputKey": "voltage_start",
         "outputLayer": "meas",
         "outputTableIndex": 2,
-        "predicate": null,
-        "subject": null,
         "type": "fileMetadata",
         "value": "0.001068115234375"
       },
@@ -260,15 +254,14 @@
     },
     {
       "identifier": {
-        "datatype": null,
+        "editable": true,
+        "id": "#7fileMetadata",
         "key": "v_limit1",
         "match": "any",
         "optional": true,
         "outputKey": "voltage_limit_one",
         "outputLayer": "meas",
         "outputTableIndex": 0,
-        "predicate": null,
-        "subject": null,
         "type": "fileMetadata",
         "value": "1.50070190429688"
       },
@@ -278,15 +271,14 @@
     },
     {
       "identifier": {
-        "datatype": null,
+        "editable": true,
+        "id": "#7fileMetadata",
         "key": "v_limit1",
         "match": "any",
         "optional": true,
         "outputKey": "voltage_limit_one",
         "outputLayer": "meas",
         "outputTableIndex": 1,
-        "predicate": null,
-        "subject": null,
         "type": "fileMetadata",
         "value": "1.50070190429688"
       },
@@ -296,15 +288,14 @@
     },
     {
       "identifier": {
-        "datatype": null,
+        "editable": true,
+        "id": "#7fileMetadata",
         "key": "v_limit1",
         "match": "any",
         "optional": true,
         "outputKey": "voltage_limit_one",
         "outputLayer": "meas",
         "outputTableIndex": 2,
-        "predicate": null,
-        "subject": null,
         "type": "fileMetadata",
         "value": "1.50070190429688"
       },
@@ -314,15 +305,14 @@
     },
     {
       "identifier": {
-        "datatype": null,
+        "editable": true,
+        "id": "#8fileMetadata",
         "key": "v_limit2",
         "match": "any",
         "optional": true,
         "outputKey": "voltage_limit_two",
         "outputLayer": "meas",
         "outputTableIndex": 0,
-        "predicate": null,
-        "subject": null,
         "type": "fileMetadata",
         "value": "-1.30096435546875"
       },
@@ -332,15 +322,14 @@
     },
     {
       "identifier": {
-        "datatype": null,
+        "editable": true,
+        "id": "#8fileMetadata",
         "key": "v_limit2",
         "match": "any",
         "optional": true,
         "outputKey": "voltage_limit_two",
         "outputLayer": "meas",
         "outputTableIndex": 1,
-        "predicate": null,
-        "subject": null,
         "type": "fileMetadata",
         "value": "-1.30096435546875"
       },
@@ -350,15 +339,14 @@
     },
     {
       "identifier": {
-        "datatype": null,
+        "editable": true,
+        "id": "#8fileMetadata",
         "key": "v_limit2",
         "match": "any",
         "optional": true,
         "outputKey": "voltage_limit_two",
         "outputLayer": "meas",
         "outputTableIndex": 2,
-        "predicate": null,
-        "subject": null,
         "type": "fileMetadata",
         "value": "-1.30096435546875"
       },

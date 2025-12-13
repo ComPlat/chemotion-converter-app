@@ -4,6 +4,8 @@
   "matches": [
     {
       "identifier": {
+        "editable": true,
+        "id": "#0tableMetadata",
         "key": "column_00",
         "match": "regex",
         "optional": false,
@@ -18,6 +20,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#1tableMetadata",
         "key": "column_01",
         "match": "regex",
         "optional": false,

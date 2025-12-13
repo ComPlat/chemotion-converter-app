@@ -6,7 +6,7 @@ with the Chemotion platform. This module comes equipped with
 a Flask server that exposes various endpoints, providing
 users with the capability to effortlessly create profiles for the conversion process.
 """
-
+import importlib.metadata
 import logging
 import os
 from pathlib import Path
@@ -48,7 +48,8 @@ def create_app():
         CORS=str2bool(os.getenv('CORS', 'False').lower()),
         DEBUG=str2bool(os.getenv('DEBUG', 'False').lower()),
         CLIENTS=get_clients() is not None,
-        RDF_JSON=rdf_json_path
+        RDF_JSON=rdf_json_path,
+        VERSION=importlib.metadata.version('chemotion-converter-app')
     )
 
     os.makedirs(app.config['PROFILES_DIR'], exist_ok=True)

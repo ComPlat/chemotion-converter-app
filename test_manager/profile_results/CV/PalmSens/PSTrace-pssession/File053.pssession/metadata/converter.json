@@ -4,6 +4,8 @@
   "matches": [
     {
       "identifier": {
+        "editable": true,
+        "id": "#0fileMetadata",
         "key": "extension",
         "match": "exact",
         "optional": false,
@@ -16,6 +18,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#1tableMetadata",
         "key": "title",
         "match": "regex",
         "optional": false,
@@ -30,15 +34,14 @@
     },
     {
       "identifier": {
-        "datatype": null,
+        "editable": true,
+        "id": "#2tableMetadata",
         "key": "N_SCANS",
         "match": "any",
         "optional": true,
         "outputKey": "cycles",
         "outputLayer": "meas",
         "outputTableIndex": null,
-        "predicate": null,
-        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "1"
@@ -50,15 +53,14 @@
     },
     {
       "identifier": {
-        "datatype": null,
+        "editable": true,
+        "id": "#3tableHeader",
         "lineNumber": 2,
         "match": "regex",
         "optional": true,
         "outputKey": "time",
         "outputLayer": "general",
         "outputTableIndex": null,
-        "predicate": null,
-        "subject": null,
         "tableIndex": 0,
         "type": "tableHeader",
         "value": "\\d{1,2}:\\d{1,2}:\\d{1,2}"
@@ -71,15 +73,14 @@
     },
     {
       "identifier": {
-        "datatype": null,
+        "editable": true,
+        "id": "#4tableHeader",
         "lineNumber": 2,
         "match": "regex",
         "optional": true,
         "outputKey": "date",
         "outputLayer": "general",
         "outputTableIndex": null,
-        "predicate": null,
-        "subject": null,
         "tableIndex": 0,
         "type": "tableHeader",
         "value": "\\d{4}-\\d{1,2}-\\d{1,2}"
@@ -92,15 +93,14 @@
     },
     {
       "identifier": {
-        "datatype": null,
+        "editable": true,
+        "id": "#5tableMetadata",
         "key": "deviceserial",
         "match": "any",
         "optional": true,
         "outputKey": "title",
         "outputLayer": "general",
         "outputTableIndex": null,
-        "predicate": null,
-        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "ES3 16X965"
@@ -112,15 +112,14 @@
     },
     {
       "identifier": {
-        "datatype": null,
+        "editable": true,
+        "id": "#6tableMetadata",
         "key": "SCAN_RATE",
         "match": "any",
         "optional": true,
         "outputKey": "scan_rate",
         "outputLayer": "meas",
         "outputTableIndex": null,
-        "predicate": null,
-        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "2.000E-001"
@@ -132,15 +131,14 @@
     },
     {
       "identifier": {
-        "datatype": null,
+        "editable": true,
+        "id": "#7tableHeader",
         "lineNumber": 1,
         "match": "regex",
         "optional": true,
         "outputKey": "software",
         "outputLayer": "software",
         "outputTableIndex": null,
-        "predicate": null,
-        "subject": null,
         "tableIndex": 0,
         "type": "tableHeader",
         "value": "[a-zA-Z]+(?=,)"
@@ -153,15 +151,14 @@
     },
     {
       "identifier": {
-        "datatype": null,
+        "editable": true,
+        "id": "#8tableHeader",
         "lineNumber": 1,
         "match": "regex",
         "optional": true,
         "outputKey": "software_version",
         "outputLayer": "software",
         "outputTableIndex": null,
-        "predicate": null,
-        "subject": null,
         "tableIndex": 0,
         "type": "tableHeader",
         "value": "\\d+.\\d+.\\d+.\\d+"
@@ -174,15 +171,14 @@
     },
     {
       "identifier": {
-        "datatype": null,
+        "editable": true,
+        "id": "#9tableMetadata",
         "key": "E_STEP",
         "match": "any",
         "optional": true,
         "outputKey": "step_size",
         "outputLayer": "meas",
         "outputTableIndex": null,
-        "predicate": null,
-        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "1.000E-002"
@@ -194,15 +190,14 @@
     },
     {
       "identifier": {
-        "datatype": null,
+        "editable": true,
+        "id": "#10tableMetadata",
         "key": "E_BEGIN",
         "match": "any",
         "optional": true,
         "outputKey": "voltage_start",
         "outputLayer": "meas",
         "outputTableIndex": null,
-        "predicate": null,
-        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "0.000E+000"
@@ -214,15 +209,14 @@
     },
     {
       "identifier": {
-        "datatype": null,
+        "editable": true,
+        "id": "#11tableMetadata",
         "key": "E_VTX1",
         "match": "any",
         "optional": true,
         "outputKey": "voltage_limit_one",
         "outputLayer": "meas",
         "outputTableIndex": null,
-        "predicate": null,
-        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "1.800E+000"
@@ -234,15 +228,14 @@
     },
     {
       "identifier": {
-        "datatype": null,
+        "editable": true,
+        "id": "#12tableMetadata",
         "key": "E_VTX2",
         "match": "any",
         "optional": true,
         "outputKey": "voltage_limit_two",
         "outputLayer": "meas",
         "outputTableIndex": null,
-        "predicate": null,
-        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "-1.800E+000"
@@ -254,15 +247,14 @@
     },
     {
       "identifier": {
-        "datatype": null,
+        "editable": true,
+        "id": "#13tableMetadata",
         "key": "E_END",
         "match": "any",
         "optional": true,
         "outputKey": "voltage_limit_end",
         "outputLayer": "meas",
         "outputTableIndex": null,
-        "predicate": null,
-        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "5.000E-001"
@@ -274,15 +266,14 @@
     },
     {
       "identifier": {
-        "datatype": null,
+        "editable": true,
+        "id": "#14fileMetadata",
         "key": "file_name",
         "match": "any",
         "optional": true,
         "outputKey": "comments",
         "outputLayer": "general",
         "outputTableIndex": 0,
-        "predicate": null,
-        "subject": null,
         "type": "fileMetadata",
         "value": "File053.pssession"
       },
@@ -292,15 +283,14 @@
     },
     {
       "identifier": {
-        "datatype": null,
+        "editable": true,
+        "id": "#14fileMetadata",
         "key": "file_name",
         "match": "any",
         "optional": true,
         "outputKey": "comments",
         "outputLayer": "general",
         "outputTableIndex": 1,
-        "predicate": null,
-        "subject": null,
         "type": "fileMetadata",
         "value": "File053.pssession"
       },
@@ -310,15 +300,14 @@
     },
     {
       "identifier": {
-        "datatype": null,
+        "editable": true,
+        "id": "#14fileMetadata",
         "key": "file_name",
         "match": "any",
         "optional": true,
         "outputKey": "comments",
         "outputLayer": "general",
         "outputTableIndex": 2,
-        "predicate": null,
-        "subject": null,
         "type": "fileMetadata",
         "value": "File053.pssession"
       },

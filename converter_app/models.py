@@ -155,7 +155,7 @@ class Profile:
     @id.setter
     def id(self, new_id):
         self.data['id'] = self._id = new_id
-
+        
     @classmethod
     def load(cls, file_path: pathlib.PurePath):
         """
