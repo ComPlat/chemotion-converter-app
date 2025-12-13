@@ -17,15 +17,24 @@ class AsciiReader(Reader):
     # two or more chars in row
     text_pattern = re.compile(r'[A-Za-z]{2,}')
 
-    def check(self):
+    def __init__(self, file, *tar_content):
+        super().__init__(file, tar_content)
+        self.ontology = None
+
+    def check(self, **kwargs):
         """
         :return: True if it fits
         """
+
+        self.ontology = kwargs.get('ontology')
+
         return not self.file.encoding == 'binary'
 
     def prepare_tables(self):
         tables = []
         table = self.append_table(tables)
+
+        table['metadata']['ontology'] = str(self.ontology) if self.ontology else ''
 
         # loop over lines of the file
         previous_count = None

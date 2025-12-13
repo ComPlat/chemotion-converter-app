@@ -115,7 +115,10 @@ def converting_router(app: Flask, auth: HTTPBasicAuth):
         error_msg = 'No file provided.'
         if request.files.get('file'):
             file = File(request.files.get('file'))
-            reader = registry.match_reader(file)
+            ontology = request.form.get('ontology', None)
+            if not ontology:
+                ontology = None
+            reader = registry.match_reader(file, ontology=ontology)
             error_msg = 'Your file could not be processed. No Reader available!'
 
             if reader:
@@ -162,7 +165,10 @@ def converting_router(app: Flask, auth: HTTPBasicAuth):
         '''
         if request.files.get('file'):
             file = File(request.files.get('file'))
-            reader = registry.match_reader(file)
+            ontology = request.form.get('ontology', None)
+            if not ontology:
+                ontology = None
+            reader = registry.match_reader(file, ontology=ontology)
 
             if reader:
                 reader.process()
