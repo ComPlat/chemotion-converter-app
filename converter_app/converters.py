@@ -534,11 +534,15 @@ class Converter:
         converter = None
         matches = 0
         latest_profile_uploaded = 0
+        current_converter = None
         for profile in Profile.list_including_default(client_id):
             if profile.isDisabled:
                 continue
-            current_converter = cls(profile, file_data)
-            current_matches = current_converter.match()
+            try:
+                current_converter = cls(profile, file_data)
+                current_matches = current_converter.match()
+            except (ValueError, TypeError, IndexError):
+                current_matches = False
             try:
                 profile_uploaded = datetime.datetime.fromisoformat(
                     profile.as_dict['data']['metadata'].get('uploaded')).timestamp()
