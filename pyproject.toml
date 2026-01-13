@@ -56,6 +56,7 @@ dev = [
     "setuptools",
     "jinja2",
     "binaryparser @ git+https://github.com/ComPlat/BinaryParser@main",
+    "pytest-timeout"
 ]
 
 [project.urls]
