@@ -193,13 +193,15 @@ def test_bio_logic():
                                         {"key": "7", "name": "(Q-Qo) standard_error (mA\u00b7h)"},
                                         {"key": "8", "name": "Ewe (V)"}, {"key": "9", "name": "Ewe standard_error (V)"},
                                         {"key": "10", "name": "I Range"},
-                                        {"key": "11", "name": "Q charge or discharge (mA\u00b7h)"},
-                                        {"key": "12", "name": "Q charge or discharge standard_error (mA\u00b7h)"},
+                                        {"key": "11", "name": "Q charge or discharge (C)"},
+                                        {"key": "12", "name": "Q charge or discharge standard_error (C)"},
                                         {"key": "13", "name": "half cycle"}, {"key": "14", "name": "mode"},
                                         {"key": "15", "name": "ox or red"}, {"key": "16", "name": "error"},
                                         {"key": "17", "name": "control changes"}, {"key": "18", "name": "Ns changes"},
                                         {"key": "19", "name": "counter inc."}, {"key": "20", "name": "control_V (V)"},
-                                        {"key": "21", "name": "control_V standard_error (V)"}]
+                                        {"key": "21", "name": "control_V standard_error (V)"},
+ {'key': '22', 'name': 'control_I (mA)'},
+ {'key': '23', 'name': 'control_I standard_error (mA)'}]
 
         assert tables[0]['metadata'] == {"___TABLE_NAME__": "/", "settings.technique": "GCPL",
                                          "settings.comments": "60\u00b0C\r\nrate + cyclability",
