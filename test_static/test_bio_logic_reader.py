@@ -1,12 +1,12 @@
 from pathlib import Path
 
-from test_static.utils import ManageTestReader
+from test_static.utils import TestReader
 
 
 def test_bio_logic():
     test_file = Path(
         __file__).parent.parent / 'test_static/test_files/bio_logic_FK155_JLGU_GE_50-2_15_m1p233mg_Li_LP30_RT_rate_stability_20230906.tar.xz'
-    with ManageTestReader(test_file.__str__(), 'bio_logic_080ecac4-8fa2-4c47-b7cc-4ef5db082b07') as reader:
+    with TestReader(test_file.__str__(), 'bio_logic_080ecac4-8fa2-4c47-b7cc-4ef5db082b07') as reader:
         tables = reader.as_dict['tables']
         assert tables[5]['header'] == ['EC-Lab LOG FILE', 'Galvanostatic Cycling with Potential Limitation',
                                        'CE vs. WE compliance from -10 V to 10 V',

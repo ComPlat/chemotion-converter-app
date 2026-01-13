@@ -5,7 +5,7 @@ from converter_app.models import File
 from converter_app.readers import READERS
 
 
-class ManageTestReader:
+class TestReader:
     def __init__(self, test_file_path: str, reader_id: str):
         self.test_file_path = test_file_path
         self.reader_id = reader_id
