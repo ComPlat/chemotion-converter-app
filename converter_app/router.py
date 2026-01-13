@@ -38,8 +38,11 @@ def get_clients() -> dict[str:str] | None:
         clients = {}
         with open(htpasswd_path, encoding='utf8') as fp:
             for line in fp.readlines():
-                username, password = line.strip().split(':')
-                clients[username] = password
+                try:
+                    username, password = line.strip().split(':')
+                    clients[username] = password
+                except ValueError:
+                    pass
     else:
         return None
     return clients
