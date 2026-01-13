@@ -34,9 +34,11 @@ dependencies = [
     "pylint==3.*",
     "str2bool==1.*",
     "opusFC==1.*",
-    "referencing==0.*",
+    "referencing==0.36.*",
     "jsonschema==4.*",
     "pybind11==3.*",
+    "numpy==2.*",
+    "xmltodict==0.14.*"
 ]
 
 [project.optional-dependencies]
