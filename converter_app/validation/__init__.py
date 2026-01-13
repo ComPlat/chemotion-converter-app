@@ -7,12 +7,13 @@ import jsonschema
 
 import converter_app.validation.schemas.imports
 from converter_app.validation.registry import SchemaRegistry
+from converter_app.utils import get_app_root
 
 logger = logging.getLogger(__name__)
 
 if __name__ == '__main__':
     A = []
-    schema_directory = Path(__file__).parent / 'schemas'
+    schema_directory = get_app_root() / 'converter_app/validation/schemas'
 
     for module in os.listdir(schema_directory):
         if module.startswith('schema_') and module[-3:] == '.py':

@@ -3,6 +3,7 @@ import hashlib
 import os
 import re
 import shutil
+import sys
 import tempfile
 import uuid
 from pathlib import Path
@@ -104,3 +105,10 @@ def load_public_profiles(profiles: Optional[str|Path] = None, data_files: Option
         if data_files:
             os.makedirs(os.path.dirname(data_files), exist_ok=True)
             shutil.move(os.path.join(t, 'static/files/shared_ChemConverter_files/data_files'), data_files)
+
+
+def get_app_root() -> Path:
+    if getattr(sys, 'frozen', False):
+        return Path(sys._MEIPASS)  # PyInstaller temp extraction dir
+    else:
+        return Path(__file__).parent.parent

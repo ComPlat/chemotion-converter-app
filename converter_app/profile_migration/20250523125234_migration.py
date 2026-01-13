@@ -4,6 +4,7 @@ from pathlib import Path
 from flask import current_app, has_app_context
 
 from converter_app.profile_migration import ProfileMigration
+from converter_app.utils import get_app_root
 
 
 class ProfileMigrationScript(ProfileMigration):
@@ -16,7 +17,7 @@ class ProfileMigrationScript(ProfileMigration):
         if has_app_context():
             self.app_config = current_app.config
         else:
-            cp = Path(__file__).parent.parent / '__init__.py'
+            cp = get_app_root()/ 'converter_app/__init__.py'
             with open(cp, 'r', encoding='utf-8') as f:
                 kv_list = [(k.upper(), v) for (k, v) in re.findall(r'__(.*)__ = [\']([^\']*)[\']', f.read())]
                 self.app_config = dict(kv_list)

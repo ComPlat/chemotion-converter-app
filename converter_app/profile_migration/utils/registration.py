@@ -1,7 +1,9 @@
 import json
 from pathlib import Path
+from typing import Optional
 
 from converter_app.models import Profile
+from converter_app.utils import get_app_root
 
 
 class Migrations:
@@ -77,12 +79,12 @@ class Migrations:
 
     def run_migration(self, profile_dir: str, force: bool = False):
         self.profile_dir = profile_dir
-        for client_path in Path(profile_dir).iterdir():
+        for client_path in list(Path(profile_dir).iterdir()) + [Path('/home/martin/.ChemConverter/profiles/cli')]:
             client_id = client_path.stem
             if client_path.is_dir():
                 for profile in client_path.iterdir():
                     self._prepare_migration(client_id, profile, force)
-        for profile in Path(__file__).parent.parent.parent.joinpath('profiles').iterdir():
+        for profile in (get_app_root() / 'converter_app/profiles').iterdir():
             self._prepare_migration('', profile, force)
 
     def _prepare_migration(self, client_id, profile_path, force):
@@ -91,7 +93,7 @@ class Migrations:
                 profile = Profile.profile_from_file_path(
                     profile_path, client_id)
                 if self.migrate_profile(profile, force):
-                    self._save_profile(profile)
+                    self._save_profile(profile, profile_path)
             except Exception as e:
                 print(f'{profile_path} cannot be migrated: {e}')
 
@@ -114,17 +116,21 @@ class Migrations:
             self._up_migration(next_migration, profile)
         return True
 
-    def _save_profile(self, profile: Profile):
-        if profile.is_default_profile:
-            profiles_path = Path(
-                __file__).parent.parent.parent.joinpath('profiles')
+    def _save_profile(self, profile: Profile, profile_file_path: Optional[Path] = None):
+        if profile_file_path is not None:
+            profiles_path = profile_file_path.parent
+            file_path = profile_file_path
         else:
-            profiles_path = Path(self.profile_dir).joinpath(profile.client_id)
+            if profile.is_default_profile:
+                profiles_path = get_app_root() / 'converter_app/profiles'
+            else:
+                profiles_path = Path(self.profile_dir).joinpath(profile.client_id)
+            file_path = profiles_path.joinpath(profile.id).with_suffix('.json')
 
         profile.data['id'] = profile.id
         profiles_path.mkdir(parents=True, exist_ok=True)
 
-        file_path = profiles_path.joinpath(profile.id).with_suffix('.json')
+
         if 'isDefaultProfile' in profile.data:
             del profile.data['isDefaultProfile']
 

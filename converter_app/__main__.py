@@ -12,6 +12,7 @@ from werkzeug.datastructures import FileStorage
 
 from converter_app.app import create_app
 from converter_app.profile_migration.utils.registration import Migrations
+from converter_app.utils import get_app_root
 from converters import Converter
 from models import File, Profile
 from readers import Readers
@@ -59,7 +60,7 @@ class NameAction(argparse.Action):
 
 
 class OutputTypeAction(argparse.Action):
-    output_types = ['jcampzip', 'owl', 'jcamp']
+    output_types = ['jcampzip', 'rdf', 'jcamp']
 
     def __call__(self, parser, namespace, value, option_string=None):
         self.validate(parser, value)
@@ -150,8 +151,8 @@ def _new_migration():
         'IDENTIFIER': timestamp,
     }
 
-    template_path = Path(__file__).parent / 'profile_migration/utils/MIGRATION_TEMPLATE.py.txt'
-    targe_reader_path = Path(__file__).parent / f'profile_migration/{timestamp}_migration.py'
+    template_path = get_app_root() / 'converter_app/profile_migration/utils/MIGRATION_TEMPLATE.py.txt'
+    targe_reader_path = get_app_root() / f'converter_app/profile_migration/{timestamp}_migration.py'
 
     with open(str(template_path), 'r', encoding='utf-8') as f:
         template = Template(f.read())
@@ -176,7 +177,7 @@ def _run_conversation(input_file_arg, output_type_arg):
 
         writer = run_conversion(converter, output_type_arg)
         file_name = input_file_arg.with_suffix(writer.suffix)
-        with open(file_name.name, 'wb+') as f:
+        with open(file_name.name, 'w+') as f:
             f.write(writer.write())
 
 
@@ -195,11 +196,11 @@ def _new_reader(args, parser, arg_objets):
         'TEST_FILE': f'test_static/test_files/{reader_name_sc}_{args.test_file.name}'
     }
 
-    template_path = Path(__file__).parent / 'readers/helper/READER_TEMPLATE.py.txt'
-    test_template_path = Path(__file__).parent / 'readers/helper/TEST_TEMPLATE.py.txt'
-    targe_reader_path = Path(__file__).parent / f'readers/{reader_name_sc}_reader.py'
-    targe_reader_test_path = Path(__file__).parent.parent / f'test_static/test_{reader_name_sc}_reader.py'
-    targe_reader_test_file_path = Path(__file__).parent.parent / context['TEST_FILE']
+    template_path = get_app_root() / 'converter_app/readers/helper/READER_TEMPLATE.py.txt'
+    test_template_path = get_app_root() / 'converter_app/readers/helper/TEST_TEMPLATE.py.txt'
+    targe_reader_path = get_app_root() / f'converter_app/readers/{reader_name_sc}_reader.py'
+    targe_reader_test_path = get_app_root() / f'converter_app/test_static/test_{reader_name_sc}_reader.py'
+    targe_reader_test_file_path = get_app_root() / context['TEST_FILE']
 
     os.makedirs(targe_reader_test_file_path.parent, exist_ok=True)
     shutil.copy(args.test_file, targe_reader_test_file_path)

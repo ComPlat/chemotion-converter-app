@@ -4,7 +4,7 @@ import sys
 from collections import defaultdict
 from typing import Any, Generator
 
-from converter_app.base import Writer
+from converter_app.writers  .base import Writer
 from converter_app import TITLE, VERSION
 from converter_app.options import DATA_TYPES, DATA_CLASSES, XUNITS, YUNITS
 

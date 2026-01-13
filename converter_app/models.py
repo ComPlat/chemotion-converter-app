@@ -14,6 +14,7 @@ from flask import current_app
 from werkzeug.datastructures import FileStorage
 
 from converter_app.utils import check_uuid
+from converter_app.utils import get_app_root
 
 logger = logging.getLogger(__name__)
 
@@ -226,7 +227,7 @@ class Profile:
         for p in cls.list(client_id):
             all_ids.append(p.id)
             yield p
-        default_profiles_path = Path(os.path.join(os.path.dirname(__file__), 'profiles'))
+        default_profiles_path = get_app_root() / 'converter_app/profiles'
         if default_profiles_path.exists():
             for file_path in sorted(Path.iterdir(default_profiles_path)):
                 if file_path.suffix == '.json':
@@ -245,7 +246,7 @@ class Profile:
         :return:
         """
         profiles_path = Path(current_app.config['PROFILES_DIR']).joinpath(client_id)
-        default_profiles_path = Path(os.path.join(os.path.dirname(__file__), 'profiles'))
+        default_profiles_path = get_app_root() / 'converter_app/profiles'
 
         # make sure that its really a uuid, this should prevent file system traversal
         if check_uuid(profile_id):

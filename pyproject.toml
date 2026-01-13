@@ -37,6 +37,8 @@ dependencies = [
     "referencing==0.*",
     "jsonschema==4.*",
     "pybind11==3.*",
+    "rdflib~=7.*",
+    "requests~=2.*"
 ]
 
 [project.optional-dependencies]
@@ -55,6 +57,7 @@ dev = [
     "setuptools",
     "jinja2",
     "binaryparser @ git+https://github.com/ComPlat/BinaryParser@main",
+    "pyinstaller"
 ]
 
 [project.urls]

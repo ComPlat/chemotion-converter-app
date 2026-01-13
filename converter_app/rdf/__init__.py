@@ -1,8 +1,8 @@
 import json
-from pathlib import Path
 
 from rdflib import Graph, Namespace
-from rdflib.namespace import RDF, RDFS, OWL
+from rdflib.namespace import RDF, RDFS
+from converter_app.utils import get_app_root
 
 
 import requests
@@ -118,7 +118,7 @@ def refresh_rdf_summery():
             seen.add(id)
     terms_info += get_xml_property_list()
 
-    rdf_json_path = Path(__file__).parent / 'rdf_terms_info.json'
+    rdf_json_path = get_app_root() / 'converter_app/rdf/rdf_terms_info.json'
     with open(rdf_json_path, 'w') as fp:
         json.dump(terms_info, fp)
     return rdf_json_path

@@ -112,7 +112,7 @@ class RDFWriter(Writer):
         predicates = profile['predicates']
         datatypes = profile['datatypes']
         instances = profile['subjectInstances']
-        identifiers = [i['identifier'] | i['result'] for i in self._converter.matches]
+        identifiers = [i['identifier'] or i['result'] for i in self._converter.matches]
 
         for element in [root_ontology] + subjects + predicates + datatypes:
             namespaces.add((element['namespace'], element['ontology_name']))
