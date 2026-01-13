@@ -380,39 +380,58 @@ class Converter:
         Avoids scanning all input tables and columns.
         """
 
+        def check_indexes(tabel_index, column_index):
+            if len(self.input_tables) <= tabel_index:
+                return False
+            tabel = self.input_tables[table_index]
+            if len(tabel['rows']) == 0:
+                return False
+            row = tabel['rows'][0]
+            if len(row) <= column_index:
+                return False
+            return True
+
         # --- Fill x_rows directly ---
         if x_column:
             table_index = x_column['tableIndex']
             col_index = x_column['columnIndex']
-            table = self.input_tables[table_index]
-            for row in table['rows']:
-                x_rows.append(self.get_value(row, col_index))
+            if check_indexes(table_index, col_index):
+                table = self.input_tables[table_index]
+                for row in table['rows']:
+                    x_rows.append(self.get_value(row, col_index))
 
         # --- Fill y_rows directly ---
         if y_column:
             table_index = y_column['tableIndex']
             col_index = y_column['columnIndex']
-            table = self.input_tables[table_index]
-            for row in table['rows']:
-                y_rows.append(self.get_value(row, col_index))
+            if check_indexes(table_index, col_index):
+                table = self.input_tables[table_index]
+                for row in table['rows']:
+                    y_rows.append(self.get_value(row, col_index))
 
         # --- Fill x_operations rows directly ---
         for operation in x_operations:
             if operation.get('type') == 'column' and operation.get('column'):
                 col = operation['column']
-                table = self.input_tables[col['tableIndex']]
-                op_rows = operation.setdefault('rows', [])
-                for row in table['rows']:
-                    op_rows.append(self.get_value(row, col['columnIndex']))
+                col_index =col['columnIndex']
+                table_index = col['tableIndex']
+                if check_indexes(table_index, col_index):
+                    table = self.input_tables[table_index]
+                    op_rows = operation.setdefault('rows', [])
+                    for row in table['rows']:
+                        op_rows.append(self.get_value(row, col_index))
 
         # --- Fill y_operations rows directly ---
         for operation in y_operations:
             if operation.get('type') == 'column' and operation.get('column'):
                 col = operation['column']
-                table = self.input_tables[col['tableIndex']]
-                op_rows = operation.setdefault('rows', [])
-                for row in table['rows']:
-                    op_rows.append(self.get_value(row, col['columnIndex']))
+                col_index =col['columnIndex']
+                table_index = col['tableIndex']
+                if check_indexes(table_index, col_index):
+                    table = self.input_tables[table_index]
+                    op_rows = operation.setdefault('rows', [])
+                    for row in table['rows']:
+                        op_rows.append(self.get_value(row, col_index))
 
 
     def _process_prepare_metadata(self, header, output_table_index):
