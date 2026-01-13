@@ -110,14 +110,14 @@ def main_cli():
 
     parser.add_argument('methode', help=f'Must one of: {MethodAction.methods}!', action=MethodAction)
 
-    admin_group = parser.add_argument_group('new_reader')
-    name_arg = admin_group.add_argument('-n' , '--name', action=NameAction,
+    new_reader_group = parser.add_argument_group('new_reader')
+    name_arg = new_reader_group.add_argument('-n' , '--name', action=NameAction,
                         help='Reader name. The name must be in CamelCase!')
-    priority_arg = admin_group.add_argument('-p', '--priority', action=PrioAction,
+    priority_arg = new_reader_group.add_argument('-p', '--priority', action=PrioAction,
                         help='The lower the number, the earlier the reader is checked. Therefore, the probability that it will be used increases!')
-    admin_group.add_argument('-profile', action=ProfileAction,
+    new_reader_group.add_argument('-profile', action=ProfileAction,
                         help='A test Profile if existing!')
-    file_arg = admin_group.add_argument('-t', '--test_file', action=FileAction,
+    file_arg = new_reader_group.add_argument('-t', '--test_file', action=FileAction,
                         help='A test file for test drive development!')
 
     migrate_group = parser.add_argument_group('migrate')
@@ -184,8 +184,7 @@ def _run_conversation(input_file_arg, output_type_arg):
 def _new_reader(args, parser, arg_objets):
     for arg in arg_objets:
         if getattr(args, arg.dest, None) is None:
-            setattr(args, arg.dest, input(f'{arg.help}\n Enter {arg.dest}:'))
-            arg.validate(parser, getattr(args, arg.dest, None))
+            arg(parser, args, input(f'{arg.help}\n Enter {arg.dest}: '), option_string = None)
 
     reader_name_sc = '_'.join(args.name)
     context = {

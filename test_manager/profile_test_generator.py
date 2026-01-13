@@ -38,7 +38,8 @@ def _generate_profile_tests(src_path, file, _unused, res_path):
     TEST_DICT[os.path.join(src_path, file)] = test_name
 
     with open(TEST_FILE, 'a', encoding='utf8') as test_file:
-        test_file.write(f'\n\n\ndef {test_name}():'
+        test_file.write(f'\n\n\n@pytest.mark.timeout(300)'
+                        f'\ndef {test_name}():'
                         f'\n    global all_reader'
                         f'\n    (a, b)=compare_profile_result(r\'{src_path}\',r\'{res_path}\',r\'{file}\')'
                         f'\n    assert len(a) == len(b)'
@@ -47,7 +48,8 @@ def _generate_profile_tests(src_path, file, _unused, res_path):
                         f'\n    if len(a) > 1:'
                         f'\n        all_profiles.add(a[1].get("profileId"))'
                         f'\n    for idx, is_val in enumerate(a):'
-                        f'\n        assert is_val == b[idx]')
+                        f'\n        is_equal = is_val == b[idx]'
+                        f'\n        assert is_equal')
 
 
 def _generate_expected_profiles_results(src_path, file, _unused, res_path):
@@ -67,7 +69,7 @@ def _generate_expected_profiles_results(src_path, file, _unused, res_path):
             mod = importlib.import_module('test_manager.test_profiles')
             getattr(mod, TEST_DICT[src_path_file])()
             return
-        except (ModuleNotFoundError, FileNotFoundError, AssertionError, JSONDecodeError):
+        except:
             pass
     print(f"Generating expected profiles results for {src_path_file}")
     with open(os.path.join(src_path, file), 'rb') as file_pointer:
@@ -127,7 +129,8 @@ def generate_profile_tests():
     TEST_IDX = 0
     TEST_DICT = {}
     with open(TEST_FILE, 'w+', encoding='utf8') as fp:
-        fp.write("from converter_app.readers import READERS as registry\n"
+        fp.write("import pytest\n"
+                 "from converter_app.readers import READERS as registry\n"
                  "from converter_app.models import Profile\n"
                  "from test_manager.utils_test import set_flask_test_config, compare_profile_result\n"
                  "\nall_reader = set()"

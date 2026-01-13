@@ -38,7 +38,7 @@ def generate_expected_results(src_path, file, res_path, _unused):
             mod = importlib.import_module('test_manager.test_readers')
             getattr(mod, TEST_DICT[src_path_file])()
             return
-        except (ModuleNotFoundError, FileNotFoundError, AssertionError, JSONDecodeError):
+        except (ModuleNotFoundError, FileNotFoundError, AssertionError, JSONDecodeError, KeyError):
             pass
     print(f"Generating expected results for {src_path_file}")
     with open(src_path_file, 'rb') as file_pointer:
