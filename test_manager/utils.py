@@ -9,8 +9,12 @@ BLACK_LIST = [
     "EIS/BioLogic/ECLab-mgr/testCHD048_CHD050_401_201_60C_C01.mgr",
 ]
 
+def _sort_handler(text:str):
+    return text[::-1]
+
 def _walk_step(src_path: str):
-    for entry in os.listdir(src_path):
+    sorted_dir = sorted(os.listdir(src_path), key=_sort_handler)
+    for entry in sorted_dir:
         entry_path = os.path.join(src_path, entry)
         if os.path.isdir(entry_path):
             yield entry, entry_path
