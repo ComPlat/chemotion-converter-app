@@ -24,6 +24,7 @@ DATA_TYPES = (
     'SINGLE CRYSTAL X-RAY DIFFRACTION',
     'SIZE EXCLUSION CHROMATOGRAPHY',
     'SORPTION-DESORPTION MEASUREMENT',
+    'SQUID',
     'TENSIOMETRY',
     'THERMOGRAVIMETRIC ANALYSIS',
     'UV-VIS',
@@ -47,6 +48,7 @@ XUNITS = (
     'G/MOL',
     'Hydrodynamic diameter (nm)',
     'HZ',
+    'KELVIN',
     'KILOGRAM',
     'kPa',
     'Lag time (microseconds)',
@@ -71,6 +73,7 @@ YUNITS = (
     'ACF (a.u.)',
     'Ampere',
     'ARBITRARY UNITS',
+    'cm³*K', # non-molar Susceptibility χ -> needs to be divided by amount of substance to get χ_m
     'Current in A',
     'COUNTS',
     'DEGREES CELSIUS',

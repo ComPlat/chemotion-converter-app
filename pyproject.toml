@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "chemotion-converter-app"
-version = "1.6.2"
+version = "1.7.0"
 authors = [{ name = "Nicole Jung", email = "nicole.jung@kit.edu" }]
 requires-python = ">= 3.12"
 description = "A backend service to interconvert chemistry-related files."
@@ -20,15 +20,15 @@ classifiers = [
 dependencies = [
     "defusedxml==0.*",
     "Flask==2.*",
-    "Flask-Cors==3.*",
+    "Flask-Cors==6.*",
     "Flask-HTTPAuth==4.*",
-    "gunicorn==20.*",
+    "gunicorn==22.*",
     "openpyxl==3.*",
     "python-dotenv==0.*",
     "python-magic==0.*",
     "gemmi==0.*",
     "xlrd==2.*",
-    "Werkzeug==2.*",
+    "Werkzeug==3.*",
     "jcamp==1.*",
     "PyMuPDF==1.23.7",
     "pylint==3.*",

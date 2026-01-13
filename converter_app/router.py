@@ -209,7 +209,8 @@ def profile_router(app: Flask, auth: HTTPBasicAuth):
                 profile.save()
                 return jsonify(profile.as_dict), 201
             except jsonschema.exceptions.ValidationError as e:
-                profile.errors['id'] = "Profile is not valid!"
+                    profile.errors['Validation'] = "Profile is not valid!"
+                    profile.errors['Validation Message'] = e.__str__()
         return jsonify(profile.errors), 400
 
     @app.route('/profiles/<profile_id>', methods=['GET'])
@@ -240,7 +241,8 @@ def profile_router(app: Flask, auth: HTTPBasicAuth):
                     profile.save()
                     return jsonify(profile.as_dict), 200
                 except jsonschema.exceptions.ValidationError as e:
-                    profile.errors['id'] = "Profile is not valid!"
+                    profile.errors['Validation'] = "Profile is not valid!"
+                    profile.errors['ValidationMsg'] = e.__str__()
             return jsonify(profile.errors), 400
         abort(404)
         return None

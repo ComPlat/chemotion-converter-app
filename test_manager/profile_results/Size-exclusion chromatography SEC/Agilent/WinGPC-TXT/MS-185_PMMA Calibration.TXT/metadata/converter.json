@@ -4,6 +4,8 @@
   "matches": [
     {
       "identifier": {
+        "editable": true,
+        "id": "#0tableMetadata",
         "key": "Sample",
         "match": "any",
         "optional": true,
@@ -21,6 +23,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#1tableMetadata",
         "key": "Export file",
         "match": "any",
         "optional": true,
@@ -38,6 +42,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#2tableMetadata",
         "key": "Mn",
         "match": "any",
         "optional": true,
@@ -52,6 +58,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#3tableMetadata",
         "key": "Mw",
         "match": "any",
         "optional": true,
@@ -66,6 +74,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#4tableMetadata",
         "key": "D",
         "match": "any",
         "optional": true,
@@ -80,6 +90,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#5tableMetadata",
         "key": "Mp",
         "match": "any",
         "optional": true,
@@ -94,6 +106,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#6tableMetadata",
         "key": "Detector 1",
         "match": "any",
         "optional": true,
@@ -111,6 +125,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#7tableMetadata",
         "key": "Detector 2",
         "match": "any",
         "optional": true,
@@ -128,6 +144,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#8tableMetadata",
         "key": "Detector 3",
         "match": "any",
         "optional": true,
@@ -145,6 +163,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#9fileMetadata",
         "key": "reader",
         "match": "exact",
         "optional": false,
@@ -157,6 +177,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#10tableMetadata",
         "key": "table_name",
         "match": "exact",
         "optional": false,
@@ -171,6 +193,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#11tableMetadata",
         "key": "Column 1",
         "match": "any",
         "optional": true,
@@ -188,6 +212,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#12tableMetadata",
         "key": "Column 2",
         "match": "any",
         "optional": true,
@@ -202,6 +228,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#13tableMetadata",
         "key": "Column 3",
         "match": "any",
         "optional": true,
@@ -216,6 +244,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#14tableMetadata",
         "key": "Inject volume",
         "match": "any",
         "optional": true,
@@ -233,6 +263,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#15tableMetadata",
         "key": "Eluent",
         "match": "any",
         "optional": true,
@@ -250,6 +282,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#16tableMetadata",
         "key": "Flow",
         "match": "any",
         "optional": true,
@@ -267,6 +301,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#17tableMetadata",
         "key": "(Column 1) Temperature",
         "match": "any",
         "optional": true,
@@ -284,6 +320,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#18tableMetadata",
         "key": "Inject date",
         "match": "regex",
         "optional": true,
@@ -301,6 +339,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#19tableMetadata",
         "key": "Inject date",
         "match": "regex",
         "optional": true,
@@ -318,6 +358,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#20tableHeader",
         "lineNumber": "",
         "match": "regex",
         "optional": true,
@@ -336,6 +378,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#21tableHeader",
         "lineNumber": "",
         "match": "regex",
         "optional": true,
@@ -354,6 +398,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#22tableHeader",
         "lineNumber": "",
         "match": "regex",
         "optional": true,
@@ -372,6 +418,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#23tableMetadata",
         "key": "Operator",
         "match": "any",
         "optional": true,
@@ -389,6 +437,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#24tableMetadata",
         "key": "Detector 1",
         "match": "regex",
         "optional": false,
