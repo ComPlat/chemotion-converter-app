@@ -8,12 +8,12 @@ def test_bio_logic():
         __file__).parent.parent / 'test_static/test_files/bio_logic_FK155_JLGU_GE_50-2_15_m1p233mg_Li_LP30_RT_rate_stability_20230906.tar.xz'
     with TestReader(test_file.__str__(), 'bio_logic_080ecac4-8fa2-4c47-b7cc-4ef5db082b07') as reader:
         tables = reader.as_dict['tables']
-        assert tables[5]['header'] == ['EC-Lab LOG FILE', 'Galvanostatic Cycling with Potential Limitation',
+        assert tables[-1]['header'] == ['EC-Lab LOG FILE', 'Galvanostatic Cycling with Potential Limitation',
                                        'CE vs. WE compliance from -10 V to 10 V',
                                        'EC-Lab for windows v11.43 (software)', 'Internet server v11.40 (firmware)',
                                        'Command interpretor v11.40 (firmware)']
 
-        assert tables[5]['metadata'] == {"Run on channel": "7 (SN 67339)",
+        assert tables[-1]['metadata'] == {"Run on channel": "7 (SN 67339)",
                                          "Electrode connection": "standard",
                                          "Potential control": "Ewe",
                                          "Ewe ctrl range": "min = -10.00 V, max = 10.00 V",
