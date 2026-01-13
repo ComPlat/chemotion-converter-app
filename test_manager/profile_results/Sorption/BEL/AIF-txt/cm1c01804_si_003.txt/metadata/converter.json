@@ -136,6 +136,28 @@
     {
       "identifier": {
         "editable": true,
+        "id": "#6tableMetadata",
+        "key": "_exptl_temperature",
+        "match": "any",
+        "operations": [
+          {
+            "operator": "+",
+            "value": "273,15"
+          }
+        ],
+        "optional": true,
+        "outputKey": "temperature",
+        "outputLayer": "meas",
+        "outputTableIndex": 1,
+        "tableIndex": 1,
+        "type": "tableMetadata",
+        "value": "111.00"
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "editable": true,
         "id": "#7tableMetadata",
         "key": "_exptl_sample_mass",
         "match": "any",
@@ -252,6 +274,22 @@
     {
       "identifier": {
         "editable": true,
+        "id": "#12tableMetadata",
+        "key": "_exptl_date",
+        "match": "regex",
+        "optional": true,
+        "outputKey": "time",
+        "outputLayer": "gener",
+        "outputTableIndex": 1,
+        "tableIndex": 1,
+        "type": "tableMetadata",
+        "value": "\\d+:\\d+:\\d+"
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "editable": true,
         "id": "#13tableMetadata",
         "key": "_exptl_instrument",
         "match": "regex",
@@ -267,9 +305,25 @@
         "value": "BEL",
         "tableIndex": 0
       }
+    },
+    {
+      "identifier": {
+        "editable": true,
+        "id": "#13tableMetadata",
+        "key": "_exptl_instrument",
+        "match": "regex",
+        "optional": true,
+        "outputKey": "brand",
+        "outputLayer": "dev",
+        "outputTableIndex": 1,
+        "tableIndex": 1,
+        "type": "tableMetadata",
+        "value": "[^0-9\\s]+"
+      },
+      "result": false
     }
   ],
-  "tablesCount": 1,
+  "tablesCount": 2,
   "tables": [
     {
       "fileName": "data/table_01.jdx",
@@ -290,6 +344,24 @@
         "software_version": "v004",
         "time": "00:00:00",
         "brand": "BEL"
+      }
+    },
+    {
+      "fileName": "data/table_02.jdx",
+      "header": {
+        "DATA CLASS": "XYPOINTS",
+        "DATA TYPE": "SORPTION-DESORPTION MEASUREMENT",
+        "XUNITS": "p/p0",
+        "YUNITS": "ml/g",
+        "operator": "Volodymyr",
+        "date": "2020-04-30",
+        "serial": "00218",
+        "adsorptive": "CH4",
+        "amount": "0.00980",
+        "sample_cid": "aus der BOX",
+        "sample_mat_id": "DUT-140(Cu)",
+        "software": "raw2aif",
+        "software_version": "v004"
       }
     }
   ]
