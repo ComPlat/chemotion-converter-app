@@ -39,6 +39,7 @@
                 "params.dtR (s).0": "60.0",
                 "params.E range min (V).0": "-10.0",
                 "params.E range max (V).0": "10.0",
+                "unit.coords.uts": "s",
                 "unit.data_vars.time": "s",
                 "unit.data_vars.time_std_err": "s",
                 "unit.data_vars.<Ewe>": "V",
@@ -51,7 +52,7 @@
             "columns": [
                 {
                     "key": "0",
-                    "name": "uts"
+                    "name": "uts (s)"
                 },
                 {
                     "key": "1",
@@ -6707,6 +6708,6 @@
         "mime_type": "application/octet-stream",
         "extension": ".mpr",
         "reader": "MprReader",
-        "uploaded": "2026-01-13T09:25:57.633120+00:00"
+        "uploaded": "2026-01-13T10:09:41.331299+00:00"
     }
 }

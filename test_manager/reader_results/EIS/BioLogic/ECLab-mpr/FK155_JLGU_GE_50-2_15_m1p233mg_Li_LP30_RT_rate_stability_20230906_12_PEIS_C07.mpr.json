@@ -84,6 +84,7 @@
                 "params.goto Ns'.0": "0",
                 "params.nr cycles.0": "0",
                 "params.inc. cycle.0": "0",
+                "unit.coords.uts": "s",
                 "unit.data_vars.freq": "Hz",
                 "unit.data_vars.freq_std_err": "Hz",
                 "unit.data_vars.Re(Z)": "\u03a9",
@@ -116,7 +117,7 @@
             "columns": [
                 {
                     "key": "0",
-                    "name": "uts"
+                    "name": "uts (s)"
                 },
                 {
                     "key": "1",
@@ -6969,7 +6970,7 @@
             "columns": [
                 {
                     "key": "0",
-                    "name": "uts"
+                    "name": "uts (s)"
                 },
                 {
                     "key": "1",
@@ -13818,6 +13819,6 @@
         "mime_type": "application/octet-stream",
         "extension": ".mpr",
         "reader": "MprReader",
-        "uploaded": "2026-01-13T09:25:57.656551+00:00"
+        "uploaded": "2026-01-13T10:09:41.361803+00:00"
     }
 }
