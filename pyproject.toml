@@ -17,6 +17,8 @@ classifiers = [
     "Operating System :: OS Independent",
 ]
 
+
+
 dependencies = [
     "defusedxml==0.*",
     "Flask==2.*",
@@ -64,4 +66,4 @@ homepage = "https://chemotion.net/docs/services/chemconverter"
 repository = "https://github.com/ComPlat/chemotion-converter-app"
 
 [tool.setuptools]
-py-modules = []
+packages = ["converter_app"]
