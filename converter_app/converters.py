@@ -3,6 +3,7 @@ import datetime
 import logging
 import os
 import re
+from collections import defaultdict
 
 from converter_app.models import Profile
 
@@ -289,20 +290,24 @@ class Converter:
 
     def process(self):
         """
-        Runs converting process
-        :return:
+        Runs converting process efficiently.
         """
-        for output_table_index, output_table in enumerate(self.output_tables):
-            header = self._process_prepare_header(output_table)
 
+        ntuples_count = defaultdict(int)  # Track NTUPLES_ID occurrences
+
+        for output_table_index, output_table in enumerate(self.output_tables):
+            # --- Prepare header and metadata ---
+            header = self._process_prepare_header(output_table)
             self._process_prepare_metadata(header, output_table_index)
 
-            x_column = output_table.get('table', {}).get('xColumn')
-            y_column = output_table.get('table', {}).get('yColumn')
-            x_operations = output_table.get('table', {}).get('xOperations', [])
-            y_operations = output_table.get('table', {}).get('yOperations', [])
+            # --- Extract table info ---
+            table_data = output_table.get('table', {})
+            x_column = table_data.get('xColumn')
+            y_column = table_data.get('yColumn')
+            x_operations = table_data.get('xOperations', [])
+            y_operations = table_data.get('yOperations', [])
 
-            # repare rows
+            # --- Prepare rows (reuse existing lists if possible) ---
             x_rows = []
             y_rows = []
             for operation in x_operations:
@@ -312,71 +317,121 @@ class Converter:
                 if operation.get('type') == 'column':
                     operation['rows'] = []
 
-            self._process_prepare_data(x_column, x_operations, x_rows, y_column, y_operations, y_rows)
+            # --- Prepare data ---
+            self._process_prepare_data(x_column, x_operations, x_rows,
+                                       y_column, y_operations, y_rows)
 
+            # --- Apply operations ---
             applied_operators = {
                 "applied_x_operator": False,
                 "applied_y_operator": False,
                 "applied_operator_failed": False,
-                "x_operations_description": output_table.get('table', {}).get('xOperationsDescription'),
-                "y_operations_description": output_table.get('table', {}).get('yOperationsDescription')
+                "x_operations_description": table_data.get('xOperationsDescription'),
+                "y_operations_description": table_data.get('yOperationsDescription')
             }
+
             try:
                 for operation in x_operations:
                     applied_operators["applied_x_operator"] |= self._run_operation(x_rows, operation)
                 for operation in y_operations:
                     applied_operators["applied_y_operator"] |= self._run_operation(y_rows, operation)
             except CalculationError:
-                applied_operators['applied_x_operator'] = applied_operators['applied_y_operator'] = False
+                applied_operators['applied_x_operator'] = False
+                applied_operators['applied_y_operator'] = False
                 applied_operators['applied_operator_failed'] = True
-                x_rows = []
-                y_rows = []
+                x_rows.clear()
+                y_rows.clear()
 
-            if header['DATA CLASS'] == 'NTUPLES':
-                if header['NTUPLES_PAGE_HEADER'] == '___TABLE_NAME':
+            # --- Optimized NTUPLES page header logic ---
+            if header.get('DATA CLASS') == 'NTUPLES':
+                page_header = header.get('NTUPLES_PAGE_HEADER')
+
+                if page_header == '___TABLE_NAME':
                     header['NTUPLES_PAGE_HEADER_VALUE'] = f'TABLE: {x_column["tableIndex"]}'
-                elif header['NTUPLES_PAGE_HEADER'] == '___+':
+
+                elif page_header == '___+':
                     this_id = header['NTUPLES_ID']
-                    header['NTUPLES_PAGE_HEADER_VALUE'] = len([x for x in self.tables if x['header']['NTUPLES_ID'] == this_id])
+                    header['NTUPLES_PAGE_HEADER_VALUE'] = ntuples_count.get(this_id, 0)
+                    ntuples_count[this_id] += 1
+
                 else:
-                    try:
-                        key_value = self.input_tables[x_column["tableIndex"]]['metadata'][header['NTUPLES_PAGE_HEADER']]
-                    except KeyError:
-                        key_value = 'UNKNOWN'
-                    header['NTUPLES_PAGE_HEADER_VALUE'] = f"{header['NTUPLES_PAGE_HEADER']}= {key_value}"
+                    # Cache input metadata for fast access
+                    input_metadata = {}
+                    if x_column is not None:
+                        table_index = x_column.get("tableIndex")
+                        if table_index is not None and table_index < len(self.input_tables):
+                            input_metadata = self.input_tables[table_index].get('metadata', {})
+                    key_value = input_metadata.get(page_header, 'UNKNOWN')
+                    header['NTUPLES_PAGE_HEADER_VALUE'] = f"{page_header}= {key_value}"
 
-
-            self.tables.append({
+            # --- Append table efficiently ---
+            table_dict = {
                 'header': header,
                 'x': x_rows,
                 'y': y_rows
-            } | applied_operators)
+            }
+            table_dict.update(applied_operators)
+
+            self.tables.append(table_dict)
 
     def _process_prepare_data(self, x_column, x_operations, x_rows, y_column, y_operations, y_rows):
-        for table_index, table in enumerate(self.input_tables):
-            for _, row in enumerate(table['rows']):
-                for column_index, _ in enumerate(table['columns']):
-                    if x_column and \
-                            table_index == x_column.get('tableIndex') and \
-                            column_index == x_column.get('columnIndex'):
-                        x_rows.append(self.get_value(row, column_index))
+        """
+        Efficiently fills x_rows, y_rows, and operation rows using direct table/column access.
+        Avoids scanning all input tables and columns.
+        """
 
-                    if y_column and \
-                            table_index == y_column.get('tableIndex') and \
-                            column_index == y_column.get('columnIndex'):
-                        y_rows.append(self.get_value(row, column_index))
+        def check_indexes(tabel_index, column_index):
+            if len(self.input_tables) <= tabel_index:
+                return False
+            tabel = self.input_tables[table_index]
+            if len(tabel['rows']) == 0:
+                return False
+            row = tabel['rows'][0]
+            if len(row) <= column_index:
+                return False
+            return True
 
-                    for operation in x_operations:
-                        if operation.get('type') == 'column' and operation.get('column') and \
-                                table_index == operation.get('column', {}).get('tableIndex') and \
-                                column_index == operation.get('column', {}).get('columnIndex'):
-                            operation['rows'].append(self.get_value(row, column_index))
+        # --- Fill x_rows directly ---
+        if x_column:
+            table_index = x_column['tableIndex']
+            col_index = x_column['columnIndex']
+            if check_indexes(table_index, col_index):
+                table = self.input_tables[table_index]
+                for row in table['rows']:
+                    x_rows.append(self.get_value(row, col_index))
 
-                    for operation in y_operations:
-                        if operation.get('type') == 'column' and operation.get('column') and \
-                                table_index == operation.get('column', {}).get('tableIndex') and \
-                                column_index == operation.get('column', {}).get('columnIndex'):
-                            operation['rows'].append(self.get_value(row, column_index))
+        # --- Fill y_rows directly ---
+        if y_column:
+            table_index = y_column['tableIndex']
+            col_index = y_column['columnIndex']
+            if check_indexes(table_index, col_index):
+                table = self.input_tables[table_index]
+                for row in table['rows']:
+                    y_rows.append(self.get_value(row, col_index))
+
+        # --- Fill x_operations rows directly ---
+        for operation in x_operations:
+            if operation.get('type') == 'column' and operation.get('column'):
+                col = operation['column']
+                col_index =col['columnIndex']
+                table_index = col['tableIndex']
+                if check_indexes(table_index, col_index):
+                    table = self.input_tables[table_index]
+                    op_rows = operation.setdefault('rows', [])
+                    for row in table['rows']:
+                        op_rows.append(self.get_value(row, col_index))
+
+        # --- Fill y_operations rows directly ---
+        for operation in y_operations:
+            if operation.get('type') == 'column' and operation.get('column'):
+                col = operation['column']
+                col_index =col['columnIndex']
+                table_index = col['tableIndex']
+                if check_indexes(table_index, col_index):
+                    table = self.input_tables[table_index]
+                    op_rows = operation.setdefault('rows', [])
+                    for row in table['rows']:
+                        op_rows.append(self.get_value(row, col_index))
 
 
     def _process_prepare_metadata(self, header, output_table_index):
