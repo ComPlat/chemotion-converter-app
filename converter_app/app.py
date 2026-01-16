@@ -9,6 +9,7 @@ users with the capability to effortlessly create profiles for the conversion pro
 import importlib.metadata
 import logging
 import os
+import uuid
 from pathlib import Path
 
 import dotenv
@@ -17,21 +18,31 @@ from str2bool import str2bool
 
 from converter_app.profile_migration.utils.registration import Migrations
 from converter_app.router import get_clients, setup_flask_routing
-from converter_app.utils import human2bytes
+from converter_app.utils import human2bytes, cli_home_path
 from converter_app.validation import validate_all_profiles
 from converter_app.rdf import refresh_rdf_summery
+from converter_app.models import Profile
 
 
 # Example usage
 
 
-def create_app():
+def create_app(is_local_cli = False) -> flask.Flask:
     """
     Creates a Flask server that exposes various endpoints, providing
     users with the capability to effortlessly create profiles for the conversion process.
     :return: Flask app
     """
-    dotenv.load_dotenv(Path().cwd() / '.env')
+    if is_local_cli:
+        os.environ['SECRET_KEY'] = uuid.uuid4().__str__()
+        os.environ['PROFILES_DIR'] = Profile.cli_profiles_dir.__str__()
+        os.environ['DATASETS_DIR'] = cli_home_path().joinpath('datasets').__str__()
+        os.environ['CORS'] = 'False'
+        os.environ['DEBUG'] = 'False'
+        os.environ['IS_CLI'] = '1'
+        os.environ['LOG_FILE'] = Path(os.getcwd()).joinpath('converter_app.log').__str__()
+    else:
+        dotenv.load_dotenv(Path().cwd() / '.env')
     rdf_json_path = refresh_rdf_summery()
 
     # setup logging
@@ -39,6 +50,7 @@ def create_app():
                         filename=os.getenv('LOG_FILE'))
 
     # configure app
+    debug = str2bool(os.getenv('DEBUG', 'False').lower())
     app = flask.Flask(__name__, instance_relative_config=True)
     app.config.from_mapping(
         SECRET_KEY=os.getenv('SECRET_KEY'),
@@ -46,7 +58,7 @@ def create_app():
         DATASETS_DIR=os.getenv('DATASETS_DIR', 'datasets'),
         MAX_CONTENT_LENGTH=human2bytes(os.getenv('MAX_CONTENT_LENGTH', '64M')),
         CORS=str2bool(os.getenv('CORS', 'False').lower()),
-        DEBUG=str2bool(os.getenv('DEBUG', 'False').lower()),
+        DEBUG=debug,
         CLIENTS=get_clients() is not None,
         RDF_JSON=rdf_json_path,
         VERSION=importlib.metadata.version('chemotion-converter-app')
@@ -55,7 +67,7 @@ def create_app():
     os.makedirs(app.config['PROFILES_DIR'], exist_ok=True)
     Migrations().run_migration(app.config['PROFILES_DIR'])
     validate_all_profiles(app.config['PROFILES_DIR'])
-    app.debug = app.config['DEBUG']
+    app.debug = debug
     setup_flask_routing(app)
 
     return app

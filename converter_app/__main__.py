@@ -3,9 +3,11 @@ import json
 import os
 import re
 import shutil
+import threading
 import uuid
 from datetime import datetime
 from pathlib import Path
+import webbrowser
 
 from jinja2 import Template
 from werkzeug.datastructures import FileStorage
@@ -31,6 +33,7 @@ class FileAction(argparse.Action):
             parser.error(f'{fp} does not exist!')
         if fp.is_dir():
             parser.error(f'{fp} is a directory!')
+
 
 class ProfileAction(FileAction):
     def validate(self, parser, value):
@@ -72,7 +75,6 @@ class OutputTypeAction(argparse.Action):
             parser.error(f'{value} is not a valid name!')
 
 
-
 class PrioAction(argparse.Action):
     def __call__(self, parser, namespace, value, option_string=None):
         self.validate(parser, value)
@@ -90,7 +92,7 @@ class PrioAction(argparse.Action):
 
 
 class MethodAction(argparse.Action):
-    methods = ['convert', 'new_reader', 'migrate', 'new_migration']
+    methods = ['convert', 'edit_cli_profiles', 'new_reader', 'migrate', 'new_migration']
 
     def __call__(self, parser, namespace, value, option_string=None):
         self.validate(parser, value)
@@ -98,12 +100,11 @@ class MethodAction(argparse.Action):
 
     @classmethod
     def validate(cls, parser, value):
-       if value not in cls.methods:
-           parser.error(f'{value} is not a valid method! Must be one of {cls.methods}')
+        if value not in cls.methods:
+            parser.error(f'{value} is not a valid method! Must be one of {cls.methods}')
 
 
 def main_cli():
-
     parser = argparse.ArgumentParser(
         prog='python -m converter_app',
         description='Helps to develop new reader')
@@ -111,29 +112,35 @@ def main_cli():
     parser.add_argument('methode', help=f'Must one of: {MethodAction.methods}!', action=MethodAction)
 
     new_reader_group = parser.add_argument_group('new_reader')
-    name_arg = new_reader_group.add_argument('-n' , '--name', action=NameAction,
-                        help='Reader name. The name must be in CamelCase!')
+    name_arg = new_reader_group.add_argument('-n', '--name', action=NameAction,
+                                             help='Reader name. The name must be in CamelCase!')
     priority_arg = new_reader_group.add_argument('-p', '--priority', action=PrioAction,
-                        help='The lower the number, the earlier the reader is checked. Therefore, the probability that it will be used increases!')
+                                                 help='The lower the number, the earlier the reader is checked. Therefore, the probability that it will be used increases!')
     new_reader_group.add_argument('-profile', action=ProfileAction,
-                        help='A test Profile if existing!')
+                                  help='A test Profile if existing!')
     file_arg = new_reader_group.add_argument('-t', '--test_file', action=FileAction,
-                        help='A test file for test drive development!')
+                                             help='A test file for test drive development!')
 
     migrate_group = parser.add_argument_group('migrate')
-    migrate_group.add_argument('-f' , '--force', action='store_true', help="If force is set all migration scripts will be applyed")
-
-
-
+    migrate_group.add_argument('-f', '--force', action='store_true',
+                               help="If force is set all migration scripts will be applyed")
 
     convert_group = parser.add_argument_group('convert')
     convert_group.add_argument('-i', '--input_file', action=FileAction,
-                        help='A file to be converted test drive development!')
+                               help='A file to be converted test drive development!')
     convert_group.add_argument('-o', '--output', action=OutputTypeAction,
-                        help=f'Output type must be in {OutputTypeAction.output_types}')
+                               help=f'Output type must be in {OutputTypeAction.output_types}')
 
     args = parser.parse_args()
 
+    if args.methode == 'edit_cli_profiles':
+        app = create_app(True)
+
+        def open_browser():
+            webbrowser.open("http://127.0.0.1:5000")
+
+        threading.Timer(1.0, open_browser).start()
+        app.run(host='127.0.0.1', port=5000)
     if args.methode == 'new_reader':
         _new_reader(args, parser, [name_arg, priority_arg, file_arg])
     elif args.methode == 'convert':
@@ -160,6 +167,7 @@ def _new_migration():
     with open(targe_reader_path, 'w+', encoding='utf-8') as f:
         f.write(template.render(**context))
 
+
 def _run_conversation(input_file_arg, output_type_arg):
     if not input_file_arg.exists():
         raise FileNotFoundError(f'{input_file_arg.absolute()} does not exist!')
@@ -184,7 +192,7 @@ def _run_conversation(input_file_arg, output_type_arg):
 def _new_reader(args, parser, arg_objets):
     for arg in arg_objets:
         if getattr(args, arg.dest, None) is None:
-            arg(parser, args, input(f'{arg.help}\n Enter {arg.dest}: '), option_string = None)
+            arg(parser, args, input(f'{arg.help}\n Enter {arg.dest}: '), option_string=None)
 
     reader_name_sc = '_'.join(args.name)
     context = {
@@ -215,6 +223,7 @@ def _new_reader(args, parser, arg_objets):
 
     with open(targe_reader_test_path, 'w+', encoding='utf-8') as f:
         f.write(template.render(**context))
+
 
 if __name__ == '__main__':
     main_cli()

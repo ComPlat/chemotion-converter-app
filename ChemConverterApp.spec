@@ -18,7 +18,8 @@ a = Analysis(
     pathex=[],
     binaries=[],
     datas=[('converter_app/', 'converter_app/'), ('client_build/', 'client_build/')],
-    hiddenimports=[],
+    hiddenimports=['numpy', 'yadg', 'yadg.extractors.eclab', ],
+
     hookspath=[],
     hooksconfig={},
     runtime_hooks=[],

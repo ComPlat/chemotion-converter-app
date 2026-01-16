@@ -13,7 +13,7 @@ import magic
 from flask import current_app
 from werkzeug.datastructures import FileStorage
 
-from converter_app.utils import check_uuid
+from converter_app.utils import check_uuid, cli_home_path
 from converter_app.utils import get_app_root
 
 logger = logging.getLogger(__name__)
@@ -30,7 +30,7 @@ class Profile:
         errors      [collections.defaultdict] contains all errors if profile is not correct
     """
 
-    cli_profiles_dir = Path.home().joinpath('.ChemConverter/profiles/cli')
+    cli_profiles_dir = cli_home_path() / 'profiles'
 
     def __init__(self, profile_data, client_id, profile_id=None, is_default_profile: bool = False):
         self.isDisabled = profile_data.get('isDisabled', False)
@@ -207,13 +207,16 @@ class Profile:
         :return:
         """
         if not current_app:
-            profiles_path = cls.cli_profiles_dir
+            profiles_path = cls.cli_profiles_dir.joinpath('cli')
         else:
             profiles_path = Path(current_app.config['PROFILES_DIR']).joinpath(client_id)
 
         if profiles_path.exists():
             for file_path in sorted(Path.iterdir(profiles_path)):
-                yield cls.profile_from_file_path(file_path, client_id)
+                try:
+                    yield cls.profile_from_file_path(file_path, client_id)
+                except json.decoder.JSONDecodeError:
+                    pass
         return []
 
     @classmethod

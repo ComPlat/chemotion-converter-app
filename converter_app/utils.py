@@ -16,6 +16,9 @@ from converter_app.writers.jcampzip import JcampZipWriter
 from converter_app.writers.rdf import RDFWriter
 
 
+def cli_home_path():
+    return Path.home().joinpath('.ChemConverter')
+
 def human2bytes(string):
     """
     Bytes size converter
