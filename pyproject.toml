@@ -68,4 +68,4 @@ homepage = "https://chemotion.net/docs/services/chemconverter"
 repository = "https://github.com/ComPlat/chemotion-converter-app"
 
 [tool.setuptools]
-packages = ["converter_app", "converter_app.profile_migration", "converter_app.validation", "converter_app.validation.utils"]
+packages = ["converter_app", "converter_app.profile_migration", "converter_app.validation", "converter_app.profile_migration.utils"]
