@@ -11,7 +11,7 @@
         "optional": true,
         "outputKey": "label",
         "outputLayer": "sample_details",
-        "outputTableIndex": 0,
+        "outputTableIndex": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "Vial   1: MS139 - 1"
@@ -30,7 +30,7 @@
         "optional": true,
         "outputKey": "comments",
         "outputLayer": "general",
-        "outputTableIndex": 0,
+        "outputTableIndex": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "X:\\Marvin Subarew\\AETMC Polymerization\\MS139\\2021-07-22 MS139.TXT"
@@ -49,7 +49,7 @@
         "optional": true,
         "outputKey": "mn",
         "outputLayer": "eval_data_detec_i",
-        "outputTableIndex": 0,
+        "outputTableIndex": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": " 6.999E+3"
@@ -65,7 +65,7 @@
         "optional": true,
         "outputKey": "mw",
         "outputLayer": "eval_data_detec_i",
-        "outputTableIndex": 0,
+        "outputTableIndex": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": " 9.417E+3"
@@ -81,7 +81,7 @@
         "optional": true,
         "outputKey": "d",
         "outputLayer": "eval_data_detec_i",
-        "outputTableIndex": 0,
+        "outputTableIndex": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": " 1.346E+0"
@@ -97,7 +97,7 @@
         "optional": true,
         "outputKey": "mp",
         "outputLayer": "eval_data_detec_i",
-        "outputTableIndex": 0,
+        "outputTableIndex": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": " 9.724E+3"
@@ -113,7 +113,7 @@
         "optional": true,
         "outputKey": "detec1",
         "outputLayer": "instrument",
-        "outputTableIndex": 0,
+        "outputTableIndex": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "I2: RI Detector 1, RI Signal"
@@ -132,7 +132,7 @@
         "optional": true,
         "outputKey": "detec2",
         "outputLayer": "instrument",
-        "outputTableIndex": 0,
+        "outputTableIndex": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "I2: UV Detector 1, UV Signal"
@@ -151,7 +151,7 @@
         "optional": true,
         "outputKey": "detec3",
         "outputLayer": "instrument",
-        "outputTableIndex": 0,
+        "outputTableIndex": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "I2: Pump 1, Sample Pump Pressure"
@@ -164,43 +164,13 @@
     {
       "identifier": {
         "editable": true,
-        "id": "#9fileMetadata",
-        "key": "reader",
-        "match": "exact",
-        "optional": false,
-        "type": "fileMetadata",
-        "value": "SecReader"
-      },
-      "result": {
-        "value": "SecReader"
-      }
-    },
-    {
-      "identifier": {
-        "editable": true,
-        "id": "#10tableMetadata",
-        "key": "table_name",
-        "match": "exact",
-        "optional": false,
-        "tableIndex": 7,
-        "type": "tableMetadata",
-        "value": "MWD"
-      },
-      "result": {
-        "value": "MWD",
-        "tableIndex": 7
-      }
-    },
-    {
-      "identifier": {
-        "editable": true,
         "id": "#11tableMetadata",
         "key": "Column 1",
         "match": "any",
         "optional": true,
         "outputKey": "col1",
         "outputLayer": "equipment",
-        "outputTableIndex": 0,
+        "outputTableIndex": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "PSS SDV 5\u00b5m"
@@ -219,7 +189,7 @@
         "optional": true,
         "outputKey": "col2",
         "outputLayer": "equipment",
-        "outputTableIndex": 0,
+        "outputTableIndex": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "PSS SDV 5\u00b5m"
@@ -235,7 +205,7 @@
         "optional": true,
         "outputKey": "col3",
         "outputLayer": "equipment",
-        "outputTableIndex": 0,
+        "outputTableIndex": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "PSS SDV 5\u00b5m"
@@ -251,7 +221,7 @@
         "optional": true,
         "outputKey": "in_vol",
         "outputLayer": "meta",
-        "outputTableIndex": 0,
+        "outputTableIndex": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": " 50.000"
@@ -270,7 +240,7 @@
         "optional": true,
         "outputKey": "eluent",
         "outputLayer": "meta",
-        "outputTableIndex": 0,
+        "outputTableIndex": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "THF"
@@ -289,7 +259,7 @@
         "optional": true,
         "outputKey": "flow",
         "outputLayer": "meta",
-        "outputTableIndex": 0,
+        "outputTableIndex": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "  1.000"
@@ -308,7 +278,7 @@
         "optional": true,
         "outputKey": "temperature",
         "outputLayer": "meta",
-        "outputTableIndex": 0,
+        "outputTableIndex": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": " 35.000"
@@ -327,7 +297,7 @@
         "optional": true,
         "outputKey": "date",
         "outputLayer": "general",
-        "outputTableIndex": 0,
+        "outputTableIndex": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "^\\S+\\s(.*?)(\\s\\d+\\:\\d+\\:\\d+)"
@@ -346,7 +316,7 @@
         "optional": true,
         "outputKey": "time",
         "outputLayer": "general",
-        "outputTableIndex": 0,
+        "outputTableIndex": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "(\\d+\\:\\d+\\:\\d+)"
@@ -360,21 +330,18 @@
       "identifier": {
         "editable": true,
         "id": "#20tableHeader",
+        "key": "Number of detectors",
         "lineNumber": "",
-        "match": "regex",
+        "match": "any",
         "optional": true,
         "outputKey": "no_dec",
         "outputLayer": "instrument",
         "outputTableIndex": null,
         "tableIndex": 0,
-        "type": "tableHeader",
-        "value": "1"
+        "type": "tableMetadata",
+        "value": ""
       },
-      "result": {
-        "value": "1",
-        "tableIndex": 0,
-        "lineNumber": 1
-      }
+      "result": false
     },
     {
       "identifier": {
@@ -425,7 +392,7 @@
         "optional": true,
         "outputKey": "operator",
         "outputLayer": "general",
-        "outputTableIndex": 0,
+        "outputTableIndex": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "itcp-akt"
@@ -438,21 +405,860 @@
     {
       "identifier": {
         "editable": true,
-        "id": "#24tableMetadata",
-        "key": "Detector 1",
-        "match": "regex",
-        "optional": false,
+        "id": "autogen_A_DECT1",
+        "key": "A_DECT1",
+        "match": "any",
+        "optional": true,
+        "outputKey": "a",
+        "outputLayer": "eval_data_detec_1",
+        "outputTableIndex": null,
         "tableIndex": 0,
         "type": "tableMetadata",
-        "value": "I1"
+        "value": ""
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "editable": true,
+        "id": "autogen_D_DECT1",
+        "key": "D_DECT1",
+        "match": "any",
+        "optional": true,
+        "outputKey": "d",
+        "outputLayer": "eval_data_detec_1",
+        "outputTableIndex": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
       },
       "result": {
-        "value": "I1",
+        "value": "1.504E+0",
         "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "editable": true,
+        "id": "autogen_M(z+1)_DECT1",
+        "key": "M(z+1)_DECT1",
+        "match": "any",
+        "optional": true,
+        "outputKey": "mz1",
+        "outputLayer": "eval_data_detec_1",
+        "outputTableIndex": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": {
+        "value": "2.640E+5",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "editable": true,
+        "id": "autogen_Mn_DECT1",
+        "key": "Mn_DECT1",
+        "match": "any",
+        "optional": true,
+        "outputKey": "mn",
+        "outputLayer": "eval_data_detec_1",
+        "outputTableIndex": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": {
+        "value": "9.867E+4",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "editable": true,
+        "id": "autogen_Mp_DECT1",
+        "key": "Mp_DECT1",
+        "match": "any",
+        "optional": true,
+        "outputKey": "mp",
+        "outputLayer": "eval_data_detec_1",
+        "outputTableIndex": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": {
+        "value": "1.412E+5",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "editable": true,
+        "id": "autogen_Mv_DECT1",
+        "key": "Mv_DECT1",
+        "match": "any",
+        "optional": true,
+        "outputKey": "mv",
+        "outputLayer": "eval_data_detec_1",
+        "outputTableIndex": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": {
+        "value": "1.405E+5",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "editable": true,
+        "id": "autogen_Mw_DECT1",
+        "key": "Mw_DECT1",
+        "match": "any",
+        "optional": true,
+        "outputKey": "mw",
+        "outputLayer": "eval_data_detec_1",
+        "outputTableIndex": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": {
+        "value": "1.484E+5",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "editable": true,
+        "id": "autogen_Mz_DECT1",
+        "key": "Mz_DECT1",
+        "match": "any",
+        "optional": true,
+        "outputKey": "mz",
+        "outputLayer": "eval_data_detec_1",
+        "outputTableIndex": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": {
+        "value": "2.046E+5",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "editable": true,
+        "id": "autogen_Vp_DECT1",
+        "key": "Vp_DECT1",
+        "match": "any",
+        "optional": true,
+        "outputKey": "vp",
+        "outputLayer": "eval_data_detec_1",
+        "outputTableIndex": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": {
+        "value": "1.601E+1",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "editable": true,
+        "id": "autogen_[n]_DECT1",
+        "key": "[n]_DECT1",
+        "match": "any",
+        "optional": true,
+        "outputKey": "n",
+        "outputLayer": "eval_data_detec_1",
+        "outputTableIndex": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": {
+        "value": "4.561E+4",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "editable": true,
+        "id": "autogen_A_DECT2",
+        "key": "A_DECT2",
+        "match": "any",
+        "optional": true,
+        "outputKey": "a",
+        "outputLayer": "eval_data_detec_2",
+        "outputTableIndex": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "editable": true,
+        "id": "autogen_D_DECT2",
+        "key": "D_DECT2",
+        "match": "any",
+        "optional": true,
+        "outputKey": "d",
+        "outputLayer": "eval_data_detec_2",
+        "outputTableIndex": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "editable": true,
+        "id": "autogen_M(z+1)_DECT2",
+        "key": "M(z+1)_DECT2",
+        "match": "any",
+        "optional": true,
+        "outputKey": "mz1",
+        "outputLayer": "eval_data_detec_2",
+        "outputTableIndex": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "editable": true,
+        "id": "autogen_Mn_DECT2",
+        "key": "Mn_DECT2",
+        "match": "any",
+        "optional": true,
+        "outputKey": "mn",
+        "outputLayer": "eval_data_detec_2",
+        "outputTableIndex": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "editable": true,
+        "id": "autogen_Mp_DECT2",
+        "key": "Mp_DECT2",
+        "match": "any",
+        "optional": true,
+        "outputKey": "mp",
+        "outputLayer": "eval_data_detec_2",
+        "outputTableIndex": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "editable": true,
+        "id": "autogen_Mv_DECT2",
+        "key": "Mv_DECT2",
+        "match": "any",
+        "optional": true,
+        "outputKey": "mv",
+        "outputLayer": "eval_data_detec_2",
+        "outputTableIndex": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "editable": true,
+        "id": "autogen_Mw_DECT2",
+        "key": "Mw_DECT2",
+        "match": "any",
+        "optional": true,
+        "outputKey": "mw",
+        "outputLayer": "eval_data_detec_2",
+        "outputTableIndex": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "editable": true,
+        "id": "autogen_Mz_DECT2",
+        "key": "Mz_DECT2",
+        "match": "any",
+        "optional": true,
+        "outputKey": "mz",
+        "outputLayer": "eval_data_detec_2",
+        "outputTableIndex": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "editable": true,
+        "id": "autogen_Vp_DECT2",
+        "key": "Vp_DECT2",
+        "match": "any",
+        "optional": true,
+        "outputKey": "vp",
+        "outputLayer": "eval_data_detec_2",
+        "outputTableIndex": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "editable": true,
+        "id": "autogen_[n]_DECT2",
+        "key": "[n]_DECT2",
+        "match": "any",
+        "optional": true,
+        "outputKey": "n",
+        "outputLayer": "eval_data_detec_2",
+        "outputTableIndex": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "editable": true,
+        "id": "autogen_A_DECT3",
+        "key": "A_DECT3",
+        "match": "any",
+        "optional": true,
+        "outputKey": "a",
+        "outputLayer": "eval_data_detec_3",
+        "outputTableIndex": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "editable": true,
+        "id": "autogen_D_DECT3",
+        "key": "D_DECT3",
+        "match": "any",
+        "optional": true,
+        "outputKey": "d",
+        "outputLayer": "eval_data_detec_3",
+        "outputTableIndex": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "editable": true,
+        "id": "autogen_M(z+1)_DECT3",
+        "key": "M(z+1)_DECT3",
+        "match": "any",
+        "optional": true,
+        "outputKey": "mz1",
+        "outputLayer": "eval_data_detec_3",
+        "outputTableIndex": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "editable": true,
+        "id": "autogen_Mn_DECT3",
+        "key": "Mn_DECT3",
+        "match": "any",
+        "optional": true,
+        "outputKey": "mn",
+        "outputLayer": "eval_data_detec_3",
+        "outputTableIndex": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "editable": true,
+        "id": "autogen_Mp_DECT3",
+        "key": "Mp_DECT3",
+        "match": "any",
+        "optional": true,
+        "outputKey": "mp",
+        "outputLayer": "eval_data_detec_3",
+        "outputTableIndex": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "editable": true,
+        "id": "autogen_Mv_DECT3",
+        "key": "Mv_DECT3",
+        "match": "any",
+        "optional": true,
+        "outputKey": "mv",
+        "outputLayer": "eval_data_detec_3",
+        "outputTableIndex": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "editable": true,
+        "id": "autogen_Mw_DECT3",
+        "key": "Mw_DECT3",
+        "match": "any",
+        "optional": true,
+        "outputKey": "mw",
+        "outputLayer": "eval_data_detec_3",
+        "outputTableIndex": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "editable": true,
+        "id": "autogen_Mz_DECT3",
+        "key": "Mz_DECT3",
+        "match": "any",
+        "optional": true,
+        "outputKey": "mz",
+        "outputLayer": "eval_data_detec_3",
+        "outputTableIndex": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "editable": true,
+        "id": "autogen_Vp_DECT3",
+        "key": "Vp_DECT3",
+        "match": "any",
+        "optional": true,
+        "outputKey": "vp",
+        "outputLayer": "eval_data_detec_3",
+        "outputTableIndex": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "editable": true,
+        "id": "autogen_[n]_DECT3",
+        "key": "[n]_DECT3",
+        "match": "any",
+        "optional": true,
+        "outputKey": "n",
+        "outputLayer": "eval_data_detec_3",
+        "outputTableIndex": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "editable": true,
+        "id": "autogen_A_DECT4",
+        "key": "A_DECT4",
+        "match": "any",
+        "optional": true,
+        "outputKey": "a",
+        "outputLayer": "eval_data_detec_4",
+        "outputTableIndex": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "editable": true,
+        "id": "autogen_D_DECT4",
+        "key": "D_DECT4",
+        "match": "any",
+        "optional": true,
+        "outputKey": "d",
+        "outputLayer": "eval_data_detec_4",
+        "outputTableIndex": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "editable": true,
+        "id": "autogen_M(z+1)_DECT4",
+        "key": "M(z+1)_DECT4",
+        "match": "any",
+        "optional": true,
+        "outputKey": "mz1",
+        "outputLayer": "eval_data_detec_4",
+        "outputTableIndex": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "editable": true,
+        "id": "autogen_Mn_DECT4",
+        "key": "Mn_DECT4",
+        "match": "any",
+        "optional": true,
+        "outputKey": "mn",
+        "outputLayer": "eval_data_detec_4",
+        "outputTableIndex": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "editable": true,
+        "id": "autogen_Mp_DECT4",
+        "key": "Mp_DECT4",
+        "match": "any",
+        "optional": true,
+        "outputKey": "mp",
+        "outputLayer": "eval_data_detec_4",
+        "outputTableIndex": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "editable": true,
+        "id": "autogen_Mv_DECT4",
+        "key": "Mv_DECT4",
+        "match": "any",
+        "optional": true,
+        "outputKey": "mv",
+        "outputLayer": "eval_data_detec_4",
+        "outputTableIndex": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "editable": true,
+        "id": "autogen_Mw_DECT4",
+        "key": "Mw_DECT4",
+        "match": "any",
+        "optional": true,
+        "outputKey": "mw",
+        "outputLayer": "eval_data_detec_4",
+        "outputTableIndex": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "editable": true,
+        "id": "autogen_Mz_DECT4",
+        "key": "Mz_DECT4",
+        "match": "any",
+        "optional": true,
+        "outputKey": "mz",
+        "outputLayer": "eval_data_detec_4",
+        "outputTableIndex": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "editable": true,
+        "id": "autogen_Vp_DECT4",
+        "key": "Vp_DECT4",
+        "match": "any",
+        "optional": true,
+        "outputKey": "vp",
+        "outputLayer": "eval_data_detec_4",
+        "outputTableIndex": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "editable": true,
+        "id": "autogen_[n]_DECT4",
+        "key": "[n]_DECT4",
+        "match": "any",
+        "optional": true,
+        "outputKey": "n",
+        "outputLayer": "eval_data_detec_4",
+        "outputTableIndex": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "editable": true,
+        "id": "autogen_A_DECT5",
+        "key": "A_DECT5",
+        "match": "any",
+        "optional": true,
+        "outputKey": "a",
+        "outputLayer": "eval_data_detec_5",
+        "outputTableIndex": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "editable": true,
+        "id": "autogen_D_DECT5",
+        "key": "D_DECT5",
+        "match": "any",
+        "optional": true,
+        "outputKey": "d",
+        "outputLayer": "eval_data_detec_5",
+        "outputTableIndex": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "editable": true,
+        "id": "autogen_M(z+1)_DECT5",
+        "key": "M(z+1)_DECT5",
+        "match": "any",
+        "optional": true,
+        "outputKey": "mz1",
+        "outputLayer": "eval_data_detec_5",
+        "outputTableIndex": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "editable": true,
+        "id": "autogen_Mn_DECT5",
+        "key": "Mn_DECT5",
+        "match": "any",
+        "optional": true,
+        "outputKey": "mn",
+        "outputLayer": "eval_data_detec_5",
+        "outputTableIndex": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "editable": true,
+        "id": "autogen_Mp_DECT5",
+        "key": "Mp_DECT5",
+        "match": "any",
+        "optional": true,
+        "outputKey": "mp",
+        "outputLayer": "eval_data_detec_5",
+        "outputTableIndex": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "editable": true,
+        "id": "autogen_Mv_DECT5",
+        "key": "Mv_DECT5",
+        "match": "any",
+        "optional": true,
+        "outputKey": "mv",
+        "outputLayer": "eval_data_detec_5",
+        "outputTableIndex": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "editable": true,
+        "id": "autogen_Mw_DECT5",
+        "key": "Mw_DECT5",
+        "match": "any",
+        "optional": true,
+        "outputKey": "mw",
+        "outputLayer": "eval_data_detec_5",
+        "outputTableIndex": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "editable": true,
+        "id": "autogen_Mz_DECT5",
+        "key": "Mz_DECT5",
+        "match": "any",
+        "optional": true,
+        "outputKey": "mz",
+        "outputLayer": "eval_data_detec_5",
+        "outputTableIndex": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "editable": true,
+        "id": "autogen_Vp_DECT5",
+        "key": "Vp_DECT5",
+        "match": "any",
+        "optional": true,
+        "outputKey": "vp",
+        "outputLayer": "eval_data_detec_5",
+        "outputTableIndex": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "editable": true,
+        "id": "autogen_[n]_DECT5",
+        "key": "[n]_DECT5",
+        "match": "any",
+        "optional": true,
+        "outputKey": "n",
+        "outputLayer": "eval_data_detec_5",
+        "outputTableIndex": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "editable": true,
+        "id": "#2a7efd32-69e5-4a4d-9e3e-dd354d5fb298",
+        "key": "reader",
+        "match": "exact",
+        "optional": false,
+        "type": "fileMetadata",
+        "value": "SecReader"
+      },
+      "result": {
+        "value": "SecReader"
+      }
+    },
+    {
+      "identifier": {
+        "editable": true,
+        "id": "#0382d500-5dea-4eff-8973-cd88a0453f81",
+        "key": "extension",
+        "match": "regex",
+        "optional": false,
+        "type": "fileMetadata",
+        "value": "\\.(txt|TXT)$"
+      },
+      "result": {
+        "value": "TXT"
       }
     }
   ],
-  "tablesCount": 2,
+  "tablesCount": 3,
   "tables": [
     {
       "fileName": "data/table_01.jdx",
@@ -473,10 +1279,18 @@
         "temperature": "25.000",
         "date": "15.08.22",
         "time": "21:06:30",
-        "no_dec": "1",
         "software": "WINGPC",
         "version": "8#1",
-        "operator": "GPCAdmin"
+        "operator": "GPCAdmin",
+        "d": "1.504E+0",
+        "mz1": "2.640E+5",
+        "mn": "9.867E+4",
+        "mp": "1.412E+5",
+        "mv": "1.405E+5",
+        "mw": "1.484E+5",
+        "mz": "2.046E+5",
+        "vp": "1.601E+1",
+        "n": "4.561E+4"
       }
     },
     {
@@ -484,11 +1298,65 @@
       "header": {
         "DATA CLASS": "XYPOINTS",
         "DATA TYPE": "SIZE EXCLUSION CHROMATOGRAPHY",
+        "XUNITS": "MILLILITERS",
+        "YUNITS": "ARBITRARY UNITS",
+        "label": "Vial   8: MS-185 - 1",
+        "comments": "\\\\129.13.136.127\\Shared_Folder\\Analysis\\GPC_THF_CS_R311\\Marvin Subarew\\MS-185\\MS-185_Lichtstreuung.TXT",
+        "detec1": "I1: RID 1, RI Signal",
+        "detec2": "I1: VWD 1, Signal A",
+        "detec3": "I1: IsoPump 1, Pressure",
+        "col1": "default",
+        "in_vol": "100.000",
+        "eluent": "THF",
+        "flow": "1.000",
+        "temperature": "25.000",
+        "date": "15.08.22",
+        "time": "21:06:30",
+        "software": "WINGPC",
+        "version": "8#1",
+        "operator": "GPCAdmin",
+        "d": "1.504E+0",
+        "mz1": "2.640E+5",
+        "mn": "9.867E+4",
+        "mp": "1.412E+5",
+        "mv": "1.405E+5",
+        "mw": "1.484E+5",
+        "mz": "2.046E+5",
+        "vp": "1.601E+1",
+        "n": "4.561E+4"
+      }
+    },
+    {
+      "fileName": "data/table_03.jdx",
+      "header": {
+        "DATA CLASS": "XYPOINTS",
+        "DATA TYPE": "SIZE EXCLUSION CHROMATOGRAPHY",
         "XUNITS": "G/MOL",
         "YUNITS": "ARBITRARY UNITS",
-        "no_dec": "1",
+        "label": "Vial   8: MS-185 - 1",
+        "comments": "\\\\129.13.136.127\\Shared_Folder\\Analysis\\GPC_THF_CS_R311\\Marvin Subarew\\MS-185\\MS-185_Lichtstreuung.TXT",
+        "detec1": "I1: RID 1, RI Signal",
+        "detec2": "I1: VWD 1, Signal A",
+        "detec3": "I1: IsoPump 1, Pressure",
+        "col1": "default",
+        "in_vol": "100.000",
+        "eluent": "THF",
+        "flow": "1.000",
+        "temperature": "25.000",
+        "date": "15.08.22",
+        "time": "21:06:30",
         "software": "WINGPC",
-        "version": "8#1"
+        "version": "8#1",
+        "operator": "GPCAdmin",
+        "d": "1.504E+0",
+        "mz1": "2.640E+5",
+        "mn": "9.867E+4",
+        "mp": "1.412E+5",
+        "mv": "1.405E+5",
+        "mw": "1.484E+5",
+        "mz": "2.046E+5",
+        "vp": "1.601E+1",
+        "n": "4.561E+4"
       }
     }
   ]
