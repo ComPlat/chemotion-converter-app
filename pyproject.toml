@@ -32,27 +32,24 @@ dependencies = [
     "xlrd==2.*",
     "Werkzeug==3.*",
     "jcamp==1.*",
-    "PyMuPDF==1.23.7",
+    "PyMuPDF==1.26.7",
     "pylint==3.*",
     "str2bool==1.*",
     "opusFC==1.*",
     "referencing==0.36.*",
     "jsonschema==4.*",
     "pybind11==3.*",
-    "rdflib==7.*",
-    "requests==2.*",
     "yadg==6.2.2",
     "numpy==2.*",
-    "xmltodict==0.14.*"
+    "xmltodict==0.14.*",
+    "binaryparser @ git+https://github.com/StarmanMartin/BinaryParser@main",
 ]
 
 [project.optional-dependencies]
 # prod is the production installation till https://github.com/pypa/pip/issues/11440 gets solved
 prod = [
-    "binaryparser @ https://github.com/ComPlat/BinaryParser/releases/download/v1.0.0/BinaryParser-0.0.1-cp312-cp312-linux_x86_64.whl ; sys_platform == 'linux' and python_version == '3.12'"
-    ]
+]
 dev = [
-    "poetry==2.2.*",
     "coverage",
     "pytest",
     "pytest-dotenv",
@@ -62,7 +59,6 @@ dev = [
     "wheel",
     "setuptools",
     "jinja2",
-    "binaryparser @ git+https://github.com/ComPlat/BinaryParser@main",
     "pytest-timeout",
     "pyinstaller"
 ]
