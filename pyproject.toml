@@ -71,5 +71,5 @@ dev = [
 homepage = "https://chemotion.net/docs/services/chemconverter"
 repository = "https://github.com/ComPlat/chemotion-converter-app"
 
-[tool.setuptools]
-packages = ["converter_app"]
+[tool.setuptools.packages.find]
+include = ["converter_app*"]
