@@ -4,6 +4,7 @@
   "matches": [
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "#0tableMetadata",
         "key": "Sample",
@@ -12,6 +13,8 @@
         "outputKey": "label",
         "outputLayer": "sample_details",
         "outputTableIndex": 0,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "Vial   1: MS139 - 1"
@@ -23,6 +26,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "#1tableMetadata",
         "key": "Export file",
@@ -31,6 +35,8 @@
         "outputKey": "comments",
         "outputLayer": "general",
         "outputTableIndex": 0,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "X:\\Marvin Subarew\\AETMC Polymerization\\MS139\\2021-07-22 MS139.TXT"
@@ -42,6 +48,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "#2tableMetadata",
         "key": "Mn",
@@ -50,6 +57,8 @@
         "outputKey": "mn",
         "outputLayer": "eval_data_detec_i",
         "outputTableIndex": 0,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": " 6.999E+3"
@@ -58,6 +67,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "#3tableMetadata",
         "key": "Mn_unit",
@@ -66,6 +76,8 @@
         "outputKey": "mn",
         "outputLayer": "eval_data_detec_ii",
         "outputTableIndex": 0,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": " 7.997E+3"
@@ -77,6 +89,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "#4tableMetadata",
         "key": "Mw",
@@ -85,6 +98,8 @@
         "outputKey": "mw",
         "outputLayer": "eval_data_detec_i",
         "outputTableIndex": 0,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": " 9.417E+3"
@@ -93,6 +108,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "#5tableMetadata",
         "key": "Mw_unit",
@@ -101,6 +117,8 @@
         "outputKey": "mw",
         "outputLayer": "eval_data_detec_ii",
         "outputTableIndex": 0,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": " 8.643E+3"
@@ -112,6 +130,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "#6tableMetadata",
         "key": "D",
@@ -120,6 +139,8 @@
         "outputKey": "d",
         "outputLayer": "eval_data_detec_i",
         "outputTableIndex": 0,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": " 1.346E+0"
@@ -128,6 +149,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "#7tableMetadata",
         "key": "D_unit",
@@ -136,6 +158,8 @@
         "outputKey": "d",
         "outputLayer": "eval_data_detec_ii",
         "outputTableIndex": 0,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": " 1.081E+0"
@@ -144,6 +168,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "#8tableMetadata",
         "key": "Mp",
@@ -152,6 +177,8 @@
         "outputKey": "mp",
         "outputLayer": "eval_data_detec_i",
         "outputTableIndex": 0,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": " 9.724E+3"
@@ -160,6 +187,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "#9tableMetadata",
         "key": "Mp_unit",
@@ -168,6 +196,8 @@
         "outputKey": "mp",
         "outputLayer": "eval_data_detec_ii",
         "outputTableIndex": 0,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": " 8.736E+3"
@@ -179,6 +209,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "#10tableMetadata",
         "key": "Detector 1",
@@ -187,6 +218,8 @@
         "outputKey": "detec1",
         "outputLayer": "instrument",
         "outputTableIndex": 0,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "I2: RI Detector 1, RI Signal"
@@ -198,6 +231,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "#11tableMetadata",
         "key": "Detector 2",
@@ -206,6 +240,8 @@
         "outputKey": "detec2",
         "outputLayer": "instrument",
         "outputTableIndex": 0,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "I2: UV Detector 1, UV Signal"
@@ -217,6 +253,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "#12tableMetadata",
         "key": "Detector 3",
@@ -225,6 +262,8 @@
         "outputKey": "detec3",
         "outputLayer": "instrument",
         "outputTableIndex": 0,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "I2: Pump 1, Sample Pump Pressure"
@@ -266,6 +305,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "#15tableMetadata",
         "key": "Column 1",
@@ -274,6 +314,8 @@
         "outputKey": "col1",
         "outputLayer": "equipment",
         "outputTableIndex": 0,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "PSS SDV 5\u00b5m"
@@ -285,6 +327,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "#16tableMetadata",
         "key": "Column 2",
@@ -293,6 +336,8 @@
         "outputKey": "col2",
         "outputLayer": "equipment",
         "outputTableIndex": 0,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "PSS SDV 5\u00b5m"
@@ -304,6 +349,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "#17tableMetadata",
         "key": "Column 3",
@@ -312,6 +358,8 @@
         "outputKey": "col3",
         "outputLayer": "equipment",
         "outputTableIndex": 0,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "PSS SDV 5\u00b5m"
@@ -323,6 +371,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "#18tableMetadata",
         "key": "Inject volume",
@@ -331,6 +380,8 @@
         "outputKey": "in_vol",
         "outputLayer": "meta",
         "outputTableIndex": 0,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": " 50.000"
@@ -342,6 +393,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "#19tableMetadata",
         "key": "Eluent",
@@ -350,6 +402,8 @@
         "outputKey": "eluent",
         "outputLayer": "meta",
         "outputTableIndex": 0,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "THF"
@@ -361,6 +415,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "#20tableMetadata",
         "key": "Flow",
@@ -369,6 +424,8 @@
         "outputKey": "flow",
         "outputLayer": "meta",
         "outputTableIndex": 0,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "  1.000"
@@ -380,6 +437,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "#21tableMetadata",
         "key": "(Column 1) Temperature",
@@ -388,6 +446,8 @@
         "outputKey": "temperature",
         "outputLayer": "meta",
         "outputTableIndex": 0,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": " 35.000"
@@ -399,6 +459,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "#22tableMetadata",
         "key": "Inject date",
@@ -407,6 +468,8 @@
         "outputKey": "date",
         "outputLayer": "general",
         "outputTableIndex": 0,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "^\\S+\\s(.*?)(\\s\\d+\\:\\d+\\:\\d+)"
@@ -418,6 +481,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "#23tableMetadata",
         "key": "Inject date",
@@ -426,6 +490,8 @@
         "outputKey": "time",
         "outputLayer": "general",
         "outputTableIndex": 0,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "(\\d+\\:\\d+\\:\\d+)"
@@ -437,6 +503,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "#24tableHeader",
         "lineNumber": "",
@@ -445,6 +512,8 @@
         "outputKey": "no_dec",
         "outputLayer": "instrument",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableHeader",
         "value": "2"
@@ -457,6 +526,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "#25tableHeader",
         "lineNumber": "",
@@ -465,6 +535,8 @@
         "outputKey": "software",
         "outputLayer": "software",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableHeader",
         "value": "WINGPC"
@@ -477,6 +549,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "#26tableHeader",
         "lineNumber": "",
@@ -485,6 +558,8 @@
         "outputKey": "version",
         "outputLayer": "software",
         "outputTableIndex": 0,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableHeader",
         "value": "WINGPC_(\\d+#\\d+)"
@@ -497,6 +572,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "#27tableMetadata",
         "key": "Operator",
@@ -505,6 +581,8 @@
         "outputKey": "operator",
         "outputLayer": "general",
         "outputTableIndex": 0,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "itcp-akt"
