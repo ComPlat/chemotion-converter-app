@@ -1,9 +1,7 @@
-import inspect
-
 import magic
 from werkzeug.datastructures import FileStorage
 
-from converter_app.models import File, extract_tar_archive
+from converter_app.models import File
 from converter_app.readers import READERS
 
 
@@ -19,17 +17,16 @@ class TestReader:
         self.storage.seek(0)
         fs = FileStorage(stream=self.storage, filename=self.test_file_path,
                          content_type=mime_type)
-        file = File(fs)
-        archive_file_list = extract_tar_archive(file)
-        reader_class = READERS.readers[self.reader_id]
-        params = inspect.signature(reader_class).parameters
-        if len(params) > 1:
-            reader = reader_class(file, *archive_file_list)
-        else:
-            reader = reader_class(file)
-        assert reader.check()
-        reader.process()
-        return reader
+        temp_readers = READERS.readers
+        READERS.readers = {self.reader_id : READERS.readers[self.reader_id]}
+        try:
+            reader = READERS.match_reader(File(fs))
+            assert reader.identifier == self.reader_id
+            reader.process()
+            return reader
+        finally:
+            READERS.readers = temp_readers
+
 
     def __exit__(self, exc_type, exc_value, traceback):
         # Cleanup the storage resource (close the file, etc.)

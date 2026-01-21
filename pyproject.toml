@@ -17,6 +17,8 @@ classifiers = [
     "Operating System :: OS Independent",
 ]
 
+
+
 dependencies = [
     "defusedxml==0.*",
     "Flask==2.*",
@@ -34,10 +36,12 @@ dependencies = [
     "pylint==3.*",
     "str2bool==1.*",
     "opusFC==1.*",
-    "referencing==0.*",
+    "referencing==0.36.*",
     "jsonschema==4.*",
     "pybind11==3.*",
-    "pandas==2.*",
+    "yadg==6.2.2",
+    "numpy==2.*",
+    "xmltodict==0.14.*"
 ]
 
 [project.optional-dependencies]
@@ -56,11 +60,12 @@ dev = [
     "setuptools",
     "jinja2",
     "binaryparser @ git+https://github.com/ComPlat/BinaryParser@main",
+    "pytest-timeout"
 ]
 
 [project.urls]
 homepage = "https://chemotion.net/docs/services/chemconverter"
 repository = "https://github.com/ComPlat/chemotion-converter-app"
 
-[tool.setuptools]
-py-modules = []
+[tool.setuptools.packages.find]
+include = ["converter_app*"]
