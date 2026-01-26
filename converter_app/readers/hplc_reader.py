@@ -1,6 +1,6 @@
 import logging
 
-import binary_parser.hplc as ph
+from binary_parser import read_chromatograms
 
 from converter_app.readers.helper.base import Reader
 from converter_app.readers.helper.reader import Readers
@@ -28,7 +28,7 @@ class HplcReader(Reader):
         if self.is_tar_ball:
             try:
                 if len(self.file_content) > 1:
-                    self.df = ph.read_chromatograms(self.file_content[0].file_path)
+                    self.df = read_chromatograms(self.file_content[0].file_path)
                 else:
                     return False
                 return True

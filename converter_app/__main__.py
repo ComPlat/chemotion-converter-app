@@ -1,6 +1,9 @@
+import os
+
+os.environ["TYPEGUARD_DISABLE"] = "1"
+
 import argparse
 import json
-import os
 import re
 import shutil
 import threading
@@ -15,10 +18,12 @@ from werkzeug.datastructures import FileStorage
 from converter_app.app import create_app
 from converter_app.profile_migration.utils.registration import Migrations
 from converter_app.utils import get_app_root
-from converters import Converter
-from models import File, Profile
-from readers import Readers
-from utils import run_conversion, load_public_profiles
+from converter_app.converters import Converter
+from converter_app.models import File, Profile
+from converter_app.readers import Readers
+from converter_app.utils import run_conversion, load_public_profiles
+
+
 
 
 class FileAction(argparse.Action):

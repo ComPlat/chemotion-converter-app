@@ -43,6 +43,9 @@ dependencies = [
     "numpy==2.*",
     "xmltodict==0.14.*",
     "binaryparser @ git+https://github.com/StarmanMartin/BinaryParser@main",
+    "rdflib==7.5.*",
+    "GitPython==3.1.*",
+    "requests==2.32.*"
 ]
 
 [project.optional-dependencies]
