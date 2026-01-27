@@ -208,7 +208,7 @@ class JcampWriter(Writer):
         self._write_header({
             'NTUPLES': '(XY..XY)',
             #'VAR_NAME': '',
-            #'SYMBOL': 'X, Y',
+            'SYMBOL': 'X, Y',
             # 'VAR_TYPE': 'INDEPENDENT, DEPENDENT',
             # 'VAR_FORM': 'AFFN, AFFN',
             #'VAR_DIM': ', ',
@@ -231,7 +231,8 @@ class JcampWriter(Writer):
             self._write_header({
                 'PAGE': header['NTUPLES_PAGE_HEADER_VALUE'],
                 'NPOINTS': npoints,
-                'DATA TABLE': '(XY..XY)'
+                'DATA TABLE': '(XY..XY)',
+                'XYDATA': '(XY..XY)'
 
             })
 
