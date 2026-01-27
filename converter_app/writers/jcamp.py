@@ -232,8 +232,7 @@ class JcampWriter(Writer):
                 'PAGE': header['NTUPLES_PAGE_HEADER_VALUE'],
                 'NPOINTS': npoints,
                 'DATA TABLE': '(XY..XY)',
-                'XYDATA': '(XY..XY)'
-
+                'XYPOINTS': '(XY..XY)'
             })
 
             # write the xypoints
