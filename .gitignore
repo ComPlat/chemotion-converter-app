@@ -36,4 +36,4 @@ test_manager/test_readers.py
 /.venv/
 /converter_app.log
 /converter_app/rdf/rdf_terms_info.json
-/converter_app.log
+/.run/migrate.run.xml

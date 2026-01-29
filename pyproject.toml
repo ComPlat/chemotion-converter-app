@@ -46,7 +46,8 @@ dependencies = [
     "binaryparser @ git+https://github.com/StarmanMartin/BinaryParser@main",
     "rdflib==7.5.*",
     "GitPython==3.1.*",
-    "requests==2.32.*"
+    "requests==2.32.*",
+    "click==8.3.*"
 ]
 
 [project.optional-dependencies]

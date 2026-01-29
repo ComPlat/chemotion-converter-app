@@ -11,7 +11,6 @@ logger = logging.getLogger(__name__)
 
 
 class JcampZipWriter(Writer):
-
     suffix = '.zip'
     mimetype = 'application/zip'
 
@@ -38,14 +37,15 @@ class JcampZipWriter(Writer):
             for idx, tables in enumerate(jc.process_ntuples_tables()):
                 file_name = f'data/table_NTUPLES{idx}.jdx'
                 string = self._add_table_to_zip(metadata, tables[0], file_name, zf, jc)
-                self._update_sha_strings(sha_strings, string, file_name)
+                self._update_sha_strings(sha_strings, string.decode(), file_name)
 
-            for table_id, table in enumerate([t for t in self.tables if t.get('header', {}).get('DATA CLASS') != 'NTUPLES']):
+            for table_id, table in enumerate(
+                    [t for t in self.tables if t.get('header', {}).get('DATA CLASS') != 'NTUPLES']):
                 file_name = f'data/table_{(table_id + 1):02d}.jdx'
                 jc = JcampWriter(self._converter)
                 jc.process_table(table)
                 string = self._add_table_to_zip(metadata, table, file_name, zf, jc)
-                self._update_sha_strings(sha_strings, string, file_name)
+                self._update_sha_strings(sha_strings, string.decode(), file_name)
 
             metadata_file_name = 'metadata/converter.json'
             metadata_string = json.dumps(metadata, indent=2)
@@ -57,8 +57,7 @@ class JcampZipWriter(Writer):
             zf.writestr('manifest-sha256.txt', '\n'.join(sha_strings['256']))
             zf.writestr('manifest-sha512.txt', '\n'.join(sha_strings['512']))
 
-
-    def _update_sha_strings(self, sha_strings: dict[str, list[str]], content:str, filename: str):
+    def _update_sha_strings(self, sha_strings: dict[str, list[str]], content: str, filename: str):
         sha_strings['256'].append(f'{hashlib.sha256(content.encode()).hexdigest()} {filename}')
         sha_strings['512'].append(f'{hashlib.sha512(content.encode()).hexdigest()} {filename}')
 
@@ -72,5 +71,5 @@ class JcampZipWriter(Writer):
         })
         return string
 
-    def write(self) -> bytes | str:
+    def write(self) -> bytes:
         return self.zipbuffer.getvalue()

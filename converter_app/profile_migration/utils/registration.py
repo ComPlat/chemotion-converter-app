@@ -87,7 +87,12 @@ class Migrations:
         for profile in (get_app_root() / 'converter_app/profiles').iterdir():
             self._prepare_migration('', profile, force)
 
-    def _prepare_migration(self, client_id, profile_path, force):
+    def prepare_and_run_migration(self, profile_path: Path, force: bool):
+        self.profile_dir = profile_path.parent.parent
+        client_id = profile_path.parent.name
+        return self._prepare_migration(client_id, profile_path, force, True)
+
+    def _prepare_migration(self, client_id, profile_path, force, raise_exceptions = False):
         if profile_path.is_file() and profile_path.suffix == '.json':
             try:
                 profile = Profile.profile_from_file_path(
@@ -95,6 +100,8 @@ class Migrations:
                 if self.migrate_profile(profile, force):
                     self._save_profile(profile, profile_path)
             except Exception as e:
+                if raise_exceptions:
+                    raise
                 print(f'{profile_path} cannot be migrated: {e}')
 
     def migrate_profile(self, profile: Profile, force: bool = False):
