@@ -26,7 +26,7 @@ jobs:
 
       - name: Build executable
         run: |
-           pyinstaller .\ChemConverterApp.spec
+           pyinstaller ./ChemConverterApp.spec
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
