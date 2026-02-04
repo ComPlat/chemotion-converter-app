@@ -280,7 +280,7 @@ class JcampWriter(Writer):
             line = x_string + ', ' + y_string
             self.buffer.write(line + os.linesep)
 
-    def write(self) -> bytes | str:
+    def write(self) -> bytes:
         if self.buffer is None:
             return b''
-        return self.buffer.getvalue()
+        return self.buffer.getvalue().encode()

@@ -1,162 +1,209 @@
 import os
-
-os.environ["TYPEGUARD_DISABLE"] = "1"
-
-import argparse
 import json
 import re
 import shutil
 import threading
 import uuid
+import mimetypes
 from datetime import datetime
 from pathlib import Path
 import webbrowser
 
+import click
+from jsonschema.exceptions import ValidationError
 from jinja2 import Template
 from werkzeug.datastructures import FileStorage
 
 from converter_app.app import create_app
 from converter_app.profile_migration.utils.registration import Migrations
-from converter_app.utils import get_app_root
+from converter_app.utils import get_app_root, run_conversion, load_public_profiles
 from converter_app.converters import Converter
 from converter_app.models import File, Profile
 from converter_app.readers import Readers
-from converter_app.utils import run_conversion, load_public_profiles
+from converter_app.validation import validate_profile
+
+os.environ["TYPEGUARD_DISABLE"] = "1"
 
 
+def copy_profiles(profile_dir: Path | str):
+    if isinstance(profile_dir, str):
+        profile_dir = Path(profile_dir)
+    root = get_app_root() / 'profiles'
+    if not root.exists():
+        return
+    for t in os.listdir(root):
+        dst = profile_dir / t
+        src = root / t
+        if not dst.exists():
+            ProfileFile.convert_path_to_profile(src)
+            shutil.copy2(src, dst)
 
 
-class FileAction(argparse.Action):
-    def __call__(self, parser, namespace, value, option_string=None):
-        self.validate(parser, value)
-        setattr(namespace, self.dest, Path(value))
-
-    @staticmethod
-    def validate(parser, value):
-        fp = Path(value)
-        if not fp.exists():
-            parser.error(f'{fp} does not exist!')
-        if fp.is_dir():
-            parser.error(f'{fp} is a directory!')
-
-
-class ProfileAction(FileAction):
-    def validate(self, parser, value):
-        super().validate(parser, value)
-        with open(str(value), 'r', encoding='utf-8') as f:
-            try:
-                content = json.loads(f.read())
-            except json.decoder.JSONDecodeError:
-                parser.error(f'{value} is not a valid JSON!')
-        if 'identifier' not in content:
-            parser.error(f'{value} is missing "identifier" key!')
+# ----------------------------
+# Custom Click Types & Validators
+# ----------------------------
+class ExistingFile(click.Path):
+    def convert(self, value, param, ctx):
+        path = Path(value)
+        if not path.exists():
+            raise click.BadParameter(f"{path} does not exist!")
+        if path.is_dir():
+            raise click.BadParameter(f"{path} is a directory!")
+        return path
 
 
-class NameAction(argparse.Action):
+class ProfileFile(ExistingFile):
+    def convert(self, value, param, ctx):
+        path = super().convert(value, param, ctx)
+        return self.convert_path_to_profile(Path(path))
+
+    @classmethod
+    def convert_path_to_profile(cls, path: Path):
+        try:
+            Migrations().prepare_and_run_migration(path, False)
+            content = json.loads(path.read_text(encoding='utf-8'))
+        except (json.JSONDecodeError, KeyError):
+            raise click.BadParameter(f"{path} is not a valid JSON!")
+        try:
+            validate_profile(content)
+        except  ValidationError as e:
+            raise click.BadParameter(e.message)
+        return path
+
+
+class CamelCaseName(click.ParamType):
+    name = "CamelCaseName"
     regex = re.compile(r'^[A-Za-z]+$')
 
-    def __call__(self, parser, namespace, value, option_string=None):
-        self.validate(parser, value)
+    def convert(self, value, param, ctx):
+        if not self.regex.match(value):
+            raise click.BadParameter(f"{value} is not a valid name! Must be letters only.")
+        # Transform to snake-case list like original code
         value = f'{value[0].lower()}{value[1:]}'
-        value = re.sub(r'([A-Z])', lambda m: f' {m.group(0).lower()}', value).split()
-        setattr(namespace, self.dest, value)
-
-    @classmethod
-    def validate(cls, parser, value):
-        if not cls.regex.match(value):
-            parser.error(f'{value} is not a valid name!')
+        return re.sub(r'([A-Z])', lambda m: f' {m.group(0).lower()}', value).split()
 
 
-class OutputTypeAction(argparse.Action):
-    output_types = ['jcampzip', 'rdf', 'jcamp']
-
-    def __call__(self, parser, namespace, value, option_string=None):
-        self.validate(parser, value)
-        setattr(namespace, self.dest, value)
-
-    @classmethod
-    def validate(cls, parser, value):
-        if value not in cls.output_types:
-            parser.error(f'{value} is not a valid name!')
+class OutputType(click.Choice):
+    def __init__(self):
+        super().__init__(["jcampzip", "rdf", "jcamp"])
 
 
-class PrioAction(argparse.Action):
-    def __call__(self, parser, namespace, value, option_string=None):
-        self.validate(parser, value)
-        setattr(namespace, self.dest, value)
-
-    @staticmethod
-    def validate(parser, value):
-        try:
-            value = int(value)
-        except ValueError:
-            parser.error(f'{value} is not an integer!')
-
-        if value < 0:
-            parser.error(f'Priority must be a positive integer!')
+# ----------------------------
+# Main CLI Group
+# ----------------------------
+@click.group()
+def cli():
+    """Converter App CLI Tool"""
+    pass
 
 
-class MethodAction(argparse.Action):
-    methods = ['convert', 'edit_cli_profiles', 'new_reader', 'migrate', 'new_migration']
+# ----------------------------
+# Edit CLI Profiles
+# ----------------------------
+@cli.command()
+def edit_cli_profiles():
+    """Run the profile editor in web browser"""
+    if not Profile.cli_profiles_dir.exists():
+        load_public_profiles(Profile.cli_profiles_dir / 'cli')
+    copy_profiles(Profile.cli_profiles_dir / 'cli')
+    app = create_app(True)
 
-    def __call__(self, parser, namespace, value, option_string=None):
-        self.validate(parser, value)
-        setattr(namespace, self.dest, value)
+    def open_browser():
+        webbrowser.open("http://127.0.0.1:5000")
 
-    @classmethod
-    def validate(cls, parser, value):
-        if value not in cls.methods:
-            parser.error(f'{value} is not a valid method! Must be one of {cls.methods}')
-
-
-def main_cli():
-    parser = argparse.ArgumentParser(
-        prog='python -m converter_app',
-        description='Helps to develop new reader')
-
-    parser.add_argument('methode', help=f'Must one of: {MethodAction.methods}!', action=MethodAction)
-
-    new_reader_group = parser.add_argument_group('new_reader')
-    name_arg = new_reader_group.add_argument('-n', '--name', action=NameAction,
-                                             help='Reader name. The name must be in CamelCase!')
-    priority_arg = new_reader_group.add_argument('-p', '--priority', action=PrioAction,
-                                                 help='The lower the number, the earlier the reader is checked. Therefore, the probability that it will be used increases!')
-    new_reader_group.add_argument('-profile', action=ProfileAction,
-                                  help='A test Profile if existing!')
-    file_arg = new_reader_group.add_argument('-t', '--test_file', action=FileAction,
-                                             help='A test file for test drive development!')
-
-    migrate_group = parser.add_argument_group('migrate')
-    migrate_group.add_argument('-f', '--force', action='store_true',
-                               help="If force is set all migration scripts will be applyed")
-
-    convert_group = parser.add_argument_group('convert')
-    convert_group.add_argument('-i', '--input_file', action=FileAction,
-                               help='A file to be converted test drive development!')
-    convert_group.add_argument('-o', '--output', action=OutputTypeAction,
-                               help=f'Output type must be in {OutputTypeAction.output_types}')
-
-    args = parser.parse_args()
-
-    if args.methode == 'edit_cli_profiles':
-        app = create_app(True)
-
-        def open_browser():
-            webbrowser.open("http://127.0.0.1:5000")
-
-        threading.Timer(1.0, open_browser).start()
-        app.run(host='127.0.0.1', port=5000)
-    if args.methode == 'new_reader':
-        _new_reader(args, parser, [name_arg, priority_arg, file_arg])
-    elif args.methode == 'convert':
-        _run_conversation(Path(args.input_file), args.output)
-    elif args.methode == 'migrate':
-        Migrations().run_migration(create_app().config['PROFILES_DIR'], args.force)
-    elif args.methode == 'new_migration':
-        _new_migration()
+    threading.Timer(1.0, open_browser).start()
+    app.run(host='127.0.0.1', port=5000)
 
 
-def _new_migration():
+# ----------------------------
+# New Reader
+# ----------------------------
+@cli.command()
+@click.option('-n', '--name', type=CamelCaseName(), prompt=True,
+              help='Reader name in CamelCase')
+@click.option('-p', '--priority', type=int, prompt=True,
+              help='Lower number → higher priority for reader selection')
+@click.option('--profile', type=ProfileFile(), help='Optional test profile JSON')
+@click.option('-t', '--test-file', type=ExistingFile(), prompt=True,
+              help='Test file for development')
+def new_reader(name, priority, profile, test_file):
+    reader_name_sc = "_".join(name)
+    context = {
+        "READER_NAME_CC": "".join([x.capitalize() for x in name]),
+        "READER_NAME_SC": reader_name_sc,
+        "UUID": str(uuid.uuid4()),
+        "PRIO": priority,
+        "TEST_FILE": f"test_static/test_files/{reader_name_sc}_{test_file.name}"
+    }
+
+    template_path = get_app_root() / 'converter_app/readers/helper/READER_TEMPLATE.py.txt'
+    test_template_path = get_app_root() / 'converter_app/readers/helper/TEST_TEMPLATE.py.txt'
+    target_reader_path = get_app_root() / f'converter_app/readers/{reader_name_sc}_reader.py'
+    target_reader_test_path = get_app_root() / f'converter_app/test_static/test_{reader_name_sc}_reader.py'
+    target_reader_test_file_path = get_app_root() / context["TEST_FILE"]
+
+    os.makedirs(target_reader_test_file_path.parent, exist_ok=True)
+    shutil.copy(test_file, target_reader_test_file_path)
+
+    for src, dst in [(template_path, target_reader_path), (test_template_path, target_reader_test_path)]:
+        with open(src, 'r', encoding='utf-8') as f:
+            template = Template(f.read())
+        with open(dst, 'w+', encoding='utf-8') as f:
+            f.write(template.render(**context))
+
+
+# ----------------------------
+# Convert Command
+# ----------------------------
+@cli.command()
+@click.option('-i', '--input-file', type=ExistingFile(), required=True,
+              help='File to convert')
+@click.option('-o', '--output', type=OutputType(), required=True,
+              help='Output type')
+def convert(input_file, output):
+    if not Profile.cli_profiles_dir.exists():
+        load_public_profiles(Profile.cli_profiles_dir / 'cli')
+        copy_profiles(Profile.cli_profiles_dir / 'cli')
+
+    with open(input_file, 'rb') as f:
+        content_type, _ = mimetypes.guess_type(input_file.name)
+        content_type = content_type or "application/octet-stream"
+        content_length = os.fstat(f.fileno()).st_size
+        fs = FileStorage(stream=f, filename=input_file.name, content_type=content_type,
+                         content_length=content_length, )
+        file = File(fs)
+        reader = Readers.instance().match_reader(file)
+        if not reader:
+            raise click.ClickException(f"No reader available for {input_file}")
+        reader.process()
+        converter = Converter.match_profile('cli', reader.as_dict)
+        writer = run_conversion(converter, output)
+        output_file = str(input_file) + writer.suffix
+        with open(output_file, 'wb+') as out_f:
+            out_f.write(writer.write())
+    click.echo(f"Conversion complete: {output_file}")
+
+
+# ----------------------------
+# Migrate Command
+# ----------------------------
+@cli.command()
+@click.option('-f', '--force', is_flag=True, help="Apply all migrations")
+@click.option('--profile', type=ProfileFile(), help='Optional test profile JSON')
+def migrate(force, profile):
+    if profile is not None and force:
+        pf = Path(profile)
+        Migrations().prepare_and_run_migration(pf, force)
+    else:
+        Migrations().run_migration(create_app().config['PROFILES_DIR'], force)
+    click.echo("Migration complete!")
+
+
+# ----------------------------
+# New Migration
+# ----------------------------
+@cli.command()
+def new_migration():
     timestamp = datetime.now().strftime('%Y%m%d%H%M%S')
     context = {
         'LAST_IDENTIFIER': Migrations().last,
@@ -164,71 +211,19 @@ def _new_migration():
     }
 
     template_path = get_app_root() / 'converter_app/profile_migration/utils/MIGRATION_TEMPLATE.py.txt'
-    targe_reader_path = get_app_root() / f'converter_app/profile_migration/{timestamp}_migration.py'
+    target_path = get_app_root() / f'converter_app/profile_migration/{timestamp}_migration.py'
 
-    with open(str(template_path), 'r', encoding='utf-8') as f:
+    with open(template_path, 'r', encoding='utf-8') as f:
         template = Template(f.read())
 
-    with open(targe_reader_path, 'w+', encoding='utf-8') as f:
+    with open(target_path, 'w+', encoding='utf-8') as f:
         f.write(template.render(**context))
 
-
-def _run_conversation(input_file_arg, output_type_arg):
-    if not input_file_arg.exists():
-        raise FileNotFoundError(f'{input_file_arg.absolute()} does not exist!')
-    if not Profile.cli_profiles_dir.exists():
-        load_public_profiles(Profile.cli_profiles_dir)
-    with open(input_file_arg, 'rb') as test_file:
-        fs = FileStorage(stream=test_file, filename=input_file_arg.name)
-        file = File(fs)
-        reader = Readers.instance().match_reader(file)
-
-        if not reader:
-            raise ValueError(f'{input_file_arg.absolute()} could not be processed. No Reader available!')
-        reader.process()
-        converter = Converter.match_profile('cli', reader.as_dict)
-
-        writer = run_conversion(converter, output_type_arg)
-        file_name = input_file_arg.with_suffix(writer.suffix)
-        with open(file_name.name, 'w+') as f:
-            f.write(writer.write())
+    click.echo(f"Migration created: {target_path}")
 
 
-def _new_reader(args, parser, arg_objets):
-    for arg in arg_objets:
-        if getattr(args, arg.dest, None) is None:
-            arg(parser, args, input(f'{arg.help}\n Enter {arg.dest}: '), option_string=None)
-
-    reader_name_sc = '_'.join(args.name)
-    context = {
-        'READER_NAME_CC': ''.join([str(x).capitalize() for x in args.name]),
-        'READER_NAME_SC': reader_name_sc,
-        'UUID': uuid.uuid4().__str__(),
-        'PRIO': args.priority,
-        'TEST_FILE': f'test_static/test_files/{reader_name_sc}_{args.test_file.name}'
-    }
-
-    template_path = get_app_root() / 'converter_app/readers/helper/READER_TEMPLATE.py.txt'
-    test_template_path = get_app_root() / 'converter_app/readers/helper/TEST_TEMPLATE.py.txt'
-    targe_reader_path = get_app_root() / f'converter_app/readers/{reader_name_sc}_reader.py'
-    targe_reader_test_path = get_app_root() / f'converter_app/test_static/test_{reader_name_sc}_reader.py'
-    targe_reader_test_file_path = get_app_root() / context['TEST_FILE']
-
-    os.makedirs(targe_reader_test_file_path.parent, exist_ok=True)
-    shutil.copy(args.test_file, targe_reader_test_file_path)
-
-    with open(str(template_path), 'r', encoding='utf-8') as f:
-        template = Template(f.read())
-
-    with open(targe_reader_path, 'w+', encoding='utf-8') as f:
-        f.write(template.render(**context))
-
-    with open(str(test_template_path), 'r', encoding='utf-8') as f:
-        template = Template(f.read())
-
-    with open(targe_reader_test_path, 'w+', encoding='utf-8') as f:
-        f.write(template.render(**context))
-
-
-if __name__ == '__main__':
-    main_cli()
+# ----------------------------
+# Entry Point
+# ----------------------------
+if __name__ == "__main__":
+    cli()

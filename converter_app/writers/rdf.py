@@ -120,4 +120,4 @@ class RDFWriter(Writer):
         return root_ontology, subjects, predicates, datatypes, instances, namespaces, identifiers
 
     def write(self):
-        return self._g.serialize(format="turtle")
+        return self._g.serialize(format="turtle").encode()
