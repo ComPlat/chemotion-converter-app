@@ -1,0 +1,36 @@
+name: Build executables
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install .[dev]
+
+      - name: Build executable
+        run: |
+           pyinstaller .\ChemConverterApp.spec
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ChemConverterApp-${{ runner.os }}
+          path: |
+            dist/*
