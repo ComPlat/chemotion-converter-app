@@ -4,6 +4,8 @@ import json
 import logging
 import zipfile
 
+from converter_app.writers.rdf import RDFWriter
+
 from converter_app.writers.base import Writer
 from converter_app.writers.jcamp import JcampWriter
 
@@ -33,19 +35,27 @@ class JcampZipWriter(Writer):
 
         with zipfile.ZipFile(self.zipbuffer, 'w') as zf:
 
+            rdf_writer = RDFWriter(self._converter)
+
+            file_name = f'metadata/rdf.ttl'
+            rdf_writer.process()
+            rdf_result = rdf_writer.write()
+            self._update_sha_binary(sha_strings, rdf_result, file_name)
+            zf.writestr(file_name, rdf_result.decode())
+
             jc = JcampWriter(self._converter)
             for idx, tables in enumerate(jc.process_ntuples_tables()):
                 file_name = f'data/table_NTUPLES{idx}.jdx'
-                string = self._add_table_to_zip(metadata, tables[0], file_name, zf, jc)
-                self._update_sha_strings(sha_strings, string.decode(), file_name)
+                binary_string = self._add_table_to_zip(metadata, tables[0], file_name, zf, jc)
+                self._update_sha_binary(sha_strings, binary_string, file_name)
 
             for table_id, table in enumerate(
                     [t for t in self.tables if t.get('header', {}).get('DATA CLASS') != 'NTUPLES']):
                 file_name = f'data/table_{(table_id + 1):02d}.jdx'
                 jc = JcampWriter(self._converter)
                 jc.process_table(table)
-                string = self._add_table_to_zip(metadata, table, file_name, zf, jc)
-                self._update_sha_strings(sha_strings, string.decode(), file_name)
+                binary_string = self._add_table_to_zip(metadata, table, file_name, zf, jc)
+                self._update_sha_binary(sha_strings, binary_string, file_name)
 
             metadata_file_name = 'metadata/converter.json'
             metadata_string = json.dumps(metadata, indent=2)
@@ -60,6 +70,10 @@ class JcampZipWriter(Writer):
     def _update_sha_strings(self, sha_strings: dict[str, list[str]], content: str, filename: str):
         sha_strings['256'].append(f'{hashlib.sha256(content.encode()).hexdigest()} {filename}')
         sha_strings['512'].append(f'{hashlib.sha512(content.encode()).hexdigest()} {filename}')
+
+    def _update_sha_binary(self, sha_strings: dict[str, list[str]], content: bytes, filename: str):
+        sha_strings['256'].append(f'{hashlib.sha256(content).hexdigest()} {filename}')
+        sha_strings['512'].append(f'{hashlib.sha512(content).hexdigest()} {filename}')
 
     def _add_table_to_zip(self, metadata, table, file_name, zf, jc):
         string = jc.write()

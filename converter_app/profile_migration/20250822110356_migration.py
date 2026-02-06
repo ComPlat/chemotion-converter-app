@@ -10,10 +10,10 @@ class ProfileMigrationScript(ProfileMigration):
         """
         Updates the profile.
         """
-        for identifier in profile['identifiers']:
+        for i, identifier in enumerate(profile['identifiers']):
             if identifier['optional']:
                 for k in ['subject', 'datatype', 'predicate']:
-                    identifier[k] = identifier.get(k)
+                    profile['identifiers'][i][k] = identifier.get(k)
         profile['subjects'] = profile.get('subjects', [])
         profile['predicates'] = profile.get('predicates', [])
         profile['datatypes'] = profile.get('datatypes', [])

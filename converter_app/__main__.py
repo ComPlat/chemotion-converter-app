@@ -2,6 +2,7 @@ import os
 import json
 import re
 import shutil
+import sys
 import threading
 import uuid
 import mimetypes
@@ -95,6 +96,13 @@ class OutputType(click.Choice):
 def cli():
     """Converter App CLI Tool"""
     pass
+# ----------------------------
+# Main dev Group
+# ----------------------------
+@click.group()
+def dev():
+    """Converter App development tools"""
+    pass
 
 
 # ----------------------------
@@ -118,7 +126,7 @@ def edit_cli_profiles():
 # ----------------------------
 # New Reader
 # ----------------------------
-@cli.command()
+@dev.command()
 @click.option('-n', '--name', type=CamelCaseName(), prompt=True,
               help='Reader name in CamelCase')
 @click.option('-p', '--priority', type=int, prompt=True,
@@ -161,6 +169,7 @@ def new_reader(name, priority, profile, test_file):
 @click.option('-o', '--output', type=OutputType(), required=True,
               help='Output type')
 def convert(input_file, output):
+    """Convert a File -> Output will be in the same directory as the input file!"""
     if not Profile.cli_profiles_dir.exists():
         load_public_profiles(Profile.cli_profiles_dir / 'cli')
         copy_profiles(Profile.cli_profiles_dir / 'cli')
@@ -195,6 +204,7 @@ def migrate(force, profile):
         pf = Path(profile)
         Migrations().prepare_and_run_migration(pf, force)
     else:
+        Migrations().run_migration(create_app(True).config['PROFILES_DIR'], force)
         Migrations().run_migration(create_app().config['PROFILES_DIR'], force)
     click.echo("Migration complete!")
 
@@ -202,7 +212,7 @@ def migrate(force, profile):
 # ----------------------------
 # New Migration
 # ----------------------------
-@cli.command()
+@dev.command()
 def new_migration():
     timestamp = datetime.now().strftime('%Y%m%d%H%M%S')
     context = {
@@ -226,4 +236,6 @@ def new_migration():
 # Entry Point
 # ----------------------------
 if __name__ == "__main__":
+    if not getattr(sys, 'frozen', False):
+        cli.add_command(dev)
     cli()

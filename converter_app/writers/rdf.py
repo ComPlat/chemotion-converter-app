@@ -15,7 +15,7 @@ class RDFWriter(Writer):
 
     def __init__(self, converter):
         super().__init__(converter)
-        self._g = Graph()
+        self._rdf_graph = Graph()
 
     def _check_subject(self, i, subject_id, instance_name):
         return self._check_types(i, {'id': subject_id}, 'subject') and i['subject'].get('subjectInstance') == instance_name
@@ -50,7 +50,7 @@ class RDFWriter(Writer):
         namespace_objects = {}
         for ns in namespaces:
             ns_obj = Namespace(ns[0])
-            self._g.bind(ns[1], ns_obj)
+            self._rdf_graph.bind(ns[1], ns_obj)
             namespace_objects[ns[0]] = ns_obj
 
         root_instance = self._get_type_from_namespace_and_typename(namespace_objects[self._namespace], self._prepare_name(self._converter.profile.as_dict['title']))
@@ -60,7 +60,7 @@ class RDFWriter(Writer):
         self._add_props_to_subject(identifiers_for_subject, root_instance, namespace_objects,
                                    datatypes, predicates)
 
-        self._g.add(
+        self._rdf_graph.add(
             (root_instance, RDF.type, self._get_type_from_namespace_and_ontology(namespace_objects, root_ontology)))
 
         for subject_id, instance_details in instances.items():
@@ -69,11 +69,11 @@ class RDFWriter(Writer):
                 for instance_dict in instance_details:
                     instance_obj = self._get_type_from_namespace_and_typename(namespace_objects[self._namespace],
                                                                               instance_dict['name'])
-                    self._g.add(
+                    self._rdf_graph.add(
                         (instance_obj, RDF.type,
                          self._get_type_from_namespace_and_ontology(namespace_objects, instance_ont)))
                     predicate_ont = next(p for p in predicates if p['id'] == instance_dict['predicate'])
-                    self._g.add(
+                    self._rdf_graph.add(
                         (root_instance, self._get_type_from_namespace_and_ontology(namespace_objects, predicate_ont),
                          instance_obj))
 
@@ -84,8 +84,6 @@ class RDFWriter(Writer):
 
         for identifier in self._converter.profile.data['identifiers']:
             if identifier['optional']:
-                if identifier['predicate']:
-                    pass
                 if identifier['subject']:
                     subjects.append(identifier['subject'])
 
@@ -100,7 +98,7 @@ class RDFWriter(Writer):
                                                                                          datatype_ont))
                 else:
                     object = Literal(i['value'], datatype=XSD.string)
-                self._g.add(
+                self._rdf_graph.add(
                     (instance_obj, self._get_type_from_namespace_and_ontology(namespace_objects, predicate_ont),
                      object))
 
@@ -112,7 +110,7 @@ class RDFWriter(Writer):
         predicates = profile['predicates']
         datatypes = profile['datatypes']
         instances = profile['subjectInstances']
-        identifiers = [i['identifier'] or i['result'] for i in self._converter.matches]
+        identifiers = [i['identifier'] | i['result'] for i in self._converter.matches if i['result']]
 
         for element in [root_ontology] + subjects + predicates + datatypes:
             namespaces.add((element['namespace'], element['ontology_name']))
@@ -120,4 +118,4 @@ class RDFWriter(Writer):
         return root_ontology, subjects, predicates, datatypes, instances, namespaces, identifiers
 
     def write(self):
-        return self._g.serialize(format="turtle").encode()
+        return self._rdf_graph.serialize(format="turtle").encode()

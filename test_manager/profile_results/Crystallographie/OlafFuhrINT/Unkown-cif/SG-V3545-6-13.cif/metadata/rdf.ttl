@@ -1,0 +1,5 @@
+@prefix chemotion: <https://chemotion.net/chemotion/#> .
+@prefix chmo: <http://purl.obolibrary.org/obo/> .
+
+chemotion:crystallographic_metadata_from_cif%252C_data__-%252C_metadata__%252B a chmo:CHMO_0000159 .
+

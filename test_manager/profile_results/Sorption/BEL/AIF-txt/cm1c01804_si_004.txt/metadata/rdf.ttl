@@ -1,0 +1,4 @@
+@prefix chmo: <http://purl.obolibrary.org/obo/> .
+
+<https://chemotion.net/chemotion/#%2528AIF%2529_Sorption-Desorption_Measurement_from_txt%252C_data__%252B%252C_metadata__%252B> a chmo:CHMO_0001167 .
+
