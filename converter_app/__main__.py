@@ -204,7 +204,6 @@ def migrate(force, profile):
         pf = Path(profile)
         Migrations().prepare_and_run_migration(pf, force)
     else:
-        Migrations().run_migration(create_app(True).config['PROFILES_DIR'], force)
         Migrations().run_migration(create_app().config['PROFILES_DIR'], force)
     click.echo("Migration complete!")
 

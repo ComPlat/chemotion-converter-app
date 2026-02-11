@@ -190,11 +190,6 @@ class Profile:
         profile_data = cls.load(file_path)
         return cls(profile_data, client_id, profile_id)
 
-    @classmethod
-    def download_profiles(cls, profiles_path):
-        if profiles_path.exists():
-            return
-
 
 
 

@@ -3,7 +3,7 @@ from pathlib import Path
 from typing import Optional
 
 from converter_app.models import Profile
-from converter_app.utils import get_app_root
+from converter_app.utils import get_app_root, cli_home_path
 
 
 class Migrations:
@@ -79,7 +79,7 @@ class Migrations:
 
     def run_migration(self, profile_dir: str, force: bool = False):
         self.profile_dir = profile_dir
-        for client_path in list(Path(profile_dir).iterdir()) + [Path('/home/martin/.ChemConverter/profiles/cli')]:
+        for client_path in list(Path(profile_dir).iterdir()) + [cli_home_path() / '/profiles/cli']:
             client_id = client_path.stem
             if client_path.is_dir():
                 for profile in client_path.iterdir():

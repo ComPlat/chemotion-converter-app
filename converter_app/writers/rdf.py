@@ -53,15 +53,15 @@ class RDFWriter(Writer):
             self._rdf_graph.bind(ns[1], ns_obj)
             namespace_objects[ns[0]] = ns_obj
 
-        root_instance = self._get_type_from_namespace_and_typename(namespace_objects[self._namespace], self._prepare_name(self._converter.profile.as_dict['title']))
+        root_subject_instance = self._get_type_from_namespace_and_typename(namespace_objects[self._namespace], self._prepare_name(self._converter.profile.as_dict['title']))
 
-        identifiers_for_subject = [i for i in identifiers if i.get('subject') is None]
+        identifiers_without_subject = [i for i in identifiers if i.get('subject') is None]
 
-        self._add_props_to_subject(identifiers_for_subject, root_instance, namespace_objects,
+        self._add_props_to_subject(identifiers_without_subject, root_subject_instance, namespace_objects,
                                    datatypes, predicates)
 
         self._rdf_graph.add(
-            (root_instance, RDF.type, self._get_type_from_namespace_and_ontology(namespace_objects, root_ontology)))
+            (root_subject_instance, RDF.type, self._get_type_from_namespace_and_ontology(namespace_objects, root_ontology)))
 
         for subject_id, instance_details in instances.items():
             instance_ont = next((s for s in subjects if s['id'] == subject_id), None)
@@ -74,12 +74,12 @@ class RDFWriter(Writer):
                          self._get_type_from_namespace_and_ontology(namespace_objects, instance_ont)))
                     predicate_ont = next(p for p in predicates if p['id'] == instance_dict['predicate'])
                     self._rdf_graph.add(
-                        (root_instance, self._get_type_from_namespace_and_ontology(namespace_objects, predicate_ont),
+                        (root_subject_instance, self._get_type_from_namespace_and_ontology(namespace_objects, predicate_ont),
                          instance_obj))
 
-                    identifiers_for_subject = [i for i in identifiers if self._check_subject(i, subject_id, instance_dict['name'])]
+                    identifiers_without_subject = [i for i in identifiers if self._check_subject(i, subject_id, instance_dict['name'])]
 
-                    self._add_props_to_subject(identifiers_for_subject, instance_obj, namespace_objects,
+                    self._add_props_to_subject(identifiers_without_subject, instance_obj, namespace_objects,
                                                datatypes, predicates)
 
         for identifier in self._converter.profile.data['identifiers']:
