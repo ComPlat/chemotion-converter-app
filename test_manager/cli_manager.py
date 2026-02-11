@@ -98,11 +98,11 @@ def main_cli():
     args = parser.parse_args()
     if args.github:
         load_profiles_from_git()
-        Migrations().run_migration(os.path.dirname(PROFILE_PATH))
+        Migrations().run_migration(os.path.dirname(PROFILE_PATH), True)
     if args.tests or args.expected:
         TEST_IDX = 0
         TEST_DICT = {}
-        with open(TEST_FILE, 'w+', encoding='utf8') as fp:
+        with  open(TEST_FILE, 'w+', encoding='utf8') as fp:
             fp.write("import pytest\n"
                      "from test_manager.utils_test import compare_reader_result, compare_tables\n"
                      "from converter_app.readers import READERS as registry\n"
