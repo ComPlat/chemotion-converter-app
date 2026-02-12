@@ -1,0 +1,209 @@
+{
+    "converter_version": "1.8.0",
+    "data": {
+        "metadata": {
+            "content_type": "text/plain",
+            "delimiter": "tab",
+            "doublequote": "False",
+            "extension": ".txt",
+            "file_name": "UV general.txt",
+            "lineterminator": "\\r\\n",
+            "mime_type": "text/plain",
+            "quotechar": "\"",
+            "quoting": "0",
+            "reader": "CSVReader",
+            "skipinitialspace": "True",
+            "uploaded": "2023-03-11T21:01:21.257072"
+        },
+        "tables": [
+            {
+                "columns": [
+                    {
+                        "key": "0",
+                        "name": "Column #0"
+                    },
+                    {
+                        "key": "1",
+                        "name": "Column #1"
+                    },
+                    {
+                        "key": "2",
+                        "name": "Column #2"
+                    },
+                    {
+                        "key": "3",
+                        "name": "Column #3"
+                    },
+                    {
+                        "key": "4",
+                        "name": "Column #4"
+                    },
+                    {
+                        "key": "5",
+                        "name": "Column #5"
+                    }
+                ],
+                "header": [
+                    "UV_spectrometry, general",
+                    "\t\t\t\t\t\t"
+                ],
+                "metadata": {
+                    "columns": "6",
+                    "rows": "501"
+                },
+                "rows": [
+                    [
+                        "300",
+                        "0.1579",
+                        "",
+                        "",
+                        "",
+                        ""
+                    ],
+                    [
+                        "301",
+                        "0.158",
+                        "",
+                        "",
+                        "",
+                        ""
+                    ],
+                    [
+                        "302",
+                        "0.1594",
+                        "",
+                        "",
+                        "",
+                        ""
+                    ],
+                    [
+                        "303",
+                        "0.1592",
+                        "",
+                        "",
+                        "",
+                        ""
+                    ],
+                    [
+                        "304",
+                        "0.1592",
+                        "",
+                        "",
+                        "",
+                        ""
+                    ],
+                    [
+                        "305",
+                        "0.1588",
+                        "",
+                        "",
+                        "",
+                        ""
+                    ],
+                    [
+                        "306",
+                        "0.1582",
+                        "",
+                        "",
+                        "",
+                        ""
+                    ],
+                    [
+                        "307",
+                        "0.158",
+                        "",
+                        "",
+                        "",
+                        ""
+                    ],
+                    [
+                        "308",
+                        "0.1568",
+                        "",
+                        "",
+                        "",
+                        ""
+                    ],
+                    [
+                        "309",
+                        "0.1565",
+                        "",
+                        "",
+                        "",
+                        ""
+                    ]
+                ]
+            },
+            {
+                "columns": [],
+                "header": [
+                    "\t\t\t"
+                ],
+                "metadata": {
+                    "columns": "0",
+                    "rows": "0"
+                },
+                "rows": []
+            }
+        ]
+    },
+    "datatypes": [],
+    "description": "generic data table only; ref location: ---, data: +, metadata: -",
+    "devices": [],
+    "id": "5a413afd-cb77-40e4-99b1-c044d94eaa51",
+    "identifiers": [
+        {
+            "editable": true,
+            "id": "#0tableHeader",
+            "lineNumber": 1,
+            "match": "exact",
+            "optional": false,
+            "tableIndex": 0,
+            "type": "tableHeader",
+            "value": "UV_spectrometry, general"
+        }
+    ],
+    "isDisabled": false,
+    "last_migration": "20260113143334",
+    "ols": null,
+    "ontology": "",
+    "predicates": [],
+    "rootOntology": {
+        "description": [
+            "A planned process that has the objective to produce information about a material entity (the evaluant) by examining it."
+        ],
+        "id": "OBI:property:http://purl.obolibrary.org/obo/OBI_0000070",
+        "iri": "http://purl.obolibrary.org/obo/OBI_0000070",
+        "label": "assay",
+        "namespace": "http://purl.obolibrary.org/obo/",
+        "obo_id": "OBI:0000070",
+        "ontology_name": "chmo",
+        "ontology_prefix": "CHMO",
+        "short_form": "OBI_0000070",
+        "type": "class"
+    },
+    "software": [],
+    "subjectInstances": {},
+    "subjects": [],
+    "tables": [
+        {
+            "header": {
+                "DATA CLASS": "XYPOINTS",
+                "DATA TYPE": "UV-VIS",
+                "XUNITS": "NANOMETERS",
+                "YUNITS": "ABSORBANCE"
+            },
+            "table": {
+                "xColumn": {
+                    "columnIndex": 0,
+                    "tableIndex": 0
+                },
+                "yColumn": {
+                    "columnIndex": 1,
+                    "tableIndex": 0
+                }
+            }
+        }
+    ],
+    "title": "UV-VIS data from general txt, data: +, metadata: -"
+}

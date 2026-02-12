@@ -1,0 +1,136 @@
+{
+    "converter_version": "1.8.0",
+    "data": {
+        "metadata": {
+            "content_type": "application/octet-stream",
+            "extension": ".xy",
+            "file_name": "DMEG4NMe2qu.xy",
+            "mime_type": "text/plain",
+            "reader": "AsciiReader",
+            "uploaded": "2023-03-12T12:51:38.960628"
+        },
+        "tables": [
+            {
+                "columns": [
+                    {
+                        "key": "0",
+                        "name": "Column #0"
+                    },
+                    {
+                        "key": "1",
+                        "name": "Column #1"
+                    }
+                ],
+                "header": [
+                    "mass_spectrometry, general_xy",
+                    ""
+                ],
+                "metadata": {
+                    "columns": "2",
+                    "rows": "401"
+                },
+                "rows": [
+                    [
+                        "284.14275",
+                        "0"
+                    ],
+                    [
+                        "284.14357",
+                        "0"
+                    ],
+                    [
+                        "284.14440",
+                        "0"
+                    ],
+                    [
+                        "284.14522",
+                        "0"
+                    ],
+                    [
+                        "284.14605",
+                        "0"
+                    ],
+                    [
+                        "284.14687",
+                        "0"
+                    ],
+                    [
+                        "284.14770",
+                        "0"
+                    ],
+                    [
+                        "284.14852",
+                        "0"
+                    ],
+                    [
+                        "284.14935",
+                        "0"
+                    ],
+                    [
+                        "284.15017",
+                        "0"
+                    ]
+                ]
+            }
+        ]
+    },
+    "datatypes": [],
+    "description": "generic data table only; ref location: Uni Aachen, data: +, metadata: -",
+    "devices": [],
+    "id": "5b206281-49f6-437b-99ca-c64a621eb903",
+    "identifiers": [
+        {
+            "editable": true,
+            "id": "#0tableHeader",
+            "lineNumber": 1,
+            "match": "exact",
+            "optional": false,
+            "tableIndex": 0,
+            "type": "tableHeader",
+            "value": "mass_spectrometry, general_xy"
+        }
+    ],
+    "isDisabled": false,
+    "last_migration": "20260113143334",
+    "ols": null,
+    "ontology": "",
+    "predicates": [],
+    "rootOntology": {
+        "description": [
+            "A planned process that has the objective to produce information about a material entity (the evaluant) by examining it."
+        ],
+        "id": "OBI:property:http://purl.obolibrary.org/obo/OBI_0000070",
+        "iri": "http://purl.obolibrary.org/obo/OBI_0000070",
+        "label": "assay",
+        "namespace": "http://purl.obolibrary.org/obo/",
+        "obo_id": "OBI:0000070",
+        "ontology_name": "chmo",
+        "ontology_prefix": "CHMO",
+        "short_form": "OBI_0000070",
+        "type": "class"
+    },
+    "software": [],
+    "subjectInstances": {},
+    "subjects": [],
+    "tables": [
+        {
+            "header": {
+                "DATA CLASS": "XYPOINTS",
+                "DATA TYPE": "MASS SPECTRUM",
+                "XUNITS": "m/z",
+                "YUNITS": "Intensity"
+            },
+            "table": {
+                "xColumn": {
+                    "columnIndex": 0,
+                    "tableIndex": 0
+                },
+                "yColumn": {
+                    "columnIndex": 1,
+                    "tableIndex": 0
+                }
+            }
+        }
+    ],
+    "title": "Mass spectrometry from general xy format, data: +, metadata: -"
+}

@@ -95,7 +95,10 @@ def main_cli():
     parser.add_argument('-t', '--tests', action='store_true', help='Generates all reader tests in: test_readers.py')
     parser.add_argument('-tp', '--test_profiles', action='store_true', help='Generates all profile tests in: test_profiles.py')
     parser.add_argument('-g', '--github', action='store_true', help='Reloads profiles and test files from the Git Repository: https://github.com/ComPlat/chemotion_saurus.git branch=added_data_files')
+    parser.add_argument('-gt', '--github_test_files', action='store_true', help='Reloads only test files from the Git Repository: https://github.com/ComPlat/chemotion_saurus.git branch=added_data_files')
     args = parser.parse_args()
+    if args.github_test_files:
+        load_profiles_from_git(True)
     if args.github:
         load_profiles_from_git()
         Migrations().run_migration(os.path.dirname(PROFILE_PATH), True)

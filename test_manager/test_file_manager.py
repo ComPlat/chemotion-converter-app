@@ -16,14 +16,16 @@ RES_PROFILE_PATH = os.path.abspath(os.path.join(CURRENT_DIR, 'profile_results'))
 RES_READER_PATH = os.path.abspath(os.path.join(CURRENT_DIR, 'reader_results'))
 
 
-def load_profiles_from_git():
+def load_profiles_from_git(only_test_files=False):
     """
     Load profiles from git repository.
     :return:
     """
     # Copy desired file from temporary dir
-    if os.path.isdir(PROFILE_PATH):
-        shutil.rmtree(PROFILE_PATH)
+    profile_path = None
+    if not only_test_files and os.path.isdir(PROFILE_PATH):
+        profile_path = PROFILE_PATH
+        shutil.rmtree(profile_path)
     if os.path.isdir(DATA_FILE_PATH):
         shutil.rmtree(DATA_FILE_PATH)
-    load_public_profiles(PROFILE_PATH, DATA_FILE_PATH)
+    load_public_profiles(profile_path, DATA_FILE_PATH)
