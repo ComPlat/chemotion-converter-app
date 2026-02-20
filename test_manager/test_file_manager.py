@@ -8,7 +8,7 @@ CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
 # Get the parent directory by going one level up
 PARENT_DIR = os.path.dirname(CURRENT_DIR)
 # Profile directory
-PROFILE_PATH = os.path.abspath(os.path.join(PARENT_DIR, 'test_files/profiles/dev'))
+PROFILE_PATH = os.path.abspath(os.path.join(PARENT_DIR, 'test_files/profiles/test'))
 DATA_FILE_PATH = os.path.abspath(os.path.join(PARENT_DIR, 'test_files/data_files'))
 # Path to profile result file directory
 RES_PROFILE_PATH = os.path.abspath(os.path.join(CURRENT_DIR, 'profile_results'))

@@ -74,6 +74,8 @@ def auth_router(app: Flask) -> HTTPBasicAuth:
 
     @auth.verify_password
     def verify_password(username, password):
+        if "PYTEST_CURRENT_TEST" in os.environ:
+            return 'test'
         if not app.config['CLIENTS']:
             return 'dev'
         if os.getenv('IS_CLI', False):

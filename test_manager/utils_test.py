@@ -57,7 +57,7 @@ def compare_reader_result(src_path, res_path, file):
 def get_profile_result(reader_dict, file):
     with set_flask_test_config().app_context():
         res_path = tempfile.mkdtemp()
-        converter = Converter.match_profile('dev', reader_dict)
+        converter = Converter.match_profile('test', reader_dict)
         try:
             if converter:
                 converter.process()

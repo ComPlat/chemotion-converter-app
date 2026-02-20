@@ -9,7 +9,7 @@ from PyInstaller.utils.hooks import collect_submodules
 # --- custom pre-build step ---
 EXTERNAL_DIR = Path("client_build")
 
-load_client_build(EXTERNAL_DIR, branch='ontologie_selector')
+load_client_build(EXTERNAL_DIR, branch='master')
 
 # --- normal PyInstaller stuff ---
 block_cipher = None
