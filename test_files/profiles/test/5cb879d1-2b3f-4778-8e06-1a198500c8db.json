@@ -1,0 +1,480 @@
+{
+    "converter_version": "1.8.0",
+    "data": {
+        "metadata": {
+            "content_type": "text/plain",
+            "extension": ".txt",
+            "file_name": "cm1c01804_si_003.txt",
+            "mime_type": "text/plain",
+            "reader": "AifReader",
+            "uploaded": "2023-01-09T10:14:48.543817"
+        },
+        "tables": [
+            {
+                "columns": [
+                    {
+                        "key": "0",
+                        "name": "Column #0"
+                    },
+                    {
+                        "key": "1",
+                        "name": "Column #1"
+                    },
+                    {
+                        "key": "2",
+                        "name": "Column #2"
+                    }
+                ],
+                "header": [
+                    "data_data_raw2aifv004",
+                    "_exptl_operator 'Volodymyr'",
+                    "_exptl_date 2020-04-30T00:00:00",
+                    "_exptl_instrument 'BEL 00218'",
+                    "_exptl_adsorptive CH4",
+                    "_exptl_temperature 111.00",
+                    "_exptl_sample_mass 0.00980",
+                    "_sample_id 'aus der BOX'",
+                    "_sample_material_id 'DUT-140(Cu)'",
+                    "_units_temperature K",
+                    "_units_pressure kPa",
+                    "_units_mass g",
+                    "_units_loading 'ml(STP) g-1'",
+                    "loop_",
+                    "_adsorp_pressure",
+                    "_adsorp_p0",
+                    "_adsorp_loading"
+                ],
+                "metadata": {
+                    "Unit_column_#0": "_adsorp_pressure",
+                    "Unit_column_#1": "_adsorp_p0",
+                    "Unit_column_#2": "_adsorp_loading",
+                    "_exptl_adsorptive": "CH4",
+                    "_exptl_date": "2020-04-30T00:00:00",
+                    "_exptl_instrument": "BEL 00218",
+                    "_exptl_operator": "Volodymyr",
+                    "_exptl_sample_mass": "0.00980",
+                    "_exptl_temperature": "111.00",
+                    "_sample_id": "aus der BOX",
+                    "_sample_material_id": "DUT-140(Cu)",
+                    "_units_loading": "ml(STP) g-1",
+                    "_units_mass": "g",
+                    "_units_pressure": "kPa",
+                    "_units_temperature": "K",
+                    "columns": "3",
+                    "rows": "96"
+                },
+                "rows": [
+                    [
+                        "0.021604",
+                        "101.33",
+                        "10.631"
+                    ],
+                    [
+                        "0.091127",
+                        "101.33",
+                        "66.609"
+                    ],
+                    [
+                        "0.17133",
+                        "101.33",
+                        "120.28"
+                    ],
+                    [
+                        "0.29439",
+                        "101.33",
+                        "170.14"
+                    ],
+                    [
+                        "0.46759",
+                        "101.33",
+                        "214.69"
+                    ],
+                    [
+                        "0.88129",
+                        "101.33",
+                        "282.5"
+                    ],
+                    [
+                        "1.2344",
+                        "101.33",
+                        "322.52"
+                    ],
+                    [
+                        "1.6844",
+                        "101.33",
+                        "360.27"
+                    ],
+                    [
+                        "2.2991",
+                        "101.33",
+                        "401.55"
+                    ],
+                    [
+                        "2.4741",
+                        "101.33",
+                        "412.09"
+                    ]
+                ]
+            },
+            {
+                "columns": [
+                    {
+                        "key": "0",
+                        "name": "Column #0"
+                    },
+                    {
+                        "key": "1",
+                        "name": "Column #1"
+                    },
+                    {
+                        "key": "2",
+                        "name": "Column #2"
+                    }
+                ],
+                "header": [
+                    "loop_",
+                    "_desorp_pressure",
+                    "_desorp_p0",
+                    "_desorp_loading"
+                ],
+                "metadata": {
+                    "Unit_column_#0": "_desorp_pressure",
+                    "Unit_column_#1": "_desorp_p0",
+                    "Unit_column_#2": "_desorp_loading",
+                    "columns": "3",
+                    "rows": "82"
+                },
+                "rows": [
+                    [
+                        "96.892",
+                        "101.33",
+                        "1479.7"
+                    ],
+                    [
+                        "95.687",
+                        "101.33",
+                        "1477.3"
+                    ],
+                    [
+                        "94.458",
+                        "101.33",
+                        "1475.6"
+                    ],
+                    [
+                        "93.269",
+                        "101.33",
+                        "1472.5"
+                    ],
+                    [
+                        "92.044",
+                        "101.33",
+                        "1469.0"
+                    ],
+                    [
+                        "90.819",
+                        "101.33",
+                        "1465.6"
+                    ],
+                    [
+                        "89.553",
+                        "101.33",
+                        "1462.7"
+                    ],
+                    [
+                        "88.352",
+                        "101.33",
+                        "1459.8"
+                    ],
+                    [
+                        "87.135",
+                        "101.33",
+                        "1456.7"
+                    ],
+                    [
+                        "85.869",
+                        "101.33",
+                        "1454.9"
+                    ]
+                ]
+            }
+        ]
+    },
+    "datatypes": [],
+    "description": "---; ref location: TU Dresden, data: +, metadata: + \n",
+    "devices": [],
+    "id": "5cb879d1-2b3f-4778-8e06-1a198500c8db",
+    "identifiers": [
+        {
+            "editable": true,
+            "id": "#0fileMetadata",
+            "key": "reader",
+            "match": "exact",
+            "optional": false,
+            "type": "fileMetadata",
+            "value": "AifReader"
+        },
+        {
+            "editable": true,
+            "id": "#1tableMetadata",
+            "key": "Unit_column_#0",
+            "match": "exact",
+            "optional": false,
+            "tableIndex": 0,
+            "type": "tableMetadata",
+            "value": "_adsorp_pressure"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#2tableMetadata",
+            "key": "_exptl_operator",
+            "match": "any",
+            "optional": true,
+            "outputKey": "operator",
+            "outputLayer": "meas",
+            "outputTableIndex": null,
+            "predicate": null,
+            "subject": null,
+            "tableIndex": 0,
+            "type": "tableMetadata",
+            "value": "Volodymyr"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#3tableMetadata",
+            "key": "_exptl_date",
+            "match": "regex",
+            "optional": true,
+            "outputKey": "date",
+            "outputLayer": "gener",
+            "outputTableIndex": null,
+            "predicate": null,
+            "subject": null,
+            "tableIndex": 0,
+            "type": "tableMetadata",
+            "value": "\\d+-\\d+-\\d+"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#4tableMetadata",
+            "key": "_exptl_instrument",
+            "match": "regex",
+            "optional": true,
+            "outputKey": "serial",
+            "outputLayer": "dev",
+            "outputTableIndex": null,
+            "predicate": null,
+            "subject": null,
+            "tableIndex": 0,
+            "type": "tableMetadata",
+            "value": "\\d+"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#5tableMetadata",
+            "key": "_exptl_adsorptive",
+            "match": "any",
+            "optional": true,
+            "outputKey": "adsorptive",
+            "outputLayer": "meas",
+            "outputTableIndex": null,
+            "predicate": null,
+            "subject": null,
+            "tableIndex": 0,
+            "type": "tableMetadata",
+            "value": "CH4"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#6tableMetadata",
+            "key": "_exptl_temperature",
+            "match": "any",
+            "operations": [
+                {
+                    "operator": "+",
+                    "value": "273,15"
+                }
+            ],
+            "optional": true,
+            "outputKey": "temperature",
+            "outputLayer": "meas",
+            "outputTableIndex": 0,
+            "predicate": null,
+            "subject": null,
+            "tableIndex": 0,
+            "type": "tableMetadata",
+            "value": "111.00"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#7tableMetadata",
+            "key": "_exptl_sample_mass",
+            "match": "any",
+            "optional": true,
+            "outputKey": "amount",
+            "outputLayer": "sam_details",
+            "outputTableIndex": null,
+            "predicate": null,
+            "subject": null,
+            "tableIndex": 0,
+            "type": "tableMetadata",
+            "value": "0.00980"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#8tableMetadata",
+            "key": "_sample_id",
+            "match": "any",
+            "optional": true,
+            "outputKey": "sample_cid",
+            "outputLayer": "custom_id",
+            "outputTableIndex": null,
+            "predicate": null,
+            "subject": null,
+            "tableIndex": 0,
+            "type": "tableMetadata",
+            "value": "aus der BOX"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#9tableMetadata",
+            "key": "_sample_material_id",
+            "match": "any",
+            "optional": true,
+            "outputKey": "sample_mat_id",
+            "outputLayer": "custom_id",
+            "outputTableIndex": null,
+            "predicate": null,
+            "subject": null,
+            "tableIndex": 0,
+            "type": "tableMetadata",
+            "value": "DUT-140(Cu)"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#10tableHeader",
+            "lineNumber": 1,
+            "match": "regex",
+            "optional": true,
+            "outputKey": "software",
+            "outputLayer": "soft",
+            "outputTableIndex": null,
+            "predicate": null,
+            "subject": null,
+            "tableIndex": 0,
+            "type": "tableHeader",
+            "value": "\\S*\\_\\S*_(\\S*)v"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#11tableHeader",
+            "lineNumber": 1,
+            "match": "regex",
+            "optional": true,
+            "outputKey": "software_version",
+            "outputLayer": "soft",
+            "outputTableIndex": null,
+            "predicate": null,
+            "subject": null,
+            "tableIndex": 0,
+            "type": "tableHeader",
+            "value": "\\S*\\_\\S*_\\S*(v\\d+)"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#12tableMetadata",
+            "key": "_exptl_date",
+            "match": "regex",
+            "optional": true,
+            "outputKey": "time",
+            "outputLayer": "gener",
+            "outputTableIndex": 0,
+            "predicate": null,
+            "subject": null,
+            "tableIndex": 0,
+            "type": "tableMetadata",
+            "value": "\\d+:\\d+:\\d+"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#13tableMetadata",
+            "key": "_exptl_instrument",
+            "match": "regex",
+            "optional": true,
+            "outputKey": "brand",
+            "outputLayer": "dev",
+            "outputTableIndex": 0,
+            "predicate": null,
+            "subject": null,
+            "tableIndex": 0,
+            "type": "tableMetadata",
+            "value": "[^0-9\\s]+"
+        }
+    ],
+    "isDisabled": false,
+    "last_migration": "20260113143334",
+    "ols": "CHMO:0001167",
+    "ontology": "",
+    "predicates": [],
+    "rootOntology": {
+        "description": [
+            "A method for determining surface area by measuring the amount of an inert gaseous or liquid substance (the 'sorbent', usually H2 or N2) which adsorbs onto the surface of interest (the 'sorbate'), and the subsequent amount that desorbs at a constant temperature. Regression analysis is then applied to the data, resulting in an isotherm."
+        ],
+        "id": "CHMO:properties:http://purl.obolibrary.org/obo/CHMO_0001167",
+        "iri": "http://purl.obolibrary.org/obo/CHMO_0001167",
+        "label": "sorption-desorption measurement",
+        "namespace": "http://purl.obolibrary.org/obo/",
+        "obo_id": "CHMO:0001167",
+        "ontology_name": "chmo",
+        "ontology_prefix": "CHMO",
+        "short_form": "CHMO_0001167",
+        "type": "class"
+    },
+    "software": [],
+    "subjectInstances": {},
+    "subjects": [],
+    "tables": [
+        {
+            "header": {
+                "DATA CLASS": "XYPOINTS",
+                "DATA TYPE": "SORPTION-DESORPTION MEASUREMENT",
+                "XUNITS": "p/p0",
+                "YUNITS": "ml/g"
+            },
+            "loopType": "all",
+            "matchTables": true,
+            "table": {
+                "xColumn": {
+                    "columnIndex": 0,
+                    "tableIndex": 0
+                },
+                "xOperations": [
+                    {
+                        "column": {
+                            "columnIndex": 1,
+                            "tableIndex": 0
+                        },
+                        "operator": ":",
+                        "type": "column"
+                    }
+                ],
+                "yColumn": {
+                    "columnIndex": 2,
+                    "tableIndex": 0
+                }
+            }
+        }
+    ],
+    "title": "(AIF) Sorption-Desorption Measurement from txt, data: +, metadata: +"
+}

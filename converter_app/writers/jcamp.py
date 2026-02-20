@@ -4,9 +4,9 @@ import sys
 from collections import defaultdict
 from typing import Any, Generator
 
-from .base import Writer
-from .. import TITLE, VERSION
-from ..options import DATA_TYPES, DATA_CLASSES, XUNITS, YUNITS
+from converter_app.writers  .base import Writer
+from converter_app import TITLE, VERSION
+from converter_app.options import DATA_TYPES, DATA_CLASSES, XUNITS, YUNITS
 
 
 class JcampWriter(Writer):
@@ -280,7 +280,7 @@ class JcampWriter(Writer):
             line = x_string + ', ' + y_string
             self.buffer.write(line + os.linesep)
 
-    def write(self) -> bytes | str:
+    def write(self) -> bytes:
         if self.buffer is None:
             return b''
-        return self.buffer.getvalue()
+        return self.buffer.getvalue().encode()

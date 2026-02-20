@@ -1,4 +1,25 @@
+import copy
+
 from converter_app.validation.registry import SchemaRegistry
+
+ontology_id = {
+    "properties": {
+        "id": {
+            "type": "string",
+        }
+    },
+    "additionalProperties": False,
+    "type": ["object", "null"],
+    "required": ["id"]
+
+}
+
+ontology_subjects_id = copy.deepcopy(ontology_id)
+ontology_subjects_id['properties'] |= {
+    'subjectInstance': {
+      "type": "string"
+    }
+}
 
 identifiers_schema = {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
@@ -34,7 +55,10 @@ identifiers_schema = {
         },
         "value": {
             "type": ["string", "number"]
-        }
+        },
+        "predicate": ontology_id,
+        "subject": ontology_subjects_id,
+        "datatype": ontology_id,
     },
     "additionalProperties": True,
 

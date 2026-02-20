@@ -1,4 +1,5 @@
 """Array Constant definitions for dropdown select options"""
+import json
 
 DATA_TYPES = (
     'CIRCULAR DICHROISM SPECTROSCOPY',
@@ -104,3 +105,8 @@ OPTIONS = {
     'XUNITS': XUNITS,
     'YUNITS': YUNITS,
 }
+
+def compose_options(rdf_path):
+    with open(rdf_path, 'r') as fp:#
+        rdf_content = json.load(fp)
+    return OPTIONS | {'rdf': rdf_content}

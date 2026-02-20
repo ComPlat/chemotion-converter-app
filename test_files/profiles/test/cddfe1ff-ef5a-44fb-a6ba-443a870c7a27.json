@@ -1,0 +1,488 @@
+{
+    "converter_version": "1.8.0",
+    "data": {
+        "metadata": {
+            "content_type": "text/plain",
+            "delimiter": "tab",
+            "doublequote": "False",
+            "extension": ".txt",
+            "file_name": "Example of fluorescence measurement.txt",
+            "lineterminator": "\\r\\n",
+            "mime_type": "text/plain",
+            "quotechar": "\"",
+            "quoting": "0",
+            "reader": "CSVReader",
+            "skipinitialspace": "False",
+            "uploaded": "2023-05-17T08:23:18.182320"
+        },
+        "tables": [
+            {
+                "columns": [
+                    {
+                        "key": "0",
+                        "name": "Column #0 (XYDATA)"
+                    },
+                    {
+                        "key": "1",
+                        "name": "Column #1"
+                    }
+                ],
+                "header": [
+                    "TITLE\t1hCys",
+                    "DATA TYPE\tFLUORESCENCE SPECTRUM",
+                    "ORIGIN\tJASCO",
+                    "OWNER\t",
+                    "DATE\t22/09/30",
+                    "TIME\t13:33:31",
+                    "SPECTROMETER/DATA SYSTEM\t",
+                    "LOCALE\t1031",
+                    "RESOLUTION\t",
+                    "DELTAX\t0.5",
+                    "XUNITS\tNANOMETERS",
+                    "YUNITS\tINTENSITY",
+                    "FIRSTX\t  400.0000",
+                    "LASTX\t  800.0000",
+                    "NPOINTS\t     801",
+                    "FIRSTY\t     0.60881",
+                    "MAXY\t   295.57501",
+                    "MINY\t     0.01132"
+                ],
+                "metadata": {
+                    "column_00": "XYDATA",
+                    "columns": "2",
+                    "rows": "801"
+                },
+                "rows": [
+                    [
+                        "400.0000",
+                        "0.608811"
+                    ],
+                    [
+                        "400.5000",
+                        "0.615689"
+                    ],
+                    [
+                        "401.0000",
+                        "0.616443"
+                    ],
+                    [
+                        "401.5000",
+                        "0.610617"
+                    ],
+                    [
+                        "402.0000",
+                        "0.618529"
+                    ],
+                    [
+                        "402.5000",
+                        "0.625898"
+                    ],
+                    [
+                        "403.0000",
+                        "0.626745"
+                    ],
+                    [
+                        "403.5000",
+                        "0.642452"
+                    ],
+                    [
+                        "404.0000",
+                        "0.653984"
+                    ],
+                    [
+                        "404.5000",
+                        "0.668426"
+                    ]
+                ]
+            },
+            {
+                "columns": [],
+                "header": [
+                    "",
+                    "##### Extended Information",
+                    "[Comments]",
+                    "Sample name\t1hCys",
+                    "Comment",
+                    "User",
+                    "Division",
+                    "Company\tINT",
+                    "",
+                    "[Detailed Information]",
+                    "Creation date\t30.09.2022 13:33",
+                    "",
+                    "Data array type\tLinear data array",
+                    "Horizontal axis\tWavelength [nm]",
+                    "Vertical axis\tInt.",
+                    "Start\t400 nm",
+                    "End\t800 nm",
+                    "Data interval\t0.5 nm",
+                    "Data points\t801     ",
+                    "",
+                    "[Measurement Information]",
+                    "Model name\tFP-8300",
+                    "Serial No.\tC048861450",
+                    "  Ex filter holder\tNone",
+                    "  Em filter holder\tNone",
+                    "",
+                    "Measurement date\t30.09.2022 13:33",
+                    "",
+                    "Mode\tEmission",
+                    "Ex bandwidth\t2.5 nm",
+                    "Em bandwidth\t2.5 nm",
+                    "Response\t1 sec",
+                    "Sensitivity\tMedium",
+                    "Measurement range\t400 - 800 nm",
+                    "Data interval\t0.5 nm",
+                    "Ex wavelength\t380.0 nm",
+                    "Scan speed\t1000 nm/min",
+                    "No. of cycles\t1",
+                    "Auto gain\tOff",
+                    "Shutter control\tOpen only for measurement",
+                    "Light source\tXe lamp",
+                    "Filter\tContinue scan for exchanging filter",
+                    "Blank correction\tOff",
+                    ""
+                ],
+                "metadata": {
+                    "columns": "0",
+                    "rows": "0"
+                },
+                "rows": []
+            }
+        ]
+    },
+    "datatypes": [],
+    "description": "(fluorescence) emission spectrum with generic dataset (FI)",
+    "devices": [],
+    "id": "cddfe1ff-ef5a-44fb-a6ba-443a870c7a27",
+    "identifiers": [
+        {
+            "editable": true,
+            "id": "#0fileMetadata",
+            "key": "reader",
+            "match": "exact",
+            "optional": false,
+            "type": "fileMetadata",
+            "value": "CSVReader"
+        },
+        {
+            "editable": true,
+            "id": "#1tableHeader",
+            "lineNumber": 2,
+            "match": "regex",
+            "optional": false,
+            "tableIndex": 0,
+            "type": "tableHeader",
+            "value": "FLUORESCENCE SPECTRUM"
+        },
+        {
+            "editable": true,
+            "id": "#2tableHeader",
+            "lineNumber": 7,
+            "match": "exact",
+            "optional": false,
+            "tableIndex": 0,
+            "type": "tableHeader",
+            "value": "SPECTROMETER/DATA SYSTEM"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#3tableHeader",
+            "lineNumber": null,
+            "match": "regex",
+            "optional": true,
+            "outputKey": "fixed_wavelength",
+            "outputLayer": "set",
+            "outputTableIndex": 0,
+            "predicate": null,
+            "subject": null,
+            "tableIndex": 1,
+            "type": "tableHeader",
+            "value": "Ex wavelength\\s+(.*)"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#4tableHeader",
+            "lineNumber": "",
+            "match": "regex",
+            "optional": true,
+            "outputKey": "mode",
+            "outputLayer": "set",
+            "outputTableIndex": 0,
+            "predicate": null,
+            "subject": null,
+            "tableIndex": 1,
+            "type": "tableHeader",
+            "value": "Mode\\s+(.*)"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#5tableHeader",
+            "lineNumber": "",
+            "match": "regex",
+            "optional": true,
+            "outputKey": "ex_bandwidth",
+            "outputLayer": "set",
+            "outputTableIndex": 0,
+            "predicate": null,
+            "subject": null,
+            "tableIndex": 1,
+            "type": "tableHeader",
+            "value": "Ex bandwidth\\s+(.*)"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#6tableHeader",
+            "lineNumber": "",
+            "match": "regex",
+            "optional": true,
+            "outputKey": "em_bandwidth",
+            "outputLayer": "set",
+            "outputTableIndex": 0,
+            "predicate": null,
+            "subject": null,
+            "tableIndex": 1,
+            "type": "tableHeader",
+            "value": "Em bandwidth\\s+(.*)"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#7tableHeader",
+            "lineNumber": "",
+            "match": "regex",
+            "optional": true,
+            "outputKey": "response",
+            "outputLayer": "set",
+            "outputTableIndex": 0,
+            "predicate": null,
+            "subject": null,
+            "tableIndex": 1,
+            "type": "tableHeader",
+            "value": "Response\\s+(.*)"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#8tableHeader",
+            "lineNumber": "",
+            "match": "regex",
+            "optional": true,
+            "outputKey": "sensitivity",
+            "outputLayer": "set",
+            "outputTableIndex": 0,
+            "predicate": null,
+            "subject": null,
+            "tableIndex": 1,
+            "type": "tableHeader",
+            "value": "Sensitivity\\s+(.*)"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#9tableHeader",
+            "lineNumber": "",
+            "match": "regex",
+            "optional": true,
+            "outputKey": "measurement_range",
+            "outputLayer": "set",
+            "outputTableIndex": 0,
+            "predicate": null,
+            "subject": null,
+            "tableIndex": 1,
+            "type": "tableHeader",
+            "value": "Measurement range\\s+(.*)"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#10tableHeader",
+            "lineNumber": "",
+            "match": "regex",
+            "optional": true,
+            "outputKey": "data_interval",
+            "outputLayer": "set",
+            "outputTableIndex": 0,
+            "predicate": null,
+            "subject": null,
+            "tableIndex": 1,
+            "type": "tableHeader",
+            "value": "Data interval\\s+(.*)"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#11tableHeader",
+            "lineNumber": "",
+            "match": "regex",
+            "optional": true,
+            "outputKey": "scan_speed",
+            "outputLayer": "set",
+            "outputTableIndex": 0,
+            "predicate": null,
+            "subject": null,
+            "tableIndex": 1,
+            "type": "tableHeader",
+            "value": "Scan speed\\s+(.*)"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#12tableHeader",
+            "lineNumber": "",
+            "match": "regex",
+            "optional": true,
+            "outputKey": "no_of_cycles",
+            "outputLayer": "set",
+            "outputTableIndex": 0,
+            "predicate": null,
+            "subject": null,
+            "tableIndex": 1,
+            "type": "tableHeader",
+            "value": "No. of cycles\\s+(.*)"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#13tableHeader",
+            "lineNumber": "",
+            "match": "regex",
+            "optional": true,
+            "outputKey": "auto gain",
+            "outputLayer": "measurement",
+            "outputTableIndex": 0,
+            "predicate": null,
+            "subject": null,
+            "tableIndex": 1,
+            "type": "tableHeader",
+            "value": "Auto gain\\s+(.*)"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#14tableHeader",
+            "lineNumber": "",
+            "match": "regex",
+            "optional": true,
+            "outputKey": "shutter_control",
+            "outputLayer": "set",
+            "outputTableIndex": 0,
+            "predicate": null,
+            "subject": null,
+            "tableIndex": 1,
+            "type": "tableHeader",
+            "value": "Shutter control\\s+(.*)"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#15tableHeader",
+            "lineNumber": "",
+            "match": "regex",
+            "optional": true,
+            "outputKey": "light_source",
+            "outputLayer": "set",
+            "outputTableIndex": 0,
+            "predicate": null,
+            "subject": null,
+            "tableIndex": 1,
+            "type": "tableHeader",
+            "value": "Light source\\s+(.*)"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#16tableHeader",
+            "lineNumber": "",
+            "match": "regex",
+            "optional": true,
+            "outputKey": "filter",
+            "outputLayer": "set",
+            "outputTableIndex": 0,
+            "predicate": null,
+            "subject": null,
+            "tableIndex": 1,
+            "type": "tableHeader",
+            "value": "Filter\\s+(.*)"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#17tableHeader",
+            "lineNumber": "",
+            "match": "regex",
+            "optional": true,
+            "outputKey": "blank_correction",
+            "outputLayer": "set",
+            "outputTableIndex": 0,
+            "predicate": null,
+            "subject": null,
+            "tableIndex": 1,
+            "type": "tableHeader",
+            "value": "Blank correction\\s+(.*)"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#18tableHeader",
+            "lineNumber": "",
+            "match": "regex",
+            "optional": true,
+            "outputKey": "date",
+            "outputLayer": "general",
+            "outputTableIndex": 0,
+            "predicate": null,
+            "subject": null,
+            "tableIndex": 0,
+            "type": "tableHeader",
+            "value": "DATE\\s+(.*)"
+        }
+    ],
+    "isDisabled": false,
+    "last_migration": "20260113143334",
+    "ols": "CHMO:0000287",
+    "ontology": "",
+    "predicates": [],
+    "rootOntology": {
+        "description": [
+            "Spectroscopy where the intensity of the fluorescence emitted by molecules excited by ultraviolet light is detected as a function of wavelength or time."
+        ],
+        "id": "CHMO:properties:http://purl.obolibrary.org/obo/CHMO_0000287",
+        "iri": "http://purl.obolibrary.org/obo/CHMO_0000287",
+        "label": "fluorescence spectroscopy",
+        "namespace": "http://purl.obolibrary.org/obo/",
+        "obo_id": "CHMO:0000287",
+        "ontology_name": "chmo",
+        "ontology_prefix": "CHMO",
+        "short_form": "CHMO_0000287",
+        "type": "class"
+    },
+    "software": [],
+    "subjectInstances": {},
+    "subjects": [],
+    "tables": [
+        {
+            "header": {
+                "DATA CLASS": "XYPOINTS",
+                "DATA TYPE": "Emissions",
+                "XUNITS": "wavelength (nm)",
+                "YUNITS": "Intensity"
+            },
+            "table": {
+                "xColumn": {
+                    "columnIndex": 0,
+                    "tableIndex": 0
+                },
+                "yColumn": {
+                    "columnIndex": 1,
+                    "tableIndex": 0
+                }
+            }
+        }
+    ],
+    "title": "Emission spectrum"
+}

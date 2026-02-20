@@ -1,0 +1,5 @@
+@prefix chemotion: <https://chemotion.net/chemotion/#> .
+@prefix chmo: <http://purl.obolibrary.org/obo/> .
+
+chemotion:UVVIS_CS a chmo:OBI_0000070 .
+

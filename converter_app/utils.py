@@ -1,8 +1,23 @@
 import base64
 import hashlib
+import os
 import re
+import shutil
+import sys
+import tempfile
 import uuid
+from pathlib import Path
+from typing import Optional
 
+import git
+
+from converter_app.writers.jcamp import JcampWriter
+from converter_app.writers.jcampzip import JcampZipWriter
+from converter_app.writers.rdf import RDFWriter
+
+
+def cli_home_path():
+    return Path.home().joinpath('.ChemConverter')
 
 def human2bytes(string):
     """
@@ -58,3 +73,45 @@ def checkpw(password, hashed_password):
     m = hashlib.sha1()
     m.update(password)
     return (b'{SHA}' + base64.b64encode(m.digest())) == hashed_password
+
+def run_conversion(converter, conversion_format):
+    if converter:
+        converter.process()
+        if conversion_format == 'jcampzip':
+            writer = JcampZipWriter(converter)
+        elif conversion_format == 'rdf':
+            writer = RDFWriter(converter)
+        elif conversion_format == 'jcamp':
+            if len(converter.tables) == 1:
+                writer = JcampWriter(converter)
+            else:
+                raise ValueError('Conversion to a single JCAMP file is not supported for this file.')
+        else:
+            raise ValueError('Conversion format is not supported.')
+
+        writer.process()
+        return writer
+
+    raise ValueError('Your file could not be processed. No Profile available!')
+
+
+def load_public_profiles(profiles: Optional[str|Path] = None, data_files: Optional[str|Path] = None):
+
+
+    with tempfile.TemporaryDirectory() as t:
+        # Clone into temporary dir
+        git.Repo.clone_from('https://github.com/ComPlat/chemotion_saurus.git', t, branch='added_data_files', depth=1)
+
+        if profiles:
+            os.makedirs(os.path.dirname(profiles), exist_ok=True)
+            shutil.move(os.path.join(t, 'static/files/shared_ChemConverter_files/profiles'), profiles)
+        if data_files:
+            os.makedirs(os.path.dirname(data_files), exist_ok=True)
+            shutil.move(os.path.join(t, 'static/files/shared_ChemConverter_files/data_files'), data_files)
+
+
+def get_app_root() -> Path:
+    if getattr(sys, 'frozen', False):
+        return Path(sys._MEIPASS)  # PyInstaller temp extraction dir
+    else:
+        return Path(__file__).parent.parent

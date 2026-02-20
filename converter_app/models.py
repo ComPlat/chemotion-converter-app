@@ -13,7 +13,8 @@ import magic
 from flask import current_app
 from werkzeug.datastructures import FileStorage
 
-from converter_app.utils import check_uuid
+from converter_app.utils import check_uuid, cli_home_path
+from converter_app.utils import get_app_root
 
 logger = logging.getLogger(__name__)
 
@@ -28,6 +29,8 @@ class Profile:
         id          [str] id of the profile and file name
         errors      [collections.defaultdict] contains all errors if profile is not correct
     """
+
+    cli_profiles_dir = cli_home_path() / 'profiles'
 
     def __init__(self, profile_data, client_id, profile_id=None, is_default_profile: bool = False):
         self.isDisabled = profile_data.get('isDisabled', False)
@@ -187,6 +190,9 @@ class Profile:
         profile_data = cls.load(file_path)
         return cls(profile_data, client_id, profile_id)
 
+
+
+
     @classmethod
     def list(cls, client_id):
         """
@@ -195,11 +201,17 @@ class Profile:
         :param client_id: [str] Username
         :return:
         """
-        profiles_path = Path(current_app.config['PROFILES_DIR']).joinpath(client_id)
+        if not current_app:
+            profiles_path = cls.cli_profiles_dir.joinpath('cli')
+        else:
+            profiles_path = Path(current_app.config['PROFILES_DIR']).joinpath(client_id)
 
         if profiles_path.exists():
             for file_path in sorted(Path.iterdir(profiles_path)):
-                yield cls.profile_from_file_path(file_path, client_id)
+                try:
+                    yield cls.profile_from_file_path(file_path, client_id)
+                except json.decoder.JSONDecodeError:
+                    pass
         return []
 
     @classmethod
@@ -213,7 +225,7 @@ class Profile:
         for p in cls.list(client_id):
             all_ids.append(p.id)
             yield p
-        default_profiles_path = Path(os.path.join(os.path.dirname(__file__), 'profiles'))
+        default_profiles_path = get_app_root() / 'converter_app/profiles'
         if default_profiles_path.exists():
             for file_path in sorted(Path.iterdir(default_profiles_path)):
                 if file_path.suffix == '.json':
@@ -232,7 +244,7 @@ class Profile:
         :return:
         """
         profiles_path = Path(current_app.config['PROFILES_DIR']).joinpath(client_id)
-        default_profiles_path = Path(os.path.join(os.path.dirname(__file__), 'profiles'))
+        default_profiles_path = get_app_root() / 'converter_app/profiles'
 
         # make sure that its really a uuid, this should prevent file system traversal
         if check_uuid(profile_id):

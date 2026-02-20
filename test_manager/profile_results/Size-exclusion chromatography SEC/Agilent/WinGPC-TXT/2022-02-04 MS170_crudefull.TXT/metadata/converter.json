@@ -4,6 +4,7 @@
   "matches": [
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "#0tableMetadata",
         "key": "Sample",
@@ -12,6 +13,8 @@
         "outputKey": "label",
         "outputLayer": "sample_details",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "Vial   1: MS139 - 1"
@@ -23,6 +26,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "#1tableMetadata",
         "key": "Export file",
@@ -31,6 +35,8 @@
         "outputKey": "comments",
         "outputLayer": "general",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "X:\\Marvin Subarew\\AETMC Polymerization\\MS139\\2021-07-22 MS139.TXT"
@@ -42,6 +48,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "#2tableMetadata",
         "key": "Mn",
@@ -50,6 +57,8 @@
         "outputKey": "mn",
         "outputLayer": "eval_data_detec_i",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": " 6.999E+3"
@@ -58,6 +67,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "#3tableMetadata",
         "key": "Mw",
@@ -66,6 +76,8 @@
         "outputKey": "mw",
         "outputLayer": "eval_data_detec_i",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": " 9.417E+3"
@@ -74,6 +86,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "#4tableMetadata",
         "key": "D",
@@ -82,6 +95,8 @@
         "outputKey": "d",
         "outputLayer": "eval_data_detec_i",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": " 1.346E+0"
@@ -90,6 +105,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "#5tableMetadata",
         "key": "Mp",
@@ -98,6 +114,8 @@
         "outputKey": "mp",
         "outputLayer": "eval_data_detec_i",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": " 9.724E+3"
@@ -106,6 +124,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "#6tableMetadata",
         "key": "Detector 1",
@@ -114,6 +133,8 @@
         "outputKey": "detec1",
         "outputLayer": "instrument",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "I2: RI Detector 1, RI Signal"
@@ -125,6 +146,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "#7tableMetadata",
         "key": "Detector 2",
@@ -133,6 +155,8 @@
         "outputKey": "detec2",
         "outputLayer": "instrument",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "I2: UV Detector 1, UV Signal"
@@ -144,6 +168,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "#8tableMetadata",
         "key": "Detector 3",
@@ -152,6 +177,8 @@
         "outputKey": "detec3",
         "outputLayer": "instrument",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "I2: Pump 1, Sample Pump Pressure"
@@ -163,6 +190,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "#11tableMetadata",
         "key": "Column 1",
@@ -171,6 +199,8 @@
         "outputKey": "col1",
         "outputLayer": "equipment",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "PSS SDV 5\u00b5m"
@@ -182,6 +212,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "#12tableMetadata",
         "key": "Column 2",
@@ -190,6 +221,8 @@
         "outputKey": "col2",
         "outputLayer": "equipment",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "PSS SDV 5\u00b5m"
@@ -201,6 +234,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "#13tableMetadata",
         "key": "Column 3",
@@ -209,6 +243,8 @@
         "outputKey": "col3",
         "outputLayer": "equipment",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "PSS SDV 5\u00b5m"
@@ -220,6 +256,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "#14tableMetadata",
         "key": "Inject volume",
@@ -228,6 +265,8 @@
         "outputKey": "in_vol",
         "outputLayer": "meta",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": " 50.000"
@@ -239,6 +278,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "#15tableMetadata",
         "key": "Eluent",
@@ -247,6 +287,8 @@
         "outputKey": "eluent",
         "outputLayer": "meta",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "THF"
@@ -258,6 +300,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "#16tableMetadata",
         "key": "Flow",
@@ -266,6 +309,8 @@
         "outputKey": "flow",
         "outputLayer": "meta",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "  1.000"
@@ -277,6 +322,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "#17tableMetadata",
         "key": "(Column 1) Temperature",
@@ -285,6 +331,8 @@
         "outputKey": "temperature",
         "outputLayer": "meta",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": " 35.000"
@@ -296,6 +344,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "#18tableMetadata",
         "key": "Inject date",
@@ -304,6 +353,8 @@
         "outputKey": "date",
         "outputLayer": "general",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "^\\S+\\s(.*?)(\\s\\d+\\:\\d+\\:\\d+)"
@@ -315,6 +366,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "#19tableMetadata",
         "key": "Inject date",
@@ -323,6 +375,8 @@
         "outputKey": "time",
         "outputLayer": "general",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "(\\d+\\:\\d+\\:\\d+)"
@@ -334,6 +388,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "#20tableHeader",
         "key": "Number of detectors",
@@ -343,6 +398,8 @@
         "outputKey": "no_dec",
         "outputLayer": "instrument",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": ""
@@ -351,6 +408,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "#21tableHeader",
         "lineNumber": "",
@@ -359,6 +417,8 @@
         "outputKey": "software",
         "outputLayer": "software",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableHeader",
         "value": "WINGPC"
@@ -371,6 +431,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "#22tableHeader",
         "lineNumber": "",
@@ -379,6 +440,8 @@
         "outputKey": "version",
         "outputLayer": "software",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableHeader",
         "value": "WINGPC_(\\d+#\\d+)"
@@ -391,6 +454,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "#23tableMetadata",
         "key": "Operator",
@@ -399,6 +463,8 @@
         "outputKey": "operator",
         "outputLayer": "general",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "itcp-akt"
@@ -410,6 +476,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "autogen_A_DECT1",
         "key": "A_DECT1",
@@ -418,6 +485,8 @@
         "outputKey": "a",
         "outputLayer": "eval_data_detec_1",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": ""
@@ -426,6 +495,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "autogen_D_DECT1",
         "key": "D_DECT1",
@@ -434,6 +504,8 @@
         "outputKey": "d",
         "outputLayer": "eval_data_detec_1",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": ""
@@ -445,6 +517,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "autogen_M(z+1)_DECT1",
         "key": "M(z+1)_DECT1",
@@ -453,6 +526,8 @@
         "outputKey": "mz1",
         "outputLayer": "eval_data_detec_1",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": ""
@@ -464,6 +539,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "autogen_Mn_DECT1",
         "key": "Mn_DECT1",
@@ -472,6 +548,8 @@
         "outputKey": "mn",
         "outputLayer": "eval_data_detec_1",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": ""
@@ -483,6 +561,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "autogen_Mp_DECT1",
         "key": "Mp_DECT1",
@@ -491,6 +570,8 @@
         "outputKey": "mp",
         "outputLayer": "eval_data_detec_1",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": ""
@@ -502,6 +583,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "autogen_Mv_DECT1",
         "key": "Mv_DECT1",
@@ -510,6 +592,8 @@
         "outputKey": "mv",
         "outputLayer": "eval_data_detec_1",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": ""
@@ -521,6 +605,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "autogen_Mw_DECT1",
         "key": "Mw_DECT1",
@@ -529,6 +614,8 @@
         "outputKey": "mw",
         "outputLayer": "eval_data_detec_1",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": ""
@@ -540,6 +627,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "autogen_Mz_DECT1",
         "key": "Mz_DECT1",
@@ -548,6 +636,8 @@
         "outputKey": "mz",
         "outputLayer": "eval_data_detec_1",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": ""
@@ -559,6 +649,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "autogen_Vp_DECT1",
         "key": "Vp_DECT1",
@@ -567,6 +658,8 @@
         "outputKey": "vp",
         "outputLayer": "eval_data_detec_1",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": ""
@@ -578,6 +671,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "autogen_[n]_DECT1",
         "key": "[n]_DECT1",
@@ -586,6 +680,8 @@
         "outputKey": "n",
         "outputLayer": "eval_data_detec_1",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": ""
@@ -597,6 +693,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "autogen_A_DECT2",
         "key": "A_DECT2",
@@ -605,6 +702,8 @@
         "outputKey": "a",
         "outputLayer": "eval_data_detec_2",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": ""
@@ -613,6 +712,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "autogen_D_DECT2",
         "key": "D_DECT2",
@@ -621,6 +721,8 @@
         "outputKey": "d",
         "outputLayer": "eval_data_detec_2",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": ""
@@ -632,6 +734,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "autogen_M(z+1)_DECT2",
         "key": "M(z+1)_DECT2",
@@ -640,6 +743,8 @@
         "outputKey": "mz1",
         "outputLayer": "eval_data_detec_2",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": ""
@@ -651,6 +756,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "autogen_Mn_DECT2",
         "key": "Mn_DECT2",
@@ -659,6 +765,8 @@
         "outputKey": "mn",
         "outputLayer": "eval_data_detec_2",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": ""
@@ -670,6 +778,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "autogen_Mp_DECT2",
         "key": "Mp_DECT2",
@@ -678,6 +787,8 @@
         "outputKey": "mp",
         "outputLayer": "eval_data_detec_2",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": ""
@@ -689,6 +800,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "autogen_Mv_DECT2",
         "key": "Mv_DECT2",
@@ -697,6 +809,8 @@
         "outputKey": "mv",
         "outputLayer": "eval_data_detec_2",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": ""
@@ -708,6 +822,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "autogen_Mw_DECT2",
         "key": "Mw_DECT2",
@@ -716,6 +831,8 @@
         "outputKey": "mw",
         "outputLayer": "eval_data_detec_2",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": ""
@@ -727,6 +844,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "autogen_Mz_DECT2",
         "key": "Mz_DECT2",
@@ -735,6 +853,8 @@
         "outputKey": "mz",
         "outputLayer": "eval_data_detec_2",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": ""
@@ -746,6 +866,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "autogen_Vp_DECT2",
         "key": "Vp_DECT2",
@@ -754,6 +875,8 @@
         "outputKey": "vp",
         "outputLayer": "eval_data_detec_2",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": ""
@@ -765,6 +888,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "autogen_[n]_DECT2",
         "key": "[n]_DECT2",
@@ -773,6 +897,8 @@
         "outputKey": "n",
         "outputLayer": "eval_data_detec_2",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": ""
@@ -784,6 +910,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "autogen_A_DECT3",
         "key": "A_DECT3",
@@ -792,6 +919,8 @@
         "outputKey": "a",
         "outputLayer": "eval_data_detec_3",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": ""
@@ -800,6 +929,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "autogen_D_DECT3",
         "key": "D_DECT3",
@@ -808,6 +938,8 @@
         "outputKey": "d",
         "outputLayer": "eval_data_detec_3",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": ""
@@ -816,6 +948,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "autogen_M(z+1)_DECT3",
         "key": "M(z+1)_DECT3",
@@ -824,6 +957,8 @@
         "outputKey": "mz1",
         "outputLayer": "eval_data_detec_3",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": ""
@@ -832,6 +967,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "autogen_Mn_DECT3",
         "key": "Mn_DECT3",
@@ -840,6 +976,8 @@
         "outputKey": "mn",
         "outputLayer": "eval_data_detec_3",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": ""
@@ -848,6 +986,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "autogen_Mp_DECT3",
         "key": "Mp_DECT3",
@@ -856,6 +995,8 @@
         "outputKey": "mp",
         "outputLayer": "eval_data_detec_3",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": ""
@@ -864,6 +1005,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "autogen_Mv_DECT3",
         "key": "Mv_DECT3",
@@ -872,6 +1014,8 @@
         "outputKey": "mv",
         "outputLayer": "eval_data_detec_3",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": ""
@@ -880,6 +1024,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "autogen_Mw_DECT3",
         "key": "Mw_DECT3",
@@ -888,6 +1033,8 @@
         "outputKey": "mw",
         "outputLayer": "eval_data_detec_3",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": ""
@@ -896,6 +1043,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "autogen_Mz_DECT3",
         "key": "Mz_DECT3",
@@ -904,6 +1052,8 @@
         "outputKey": "mz",
         "outputLayer": "eval_data_detec_3",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": ""
@@ -912,6 +1062,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "autogen_Vp_DECT3",
         "key": "Vp_DECT3",
@@ -920,6 +1071,8 @@
         "outputKey": "vp",
         "outputLayer": "eval_data_detec_3",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": ""
@@ -928,6 +1081,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "autogen_[n]_DECT3",
         "key": "[n]_DECT3",
@@ -936,6 +1090,8 @@
         "outputKey": "n",
         "outputLayer": "eval_data_detec_3",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": ""
@@ -944,6 +1100,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "autogen_A_DECT4",
         "key": "A_DECT4",
@@ -952,6 +1109,8 @@
         "outputKey": "a",
         "outputLayer": "eval_data_detec_4",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": ""
@@ -960,6 +1119,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "autogen_D_DECT4",
         "key": "D_DECT4",
@@ -968,6 +1128,8 @@
         "outputKey": "d",
         "outputLayer": "eval_data_detec_4",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": ""
@@ -976,6 +1138,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "autogen_M(z+1)_DECT4",
         "key": "M(z+1)_DECT4",
@@ -984,6 +1147,8 @@
         "outputKey": "mz1",
         "outputLayer": "eval_data_detec_4",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": ""
@@ -992,6 +1157,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "autogen_Mn_DECT4",
         "key": "Mn_DECT4",
@@ -1000,6 +1166,8 @@
         "outputKey": "mn",
         "outputLayer": "eval_data_detec_4",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": ""
@@ -1008,6 +1176,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "autogen_Mp_DECT4",
         "key": "Mp_DECT4",
@@ -1016,6 +1185,8 @@
         "outputKey": "mp",
         "outputLayer": "eval_data_detec_4",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": ""
@@ -1024,6 +1195,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "autogen_Mv_DECT4",
         "key": "Mv_DECT4",
@@ -1032,6 +1204,8 @@
         "outputKey": "mv",
         "outputLayer": "eval_data_detec_4",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": ""
@@ -1040,6 +1214,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "autogen_Mw_DECT4",
         "key": "Mw_DECT4",
@@ -1048,6 +1223,8 @@
         "outputKey": "mw",
         "outputLayer": "eval_data_detec_4",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": ""
@@ -1056,6 +1233,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "autogen_Mz_DECT4",
         "key": "Mz_DECT4",
@@ -1064,6 +1242,8 @@
         "outputKey": "mz",
         "outputLayer": "eval_data_detec_4",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": ""
@@ -1072,6 +1252,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "autogen_Vp_DECT4",
         "key": "Vp_DECT4",
@@ -1080,6 +1261,8 @@
         "outputKey": "vp",
         "outputLayer": "eval_data_detec_4",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": ""
@@ -1088,6 +1271,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "autogen_[n]_DECT4",
         "key": "[n]_DECT4",
@@ -1096,6 +1280,8 @@
         "outputKey": "n",
         "outputLayer": "eval_data_detec_4",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": ""
@@ -1104,6 +1290,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "autogen_A_DECT5",
         "key": "A_DECT5",
@@ -1112,6 +1299,8 @@
         "outputKey": "a",
         "outputLayer": "eval_data_detec_5",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": ""
@@ -1120,6 +1309,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "autogen_D_DECT5",
         "key": "D_DECT5",
@@ -1128,6 +1318,8 @@
         "outputKey": "d",
         "outputLayer": "eval_data_detec_5",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": ""
@@ -1136,6 +1328,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "autogen_M(z+1)_DECT5",
         "key": "M(z+1)_DECT5",
@@ -1144,6 +1337,8 @@
         "outputKey": "mz1",
         "outputLayer": "eval_data_detec_5",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": ""
@@ -1152,6 +1347,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "autogen_Mn_DECT5",
         "key": "Mn_DECT5",
@@ -1160,6 +1356,8 @@
         "outputKey": "mn",
         "outputLayer": "eval_data_detec_5",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": ""
@@ -1168,6 +1366,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "autogen_Mp_DECT5",
         "key": "Mp_DECT5",
@@ -1176,6 +1375,8 @@
         "outputKey": "mp",
         "outputLayer": "eval_data_detec_5",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": ""
@@ -1184,6 +1385,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "autogen_Mv_DECT5",
         "key": "Mv_DECT5",
@@ -1192,6 +1394,8 @@
         "outputKey": "mv",
         "outputLayer": "eval_data_detec_5",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": ""
@@ -1200,6 +1404,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "autogen_Mw_DECT5",
         "key": "Mw_DECT5",
@@ -1208,6 +1413,8 @@
         "outputKey": "mw",
         "outputLayer": "eval_data_detec_5",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": ""
@@ -1216,6 +1423,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "autogen_Mz_DECT5",
         "key": "Mz_DECT5",
@@ -1224,6 +1432,8 @@
         "outputKey": "mz",
         "outputLayer": "eval_data_detec_5",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": ""
@@ -1232,6 +1442,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "autogen_Vp_DECT5",
         "key": "Vp_DECT5",
@@ -1240,6 +1451,8 @@
         "outputKey": "vp",
         "outputLayer": "eval_data_detec_5",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": ""
@@ -1248,6 +1461,7 @@
     },
     {
       "identifier": {
+        "datatype": null,
         "editable": true,
         "id": "autogen_[n]_DECT5",
         "key": "[n]_DECT5",
@@ -1256,6 +1470,8 @@
         "outputKey": "n",
         "outputLayer": "eval_data_detec_5",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": ""

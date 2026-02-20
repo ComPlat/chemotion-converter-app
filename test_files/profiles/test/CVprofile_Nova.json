@@ -1,0 +1,390 @@
+{
+    "converter_version": "1.8.0",
+    "data": {
+        "metadata": {
+            "content_type": "text/plain",
+            "cycles": "3",
+            "delimiter": "semicolon",
+            "doublequote": "False",
+            "extension": ".txt",
+            "file_name": "SCR167Fc.txt",
+            "lineterminator": "\\r\\n",
+            "mime_type": "text/plain",
+            "quotechar": "\"",
+            "quoting": "0",
+            "reader": "NovaReader",
+            "scan_rate": "0.09998236414401321",
+            "scan_rate_unit": "V/s",
+            "skipinitialspace": "False",
+            "step_size": "0.0010679116287260553",
+            "step_size_unit": "V",
+            "uploaded": "2022-12-23T13:10:48.496954",
+            "v_end": "0",
+            "v_init": "0.001068115234375",
+            "v_limit1": "1.50070190429688",
+            "v_limit2": "-1.30096435546875",
+            "v_max": "1.50070190429688",
+            "v_min": "-1.30096435546875"
+        },
+        "tables": [
+            {
+                "columns": [
+                    {
+                        "key": "0",
+                        "name": "Column #0 (Potential applied (V))"
+                    },
+                    {
+                        "key": "1",
+                        "name": "Column #1 (Time (s))"
+                    },
+                    {
+                        "key": "2",
+                        "name": "Column #2 (WE(1).Current (A))"
+                    },
+                    {
+                        "key": "3",
+                        "name": "Column #3 (WE(1).Potential (V))"
+                    },
+                    {
+                        "key": "4",
+                        "name": "Column #4 (Scan)"
+                    },
+                    {
+                        "key": "5",
+                        "name": "Column #5 (Index)"
+                    },
+                    {
+                        "key": "6",
+                        "name": "Column #6 (Q+)"
+                    },
+                    {
+                        "key": "7",
+                        "name": "Column #7 (Q-)"
+                    },
+                    {
+                        "key": "8",
+                        "name": "Column #8 (Step size (V))"
+                    },
+                    {
+                        "key": "9",
+                        "name": "Column #9 (Scan rate (V/s))"
+                    }
+                ],
+                "header": [],
+                "metadata": {
+                    "column_00": "Potential applied (V)",
+                    "column_00_unit": "V",
+                    "column_01": "Time (s)",
+                    "column_01_unit": "s",
+                    "column_02": "WE(1).Current (A)",
+                    "column_02_unit": "A",
+                    "column_03": "WE(1).Potential (V)",
+                    "column_03_unit": "V",
+                    "column_04": "Scan",
+                    "column_05": "Index",
+                    "column_06": "Q+",
+                    "column_07": "Q-",
+                    "column_08": "Step size (V)",
+                    "column_08_unit": "V",
+                    "column_09": "Scan rate (V/s)",
+                    "column_09_unit": "V/s",
+                    "columns": "10",
+                    "rows": "5246",
+                    "scan": "3"
+                },
+                "rows": [
+                    [
+                        "0.001068115234375",
+                        "118.517707700772",
+                        "5.53253173828125E-07",
+                        "0.0029327392578125",
+                        "3",
+                        "10493",
+                        "0.000515522497945465",
+                        "-7.414949199697E-05",
+                        "nan",
+                        "nan"
+                    ],
+                    [
+                        "0.00213623046875",
+                        "118.528388700745",
+                        "5.758056640625E-07",
+                        "0.004010009765625",
+                        "3",
+                        "10494",
+                        "0.000515522497945465",
+                        "-7.414949199697E-05",
+                        "0.001068115234375",
+                        "0.10000142655880291"
+                    ],
+                    [
+                        "0.003204345703125",
+                        "118.539069700718",
+                        "6.00372314453125E-07",
+                        "0.0050689697265625",
+                        "3",
+                        "10495",
+                        "0.000515522497945465",
+                        "-7.414949199697E-05",
+                        "0.001068115234375",
+                        "0.10000142655880291"
+                    ],
+                    [
+                        "0.0042724609375",
+                        "118.549750700691",
+                        "6.2225341796875E-07",
+                        "0.00612487792968749",
+                        "3",
+                        "10496",
+                        "0.000515522497945465",
+                        "-7.414949199697E-05",
+                        "0.001068115234375",
+                        "0.10000142655880291"
+                    ],
+                    [
+                        "0.005340576171875",
+                        "118.560431700664",
+                        "6.488037109375E-07",
+                        "0.0072174072265625",
+                        "3",
+                        "10497",
+                        "0.000515522497945465",
+                        "-7.414949199697E-05",
+                        "0.001068115234375",
+                        "0.10000142655893597"
+                    ],
+                    [
+                        "0.00640869140625",
+                        "118.571112700637",
+                        "6.7291259765625E-07",
+                        "0.0083160400390625",
+                        "3",
+                        "10498",
+                        "0.000515522497945465",
+                        "-7.414949199697E-05",
+                        "0.001068115234375",
+                        "0.10000142655880291"
+                    ],
+                    [
+                        "0.007476806640625",
+                        "118.58179370061",
+                        "7.0159912109375E-07",
+                        "0.0093719482421875",
+                        "3",
+                        "10499",
+                        "0.000515522497945465",
+                        "-7.414949199697E-05",
+                        "0.001068115234375",
+                        "0.10000142655880291"
+                    ],
+                    [
+                        "0.008544921875",
+                        "118.592474700583",
+                        "7.2723388671875E-07",
+                        "0.0103912353515625",
+                        "3",
+                        "10500",
+                        "0.000515522497945465",
+                        "-7.414949199697E-05",
+                        "0.001068115234375",
+                        "0.10000142655893597"
+                    ],
+                    [
+                        "0.009613037109375",
+                        "118.603155700556",
+                        "7.5836181640625E-07",
+                        "0.011505126953125",
+                        "3",
+                        "10501",
+                        "0.000515522497945465",
+                        "-7.414949199697E-05",
+                        "0.001068115234375",
+                        "0.10000142655880291"
+                    ],
+                    [
+                        "0.01068115234375",
+                        "118.613836700529",
+                        "7.843017578125E-07",
+                        "0.0125030517578125",
+                        "3",
+                        "10502",
+                        "0.000515522497945465",
+                        "-7.414949199697E-05",
+                        "0.001068115234375",
+                        "0.10000142655880291"
+                    ]
+                ]
+            }
+        ]
+    },
+    "datatypes": [],
+    "description": "",
+    "devices": [],
+    "id": "CVprofile_Nova",
+    "identifiers": [
+        {
+            "editable": true,
+            "id": "#0fileMetadata",
+            "key": "reader",
+            "match": "exact",
+            "optional": false,
+            "type": "fileMetadata",
+            "value": "NovaReader"
+        },
+        {
+            "editable": true,
+            "id": "#1tableMetadata",
+            "key": "column_00",
+            "match": "exact",
+            "optional": false,
+            "tableIndex": 0,
+            "type": "tableMetadata",
+            "value": "Potential applied (V)"
+        },
+        {
+            "editable": true,
+            "id": "#2tableMetadata",
+            "key": "column_04",
+            "match": "exact",
+            "optional": false,
+            "tableIndex": 0,
+            "type": "tableMetadata",
+            "value": "Scan"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#3fileMetadata",
+            "key": "scan_rate",
+            "match": "any",
+            "optional": true,
+            "outputKey": "scan_rate",
+            "outputLayer": "meas",
+            "outputTableIndex": 0,
+            "predicate": null,
+            "subject": null,
+            "type": "fileMetadata",
+            "value": "0.09998236414401321"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#4fileMetadata",
+            "key": "step_size",
+            "match": "any",
+            "optional": true,
+            "outputKey": "step_size",
+            "outputLayer": "meas",
+            "outputTableIndex": 0,
+            "predicate": null,
+            "subject": null,
+            "type": "fileMetadata",
+            "value": "0.0010679116287260553"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#5fileMetadata",
+            "key": "v_end",
+            "match": "any",
+            "optional": true,
+            "outputKey": "voltage_limit_end",
+            "outputLayer": "meas",
+            "outputTableIndex": 0,
+            "predicate": null,
+            "subject": null,
+            "type": "fileMetadata",
+            "value": "0"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#6fileMetadata",
+            "key": "v_init",
+            "match": "any",
+            "optional": true,
+            "outputKey": "voltage_start",
+            "outputLayer": "meas",
+            "outputTableIndex": 0,
+            "predicate": null,
+            "subject": null,
+            "type": "fileMetadata",
+            "value": "0.001068115234375"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#7fileMetadata",
+            "key": "v_limit1",
+            "match": "any",
+            "optional": true,
+            "outputKey": "voltage_limit_one",
+            "outputLayer": "meas",
+            "outputTableIndex": 0,
+            "predicate": null,
+            "subject": null,
+            "type": "fileMetadata",
+            "value": "1.50070190429688"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#8fileMetadata",
+            "key": "v_limit2",
+            "match": "any",
+            "optional": true,
+            "outputKey": "voltage_limit_two",
+            "outputLayer": "meas",
+            "outputTableIndex": 0,
+            "predicate": null,
+            "subject": null,
+            "type": "fileMetadata",
+            "value": "-1.30096435546875"
+        }
+    ],
+    "isDisabled": false,
+    "last_migration": "20260113143334",
+    "ols": "CHMO:0000025",
+    "ontology": "",
+    "predicates": [],
+    "rootOntology": {
+        "description": [
+            "An electrochemical technique where the cell current is measured as a function of time and as a function of the potential between the indicator and reference electrodes. The potential is varied linearly and inverts at the end point resulting in a cycle."
+        ],
+        "id": "CHMO:properties:http://purl.obolibrary.org/obo/CHMO_0000025",
+        "iri": "http://purl.obolibrary.org/obo/CHMO_0000025",
+        "label": "cyclic voltammetry",
+        "namespace": "http://purl.obolibrary.org/obo/",
+        "obo_id": "CHMO:0000025",
+        "ontology_name": "chmo",
+        "ontology_prefix": "CHMO",
+        "short_form": "CHMO_0000025",
+        "type": "class"
+    },
+    "software": [],
+    "subjectInstances": {},
+    "subjects": [],
+    "tables": [
+        {
+            "header": {
+                "DATA CLASS": "XYPOINTS",
+                "DATA TYPE": "CYCLIC VOLTAMMETRY",
+                "XUNITS": "Voltage vs Ref",
+                "YUNITS": "Ampere"
+            },
+            "loopType": "all",
+            "matchTables": true,
+            "table": {
+                "xColumn": {
+                    "columnIndex": 0,
+                    "tableIndex": 0
+                },
+                "yColumn": {
+                    "columnIndex": 2,
+                    "tableIndex": 0
+                }
+            }
+        }
+    ],
+    "title": "NOVA"
+}

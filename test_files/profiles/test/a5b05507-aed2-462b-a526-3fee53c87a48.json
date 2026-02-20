@@ -1,0 +1,194 @@
+{
+    "converter_version": "1.8.0",
+    "data": {
+        "metadata": {
+            "content_type": "text/plain",
+            "delimiter": "tab",
+            "doublequote": "False",
+            "extension": ".txt",
+            "file_name": "SSP-041_H20.txt",
+            "lineterminator": "\\r\\n",
+            "mime_type": "text/plain",
+            "quotechar": "\"",
+            "quoting": "0",
+            "reader": "CSVReader",
+            "skipinitialspace": "False",
+            "uploaded": "2023-03-27T20:10:13.948013"
+        },
+        "tables": [
+            {
+                "columns": [
+                    {
+                        "key": "0",
+                        "name": "Column #0 (X Intensity)"
+                    },
+                    {
+                        "key": "1",
+                        "name": "Column #1 (Record 253: 2021-09-14_SSP-041_H2O_Run- 1)"
+                    },
+                    {
+                        "key": "2",
+                        "name": "Column #2 (Record 254: 2021-09-14_SSP-041_H2O_Run- 2)"
+                    },
+                    {
+                        "key": "3",
+                        "name": "Column #3 (Record 255: 2021-09-14_SSP-041_H2O_Run- 3)"
+                    },
+                    {
+                        "key": "4",
+                        "name": "Column #4 (Record 256: 2021-09-14_SSP-041_H2O_Average)"
+                    }
+                ],
+                "header": [],
+                "metadata": {
+                    "column_00": "X Intensity",
+                    "column_01": "Record 253: 2021-09-14_SSP-041_H2O_Run- 1",
+                    "column_02": "Record 254: 2021-09-14_SSP-041_H2O_Run- 2",
+                    "column_03": "Record 255: 2021-09-14_SSP-041_H2O_Run- 3",
+                    "column_04": "Record 256: 2021-09-14_SSP-041_H2O_Average",
+                    "columns": "5",
+                    "rows": "69"
+                },
+                "rows": [
+                    [
+                        "0.4",
+                        "0",
+                        "0",
+                        "0",
+                        "0"
+                    ],
+                    [
+                        "0.463",
+                        "0",
+                        "0",
+                        "0",
+                        "0"
+                    ],
+                    [
+                        "0.536",
+                        "0",
+                        "0",
+                        "0",
+                        "0"
+                    ],
+                    [
+                        "0.621",
+                        "0",
+                        "0",
+                        "0",
+                        "0"
+                    ],
+                    [
+                        "0.719",
+                        "0",
+                        "0",
+                        "0",
+                        "0"
+                    ],
+                    [
+                        "0.833",
+                        "0",
+                        "0",
+                        "0",
+                        "0"
+                    ],
+                    [
+                        "0.965",
+                        "0",
+                        "0",
+                        "0",
+                        "0"
+                    ],
+                    [
+                        "1.12",
+                        "0",
+                        "0",
+                        "0",
+                        "0"
+                    ],
+                    [
+                        "1.29",
+                        "0",
+                        "0",
+                        "0",
+                        "0"
+                    ],
+                    [
+                        "1.5",
+                        "0",
+                        "0",
+                        "0",
+                        "0"
+                    ]
+                ]
+            }
+        ]
+    },
+    "datatypes": [],
+    "description": "---; ref location: ---, data: +, metadata: -\n;Subtype 1",
+    "devices": [],
+    "id": "a5b05507-aed2-462b-a526-3fee53c87a48",
+    "identifiers": [
+        {
+            "editable": true,
+            "id": "#0fileMetadata",
+            "key": "file_name",
+            "match": "regex",
+            "optional": false,
+            "type": "fileMetadata",
+            "value": "SSP-0"
+        },
+        {
+            "editable": true,
+            "id": "#1fileMetadata",
+            "key": "extension",
+            "match": "exact",
+            "optional": false,
+            "type": "fileMetadata",
+            "value": ".txt"
+        }
+    ],
+    "isDisabled": false,
+    "last_migration": "20260113143334",
+    "ols": null,
+    "ontology": "",
+    "predicates": [],
+    "rootOntology": {
+        "description": [
+            "A planned process that has the objective to produce information about a material entity (the evaluant) by examining it."
+        ],
+        "id": "OBI:property:http://purl.obolibrary.org/obo/OBI_0000070",
+        "iri": "http://purl.obolibrary.org/obo/OBI_0000070",
+        "label": "assay",
+        "namespace": "http://purl.obolibrary.org/obo/",
+        "obo_id": "OBI:0000070",
+        "ontology_name": "chmo",
+        "ontology_prefix": "CHMO",
+        "short_form": "OBI_0000070",
+        "type": "class"
+    },
+    "software": [],
+    "subjectInstances": {},
+    "subjects": [],
+    "tables": [
+        {
+            "header": {
+                "DATA CLASS": "XYPOINTS",
+                "DATA TYPE": "UV-VIS",
+                "XUNITS": "NANOMETERS",
+                "YUNITS": "Intensity"
+            },
+            "table": {
+                "xColumn": {
+                    "columnIndex": 0,
+                    "tableIndex": 0
+                },
+                "yColumn": {
+                    "columnIndex": 4,
+                    "tableIndex": 0
+                }
+            }
+        }
+    ],
+    "title": "DLS data from txt, data: +, metadata: -"
+}
