@@ -48,8 +48,7 @@ def _generate_profile_tests(src_path, file, _unused, res_path):
                         f'\n    if len(a) > 1:'
                         f'\n        all_profiles.add(a[1].get("profileId"))'
                         f'\n    for idx, is_val in enumerate(a):'
-                        f'\n        is_equal = is_val == b[idx]'
-                        f'\n        assert is_equal')
+                        f'\n        assert is_val == b[idx]')
 
 
 def _generate_expected_profiles_results(src_path, file, _unused, res_path):
@@ -130,10 +129,9 @@ def generate_profile_tests():
     TEST_DICT = {}
     with open(TEST_FILE, 'w+', encoding='utf8') as fp:
         fp.write("import pytest\n"
-                 "from .utils_test import compare_profile_result\n"
                  "from converter_app.readers import READERS as registry\n"
                  "from converter_app.models import Profile\n"
-                 "from test_manager.utils_test import set_flask_test_config\n"
+                 "from test_manager.utils_test import set_flask_test_config, compare_profile_result\n"
                  "\nall_reader = set()"
                  "\nall_profiles = set()\n")
     basic_walk(_generate_profile_tests)

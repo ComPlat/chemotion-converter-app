@@ -6,8 +6,9 @@ import logging
 import os
 
 from converter_app.readers.helper.reader import Readers
+from converter_app.utils import get_app_root
 
-for module in os.listdir(os.path.dirname(__file__)):
+for module in os.listdir(get_app_root() / 'converter_app/readers'):
     if module != '__init__.py' and module[-3:] == '.py':
         importlib.import_module(f'converter_app.readers.{module[:-3]}')
 

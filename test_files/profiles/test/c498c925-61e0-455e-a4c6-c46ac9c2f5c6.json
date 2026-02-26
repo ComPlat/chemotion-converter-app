@@ -1,0 +1,175 @@
+{
+    "converter_version": "1.8.0",
+    "data": {
+        "metadata": {
+            "content_type": "text/csv",
+            "delimiter": "comma",
+            "doublequote": "False",
+            "extension": ".csv",
+            "file_name": "EI-MS_Pulegon.csv",
+            "lineterminator": "\\r\\n",
+            "mime_type": "application/csv",
+            "quotechar": "\"",
+            "quoting": "0",
+            "reader": "CSVReader",
+            "skipinitialspace": "False",
+            "uploaded": "2023-03-13T06:19:29.086940"
+        },
+        "tables": [
+            {
+                "columns": [
+                    {
+                        "key": "0",
+                        "name": "Column #0"
+                    },
+                    {
+                        "key": "1",
+                        "name": "Column #1"
+                    },
+                    {
+                        "key": "2",
+                        "name": "Column #2"
+                    }
+                ],
+                "header": [
+                    "\ufeff\"long name, units\",\"mass over charge, m/z\",\"intensity, %\""
+                ],
+                "metadata": {
+                    "columns": "3",
+                    "rows": "115"
+                },
+                "rows": [
+                    [
+                        "1",
+                        "40",
+                        "6.32"
+                    ],
+                    [
+                        "2",
+                        "41",
+                        "40.71"
+                    ],
+                    [
+                        "3",
+                        "42",
+                        "5.98"
+                    ],
+                    [
+                        "4",
+                        "43",
+                        "16.51"
+                    ],
+                    [
+                        "5",
+                        "44",
+                        "1.17"
+                    ],
+                    [
+                        "6",
+                        "45",
+                        "1.42"
+                    ],
+                    [
+                        "7",
+                        "46",
+                        "0.00"
+                    ],
+                    [
+                        "8",
+                        "47",
+                        "0.00"
+                    ],
+                    [
+                        "9",
+                        "48",
+                        "0.00"
+                    ],
+                    [
+                        "10",
+                        "49",
+                        "0.00"
+                    ]
+                ]
+            }
+        ]
+    },
+    "datatypes": [],
+    "description": "Finnigian MAT8230, ref location: ---, data: +, metadata: -",
+    "devices": [],
+    "id": "c498c925-61e0-455e-a4c6-c46ac9c2f5c6",
+    "identifiers": [
+        {
+            "editable": true,
+            "id": "#0tableHeader",
+            "lineNumber": 1,
+            "match": "regex",
+            "optional": false,
+            "tableIndex": 0,
+            "type": "tableHeader",
+            "value": "mass over charge, m/z"
+        },
+        {
+            "editable": true,
+            "id": "#1tableHeader",
+            "lineNumber": 1,
+            "match": "regex",
+            "optional": false,
+            "tableIndex": 0,
+            "type": "tableHeader",
+            "value": "intensity, %"
+        },
+        {
+            "editable": true,
+            "id": "#2tableHeader",
+            "lineNumber": 1,
+            "match": "regex",
+            "optional": false,
+            "tableIndex": 0,
+            "type": "tableHeader",
+            "value": "long name, units"
+        }
+    ],
+    "isDisabled": false,
+    "last_migration": "20260113143334",
+    "ols": null,
+    "ontology": "",
+    "predicates": [],
+    "rootOntology": {
+        "description": [
+            "A planned process that has the objective to produce information about a material entity (the evaluant) by examining it."
+        ],
+        "id": "OBI:property:http://purl.obolibrary.org/obo/OBI_0000070",
+        "iri": "http://purl.obolibrary.org/obo/OBI_0000070",
+        "label": "assay",
+        "namespace": "http://purl.obolibrary.org/obo/",
+        "obo_id": "OBI:0000070",
+        "ontology_name": "chmo",
+        "ontology_prefix": "CHMO",
+        "short_form": "OBI_0000070",
+        "type": "class"
+    },
+    "software": [],
+    "subjectInstances": {},
+    "subjects": [],
+    "tables": [
+        {
+            "header": {
+                "DATA CLASS": "XYPOINTS",
+                "DATA TYPE": "MASS SPECTRUM",
+                "XUNITS": "m/z",
+                "YUNITS": "Intensity"
+            },
+            "table": {
+                "xColumn": {
+                    "columnIndex": 1,
+                    "tableIndex": 0
+                },
+                "yColumn": {
+                    "columnIndex": 2,
+                    "tableIndex": 0
+                }
+            }
+        }
+    ],
+    "title": "Mass spectrometry from txt, data: +, metadata: -"
+}

@@ -17,10 +17,10 @@ jobs:
       - name: Install dependencies
         run: |
           pip install --upgrade pip
-          pip install .[dev]
+          pip install ".[dev]"
       - name: Build tests
         run: |
-          python -m test_manager -t -g -tp
+          python -m test_manager -t -gt -tp
       - name: Test the code with pytest
         run: |
           pytest .

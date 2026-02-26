@@ -34,9 +34,7 @@ tables_schema = {
         "metadata": {
             "type": "object",
             "patternProperties": {
-                "^[^\n]+$": {
-                    "type": ["number", "string"]
-                }
+                "^[^\n]+$": {}
             }
         },
         "rows": {

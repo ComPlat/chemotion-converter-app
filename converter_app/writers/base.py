@@ -10,7 +10,7 @@ class Writer(ABC):
         self._converter = converter
 
     @abstractmethod
-    def write(self) -> bytes | str:
+    def write(self) -> bytes:
         """
         Returns the whole file content as bytes or str
         :return: Files content to be sent

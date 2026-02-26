@@ -11,28 +11,29 @@ import os
 from pathlib import Path
 
 import jsonschema
-from flask import Flask, Response, abort, jsonify, make_response, request
+from flask import Flask, Response, abort, jsonify, make_response, request, send_file
 from flask_cors import CORS
 from flask_httpauth import HTTPBasicAuth
+from werkzeug.exceptions import NotFound
 
 from converter_app.converters import Converter
 from converter_app.datasets import Dataset
 from converter_app.models import File, Profile
-from converter_app.options import OPTIONS
+from converter_app.options import compose_options
 from converter_app.profile_migration.utils.registration import Migrations
 from converter_app.readers import READERS as registry
-from converter_app.utils import checkpw
+from converter_app.utils import checkpw, run_conversion, get_app_root
 from converter_app.validation import validate_profile
-from converter_app.writers.jcamp import JcampWriter
-from converter_app.writers.jcampzip import JcampZipWriter
 
 
-def get_clients() -> dict[str:str] | None:
+def get_clients() -> dict[str,str] | None:
     """
     opens (plain) htpasswd file for the clients. Generates dict
     with username->password
     :return: Dict with username->password
     """
+    if os.getenv('IS_CLI', False):
+        return {'cli': ''}
     htpasswd_path = os.getenv('HTPASSWD_PATH')
     if htpasswd_path:
         clients = {}
@@ -73,8 +74,12 @@ def auth_router(app: Flask) -> HTTPBasicAuth:
 
     @auth.verify_password
     def verify_password(username, password):
+        if "PYTEST_CURRENT_TEST" in os.environ:
+            return 'test'
         if not app.config['CLIENTS']:
             return 'dev'
+        if os.getenv('IS_CLI', False):
+            return 'cli'
         hashed_password = get_clients().get(username)
         if hashed_password is not None:
             if checkpw(password.encode(), hashed_password.encode()):
@@ -91,13 +96,32 @@ def converting_router(app: Flask, auth: HTTPBasicAuth):
     :param app: Flask app
     :param auth: Flask HTTPBasicAuth
     """
+    if not os.getenv('IS_CLI', False):
+        @app.route('/', methods=['GET'])
+        def root():
+            '''
+            Utility endpoint: Just return ok
+            '''
+            return make_response(jsonify({'status': 'ok'}), 200)
+    else:
+        admin_root = get_app_root() / "client_build/admin"
+        @app.route('/', methods=['GET'])
+        def index():
 
-    @app.route('/', methods=['GET'])
-    def root():
-        '''
-        Utility endpoint: Just return ok
-        '''
-        return make_response(jsonify({'status': 'ok'}), 200)
+            return send_file(admin_root / "index.html")
+
+        @app.route("/<string:filename>")
+        def assets(filename):
+            full_path = admin_root / filename
+            if not full_path.exists():
+                raise NotFound()
+            return send_file(full_path)
+
+        @app.route("/shutdown", methods=["POST", "GET"])
+        def shutdown():
+            import signal
+            os.kill(os.getpid(), signal.SIGINT)
+
 
     @app.route('/client', methods=['GET'])
     @auth.login_required
@@ -129,33 +153,19 @@ def converting_router(app: Flask, auth: HTTPBasicAuth):
         return jsonify({'error': error_msg}), 400
 
     def _run_conversion(converter, file):
-        if converter:
-            converter.process()
+        conversion_format = request.form.get('format', 'jcampzip')
+        try:
+            writer = run_conversion(converter, conversion_format)
+        except AssertionError as e:
+            return jsonify({'error': 'There was an error while converting your file.'}), 400
+        except ValueError as e:
+            return jsonify({'error': e.__str__()}), 400
 
-            conversion_format = request.form.get('format', 'jcampzip')
-            if conversion_format == 'jcampzip':
-                writer = JcampZipWriter(converter)
-            elif conversion_format == 'jcamp':
-                if len(converter.tables) == 1:
-                    writer = JcampWriter(converter)
-                else:
-                    return jsonify({
-                        'error':
-                            'Conversion to a single JCAMP file is not supported for this file.'
-                    }), 400
-            else:
-                return jsonify({'error': 'Conversion format is not supported.'}), 400
-            try:
-                writer.process()
-            except AssertionError:
-                return jsonify({'error': 'There was an error while converting your file.'}), 400
+        file_name = Path(file.name).with_suffix(writer.suffix)
 
-            file_name = Path(file.name).with_suffix(writer.suffix)
-
-            response = Response(writer.write(), mimetype=writer.mimetype)
-            response.headers['Content-Disposition'] = f'attachment;filename={file_name}'
-            return response
-        return jsonify({'error': 'Your file could not be processed. No Profile available!'}), 400
+        response = Response(writer.write(), mimetype=writer.mimetype)
+        response.headers['Content-Disposition'] = f'attachment;filename={file_name}'
+        return response
 
     @app.route('/tables', methods=['POST'])
     @auth.login_required
@@ -276,7 +286,7 @@ def utils_router(app: Flask, auth: HTTPBasicAuth):
     @app.route('/options', methods=['GET'])
     @auth.login_required
     def list_options():
-        return jsonify(OPTIONS), 200
+        return jsonify(compose_options(app.config['RDF_JSON'])), 200
 
 
 def setup_flask_routing(app: Flask):

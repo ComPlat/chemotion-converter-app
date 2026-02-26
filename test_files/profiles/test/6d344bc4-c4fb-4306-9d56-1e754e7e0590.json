@@ -1,0 +1,228 @@
+{
+    "converter_version": "1.8.0",
+    "data": {
+        "metadata": {
+            "content_type": "text/plain",
+            "delimiter": "tab",
+            "doublequote": false,
+            "extension": ".txt",
+            "file_name": "AMT_1124.txt",
+            "lineterminator": "\\r\\n",
+            "mime_type": "text/plain",
+            "quotechar": "\"",
+            "quoting": 0,
+            "reader": "CSVReader",
+            "skipinitialspace": false,
+            "uploaded": "2022-12-02T07:31:35.559544"
+        },
+        "tables": [
+            {
+                "columns": [
+                    {
+                        "key": "0",
+                        "name": "Column #0 (Time_s)"
+                    },
+                    {
+                        "key": "1",
+                        "name": "Column #1 (Force_N)"
+                    },
+                    {
+                        "key": "2",
+                        "name": "Column #2 (Strain_mm)"
+                    },
+                    {
+                        "key": "3",
+                        "name": "Column #3 (Stress_MPa)"
+                    },
+                    {
+                        "key": "4",
+                        "name": "Column #4 (Distance_F_mm)"
+                    },
+                    {
+                        "key": "5",
+                        "name": "Column #5 (Elongation_%)"
+                    }
+                ],
+                "header": [],
+                "metadata": {
+                    "column_00": "Time_s",
+                    "column_01": "Force_N",
+                    "column_02": "Strain_mm",
+                    "column_03": "Stress_MPa",
+                    "column_04": "Distance_F_mm",
+                    "column_05": "Elongation_%",
+                    "columns": 6,
+                    "rows": 10822
+                },
+                "rows": [
+                    [
+                        "0.4700",
+                        "3.1812",
+                        "0.0000",
+                        "0.1656",
+                        "25.0007",
+                        "0.0001"
+                    ],
+                    [
+                        "0.4900",
+                        "6.3623",
+                        "0.0001",
+                        "0.3311",
+                        "25.0008",
+                        "0.0003"
+                    ],
+                    [
+                        "0.5100",
+                        "9.5435",
+                        "0.0001",
+                        "0.4967",
+                        "25.0008",
+                        "0.0004"
+                    ],
+                    [
+                        "0.5300",
+                        "12.7246",
+                        "0.0001",
+                        "0.6623",
+                        "25.0007",
+                        "0.0006"
+                    ],
+                    [
+                        "0.5500",
+                        "15.9058",
+                        "0.0002",
+                        "0.8279",
+                        "25.0008",
+                        "0.0007"
+                    ],
+                    [
+                        "0.5700",
+                        "19.0869",
+                        "0.0002",
+                        "0.9934",
+                        "25.0008",
+                        "0.0009"
+                    ],
+                    [
+                        "0.5900",
+                        "22.2681",
+                        "0.0003",
+                        "1.1590",
+                        "25.0007",
+                        "0.0010"
+                    ],
+                    [
+                        "0.6100",
+                        "25.4492",
+                        "0.0003",
+                        "1.3246",
+                        "25.0008",
+                        "0.0012"
+                    ],
+                    [
+                        "0.6300",
+                        "28.6304",
+                        "0.0003",
+                        "1.4901",
+                        "25.0008",
+                        "0.0013"
+                    ],
+                    [
+                        "0.6500",
+                        "31.8115",
+                        "0.0004",
+                        "1.6557",
+                        "25.0008",
+                        "0.0015"
+                    ]
+                ]
+            }
+        ]
+    },
+    "datatypes": [],
+    "description": "Inspect Table 50kN; ref location: Fraunhofer IWS, data: +, metadata: -\n;LowTemp",
+    "devices": [],
+    "id": "6d344bc4-c4fb-4306-9d56-1e754e7e0590",
+    "identifiers": [
+        {
+            "editable": true,
+            "id": "#0tableMetadata",
+            "key": "column_01",
+            "match": "exact",
+            "optional": false,
+            "tableIndex": 0,
+            "type": "tableMetadata",
+            "value": "Force_N"
+        },
+        {
+            "editable": true,
+            "id": "#1tableMetadata",
+            "key": "column_05",
+            "match": "exact",
+            "optional": false,
+            "tableIndex": 0,
+            "type": "tableMetadata",
+            "value": "Elongation_%"
+        },
+        {
+            "editable": true,
+            "id": "#2tableMetadata",
+            "key": "column_02",
+            "match": "exact",
+            "optional": false,
+            "tableIndex": 0,
+            "type": "tableMetadata",
+            "value": "Strain_mm"
+        }
+    ],
+    "isDisabled": false,
+    "last_migration": "20260113143334",
+    "ols": "CHMO:0001163",
+    "ontology": "",
+    "predicates": [],
+    "rootOntology": {
+        "description": [
+            "The measurement of the surface tension of a liquid."
+        ],
+        "id": "CHMO:properties:http://purl.obolibrary.org/obo/CHMO_0001163",
+        "iri": "http://purl.obolibrary.org/obo/CHMO_0001163",
+        "label": "tensiometry",
+        "namespace": "http://purl.obolibrary.org/obo/",
+        "obo_id": "CHMO:0001163",
+        "ontology_name": "chmo",
+        "ontology_prefix": "CHMO",
+        "short_form": "CHMO_0001163",
+        "type": "class"
+    },
+    "software": [],
+    "subjectInstances": {},
+    "subjects": [],
+    "tables": [
+        {
+            "header": {
+                "DATA CLASS": "XYPOINTS",
+                "DATA TYPE": "CYCLIC VOLTAMMETRY",
+                "XUNITS": "2Theta",
+                "YUNITS": "Intensity"
+            },
+            "table": {
+                "xColumn": {
+                    "columnIndex": 5,
+                    "tableIndex": 0
+                },
+                "yColumn": {
+                    "columnIndex": 3,
+                    "tableIndex": 0
+                },
+                "yOperations": [
+                    {
+                        "operator": "*",
+                        "type": "value",
+                        "value": "1e6"
+                    }
+                ]
+            }
+        }
+    ],
+    "title": "Tensile test data from txt, data: +, metadata: -"
+}
