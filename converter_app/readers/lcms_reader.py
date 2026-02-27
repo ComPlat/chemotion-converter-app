@@ -1,6 +1,6 @@
 import logging
 
-import openlab as ol
+from binary_parser import read_ms, read_attr, read_lc
 import pandas as pd
 
 from converter_app.readers.helper.ms_helper import MsHelper
@@ -30,7 +30,7 @@ class LcmsReader(Reader):
         if self.is_tar_ball:
             try:
                 if len(self.file_content) > 1:
-                    self.df = ol.read_ms(self.file_content[0].file_path) # MS Data
+                    self.df = read_ms(self.file_content[0].file_path) # MS Data
                 else:
                     return False
                 return True
@@ -50,7 +50,7 @@ class LcmsReader(Reader):
         # Extract metadata with:
         # - key = value if only one unique, non-null string exists
         # - key[i] = value_i for multiple unique values
-        mdf = ol.read_attr(self.file_content[0].file_path)
+        mdf = read_attr(self.file_content[0].file_path)
 
         metadata_raw = mdf.to_dict(orient='list')
 
@@ -66,7 +66,7 @@ class LcmsReader(Reader):
 
         # UVVIS data
         # Read the UV/Vis DataFrame from file
-        uvvis_frame = ol.read_lc(self.file_content[0].file_path)
+        uvvis_frame = read_lc(self.file_content[0].file_path)
 
         # Get sorted list of unique wavelengths (as float, ascending)
         unique_wavelengths = sorted(uvvis_frame['wavelength'].dropna().unique().tolist())

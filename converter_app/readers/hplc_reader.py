@@ -1,8 +1,7 @@
 import logging
 from pathlib import Path
 
-from binary_parser import read_chromatograms
-import chemstation as cs
+from binary_parser import read_chromatograms ,read_chemstation_file
 import pandas as pd
 
 from converter_app.readers.helper.ms_helper import MsHelper
@@ -68,7 +67,7 @@ class HplcReader(Reader):
         try:
             mypath = self.find_ms(self.file_content[0].file_path)
             if mypath is not None:
-                df_ms = cs.read_chemstation_file(str(mypath))
+                df_ms = read_chemstation_file(str(mypath))
             else:
                 df_ms = []
         except ValueError or AssertionError:
