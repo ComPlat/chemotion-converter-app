@@ -232,7 +232,7 @@ class JcampWriter(Writer):
 
             self._write_header({
                 'PAGE': header['NTUPLES_PAGE_HEADER_VALUE'],
-                'DATA TABLE': '(XY..XY), XYPOINTS'
+                'XYDATA': '(XY..XY)'
 
             })
 
@@ -246,7 +246,7 @@ class JcampWriter(Writer):
     def _write_header(self, header):
         for key, value in header.items():
             if value is not None:
-                self.buffer.write(f'##{key}= {value}' + os.linesep)
+                self.buffer.write(f'##{key}={value}' + os.linesep)
 
 
     def write_comment_header(self, header):
