@@ -194,7 +194,7 @@ class JcampWriter(Writer):
             'FIRSTY': firsty,
             'XUNITS': header.get('XUNITS', XUNITS[0]),
             'YUNITS': header.get('YUNITS', YUNITS[0]),
-            'XYPOINTS': '(XY..XY)'
+            'XYDATA': '(XY..XY)'
         })
 
         # write the xypoints
