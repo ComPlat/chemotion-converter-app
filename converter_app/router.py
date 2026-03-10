@@ -8,35 +8,42 @@ users with the capability to effortlessly create profiles for the conversion pro
 """
 import json
 import os
-
 from pathlib import Path
-from flask import Flask, Response, abort, jsonify, make_response, request
-from flask_httpauth import HTTPBasicAuth
+
+import jsonschema
+from flask import Flask, Response, abort, jsonify, make_response, request, send_file
 from flask_cors import CORS
+from flask_httpauth import HTTPBasicAuth
+from werkzeug.exceptions import NotFound
 
 from converter_app.converters import Converter
 from converter_app.datasets import Dataset
 from converter_app.models import File, Profile
-from converter_app.options import OPTIONS
+from converter_app.options import compose_options
+from converter_app.profile_migration.utils.registration import Migrations
 from converter_app.readers import READERS as registry
-from converter_app.utils import checkpw
-from converter_app.writers.jcamp import JcampWriter
-from converter_app.writers.jcampzip import JcampZipWriter
+from converter_app.utils import checkpw, run_conversion, get_app_root
+from converter_app.validation import validate_profile
 
 
-def get_clients() -> dict[str:str] | None:
+def get_clients() -> dict[str,str] | None:
     """
     opens (plain) htpasswd file for the clients. Generates dict
     with username->password
     :return: Dict with username->password
     """
+    if os.getenv('IS_CLI', False):
+        return {'cli': ''}
     htpasswd_path = os.getenv('HTPASSWD_PATH')
     if htpasswd_path:
         clients = {}
         with open(htpasswd_path, encoding='utf8') as fp:
             for line in fp.readlines():
-                username, password = line.strip().split(':')
-                clients[username] = password
+                try:
+                    username, password = line.strip().split(':')
+                    clients[username] = password
+                except ValueError:
+                    pass
     else:
         return None
     return clients
@@ -67,13 +74,18 @@ def auth_router(app: Flask) -> HTTPBasicAuth:
 
     @auth.verify_password
     def verify_password(username, password):
+        if "PYTEST_CURRENT_TEST" in os.environ:
+            return 'test'
         if not app.config['CLIENTS']:
             return 'dev'
+        if os.getenv('IS_CLI', False):
+            return 'cli'
         hashed_password = get_clients().get(username)
         if hashed_password is not None:
             if checkpw(password.encode(), hashed_password.encode()):
                 return username
         return None
+
     return auth
 
 
@@ -84,13 +96,32 @@ def converting_router(app: Flask, auth: HTTPBasicAuth):
     :param app: Flask app
     :param auth: Flask HTTPBasicAuth
     """
+    if not os.getenv('IS_CLI', False):
+        @app.route('/', methods=['GET'])
+        def root():
+            '''
+            Utility endpoint: Just return ok
+            '''
+            return make_response(jsonify({'status': 'ok'}), 200)
+    else:
+        admin_root = get_app_root() / "client_build/admin"
+        @app.route('/', methods=['GET'])
+        def index():
 
-    @app.route('/', methods=['GET'])
-    def root():
-        '''
-        Utility endpoint: Just return ok
-        '''
-        return make_response(jsonify({'status': 'ok'}), 200)
+            return send_file(admin_root / "index.html")
+
+        @app.route("/<string:filename>")
+        def assets(filename):
+            full_path = admin_root / filename
+            if not full_path.exists():
+                raise NotFound()
+            return send_file(full_path)
+
+        @app.route("/shutdown", methods=["POST", "GET"])
+        def shutdown():
+            import signal
+            os.kill(os.getpid(), signal.SIGINT)
+
 
     @app.route('/client', methods=['GET'])
     @auth.login_required
@@ -105,46 +136,36 @@ def converting_router(app: Flask, auth: HTTPBasicAuth):
     def retrieve_conversion():
         '''
         Simple View: upload file, convert to table, search for profile,
-        return jcamp based on profile
+        return jcamp based on profiledescription
         '''
         client_id = auth.current_user()
+        error_msg = 'No file provided.'
         if request.files.get('file'):
             file = File(request.files.get('file'))
             reader = registry.match_reader(file)
+            error_msg = 'Your file could not be processed. No Reader available!'
 
             if reader:
                 reader.process()
                 converter = Converter.match_profile(client_id, reader.as_dict)
 
-                if converter:
-                    converter.process()
+                return _run_conversion(converter, file)
+        return jsonify({'error': error_msg}), 400
 
-                    conversion_format = request.form.get('format', 'jcampzip')
-                    if conversion_format == 'jcampzip':
-                        writer = JcampZipWriter(converter)
-                    elif conversion_format == 'jcamp':
-                        if len(converter.tables) == 1:
-                            writer = JcampWriter(converter)
-                        else:
-                            return jsonify({
-                                'error':
-                                    'Conversion to a single JCAMP file is not supported for this file.'
-                            }), 400
-                    else:
-                        return jsonify({'error': 'Conversion format is not supported.'}), 400
-                    try:
-                        writer.process()
-                    except AssertionError:
-                        return jsonify({'error': 'There was an error while converting your file.'}), 400
+    def _run_conversion(converter, file):
+        conversion_format = request.form.get('format', 'jcampzip')
+        try:
+            writer = run_conversion(converter, conversion_format)
+        except AssertionError as e:
+            return jsonify({'error': 'There was an error while converting your file.'}), 400
+        except ValueError as e:
+            return jsonify({'error': e.__str__()}), 400
 
-                    file_name = Path(file.name).with_suffix(writer.suffix)
+        file_name = Path(file.name).with_suffix(writer.suffix)
 
-                    response = Response(writer.write(), mimetype=writer.mimetype)
-                    response.headers['Content-Disposition'] = f'attachment;filename={file_name}'
-                    return response
-
-            return jsonify({'error': 'Your file could not be processed.'}), 400
-        return jsonify({'error': 'No file provided.'}), 400
+        response = Response(writer.write(), mimetype=writer.mimetype)
+        response.headers['Content-Disposition'] = f'attachment;filename={file_name}'
+        return response
 
     @app.route('/tables', methods=['POST'])
     @auth.login_required
@@ -182,7 +203,7 @@ def profile_router(app: Flask, auth: HTTPBasicAuth):
     @auth.login_required
     def list_profiles():
         client_id = auth.current_user()
-        profiles = Profile.list(client_id)
+        profiles = Profile.list_including_default(client_id)
         return jsonify([profile.as_dict for profile in profiles]), 200
 
     @app.route('/profiles', methods=['POST'])
@@ -192,8 +213,14 @@ def profile_router(app: Flask, auth: HTTPBasicAuth):
         profile_data = json.loads(request.data)
         profile = Profile(profile_data, client_id)
         if profile.clean():
-            profile.save()
-            return jsonify(profile.as_dict), 201
+            Migrations().migrate_profile(profile)
+            try:
+                validate_profile(profile.as_dict)
+                profile.save()
+                return jsonify(profile.as_dict), 201
+            except jsonschema.exceptions.ValidationError as e:
+                    profile.errors['Validation'] = "Profile is not valid!"
+                    profile.errors['Validation Message'] = e.__str__()
         return jsonify(profile.errors), 400
 
     @app.route('/profiles/<profile_id>', methods=['GET'])
@@ -218,8 +245,14 @@ def profile_router(app: Flask, auth: HTTPBasicAuth):
                 return jsonify({'error': 'Bad request'}), 400
 
             if profile.clean():
-                profile.save()
-                return jsonify(profile.as_dict), 200
+                Migrations().migrate_profile(profile)
+                try:
+                    validate_profile(profile.as_dict)
+                    profile.save()
+                    return jsonify(profile.as_dict), 200
+                except jsonschema.exceptions.ValidationError as e:
+                    profile.errors['Validation'] = "Profile is not valid!"
+                    profile.errors['ValidationMsg'] = e.__str__()
             return jsonify(profile.errors), 400
         abort(404)
         return None
@@ -253,7 +286,7 @@ def utils_router(app: Flask, auth: HTTPBasicAuth):
     @app.route('/options', methods=['GET'])
     @auth.login_required
     def list_options():
-        return jsonify(OPTIONS), 200
+        return jsonify(compose_options(app.config['RDF_JSON'])), 200
 
 
 def setup_flask_routing(app: Flask):

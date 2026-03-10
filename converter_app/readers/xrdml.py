@@ -1,8 +1,8 @@
 import xml.etree.ElementTree as ET
 
 from converter_app.models import File
-from converter_app.readers.xml_reader import XMLReader
 from converter_app.readers.helper.reader import Readers
+from converter_app.readers.xml_reader import XMLReader
 
 
 class XRDMLReader(XMLReader):
@@ -12,8 +12,8 @@ class XRDMLReader(XMLReader):
 
     identifier = 'xrdml_reader'
 
-    def __init__(self, file: File):
-        super().__init__(file)
+    def __init__(self, file: File, *tar_content):
+        super().__init__(file, *tar_content)
         self._file_extensions = ['.xrdml']
         self._step_sizes = {}
 

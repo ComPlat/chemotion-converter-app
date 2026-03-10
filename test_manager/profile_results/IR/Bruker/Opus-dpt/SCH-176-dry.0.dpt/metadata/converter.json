@@ -4,6 +4,8 @@
   "matches": [
     {
       "identifier": {
+        "editable": true,
+        "id": "#0fileMetadata",
         "key": "extension",
         "match": "exact",
         "optional": false,

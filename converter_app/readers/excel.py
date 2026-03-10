@@ -3,8 +3,8 @@ import zipfile
 
 import openpyxl
 
-from converter_app.readers.helper.reader import Readers
 from converter_app.readers.helper.base import Reader, Table
+from converter_app.readers.helper.reader import Readers
 
 logger = logging.getLogger(__name__)
 
@@ -16,8 +16,8 @@ class ExcelReader(Reader):
     identifier = 'excel_reader'
     priority = 15
 
-    def __init__(self, file):
-        super().__init__(file)
+    def __init__(self, file, *tar_content):
+        super().__init__(file, *tar_content)
         self.wb = None
         self._table_row_meta = Table()
         self._table_col_meta = Table()

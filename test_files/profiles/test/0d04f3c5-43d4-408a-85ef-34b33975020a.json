@@ -1,0 +1,524 @@
+{
+    "converter_version": "1.8.0",
+    "data": {
+        "metadata": {
+            "content_type": "text/csv",
+            "delimiter": "semicolon",
+            "doublequote": "False",
+            "extension": ".csv",
+            "file_name": "ExpDat_SB 175-5-4.csv",
+            "lineterminator": "\\r\\n",
+            "mime_type": "text/plain",
+            "quotechar": "\"",
+            "quoting": "0",
+            "reader": "CSVReader",
+            "skipinitialspace": "False",
+            "uploaded": "2023-08-10T11:44:41.388524"
+        },
+        "tables": [
+            {
+                "columns": [
+                    {
+                        "key": "0",
+                        "name": "Column #0 (##Temp./\u00b0C)"
+                    },
+                    {
+                        "key": "1",
+                        "name": "Column #1 (Time/min)"
+                    },
+                    {
+                        "key": "2",
+                        "name": "Column #2 (DSC/(mW/mg))"
+                    },
+                    {
+                        "key": "3",
+                        "name": "Column #3 (Sensit./(uV/mW))"
+                    }
+                ],
+                "header": [
+                    "#EXPORTTYPE:                 ;DATA SINGLE                ",
+                    "#FILE:                       ;SB 175-5.ngb-sdg           ",
+                    "#FORMAT:                     ;NETZSCH5                   ",
+                    "#FTYPE:                      ;ANSI                       ",
+                    "#IDENTITY:                   ;SB 175-5                   ",
+                    "#DECIMAL:                    ;COMMA                      ",
+                    "#SEPARATOR:                  ;SEMICOLON                  ",
+                    "#MTYPE:                      ;DSC                        ",
+                    "#INSTRUMENT:                 ;NETZSCH DSC 214            ",
+                    "#PROJECT:                    ;                           ",
+                    "#DATE/TIME:                  ;31.03.2022 12:47:59 (UTC+2)",
+                    "#CORR. FILE:                 ;                           ",
+                    "#TEMPCAL:                    ;14-03-2022 09:47           ",
+                    "#SENSITIVITY:                ;14-03-2022 09:47           ",
+                    "#LABORATORY:                 ;                           ",
+                    "#OPERATOR:                   ;                           ",
+                    "#REMARK:                     ;                           ",
+                    "#SAMPLE:                     ;SB 175-5                   ",
+                    "#SAMPLE MASS /mg:            ;6,4                        ",
+                    "#MATERIAL:                   ;                           ",
+                    "#REFERENCE:                  ;-----                      ",
+                    "#REFERENCE MASS /mg:         ;0                          ",
+                    "#TYPE OF CRUCIBLE:           ;Concavus Al, pierced lid   ",
+                    "#SAMPLE CRUCIBLE MASS /mg:   ;0                          ",
+                    "#REFERENCE CRUCIBLE MASS /mg:;51,142                     ",
+                    "#PURGE 2 MFC:                ;NITROGEN,250,0 ml/min      ",
+                    "#PROTECTIVE MFC:             ;NITROGEN,250,0 ml/min      ",
+                    "#M.RANGE /\u00b5V:                ;5000                       ",
+                    "#TAU-R:                      ;---                        ",
+                    "#CORR. CODE:                 ;000                        ",
+                    "#EXO:                        ;-1                         ",
+                    "#RANGE:                      ;-80\u00b0C/10,0(K/min)/200\u00b0C    ",
+                    "#SEGMENT:                    ;S4/4                       ",
+                    "#SEG. 4:                     ;-80\u00b0C/10,0(K/min)/200\u00b0C    ",
+                    ""
+                ],
+                "metadata": {
+                    "column_00": "##Temp./\u00b0C",
+                    "column_01": "Time/min",
+                    "column_02": "DSC/(mW/mg)",
+                    "column_03": "Sensit./(uV/mW)",
+                    "columns": "4",
+                    "rows": "141"
+                },
+                "rows": [
+                    [
+                        "-63.00000",
+                        "45.52937",
+                        "0.11677",
+                        "3.16996"
+                    ],
+                    [
+                        "-62.00000",
+                        "45.62932",
+                        "0.11735",
+                        "3.17238"
+                    ],
+                    [
+                        "-61.00000",
+                        "45.72928",
+                        "0.11846",
+                        "3.17477"
+                    ],
+                    [
+                        "-60.00000",
+                        "45.82927",
+                        "0.11883",
+                        "3.17714"
+                    ],
+                    [
+                        "-59.00000",
+                        "45.92923",
+                        "0.12039",
+                        "3.17948"
+                    ],
+                    [
+                        "-58.00000",
+                        "46.02914",
+                        "0.12119",
+                        "3.18181"
+                    ],
+                    [
+                        "-57.00000",
+                        "46.12904",
+                        "0.12283",
+                        "3.18410"
+                    ],
+                    [
+                        "-56.00000",
+                        "46.22897",
+                        "0.12307",
+                        "3.18638"
+                    ],
+                    [
+                        "-55.00000",
+                        "46.32890",
+                        "0.12475",
+                        "3.18864"
+                    ],
+                    [
+                        "-54.00000",
+                        "46.42883",
+                        "0.12572",
+                        "3.19087"
+                    ]
+                ]
+            },
+            {
+                "columns": [],
+                "header": [
+                    ""
+                ],
+                "metadata": {
+                    "columns": "0",
+                    "rows": "0"
+                },
+                "rows": []
+            }
+        ]
+    },
+    "datatypes": [],
+    "description": "differential scanning calorimetry",
+    "devices": [],
+    "id": "0d04f3c5-43d4-408a-85ef-34b33975020a",
+    "identifiers": [
+        {
+            "editable": true,
+            "id": "#0fileMetadata",
+            "key": "reader",
+            "match": "exact",
+            "optional": false,
+            "type": "fileMetadata",
+            "value": "CSVReader"
+        },
+        {
+            "editable": true,
+            "id": "#1fileMetadata",
+            "key": "extension",
+            "match": "exact",
+            "optional": false,
+            "type": "fileMetadata",
+            "value": ".csv"
+        },
+        {
+            "editable": true,
+            "id": "#2tableMetadata",
+            "key": "column_02",
+            "match": "exact",
+            "optional": false,
+            "tableIndex": 0,
+            "type": "tableMetadata",
+            "value": "DSC/(mW/mg)"
+        },
+        {
+            "editable": true,
+            "id": "#3tableMetadata",
+            "key": "column_00",
+            "match": "exact",
+            "optional": false,
+            "tableIndex": 0,
+            "type": "tableMetadata",
+            "value": "##Temp./\u00b0C"
+        },
+        {
+            "editable": true,
+            "id": "#4tableHeader",
+            "lineNumber": 1,
+            "match": "exact",
+            "optional": false,
+            "tableIndex": 0,
+            "type": "tableHeader",
+            "value": "#EXPORTTYPE:                 ;DATA SINGLE"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#5tableHeader",
+            "lineNumber": 18,
+            "match": "regex",
+            "optional": true,
+            "outputKey": "sample",
+            "outputLayer": "sample_details",
+            "outputTableIndex": 0,
+            "predicate": null,
+            "subject": null,
+            "tableIndex": 0,
+            "type": "tableHeader",
+            "value": "#SAMPLE:\\s+;(\\S+)"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#6tableHeader",
+            "lineNumber": "",
+            "match": "regex",
+            "optional": true,
+            "outputKey": "amount",
+            "outputLayer": "sample_details",
+            "outputTableIndex": 0,
+            "predicate": null,
+            "subject": null,
+            "tableIndex": 0,
+            "type": "tableHeader",
+            "value": "#SAMPLE MASS \\/mg:\\s+;(\\S+)"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#7tableHeader",
+            "lineNumber": "",
+            "match": "regex",
+            "optional": true,
+            "outputKey": "date",
+            "outputLayer": "general",
+            "outputTableIndex": 0,
+            "predicate": null,
+            "subject": null,
+            "tableIndex": 0,
+            "type": "tableHeader",
+            "value": "#DATE\\/TIME:\\s+;(\\d+.\\d+.\\d+)"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#8tableHeader",
+            "lineNumber": "",
+            "match": "regex",
+            "optional": true,
+            "outputKey": "time",
+            "outputLayer": "general",
+            "outputTableIndex": 0,
+            "predicate": null,
+            "subject": null,
+            "tableIndex": 0,
+            "type": "tableHeader",
+            "value": "#DATE\\/TIME:\\s+;\\S+\\s(\\d+:\\d+:\\d+\\s\\S+)"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#9tableHeader",
+            "lineNumber": "",
+            "match": "regex",
+            "optional": true,
+            "outputKey": "reference",
+            "outputLayer": "meas",
+            "outputTableIndex": 0,
+            "predicate": null,
+            "subject": null,
+            "tableIndex": 0,
+            "type": "tableHeader",
+            "value": "#REFERENCE:\\s+;(\\S+)"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#10tableHeader",
+            "lineNumber": "",
+            "match": "regex",
+            "operations": [
+                {
+                    "operator": ":",
+                    "value": "1000"
+                }
+            ],
+            "optional": true,
+            "outputKey": "reference_mass",
+            "outputLayer": "meas",
+            "outputTableIndex": 0,
+            "predicate": null,
+            "subject": null,
+            "tableIndex": 0,
+            "type": "tableHeader",
+            "value": "REFERENCE MASS /mg:\\s+;(\\d+)"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#11tableHeader",
+            "lineNumber": "",
+            "match": "regex",
+            "optional": true,
+            "outputKey": "temp_cal",
+            "outputLayer": "meas",
+            "outputTableIndex": 0,
+            "predicate": null,
+            "subject": null,
+            "tableIndex": 0,
+            "type": "tableHeader",
+            "value": "#TEMPCAL:\\s+;(\\S+)"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#12tableHeader",
+            "lineNumber": "",
+            "match": "regex",
+            "optional": true,
+            "outputKey": "sensFile",
+            "outputLayer": "meas",
+            "outputTableIndex": 0,
+            "predicate": null,
+            "subject": null,
+            "tableIndex": 0,
+            "type": "tableHeader",
+            "value": "#SENSITIVITY:\\s+;(\\S+)"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#13tableHeader",
+            "lineNumber": "",
+            "match": "regex",
+            "optional": true,
+            "outputKey": "segments",
+            "outputLayer": "meas",
+            "outputTableIndex": 0,
+            "predicate": null,
+            "subject": null,
+            "tableIndex": 0,
+            "type": "tableHeader",
+            "value": "#SEGMENT:\\s+;S(\\d*\\/\\d*)"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#14tableHeader",
+            "lineNumber": "",
+            "match": "regex",
+            "optional": true,
+            "outputKey": "brand",
+            "outputLayer": "instrument",
+            "outputTableIndex": 0,
+            "predicate": null,
+            "subject": null,
+            "tableIndex": 0,
+            "type": "tableHeader",
+            "value": "#INSTRUMENT:\\s+;(\\S+)\\s"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#15tableHeader",
+            "lineNumber": "",
+            "match": "regex",
+            "optional": true,
+            "outputKey": "instrument",
+            "outputLayer": "instrument",
+            "outputTableIndex": 0,
+            "predicate": null,
+            "subject": null,
+            "tableIndex": 0,
+            "type": "tableHeader",
+            "value": "#INSTRUMENT:\\s+;\\S+\\s(\\S+\\s\\d+)"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#16tableHeader",
+            "lineNumber": "",
+            "match": "regex",
+            "optional": true,
+            "outputKey": "crucible",
+            "outputLayer": "set",
+            "outputTableIndex": 0,
+            "predicate": null,
+            "subject": null,
+            "tableIndex": 0,
+            "type": "tableHeader",
+            "value": "#TYPE OF CRUCIBLE:\\s+;(.*)"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#17tableHeader",
+            "lineNumber": "",
+            "match": "regex",
+            "optional": true,
+            "outputKey": "atmosphere",
+            "outputLayer": "set",
+            "outputTableIndex": 0,
+            "predicate": null,
+            "subject": null,
+            "tableIndex": 0,
+            "type": "tableHeader",
+            "value": "#PROTECTIVE MFC:\\s+;(.*)"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#18tableHeader",
+            "lineNumber": "",
+            "match": "regex",
+            "operations": [
+                {
+                    "operator": ":",
+                    "value": "1000"
+                }
+            ],
+            "optional": true,
+            "outputKey": "range",
+            "outputLayer": "set",
+            "outputTableIndex": 0,
+            "predicate": null,
+            "subject": null,
+            "tableIndex": 0,
+            "type": "tableHeader",
+            "value": "#M.RANGE /\u00b5V:\\s+;(\\d*)"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#19tableHeader",
+            "lineNumber": "",
+            "match": "regex",
+            "optional": true,
+            "outputKey": "temperature",
+            "outputLayer": "set",
+            "outputTableIndex": 0,
+            "predicate": null,
+            "subject": null,
+            "tableIndex": 0,
+            "type": "tableHeader",
+            "value": "#RANGE:\\s+;(.*)"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#20tableHeader",
+            "lineNumber": "",
+            "match": "regex",
+            "optional": true,
+            "outputKey": "operator",
+            "outputLayer": "general",
+            "outputTableIndex": 0,
+            "predicate": null,
+            "subject": null,
+            "tableIndex": 0,
+            "type": "tableHeader",
+            "value": "#IDENTITY:\\s+;(\\S{2,3})"
+        }
+    ],
+    "isDisabled": false,
+    "last_migration": "20260113143334",
+    "ols": "CHMO:0000684",
+    "ontology": "",
+    "predicates": [],
+    "rootOntology": {
+        "description": [
+            "The measurement of thermodynamic parameters (e.g. enthalpy) during a chemical or biochemical reaction of both a sample and a reference, by the known variation (step-wise or linear) of one variable, whilst a second is kept constant."
+        ],
+        "id": "CHMO:properties:http://purl.obolibrary.org/obo/CHMO_0000684",
+        "iri": "http://purl.obolibrary.org/obo/CHMO_0000684",
+        "label": "differential scanning calorimetry",
+        "namespace": "http://purl.obolibrary.org/obo/",
+        "obo_id": "CHMO:0000684",
+        "ontology_name": "chmo",
+        "ontology_prefix": "CHMO",
+        "short_form": "CHMO_0000684",
+        "type": "class"
+    },
+    "software": [],
+    "subjectInstances": {},
+    "subjects": [],
+    "tables": [
+        {
+            "header": {
+                "DATA CLASS": "XYPOINTS",
+                "DATA TYPE": "THERMOGRAVIMETRIC ANALYSIS",
+                "XUNITS": "DEGREES CELSIUS",
+                "YUNITS": "W/g"
+            },
+            "table": {
+                "xColumn": {
+                    "columnIndex": 0,
+                    "tableIndex": 0
+                },
+                "yColumn": {
+                    "columnIndex": 2,
+                    "tableIndex": 0
+                }
+            }
+        }
+    ],
+    "title": "DSC with Time"
+}

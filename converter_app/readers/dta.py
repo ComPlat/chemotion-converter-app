@@ -7,7 +7,7 @@ logger = logging.getLogger(__name__)
 
 class DtaReader(Reader):
     """
-    Reads and converts .dat files
+    Reads and converts .dta files
     """
     identifier = 'dta_reader'
     priority = 10
@@ -16,7 +16,7 @@ class DtaReader(Reader):
         """
         :return: True if it fits
         """
-        return self.file.encoding != 'binary' and self.file.suffix.lower() == '.dta' and self.file.mime_type == 'text/plain'
+        return self.file.encoding != 'binary' and self.file.suffix.lower() == '.dta'
 
     def prepare_tables(self):
         tables = []

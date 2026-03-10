@@ -4,6 +4,8 @@
   "matches": [
     {
       "identifier": {
+        "editable": true,
+        "id": "#0fileMetadata",
         "key": "extension",
         "match": "exact",
         "optional": false,
@@ -16,12 +18,17 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#1tableMetadata",
         "key": "DATE",
         "match": "any",
         "optional": true,
         "outputKey": "date",
         "outputLayer": "general",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "23.5.2022"
@@ -33,6 +40,9 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#2tableMetadata",
         "key": "SCANRATE",
         "match": "any",
         "operations": [
@@ -45,6 +55,8 @@
         "outputKey": "scan_rate",
         "outputLayer": "meas",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "([0-9\\.\\,E+]{2,})"
@@ -56,6 +68,9 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#3tableMetadata",
         "key": "STEPSIZE",
         "match": "any",
         "operations": [
@@ -68,6 +83,8 @@
         "outputKey": "step_size",
         "outputLayer": "meas",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "([0-9\\.\\,E+]{2,})"
@@ -79,12 +96,17 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#4tableMetadata",
         "key": "CYCLES",
         "match": "any",
         "optional": true,
         "outputKey": "cycles",
         "outputLayer": "meas",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "3"
@@ -96,12 +118,17 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#5tableHeader",
         "lineNumber": null,
         "match": "regex",
         "optional": true,
         "outputKey": "software_version",
         "outputLayer": "software",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableHeader",
         "value": "(\\d+\\.\\d+\\.\\d+)(\\s)(Framework)"
@@ -114,12 +141,17 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#6tableHeader",
         "lineNumber": null,
         "match": "regex",
         "optional": true,
         "outputKey": "software",
         "outputLayer": "software",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableHeader",
         "value": "(Framework)"
@@ -132,6 +164,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#7tableMetadata",
         "key": "TITLE",
         "match": "exact",
         "optional": false,
@@ -146,12 +180,17 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#8tableMetadata",
         "key": "TIME",
         "match": "any",
         "optional": true,
         "outputKey": "time",
         "outputLayer": "general",
         "outputTableIndex": 0,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "16:09:50"
@@ -163,12 +202,17 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#8tableMetadata",
         "key": "TIME",
         "match": "any",
         "optional": true,
         "outputKey": "time",
         "outputLayer": "general",
         "outputTableIndex": 1,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 1,
         "type": "tableMetadata",
         "value": "16:09:50"
@@ -177,12 +221,17 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#8tableMetadata",
         "key": "TIME",
         "match": "any",
         "optional": true,
         "outputKey": "time",
         "outputLayer": "general",
         "outputTableIndex": 2,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 2,
         "type": "tableMetadata",
         "value": "16:09:50"
@@ -191,12 +240,17 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#8tableMetadata",
         "key": "TIME",
         "match": "any",
         "optional": true,
         "outputKey": "time",
         "outputLayer": "general",
         "outputTableIndex": 3,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 3,
         "type": "tableMetadata",
         "value": "16:09:50"
@@ -205,12 +259,17 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#8tableMetadata",
         "key": "TIME",
         "match": "any",
         "optional": true,
         "outputKey": "time",
         "outputLayer": "general",
         "outputTableIndex": 4,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 4,
         "type": "tableMetadata",
         "value": "16:09:50"
@@ -219,12 +278,17 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#8tableMetadata",
         "key": "TIME",
         "match": "any",
         "optional": true,
         "outputKey": "time",
         "outputLayer": "general",
         "outputTableIndex": 5,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 5,
         "type": "tableMetadata",
         "value": "16:09:50"
@@ -233,12 +297,17 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#8tableMetadata",
         "key": "TIME",
         "match": "any",
         "optional": true,
         "outputKey": "time",
         "outputLayer": "general",
         "outputTableIndex": 6,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 6,
         "type": "tableMetadata",
         "value": "16:09:50"
@@ -247,12 +316,17 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#8tableMetadata",
         "key": "TIME",
         "match": "any",
         "optional": true,
         "outputKey": "time",
         "outputLayer": "general",
         "outputTableIndex": 7,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 7,
         "type": "tableMetadata",
         "value": "16:09:50"
@@ -261,12 +335,17 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#8tableMetadata",
         "key": "TIME",
         "match": "any",
         "optional": true,
         "outputKey": "time",
         "outputLayer": "general",
         "outputTableIndex": 8,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 8,
         "type": "tableMetadata",
         "value": "16:09:50"
@@ -275,12 +354,17 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#8tableMetadata",
         "key": "TIME",
         "match": "any",
         "optional": true,
         "outputKey": "time",
         "outputLayer": "general",
         "outputTableIndex": 9,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 9,
         "type": "tableMetadata",
         "value": "16:09:50"
@@ -289,12 +373,17 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#8tableMetadata",
         "key": "TIME",
         "match": "any",
         "optional": true,
         "outputKey": "time",
         "outputLayer": "general",
         "outputTableIndex": 10,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 10,
         "type": "tableMetadata",
         "value": "16:09:50"
@@ -303,12 +392,17 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#9tableMetadata",
         "key": "VINIT",
         "match": "any",
         "optional": true,
         "outputKey": "voltage_start",
         "outputLayer": "meas",
         "outputTableIndex": 0,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "0,00000E+000"
@@ -320,12 +414,17 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#9tableMetadata",
         "key": "VINIT",
         "match": "any",
         "optional": true,
         "outputKey": "voltage_start",
         "outputLayer": "meas",
         "outputTableIndex": 1,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 1,
         "type": "tableMetadata",
         "value": "0,00000E+000"
@@ -334,12 +433,17 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#9tableMetadata",
         "key": "VINIT",
         "match": "any",
         "optional": true,
         "outputKey": "voltage_start",
         "outputLayer": "meas",
         "outputTableIndex": 2,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 2,
         "type": "tableMetadata",
         "value": "0,00000E+000"
@@ -348,12 +452,17 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#9tableMetadata",
         "key": "VINIT",
         "match": "any",
         "optional": true,
         "outputKey": "voltage_start",
         "outputLayer": "meas",
         "outputTableIndex": 3,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 3,
         "type": "tableMetadata",
         "value": "0,00000E+000"
@@ -362,12 +471,17 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#9tableMetadata",
         "key": "VINIT",
         "match": "any",
         "optional": true,
         "outputKey": "voltage_start",
         "outputLayer": "meas",
         "outputTableIndex": 4,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 4,
         "type": "tableMetadata",
         "value": "0,00000E+000"
@@ -376,12 +490,17 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#9tableMetadata",
         "key": "VINIT",
         "match": "any",
         "optional": true,
         "outputKey": "voltage_start",
         "outputLayer": "meas",
         "outputTableIndex": 5,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 5,
         "type": "tableMetadata",
         "value": "0,00000E+000"
@@ -390,12 +509,17 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#9tableMetadata",
         "key": "VINIT",
         "match": "any",
         "optional": true,
         "outputKey": "voltage_start",
         "outputLayer": "meas",
         "outputTableIndex": 6,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 6,
         "type": "tableMetadata",
         "value": "0,00000E+000"
@@ -404,12 +528,17 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#9tableMetadata",
         "key": "VINIT",
         "match": "any",
         "optional": true,
         "outputKey": "voltage_start",
         "outputLayer": "meas",
         "outputTableIndex": 7,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 7,
         "type": "tableMetadata",
         "value": "0,00000E+000"
@@ -418,12 +547,17 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#9tableMetadata",
         "key": "VINIT",
         "match": "any",
         "optional": true,
         "outputKey": "voltage_start",
         "outputLayer": "meas",
         "outputTableIndex": 8,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 8,
         "type": "tableMetadata",
         "value": "0,00000E+000"
@@ -432,12 +566,17 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#9tableMetadata",
         "key": "VINIT",
         "match": "any",
         "optional": true,
         "outputKey": "voltage_start",
         "outputLayer": "meas",
         "outputTableIndex": 9,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 9,
         "type": "tableMetadata",
         "value": "0,00000E+000"
@@ -446,12 +585,17 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#9tableMetadata",
         "key": "VINIT",
         "match": "any",
         "optional": true,
         "outputKey": "voltage_start",
         "outputLayer": "meas",
         "outputTableIndex": 10,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 10,
         "type": "tableMetadata",
         "value": "0,00000E+000"
@@ -460,12 +604,17 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#10tableMetadata",
         "key": "VLIMIT1",
         "match": "any",
         "optional": true,
         "outputKey": "voltage_limit_one",
         "outputLayer": "meas",
         "outputTableIndex": 0,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "-1,20000E+000"
@@ -477,12 +626,17 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#10tableMetadata",
         "key": "VLIMIT1",
         "match": "any",
         "optional": true,
         "outputKey": "voltage_limit_one",
         "outputLayer": "meas",
         "outputTableIndex": 1,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 1,
         "type": "tableMetadata",
         "value": "-1,20000E+000"
@@ -491,12 +645,17 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#10tableMetadata",
         "key": "VLIMIT1",
         "match": "any",
         "optional": true,
         "outputKey": "voltage_limit_one",
         "outputLayer": "meas",
         "outputTableIndex": 2,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 2,
         "type": "tableMetadata",
         "value": "-1,20000E+000"
@@ -505,12 +664,17 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#10tableMetadata",
         "key": "VLIMIT1",
         "match": "any",
         "optional": true,
         "outputKey": "voltage_limit_one",
         "outputLayer": "meas",
         "outputTableIndex": 3,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 3,
         "type": "tableMetadata",
         "value": "-1,20000E+000"
@@ -519,12 +683,17 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#10tableMetadata",
         "key": "VLIMIT1",
         "match": "any",
         "optional": true,
         "outputKey": "voltage_limit_one",
         "outputLayer": "meas",
         "outputTableIndex": 4,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 4,
         "type": "tableMetadata",
         "value": "-1,20000E+000"
@@ -533,12 +702,17 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#10tableMetadata",
         "key": "VLIMIT1",
         "match": "any",
         "optional": true,
         "outputKey": "voltage_limit_one",
         "outputLayer": "meas",
         "outputTableIndex": 5,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 5,
         "type": "tableMetadata",
         "value": "-1,20000E+000"
@@ -547,12 +721,17 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#10tableMetadata",
         "key": "VLIMIT1",
         "match": "any",
         "optional": true,
         "outputKey": "voltage_limit_one",
         "outputLayer": "meas",
         "outputTableIndex": 6,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 6,
         "type": "tableMetadata",
         "value": "-1,20000E+000"
@@ -561,12 +740,17 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#10tableMetadata",
         "key": "VLIMIT1",
         "match": "any",
         "optional": true,
         "outputKey": "voltage_limit_one",
         "outputLayer": "meas",
         "outputTableIndex": 7,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 7,
         "type": "tableMetadata",
         "value": "-1,20000E+000"
@@ -575,12 +759,17 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#10tableMetadata",
         "key": "VLIMIT1",
         "match": "any",
         "optional": true,
         "outputKey": "voltage_limit_one",
         "outputLayer": "meas",
         "outputTableIndex": 8,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 8,
         "type": "tableMetadata",
         "value": "-1,20000E+000"
@@ -589,12 +778,17 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#10tableMetadata",
         "key": "VLIMIT1",
         "match": "any",
         "optional": true,
         "outputKey": "voltage_limit_one",
         "outputLayer": "meas",
         "outputTableIndex": 9,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 9,
         "type": "tableMetadata",
         "value": "-1,20000E+000"
@@ -603,12 +797,17 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#10tableMetadata",
         "key": "VLIMIT1",
         "match": "any",
         "optional": true,
         "outputKey": "voltage_limit_one",
         "outputLayer": "meas",
         "outputTableIndex": 10,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 10,
         "type": "tableMetadata",
         "value": "-1,20000E+000"
@@ -617,12 +816,17 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#11tableMetadata",
         "key": "VLIMIT2",
         "match": "any",
         "optional": true,
         "outputKey": "voltage_limit_two",
         "outputLayer": "meas",
         "outputTableIndex": 0,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "1,10000E+000"
@@ -634,12 +838,17 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#11tableMetadata",
         "key": "VLIMIT2",
         "match": "any",
         "optional": true,
         "outputKey": "voltage_limit_two",
         "outputLayer": "meas",
         "outputTableIndex": 1,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 1,
         "type": "tableMetadata",
         "value": "1,10000E+000"
@@ -648,12 +857,17 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#11tableMetadata",
         "key": "VLIMIT2",
         "match": "any",
         "optional": true,
         "outputKey": "voltage_limit_two",
         "outputLayer": "meas",
         "outputTableIndex": 2,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 2,
         "type": "tableMetadata",
         "value": "1,10000E+000"
@@ -662,12 +876,17 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#11tableMetadata",
         "key": "VLIMIT2",
         "match": "any",
         "optional": true,
         "outputKey": "voltage_limit_two",
         "outputLayer": "meas",
         "outputTableIndex": 3,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 3,
         "type": "tableMetadata",
         "value": "1,10000E+000"
@@ -676,12 +895,17 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#11tableMetadata",
         "key": "VLIMIT2",
         "match": "any",
         "optional": true,
         "outputKey": "voltage_limit_two",
         "outputLayer": "meas",
         "outputTableIndex": 4,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 4,
         "type": "tableMetadata",
         "value": "1,10000E+000"
@@ -690,12 +914,17 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#11tableMetadata",
         "key": "VLIMIT2",
         "match": "any",
         "optional": true,
         "outputKey": "voltage_limit_two",
         "outputLayer": "meas",
         "outputTableIndex": 5,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 5,
         "type": "tableMetadata",
         "value": "1,10000E+000"
@@ -704,12 +933,17 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#11tableMetadata",
         "key": "VLIMIT2",
         "match": "any",
         "optional": true,
         "outputKey": "voltage_limit_two",
         "outputLayer": "meas",
         "outputTableIndex": 6,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 6,
         "type": "tableMetadata",
         "value": "1,10000E+000"
@@ -718,12 +952,17 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#11tableMetadata",
         "key": "VLIMIT2",
         "match": "any",
         "optional": true,
         "outputKey": "voltage_limit_two",
         "outputLayer": "meas",
         "outputTableIndex": 7,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 7,
         "type": "tableMetadata",
         "value": "1,10000E+000"
@@ -732,12 +971,17 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#11tableMetadata",
         "key": "VLIMIT2",
         "match": "any",
         "optional": true,
         "outputKey": "voltage_limit_two",
         "outputLayer": "meas",
         "outputTableIndex": 8,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 8,
         "type": "tableMetadata",
         "value": "1,10000E+000"
@@ -746,12 +990,17 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#11tableMetadata",
         "key": "VLIMIT2",
         "match": "any",
         "optional": true,
         "outputKey": "voltage_limit_two",
         "outputLayer": "meas",
         "outputTableIndex": 9,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 9,
         "type": "tableMetadata",
         "value": "1,10000E+000"
@@ -760,12 +1009,17 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#11tableMetadata",
         "key": "VLIMIT2",
         "match": "any",
         "optional": true,
         "outputKey": "voltage_limit_two",
         "outputLayer": "meas",
         "outputTableIndex": 10,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 10,
         "type": "tableMetadata",
         "value": "1,10000E+000"
@@ -774,12 +1028,17 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#12tableMetadata",
         "key": "VFINAL",
         "match": "any",
         "optional": true,
         "outputKey": "voltage_limit_end",
         "outputLayer": "meas",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "0,00000E+000"
@@ -791,12 +1050,17 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#13tableMetadata",
         "key": "PSTAT",
         "match": "any",
         "optional": true,
         "outputKey": "serial",
         "outputLayer": "instrument",
         "outputTableIndex": null,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "IFC1010-30147"
@@ -808,12 +1072,17 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#14tableHeader",
         "lineNumber": "",
         "match": "regex",
         "optional": true,
         "outputKey": "instrument",
         "outputLayer": "instrument",
         "outputTableIndex": 0,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableHeader",
         "value": "(Potentiostat)"
@@ -826,12 +1095,17 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#14tableHeader",
         "lineNumber": "",
         "match": "regex",
         "optional": true,
         "outputKey": "instrument",
         "outputLayer": "instrument",
         "outputTableIndex": 1,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 1,
         "type": "tableHeader",
         "value": "(Potentiostat)"
@@ -840,12 +1114,17 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#14tableHeader",
         "lineNumber": "",
         "match": "regex",
         "optional": true,
         "outputKey": "instrument",
         "outputLayer": "instrument",
         "outputTableIndex": 2,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 2,
         "type": "tableHeader",
         "value": "(Potentiostat)"
@@ -854,12 +1133,17 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#14tableHeader",
         "lineNumber": "",
         "match": "regex",
         "optional": true,
         "outputKey": "instrument",
         "outputLayer": "instrument",
         "outputTableIndex": 3,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 3,
         "type": "tableHeader",
         "value": "(Potentiostat)"
@@ -868,12 +1152,17 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#14tableHeader",
         "lineNumber": "",
         "match": "regex",
         "optional": true,
         "outputKey": "instrument",
         "outputLayer": "instrument",
         "outputTableIndex": 4,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 4,
         "type": "tableHeader",
         "value": "(Potentiostat)"
@@ -882,12 +1171,17 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#14tableHeader",
         "lineNumber": "",
         "match": "regex",
         "optional": true,
         "outputKey": "instrument",
         "outputLayer": "instrument",
         "outputTableIndex": 5,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 5,
         "type": "tableHeader",
         "value": "(Potentiostat)"
@@ -896,12 +1190,17 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#14tableHeader",
         "lineNumber": "",
         "match": "regex",
         "optional": true,
         "outputKey": "instrument",
         "outputLayer": "instrument",
         "outputTableIndex": 6,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 6,
         "type": "tableHeader",
         "value": "(Potentiostat)"
@@ -910,12 +1209,17 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#14tableHeader",
         "lineNumber": "",
         "match": "regex",
         "optional": true,
         "outputKey": "instrument",
         "outputLayer": "instrument",
         "outputTableIndex": 7,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 7,
         "type": "tableHeader",
         "value": "(Potentiostat)"
@@ -924,12 +1228,17 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#14tableHeader",
         "lineNumber": "",
         "match": "regex",
         "optional": true,
         "outputKey": "instrument",
         "outputLayer": "instrument",
         "outputTableIndex": 8,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 8,
         "type": "tableHeader",
         "value": "(Potentiostat)"
@@ -938,12 +1247,17 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#14tableHeader",
         "lineNumber": "",
         "match": "regex",
         "optional": true,
         "outputKey": "instrument",
         "outputLayer": "instrument",
         "outputTableIndex": 9,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 9,
         "type": "tableHeader",
         "value": "(Potentiostat)"
@@ -952,12 +1266,17 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#14tableHeader",
         "lineNumber": "",
         "match": "regex",
         "optional": true,
         "outputKey": "instrument",
         "outputLayer": "instrument",
         "outputTableIndex": 10,
+        "predicate": null,
+        "subject": null,
         "tableIndex": 10,
         "type": "tableHeader",
         "value": "(Potentiostat)"

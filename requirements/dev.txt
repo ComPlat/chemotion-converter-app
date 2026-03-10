@@ -1,8 +1,0 @@
--r common.txt
-
-coverage
-pytest
-pytest-dotenv
-pytest-cov
-pytest-flask
-GitPython

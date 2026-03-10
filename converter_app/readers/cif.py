@@ -3,11 +3,13 @@ import os
 import re
 import tempfile
 from zipfile import ZipFile
+
 from gemmi import cif
 from werkzeug.datastructures import FileStorage
+
 from converter_app.models import File
-from converter_app.readers.helper.reader import Readers
 from converter_app.readers.helper.base import Reader
+from converter_app.readers.helper.reader import Readers
 
 logger = logging.getLogger(__name__)
 
@@ -77,48 +79,55 @@ class CifReader(Reader):
     def prepare_tables(self):
         if self.cif is None:
             return []
-        block = self.cif.sole_block()  # mmCIF has exactly one block
+        all_tables = []
+        for block in self.cif:  # mmCIF has exactly one block
+            tables = []
+            all_tables.append(tables)
+            meta_table = self.append_table(tables)
+            junk_table_header = []
+            has_junk = False
 
-        tables = []
-        meta_table = self.append_table(tables)
-        junk_table_header = []
-        has_junk = False
+            meta_table['header'].append(f"Block_name = {block.name}")
+            meta_table['metadata']["Block_name"] = block.name
 
-        meta_table['header'].append(f"Block_name = {block.name}")
-        meta_table['metadata']["Block_name"] = block.name
+            for item in block:
+                if item.pair is not None:
+                    if 'highest difference peak' in ''.join(item.pair).lower():
+                        meta_table['header'].append(' = '.join(item.pair[:2]))
+                    elif len(item.pair[1]) > self.junk_size_threshold:
+                        has_junk = True
+                        junk_table_header.append(' = '.join(item.pair[:2]))
+                    else:
+                        meta_table['header'].append(' = '.join(item.pair[:2]))
+                        meta_table['metadata'][item.pair[0]] = re.sub(r"^[;\s']+|[;\s']+$", "", item.pair[1])
+                elif item.loop is not None:
+                    table = self.append_table(tables)
+                    table.add_metadata("Block_name", block.name)
+                    prefix = self._commonprefix(item.loop.tags)
+                    meta_table['metadata']['Loop_name'] = prefix
+                    for tag in item.loop.tags:
+                        table['header'].append(tag)
+                        table['columns'].append({
+                            'key': str(len(table['columns']) + 1),
+                            'name': tag
+                        })
 
-        for item in block:
-            if item.pair is not None:
-                if 'highest difference peak' in ''.join(item.pair).lower():
-                    meta_table['header'].append(' = '.join(item.pair[:2]))
-                elif len(item.pair[1]) > self.junk_size_threshold:
-                    has_junk = True
-                    junk_table_header.append(' = '.join(item.pair[:2]))
-                else:
-                    meta_table['header'].append(' = '.join(item.pair[:2]))
-                    meta_table['metadata'][item.pair[0]] = re.sub(r"^[;\s']+|[;\s']+$", "", item.pair[1])
-            elif item.loop is not None:
-                table = self.append_table(tables)
-                prefix = self._commonprefix(item.loop.tags)
-                meta_table['metadata']['Loop_name'] = prefix
-                for tag in item.loop.tags:
-                    table['header'].append(tag)
-                    table['columns'].append({
-                        'key': str(len(table['columns']) + 1),
-                        'name': tag
-                    })
+                    for i in range(0, len(item.loop.values), len(item.loop.tags)):
+                        table['rows'].append(
+                            item.loop.values[i:(i + len(item.loop.tags))])
 
-                for i in range(0, len(item.loop.values), len(item.loop.tags)):
-                    table['rows'].append(
-                        item.loop.values[i:(i + len(item.loop.tags))])
+            if has_junk:
+                junk_table = self.append_table(tables)
+                junk_table.add_metadata("Block_name", block.name)
+                junk_table['header'] = junk_table_header
 
+        all_tables.sort(key=lambda x: len(x), reverse=True)
 
-
-        if has_junk:
-            junk_table = self.append_table(tables)
-            junk_table['header'] = junk_table_header
-
-        return tables
+        return [
+            table
+            for tables in all_tables
+            for table in tables
+        ]
 
 
 Readers.instance().register(CifReader)

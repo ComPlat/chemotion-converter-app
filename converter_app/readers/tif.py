@@ -1,5 +1,6 @@
 import logging
 import re
+
 from converter_app.readers.helper.base import Reader
 from converter_app.readers.helper.reader import Readers
 
@@ -16,8 +17,8 @@ class TifReader(Reader):
     priority = 96
 
 
-    def __init__(self, file):
-        super().__init__(file)
+    def __init__(self, file, *tar_content):
+        super().__init__(file, *tar_content)
         self._parsed_values = None
 
     def check(self):
@@ -52,7 +53,11 @@ class TifReader(Reader):
             if len(val) == 1:
                 num_val = self.get_value(val[0])
                 if num_val is not None:
-                    table['rows'].append([len(table['rows']), float(num_val)])
+                    try:
+                       num_val = float(num_val)
+                    except ValueError:
+                        pass
+                    table['rows'].append([len(table['rows']), num_val])
             else:
                 table['metadata'][val[0]] = '='.join(val[1:])
             table['header'].append(f"{'='.join(val)}")

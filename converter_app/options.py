@@ -1,4 +1,5 @@
 """Array Constant definitions for dropdown select options"""
+import json
 
 DATA_TYPES = (
     'CIRCULAR DICHROISM SPECTROSCOPY',
@@ -24,6 +25,7 @@ DATA_TYPES = (
     'SINGLE CRYSTAL X-RAY DIFFRACTION',
     'SIZE EXCLUSION CHROMATOGRAPHY',
     'SORPTION-DESORPTION MEASUREMENT',
+    'SQUID',
     'TENSIOMETRY',
     'THERMOGRAVIMETRIC ANALYSIS',
     'UV-VIS',
@@ -42,10 +44,12 @@ XUNITS = (
     '%',
     '1/CM',
     '2Theta',
+    'Ampere',
     'DEGREES CELSIUS',
     'G/MOL',
     'Hydrodynamic diameter (nm)',
     'HZ',
+    'KELVIN',
     'KILOGRAM',
     'kPa',
     'Lag time (microseconds)',
@@ -56,6 +60,7 @@ XUNITS = (
     'MINUTES',
     'MOLECULAR MASS / DA',
     'NANOMETERS',
+    'OHM',
     'p/p0', # Normalaized dimension
     'SECONDS',
     'Voltage in V',
@@ -69,6 +74,7 @@ YUNITS = (
     'ACF (a.u.)',
     'Ampere',
     'ARBITRARY UNITS',
+    'cm³*K', # non-molar Susceptibility χ -> needs to be divided by amount of substance to get χ_m
     'Current in A',
     'COUNTS',
     'DEGREES CELSIUS',
@@ -82,10 +88,12 @@ YUNITS = (
     'Molar Extinction (cm2/mmol) ',
     'Newton',
     'N/M2',
+    'OHM',
     'REFLECTANCE',
     'relative intensity (%)',
     'SIGNAL',
     'TRANSMITTANCE',
+    'Voltage in V',
     'W/g',
     'WEIGHT',
     'Weight %',
@@ -97,3 +105,8 @@ OPTIONS = {
     'XUNITS': XUNITS,
     'YUNITS': YUNITS,
 }
+
+def compose_options(rdf_path):
+    with open(rdf_path, 'r') as fp:#
+        rdf_content = json.load(fp)
+    return OPTIONS | {'rdf': rdf_content}

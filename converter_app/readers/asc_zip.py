@@ -2,9 +2,10 @@ import logging
 import os
 import tempfile
 from zipfile import ZipFile
+
+from converter_app.readers.helper.asc_helper import AscHelper
 from converter_app.readers.helper.base import Reader
 from converter_app.readers.helper.reader import Readers
-from converter_app.readers.helper.asc_helper import AscHelper
 
 logger = logging.getLogger(__name__)
 
@@ -16,8 +17,8 @@ class AscZipReader(Reader):
     identifier = 'asc_zip_reader'
     priority = 10
 
-    def __init__(self, file):
-        super().__init__(file)
+    def __init__(self, file, *tar_content):
+        super().__init__(file, *tar_content)
         self.filedata = {}
 
     # two or more chars in row

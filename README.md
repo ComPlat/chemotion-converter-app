@@ -21,7 +21,7 @@ Then, the application and its dependencies can be installed:
 
 ```bash
 pip install -e .                     # installs the package in editable mode
-pip install -r requirements/dev.txt  # only needed for the development setup
+pip install .[dev]  # only needed for the development setup
 ```
 
 The application is configured using environment variables, which can be read from a `.env` file. The file `.env.dev` can be used as template. At least `FLASK_APP=converter_app.app` needs to be set.
@@ -31,6 +31,49 @@ The Flask development server can be started now:
 ```bash
 flask run
 ```
+
+Troubleshooting (when unsing Windows, updated 04.03.2024)
+---------------
+
+### as of version 1.4
+
+> [!CAUTION]
+> ChemConverter no longer supports Windows and requires Python 3.12 due to "little endian" binary parsing used by some binary readers.
+
+Currently there are no further Windows version planed. If you really need one, please get in touch with us.
+
+> [!TIP]
+> If you are rely on Windows you could still use a Python Interpreter on WSL2.
+> Further instructions and tips how to do so will follow soon. 
+
+### before version 1.4 (added 25.07.2024)
+1. Please make sure that you are using a fresh Python3.10 virtual environment (without any packages installed, 3.12 and 3.9 are not supported)
+2. Before installing the requirements ```pip install wheel setuptools pip pybind11 # always using pip of your virtual environment ```
+3. After installing all requirements via ```pip install -e .``` and ```pip install -r requirements/dev.txt``` check if you have ```python-magic-bin``` and / or ```python-magic``` installed. If not ```pip install python-magic-bin```
+4. Now try starting it with the following env variables ```PYTHONUNBUFFERED=1;FLASK_APP=converter_app/app.py;FLASK_ENV=development;FLASK_DEBUG=1```
+5. If you are still getting ERRORS containing "libmagic" try uninstalling ```python-magic``` but keeping ```python-magic-bin```  
+
+
+### Develop new reader
+
+To develop a new reader run:
+
+```shell
+python -m converter_app new_reader
+```
+
+For more details see the _Test Drive Development_ section in  [Test Strategy](docu/TEST_STRATEGY.md). It explains how to develop a reader test drive.
+
+
+### Profile Versioning 
+
+To change the structure of profiles, you can create a new profile migration script with the following command:
+
+```shell
+python -m converter_app new_migration
+```
+
+For more details see: [Profile Versioning](docu/MIGRATION.md)
 
 Production setup
 ----------------
@@ -120,6 +163,5 @@ This project has been funded by the **[DFG]**.
 
 Funded by the [Deutsche Forschungsgemeinschaft (DFG, German Research Foundation)](https://www.dfg.de/) under the [National Research Data Infrastructure – NFDI4Chem](https://nfdi4chem.de/) – Projektnummer **441958208** since 2020.
 
-
 [DFG]: https://www.dfg.de/en/
-[DFG Logo]: https://www.dfg.de/zentralablage/bilder/service/logos_corporate_design/logo_negativ_267.png
+[DFG Logo]: https://chemotion.net/img/logos/DFG_logo.png

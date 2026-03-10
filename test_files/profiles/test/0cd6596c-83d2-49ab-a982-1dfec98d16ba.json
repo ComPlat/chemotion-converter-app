@@ -1,0 +1,138 @@
+{
+    "converter_version": "1.8.0",
+    "data": {
+        "metadata": {
+            "content_type": "application/octet-stream",
+            "delimiter": "comma",
+            "doublequote": "False",
+            "extension": ".dpt",
+            "file_name": "BS-17-WU.dpt",
+            "lineterminator": "\\r\\n",
+            "mime_type": "text/csv",
+            "quotechar": "\"",
+            "quoting": "0",
+            "reader": "CSVReader",
+            "skipinitialspace": "False",
+            "uploaded": "2023-05-30T14:33:38.201646"
+        },
+        "tables": [
+            {
+                "columns": [
+                    {
+                        "key": "0",
+                        "name": "Column #0"
+                    },
+                    {
+                        "key": "1",
+                        "name": "Column #1"
+                    }
+                ],
+                "header": [],
+                "metadata": {
+                    "columns": "2",
+                    "rows": "1757"
+                },
+                "rows": [
+                    [
+                        "3997.84587",
+                        "0.99685"
+                    ],
+                    [
+                        "3995.79675",
+                        "0.99701"
+                    ],
+                    [
+                        "3993.74762",
+                        "0.99717"
+                    ],
+                    [
+                        "3991.69849",
+                        "0.99716"
+                    ],
+                    [
+                        "3989.64937",
+                        "0.99741"
+                    ],
+                    [
+                        "3987.60024",
+                        "0.99776"
+                    ],
+                    [
+                        "3985.55111",
+                        "0.99780"
+                    ],
+                    [
+                        "3983.50199",
+                        "0.99772"
+                    ],
+                    [
+                        "3981.45286",
+                        "0.99778"
+                    ],
+                    [
+                        "3979.40373",
+                        "0.99805"
+                    ]
+                ]
+            }
+        ]
+    },
+    "datatypes": [],
+    "description": "IR-Alpha (CS)",
+    "devices": [],
+    "id": "0cd6596c-83d2-49ab-a982-1dfec98d16ba",
+    "identifiers": [
+        {
+            "editable": true,
+            "id": "#0fileMetadata",
+            "key": "extension",
+            "match": "exact",
+            "optional": false,
+            "type": "fileMetadata",
+            "value": ".dpt"
+        }
+    ],
+    "isDisabled": false,
+    "last_migration": "20260113143334",
+    "ols": null,
+    "ontology": "",
+    "predicates": [],
+    "rootOntology": {
+        "description": [
+            "A planned process that has the objective to produce information about a material entity (the evaluant) by examining it."
+        ],
+        "id": "OBI:property:http://purl.obolibrary.org/obo/OBI_0000070",
+        "iri": "http://purl.obolibrary.org/obo/OBI_0000070",
+        "label": "assay",
+        "namespace": "http://purl.obolibrary.org/obo/",
+        "obo_id": "OBI:0000070",
+        "ontology_name": "chmo",
+        "ontology_prefix": "CHMO",
+        "short_form": "OBI_0000070",
+        "type": "class"
+    },
+    "software": [],
+    "subjectInstances": {},
+    "subjects": [],
+    "tables": [
+        {
+            "header": {
+                "DATA CLASS": "XYPOINTS",
+                "DATA TYPE": "INFRARED SPECTRUM",
+                "XUNITS": "1/CM",
+                "YUNITS": "TRANSMITTANCE"
+            },
+            "table": {
+                "xColumn": {
+                    "columnIndex": 0,
+                    "tableIndex": 0
+                },
+                "yColumn": {
+                    "columnIndex": 1,
+                    "tableIndex": 0
+                }
+            }
+        }
+    ],
+    "title": "IR DPT"
+}

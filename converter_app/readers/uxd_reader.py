@@ -1,8 +1,8 @@
 import logging
 
 from converter_app.models import File
-from converter_app.readers.helper.reader import Readers
 from converter_app.readers.helper.base import Reader
+from converter_app.readers.helper.reader import Readers
 
 logger = logging.getLogger(__name__)
 
@@ -17,8 +17,8 @@ class UXDReader(Reader):
     identifier = 'uxd_reader'
     priority = 10
 
-    def __init__(self, file: File):
-        super().__init__(file)
+    def __init__(self, file: File, *tar_content):
+        super().__init__(file, *tar_content)
         self._file_extensions = ['.uxd']
         self._table = None
         self._version = 2

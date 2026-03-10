@@ -1,8 +1,9 @@
 import logging
+
 import xlrd
 
-from converter_app.readers.helper.reader import Readers
 from converter_app.readers.helper.base import Reader
+from converter_app.readers.helper.reader import Readers
 
 logger = logging.getLogger(__name__)
 
@@ -14,8 +15,8 @@ class OldExcelReader(Reader):
     identifier = 'old_excel_reader'
     priority = 16
 
-    def __init__(self, file):
-        super().__init__(file)
+    def __init__(self, file, *tar_content):
+        super().__init__(file, *tar_content)
         self.wb = None
 
     def check(self):

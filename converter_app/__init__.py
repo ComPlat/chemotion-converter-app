@@ -1,8 +1,10 @@
-__title__ = 'chemotion-converter-app'
-__version__ = '1.1.0'
-__author__ = 'Nicole Jung'
-__email__ = 'nicole.jung(at)kit.edu'
-__license__ = 'AGPL-3.0'
-__copyright__ = 'Copyright (c) 2020 Karlsruhe Institute for Technology (KIT)'
+import importlib.metadata
+import os
 
-VERSION = __version__
+os.environ["TYPEGUARD_DISABLE"] = "1"
+
+TITLE = importlib.metadata.distribution('chemotion-converter-app').name
+VERSION = importlib.metadata.version('chemotion-converter-app')
+
+if __name__ == '__main__':
+    print(f"{TITLE} version {VERSION}")

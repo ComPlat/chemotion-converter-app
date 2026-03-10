@@ -15,8 +15,8 @@ class GcdReader(Reader):
     identifier = 'gcd_reader'
     priority = 5
 
-    def __init__(self, file):
-        super().__init__(file)
+    def __init__(self, file, *tar_content):
+        super().__init__(file, *tar_content)
         self.lines = None
 
         self._number_of_ch = 0
@@ -39,9 +39,17 @@ class GcdReader(Reader):
         """
         :return: True if it fits
         """
+        if self.is_tar_ball:
+            self.file = next((x for x in self.file_content if x.name.lower().endswith('.gcd.txt')), None)
+            if self.file is None:
+                return False
+
         result = self.file.suffix.lower() == '.txt'
         if result:
-            self.lines = self._parse_input()
+            try:
+                self.lines = self._parse_input()
+            except AttributeError:
+                return False
             result = '[Chromatogram (Ch1)]' in self.lines and '[Compound Results(Ch1)]' in self.lines
         return result
 

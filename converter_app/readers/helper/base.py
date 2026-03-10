@@ -1,7 +1,7 @@
 import logging
 import os
 import re
-from datetime import datetime
+from datetime import datetime, UTC
 
 logger = logging.getLogger(__name__)
 
@@ -55,17 +55,32 @@ class MetadataContainer(dict[str:any]):
 class Reader:
     """
     Base reader. Any reader needs to extend this abstract reader.
+
+    Attributes:
+        identifier (str): The manufacturer of the car.
+        metadata (dict): Auto generated bsed on the convertion results.
+        tables (int): Auto generated bsed on the convertion results.
+        file (converter_app.modelsFile): Received File from the client (Chemotion)
+        file_content ([]converter_app.modelsFile): file_content contains all files archived in the 'file' if it is a tarball file.
+        is_tar_ball (bool): Ture if 'file' is a tarball file.
     """
+
     float_pattern = re.compile(r'[-+]?[0-9]*[.,]?[0-9]+(?:[eE][-+]?[0-9]+)?\s*')
+    int_pattern = re.compile(r'[+-]?\d+')
     float_de_pattern = re.compile(r'(-?[\d.]+,\d*[eE+\-\d]*)')
     float_us_pattern = re.compile(r'(-?[\d,]+.\d*[eE+\-\d]*)')
+    float_on_zeros = re.compile(r'.0*$')
 
-    def __init__(self, file):
-        self.empty_values = ['', 'n.a.']
-        self.identifier = None
+    identifier = None
+    priority = 100
+
+    def __init__(self, file, *tar_content):
+        self._empty_values = ['', 'n.a.']
         self.metadata = None
         self.tables = None
         self.file = file
+        self.file_content = tar_content
+        self.is_tar_ball = len(tar_content) > 0
 
     @property
     def as_dict(self):
@@ -79,7 +94,7 @@ class Reader:
 
     def check(self):
         """
-        Abstract method check if the reader matches a file
+        Abstract method check if the reader matches a filelist
         :return: [bool] true if the Reader checks a file
         """
         raise NotImplementedError
@@ -131,6 +146,15 @@ class Reader:
 
             table['metadata']['rows'] = str(len(table['rows']))
             table['metadata']['columns'] = str(len(table['columns']))
+            # Necessary: dictionary changed size during iteration
+            keys_vals = list(table['metadata'].items())
+            for key, value in keys_vals:
+                if isinstance(value, str):
+                    origin_val = table['metadata'][key]
+                    new_val = self._get_value_as_decimal(value)
+                    if origin_val != new_val:
+                        table['metadata'][key] = new_val
+
         return tables
 
     def prepare_tables(self) -> list[Table]:
@@ -150,7 +174,7 @@ class Reader:
             'mime_type': self.file.mime_type,
             'extension': self.file.suffix,
             'reader': self.__class__.__name__,
-            'uploaded': datetime.utcnow().isoformat()
+            'uploaded': datetime.now(UTC).isoformat()
         }
 
     def append_table(self, tables: list) -> Table:
@@ -178,7 +202,7 @@ class Reader:
                     shape.append('f')
                     continue
                 cell = str(cell).strip()
-                if cell in self.empty_values:
+                if cell in self._empty_values:
                     shape.append('')
                 elif self.float_pattern.fullmatch(cell):
                     shape.append('f')
@@ -195,7 +219,7 @@ class Reader:
         :param value: as string
         :return: numeric value either int or float
         """
-        if re.match(r'^[+-]?\d+$', value) is not None:
+        if self.int_pattern.fullmatch(value) is not None:
             return int(value)
         return float(self.get_value(value))
 
@@ -205,11 +229,28 @@ class Reader:
         :param value: Sting value
         :return: The argument as standard float if necessary
         """
-        if self.float_de_pattern.match(value):
-            # remove any digit group seperators and replace the comma with a period
-            return value.replace('.', '').replace(',', '.')
-        if self.float_us_pattern.match(value):
-            # just remove the digit group seperators
-            return value.replace(',', '')
+        return self._get_value(value)
 
+    def _get_value_as_decimal(self, value: str) -> any:
+        if value is None:
+            return value
+        val = self._get_value(str(value))
+        if self.float_pattern.fullmatch(val) is not None and 'e' in value.lower() and ',' in value.lower():
+            return val
         return value
+
+    def _get_value(self, value: str) -> str:
+        """
+        Checks if values is a stringified float and makes it to a standard.
+        :param value: Sting value
+        :return: The argument as standard float if necessary
+        """
+        if isinstance(value, str) and self.float_pattern.fullmatch(value):
+            if self.float_de_pattern.match(value):
+                # remove any digit group seperators and replace the comma with a period
+                return value.replace('.', '').replace(',', '.')
+            if self.float_us_pattern.match(value):
+                # just remove the digit group seperators
+                return value.replace(',', '')
+
+        return str(value)

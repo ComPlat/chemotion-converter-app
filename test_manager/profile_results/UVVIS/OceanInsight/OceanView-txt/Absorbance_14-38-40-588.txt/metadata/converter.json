@@ -4,6 +4,8 @@
   "matches": [
     {
       "identifier": {
+        "editable": true,
+        "id": "#0fileMetadata",
         "key": "reader",
         "match": "exact",
         "optional": false,
@@ -16,6 +18,8 @@
     },
     {
       "identifier": {
+        "editable": true,
+        "id": "#1tableHeader",
         "lineNumber": 4,
         "match": "exact",
         "optional": false,

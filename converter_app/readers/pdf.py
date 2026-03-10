@@ -1,6 +1,8 @@
 import logging
 import tempfile
+
 import fitz
+
 from converter_app.readers.helper.base import Reader
 from converter_app.readers.helper.reader import Readers
 
@@ -14,8 +16,8 @@ class PdfReader(Reader):
     identifier = 'pdf_reader'
     priority = 100
 
-    def __init__(self, file):
-        super().__init__(file)
+    def __init__(self, file, *tar_content):
+        super().__init__(file, *tar_content)
         self.text_data = None
 
     def check(self):
@@ -48,6 +50,12 @@ class PdfReader(Reader):
 
     def _read_pdf(self):
         doc = self._get_pdf_content()
+        toc = doc.get_toc(simple=True) or []
+
+        # convert to array of (title, page0)
+        links = [(title, page - 1) for _, title, page in toc]
+        link_index = 0
+
         current_section = []
         text_data = {'_': current_section}
 
@@ -56,18 +64,15 @@ class PdfReader(Reader):
             page = doc[page_num]
             blocks = page.get_text('blocks')
 
-            if link is not None and link.page < page_num:
-                current_section = {}
-                text_data[link.title] = current_section
-                link = link.next
+            # open new section when we pass target page
+            if link_index < len(links) and links[link_index][1] < page_num:
+                title, _ = links[link_index]
+                current_section = []
+                text_data[title.strip()] = current_section
+                link_index += 1
 
             for block in blocks:
                 line = block[4]
-                if link is not None and link.y <= block[1] and link.page == page_num:
-                    current_section = []
-                    text_data[link.title.strip()] = current_section
-                    link = link.next
-
                 current_section.append(self.prepare_line(line))
 
         return text_data
