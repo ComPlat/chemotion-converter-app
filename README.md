@@ -151,7 +151,7 @@ mass spectroscopy raw files cannot then be converted. To run an instance
 of the MS Converter, you can simply run the docker-compose file from this repo.
 
 ```bash
-docker compose -f docker-compose.ms_converter.yml up -d
+docker run --detach --name msconvert_docker -it --rm -v /home/martin/Documents/ConverterData/MS:/data proteowizard/pwiz-skyline-i-agree-to-the-vendor-licenses bash
 ```
 
 ## Acknowledgments

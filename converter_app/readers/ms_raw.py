@@ -2,7 +2,7 @@ import logging
 import os.path
 import tempfile
 import xml.etree.ElementTree as ET
-
+import subprocess as sp
 import requests
 from flask import current_app
 from werkzeug.datastructures import FileStorage
@@ -33,27 +33,15 @@ class MsRawReader(Reader):
         result = False
 
         if self.file.suffix.lower() == '.raw' and self.file.encoding == 'binary':
-            try:
-                parsed_url = current_app.config.get('MS_CONVERTER')
-            except RuntimeError:
-                parsed_url = 'http://127.0.0.1:5050/'
-
-            files = {
-                "main_file": (self.file.name, self.file.content, "image/x-panasonic-rw")
-            }
 
             try:
-                res = requests.post(parsed_url + 'msconvert_conversion', data={'test': ''}, files=files,
-                                    timeout=(5, 60))
-            except requests.exceptions.ConnectionError:
-                return False
-
-            if res.status_code == 200:
-                try:
-                    self._pre_prepare_tables(res.content)
-                    result = True
-                except ET.ParseError:
+                with open(f'./MS Temp Files/{self.file.name}', 'wb+') as f:
+                    f.write(self.file.content)
+                res = sp.run(f'docker exec msconvert_docker wine msconvert /data/{self.file.name} -o /data --32 --zlib --filter "peakPicking true 1-" --filter "zeroSamples removeExtra" --ignoreUnknownInstrumentError')
+                if res.returncode != 0:
                     return False
+            except sp.CalledProcessError:
+                return False
 
         return result
 

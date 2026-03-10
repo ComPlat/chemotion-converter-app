@@ -39,4 +39,6 @@ test_manager/test_readers.py
 /.run/migrate.run.xml
 /test_files/profiles/private/
 /test_files/profiles/dev/
-/logs
+/logs/
+
+/MS Temp Files/
