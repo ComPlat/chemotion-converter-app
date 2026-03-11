@@ -25,7 +25,7 @@ from converter_app.readers import READERS as registry
 from converter_app.utils import checkpw, run_conversion, get_app_root
 from converter_app.validation import validate_profile
 
-
+is_shutdown = False
 def get_clients() -> dict[str,str] | None:
     """
     opens (plain) htpasswd file for the clients. Generates dict
@@ -96,6 +96,8 @@ def converting_router(app: Flask, auth: HTTPBasicAuth):
     :param app: Flask app
     :param auth: Flask HTTPBasicAuth
     """
+
+
     if not os.getenv('IS_CLI', False):
         @app.route('/', methods=['GET'])
         def root():
@@ -104,23 +106,59 @@ def converting_router(app: Flask, auth: HTTPBasicAuth):
             '''
             return make_response(jsonify({'status': 'ok'}), 200)
     else:
-        admin_root = get_app_root() / "client_build/admin"
-        @app.route('/', methods=['GET'])
-        def index():
+        index_root = get_app_root() / "client_build"
+        admin_root = index_root / "admin"
+        if os.getenv('IS_CLI_HOST', False):
 
-            return send_file(admin_root / "index.html")
+            @app.route('/admin', methods=['GET'])
+            def index_admin():
+                return send_file(admin_root / "index.html")
 
-        @app.route("/<string:filename>")
-        def assets(filename):
+            @app.route('/', methods=['GET'])
+            def index():
+                return send_file(index_root / "index.html")
+        else:
+            @app.route('/', methods=['GET'])
+            def index():
+                return send_file(admin_root / "index.html")
+
+        @app.before_request
+        def auto_cancel_on_activity():
+            # Cancel shutdown if ANY route except /shutdown is called
+            from flask import request
+            if request.endpoint != "shutdown":
+                global is_shutdown
+                is_shutdown = False
+
+        @app.route("/shutdown", methods=["POST", "GET"])
+        def shutdown():
+            global is_shutdown
+            import signal
+            import time
+            import threading
+
+            is_shutdown = True
+            def delayed_shutdown():
+                time.sleep(2)
+                if is_shutdown:
+                    os.kill(os.getpid(), signal.SIGINT)
+
+            threading.Thread(target=delayed_shutdown).start()
+            return "Server will shut down in 2 seconds..."
+
+        @app.route("/admin/<string:filename>")
+        def assets_admin(filename):
             full_path = admin_root / filename
             if not full_path.exists():
                 raise NotFound()
             return send_file(full_path)
 
-        @app.route("/shutdown", methods=["POST", "GET"])
-        def shutdown():
-            import signal
-            os.kill(os.getpid(), signal.SIGINT)
+        @app.route("/<string:filename>")
+        def assets(filename):
+            full_path = index_root / filename
+            if not full_path.exists():
+                raise NotFound()
+            return send_file(full_path)
 
 
     @app.route('/client', methods=['GET'])

@@ -92,10 +92,21 @@ class OutputType(click.Choice):
 # ----------------------------
 # Main CLI Group
 # ----------------------------
-@click.group()
-def cli():
-    """Converter App CLI Tool"""
-    pass
+@click.group(invoke_without_command=True)
+@click.pass_context
+def cli(ctx):
+    """Run the Converter in web browser"""
+    if ctx.invoked_subcommand is None:
+        if not Profile.cli_profiles_dir.exists():
+            load_public_profiles(Profile.cli_profiles_dir / 'cli')
+        copy_profiles(Profile.cli_profiles_dir / 'cli')
+        app = create_app(True, True)
+
+        def open_browser():
+            webbrowser.open("http://127.0.0.1:5000")
+
+        threading.Timer(1.0, open_browser).start()
+        app.run(host='127.0.0.1', port=5000)
 # ----------------------------
 # Main dev Group
 # ----------------------------
@@ -187,9 +198,9 @@ def convert(input_file, output):
         reader.process()
         converter = Converter.match_profile('cli', reader.as_dict)
         writer = run_conversion(converter, output)
-        output_file = str(input_file) + writer.suffix
-        with open(output_file, 'wb+') as out_f:
-            out_f.write(writer.write())
+    output_file = str(input_file) + writer.suffix
+    with open(output_file, 'wb+') as out_f:
+        out_f.write(writer.write())
     click.echo(f"Conversion complete: {output_file}")
 
 

@@ -46,6 +46,11 @@ def load_client_build(dest: Path, repo = 'ComPlat/chemotion-converter-client', b
                 if script.strip() not in html:
                     html = html.replace("</body>", script + "\n</body>", 1)
                     html = html.replace("<title></title>", "<title>ChemConverter</title>", 1)
+                    if dirpath.endswith('admin'):
+                        html = html.replace("<body>", '<body>\n\t<a href="/">Home</a>')
+                        html = html.replace("=\"index.", "=\"/admin/index.")
+                    else:
+                        html = html.replace("<body>", '<body>\n\t<a href="/admin">Admin</a>')
                     with open(file_path, "w", encoding="utf-8") as f:
                         f.write(html)
                     print(f"Injected script into: {file_path}")
