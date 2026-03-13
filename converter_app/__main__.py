@@ -158,7 +158,7 @@ def new_reader(name, priority, profile, test_file):
     template_path = get_app_root() / 'converter_app/readers/helper/READER_TEMPLATE.py.txt'
     test_template_path = get_app_root() / 'converter_app/readers/helper/TEST_TEMPLATE.py.txt'
     target_reader_path = get_app_root() / f'converter_app/readers/{reader_name_sc}_reader.py'
-    target_reader_test_path = get_app_root() / f'converter_app/test_static/test_{reader_name_sc}_reader.py'
+    target_reader_test_path = get_app_root() / f'test_static/test_{reader_name_sc}_reader.py'
     target_reader_test_file_path = get_app_root() / context["TEST_FILE"]
 
     os.makedirs(target_reader_test_file_path.parent, exist_ok=True)
