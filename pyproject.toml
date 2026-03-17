@@ -47,7 +47,8 @@ dependencies = [
     "rdflib==7.5.*",
     "GitPython==3.1.*",
     "requests==2.32.*",
-    "click==8.3.*"
+    "click==8.3.*",
+    "astropy==7.2.*"
 ]
 
 [project.optional-dependencies]
