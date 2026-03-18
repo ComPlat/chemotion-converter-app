@@ -1,9 +1,11 @@
+import inspect
 import html
 import re
 from dataclasses import dataclass
 from typing import Iterable
 
 from astropy import units as u
+from astropy.units import NamedUnit, PrefixUnit
 
 
 BRACKET_UNIT_PATTERN = re.compile(r"\\?\[([^\]]+)\]")
@@ -63,6 +65,32 @@ class UnitFinder:
             base_unit=normalized_base_unit,
             conversion_factor=conversion_factor,
         )
+
+    @staticmethod
+    def get_si_units(include_prefixes: bool = False) -> list[u.UnitBase]:
+        """
+        Return named units registered in the Astropy SI unit namespace.
+
+        By default, prefixed units such as ``cm`` or ``mA`` are excluded, so the
+        result contains SI base units and non-prefixed derived SI units only.
+        """
+        units = []
+        seen = set()
+
+        for _, unit in inspect.getmembers(u.si):
+            if not isinstance(unit, NamedUnit):
+                continue
+            if not include_prefixes and isinstance(unit, PrefixUnit):
+                continue
+
+            unit_key = unit.to_string()
+            if unit_key in seen:
+                continue
+
+            seen.add(unit_key)
+            units.append(unit)
+
+        return units
 
     def find_units(self, values: Iterable[str]) -> list[dict[str, str | float]]:
         results = []
@@ -137,6 +165,35 @@ class UnitFinder:
         return (1 * rule.source_unit).si.unit
 
     def _get_conversion_factor(self, rule: UnitRule, base_unit: u.UnitBase) -> float:
+        """
+        Return the numeric conversion factor that belongs to the resolved base unit.
+
+        The important detail is that Astropy keeps the scale and the unit separate by
+        converting a unit into a Quantity first.
+
+        Example with ``cm``:
+        - ``source_unit`` is ``u.cm``
+        - ``1 * source_unit`` creates the Quantity ``1 cm``
+        - ``(1 * source_unit).si`` returns the SI Quantity ``0.01 m``
+        - ``(1 * source_unit).si.value`` is ``0.01``
+        - ``(1 * source_unit).si.unit`` is ``m``
+
+        This means:
+        - the base unit comes from the SI Quantity's ``unit``
+        - the conversion factor comes from the SI Quantity's ``value``
+
+        That is why auto-detected units use ``(1 * rule.source_unit).si.value``.
+        It correctly separates the scale from the final unit representation.
+
+        Without this Quantity step, scaled SI units such as ``mA`` could end up looking
+        like ``0.001 A`` as the base unit, while the factor would incorrectly stay at
+        ``1.0``. Using the SI Quantity avoids that problem:
+        - ``(1 * u.mA).si.value`` -> ``0.001``
+        - ``(1 * u.mA).si.unit`` -> ``A``
+
+        When a custom rule already defines ``base_unit``, this method instead converts
+        directly to that explicit target unit and returns only the numeric factor.
+        """
         if rule.conversion_factor is not None:
             return rule.conversion_factor
         if rule.base_unit is None:
@@ -160,3 +217,15 @@ class UnitFinder:
     @staticmethod
     def _prepare_raw_text(value: str) -> str:
         return html.unescape(str(value)).replace("\\[", "[").replace("\\]", "]")
+
+if __name__ == "__main__":
+    testData = ["1000 [mL]"]
+    finder = UnitFinder()
+    print(finder.find_units(testData))
+
+    print("All SI base units from the astropy package:")
+    si_bases = getattr(u.si, "bases")
+    print(si_bases)
+    si_derived = UnitFinder.get_si_units()
+    print(si_derived)
+    print("EOC reached")
