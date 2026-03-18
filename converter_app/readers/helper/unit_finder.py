@@ -219,7 +219,7 @@ class UnitFinder:
         return html.unescape(str(value)).replace("\\[", "[").replace("\\]", "]")
 
 if __name__ == "__main__":
-    testData = ["1000 [mL]"]
+    testData = ["1000 [mL]; Hallo; Test \t kg/m*s² | km/h | kWh"] # data allows splitting via tab, semicolon or pipe
     finder = UnitFinder()
     print(finder.find_units(testData))
 
