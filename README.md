@@ -138,6 +138,9 @@ The guincorn server listens on the port given in the env file (default: 9000) on
     client_max_body_size 64M;  # set this to the maximum file size allowed for upload
 ```
 
+## Licenses
+
+Please see [LICENSE](./LICENSE) and [THIRD PARTY LICENSES](./THIRD_PARTY_LICENSES.md)
 
 ## Acknowledgments
 

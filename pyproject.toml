@@ -65,7 +65,8 @@ dev = [
     "setuptools",
     "jinja2",
     "pytest-timeout",
-    "pyinstaller"
+    "pyinstaller",
+    "pip-licenses"
 ]
 
 [project.urls]
