@@ -140,7 +140,7 @@ The guincorn server listens on the port given in the env file (default: 9000) on
 
 ## Licenses
 
-Please see [LICENSE](./LICENSE) and [THIRD PARTY LICENSES](./THIRD_PARTY_LICENSES.md)
+Please see [LICENSE](./LICENSE) and [THIRD PARTY LICENSES](licenses/THIRD_PARTY_NOTICES.md)
 
 ## Acknowledgments
 
