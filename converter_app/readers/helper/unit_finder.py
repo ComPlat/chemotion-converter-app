@@ -6,7 +6,7 @@ from typing import Iterable
 
 from astropy import units as u
 from astropy.units import NamedUnit, PrefixUnit
-
+from converter_app import options
 
 BRACKET_UNIT_PATTERN = re.compile(r"\\?\[([^\]]+)\]")
 CELL_SPLIT_PATTERN = re.compile(r"[\t;|]+")
@@ -47,6 +47,7 @@ class UnitFinder:
     ):
         self.unit_map = dict(self.default_unit_map)
         self.ignore_dimless = ignore_dimless
+        self.found_units = []
         if custom_unit_map:
             self.unit_map.update(custom_unit_map)
 
@@ -108,7 +109,16 @@ class UnitFinder:
                 seen_units.add(unit_text)
                 results.append(result)
 
+        self.found_units = results
         return results
+
+    def found_units_to_options_list(self):
+        """only usable in the front end if you manage to update the api endpoint.
+        For the web app use the self.units.append method *inside a reader* and fill the dropdowns using JS in the front end instead."""
+        for unit in self.found_units:
+            options.XUNITS += tuple([unit["found"]])
+            options.YUNITS += tuple([unit["found"]])
+
 
     def _extract_candidates(self, value: str) -> list[str]:
         candidates = []
@@ -219,13 +229,25 @@ class UnitFinder:
         return html.unescape(str(value)).replace("\\[", "[").replace("\\]", "]")
 
 if __name__ == "__main__":
-    testData = ["1000 [mL]; Hallo; Test \t kg/m*s² | km/h | kWh"] # data allows splitting via tab, semicolon or pipe
+    testData = ["1000 [mL]; Hallo; Test \t kg/m*s² | km/h | kW*h"] # data allows splitting via tab, semicolon or pipe
     finder = UnitFinder()
     print(finder.find_units(testData))
+
+    print("-----\n")
 
     print("All SI base units from the astropy package:")
     si_bases = getattr(u.si, "bases")
     print(si_bases)
     si_derived = UnitFinder.get_si_units()
     print(si_derived)
+
+    print("-----\n")
+
+    print("Adding found units to options for frontend usage:")
+    finder.found_units_to_options_list()
+    print(options.XUNITS)
+    print(options.YUNITS)
+
+    print("-----\n")
+
     print("EOC reached")

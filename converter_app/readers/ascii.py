@@ -81,10 +81,12 @@ class AsciiReader(Reader):
         Scan table header strings for units and store the result in table metadata.
         """
         unit_results = self.unit_finder.find_units(table['header'])
+        self.unit_finder.found_units_to_options_list()
         for index, unit_result in enumerate(unit_results):
             table['metadata'][f'unit_{index:02d}_found'] = str(unit_result['found'])
             table['metadata'][f'unit_{index:02d}_conversion_factor'] = str(unit_result['conversion_factor'])
             table['metadata'][f'unit_{index:02d}_base_unit'] = str(unit_result['base_unit'])
+            self.units.append({'found' : str(unit_result['found']), 'conversion_factor' : str(unit_result['conversion_factor']), 'base_unit' : str(unit_result['base_unit'])})
 
 
 Readers.instance().register(AsciiReader)
