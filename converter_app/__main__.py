@@ -92,10 +92,21 @@ class OutputType(click.Choice):
 # ----------------------------
 # Main CLI Group
 # ----------------------------
-@click.group()
-def cli():
-    """Converter App CLI Tool"""
-    pass
+@click.group(invoke_without_command=True)
+@click.pass_context
+def cli(ctx):
+    """Run the Converter in web browser"""
+    if ctx.invoked_subcommand is None:
+        if not Profile.cli_profiles_dir.exists():
+            load_public_profiles(Profile.cli_profiles_dir / 'cli')
+        copy_profiles(Profile.cli_profiles_dir / 'cli')
+        app = create_app(True, True)
+
+        def open_browser():
+            webbrowser.open("http://127.0.0.1:5000")
+
+        threading.Timer(1.0, open_browser).start()
+        app.run(host='127.0.0.1', port=5000)
 # ----------------------------
 # Main dev Group
 # ----------------------------
@@ -147,7 +158,7 @@ def new_reader(name, priority, profile, test_file):
     template_path = get_app_root() / 'converter_app/readers/helper/READER_TEMPLATE.py.txt'
     test_template_path = get_app_root() / 'converter_app/readers/helper/TEST_TEMPLATE.py.txt'
     target_reader_path = get_app_root() / f'converter_app/readers/{reader_name_sc}_reader.py'
-    target_reader_test_path = get_app_root() / f'converter_app/test_static/test_{reader_name_sc}_reader.py'
+    target_reader_test_path = get_app_root() / f'test_static/test_{reader_name_sc}_reader.py'
     target_reader_test_file_path = get_app_root() / context["TEST_FILE"]
 
     os.makedirs(target_reader_test_file_path.parent, exist_ok=True)
@@ -187,9 +198,9 @@ def convert(input_file, output):
         reader.process()
         converter = Converter.match_profile('cli', reader.as_dict)
         writer = run_conversion(converter, output)
-        output_file = str(input_file) + writer.suffix
-        with open(output_file, 'wb+') as out_f:
-            out_f.write(writer.write())
+    output_file = str(input_file) + writer.suffix
+    with open(output_file, 'wb+') as out_f:
+        out_f.write(writer.write())
     click.echo(f"Conversion complete: {output_file}")
 
 
