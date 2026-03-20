@@ -191,11 +191,16 @@
             "id": "#3tableHeader",
             "lineNumber": null,
             "match": "regex",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "optional": true,
             "outputKey": "fixed_wavelength",
             "outputLayer": "set",
             "outputTableIndex": 0,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "tableIndex": 1,
             "type": "tableHeader",
@@ -207,11 +212,16 @@
             "id": "#4tableHeader",
             "lineNumber": "",
             "match": "regex",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "optional": true,
             "outputKey": "mode",
             "outputLayer": "set",
             "outputTableIndex": 0,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "tableIndex": 1,
             "type": "tableHeader",
@@ -223,11 +233,16 @@
             "id": "#5tableHeader",
             "lineNumber": "",
             "match": "regex",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "optional": true,
             "outputKey": "ex_bandwidth",
             "outputLayer": "set",
             "outputTableIndex": 0,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "tableIndex": 1,
             "type": "tableHeader",
@@ -239,11 +254,16 @@
             "id": "#6tableHeader",
             "lineNumber": "",
             "match": "regex",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "optional": true,
             "outputKey": "em_bandwidth",
             "outputLayer": "set",
             "outputTableIndex": 0,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "tableIndex": 1,
             "type": "tableHeader",
@@ -255,11 +275,16 @@
             "id": "#7tableHeader",
             "lineNumber": "",
             "match": "regex",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "optional": true,
             "outputKey": "response",
             "outputLayer": "set",
             "outputTableIndex": 0,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "tableIndex": 1,
             "type": "tableHeader",
@@ -271,11 +296,16 @@
             "id": "#8tableHeader",
             "lineNumber": "",
             "match": "regex",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "optional": true,
             "outputKey": "sensitivity",
             "outputLayer": "set",
             "outputTableIndex": 0,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "tableIndex": 1,
             "type": "tableHeader",
@@ -287,11 +317,16 @@
             "id": "#9tableHeader",
             "lineNumber": "",
             "match": "regex",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "optional": true,
             "outputKey": "measurement_range",
             "outputLayer": "set",
             "outputTableIndex": 0,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "tableIndex": 1,
             "type": "tableHeader",
@@ -303,11 +338,16 @@
             "id": "#10tableHeader",
             "lineNumber": "",
             "match": "regex",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "optional": true,
             "outputKey": "data_interval",
             "outputLayer": "set",
             "outputTableIndex": 0,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "tableIndex": 1,
             "type": "tableHeader",
@@ -319,11 +359,16 @@
             "id": "#11tableHeader",
             "lineNumber": "",
             "match": "regex",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "optional": true,
             "outputKey": "scan_speed",
             "outputLayer": "set",
             "outputTableIndex": 0,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "tableIndex": 1,
             "type": "tableHeader",
@@ -335,11 +380,16 @@
             "id": "#12tableHeader",
             "lineNumber": "",
             "match": "regex",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "optional": true,
             "outputKey": "no_of_cycles",
             "outputLayer": "set",
             "outputTableIndex": 0,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "tableIndex": 1,
             "type": "tableHeader",
@@ -351,11 +401,16 @@
             "id": "#13tableHeader",
             "lineNumber": "",
             "match": "regex",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "optional": true,
             "outputKey": "auto gain",
             "outputLayer": "measurement",
             "outputTableIndex": 0,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "tableIndex": 1,
             "type": "tableHeader",
@@ -367,11 +422,16 @@
             "id": "#14tableHeader",
             "lineNumber": "",
             "match": "regex",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "optional": true,
             "outputKey": "shutter_control",
             "outputLayer": "set",
             "outputTableIndex": 0,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "tableIndex": 1,
             "type": "tableHeader",
@@ -383,11 +443,16 @@
             "id": "#15tableHeader",
             "lineNumber": "",
             "match": "regex",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "optional": true,
             "outputKey": "light_source",
             "outputLayer": "set",
             "outputTableIndex": 0,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "tableIndex": 1,
             "type": "tableHeader",
@@ -399,11 +464,16 @@
             "id": "#16tableHeader",
             "lineNumber": "",
             "match": "regex",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "optional": true,
             "outputKey": "filter",
             "outputLayer": "set",
             "outputTableIndex": 0,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "tableIndex": 1,
             "type": "tableHeader",
@@ -415,11 +485,16 @@
             "id": "#17tableHeader",
             "lineNumber": "",
             "match": "regex",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "optional": true,
             "outputKey": "blank_correction",
             "outputLayer": "set",
             "outputTableIndex": 0,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "tableIndex": 1,
             "type": "tableHeader",
@@ -431,11 +506,16 @@
             "id": "#18tableHeader",
             "lineNumber": "",
             "match": "regex",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "optional": true,
             "outputKey": "date",
             "outputLayer": "general",
             "outputTableIndex": 0,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "tableIndex": 0,
             "type": "tableHeader",
@@ -443,10 +523,41 @@
         }
     ],
     "isDisabled": false,
-    "last_migration": "20260113143334",
+    "last_migration": "20260319060352",
+    "objects": [
+        {
+            "description": [
+                "The class resource, everything."
+            ],
+            "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource",
+            "iri": "http://www.w3.org/2000/01/rdf-schema#Resource",
+            "label": "Resource",
+            "namespace": "http://www.w3.org/2000/01/rdf-schema#",
+            "obo_id": "RDFS:Resource",
+            "ontology_name": "rdfs",
+            "ontology_prefix": "RDFS",
+            "short_form": "RDFS_Resource",
+            "type": "Class"
+        }
+    ],
     "ols": "CHMO:0000287",
     "ontology": "",
-    "predicates": [],
+    "predicates": [
+        {
+            "description": [
+                "The class resource, everything."
+            ],
+            "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource",
+            "iri": "http://www.w3.org/2000/01/rdf-schema#Resource",
+            "label": "Resource",
+            "namespace": "http://www.w3.org/2000/01/rdf-schema#",
+            "obo_id": "RDFS:Resource",
+            "ontology_name": "rdfs",
+            "ontology_prefix": "RDFS",
+            "short_form": "RDFS_Resource",
+            "type": "Class"
+        }
+    ],
     "rootOntology": {
         "description": [
             "Spectroscopy where the intensity of the fluorescence emitted by molecules excited by ultraviolet light is detected as a function of wavelength or time."

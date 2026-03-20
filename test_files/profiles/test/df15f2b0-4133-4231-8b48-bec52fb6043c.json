@@ -1315,11 +1315,16 @@
             "id": "#2tableMetadata",
             "key": "_cell_length_a",
             "match": "regex",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "optional": true,
             "outputKey": "a",
             "outputLayer": "res",
             "outputTableIndex": 0,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1331,11 +1336,16 @@
             "id": "#3tableMetadata",
             "key": "_cell_length_b",
             "match": "regex",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "optional": true,
             "outputKey": "b",
             "outputLayer": "res",
             "outputTableIndex": 0,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1347,11 +1357,16 @@
             "id": "#4tableMetadata",
             "key": "_cell_length_c",
             "match": "regex",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "optional": true,
             "outputKey": "c",
             "outputLayer": "res",
             "outputTableIndex": 0,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1363,11 +1378,16 @@
             "id": "#5tableMetadata",
             "key": "_cell_angle_alpha",
             "match": "any",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "optional": true,
             "outputKey": "alpha",
             "outputLayer": "res",
             "outputTableIndex": 0,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1379,11 +1399,16 @@
             "id": "#6tableMetadata",
             "key": "_cell_angle_beta",
             "match": "any",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "optional": true,
             "outputKey": "beta",
             "outputLayer": "res",
             "outputTableIndex": 0,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1395,11 +1420,16 @@
             "id": "#7tableMetadata",
             "key": "_cell_angle_gamma",
             "match": "any",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "optional": true,
             "outputKey": "gamma",
             "outputLayer": "res",
             "outputTableIndex": 0,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1411,11 +1441,16 @@
             "id": "#8tableMetadata",
             "key": "_space_group_crystal_system",
             "match": "any",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "optional": true,
             "outputKey": "system",
             "outputLayer": "res",
             "outputTableIndex": 0,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1427,11 +1462,16 @@
             "id": "#9tableMetadata",
             "key": "_space_group_name_H-M_alt",
             "match": "any",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "optional": true,
             "outputKey": "space",
             "outputLayer": "res",
             "outputTableIndex": 0,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1443,11 +1483,16 @@
             "id": "#10tableMetadata",
             "key": "_cell_volume",
             "match": "any",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "optional": true,
             "outputKey": "volume",
             "outputLayer": "res",
             "outputTableIndex": 0,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1459,11 +1504,16 @@
             "id": "#11tableMetadata",
             "key": "_cell_formula_units_Z",
             "match": "any",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "optional": true,
             "outputKey": "Z",
             "outputLayer": "res",
             "outputTableIndex": 0,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1475,11 +1525,16 @@
             "id": "#12tableMetadata",
             "key": "_exptl_crystal_F_000",
             "match": "any",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "optional": true,
             "outputKey": "f000",
             "outputLayer": "res",
             "outputTableIndex": 0,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1491,11 +1546,16 @@
             "id": "#13tableMetadata",
             "key": "_exptl_crystal_size_mid",
             "match": "any",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "optional": true,
             "outputKey": "size",
             "outputLayer": "res",
             "outputTableIndex": 0,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1507,11 +1567,16 @@
             "id": "#14tableMetadata",
             "key": "_diffrn_radiation_type",
             "match": "any",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "optional": true,
             "outputKey": "radiation",
             "outputLayer": "res",
             "outputTableIndex": 0,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1523,11 +1588,16 @@
             "id": "#15tableMetadata",
             "key": "_diffrn_reflns_number",
             "match": "any",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "optional": true,
             "outputKey": "reflections",
             "outputLayer": "res",
             "outputTableIndex": 0,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1539,11 +1609,16 @@
             "id": "#16tableMetadata",
             "key": "_reflns_number_total",
             "match": "any",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "optional": true,
             "outputKey": "reflections_",
             "outputLayer": "res",
             "outputTableIndex": 0,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1555,11 +1630,16 @@
             "id": "#17tableMetadata",
             "key": "_refine_ls_goodness_of_fit_ref",
             "match": "any",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "optional": true,
             "outputKey": "fit",
             "outputLayer": "res",
             "outputTableIndex": 0,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1571,11 +1651,16 @@
             "id": "#18tableMetadata",
             "key": "_refine_ls_R_factor_gt",
             "match": "any",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "optional": true,
             "outputKey": "index_first",
             "outputLayer": "res",
             "outputTableIndex": 0,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1587,11 +1672,16 @@
             "id": "#19tableMetadata",
             "key": "_refine_ls_wR_factor_ref",
             "match": "any",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "optional": true,
             "outputKey": "index_second",
             "outputLayer": "res",
             "outputTableIndex": 0,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1603,11 +1693,16 @@
             "id": "#20tableHeader",
             "lineNumber": "",
             "match": "regex",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "optional": true,
             "outputKey": "diff_hole",
             "outputLayer": "res",
             "outputTableIndex": 0,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "tableIndex": 8,
             "type": "tableHeader",
@@ -1619,11 +1714,16 @@
             "id": "#21tableHeader",
             "lineNumber": "",
             "match": "regex",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "optional": true,
             "outputKey": "diff_peak",
             "outputLayer": "res",
             "outputTableIndex": 0,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "tableIndex": 8,
             "type": "tableHeader",
@@ -1635,11 +1735,16 @@
             "id": "#22tableMetadata",
             "key": "_audit_creation_method",
             "match": "regex",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "optional": true,
             "outputKey": "software",
             "outputLayer": "soft",
             "outputTableIndex": 0,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1651,11 +1756,16 @@
             "id": "#23tableMetadata",
             "key": "_audit_creation_method",
             "match": "regex",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "optional": true,
             "outputKey": "software_version",
             "outputLayer": "soft",
             "outputTableIndex": 0,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1667,11 +1777,16 @@
             "id": "#24tableMetadata",
             "key": "_diffrn_measurement_device_type",
             "match": "any",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "optional": true,
             "outputKey": "instrument",
             "outputLayer": "dev",
             "outputTableIndex": 0,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1683,11 +1798,16 @@
             "id": "#25tableMetadata",
             "key": "_diffrn_measurement_device",
             "match": "any",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "optional": true,
             "outputKey": "des",
             "outputLayer": "dev",
             "outputTableIndex": 0,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1699,11 +1819,16 @@
             "id": "#26tableMetadata",
             "key": "_audit_creation_date",
             "match": "any",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "optional": true,
             "outputKey": "date",
             "outputLayer": "gener",
             "outputTableIndex": 0,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1715,11 +1840,16 @@
             "id": "#27tableMetadata",
             "key": "_diffrn_ambient_temperature",
             "match": "regex",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "optional": true,
             "outputKey": "temp",
             "outputLayer": "set",
             "outputTableIndex": 0,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1731,11 +1861,16 @@
             "id": "#28tableMetadata",
             "key": "_refine_ls_number_reflns",
             "match": "any",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "optional": true,
             "outputKey": "data",
             "outputLayer": "res",
             "outputTableIndex": 0,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1747,11 +1882,16 @@
             "id": "#29tableMetadata",
             "key": "_refine_ls_number_restraints",
             "match": "any",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "optional": true,
             "outputKey": "restraints",
             "outputLayer": "res",
             "outputTableIndex": 0,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1763,11 +1903,16 @@
             "id": "#30tableMetadata",
             "key": "_refine_ls_number_parameters",
             "match": "any",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "optional": true,
             "outputKey": "parameters",
             "outputLayer": "res",
             "outputTableIndex": 0,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1779,11 +1924,16 @@
             "id": "#31tableMetadata",
             "key": "_diffrn_reflns_limit_h_max",
             "match": "any",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "optional": true,
             "outputKey": "h_max",
             "outputLayer": "res",
             "outputTableIndex": 0,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1795,11 +1945,16 @@
             "id": "#32tableMetadata",
             "key": "_diffrn_reflns_limit_h_min",
             "match": "any",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "optional": true,
             "outputKey": "h_min",
             "outputLayer": "res",
             "outputTableIndex": 0,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1811,11 +1966,16 @@
             "id": "#33tableMetadata",
             "key": "_diffrn_reflns_limit_k_max",
             "match": "any",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "optional": true,
             "outputKey": "k_max",
             "outputLayer": "res",
             "outputTableIndex": 0,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1827,11 +1987,16 @@
             "id": "#34tableMetadata",
             "key": "_diffrn_reflns_limit_k_min",
             "match": "any",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "optional": true,
             "outputKey": "k_min",
             "outputLayer": "res",
             "outputTableIndex": 0,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1843,11 +2008,16 @@
             "id": "#35tableMetadata",
             "key": "_diffrn_reflns_limit_l_max",
             "match": "any",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "optional": true,
             "outputKey": "l_max",
             "outputLayer": "res",
             "outputTableIndex": 0,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1859,11 +2029,16 @@
             "id": "#36tableMetadata",
             "key": "_diffrn_reflns_limit_l_min",
             "match": "any",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "optional": true,
             "outputKey": "l_min",
             "outputLayer": "res",
             "outputTableIndex": 0,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1875,11 +2050,16 @@
             "id": "#37tableMetadata",
             "key": "_reflns_number_gt",
             "match": "any",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "optional": true,
             "outputKey": "reflections_gt",
             "outputLayer": "res",
             "outputTableIndex": 0,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1891,11 +2071,16 @@
             "id": "#38tableMetadata",
             "key": "Block_name",
             "match": "any",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "optional": true,
             "outputKey": "sample_id",
             "outputLayer": "sam_details",
             "outputTableIndex": 0,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1907,11 +2092,16 @@
             "id": "#39tableMetadata",
             "key": "_chemical_formula_sum",
             "match": "any",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "optional": true,
             "outputKey": "emp_formular",
             "outputLayer": "res",
             "outputTableIndex": 0,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1923,11 +2113,16 @@
             "id": "#40tableMetadata",
             "key": "_chemical_formula_weight",
             "match": "any",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "optional": true,
             "outputKey": "formula_weight",
             "outputLayer": "res",
             "outputTableIndex": 0,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1939,6 +2134,9 @@
             "id": "#41tableMetadata",
             "key": "_diffrn_reflns_theta_max",
             "match": "any",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "operations": [
                 {
                     "operator": "*",
@@ -1949,7 +2147,9 @@
             "outputKey": "theta_max",
             "outputLayer": "res",
             "outputTableIndex": 0,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1961,6 +2161,9 @@
             "id": "#42tableMetadata",
             "key": "_diffrn_reflns_theta_min",
             "match": "any",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "operations": [
                 {
                     "operator": "*",
@@ -1971,7 +2174,9 @@
             "outputKey": "theta",
             "outputLayer": "res",
             "outputTableIndex": 0,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1983,11 +2188,16 @@
             "id": "#43tableMetadata",
             "key": "_exptl_crystal_density_diffrn",
             "match": "any",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "optional": true,
             "outputKey": "roh",
             "outputLayer": "res",
             "outputTableIndex": 0,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1999,11 +2209,16 @@
             "id": "#44tableMetadata",
             "key": "_exptl_absorpt_coefficient_mu",
             "match": "any",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "optional": true,
             "outputKey": "my",
             "outputLayer": "res",
             "outputTableIndex": 0,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -2011,10 +2226,41 @@
         }
     ],
     "isDisabled": false,
-    "last_migration": "20260113143334",
+    "last_migration": "20260319060352",
+    "objects": [
+        {
+            "description": [
+                "The class resource, everything."
+            ],
+            "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource",
+            "iri": "http://www.w3.org/2000/01/rdf-schema#Resource",
+            "label": "Resource",
+            "namespace": "http://www.w3.org/2000/01/rdf-schema#",
+            "obo_id": "RDFS:Resource",
+            "ontology_name": "rdfs",
+            "ontology_prefix": "RDFS",
+            "short_form": "RDFS_Resource",
+            "type": "Class"
+        }
+    ],
     "ols": "CHMO:0000159",
     "ontology": "",
-    "predicates": [],
+    "predicates": [
+        {
+            "description": [
+                "The class resource, everything."
+            ],
+            "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource",
+            "iri": "http://www.w3.org/2000/01/rdf-schema#Resource",
+            "label": "Resource",
+            "namespace": "http://www.w3.org/2000/01/rdf-schema#",
+            "obo_id": "RDFS:Resource",
+            "ontology_name": "rdfs",
+            "ontology_prefix": "RDFS",
+            "short_form": "RDFS_Resource",
+            "type": "Class"
+        }
+    ],
     "rootOntology": {
         "description": [
             "A method for determining structure by directing a beam of X-rays at a single crystal sample and detecting the positions and intensities of the diffracted X-rays as a pattern of spots on a photographic plate. Single crystal X-ray diffraction is used for protein crystallography."

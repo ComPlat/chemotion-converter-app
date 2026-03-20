@@ -257,11 +257,16 @@
             "id": "#3fileMetadata",
             "key": "scan_rate",
             "match": "any",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "optional": true,
             "outputKey": "scan_rate",
             "outputLayer": "meas",
             "outputTableIndex": 0,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "type": "fileMetadata",
             "value": "0.09998236414401321"
@@ -272,11 +277,16 @@
             "id": "#4fileMetadata",
             "key": "step_size",
             "match": "any",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "optional": true,
             "outputKey": "step_size",
             "outputLayer": "meas",
             "outputTableIndex": 0,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "type": "fileMetadata",
             "value": "0.0010679116287260553"
@@ -287,11 +297,16 @@
             "id": "#5fileMetadata",
             "key": "v_end",
             "match": "any",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "optional": true,
             "outputKey": "voltage_limit_end",
             "outputLayer": "meas",
             "outputTableIndex": 0,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "type": "fileMetadata",
             "value": "0"
@@ -302,11 +317,16 @@
             "id": "#6fileMetadata",
             "key": "v_init",
             "match": "any",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "optional": true,
             "outputKey": "voltage_start",
             "outputLayer": "meas",
             "outputTableIndex": 0,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "type": "fileMetadata",
             "value": "0.001068115234375"
@@ -317,11 +337,16 @@
             "id": "#7fileMetadata",
             "key": "v_limit1",
             "match": "any",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "optional": true,
             "outputKey": "voltage_limit_one",
             "outputLayer": "meas",
             "outputTableIndex": 0,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "type": "fileMetadata",
             "value": "1.50070190429688"
@@ -332,21 +357,57 @@
             "id": "#8fileMetadata",
             "key": "v_limit2",
             "match": "any",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "optional": true,
             "outputKey": "voltage_limit_two",
             "outputLayer": "meas",
             "outputTableIndex": 0,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "type": "fileMetadata",
             "value": "-1.30096435546875"
         }
     ],
     "isDisabled": false,
-    "last_migration": "20260113143334",
+    "last_migration": "20260319060352",
+    "objects": [
+        {
+            "description": [
+                "The class resource, everything."
+            ],
+            "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource",
+            "iri": "http://www.w3.org/2000/01/rdf-schema#Resource",
+            "label": "Resource",
+            "namespace": "http://www.w3.org/2000/01/rdf-schema#",
+            "obo_id": "RDFS:Resource",
+            "ontology_name": "rdfs",
+            "ontology_prefix": "RDFS",
+            "short_form": "RDFS_Resource",
+            "type": "Class"
+        }
+    ],
     "ols": "CHMO:0000025",
     "ontology": "",
-    "predicates": [],
+    "predicates": [
+        {
+            "description": [
+                "The class resource, everything."
+            ],
+            "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource",
+            "iri": "http://www.w3.org/2000/01/rdf-schema#Resource",
+            "label": "Resource",
+            "namespace": "http://www.w3.org/2000/01/rdf-schema#",
+            "obo_id": "RDFS:Resource",
+            "ontology_name": "rdfs",
+            "ontology_prefix": "RDFS",
+            "short_form": "RDFS_Resource",
+            "type": "Class"
+        }
+    ],
     "rootOntology": {
         "description": [
             "An electrochemical technique where the cell current is measured as a function of time and as a function of the potential between the indicator and reference electrodes. The potential is varied linearly and inverts at the end point resulting in a cycle."

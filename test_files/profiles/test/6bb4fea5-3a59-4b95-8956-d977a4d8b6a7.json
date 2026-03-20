@@ -253,10 +253,41 @@
         }
     ],
     "isDisabled": false,
-    "last_migration": "20260113143334",
+    "last_migration": "20260319060352",
+    "objects": [
+        {
+            "description": [
+                "The class resource, everything."
+            ],
+            "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource",
+            "iri": "http://www.w3.org/2000/01/rdf-schema#Resource",
+            "label": "Resource",
+            "namespace": "http://www.w3.org/2000/01/rdf-schema#",
+            "obo_id": "RDFS:Resource",
+            "ontology_name": "rdfs",
+            "ontology_prefix": "RDFS",
+            "short_form": "RDFS_Resource",
+            "type": "Class"
+        }
+    ],
     "ols": "CHMO:0000025",
     "ontology": "",
-    "predicates": [],
+    "predicates": [
+        {
+            "description": [
+                "The class resource, everything."
+            ],
+            "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource",
+            "iri": "http://www.w3.org/2000/01/rdf-schema#Resource",
+            "label": "Resource",
+            "namespace": "http://www.w3.org/2000/01/rdf-schema#",
+            "obo_id": "RDFS:Resource",
+            "ontology_name": "rdfs",
+            "ontology_prefix": "RDFS",
+            "short_form": "RDFS_Resource",
+            "type": "Class"
+        }
+    ],
     "rootOntology": {
         "description": [
             "An electrochemical technique where the cell current is measured as a function of time and as a function of the potential between the indicator and reference electrodes. The potential is varied linearly and inverts at the end point resulting in a cycle."

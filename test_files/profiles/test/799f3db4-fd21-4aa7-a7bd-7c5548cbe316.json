@@ -930,11 +930,16 @@
             "id": "#1tableMetadata",
             "key": "DATE",
             "match": "any",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "optional": true,
             "outputKey": "date",
             "outputLayer": "general",
             "outputTableIndex": null,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -946,6 +951,9 @@
             "id": "#2tableMetadata",
             "key": "SCANRATE",
             "match": "any",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "operations": [
                 {
                     "operator": ":",
@@ -956,7 +964,9 @@
             "outputKey": "scan_rate",
             "outputLayer": "meas",
             "outputTableIndex": null,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -968,6 +978,9 @@
             "id": "#3tableMetadata",
             "key": "STEPSIZE",
             "match": "any",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "operations": [
                 {
                     "operator": ":",
@@ -978,7 +991,9 @@
             "outputKey": "step_size",
             "outputLayer": "meas",
             "outputTableIndex": null,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -990,11 +1005,16 @@
             "id": "#4tableMetadata",
             "key": "CYCLES",
             "match": "any",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "optional": true,
             "outputKey": "cycles",
             "outputLayer": "meas",
             "outputTableIndex": null,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1006,11 +1026,16 @@
             "id": "#5tableHeader",
             "lineNumber": null,
             "match": "regex",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "optional": true,
             "outputKey": "software_version",
             "outputLayer": "software",
             "outputTableIndex": null,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "tableIndex": 0,
             "type": "tableHeader",
@@ -1022,11 +1047,16 @@
             "id": "#6tableHeader",
             "lineNumber": null,
             "match": "regex",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "optional": true,
             "outputKey": "software",
             "outputLayer": "software",
             "outputTableIndex": null,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "tableIndex": 0,
             "type": "tableHeader",
@@ -1048,11 +1078,16 @@
             "id": "#8tableMetadata",
             "key": "TIME",
             "match": "any",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "optional": true,
             "outputKey": "time",
             "outputLayer": "general",
             "outputTableIndex": 0,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1064,11 +1099,16 @@
             "id": "#9tableMetadata",
             "key": "VINIT",
             "match": "any",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "optional": true,
             "outputKey": "voltage_start",
             "outputLayer": "meas",
             "outputTableIndex": 0,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1080,11 +1120,16 @@
             "id": "#10tableMetadata",
             "key": "VLIMIT1",
             "match": "any",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "optional": true,
             "outputKey": "voltage_limit_one",
             "outputLayer": "meas",
             "outputTableIndex": 0,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1096,11 +1141,16 @@
             "id": "#11tableMetadata",
             "key": "VLIMIT2",
             "match": "any",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "optional": true,
             "outputKey": "voltage_limit_two",
             "outputLayer": "meas",
             "outputTableIndex": 0,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1112,11 +1162,16 @@
             "id": "#12tableMetadata",
             "key": "VFINAL",
             "match": "any",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "optional": true,
             "outputKey": "voltage_limit_end",
             "outputLayer": "meas",
             "outputTableIndex": null,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1128,11 +1183,16 @@
             "id": "#13tableMetadata",
             "key": "PSTAT",
             "match": "any",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "optional": true,
             "outputKey": "serial",
             "outputLayer": "instrument",
             "outputTableIndex": null,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1144,11 +1204,16 @@
             "id": "#14tableHeader",
             "lineNumber": "",
             "match": "regex",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "optional": true,
             "outputKey": "instrument",
             "outputLayer": "instrument",
             "outputTableIndex": 0,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "tableIndex": 0,
             "type": "tableHeader",
@@ -1156,10 +1221,41 @@
         }
     ],
     "isDisabled": false,
-    "last_migration": "20260113143334",
+    "last_migration": "20260319060352",
+    "objects": [
+        {
+            "description": [
+                "The class resource, everything."
+            ],
+            "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource",
+            "iri": "http://www.w3.org/2000/01/rdf-schema#Resource",
+            "label": "Resource",
+            "namespace": "http://www.w3.org/2000/01/rdf-schema#",
+            "obo_id": "RDFS:Resource",
+            "ontology_name": "rdfs",
+            "ontology_prefix": "RDFS",
+            "short_form": "RDFS_Resource",
+            "type": "Class"
+        }
+    ],
     "ols": "CHMO:0000025",
     "ontology": "",
-    "predicates": [],
+    "predicates": [
+        {
+            "description": [
+                "The class resource, everything."
+            ],
+            "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource",
+            "iri": "http://www.w3.org/2000/01/rdf-schema#Resource",
+            "label": "Resource",
+            "namespace": "http://www.w3.org/2000/01/rdf-schema#",
+            "obo_id": "RDFS:Resource",
+            "ontology_name": "rdfs",
+            "ontology_prefix": "RDFS",
+            "short_form": "RDFS_Resource",
+            "type": "Class"
+        }
+    ],
     "rootOntology": {
         "description": [
             "An electrochemical technique where the cell current is measured as a function of time and as a function of the potential between the indicator and reference electrodes. The potential is varied linearly and inverts at the end point resulting in a cycle."

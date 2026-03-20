@@ -229,11 +229,16 @@
             "id": "#2tableMetadata",
             "key": "_exptl_operator",
             "match": "any",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "optional": true,
             "outputKey": "operator",
             "outputLayer": "meas",
             "outputTableIndex": null,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -245,11 +250,16 @@
             "id": "#3tableMetadata",
             "key": "_exptl_date",
             "match": "regex",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "optional": true,
             "outputKey": "date",
             "outputLayer": "gener",
             "outputTableIndex": null,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -261,11 +271,16 @@
             "id": "#4tableMetadata",
             "key": "_exptl_instrument",
             "match": "regex",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "optional": true,
             "outputKey": "serial",
             "outputLayer": "dev",
             "outputTableIndex": null,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -277,11 +292,16 @@
             "id": "#5tableMetadata",
             "key": "_exptl_adsorptive",
             "match": "any",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "optional": true,
             "outputKey": "adsorptive",
             "outputLayer": "meas",
             "outputTableIndex": null,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -293,6 +313,9 @@
             "id": "#6tableMetadata",
             "key": "_exptl_temperature",
             "match": "any",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "operations": [
                 {
                     "operator": "+",
@@ -303,7 +326,9 @@
             "outputKey": "temperature",
             "outputLayer": "meas",
             "outputTableIndex": 0,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -315,11 +340,16 @@
             "id": "#7tableMetadata",
             "key": "_exptl_sample_mass",
             "match": "any",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "optional": true,
             "outputKey": "amount",
             "outputLayer": "sam_details",
             "outputTableIndex": null,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -331,11 +361,16 @@
             "id": "#8tableMetadata",
             "key": "_sample_id",
             "match": "any",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "optional": true,
             "outputKey": "sample_cid",
             "outputLayer": "custom_id",
             "outputTableIndex": null,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -347,11 +382,16 @@
             "id": "#9tableMetadata",
             "key": "_sample_material_id",
             "match": "any",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "optional": true,
             "outputKey": "sample_mat_id",
             "outputLayer": "custom_id",
             "outputTableIndex": null,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -363,11 +403,16 @@
             "id": "#10tableHeader",
             "lineNumber": 1,
             "match": "regex",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "optional": true,
             "outputKey": "software",
             "outputLayer": "soft",
             "outputTableIndex": null,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "tableIndex": 0,
             "type": "tableHeader",
@@ -379,11 +424,16 @@
             "id": "#11tableHeader",
             "lineNumber": 1,
             "match": "regex",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "optional": true,
             "outputKey": "software_version",
             "outputLayer": "soft",
             "outputTableIndex": null,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "tableIndex": 0,
             "type": "tableHeader",
@@ -395,11 +445,16 @@
             "id": "#12tableMetadata",
             "key": "_exptl_date",
             "match": "regex",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "optional": true,
             "outputKey": "time",
             "outputLayer": "gener",
             "outputTableIndex": 0,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -411,11 +466,16 @@
             "id": "#13tableMetadata",
             "key": "_exptl_instrument",
             "match": "regex",
+            "object": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "optional": true,
             "outputKey": "brand",
             "outputLayer": "dev",
             "outputTableIndex": 0,
-            "predicate": null,
+            "predicate": {
+                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
+            },
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -423,10 +483,41 @@
         }
     ],
     "isDisabled": false,
-    "last_migration": "20260113143334",
+    "last_migration": "20260319060352",
+    "objects": [
+        {
+            "description": [
+                "The class resource, everything."
+            ],
+            "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource",
+            "iri": "http://www.w3.org/2000/01/rdf-schema#Resource",
+            "label": "Resource",
+            "namespace": "http://www.w3.org/2000/01/rdf-schema#",
+            "obo_id": "RDFS:Resource",
+            "ontology_name": "rdfs",
+            "ontology_prefix": "RDFS",
+            "short_form": "RDFS_Resource",
+            "type": "Class"
+        }
+    ],
     "ols": "CHMO:0001167",
     "ontology": "",
-    "predicates": [],
+    "predicates": [
+        {
+            "description": [
+                "The class resource, everything."
+            ],
+            "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource",
+            "iri": "http://www.w3.org/2000/01/rdf-schema#Resource",
+            "label": "Resource",
+            "namespace": "http://www.w3.org/2000/01/rdf-schema#",
+            "obo_id": "RDFS:Resource",
+            "ontology_name": "rdfs",
+            "ontology_prefix": "RDFS",
+            "short_form": "RDFS_Resource",
+            "type": "Class"
+        }
+    ],
     "rootOntology": {
         "description": [
             "A method for determining surface area by measuring the amount of an inert gaseous or liquid substance (the 'sorbent', usually H2 or N2) which adsorbs onto the surface of interest (the 'sorbate'), and the subsequent amount that desorbs at a constant temperature. Regression analysis is then applied to the data, resulting in an isotherm."
