@@ -27,19 +27,21 @@ from converter_app.models import Profile
 # Example usage
 
 
-def create_app(is_local_cli = False) -> flask.Flask:
+def create_app(is_local_cli_admin = False, is_local_cli = False) -> flask.Flask:
     """
     Creates a Flask server that exposes various endpoints, providing
     users with the capability to effortlessly create profiles for the conversion process.
     :return: Flask app
     """
-    if is_local_cli:
+    if is_local_cli_admin:
         os.environ['SECRET_KEY'] = uuid.uuid4().__str__()
         os.environ['PROFILES_DIR'] = Profile.cli_profiles_dir.__str__()
         os.environ['DATASETS_DIR'] = cli_home_path().joinpath('datasets').__str__()
         os.environ['CORS'] = 'False'
         os.environ['DEBUG'] = 'False'
         os.environ['IS_CLI'] = '1'
+        if is_local_cli:
+            os.environ['IS_CLI_HOST'] = '1'
         os.environ['LOG_FILE'] = Path(os.getcwd()).joinpath('converter_app.log').__str__()
     else:
         dotenv.load_dotenv(Path().cwd() / '.env')

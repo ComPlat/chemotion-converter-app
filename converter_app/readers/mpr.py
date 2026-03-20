@@ -3,6 +3,7 @@ import logging
 import tempfile
 
 import yadg
+
 from yadg.extractors.eclab.techniques import param_map  # needs yagd version > 6.0.2
 
 from converter_app.readers.helper.base import Reader

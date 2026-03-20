@@ -78,7 +78,7 @@ This generates a directory test_manager/profile_results and a directory test_man
 | -ep | --expected_profiles | Overwrites expected test results for profile tests. Be careful. May permanently falsify the test results! |
 | -t | --tests | Generates all reader tests in: test_readers.py |
 | -tp | --test_profiles | Generates all profile tests in: test_profiles.py |
-| -g | --github | Reloads profiles and test files from the Git Repository: https://github.com/ComPlat/chemotion_saurus.git branch=added_data_files |
+| -g | --github | Reloads test files from the Git Repository: https://github.com/ComPlat/chemotion_saurus.git branch=added_data_files |
 
 
 ### Run tests:
@@ -92,7 +92,7 @@ pytest .
 You can simply develop a new reader by running the following command:
 
 ```shell
-python -m converter_app new_reader -n [READER_NAME] -p [PRIORITY] -t [TEST_FILE]
+python -m converter_app dev new-reader -n [READER_NAME] -p [PRIORITY] -t [TEST_FILE]
 ```
 
 - replace \[READER_NAME\] with the name of the reader in CamelCase.
