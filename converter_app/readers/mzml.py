@@ -29,30 +29,7 @@ class MSXmlReader(Reader):
         :return: True if it fits
         """
 
-        if self.file.suffix.lower() == '.mzml':
-            try:
-                parsed_url = current_app.config.get('MS_CONVERTER')
-            except RuntimeError:
-                parsed_url = 'http://127.0.0.1:5050/'
-
-            try:
-                files = {
-                    "main_file": (self.file.name, self.file.content, "application/octet-stream")
-                }
-
-                res = requests.post(parsed_url + 'fileconvert_conversion', data={'test': ''}, files=files,
-                                    timeout=(5, 60))
-            except requests.exceptions.ConnectionError:
-                return False
-
-            if res.status_code == 200:
-                try:
-                    self._mz_xml_content = res.content
-                    return True
-                except ET.ParseError:
-                    return False
-
-        return False
+        return self.file.suffix.lower() == '.mzml'
 
 
     def prepare_tables(self):
@@ -66,25 +43,28 @@ class MSXmlReader(Reader):
             tmp_file_name = os.path.join(tmpdirname, os.path.basename(self.file.name))
             with open(tmp_file_name, 'wb+') as f:
                 f.write(self._mz_xml_content)
-            runs = pymzml.run.Reader(tmp_file_name, build_index_from_scratch=True)
+            return self.prepare_tables_from_xml(tmp_file_name)
 
-            tables = []
-            for run in runs:
-                self.append_table(tables)
+    def prepare_tables_from_xml(self, xml_file_path):
+        runs = pymzml.run.Reader(xml_file_path, build_index_from_scratch=True)
 
-            self._extract_meta_data(runs, tables[0])
-            tables[0].add_metadata('__IDENTIFIER', self.__class__.identifier)
-            for i, run in enumerate(runs):
-                table = tables[i]
-                table['header'].append('-')
-                d = self._extract_meta_data(run, table)
+        tables = []
+        for run in runs:
+            self.append_table(tables)
+
+        self._extract_meta_data(runs, tables[0])
+        tables[0].add_metadata('__IDENTIFIER', self.__class__.identifier)
+        for i, run in enumerate(runs):
+            table = tables[i]
+            table['header'].append('-')
+            d = self._extract_meta_data(run, table)
 
 
-                table['rows'] = d['centroidedPeaks'].tolist()
-                table['columns'].append({'key': '0', 'name': 'mz'})
-                table['columns'].append({'key': '1', 'name': 'i'})
+            table['rows'] = d['centroidedPeaks'].tolist()
+            table['columns'].append({'key': '0', 'name': 'mz'})
+            table['columns'].append({'key': '1', 'name': 'i'})
 
-            return tables
+        return tables
 
     def _extract_meta_data(self, run, table):
         d = {k: getattr(run, k, '') for k in run.__dir__() if

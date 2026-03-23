@@ -11,11 +11,11 @@ import logging
 import os
 import uuid
 from pathlib import Path
+import subprocess as sp
 from urllib.parse import urlparse
 
 import dotenv
 import flask
-import requests
 from str2bool import str2bool
 
 from converter_app.profile_migration.utils.registration import Migrations
@@ -57,13 +57,15 @@ def create_app(is_local_cli_admin = False, is_local_cli = False) -> flask.Flask:
 
     parsed_url = urlparse(os.getenv('MS_CONVERTER', 'http://127.0.0.1:5050'))
     parsed_host_uri = '{uri.scheme}://{uri.netloc}/'.format(uri=parsed_url)
+    ms_test_cmd_command = ["docker", "exec", "msconvert_docker", "wine", "msconvert", "--help"]
     try:
-        res = requests.get(parsed_host_uri, timeout=(5, 10))
-        assert res.text.replace('\n', '') == '{  "detail": {},  "message": "Not Found"}'
-    except requests.exceptions.ConnectionError:
-        logger.warning("MS_CONVERTER: MS converter HOST url not available!")
-    except AssertionError:
-        logger.warning("MS_CONVERTER: Unexpected return from MS converter! Most likely the MS converter is not available")
+        res = sp.run(
+            ms_test_cmd_command, check=True)
+        if res.returncode != 0:
+            logger.warning(f"MS_CONVERTER: MS converter Docker container NOT available! -> {' '.join(ms_test_cmd_command)}")
+    except sp.CalledProcessError:
+        logger.warning(f"MS_CONVERTER: MS converter Docker container NOT available! -> {' '.join(ms_test_cmd_command)}")
+
     # configure app
     debug = str2bool(os.getenv('DEBUG', 'False').lower())
     app = flask.Flask(__name__, instance_relative_config=True)
