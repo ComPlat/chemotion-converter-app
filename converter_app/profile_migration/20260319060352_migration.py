@@ -37,7 +37,9 @@ class ProfileMigrationScript(ProfileMigration):
             for ontology in all_ontologies:
                 if ontology_id == ontology.get('id'):
                     profile[key].append(ontology)
-                    return
+                    return ontology
+            return None
+
 
         profile['objects'] = []
         profile['predicates'] = []
@@ -51,9 +53,10 @@ class ProfileMigrationScript(ProfileMigration):
                 object_item = identifier.get('predicate')
                 profile['identifiers'][i]['object'] = object_item
                 if object_item:
-                    find_ontology_id(object_item.get('id'), 'objects')
-                profile['identifiers'][i]['predicate'] = {'id': self.default_predicate['id']}
-                find_ontology_id(self.default_predicate['id'], 'predicates')
+                    object_onto = find_ontology_id(object_item.get('id'), 'objects')
+                    if object_onto and object_onto.get('type').lower() == 'class':
+                        profile['identifiers'][i]['predicate'] = {'id': self.default_predicate['id']}
+                        find_ontology_id(self.default_predicate['id'], 'predicates')
 
 
     def to_be_applied_after_migration(self) -> str:

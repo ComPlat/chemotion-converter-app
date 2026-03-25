@@ -888,16 +888,12 @@
             "id": "#2tableMetadata",
             "key": "N_SCANS",
             "match": "any",
-            "object": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "object": null,
             "optional": true,
             "outputKey": "cycles",
             "outputLayer": "meas",
             "outputTableIndex": null,
-            "predicate": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "predicate": null,
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -909,16 +905,12 @@
             "id": "#3tableHeader",
             "lineNumber": 2,
             "match": "regex",
-            "object": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "object": null,
             "optional": true,
             "outputKey": "time",
             "outputLayer": "general",
             "outputTableIndex": null,
-            "predicate": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "predicate": null,
             "subject": null,
             "tableIndex": 0,
             "type": "tableHeader",
@@ -930,16 +922,12 @@
             "id": "#4tableHeader",
             "lineNumber": 2,
             "match": "regex",
-            "object": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "object": null,
             "optional": true,
             "outputKey": "date",
             "outputLayer": "general",
             "outputTableIndex": null,
-            "predicate": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "predicate": null,
             "subject": null,
             "tableIndex": 0,
             "type": "tableHeader",
@@ -951,16 +939,12 @@
             "id": "#5tableMetadata",
             "key": "deviceserial",
             "match": "any",
-            "object": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "object": null,
             "optional": true,
             "outputKey": "title",
             "outputLayer": "general",
             "outputTableIndex": null,
-            "predicate": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "predicate": null,
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -972,16 +956,12 @@
             "id": "#6tableMetadata",
             "key": "SCAN_RATE",
             "match": "any",
-            "object": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "object": null,
             "optional": true,
             "outputKey": "scan_rate",
             "outputLayer": "meas",
             "outputTableIndex": null,
-            "predicate": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "predicate": null,
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -993,16 +973,12 @@
             "id": "#7tableHeader",
             "lineNumber": 1,
             "match": "regex",
-            "object": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "object": null,
             "optional": true,
             "outputKey": "software",
             "outputLayer": "software",
             "outputTableIndex": null,
-            "predicate": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "predicate": null,
             "subject": null,
             "tableIndex": 0,
             "type": "tableHeader",
@@ -1014,16 +990,12 @@
             "id": "#8tableHeader",
             "lineNumber": 1,
             "match": "regex",
-            "object": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "object": null,
             "optional": true,
             "outputKey": "software_version",
             "outputLayer": "software",
             "outputTableIndex": null,
-            "predicate": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "predicate": null,
             "subject": null,
             "tableIndex": 0,
             "type": "tableHeader",
@@ -1035,16 +1007,12 @@
             "id": "#9tableMetadata",
             "key": "E_STEP",
             "match": "any",
-            "object": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "object": null,
             "optional": true,
             "outputKey": "step_size",
             "outputLayer": "meas",
             "outputTableIndex": null,
-            "predicate": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "predicate": null,
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1056,16 +1024,12 @@
             "id": "#10tableMetadata",
             "key": "E_BEGIN",
             "match": "any",
-            "object": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "object": null,
             "optional": true,
             "outputKey": "voltage_start",
             "outputLayer": "meas",
             "outputTableIndex": null,
-            "predicate": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "predicate": null,
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1077,16 +1041,12 @@
             "id": "#11tableMetadata",
             "key": "E_VTX1",
             "match": "any",
-            "object": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "object": null,
             "optional": true,
             "outputKey": "voltage_limit_one",
             "outputLayer": "meas",
             "outputTableIndex": null,
-            "predicate": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "predicate": null,
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1098,16 +1058,12 @@
             "id": "#12tableMetadata",
             "key": "E_VTX2",
             "match": "any",
-            "object": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "object": null,
             "optional": true,
             "outputKey": "voltage_limit_two",
             "outputLayer": "meas",
             "outputTableIndex": null,
-            "predicate": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "predicate": null,
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1119,16 +1075,12 @@
             "id": "#13tableMetadata",
             "key": "E_END",
             "match": "any",
-            "object": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "object": null,
             "optional": true,
             "outputKey": "voltage_limit_end",
             "outputLayer": "meas",
             "outputTableIndex": null,
-            "predicate": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "predicate": null,
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1140,57 +1092,23 @@
             "id": "#14fileMetadata",
             "key": "file_name",
             "match": "any",
-            "object": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "object": null,
             "optional": true,
             "outputKey": "comments",
             "outputLayer": "general",
             "outputTableIndex": 0,
-            "predicate": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "predicate": null,
             "subject": null,
             "type": "fileMetadata",
             "value": "File053.pssession"
         }
     ],
     "isDisabled": false,
-    "last_migration": "20260319060352",
-    "objects": [
-        {
-            "description": [
-                "The class resource, everything."
-            ],
-            "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource",
-            "iri": "http://www.w3.org/2000/01/rdf-schema#Resource",
-            "label": "Resource",
-            "namespace": "http://www.w3.org/2000/01/rdf-schema#",
-            "obo_id": "RDFS:Resource",
-            "ontology_name": "rdfs",
-            "ontology_prefix": "RDFS",
-            "short_form": "RDFS_Resource",
-            "type": "Class"
-        }
-    ],
+    "last_migration": "20260323144702",
+    "objects": [],
     "ols": "CHMO:0000025",
     "ontology": "",
-    "predicates": [
-        {
-            "description": [
-                "The class resource, everything."
-            ],
-            "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource",
-            "iri": "http://www.w3.org/2000/01/rdf-schema#Resource",
-            "label": "Resource",
-            "namespace": "http://www.w3.org/2000/01/rdf-schema#",
-            "obo_id": "RDFS:Resource",
-            "ontology_name": "rdfs",
-            "ontology_prefix": "RDFS",
-            "short_form": "RDFS_Resource",
-            "type": "Class"
-        }
-    ],
+    "predicates": [],
     "rootOntology": {
         "description": [
             "An electrochemical technique where the cell current is measured as a function of time and as a function of the potential between the indicator and reference electrodes. The potential is varied linearly and inverts at the end point resulting in a cycle."

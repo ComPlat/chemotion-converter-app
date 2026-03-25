@@ -715,16 +715,12 @@
             "id": "#0tableMetadata",
             "key": "Sample",
             "match": "any",
-            "object": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "object": null,
             "optional": true,
             "outputKey": "label",
             "outputLayer": "sample_details",
             "outputTableIndex": null,
-            "predicate": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "predicate": null,
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -736,16 +732,12 @@
             "id": "#1tableMetadata",
             "key": "Export file",
             "match": "any",
-            "object": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "object": null,
             "optional": true,
             "outputKey": "comments",
             "outputLayer": "general",
             "outputTableIndex": null,
-            "predicate": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "predicate": null,
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -757,16 +749,12 @@
             "id": "#2tableMetadata",
             "key": "Mn",
             "match": "any",
-            "object": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "object": null,
             "optional": true,
             "outputKey": "mn",
             "outputLayer": "eval_data_detec_i",
             "outputTableIndex": null,
-            "predicate": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "predicate": null,
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -778,16 +766,12 @@
             "id": "#3tableMetadata",
             "key": "Mw",
             "match": "any",
-            "object": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "object": null,
             "optional": true,
             "outputKey": "mw",
             "outputLayer": "eval_data_detec_i",
             "outputTableIndex": null,
-            "predicate": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "predicate": null,
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -799,16 +783,12 @@
             "id": "#4tableMetadata",
             "key": "D",
             "match": "any",
-            "object": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "object": null,
             "optional": true,
             "outputKey": "d",
             "outputLayer": "eval_data_detec_i",
             "outputTableIndex": null,
-            "predicate": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "predicate": null,
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -820,16 +800,12 @@
             "id": "#5tableMetadata",
             "key": "Mp",
             "match": "any",
-            "object": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "object": null,
             "optional": true,
             "outputKey": "mp",
             "outputLayer": "eval_data_detec_i",
             "outputTableIndex": null,
-            "predicate": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "predicate": null,
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -841,16 +817,12 @@
             "id": "#6tableMetadata",
             "key": "Detector 1",
             "match": "any",
-            "object": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "object": null,
             "optional": true,
             "outputKey": "detec1",
             "outputLayer": "instrument",
             "outputTableIndex": null,
-            "predicate": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "predicate": null,
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -862,16 +834,12 @@
             "id": "#7tableMetadata",
             "key": "Detector 2",
             "match": "any",
-            "object": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "object": null,
             "optional": true,
             "outputKey": "detec2",
             "outputLayer": "instrument",
             "outputTableIndex": null,
-            "predicate": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "predicate": null,
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -883,16 +851,12 @@
             "id": "#8tableMetadata",
             "key": "Detector 3",
             "match": "any",
-            "object": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "object": null,
             "optional": true,
             "outputKey": "detec3",
             "outputLayer": "instrument",
             "outputTableIndex": null,
-            "predicate": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "predicate": null,
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -904,16 +868,12 @@
             "id": "#11tableMetadata",
             "key": "Column 1",
             "match": "any",
-            "object": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "object": null,
             "optional": true,
             "outputKey": "col1",
             "outputLayer": "equipment",
             "outputTableIndex": null,
-            "predicate": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "predicate": null,
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -925,16 +885,12 @@
             "id": "#12tableMetadata",
             "key": "Column 2",
             "match": "any",
-            "object": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "object": null,
             "optional": true,
             "outputKey": "col2",
             "outputLayer": "equipment",
             "outputTableIndex": null,
-            "predicate": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "predicate": null,
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -946,16 +902,12 @@
             "id": "#13tableMetadata",
             "key": "Column 3",
             "match": "any",
-            "object": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "object": null,
             "optional": true,
             "outputKey": "col3",
             "outputLayer": "equipment",
             "outputTableIndex": null,
-            "predicate": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "predicate": null,
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -967,16 +919,12 @@
             "id": "#14tableMetadata",
             "key": "Inject volume",
             "match": "any",
-            "object": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "object": null,
             "optional": true,
             "outputKey": "in_vol",
             "outputLayer": "meta",
             "outputTableIndex": null,
-            "predicate": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "predicate": null,
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -988,16 +936,12 @@
             "id": "#15tableMetadata",
             "key": "Eluent",
             "match": "any",
-            "object": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "object": null,
             "optional": true,
             "outputKey": "eluent",
             "outputLayer": "meta",
             "outputTableIndex": null,
-            "predicate": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "predicate": null,
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1009,16 +953,12 @@
             "id": "#16tableMetadata",
             "key": "Flow",
             "match": "any",
-            "object": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "object": null,
             "optional": true,
             "outputKey": "flow",
             "outputLayer": "meta",
             "outputTableIndex": null,
-            "predicate": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "predicate": null,
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1030,16 +970,12 @@
             "id": "#17tableMetadata",
             "key": "(Column 1) Temperature",
             "match": "any",
-            "object": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "object": null,
             "optional": true,
             "outputKey": "temperature",
             "outputLayer": "meta",
             "outputTableIndex": null,
-            "predicate": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "predicate": null,
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1051,16 +987,12 @@
             "id": "#18tableMetadata",
             "key": "Inject date",
             "match": "regex",
-            "object": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "object": null,
             "optional": true,
             "outputKey": "date",
             "outputLayer": "general",
             "outputTableIndex": null,
-            "predicate": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "predicate": null,
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1072,16 +1004,12 @@
             "id": "#19tableMetadata",
             "key": "Inject date",
             "match": "regex",
-            "object": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "object": null,
             "optional": true,
             "outputKey": "time",
             "outputLayer": "general",
             "outputTableIndex": null,
-            "predicate": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "predicate": null,
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1094,16 +1022,12 @@
             "key": "Number of detectors",
             "lineNumber": "",
             "match": "any",
-            "object": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "object": null,
             "optional": true,
             "outputKey": "no_dec",
             "outputLayer": "instrument",
             "outputTableIndex": null,
-            "predicate": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "predicate": null,
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1115,16 +1039,12 @@
             "id": "#21tableHeader",
             "lineNumber": "",
             "match": "regex",
-            "object": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "object": null,
             "optional": true,
             "outputKey": "software",
             "outputLayer": "software",
             "outputTableIndex": null,
-            "predicate": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "predicate": null,
             "subject": null,
             "tableIndex": 0,
             "type": "tableHeader",
@@ -1136,16 +1056,12 @@
             "id": "#22tableHeader",
             "lineNumber": "",
             "match": "regex",
-            "object": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "object": null,
             "optional": true,
             "outputKey": "version",
             "outputLayer": "software",
             "outputTableIndex": null,
-            "predicate": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "predicate": null,
             "subject": null,
             "tableIndex": 0,
             "type": "tableHeader",
@@ -1157,16 +1073,12 @@
             "id": "#23tableMetadata",
             "key": "Operator",
             "match": "any",
-            "object": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "object": null,
             "optional": true,
             "outputKey": "operator",
             "outputLayer": "general",
             "outputTableIndex": null,
-            "predicate": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "predicate": null,
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1178,16 +1090,12 @@
             "id": "autogen_A_DECT1",
             "key": "A_DECT1",
             "match": "any",
-            "object": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "object": null,
             "optional": true,
             "outputKey": "a",
             "outputLayer": "eval_data_detec_1",
             "outputTableIndex": null,
-            "predicate": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "predicate": null,
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1199,16 +1107,12 @@
             "id": "autogen_D_DECT1",
             "key": "D_DECT1",
             "match": "any",
-            "object": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "object": null,
             "optional": true,
             "outputKey": "d",
             "outputLayer": "eval_data_detec_1",
             "outputTableIndex": null,
-            "predicate": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "predicate": null,
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1220,16 +1124,12 @@
             "id": "autogen_M(z+1)_DECT1",
             "key": "M(z+1)_DECT1",
             "match": "any",
-            "object": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "object": null,
             "optional": true,
             "outputKey": "mz1",
             "outputLayer": "eval_data_detec_1",
             "outputTableIndex": null,
-            "predicate": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "predicate": null,
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1241,16 +1141,12 @@
             "id": "autogen_Mn_DECT1",
             "key": "Mn_DECT1",
             "match": "any",
-            "object": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "object": null,
             "optional": true,
             "outputKey": "mn",
             "outputLayer": "eval_data_detec_1",
             "outputTableIndex": null,
-            "predicate": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "predicate": null,
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1262,16 +1158,12 @@
             "id": "autogen_Mp_DECT1",
             "key": "Mp_DECT1",
             "match": "any",
-            "object": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "object": null,
             "optional": true,
             "outputKey": "mp",
             "outputLayer": "eval_data_detec_1",
             "outputTableIndex": null,
-            "predicate": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "predicate": null,
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1283,16 +1175,12 @@
             "id": "autogen_Mv_DECT1",
             "key": "Mv_DECT1",
             "match": "any",
-            "object": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "object": null,
             "optional": true,
             "outputKey": "mv",
             "outputLayer": "eval_data_detec_1",
             "outputTableIndex": null,
-            "predicate": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "predicate": null,
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1304,16 +1192,12 @@
             "id": "autogen_Mw_DECT1",
             "key": "Mw_DECT1",
             "match": "any",
-            "object": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "object": null,
             "optional": true,
             "outputKey": "mw",
             "outputLayer": "eval_data_detec_1",
             "outputTableIndex": null,
-            "predicate": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "predicate": null,
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1325,16 +1209,12 @@
             "id": "autogen_Mz_DECT1",
             "key": "Mz_DECT1",
             "match": "any",
-            "object": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "object": null,
             "optional": true,
             "outputKey": "mz",
             "outputLayer": "eval_data_detec_1",
             "outputTableIndex": null,
-            "predicate": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "predicate": null,
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1346,16 +1226,12 @@
             "id": "autogen_Vp_DECT1",
             "key": "Vp_DECT1",
             "match": "any",
-            "object": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "object": null,
             "optional": true,
             "outputKey": "vp",
             "outputLayer": "eval_data_detec_1",
             "outputTableIndex": null,
-            "predicate": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "predicate": null,
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1367,16 +1243,12 @@
             "id": "autogen_[n]_DECT1",
             "key": "[n]_DECT1",
             "match": "any",
-            "object": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "object": null,
             "optional": true,
             "outputKey": "n",
             "outputLayer": "eval_data_detec_1",
             "outputTableIndex": null,
-            "predicate": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "predicate": null,
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1388,16 +1260,12 @@
             "id": "autogen_A_DECT2",
             "key": "A_DECT2",
             "match": "any",
-            "object": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "object": null,
             "optional": true,
             "outputKey": "a",
             "outputLayer": "eval_data_detec_2",
             "outputTableIndex": null,
-            "predicate": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "predicate": null,
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1409,16 +1277,12 @@
             "id": "autogen_D_DECT2",
             "key": "D_DECT2",
             "match": "any",
-            "object": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "object": null,
             "optional": true,
             "outputKey": "d",
             "outputLayer": "eval_data_detec_2",
             "outputTableIndex": null,
-            "predicate": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "predicate": null,
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1430,16 +1294,12 @@
             "id": "autogen_M(z+1)_DECT2",
             "key": "M(z+1)_DECT2",
             "match": "any",
-            "object": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "object": null,
             "optional": true,
             "outputKey": "mz1",
             "outputLayer": "eval_data_detec_2",
             "outputTableIndex": null,
-            "predicate": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "predicate": null,
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1451,16 +1311,12 @@
             "id": "autogen_Mn_DECT2",
             "key": "Mn_DECT2",
             "match": "any",
-            "object": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "object": null,
             "optional": true,
             "outputKey": "mn",
             "outputLayer": "eval_data_detec_2",
             "outputTableIndex": null,
-            "predicate": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "predicate": null,
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1472,16 +1328,12 @@
             "id": "autogen_Mp_DECT2",
             "key": "Mp_DECT2",
             "match": "any",
-            "object": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "object": null,
             "optional": true,
             "outputKey": "mp",
             "outputLayer": "eval_data_detec_2",
             "outputTableIndex": null,
-            "predicate": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "predicate": null,
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1493,16 +1345,12 @@
             "id": "autogen_Mv_DECT2",
             "key": "Mv_DECT2",
             "match": "any",
-            "object": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "object": null,
             "optional": true,
             "outputKey": "mv",
             "outputLayer": "eval_data_detec_2",
             "outputTableIndex": null,
-            "predicate": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "predicate": null,
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1514,16 +1362,12 @@
             "id": "autogen_Mw_DECT2",
             "key": "Mw_DECT2",
             "match": "any",
-            "object": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "object": null,
             "optional": true,
             "outputKey": "mw",
             "outputLayer": "eval_data_detec_2",
             "outputTableIndex": null,
-            "predicate": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "predicate": null,
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1535,16 +1379,12 @@
             "id": "autogen_Mz_DECT2",
             "key": "Mz_DECT2",
             "match": "any",
-            "object": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "object": null,
             "optional": true,
             "outputKey": "mz",
             "outputLayer": "eval_data_detec_2",
             "outputTableIndex": null,
-            "predicate": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "predicate": null,
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1556,16 +1396,12 @@
             "id": "autogen_Vp_DECT2",
             "key": "Vp_DECT2",
             "match": "any",
-            "object": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "object": null,
             "optional": true,
             "outputKey": "vp",
             "outputLayer": "eval_data_detec_2",
             "outputTableIndex": null,
-            "predicate": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "predicate": null,
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1577,16 +1413,12 @@
             "id": "autogen_[n]_DECT2",
             "key": "[n]_DECT2",
             "match": "any",
-            "object": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "object": null,
             "optional": true,
             "outputKey": "n",
             "outputLayer": "eval_data_detec_2",
             "outputTableIndex": null,
-            "predicate": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "predicate": null,
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1598,16 +1430,12 @@
             "id": "autogen_A_DECT3",
             "key": "A_DECT3",
             "match": "any",
-            "object": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "object": null,
             "optional": true,
             "outputKey": "a",
             "outputLayer": "eval_data_detec_3",
             "outputTableIndex": null,
-            "predicate": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "predicate": null,
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1619,16 +1447,12 @@
             "id": "autogen_D_DECT3",
             "key": "D_DECT3",
             "match": "any",
-            "object": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "object": null,
             "optional": true,
             "outputKey": "d",
             "outputLayer": "eval_data_detec_3",
             "outputTableIndex": null,
-            "predicate": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "predicate": null,
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1640,16 +1464,12 @@
             "id": "autogen_M(z+1)_DECT3",
             "key": "M(z+1)_DECT3",
             "match": "any",
-            "object": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "object": null,
             "optional": true,
             "outputKey": "mz1",
             "outputLayer": "eval_data_detec_3",
             "outputTableIndex": null,
-            "predicate": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "predicate": null,
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1661,16 +1481,12 @@
             "id": "autogen_Mn_DECT3",
             "key": "Mn_DECT3",
             "match": "any",
-            "object": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "object": null,
             "optional": true,
             "outputKey": "mn",
             "outputLayer": "eval_data_detec_3",
             "outputTableIndex": null,
-            "predicate": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "predicate": null,
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1682,16 +1498,12 @@
             "id": "autogen_Mp_DECT3",
             "key": "Mp_DECT3",
             "match": "any",
-            "object": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "object": null,
             "optional": true,
             "outputKey": "mp",
             "outputLayer": "eval_data_detec_3",
             "outputTableIndex": null,
-            "predicate": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "predicate": null,
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1703,16 +1515,12 @@
             "id": "autogen_Mv_DECT3",
             "key": "Mv_DECT3",
             "match": "any",
-            "object": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "object": null,
             "optional": true,
             "outputKey": "mv",
             "outputLayer": "eval_data_detec_3",
             "outputTableIndex": null,
-            "predicate": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "predicate": null,
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1724,16 +1532,12 @@
             "id": "autogen_Mw_DECT3",
             "key": "Mw_DECT3",
             "match": "any",
-            "object": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "object": null,
             "optional": true,
             "outputKey": "mw",
             "outputLayer": "eval_data_detec_3",
             "outputTableIndex": null,
-            "predicate": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "predicate": null,
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1745,16 +1549,12 @@
             "id": "autogen_Mz_DECT3",
             "key": "Mz_DECT3",
             "match": "any",
-            "object": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "object": null,
             "optional": true,
             "outputKey": "mz",
             "outputLayer": "eval_data_detec_3",
             "outputTableIndex": null,
-            "predicate": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "predicate": null,
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1766,16 +1566,12 @@
             "id": "autogen_Vp_DECT3",
             "key": "Vp_DECT3",
             "match": "any",
-            "object": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "object": null,
             "optional": true,
             "outputKey": "vp",
             "outputLayer": "eval_data_detec_3",
             "outputTableIndex": null,
-            "predicate": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "predicate": null,
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1787,16 +1583,12 @@
             "id": "autogen_[n]_DECT3",
             "key": "[n]_DECT3",
             "match": "any",
-            "object": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "object": null,
             "optional": true,
             "outputKey": "n",
             "outputLayer": "eval_data_detec_3",
             "outputTableIndex": null,
-            "predicate": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "predicate": null,
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1808,16 +1600,12 @@
             "id": "autogen_A_DECT4",
             "key": "A_DECT4",
             "match": "any",
-            "object": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "object": null,
             "optional": true,
             "outputKey": "a",
             "outputLayer": "eval_data_detec_4",
             "outputTableIndex": null,
-            "predicate": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "predicate": null,
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1829,16 +1617,12 @@
             "id": "autogen_D_DECT4",
             "key": "D_DECT4",
             "match": "any",
-            "object": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "object": null,
             "optional": true,
             "outputKey": "d",
             "outputLayer": "eval_data_detec_4",
             "outputTableIndex": null,
-            "predicate": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "predicate": null,
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1850,16 +1634,12 @@
             "id": "autogen_M(z+1)_DECT4",
             "key": "M(z+1)_DECT4",
             "match": "any",
-            "object": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "object": null,
             "optional": true,
             "outputKey": "mz1",
             "outputLayer": "eval_data_detec_4",
             "outputTableIndex": null,
-            "predicate": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "predicate": null,
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1871,16 +1651,12 @@
             "id": "autogen_Mn_DECT4",
             "key": "Mn_DECT4",
             "match": "any",
-            "object": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "object": null,
             "optional": true,
             "outputKey": "mn",
             "outputLayer": "eval_data_detec_4",
             "outputTableIndex": null,
-            "predicate": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "predicate": null,
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1892,16 +1668,12 @@
             "id": "autogen_Mp_DECT4",
             "key": "Mp_DECT4",
             "match": "any",
-            "object": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "object": null,
             "optional": true,
             "outputKey": "mp",
             "outputLayer": "eval_data_detec_4",
             "outputTableIndex": null,
-            "predicate": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "predicate": null,
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1913,16 +1685,12 @@
             "id": "autogen_Mv_DECT4",
             "key": "Mv_DECT4",
             "match": "any",
-            "object": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "object": null,
             "optional": true,
             "outputKey": "mv",
             "outputLayer": "eval_data_detec_4",
             "outputTableIndex": null,
-            "predicate": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "predicate": null,
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1934,16 +1702,12 @@
             "id": "autogen_Mw_DECT4",
             "key": "Mw_DECT4",
             "match": "any",
-            "object": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "object": null,
             "optional": true,
             "outputKey": "mw",
             "outputLayer": "eval_data_detec_4",
             "outputTableIndex": null,
-            "predicate": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "predicate": null,
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1955,16 +1719,12 @@
             "id": "autogen_Mz_DECT4",
             "key": "Mz_DECT4",
             "match": "any",
-            "object": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "object": null,
             "optional": true,
             "outputKey": "mz",
             "outputLayer": "eval_data_detec_4",
             "outputTableIndex": null,
-            "predicate": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "predicate": null,
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1976,16 +1736,12 @@
             "id": "autogen_Vp_DECT4",
             "key": "Vp_DECT4",
             "match": "any",
-            "object": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "object": null,
             "optional": true,
             "outputKey": "vp",
             "outputLayer": "eval_data_detec_4",
             "outputTableIndex": null,
-            "predicate": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "predicate": null,
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -1997,16 +1753,12 @@
             "id": "autogen_[n]_DECT4",
             "key": "[n]_DECT4",
             "match": "any",
-            "object": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "object": null,
             "optional": true,
             "outputKey": "n",
             "outputLayer": "eval_data_detec_4",
             "outputTableIndex": null,
-            "predicate": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "predicate": null,
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -2018,16 +1770,12 @@
             "id": "autogen_A_DECT5",
             "key": "A_DECT5",
             "match": "any",
-            "object": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "object": null,
             "optional": true,
             "outputKey": "a",
             "outputLayer": "eval_data_detec_5",
             "outputTableIndex": null,
-            "predicate": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "predicate": null,
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -2039,16 +1787,12 @@
             "id": "autogen_D_DECT5",
             "key": "D_DECT5",
             "match": "any",
-            "object": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "object": null,
             "optional": true,
             "outputKey": "d",
             "outputLayer": "eval_data_detec_5",
             "outputTableIndex": null,
-            "predicate": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "predicate": null,
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -2060,16 +1804,12 @@
             "id": "autogen_M(z+1)_DECT5",
             "key": "M(z+1)_DECT5",
             "match": "any",
-            "object": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "object": null,
             "optional": true,
             "outputKey": "mz1",
             "outputLayer": "eval_data_detec_5",
             "outputTableIndex": null,
-            "predicate": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "predicate": null,
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -2081,16 +1821,12 @@
             "id": "autogen_Mn_DECT5",
             "key": "Mn_DECT5",
             "match": "any",
-            "object": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "object": null,
             "optional": true,
             "outputKey": "mn",
             "outputLayer": "eval_data_detec_5",
             "outputTableIndex": null,
-            "predicate": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "predicate": null,
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -2102,16 +1838,12 @@
             "id": "autogen_Mp_DECT5",
             "key": "Mp_DECT5",
             "match": "any",
-            "object": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "object": null,
             "optional": true,
             "outputKey": "mp",
             "outputLayer": "eval_data_detec_5",
             "outputTableIndex": null,
-            "predicate": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "predicate": null,
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -2123,16 +1855,12 @@
             "id": "autogen_Mv_DECT5",
             "key": "Mv_DECT5",
             "match": "any",
-            "object": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "object": null,
             "optional": true,
             "outputKey": "mv",
             "outputLayer": "eval_data_detec_5",
             "outputTableIndex": null,
-            "predicate": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "predicate": null,
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -2144,16 +1872,12 @@
             "id": "autogen_Mw_DECT5",
             "key": "Mw_DECT5",
             "match": "any",
-            "object": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "object": null,
             "optional": true,
             "outputKey": "mw",
             "outputLayer": "eval_data_detec_5",
             "outputTableIndex": null,
-            "predicate": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "predicate": null,
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -2165,16 +1889,12 @@
             "id": "autogen_Mz_DECT5",
             "key": "Mz_DECT5",
             "match": "any",
-            "object": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "object": null,
             "optional": true,
             "outputKey": "mz",
             "outputLayer": "eval_data_detec_5",
             "outputTableIndex": null,
-            "predicate": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "predicate": null,
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -2186,16 +1906,12 @@
             "id": "autogen_Vp_DECT5",
             "key": "Vp_DECT5",
             "match": "any",
-            "object": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "object": null,
             "optional": true,
             "outputKey": "vp",
             "outputLayer": "eval_data_detec_5",
             "outputTableIndex": null,
-            "predicate": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "predicate": null,
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -2207,16 +1923,12 @@
             "id": "autogen_[n]_DECT5",
             "key": "[n]_DECT5",
             "match": "any",
-            "object": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "object": null,
             "optional": true,
             "outputKey": "n",
             "outputLayer": "eval_data_detec_5",
             "outputTableIndex": null,
-            "predicate": {
-                "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource"
-            },
+            "predicate": null,
             "subject": null,
             "tableIndex": 0,
             "type": "tableMetadata",
@@ -2242,41 +1954,11 @@
         }
     ],
     "isDisabled": false,
-    "last_migration": "20260319060352",
-    "objects": [
-        {
-            "description": [
-                "The class resource, everything."
-            ],
-            "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource",
-            "iri": "http://www.w3.org/2000/01/rdf-schema#Resource",
-            "label": "Resource",
-            "namespace": "http://www.w3.org/2000/01/rdf-schema#",
-            "obo_id": "RDFS:Resource",
-            "ontology_name": "rdfs",
-            "ontology_prefix": "RDFS",
-            "short_form": "RDFS_Resource",
-            "type": "Class"
-        }
-    ],
+    "last_migration": "20260323144702",
+    "objects": [],
     "ols": "CHMO:0001013",
     "ontology": "",
-    "predicates": [
-        {
-            "description": [
-                "The class resource, everything."
-            ],
-            "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource",
-            "iri": "http://www.w3.org/2000/01/rdf-schema#Resource",
-            "label": "Resource",
-            "namespace": "http://www.w3.org/2000/01/rdf-schema#",
-            "obo_id": "RDFS:Resource",
-            "ontology_name": "rdfs",
-            "ontology_prefix": "RDFS",
-            "short_form": "RDFS_Resource",
-            "type": "Class"
-        }
-    ],
+    "predicates": [],
     "rootOntology": {
         "description": [
             "Column chromatography where the separation is caused by differences in molecular size."

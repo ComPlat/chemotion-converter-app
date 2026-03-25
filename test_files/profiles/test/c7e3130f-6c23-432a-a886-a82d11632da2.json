@@ -118,52 +118,22 @@
         }
     ],
     "isDisabled": false,
-    "last_migration": "20260319060352",
-    "objects": [
-        {
-            "description": [
-                "The class resource, everything."
-            ],
-            "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource",
-            "iri": "http://www.w3.org/2000/01/rdf-schema#Resource",
-            "label": "Resource",
-            "namespace": "http://www.w3.org/2000/01/rdf-schema#",
-            "obo_id": "RDFS:Resource",
-            "ontology_name": "rdfs",
-            "ontology_prefix": "RDFS",
-            "short_form": "RDFS_Resource",
-            "type": "Class"
-        }
-    ],
+    "last_migration": "20260323144702",
+    "objects": [],
     "ols": null,
     "ontology": "",
-    "predicates": [
-        {
-            "description": [
-                "The class resource, everything."
-            ],
-            "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource",
-            "iri": "http://www.w3.org/2000/01/rdf-schema#Resource",
-            "label": "Resource",
-            "namespace": "http://www.w3.org/2000/01/rdf-schema#",
-            "obo_id": "RDFS:Resource",
-            "ontology_name": "rdfs",
-            "ontology_prefix": "RDFS",
-            "short_form": "RDFS_Resource",
-            "type": "Class"
-        }
-    ],
+    "predicates": [],
     "rootOntology": {
         "description": [
             "A planned process that has the objective to produce information about a material entity (the evaluant) by examining it."
         ],
-        "id": "OBI:property:http://purl.obolibrary.org/obo/OBI_0000070",
+        "id": "obi:class:http://purl.obolibrary.org/obo/OBI_0000070",
         "iri": "http://purl.obolibrary.org/obo/OBI_0000070",
         "label": "assay",
         "namespace": "http://purl.obolibrary.org/obo/",
         "obo_id": "OBI:0000070",
-        "ontology_name": "chmo",
-        "ontology_prefix": "CHMO",
+        "ontology_name": "obi",
+        "ontology_prefix": "OBI",
         "short_form": "OBI_0000070",
         "type": "class"
     },

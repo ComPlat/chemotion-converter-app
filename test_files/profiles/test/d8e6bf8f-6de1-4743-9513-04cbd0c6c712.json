@@ -252,41 +252,11 @@
         }
     ],
     "isDisabled": false,
-    "last_migration": "20260319060352",
-    "objects": [
-        {
-            "description": [
-                "The class resource, everything."
-            ],
-            "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource",
-            "iri": "http://www.w3.org/2000/01/rdf-schema#Resource",
-            "label": "Resource",
-            "namespace": "http://www.w3.org/2000/01/rdf-schema#",
-            "obo_id": "RDFS:Resource",
-            "ontology_name": "rdfs",
-            "ontology_prefix": "RDFS",
-            "short_form": "RDFS_Resource",
-            "type": "Class"
-        }
-    ],
+    "last_migration": "20260323144702",
+    "objects": [],
     "ols": "CHMO:0000292",
     "ontology": "",
-    "predicates": [
-        {
-            "description": [
-                "The class resource, everything."
-            ],
-            "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource",
-            "iri": "http://www.w3.org/2000/01/rdf-schema#Resource",
-            "label": "Resource",
-            "namespace": "http://www.w3.org/2000/01/rdf-schema#",
-            "obo_id": "RDFS:Resource",
-            "ontology_name": "rdfs",
-            "ontology_prefix": "RDFS",
-            "short_form": "RDFS_Resource",
-            "type": "Class"
-        }
-    ],
+    "predicates": [],
     "rootOntology": {
         "description": [
             "Spectroscopy where the sample absorbs radiation in the range ultraviolet to visible (190-800 nm) resulting in electronic transitions within the sample."
