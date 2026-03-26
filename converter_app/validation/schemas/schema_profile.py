@@ -76,6 +76,9 @@ profile_schema = {
             "required": ["metadata", "tables"]
 
         },
+        "units": {
+            "type": "array",
+        },
         "last_migration": {
             "type": "string"
         },
