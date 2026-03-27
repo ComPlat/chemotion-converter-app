@@ -32,8 +32,7 @@ class TifReader(Reader):
         txt = re.sub(r'\\x[0-9a-f]{2}', '', str(self.file.content))
 
         txt = re.sub(r'^.+@@@@@@0\\r\\n', '', txt)
-        lines = re.split(r'\\r\\n', txt)
-        del lines[-1]
+        lines = [x for x in re.split(r'\\r\\n', txt) if len(x) < 120 and len(x) > 2]
         return [x.split('=') for x in lines]
 
     def get_value(self, value):
