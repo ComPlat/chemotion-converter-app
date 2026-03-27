@@ -86,7 +86,9 @@ class AsciiReader(Reader):
             table['metadata'][f'unit_{index:02d}_found'] = str(unit_result['found'])
             table['metadata'][f'unit_{index:02d}_conversion_factor'] = str(unit_result['conversion_factor'])
             table['metadata'][f'unit_{index:02d}_base_unit'] = str(unit_result['base_unit'])
-            self.units.append({'found' : str(unit_result['found']), 'conversion_factor' : str(unit_result['conversion_factor']), 'base_unit' : str(unit_result['base_unit'])})
+            self.units.append({
+                'found' : str(unit_result['found']), 'conversion_factor' : str(unit_result['conversion_factor']), 'base_unit' : str(unit_result['base_unit']), 'uuid': str(unit_result['uuid'])
+            })
 
 
 Readers.instance().register(AsciiReader)

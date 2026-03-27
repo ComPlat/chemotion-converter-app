@@ -1,6 +1,7 @@
 import inspect
 import html
 import re
+import uuid
 from dataclasses import dataclass
 from typing import Iterable
 
@@ -10,6 +11,11 @@ from converter_app import options
 
 BRACKET_UNIT_PATTERN = re.compile(r"\\?\[([^\]]+)\]")
 CELL_SPLIT_PATTERN = re.compile(r"[\t;|]+")
+
+UNIT_RESULT_NAMESPACE = uuid.uuid5(
+    uuid.NAMESPACE_DNS,
+    "chemConverter-unit-finder-namespace",
+)
 
 
 @dataclass(frozen=True)
@@ -163,10 +169,16 @@ class UnitFinder:
         if self.ignore_dimless and base_unit == u.dimensionless_unscaled:
             return None
         conversion_factor = self._get_conversion_factor(rule, base_unit)
+
+        base_unit = self._format_unit(base_unit)
+
+        uuid_name = f"{unit_text}|{conversion_factor:.12g}|{base_unit}"
+
         return {
             "found": unit_text,
             "conversion_factor": conversion_factor,
-            "base_unit": self._format_unit(base_unit),
+            "base_unit": base_unit,
+            "uuid": uuid.uuid5(UNIT_RESULT_NAMESPACE, uuid_name)
         }
 
     def _get_base_unit(self, rule: UnitRule) -> u.UnitBase:
