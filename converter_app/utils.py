@@ -14,7 +14,7 @@ import git
 from converter_app.writers.jcamp import JcampWriter
 from converter_app.writers.jcampzip import JcampZipWriter
 from converter_app.writers.rdf import RDFWriter
-from writers.meta_info_json import MetaInfoWriter
+from converter_app.writers.meta_info_json import MetaInfoWriter
 
 
 def cli_home_path():
