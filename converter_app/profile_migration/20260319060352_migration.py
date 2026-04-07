@@ -1,11 +1,9 @@
-from narwhals import Object
-
 from converter_app.profile_migration import ProfileMigration
 
 
 class ProfileMigrationScript(ProfileMigration):
     """
-    ToDo: Add a comment
+    Introduced object ontology to profiles. Rename predicate ontology to object ontology.
     """
     default_predicate = {
         "description": [

@@ -5,7 +5,7 @@ from converter_app.profile_migration import ProfileMigration
 
 class ProfileMigrationScript(ProfileMigration):
     """
-    ToDo: Add a comment
+    Replace wrong ontology name for default root ontology.
     """
 
     default_assay = {
