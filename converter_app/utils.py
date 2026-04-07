@@ -14,6 +14,7 @@ import git
 from converter_app.writers.jcamp import JcampWriter
 from converter_app.writers.jcampzip import JcampZipWriter
 from converter_app.writers.rdf import RDFWriter
+from writers.meta_info_json import MetaInfoWriter
 
 
 def cli_home_path():
@@ -77,7 +78,9 @@ def checkpw(password, hashed_password):
 def run_conversion(converter, conversion_format):
     if converter:
         converter.process()
-        if conversion_format == 'jcampzip':
+        if conversion_format == 'metajson':
+            writer = MetaInfoWriter(converter)
+        elif conversion_format == 'jcampzip':
             writer = JcampZipWriter(converter)
         elif conversion_format == 'rdf':
             writer = RDFWriter(converter)

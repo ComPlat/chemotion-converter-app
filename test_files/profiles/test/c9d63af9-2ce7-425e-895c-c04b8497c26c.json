@@ -1,144 +1,146 @@
 {
     "converter_version": "1.8.0",
-    "data": {
-        "metadata": {
-            "content_type": "text/plain",
-            "delimiter": "tab",
-            "doublequote": false,
-            "extension": ".txt",
-            "file_name": "S-9_Z1.txt",
-            "lineterminator": "\\r\\n",
-            "mime_type": "text/plain",
-            "quotechar": "\"",
-            "quoting": 0,
-            "reader": "CSVReader",
-            "skipinitialspace": false,
-            "uploaded": "2022-11-25T14:16:30.303467"
-        },
-        "tables": [
-            {
-                "columns": [
-                    {
-                        "key": "0",
-                        "name": "Column #0 (Time_s)"
+    "data": [
+        {
+            "metadata": {
+                "content_type": "text/plain",
+                "delimiter": "tab",
+                "doublequote": false,
+                "extension": ".txt",
+                "file_name": "S-9_Z1.txt",
+                "lineterminator": "\\r\\n",
+                "mime_type": "text/plain",
+                "quotechar": "\"",
+                "quoting": 0,
+                "reader": "CSVReader",
+                "skipinitialspace": false,
+                "uploaded": "2022-11-25T14:16:30.303467"
+            },
+            "tables": [
+                {
+                    "columns": [
+                        {
+                            "key": "0",
+                            "name": "Column #0 (Time_s)"
+                        },
+                        {
+                            "key": "1",
+                            "name": "Column #1 (Force_N)"
+                        },
+                        {
+                            "key": "2",
+                            "name": "Column #2 (Deformation (fine)_mm)"
+                        },
+                        {
+                            "key": "3",
+                            "name": "Column #3 (Elongation_%)"
+                        },
+                        {
+                            "key": "4",
+                            "name": "Column #4 (Stress_MPa)"
+                        },
+                        {
+                            "key": "5",
+                            "name": "Column #5 (Strain_mm)"
+                        }
+                    ],
+                    "header": [],
+                    "metadata": {
+                        "column_00": "Time_s",
+                        "column_01": "Force_N",
+                        "column_02": "Deformation (fine)_mm",
+                        "column_03": "Elongation_%",
+                        "column_04": "Stress_MPa",
+                        "column_05": "Strain_mm",
+                        "columns": 6,
+                        "rows": 8348
                     },
-                    {
-                        "key": "1",
-                        "name": "Column #1 (Force_N)"
-                    },
-                    {
-                        "key": "2",
-                        "name": "Column #2 (Deformation (fine)_mm)"
-                    },
-                    {
-                        "key": "3",
-                        "name": "Column #3 (Elongation_%)"
-                    },
-                    {
-                        "key": "4",
-                        "name": "Column #4 (Stress_MPa)"
-                    },
-                    {
-                        "key": "5",
-                        "name": "Column #5 (Strain_mm)"
-                    }
-                ],
-                "header": [],
-                "metadata": {
-                    "column_00": "Time_s",
-                    "column_01": "Force_N",
-                    "column_02": "Deformation (fine)_mm",
-                    "column_03": "Elongation_%",
-                    "column_04": "Stress_MPa",
-                    "column_05": "Strain_mm",
-                    "columns": 6,
-                    "rows": 8348
-                },
-                "rows": [
-                    [
-                        "0.470",
-                        "3.317",
-                        "0.0000",
-                        "0.0002",
-                        "0.1677",
-                        "0.0000"
-                    ],
-                    [
-                        "0.490",
-                        "6.634",
-                        "0.0001",
-                        "0.0003",
-                        "0.3353",
-                        "0.0001"
-                    ],
-                    [
-                        "0.510",
-                        "9.951",
-                        "0.0001",
-                        "0.0005",
-                        "0.5030",
-                        "0.0001"
-                    ],
-                    [
-                        "0.530",
-                        "13.268",
-                        "0.0002",
-                        "0.0006",
-                        "0.6706",
-                        "0.0002"
-                    ],
-                    [
-                        "0.550",
-                        "16.585",
-                        "0.0002",
-                        "0.0008",
-                        "0.8383",
-                        "0.0002"
-                    ],
-                    [
-                        "0.570",
-                        "19.903",
-                        "0.0002",
-                        "0.0009",
-                        "1.0060",
-                        "0.0002"
-                    ],
-                    [
-                        "0.590",
-                        "23.220",
-                        "0.0003",
-                        "0.0011",
-                        "1.1736",
-                        "0.0003"
-                    ],
-                    [
-                        "0.610",
-                        "26.537",
-                        "0.0003",
-                        "0.0013",
-                        "1.3413",
-                        "0.0003"
-                    ],
-                    [
-                        "0.630",
-                        "29.854",
-                        "0.0004",
-                        "0.0014",
-                        "1.5090",
-                        "0.0004"
-                    ],
-                    [
-                        "0.650",
-                        "33.171",
-                        "0.0004",
-                        "0.0016",
-                        "1.6766",
-                        "0.0004"
+                    "rows": [
+                        [
+                            "0.470",
+                            "3.317",
+                            "0.0000",
+                            "0.0002",
+                            "0.1677",
+                            "0.0000"
+                        ],
+                        [
+                            "0.490",
+                            "6.634",
+                            "0.0001",
+                            "0.0003",
+                            "0.3353",
+                            "0.0001"
+                        ],
+                        [
+                            "0.510",
+                            "9.951",
+                            "0.0001",
+                            "0.0005",
+                            "0.5030",
+                            "0.0001"
+                        ],
+                        [
+                            "0.530",
+                            "13.268",
+                            "0.0002",
+                            "0.0006",
+                            "0.6706",
+                            "0.0002"
+                        ],
+                        [
+                            "0.550",
+                            "16.585",
+                            "0.0002",
+                            "0.0008",
+                            "0.8383",
+                            "0.0002"
+                        ],
+                        [
+                            "0.570",
+                            "19.903",
+                            "0.0002",
+                            "0.0009",
+                            "1.0060",
+                            "0.0002"
+                        ],
+                        [
+                            "0.590",
+                            "23.220",
+                            "0.0003",
+                            "0.0011",
+                            "1.1736",
+                            "0.0003"
+                        ],
+                        [
+                            "0.610",
+                            "26.537",
+                            "0.0003",
+                            "0.0013",
+                            "1.3413",
+                            "0.0003"
+                        ],
+                        [
+                            "0.630",
+                            "29.854",
+                            "0.0004",
+                            "0.0014",
+                            "1.5090",
+                            "0.0004"
+                        ],
+                        [
+                            "0.650",
+                            "33.171",
+                            "0.0004",
+                            "0.0016",
+                            "1.6766",
+                            "0.0004"
+                        ]
                     ]
-                ]
-            }
-        ]
-    },
+                }
+            ]
+        }
+    ],
     "datatypes": [],
     "description": "Inspect Table 50kN; ref location: Fraunhofer IWS, data: +, metadata: - \n;HighTemp",
     "devices": [],
@@ -176,7 +178,7 @@
         }
     ],
     "isDisabled": false,
-    "last_migration": "20260113143334",
+    "last_migration": "20260401123327",
     "ols": "CHMO:0001163",
     "ontology": "",
     "predicates": [],

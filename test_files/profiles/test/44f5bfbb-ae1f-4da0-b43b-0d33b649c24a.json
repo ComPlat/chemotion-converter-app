@@ -1,709 +1,711 @@
 {
     "converter_version": "1.8.0",
-    "data": {
-        "metadata": {
-            "content_type": "text/plain",
-            "extension": ".TXT",
-            "file_name": "1_Inj_ Vial  71  JM_03 - 1.TXT",
-            "mime_type": "text/plain",
-            "reader": "SecReader",
-            "uploaded": "2022-12-01T09:51:07.645397"
-        },
-        "tables": [
-            {
-                "columns": [],
-                "header": [
-                    "Sample: Vial  71: JM_03 - 1",
-                    "Method settings: C:\\WINGPC_8#1\\PSS.ChromPilot.Method.Instrument.1.xml",
-                    "Sequence table: C:\\WINGPC_8#1\\PSS.ChromPilot.Sequence.Instrument.1.xml",
-                    "Inject date: Donnerstag   21/07/22   14:30:57",
-                    "Inject volume: 100.000",
-                    "Inject volume_unit: ul",
-                    "Concentration:   1.000",
-                    "Concentration_unit: g/l",
-                    "Project: C:\\DATA\\AKT THF Tosoh\\20220721",
-                    "Calibration: C:\\DATA\\calibration\\20220707-GRAM_DMAc LiBr 0.8 pro L_2Mixed-C S\u00e4ulen_50\u00b0C 0_5ml min_PS.CAL",
-                    "Method: C:\\DATA\\Methoden\\GRAM DMAC LiBr 079g 50\u00b0C_2020 08 28.MET",
-                    "Export file: Z:\\Jennifer\\JM-03\\1_Inj_ Vial  71  JM_03 - 1.TXT",
-                    "Operator: itcp-akt",
-                    "Calibration MH-K:  1.000000",
-                    "Calibration MH-K_unit: ml/g",
-                    "(Calibration MH-K) univ. Calibration MH-K:  0.001000",
-                    "(Calibration MH-K) univ. Calibration MH-K_unit: ml/g",
-                    "Calibration MH-A:  0.000000",
-                    "Calibration MH-A_unit: -",
-                    "(Calibration MH-A) univ. Calibration MH-A:  0.500000",
-                    "(Calibration MH-A) univ. Calibration MH-A_unit: -",
-                    "Internal Standard Calibration:  50.000",
-                    "Internal Standard Calibration_unit: ml",
-                    "Internal Standard Acquisition: -------",
-                    "Internal Standard Acquisition_unit: ml",
-                    "Data Interval:   1.000",
-                    "Data Interval_unit: s",
-                    "Eluent: DMAc 0.79g/2.5L LiBr",
-                    "Flow:   0.500",
-                    "Flow_unit: ml/min",
-                    "Column 1: PLgel Precolumn",
-                    "(Column 1) Temperature:  50.000",
-                    "(Column 1) Temperature_unit: C",
-                    "Column 2: PLgel 5\u00b5m Mixed-C",
-                    "(Column 2) Temperature:  50.000",
-                    "(Column 2) Temperature_unit: C",
-                    "Column 3: PLgel 5\u00b5m Mixed-C",
-                    "(Column 3) Temperature:  50.000",
-                    "(Column 3) Temperature_unit: C",
-                    "Detector 1: I1: RID 1, RI Signal",
-                    "(Detector 1) Delay:   0.000",
-                    "(Detector 1) Delay_unit: min",
-                    "Detector 2: I1: IsoPump 1, Pressure",
-                    "(Detector 2) Delay:   0.000",
-                    "(Detector 2) Delay_unit: min",
-                    "Baseline from:  12.957",
-                    "(Baseline from) to:  15.206",
-                    "(Baseline from) to_unit: ml",
-                    "Integration from:  12.957",
-                    "(Integration from) to:  15.206",
-                    "(Integration from) to_unit: ml",
-                    " I1: RID 1, RI Signal",
-                    "Mn:  5.646E+4",
-                    "Mn_unit: g/mol",
-                    "Mw:  6.301E+4",
-                    "Mw_unit: g/mol",
-                    "Mz:  7.172E+4",
-                    "Mz_unit: g/mol",
-                    "M(z+1):  8.281E+4",
-                    "M(z+1)_unit: g/mol",
-                    "Mv:  0.000E+0",
-                    "Mv_unit: g/mol",
-                    "D:  1.116E+0",
-                    "[n]:  0.000E+0",
-                    "[n]_unit: ml/g",
-                    "Vp:  1.426E+1",
-                    "Vp_unit: ml",
-                    "Mp:  5.286E+4",
-                    "Mp_unit: g/mol",
-                    "Fl:  2.021E+1",
-                    "Fl_unit: ml*V",
-                    "< 21680:       0.00",
-                    "< 21680_unit: %",
-                    "w%:     100.00",
-                    "w%_unit: %",
-                    "> 204962:       0.00",
-                    "> 204962_unit: %"
-                ],
-                "metadata": {
-                    " - ": "I1: RID 1, RI Signal",
-                    "(Baseline from) to": " 15.206",
-                    "(Baseline from) to_unit": "ml",
-                    "(Calibration MH-A) univ. Calibration MH-A": " 0.500000",
-                    "(Calibration MH-A) univ. Calibration MH-A_unit": "-",
-                    "(Calibration MH-K) univ. Calibration MH-K": " 0.001000",
-                    "(Calibration MH-K) univ. Calibration MH-K_unit": "ml/g",
-                    "(Column 1) Temperature": " 50.000",
-                    "(Column 1) Temperature_unit": "C",
-                    "(Column 2) Temperature": " 50.000",
-                    "(Column 2) Temperature_unit": "C",
-                    "(Column 3) Temperature": " 50.000",
-                    "(Column 3) Temperature_unit": "C",
-                    "(Detector 1) Delay": "  0.000",
-                    "(Detector 1) Delay_unit": "min",
-                    "(Detector 2) Delay": "  0.000",
-                    "(Detector 2) Delay_unit": "min",
-                    "(Integration from) to": " 15.206",
-                    "(Integration from) to_unit": "ml",
-                    "< 21680": "      0.00",
-                    "< 21680_unit": "%",
-                    "> 204962": "      0.00",
-                    "> 204962_unit": "%",
-                    "Baseline from": " 12.957",
-                    "Calibration": "C:\\DATA\\calibration\\20220707-GRAM_DMAc LiBr 0.8 pro L_2Mixed-C S\u00e4ulen_50\u00b0C 0_5ml min_PS.CAL",
-                    "Calibration MH-A": " 0.000000",
-                    "Calibration MH-A_unit": "-",
-                    "Calibration MH-K": " 1.000000",
-                    "Calibration MH-K_unit": "ml/g",
-                    "Column 1": "PLgel Precolumn",
-                    "Column 2": "PLgel 5\u00b5m Mixed-C",
-                    "Column 3": "PLgel 5\u00b5m Mixed-C",
-                    "Concentration": "  1.000",
-                    "Concentration_unit": "g/l",
-                    "D": " 1.116E+0",
-                    "Data Interval": "  1.000",
-                    "Data Interval_unit": "s",
-                    "Detector 1": "I1: RID 1, RI Signal",
-                    "Detector 2": "I1: IsoPump 1, Pressure",
-                    "Eluent": "DMAc 0.79g/2.5L LiBr",
-                    "Export file": "Z:\\Jennifer\\JM-03\\1_Inj_ Vial  71  JM_03 - 1.TXT",
-                    "Fl": " 2.021E+1",
-                    "Fl_unit": "ml*V",
-                    "Flow": "  0.500",
-                    "Flow_unit": "ml/min",
-                    "Inject date": "Donnerstag   21/07/22   14:30:57",
-                    "Inject volume": "100.000",
-                    "Inject volume_unit": "ul",
-                    "Integration from": " 12.957",
-                    "Internal Standard Acquisition": "-------",
-                    "Internal Standard Acquisition_unit": "ml",
-                    "Internal Standard Calibration": " 50.000",
-                    "Internal Standard Calibration_unit": "ml",
-                    "M(z+1)": " 8.281E+4",
-                    "M(z+1)_unit": "g/mol",
-                    "Method": "C:\\DATA\\Methoden\\GRAM DMAC LiBr 079g 50\u00b0C_2020 08 28.MET",
-                    "Method settings": "C:\\WINGPC_8#1\\PSS.ChromPilot.Method.Instrument.1.xml",
-                    "Mn": " 5.646E+4",
-                    "Mn_unit": "g/mol",
-                    "Mp": " 5.286E+4",
-                    "Mp_unit": "g/mol",
-                    "Mv": " 0.000E+0",
-                    "Mv_unit": "g/mol",
-                    "Mw": " 6.301E+4",
-                    "Mw_unit": "g/mol",
-                    "Mz": " 7.172E+4",
-                    "Mz_unit": "g/mol",
-                    "Operator": "itcp-akt",
-                    "Project": "C:\\DATA\\AKT THF Tosoh\\20220721",
-                    "Sample": "Vial  71: JM_03 - 1",
-                    "Sequence table": "C:\\WINGPC_8#1\\PSS.ChromPilot.Sequence.Instrument.1.xml",
-                    "Vp": " 1.426E+1",
-                    "Vp_unit": "ml",
-                    "[n]": " 0.000E+0",
-                    "[n]_unit": "ml/g",
-                    "columns": 0,
-                    "rows": 0,
-                    "w%": "    100.00",
-                    "w%_unit": "%"
-                },
-                "rows": []
+    "data": [
+        {
+            "metadata": {
+                "content_type": "text/plain",
+                "extension": ".TXT",
+                "file_name": "1_Inj_ Vial  71  JM_03 - 1.TXT",
+                "mime_type": "text/plain",
+                "reader": "SecReader",
+                "uploaded": "2022-12-01T09:51:07.645397"
             },
-            {
-                "columns": [],
-                "header": [
-                    "Calibration Coefficients:",
-                    "Vol. min : 10.732670",
-                    "Vol. max : 20.341670",
-                    "R : 9.999171e-01",
-                    "Fit : PSS Poly 5",
-                    "Const.: 4.587262e+00",
-                    "Coef.2: 1.789272e+00",
-                    "Coef.3: -2.625093e-01",
-                    "Coef.4: 1.264916e-02",
-                    "Coef.5: -2.054607e-04",
-                    "Coef.6: -3.078503e-07",
-                    "Coef.7: 0.000000e+00",
-                    "Coef.8: 0.000000e+00"
-                ],
-                "metadata": {
-                    "Coef.2": " 1.789272e+00",
-                    "Coef.3": " -2.625093e-01",
-                    "Coef.4": " 1.264916e-02",
-                    "Coef.5": " -2.054607e-04",
-                    "Coef.6": " -3.078503e-07",
-                    "Coef.7": " 0.000000e+00",
-                    "Coef.8": " 0.000000e+00",
-                    "Const.": " 4.587262e+00",
-                    "Fit ": " PSS Poly 5",
-                    "R ": " 9.999171e-01",
-                    "Vol. max ": " 20.341670",
-                    "Vol. min ": " 10.732670",
-                    "columns": 0,
-                    "rows": 0,
-                    "table_name": "Calibration Coefficients:"
+            "tables": [
+                {
+                    "columns": [],
+                    "header": [
+                        "Sample: Vial  71: JM_03 - 1",
+                        "Method settings: C:\\WINGPC_8#1\\PSS.ChromPilot.Method.Instrument.1.xml",
+                        "Sequence table: C:\\WINGPC_8#1\\PSS.ChromPilot.Sequence.Instrument.1.xml",
+                        "Inject date: Donnerstag   21/07/22   14:30:57",
+                        "Inject volume: 100.000",
+                        "Inject volume_unit: ul",
+                        "Concentration:   1.000",
+                        "Concentration_unit: g/l",
+                        "Project: C:\\DATA\\AKT THF Tosoh\\20220721",
+                        "Calibration: C:\\DATA\\calibration\\20220707-GRAM_DMAc LiBr 0.8 pro L_2Mixed-C S\u00e4ulen_50\u00b0C 0_5ml min_PS.CAL",
+                        "Method: C:\\DATA\\Methoden\\GRAM DMAC LiBr 079g 50\u00b0C_2020 08 28.MET",
+                        "Export file: Z:\\Jennifer\\JM-03\\1_Inj_ Vial  71  JM_03 - 1.TXT",
+                        "Operator: itcp-akt",
+                        "Calibration MH-K:  1.000000",
+                        "Calibration MH-K_unit: ml/g",
+                        "(Calibration MH-K) univ. Calibration MH-K:  0.001000",
+                        "(Calibration MH-K) univ. Calibration MH-K_unit: ml/g",
+                        "Calibration MH-A:  0.000000",
+                        "Calibration MH-A_unit: -",
+                        "(Calibration MH-A) univ. Calibration MH-A:  0.500000",
+                        "(Calibration MH-A) univ. Calibration MH-A_unit: -",
+                        "Internal Standard Calibration:  50.000",
+                        "Internal Standard Calibration_unit: ml",
+                        "Internal Standard Acquisition: -------",
+                        "Internal Standard Acquisition_unit: ml",
+                        "Data Interval:   1.000",
+                        "Data Interval_unit: s",
+                        "Eluent: DMAc 0.79g/2.5L LiBr",
+                        "Flow:   0.500",
+                        "Flow_unit: ml/min",
+                        "Column 1: PLgel Precolumn",
+                        "(Column 1) Temperature:  50.000",
+                        "(Column 1) Temperature_unit: C",
+                        "Column 2: PLgel 5\u00b5m Mixed-C",
+                        "(Column 2) Temperature:  50.000",
+                        "(Column 2) Temperature_unit: C",
+                        "Column 3: PLgel 5\u00b5m Mixed-C",
+                        "(Column 3) Temperature:  50.000",
+                        "(Column 3) Temperature_unit: C",
+                        "Detector 1: I1: RID 1, RI Signal",
+                        "(Detector 1) Delay:   0.000",
+                        "(Detector 1) Delay_unit: min",
+                        "Detector 2: I1: IsoPump 1, Pressure",
+                        "(Detector 2) Delay:   0.000",
+                        "(Detector 2) Delay_unit: min",
+                        "Baseline from:  12.957",
+                        "(Baseline from) to:  15.206",
+                        "(Baseline from) to_unit: ml",
+                        "Integration from:  12.957",
+                        "(Integration from) to:  15.206",
+                        "(Integration from) to_unit: ml",
+                        " I1: RID 1, RI Signal",
+                        "Mn:  5.646E+4",
+                        "Mn_unit: g/mol",
+                        "Mw:  6.301E+4",
+                        "Mw_unit: g/mol",
+                        "Mz:  7.172E+4",
+                        "Mz_unit: g/mol",
+                        "M(z+1):  8.281E+4",
+                        "M(z+1)_unit: g/mol",
+                        "Mv:  0.000E+0",
+                        "Mv_unit: g/mol",
+                        "D:  1.116E+0",
+                        "[n]:  0.000E+0",
+                        "[n]_unit: ml/g",
+                        "Vp:  1.426E+1",
+                        "Vp_unit: ml",
+                        "Mp:  5.286E+4",
+                        "Mp_unit: g/mol",
+                        "Fl:  2.021E+1",
+                        "Fl_unit: ml*V",
+                        "< 21680:       0.00",
+                        "< 21680_unit: %",
+                        "w%:     100.00",
+                        "w%_unit: %",
+                        "> 204962:       0.00",
+                        "> 204962_unit: %"
+                    ],
+                    "metadata": {
+                        " - ": "I1: RID 1, RI Signal",
+                        "(Baseline from) to": " 15.206",
+                        "(Baseline from) to_unit": "ml",
+                        "(Calibration MH-A) univ. Calibration MH-A": " 0.500000",
+                        "(Calibration MH-A) univ. Calibration MH-A_unit": "-",
+                        "(Calibration MH-K) univ. Calibration MH-K": " 0.001000",
+                        "(Calibration MH-K) univ. Calibration MH-K_unit": "ml/g",
+                        "(Column 1) Temperature": " 50.000",
+                        "(Column 1) Temperature_unit": "C",
+                        "(Column 2) Temperature": " 50.000",
+                        "(Column 2) Temperature_unit": "C",
+                        "(Column 3) Temperature": " 50.000",
+                        "(Column 3) Temperature_unit": "C",
+                        "(Detector 1) Delay": "  0.000",
+                        "(Detector 1) Delay_unit": "min",
+                        "(Detector 2) Delay": "  0.000",
+                        "(Detector 2) Delay_unit": "min",
+                        "(Integration from) to": " 15.206",
+                        "(Integration from) to_unit": "ml",
+                        "< 21680": "      0.00",
+                        "< 21680_unit": "%",
+                        "> 204962": "      0.00",
+                        "> 204962_unit": "%",
+                        "Baseline from": " 12.957",
+                        "Calibration": "C:\\DATA\\calibration\\20220707-GRAM_DMAc LiBr 0.8 pro L_2Mixed-C S\u00e4ulen_50\u00b0C 0_5ml min_PS.CAL",
+                        "Calibration MH-A": " 0.000000",
+                        "Calibration MH-A_unit": "-",
+                        "Calibration MH-K": " 1.000000",
+                        "Calibration MH-K_unit": "ml/g",
+                        "Column 1": "PLgel Precolumn",
+                        "Column 2": "PLgel 5\u00b5m Mixed-C",
+                        "Column 3": "PLgel 5\u00b5m Mixed-C",
+                        "Concentration": "  1.000",
+                        "Concentration_unit": "g/l",
+                        "D": " 1.116E+0",
+                        "Data Interval": "  1.000",
+                        "Data Interval_unit": "s",
+                        "Detector 1": "I1: RID 1, RI Signal",
+                        "Detector 2": "I1: IsoPump 1, Pressure",
+                        "Eluent": "DMAc 0.79g/2.5L LiBr",
+                        "Export file": "Z:\\Jennifer\\JM-03\\1_Inj_ Vial  71  JM_03 - 1.TXT",
+                        "Fl": " 2.021E+1",
+                        "Fl_unit": "ml*V",
+                        "Flow": "  0.500",
+                        "Flow_unit": "ml/min",
+                        "Inject date": "Donnerstag   21/07/22   14:30:57",
+                        "Inject volume": "100.000",
+                        "Inject volume_unit": "ul",
+                        "Integration from": " 12.957",
+                        "Internal Standard Acquisition": "-------",
+                        "Internal Standard Acquisition_unit": "ml",
+                        "Internal Standard Calibration": " 50.000",
+                        "Internal Standard Calibration_unit": "ml",
+                        "M(z+1)": " 8.281E+4",
+                        "M(z+1)_unit": "g/mol",
+                        "Method": "C:\\DATA\\Methoden\\GRAM DMAC LiBr 079g 50\u00b0C_2020 08 28.MET",
+                        "Method settings": "C:\\WINGPC_8#1\\PSS.ChromPilot.Method.Instrument.1.xml",
+                        "Mn": " 5.646E+4",
+                        "Mn_unit": "g/mol",
+                        "Mp": " 5.286E+4",
+                        "Mp_unit": "g/mol",
+                        "Mv": " 0.000E+0",
+                        "Mv_unit": "g/mol",
+                        "Mw": " 6.301E+4",
+                        "Mw_unit": "g/mol",
+                        "Mz": " 7.172E+4",
+                        "Mz_unit": "g/mol",
+                        "Operator": "itcp-akt",
+                        "Project": "C:\\DATA\\AKT THF Tosoh\\20220721",
+                        "Sample": "Vial  71: JM_03 - 1",
+                        "Sequence table": "C:\\WINGPC_8#1\\PSS.ChromPilot.Sequence.Instrument.1.xml",
+                        "Vp": " 1.426E+1",
+                        "Vp_unit": "ml",
+                        "[n]": " 0.000E+0",
+                        "[n]_unit": "ml/g",
+                        "columns": 0,
+                        "rows": 0,
+                        "w%": "    100.00",
+                        "w%_unit": "%"
+                    },
+                    "rows": []
                 },
-                "rows": []
-            },
-            {
-                "columns": [
-                    {
-                        "key": "0",
-                        "name": "Area"
+                {
+                    "columns": [],
+                    "header": [
+                        "Calibration Coefficients:",
+                        "Vol. min : 10.732670",
+                        "Vol. max : 20.341670",
+                        "R : 9.999171e-01",
+                        "Fit : PSS Poly 5",
+                        "Const.: 4.587262e+00",
+                        "Coef.2: 1.789272e+00",
+                        "Coef.3: -2.625093e-01",
+                        "Coef.4: 1.264916e-02",
+                        "Coef.5: -2.054607e-04",
+                        "Coef.6: -3.078503e-07",
+                        "Coef.7: 0.000000e+00",
+                        "Coef.8: 0.000000e+00"
+                    ],
+                    "metadata": {
+                        "Coef.2": " 1.789272e+00",
+                        "Coef.3": " -2.625093e-01",
+                        "Coef.4": " 1.264916e-02",
+                        "Coef.5": " -2.054607e-04",
+                        "Coef.6": " -3.078503e-07",
+                        "Coef.7": " 0.000000e+00",
+                        "Coef.8": " 0.000000e+00",
+                        "Const.": " 4.587262e+00",
+                        "Fit ": " PSS Poly 5",
+                        "R ": " 9.999171e-01",
+                        "Vol. max ": " 20.341670",
+                        "Vol. min ": " 10.732670",
+                        "columns": 0,
+                        "rows": 0,
+                        "table_name": "Calibration Coefficients:"
                     },
-                    {
-                        "key": "1",
-                        "name": "Name"
-                    },
-                    {
-                        "key": "2",
-                        "name": "from"
-                    },
-                    {
-                        "key": "3",
-                        "name": "to"
-                    },
-                    {
-                        "key": "4",
-                        "name": "Unit"
-                    }
-                ],
-                "header": [
-                    "Multi area report ",
-                    "Sample: Vial  71: JM_03 - 1",
-                    "Calibration: C:\\DATA\\calibration\\20220707-GRAM_DMAc LiBr 0.8 pro L_2Mixed-C S\u00e4ulen_50\u00b0C 0_5ml min_PS.CAL",
-                    "Print Date: Freitag      22/07/22   09:44:29",
-                    "Project: C:\\DATA\\AKT THF Tosoh\\20220721",
-                    "Method: C:\\DATA\\Methoden\\GRAM DMAC LiBr 079g 50\u00b0C_2020 08 28"
-                ],
-                "metadata": {
-                    "Calibration": "C:\\DATA\\calibration\\20220707-GRAM_DMAc LiBr 0.8 pro L_2Mixed-C S\u00e4ulen_50\u00b0C 0_5ml min_PS.CAL",
-                    "Method": "C:\\DATA\\Methoden\\GRAM DMAC LiBr 079g 50\u00b0C_2020 08 28",
-                    "Print Date": "Freitag      22/07/22   09:44:29",
-                    "Project": "C:\\DATA\\AKT THF Tosoh\\20220721",
-                    "Sample": "Vial  71: JM_03 - 1",
-                    "columns": 5,
-                    "rows": 8,
-                    "table_name": "Multi area report "
+                    "rows": []
                 },
-                "rows": [
-                    [
-                        "1",
-                        "",
-                        "",
-                        "",
-                        ""
+                {
+                    "columns": [
+                        {
+                            "key": "0",
+                            "name": "Area"
+                        },
+                        {
+                            "key": "1",
+                            "name": "Name"
+                        },
+                        {
+                            "key": "2",
+                            "name": "from"
+                        },
+                        {
+                            "key": "3",
+                            "name": "to"
+                        },
+                        {
+                            "key": "4",
+                            "name": "Unit"
+                        }
                     ],
-                    [
-                        "2",
-                        "",
-                        "",
-                        "",
-                        ""
+                    "header": [
+                        "Multi area report ",
+                        "Sample: Vial  71: JM_03 - 1",
+                        "Calibration: C:\\DATA\\calibration\\20220707-GRAM_DMAc LiBr 0.8 pro L_2Mixed-C S\u00e4ulen_50\u00b0C 0_5ml min_PS.CAL",
+                        "Print Date: Freitag      22/07/22   09:44:29",
+                        "Project: C:\\DATA\\AKT THF Tosoh\\20220721",
+                        "Method: C:\\DATA\\Methoden\\GRAM DMAC LiBr 079g 50\u00b0C_2020 08 28"
                     ],
-                    [
-                        "3",
-                        "",
-                        "",
-                        "",
-                        ""
-                    ],
-                    [
-                        "4",
-                        "",
-                        "",
-                        "",
-                        ""
-                    ],
-                    [
-                        "5",
-                        "",
-                        "",
-                        "",
-                        ""
-                    ],
-                    [
-                        "6",
-                        "",
-                        "",
-                        "",
-                        ""
-                    ],
-                    [
-                        "7",
-                        "",
-                        "",
-                        "",
-                        ""
-                    ],
-                    [
-                        "8",
-                        "",
-                        "",
-                        "",
-                        ""
+                    "metadata": {
+                        "Calibration": "C:\\DATA\\calibration\\20220707-GRAM_DMAc LiBr 0.8 pro L_2Mixed-C S\u00e4ulen_50\u00b0C 0_5ml min_PS.CAL",
+                        "Method": "C:\\DATA\\Methoden\\GRAM DMAC LiBr 079g 50\u00b0C_2020 08 28",
+                        "Print Date": "Freitag      22/07/22   09:44:29",
+                        "Project": "C:\\DATA\\AKT THF Tosoh\\20220721",
+                        "Sample": "Vial  71: JM_03 - 1",
+                        "columns": 5,
+                        "rows": 8,
+                        "table_name": "Multi area report "
+                    },
+                    "rows": [
+                        [
+                            "1",
+                            "",
+                            "",
+                            "",
+                            ""
+                        ],
+                        [
+                            "2",
+                            "",
+                            "",
+                            "",
+                            ""
+                        ],
+                        [
+                            "3",
+                            "",
+                            "",
+                            "",
+                            ""
+                        ],
+                        [
+                            "4",
+                            "",
+                            "",
+                            "",
+                            ""
+                        ],
+                        [
+                            "5",
+                            "",
+                            "",
+                            "",
+                            ""
+                        ],
+                        [
+                            "6",
+                            "",
+                            "",
+                            "",
+                            ""
+                        ],
+                        [
+                            "7",
+                            "",
+                            "",
+                            "",
+                            ""
+                        ],
+                        [
+                            "8",
+                            "",
+                            "",
+                            "",
+                            ""
+                        ]
                     ]
-                ]
-            },
-            {
-                "columns": [
-                    {
-                        "key": "0",
-                        "name": " "
-                    },
-                    {
-                        "key": "1",
-                        "name": "Set 1"
-                    },
-                    {
-                        "key": "2",
-                        "name": "Set 2"
-                    },
-                    {
-                        "key": "3",
-                        "name": "Set 3"
-                    },
-                    {
-                        "key": "4",
-                        "name": "Set 4"
-                    },
-                    {
-                        "key": "5",
-                        "name": "Set 5"
-                    },
-                    {
-                        "key": "6",
-                        "name": "Set 6"
-                    },
-                    {
-                        "key": "7",
-                        "name": "Set 7"
-                    },
-                    {
-                        "key": "8",
-                        "name": "Set 8"
-                    }
-                ],
-                "header": [
-                    "Unnamed"
-                ],
-                "metadata": {
-                    "columns": 9,
-                    "rows": 8,
-                    "table_name": "Unnamed"
                 },
-                "rows": [
-                    [
-                        "",
-                        "-",
-                        "-",
-                        "-",
-                        "-",
-                        "-",
-                        "-",
-                        "-",
-                        "-"
+                {
+                    "columns": [
+                        {
+                            "key": "0",
+                            "name": " "
+                        },
+                        {
+                            "key": "1",
+                            "name": "Set 1"
+                        },
+                        {
+                            "key": "2",
+                            "name": "Set 2"
+                        },
+                        {
+                            "key": "3",
+                            "name": "Set 3"
+                        },
+                        {
+                            "key": "4",
+                            "name": "Set 4"
+                        },
+                        {
+                            "key": "5",
+                            "name": "Set 5"
+                        },
+                        {
+                            "key": "6",
+                            "name": "Set 6"
+                        },
+                        {
+                            "key": "7",
+                            "name": "Set 7"
+                        },
+                        {
+                            "key": "8",
+                            "name": "Set 8"
+                        }
                     ],
-                    [
-                        "",
-                        "-",
-                        "-",
-                        "-",
-                        "-",
-                        "-",
-                        "-",
-                        "-",
-                        "-"
+                    "header": [
+                        "Unnamed"
                     ],
-                    [
-                        "",
-                        "-",
-                        "-",
-                        "-",
-                        "-",
-                        "-",
-                        "-",
-                        "-",
-                        "-"
-                    ],
-                    [
-                        "",
-                        "-",
-                        "-",
-                        "-",
-                        "-",
-                        "-",
-                        "-",
-                        "-",
-                        "-"
-                    ],
-                    [
-                        "",
-                        "-",
-                        "-",
-                        "-",
-                        "-",
-                        "-",
-                        "-",
-                        "-",
-                        "-"
-                    ],
-                    [
-                        "",
-                        "-",
-                        "-",
-                        "-",
-                        "-",
-                        "-",
-                        "-",
-                        "-",
-                        "-"
-                    ],
-                    [
-                        "",
-                        "-",
-                        "-",
-                        "-",
-                        "-",
-                        "-",
-                        "-",
-                        "-",
-                        "-"
-                    ],
-                    [
-                        "",
-                        "-",
-                        "-",
-                        "-",
-                        "-",
-                        "-",
-                        "-",
-                        "-",
-                        "-"
+                    "metadata": {
+                        "columns": 9,
+                        "rows": 8,
+                        "table_name": "Unnamed"
+                    },
+                    "rows": [
+                        [
+                            "",
+                            "-",
+                            "-",
+                            "-",
+                            "-",
+                            "-",
+                            "-",
+                            "-",
+                            "-"
+                        ],
+                        [
+                            "",
+                            "-",
+                            "-",
+                            "-",
+                            "-",
+                            "-",
+                            "-",
+                            "-",
+                            "-"
+                        ],
+                        [
+                            "",
+                            "-",
+                            "-",
+                            "-",
+                            "-",
+                            "-",
+                            "-",
+                            "-",
+                            "-"
+                        ],
+                        [
+                            "",
+                            "-",
+                            "-",
+                            "-",
+                            "-",
+                            "-",
+                            "-",
+                            "-",
+                            "-"
+                        ],
+                        [
+                            "",
+                            "-",
+                            "-",
+                            "-",
+                            "-",
+                            "-",
+                            "-",
+                            "-",
+                            "-"
+                        ],
+                        [
+                            "",
+                            "-",
+                            "-",
+                            "-",
+                            "-",
+                            "-",
+                            "-",
+                            "-",
+                            "-"
+                        ],
+                        [
+                            "",
+                            "-",
+                            "-",
+                            "-",
+                            "-",
+                            "-",
+                            "-",
+                            "-",
+                            "-"
+                        ],
+                        [
+                            "",
+                            "-",
+                            "-",
+                            "-",
+                            "-",
+                            "-",
+                            "-",
+                            "-",
+                            "-"
+                        ]
                     ]
-                ]
-            },
-            {
-                "columns": [],
-                "header": [
-                    "Unnamed"
-                ],
-                "metadata": {
-                    "columns": 0,
-                    "rows": 0,
-                    "table_name": "Unnamed"
                 },
-                "rows": []
-            },
-            {
-                "columns": [
-                    {
-                        "key": "0",
-                        "name": "Time"
+                {
+                    "columns": [],
+                    "header": [
+                        "Unnamed"
+                    ],
+                    "metadata": {
+                        "columns": 0,
+                        "rows": 0,
+                        "table_name": "Unnamed"
                     },
-                    {
-                        "key": "1",
-                        "name": "I1: RID 1, RI Signal"
-                    },
-                    {
-                        "key": "2",
-                        "name": "Time"
-                    }
-                ],
-                "header": [
-                    "RAW"
-                ],
-                "metadata": {
-                    "columns": 3,
-                    "rows": 2702,
-                    "table_name": "RAW"
+                    "rows": []
                 },
-                "rows": [
-                    [
-                        "0.00000E+0",
-                        "1.56890E-1",
-                        "14:30:57:04"
+                {
+                    "columns": [
+                        {
+                            "key": "0",
+                            "name": "Time"
+                        },
+                        {
+                            "key": "1",
+                            "name": "I1: RID 1, RI Signal"
+                        },
+                        {
+                            "key": "2",
+                            "name": "Time"
+                        }
                     ],
-                    [
-                        "1.66667E-2",
-                        "1.70664E-1",
-                        "14:30:58:04"
+                    "header": [
+                        "RAW"
                     ],
-                    [
-                        "3.33333E-2",
-                        "1.74934E-1",
-                        "14:30:59:04"
-                    ],
-                    [
-                        "5.00000E-2",
-                        "1.69428E-1",
-                        "14:31:00:04"
-                    ],
-                    [
-                        "6.66667E-2",
-                        "1.59691E-1",
-                        "14:31:01:04"
-                    ],
-                    [
-                        "8.33333E-2",
-                        "1.46244E-1",
-                        "14:31:02:04"
-                    ],
-                    [
-                        "1.00000E-1",
-                        "1.35215E-1",
-                        "14:31:03:04"
-                    ],
-                    [
-                        "1.16667E-1",
-                        "1.28664E-1",
-                        "14:31:04:04"
-                    ],
-                    [
-                        "1.33333E-1",
-                        "1.24690E-1",
-                        "14:31:05:04"
-                    ],
-                    [
-                        "1.50000E-1",
-                        "1.23989E-1",
-                        "14:31:06:04"
+                    "metadata": {
+                        "columns": 3,
+                        "rows": 2702,
+                        "table_name": "RAW"
+                    },
+                    "rows": [
+                        [
+                            "0.00000E+0",
+                            "1.56890E-1",
+                            "14:30:57:04"
+                        ],
+                        [
+                            "1.66667E-2",
+                            "1.70664E-1",
+                            "14:30:58:04"
+                        ],
+                        [
+                            "3.33333E-2",
+                            "1.74934E-1",
+                            "14:30:59:04"
+                        ],
+                        [
+                            "5.00000E-2",
+                            "1.69428E-1",
+                            "14:31:00:04"
+                        ],
+                        [
+                            "6.66667E-2",
+                            "1.59691E-1",
+                            "14:31:01:04"
+                        ],
+                        [
+                            "8.33333E-2",
+                            "1.46244E-1",
+                            "14:31:02:04"
+                        ],
+                        [
+                            "1.00000E-1",
+                            "1.35215E-1",
+                            "14:31:03:04"
+                        ],
+                        [
+                            "1.16667E-1",
+                            "1.28664E-1",
+                            "14:31:04:04"
+                        ],
+                        [
+                            "1.33333E-1",
+                            "1.24690E-1",
+                            "14:31:05:04"
+                        ],
+                        [
+                            "1.50000E-1",
+                            "1.23989E-1",
+                            "14:31:06:04"
+                        ]
                     ]
-                ]
-            },
-            {
-                "columns": [
-                    {
-                        "key": "0",
-                        "name": "Volume"
-                    },
-                    {
-                        "key": "1",
-                        "name": "Molar mass"
-                    },
-                    {
-                        "key": "2",
-                        "name": "I1: RID 1, RI Signal"
-                    },
-                    {
-                        "key": "3",
-                        "name": "Integral[%]"
-                    }
-                ],
-                "header": [
-                    "ELU"
-                ],
-                "metadata": {
-                    "columns": 4,
-                    "rows": 273,
-                    "table_name": "ELU"
                 },
-                "rows": [
-                    [
-                        "1.29573E+1",
-                        "2.04963E+5",
-                        "0.00000E+0",
-                        "1.00000E+2"
+                {
+                    "columns": [
+                        {
+                            "key": "0",
+                            "name": "Volume"
+                        },
+                        {
+                            "key": "1",
+                            "name": "Molar mass"
+                        },
+                        {
+                            "key": "2",
+                            "name": "I1: RID 1, RI Signal"
+                        },
+                        {
+                            "key": "3",
+                            "name": "Integral[%]"
+                        }
                     ],
-                    [
-                        "1.29656E+1",
-                        "2.03124E+5",
-                        "1.54321E-2",
-                        "9.99997E+1"
+                    "header": [
+                        "ELU"
                     ],
-                    [
-                        "1.29738E+1",
-                        "2.01302E+5",
-                        "3.05854E-2",
-                        "9.99987E+1"
-                    ],
-                    [
-                        "1.29821E+1",
-                        "1.99497E+5",
-                        "4.62413E-2",
-                        "9.99972E+1"
-                    ],
-                    [
-                        "1.29904E+1",
-                        "1.97710E+5",
-                        "6.20113E-2",
-                        "9.99950E+1"
-                    ],
-                    [
-                        "1.29986E+1",
-                        "1.95939E+5",
-                        "7.75943E-2",
-                        "9.99921E+1"
-                    ],
-                    [
-                        "1.30069E+1",
-                        "1.94186E+5",
-                        "9.62842E-2",
-                        "9.99885E+1"
-                    ],
-                    [
-                        "1.30152E+1",
-                        "1.92449E+5",
-                        "1.13579E-1",
-                        "9.99843E+1"
-                    ],
-                    [
-                        "1.30234E+1",
-                        "1.90728E+5",
-                        "1.35403E-1",
-                        "9.99792E+1"
-                    ],
-                    [
-                        "1.30317E+1",
-                        "1.89024E+5",
-                        "1.56856E-1",
-                        "9.99732E+1"
+                    "metadata": {
+                        "columns": 4,
+                        "rows": 273,
+                        "table_name": "ELU"
+                    },
+                    "rows": [
+                        [
+                            "1.29573E+1",
+                            "2.04963E+5",
+                            "0.00000E+0",
+                            "1.00000E+2"
+                        ],
+                        [
+                            "1.29656E+1",
+                            "2.03124E+5",
+                            "1.54321E-2",
+                            "9.99997E+1"
+                        ],
+                        [
+                            "1.29738E+1",
+                            "2.01302E+5",
+                            "3.05854E-2",
+                            "9.99987E+1"
+                        ],
+                        [
+                            "1.29821E+1",
+                            "1.99497E+5",
+                            "4.62413E-2",
+                            "9.99972E+1"
+                        ],
+                        [
+                            "1.29904E+1",
+                            "1.97710E+5",
+                            "6.20113E-2",
+                            "9.99950E+1"
+                        ],
+                        [
+                            "1.29986E+1",
+                            "1.95939E+5",
+                            "7.75943E-2",
+                            "9.99921E+1"
+                        ],
+                        [
+                            "1.30069E+1",
+                            "1.94186E+5",
+                            "9.62842E-2",
+                            "9.99885E+1"
+                        ],
+                        [
+                            "1.30152E+1",
+                            "1.92449E+5",
+                            "1.13579E-1",
+                            "9.99843E+1"
+                        ],
+                        [
+                            "1.30234E+1",
+                            "1.90728E+5",
+                            "1.35403E-1",
+                            "9.99792E+1"
+                        ],
+                        [
+                            "1.30317E+1",
+                            "1.89024E+5",
+                            "1.56856E-1",
+                            "9.99732E+1"
+                        ]
                     ]
-                ]
-            },
-            {
-                "columns": [
-                    {
-                        "key": "0",
-                        "name": "Molar mass"
-                    },
-                    {
-                        "key": "1",
-                        "name": "I1: RID 1, RI Signal"
-                    },
-                    {
-                        "key": "2",
-                        "name": "Integral[%]"
-                    }
-                ],
-                "header": [
-                    "MWD"
-                ],
-                "metadata": {
-                    "columns": 3,
-                    "rows": 273,
-                    "table_name": "MWD"
                 },
-                "rows": [
-                    [
-                        "2.16801E+4",
-                        "0.00000E+0",
-                        "0.00000E+0"
+                {
+                    "columns": [
+                        {
+                            "key": "0",
+                            "name": "Molar mass"
+                        },
+                        {
+                            "key": "1",
+                            "name": "I1: RID 1, RI Signal"
+                        },
+                        {
+                            "key": "2",
+                            "name": "Integral[%]"
+                        }
                     ],
-                    [
-                        "2.18598E+4",
-                        "1.36268E-3",
-                        "4.88755E-4"
+                    "header": [
+                        "MWD"
                     ],
-                    [
-                        "2.20411E+4",
-                        "2.46252E-3",
-                        "1.37199E-3"
-                    ],
-                    [
-                        "2.22239E+4",
-                        "3.94682E-3",
-                        "2.78761E-3"
-                    ],
-                    [
-                        "2.24082E+4",
-                        "5.20158E-3",
-                        "4.65327E-3"
-                    ],
-                    [
-                        "2.25941E+4",
-                        "6.63157E-3",
-                        "7.03183E-3"
-                    ],
-                    [
-                        "2.27814E+4",
-                        "8.45002E-3",
-                        "1.00626E-2"
-                    ],
-                    [
-                        "2.29704E+4",
-                        "9.73357E-3",
-                        "1.35538E-2"
-                    ],
-                    [
-                        "2.31609E+4",
-                        "1.15296E-2",
-                        "1.76891E-2"
-                    ],
-                    [
-                        "2.33529E+4",
-                        "1.31000E-2",
-                        "2.23878E-2"
+                    "metadata": {
+                        "columns": 3,
+                        "rows": 273,
+                        "table_name": "MWD"
+                    },
+                    "rows": [
+                        [
+                            "2.16801E+4",
+                            "0.00000E+0",
+                            "0.00000E+0"
+                        ],
+                        [
+                            "2.18598E+4",
+                            "1.36268E-3",
+                            "4.88755E-4"
+                        ],
+                        [
+                            "2.20411E+4",
+                            "2.46252E-3",
+                            "1.37199E-3"
+                        ],
+                        [
+                            "2.22239E+4",
+                            "3.94682E-3",
+                            "2.78761E-3"
+                        ],
+                        [
+                            "2.24082E+4",
+                            "5.20158E-3",
+                            "4.65327E-3"
+                        ],
+                        [
+                            "2.25941E+4",
+                            "6.63157E-3",
+                            "7.03183E-3"
+                        ],
+                        [
+                            "2.27814E+4",
+                            "8.45002E-3",
+                            "1.00626E-2"
+                        ],
+                        [
+                            "2.29704E+4",
+                            "9.73357E-3",
+                            "1.35538E-2"
+                        ],
+                        [
+                            "2.31609E+4",
+                            "1.15296E-2",
+                            "1.76891E-2"
+                        ],
+                        [
+                            "2.33529E+4",
+                            "1.31000E-2",
+                            "2.23878E-2"
+                        ]
                     ]
-                ]
-            }
-        ]
-    },
+                }
+            ]
+        }
+    ],
     "datatypes": [],
     "description": "Size Exclusion Chromatography (SEC)\nwith one Detector Output\n !migrated for new SEC (all detectors) loop ready reader. Please check if is still correct.\n --autogenerated by converter app for SEC loop",
     "devices": [],
@@ -1882,7 +1884,7 @@
         }
     ],
     "isDisabled": false,
-    "last_migration": "20260113143334",
+    "last_migration": "20260401123327",
     "ols": "CHMO:0001013",
     "ontology": "",
     "predicates": [],

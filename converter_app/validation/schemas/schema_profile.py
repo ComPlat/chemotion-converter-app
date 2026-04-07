@@ -60,20 +60,22 @@ profile_schema = {
             }
         },
         "data": {
-            "type": "object",
-            "properties": {
-                "metadata": {
-                    "type": "object",
-                    "properties": {
-
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "metadata": {
+                        "type": "object",
+                        "properties": {}
+                    },
+                    "tables": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "chemconverter://profile/input_tables/draft-01"
+                        }
                     }
-                },
-                "tables": {
-                    "type": "array",
-                    "items": {"$ref": "chemconverter://profile/input_tables/draft-01"}
                 }
-            },
-            "required": ["metadata", "tables"]
+            }
 
         },
         "last_migration": {
