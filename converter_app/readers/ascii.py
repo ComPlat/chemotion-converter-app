@@ -3,7 +3,6 @@ import re
 
 from converter_app.readers.helper.base import Reader
 from converter_app.readers.helper.reader import Readers
-from converter_app.readers.helper.unit_finder import UnitFinder
 
 logger = logging.getLogger(__name__)
 
@@ -17,12 +16,6 @@ class AsciiReader(Reader):
 
     # two or more chars in row
     text_pattern = re.compile(r'[A-Za-z]{2,}')
-
-    def __init__(self, file, *tar_content):
-        super().__init__(file, *tar_content)
-        self.unit_finder = UnitFinder(ignore_dimless=True)
-        self.unit_finder.add_custom_unit('unix seconds', 's')
-        self.unit_finder.add_custom_unit('Time (unix seconds)', 's')
 
     def check(self):
         """
@@ -70,25 +63,7 @@ class AsciiReader(Reader):
                     table['header'].append(row)
 
             previous_count = count
-
-        for table in tables:
-            self.add_unit_metadata(table)
-
         return tables
-
-    def add_unit_metadata(self, table):
-        """
-        Scan table header strings for units and store the result in table metadata.
-        """
-        unit_results = self.unit_finder.find_units(table['header'])
-        self.unit_finder.found_units_to_options_list()
-        for index, unit_result in enumerate(unit_results):
-            table['metadata'][f'unit_{index:02d}_found'] = str(unit_result['found'])
-            table['metadata'][f'unit_{index:02d}_conversion_factor'] = str(unit_result['conversion_factor'])
-            table['metadata'][f'unit_{index:02d}_base_unit'] = str(unit_result['base_unit'])
-            self.units.append({
-                'found' : str(unit_result['found']), 'conversion_factor' : str(unit_result['conversion_factor']), 'base_unit' : str(unit_result['base_unit']), 'uuid': str(unit_result['uuid'])
-            })
 
 
 Readers.instance().register(AsciiReader)

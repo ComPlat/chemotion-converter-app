@@ -3,6 +3,8 @@ import os
 import re
 from datetime import datetime, UTC
 
+from converter_app.readers.helper.unit_finder import StdUnits, UnitFinder, UnitRule
+
 logger = logging.getLogger(__name__)
 
 
@@ -82,6 +84,9 @@ class Reader:
         self.file_content = tar_content
         self.is_tar_ball = len(tar_content) > 0
         self.units = []
+        self.std_units = self._copy_std_units()
+        self._configure_std_units()
+        self.unit_finder = UnitFinder(custom_unit_map=self.std_units, ignore_dimless=True)
 
     @property
     def as_dict(self):
@@ -106,6 +111,7 @@ class Reader:
         Processes a file and stores all converted values in self.tables and self.metadata
         """
         self.tables = self.get_tables()
+        self.apply_unit_finder()
         self.metadata = self.get_metadata()
 
     def validate(self):
@@ -158,6 +164,126 @@ class Reader:
                         table['metadata'][key] = new_val
 
         return tables
+
+    def _copy_std_units(self) -> dict[str, UnitRule]:
+        """
+        Return a reader-local copy of the shared standard unit definitions.
+        """
+        return dict(StdUnits)
+
+    def _configure_std_units(self) -> None:
+        """
+        Hook for child readers to extend or override the local standard unit map.
+
+        This method is called during reader initialization after a reader-local copy
+        of ``StdUnits`` has been created. Changes made here affect only the current
+        reader instance and do not modify the shared global defaults for other
+        readers.
+
+        Child readers should use ``_set_std_unit(...)`` for single entries or
+        ``_extend_std_units(...)`` for multiple entries.
+
+        Example:
+            A child reader can define its own interpretation for a unit label such
+            as ``kWh`` and map it to a custom target base unit:
+
+            ```python
+            from astropy import units as u
+
+            class DtaReader(Reader):
+                def _configure_std_units(self) -> None:
+                    self._set_std_unit("kWh", u.kW * u.h, u.W * u.s)
+            ```
+
+        In that example:
+        - ``found`` stays ``"kWh"``
+        - ``source_unit`` is interpreted as ``u.kW * u.h``
+        - ``base_unit`` is forced to ``u.W * u.s``
+        - the conversion factor is calculated automatically by Astropy (and
+          ``from astropy import units as u``)
+
+        This is the recommended place for reader-specific unit aliases, overrides,
+        and custom base-unit mappings.
+        """
+        return None
+
+    def _set_std_unit(
+        self,
+        unit_text: str,
+        source_unit: str | object,
+        base_unit: str | object | None = None,
+        conversion_factor: float | None = None,
+    ) -> None:
+        """
+        Add or override a unit rule for the current reader instance only.
+        """
+        finder = UnitFinder()
+        normalized_unit_text = finder.normalize_text(unit_text)
+        normalized_source_unit = finder._to_unit(source_unit)
+        normalized_base_unit = finder._to_unit(base_unit) if base_unit is not None else None
+        self.std_units[normalized_unit_text] = UnitRule(
+            source_unit=normalized_source_unit,
+            base_unit=normalized_base_unit,
+            conversion_factor=conversion_factor,
+        )
+        if hasattr(self, 'unit_finder'):
+            self.unit_finder.add_custom_unit(
+                normalized_unit_text,
+                normalized_source_unit,
+                normalized_base_unit,
+                conversion_factor,
+            )
+
+    def _extend_std_units(self, unit_map: dict[str, UnitRule]) -> None:
+        """
+        Extend the reader-local standard unit map with multiple entries.
+        """
+        for unit_text, rule in unit_map.items():
+            self._set_std_unit(
+                unit_text,
+                rule.source_unit,
+                rule.base_unit,
+                rule.conversion_factor,
+            )
+
+    def get_table_unit_values(self, table: Table) -> list[str]:
+        """
+        Return strings that should be scanned for units for one table.
+        """
+        return [str(value) for value in table.get('header', [])]
+
+    def apply_unit_finder(self) -> None:
+        """
+        Apply unit detection to all tables and store the results in table metadata
+        and in the reader-level ``self.units`` list.
+        """
+        self.units = []
+        seen_unit_ids = set()
+
+        for table in self.tables or []:
+            unit_values = self.get_table_unit_values(table)
+            if not unit_values:
+                continue
+
+            unit_results = self.unit_finder.find_units(unit_values)
+            self.unit_finder.found_units_to_options_list()
+
+            for index, unit_result in enumerate(unit_results):
+                table['metadata'][f'unit_{index:02d}_found'] = str(unit_result['found'])
+                table['metadata'][f'unit_{index:02d}_conversion_factor'] = str(unit_result['conversion_factor'])
+                table['metadata'][f'unit_{index:02d}_base_unit'] = str(unit_result['base_unit'])
+
+                unit_id = str(unit_result['uuid'])
+                if unit_id in seen_unit_ids:
+                    continue
+
+                seen_unit_ids.add(unit_id)
+                self.units.append({
+                    'found': str(unit_result['found']),
+                    'conversion_factor': str(unit_result['conversion_factor']),
+                    'base_unit': str(unit_result['base_unit']),
+                    'uuid': unit_id,
+                })
 
     def prepare_tables(self) -> list[Table]:
         """

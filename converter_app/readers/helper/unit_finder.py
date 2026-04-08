@@ -3,14 +3,31 @@ import html
 import re
 import uuid
 from dataclasses import dataclass
+from types import MappingProxyType
 from typing import Iterable
 
 from astropy import units as u
-from astropy.units import NamedUnit, PrefixUnit
+from astropy.units import NamedUnit, PrefixUnit, StructuredUnit
 from converter_app import options
 
 BRACKET_UNIT_PATTERN = re.compile(r"\\?\[([^\]]+)\]")
+PARENTHESIS_UNIT_PATTERN = re.compile(r"\(([^()]+)\)")
 CELL_SPLIT_PATTERN = re.compile(r"[\t;|]+")
+UNIT_MULTIPLY_SPACE_PATTERN = re.compile(r"(?<=[0-9A-Za-zµΩ°⁰¹²³⁴⁵⁶⁷⁸⁹]) (?=[A-Za-zµΩ°])")
+UNICODE_POWER_TRANSLATION = str.maketrans({
+    "⁰": "0",
+    "¹": "1",
+    "²": "2",
+    "³": "3",
+    "⁴": "4",
+    "⁵": "5",
+    "⁶": "6",
+    "⁷": "7",
+    "⁸": "8",
+    "⁹": "9",
+    "⁻": "-",
+})
+EXPONENT_PATTERN = re.compile(r"(?<=[A-Za-zµΩ°])(-?\d+)")
 
 UNIT_RESULT_NAMESPACE = uuid.uuid5(
     uuid.NAMESPACE_DNS,
@@ -25,6 +42,20 @@ class UnitRule:
     conversion_factor: float | None = None
 
 
+StdUnits = MappingProxyType({
+    "%": UnitRule(u.percent),
+    "°C": UnitRule(u.deg_C, u.K, 1.0),
+    "deg C": UnitRule(u.deg_C, u.K, 1.0),
+    "deg. C": UnitRule(u.deg_C, u.K, 1.0),
+    "bar a": UnitRule(u.bar, u.Pa),
+    "bar": UnitRule(u.bar, u.Pa),
+    "ml/min": UnitRule(u.mL / u.min),
+    "mL/min": UnitRule(u.mL / u.min),
+    "unix seconds": UnitRule(u.s),
+    "Time (unix seconds)": UnitRule(u.s),
+})
+
+
 class UnitFinder:
     """
     Find unit strings in plain text values and convert them to simple SI-like base unit metadata.
@@ -35,23 +66,12 @@ class UnitFinder:
     - it supports instance-specific custom mappings
     """
 
-    default_unit_map = {
-        "%": UnitRule(u.percent),
-        "°C": UnitRule(u.deg_C, u.K, 1.0),
-        "deg C": UnitRule(u.deg_C, u.K, 1.0),
-        "deg. C": UnitRule(u.deg_C, u.K, 1.0),
-        "bar a": UnitRule(u.bar, u.Pa),
-        "bar": UnitRule(u.bar, u.Pa),
-        "ml/min": UnitRule(u.mL / u.min),
-        "mL/min": UnitRule(u.mL / u.min),
-    }
-
     def __init__(
         self,
         custom_unit_map: dict[str, UnitRule] | None = None,
         ignore_dimless: bool = True,
     ):
-        self.unit_map = dict(self.default_unit_map)
+        self.unit_map = dict(StdUnits)
         self.ignore_dimless = ignore_dimless
         self.found_units = []
         if custom_unit_map:
@@ -141,6 +161,12 @@ class UnitFinder:
                     seen_candidates.add(normalized_match)
                     candidates.append(normalized_match)
 
+            for match in PARENTHESIS_UNIT_PATTERN.findall(normalized_segment):
+                normalized_match = self.normalize_text(match)
+                if normalized_match and normalized_match not in seen_candidates:
+                    seen_candidates.add(normalized_match)
+                    candidates.append(normalized_match)
+
             if normalized_segment not in seen_candidates:
                 seen_candidates.add(normalized_segment)
                 candidates.append(normalized_segment)
@@ -160,8 +186,10 @@ class UnitFinder:
         rule = self.unit_map.get(unit_text)
         if rule is None:
             try:
-                source_unit = u.Unit(unit_text)
+                source_unit = self._to_unit(unit_text)
             except Exception:
+                return None
+            if isinstance(source_unit, StructuredUnit):
                 return None
             rule = UnitRule(source_unit=source_unit)
 
@@ -224,13 +252,19 @@ class UnitFinder:
 
     def _to_unit(self, value: str | u.UnitBase) -> u.UnitBase:
         if isinstance(value, str):
-            return u.Unit(value)
+            return u.Unit(self._normalize_for_parser(value))
         return value
 
     def _format_unit(self, unit: u.UnitBase) -> str:
         if unit == u.dimensionless_unscaled:
             return "dimensionless"
-        return unit.to_string()
+        formatted_unit = unit.to_string("unicode")
+        return UNIT_MULTIPLY_SPACE_PATTERN.sub("*", formatted_unit)
+
+    @staticmethod
+    def _normalize_for_parser(value: str) -> str:
+        normalized_value = UnitFinder.normalize_text(value).translate(UNICODE_POWER_TRANSLATION)
+        return EXPONENT_PATTERN.sub(r"**\1", normalized_value)
 
     @staticmethod
     def normalize_text(value: str) -> str:
