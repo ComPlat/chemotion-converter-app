@@ -523,12 +523,11 @@ class Converter:
                     axis,
                     profile_unit.get('uuid'),
                 )
-                corrected_operations = self._replace_si_unit_operations(prepared_operations, [self._build_nan_operation()])
                 corrected_descriptions = self._append_auto_correction_descriptions(
                     prepared_descriptions,
-                    self._build_failed_unit_correction_descriptions(output_table_index, axis, profile_unit),
+                    self._build_failed_unit_correction_warning_descriptions(output_table_index, axis, profile_unit),
                 )
-                return self._build_prepared_unit_result(corrected_operations, corrected_descriptions)
+                return self._build_prepared_unit_result(prepared_operations, corrected_descriptions)
 
             logger.info(
                 'Using temporary Base mode conversion factor. output_table_index=%s axis=%s profile_unit_uuid=%s factor=%s',
@@ -564,12 +563,11 @@ class Converter:
                     axis,
                     profile_unit.get('uuid'),
                 )
-                corrected_operations = self._replace_si_unit_operations(prepared_operations, [self._build_nan_operation()])
                 corrected_descriptions = self._append_auto_correction_descriptions(
                     prepared_descriptions,
-                    self._build_failed_unit_correction_descriptions(output_table_index, axis, profile_unit),
+                    self._build_failed_unit_correction_warning_descriptions(output_table_index, axis, profile_unit),
                 )
-                return self._build_prepared_unit_result(corrected_operations, corrected_descriptions)
+                return self._build_prepared_unit_result(prepared_operations, corrected_descriptions)
 
             logger.info(
                 'Using temporary Found mode conversion. output_table_index=%s axis=%s profile_unit_uuid=%s operations=%s',
@@ -855,14 +853,14 @@ class Converter:
             ),
         ]
 
-    def _build_failed_unit_correction_descriptions(self, output_table_index, axis, profile_unit):
+    def _build_failed_unit_correction_warning_descriptions(self, output_table_index, axis, profile_unit):
         return [
             (
                 f'[SI Units Auto-Correction] Output Table #{output_table_index} {axis} values could not be '
                 f'auto-corrected for profile unit "{profile_unit.get("found")}" (UUID {profile_unit.get("uuid")}). '
                 f'No compatible input unit was found for unit mode "{profile_unit.get("unitMode")}".'
             ),
-            '[SI Units Auto-Correction] The affected output values are forced to NaN.',
+            '[SI Units Auto-Correction] The original profile operations are used unchanged for this conversion run.',
         ]
 
     @staticmethod
@@ -892,15 +890,6 @@ class Converter:
             updated_operations.insert(last_si_unit_index + 1, copy.deepcopy(temporary_operation))
 
         return updated_operations
-
-    @staticmethod
-    def _build_nan_operation():
-        return {
-            'operator': '*',
-            'source': 'siUnits',
-            'type': 'value',
-            'value': 'nan',
-        }
 
     def _find_preferred_input_unit(self, profile_unit, matcher):
         preferred_index = self._get_profile_data_unit_index(profile_unit.get('uuid'))
