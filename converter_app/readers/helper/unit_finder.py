@@ -171,6 +171,28 @@ class UnitFinder:
             options.XUNITS += tuple([unit["found"]])
             options.YUNITS += tuple([unit["found"]])
 
+    def get_rule(self, unit_text: str) -> UnitRule | None:
+        normalized_unit_text = self.normalize_text(unit_text)
+        rule = self.unit_map.get(normalized_unit_text)
+        if rule is not None:
+            return rule
+
+        try:
+            source_unit = self._to_unit(normalized_unit_text)
+        except Exception:
+            return None
+
+        if isinstance(source_unit, StructuredUnit):
+            return None
+
+        return UnitRule(source_unit=source_unit)
+
+    def resolve_unit(self, unit_text: str) -> u.UnitBase | None:
+        rule = self.get_rule(unit_text)
+        if rule is None:
+            return None
+        return rule.source_unit
+
 
     def _extract_candidates(self, value: str) -> list[str]:
         candidates = []
@@ -209,15 +231,9 @@ class UnitFinder:
         return segments
 
     def _build_result(self, unit_text: str) -> dict[str, str | float] | None:
-        rule = self.unit_map.get(unit_text)
+        rule = self.get_rule(unit_text)
         if rule is None:
-            try:
-                source_unit = self._to_unit(unit_text)
-            except Exception:
-                return None
-            if isinstance(source_unit, StructuredUnit):
-                return None
-            rule = UnitRule(source_unit=source_unit)
+            return None
 
         base_unit = self._get_base_unit(rule)
         if self.ignore_dimless and base_unit == u.dimensionless_unscaled:
