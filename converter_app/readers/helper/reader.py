@@ -1,10 +1,12 @@
+import logging
 import inspect
 from collections import OrderedDict
 
 from flask import current_app
 
-from converter_app.converters import logger
 from converter_app.models import File, extract_tar_archive
+
+logger = logging.getLogger(__name__)
 
 
 class Readers:
