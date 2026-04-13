@@ -35,6 +35,7 @@ class Converter:
         self.profile_output_tables = self.profile.data.get('tables', [])
         self.output_tables = []
         self.output_table_profile_indexes = []
+        self._input_unit_alignment_cache = {}
         self.unit_finder = UnitFinder(ignore_dimless=False)
         self._prepare_identifier()
 
@@ -510,22 +511,28 @@ class Converter:
         if profile_unit is None:
             return self._build_prepared_unit_result(prepared_operations, prepared_descriptions)
 
-        if self._get_input_unit_by_uuid(profile_unit.get('uuid')) is not None:
+        current_input_unit = self._get_input_unit_for_profile_position(profile_unit)
+        if current_input_unit is not None and self._units_match(profile_unit, current_input_unit):
             return self._build_prepared_unit_result(prepared_operations, prepared_descriptions)
 
         unit_mode = str(profile_unit.get('unitMode', '')).strip()
         if unit_mode == 'Base':
-            base_correction = self._resolve_base_mode_correction(profile_unit)
+            base_correction = self._resolve_base_mode_correction(profile_unit, current_input_unit)
             if base_correction is None or base_correction.get('conversion_factor') is None:
                 logger.warning(
-                    'No matching input unit found for Base mode. output_table_index=%s axis=%s profile_unit_uuid=%s',
+                    'No matching input unit found for Base mode in the aligned unit list. output_table_index=%s axis=%s profile_unit_uuid=%s',
                     output_table_index,
                     axis,
                     profile_unit.get('uuid'),
                 )
                 corrected_descriptions = self._append_auto_correction_descriptions(
                     prepared_descriptions,
-                    self._build_failed_unit_correction_warning_descriptions(output_table_index, axis, profile_unit),
+                    self._build_failed_unit_correction_warning_descriptions(
+                        output_table_index,
+                        axis,
+                        profile_unit,
+                        current_input_unit,
+                    ),
                 )
                 return self._build_prepared_unit_result(prepared_operations, corrected_descriptions)
 
@@ -555,17 +562,22 @@ class Converter:
             return self._build_prepared_unit_result(corrected_operations, corrected_descriptions)
 
         if unit_mode == 'Found':
-            found_correction = self._resolve_found_mode_correction(profile_unit)
+            found_correction = self._resolve_found_mode_correction(profile_unit, current_input_unit)
             if found_correction is None:
                 logger.warning(
-                    'No convertible input unit found for Found mode. output_table_index=%s axis=%s profile_unit_uuid=%s',
+                    'No convertible input unit found for Found mode in the aligned unit list. output_table_index=%s axis=%s profile_unit_uuid=%s',
                     output_table_index,
                     axis,
                     profile_unit.get('uuid'),
                 )
                 corrected_descriptions = self._append_auto_correction_descriptions(
                     prepared_descriptions,
-                    self._build_failed_unit_correction_warning_descriptions(output_table_index, axis, profile_unit),
+                    self._build_failed_unit_correction_warning_descriptions(
+                        output_table_index,
+                        axis,
+                        profile_unit,
+                        current_input_unit,
+                    ),
                 )
                 return self._build_prepared_unit_result(prepared_operations, corrected_descriptions)
 
@@ -633,47 +645,359 @@ class Converter:
 
         return matching_units[0] if matching_units else None
 
-    def _resolve_base_mode_correction(self, profile_unit):
-        input_unit = self._find_preferred_input_unit(
-            profile_unit,
-            lambda candidate: self._shares_base_unit(candidate, profile_unit),
-        )
+    def _resolve_base_mode_correction(self, profile_unit, input_unit=None):
+        input_unit = input_unit or self._get_input_unit_for_profile_position(profile_unit)
         if input_unit is None:
+            return None
+        if not self._shares_base_unit(input_unit, profile_unit):
             return None
         return {
             'input_unit': input_unit,
             'conversion_factor': self._to_float(input_unit.get('conversion_factor')),
         }
 
-    def _resolve_found_mode_correction(self, profile_unit):
-        preferred_index = self._get_profile_data_unit_index(profile_unit.get('uuid'))
+    def _resolve_found_mode_correction(self, profile_unit, input_unit=None):
+        input_unit = input_unit or self._get_input_unit_for_profile_position(profile_unit)
         target_found = profile_unit.get('found')
-        if not target_found:
+        if not target_found or input_unit is None:
             return None
 
-        if preferred_index is not None and preferred_index < len(self.input_units):
-            preferred_unit = self.input_units[preferred_index]
-            operations = self._build_linear_unit_operations(preferred_unit.get('found'), target_found)
-            if operations is not None:
-                return {
-                    'input_unit': preferred_unit,
-                    'operations': operations,
+        operations = self._build_linear_unit_operations(input_unit.get('found'), target_found)
+        if operations is None:
+            return None
+        return {
+            'input_unit': input_unit,
+            'operations': operations,
+        }
+
+    def _get_input_unit_for_profile_position(self, profile_unit):
+        return self._get_score_aligned_input_unit(profile_unit)
+
+    def _get_score_aligned_input_unit(self, profile_unit):
+        profile_data_index, profile_data_unit = self._get_profile_data_unit_for_assignment(profile_unit)
+        if profile_data_index is None or profile_data_unit is None:
+            return None
+
+        assignment_table_index = self._get_profile_unit_table_index(profile_unit)
+        table_index = self._resolve_unit_table_index(profile_data_unit, assignment_table_index)
+        alignment = self._get_input_unit_alignment_for_table(table_index)
+        alignment_match = alignment.get(profile_data_index)
+        if not alignment_match:
+            return None
+
+        aligned_input_unit = alignment_match.get('input_unit')
+        if aligned_input_unit is None:
+            return None
+
+        annotated_unit = self._annotate_input_unit_match(
+            aligned_input_unit,
+            'scoreAlignment',
+            alignment_match.get('score'),
+        )
+        return annotated_unit
+
+    def _get_input_unit_alignment_for_table(self, table_index):
+        cache_key = table_index
+        if cache_key not in self._input_unit_alignment_cache:
+            self._input_unit_alignment_cache[cache_key] = self._build_input_unit_alignment_for_table(table_index)
+        return self._input_unit_alignment_cache[cache_key]
+
+    def _build_input_unit_alignment_for_table(self, table_index):
+        profile_units = self._get_profile_data_units_for_table(table_index)
+        input_units = self._get_input_units_for_table(table_index)
+        if not profile_units:
+            return {}
+
+        gap_penalty = -200
+        profile_count = len(profile_units)
+        input_count = len(input_units)
+        dp = [[0] * (input_count + 1) for _ in range(profile_count + 1)]
+        trace = [[None] * (input_count + 1) for _ in range(profile_count + 1)]
+
+        for profile_index in range(1, profile_count + 1):
+            dp[profile_index][0] = dp[profile_index - 1][0] + gap_penalty
+            trace[profile_index][0] = 'skip_profile'
+
+        for input_index in range(1, input_count + 1):
+            dp[0][input_index] = dp[0][input_index - 1] + gap_penalty
+            trace[0][input_index] = 'skip_input'
+
+        for profile_index in range(1, profile_count + 1):
+            _, profile_unit = profile_units[profile_index - 1]
+            for input_index in range(1, input_count + 1):
+                input_unit = input_units[input_index - 1]
+                match_score = self._score_profile_input_unit_match(profile_unit, input_unit)
+                options = [
+                    (dp[profile_index - 1][input_index] + gap_penalty, 0, 'skip_profile'),
+                    (dp[profile_index][input_index - 1] + gap_penalty, 1, 'skip_input'),
+                    (dp[profile_index - 1][input_index - 1] + match_score, 2, 'match'),
+                ]
+                best_score, _, best_action = max(options, key=lambda option: (option[0], option[1]))
+                dp[profile_index][input_index] = best_score
+                trace[profile_index][input_index] = best_action
+
+        alignment = {
+            profile_data_index: {
+                'input_unit': None,
+                'score': None,
+            }
+            for profile_data_index, _ in profile_units
+        }
+
+        profile_index = profile_count
+        input_index = input_count
+        while profile_index > 0 or input_index > 0:
+            action = trace[profile_index][input_index]
+            if action == 'match':
+                profile_data_index, profile_unit = profile_units[profile_index - 1]
+                input_unit = input_units[input_index - 1]
+                alignment[profile_data_index] = {
+                    'input_unit': input_unit,
+                    'score': self._score_profile_input_unit_match(profile_unit, input_unit),
                 }
+                profile_index -= 1
+                input_index -= 1
+                continue
 
-        for base_only in (True, False):
-            for index, input_unit in enumerate(self.input_units):
-                if index == preferred_index:
-                    continue
-                if base_only and not self._shares_base_unit(input_unit, profile_unit):
-                    continue
-                operations = self._build_linear_unit_operations(input_unit.get('found'), target_found)
-                if operations is not None:
-                    return {
-                        'input_unit': input_unit,
-                        'operations': operations,
-                    }
+            if action == 'skip_profile':
+                profile_data_index, _ = profile_units[profile_index - 1]
+                alignment[profile_data_index] = {
+                    'input_unit': None,
+                    'score': None,
+                }
+                profile_index -= 1
+                continue
 
-        return None
+            if action == 'skip_input':
+                input_index -= 1
+                continue
+
+            break
+
+        self._log_unit_score_alignment(table_index, profile_units, alignment)
+        return alignment
+
+    def _get_profile_data_units_for_table(self, table_index):
+        profile_units = []
+        for profile_data_index, profile_data_unit in enumerate(self.profile_data_units):
+            profile_table_index = self._resolve_unit_table_index(profile_data_unit)
+            if table_index is not None and profile_table_index is not None and profile_table_index != table_index:
+                continue
+            profile_units.append((profile_data_index, profile_data_unit))
+        return profile_units
+
+    def _get_input_units_for_table(self, table_index):
+        if table_index is None:
+            return list(self.input_units)
+
+        matching_units = []
+        for input_unit in self.input_units:
+            input_table_index = self._resolve_unit_table_index(input_unit)
+            if input_table_index == table_index:
+                matching_units.append(input_unit)
+        return matching_units
+
+    def _get_profile_data_unit_for_assignment(self, profile_unit):
+        assignment_table_index = self._get_profile_unit_table_index(profile_unit)
+        normalized_assignment_uuid = str(profile_unit.get('uuid')) if profile_unit.get('uuid') is not None else None
+        assignment_row_index = self._to_int(profile_unit.get('rowIndex'))
+
+        if normalized_assignment_uuid is not None:
+            for profile_data_index, profile_data_unit in enumerate(self.profile_data_units):
+                profile_table_index = self._resolve_unit_table_index(profile_data_unit, assignment_table_index)
+                if assignment_table_index is not None and profile_table_index is not None and profile_table_index != assignment_table_index:
+                    continue
+                if str(profile_data_unit.get('uuid')) == normalized_assignment_uuid:
+                    return profile_data_index, profile_data_unit
+
+        if assignment_row_index is not None and 0 <= assignment_row_index < len(self.profile_data_units):
+            return assignment_row_index, self.profile_data_units[assignment_row_index]
+
+        target_found = self._normalize_unit_text(profile_unit.get('found'))
+        target_base_unit = self._normalize_unit_text(profile_unit.get('base_unit'))
+        target_conversion_factor = self._to_float(profile_unit.get('conversion_factor'))
+
+        for profile_data_index, profile_data_unit in enumerate(self.profile_data_units):
+            profile_table_index = self._resolve_unit_table_index(profile_data_unit, assignment_table_index)
+            if assignment_table_index is not None and profile_table_index is not None and profile_table_index != assignment_table_index:
+                continue
+
+            if self._normalize_unit_text(profile_data_unit.get('found')) != target_found:
+                continue
+            if self._normalize_unit_text(profile_data_unit.get('base_unit')) != target_base_unit:
+                continue
+
+            profile_conversion_factor = self._to_float(profile_data_unit.get('conversion_factor'))
+            if target_conversion_factor is None or profile_conversion_factor is None:
+                return profile_data_index, profile_data_unit
+            if self._is_close(target_conversion_factor, profile_conversion_factor):
+                return profile_data_index, profile_data_unit
+
+        return None, None
+
+    @staticmethod
+    def _annotate_input_unit_match(input_unit, match_strategy, match_score=None):
+        if input_unit is None:
+            return None
+
+        annotated_unit = dict(input_unit)
+        annotated_unit['matchStrategy'] = str(match_strategy)
+        if match_score is not None:
+            annotated_unit['matchScore'] = match_score
+        return annotated_unit
+
+    def _log_unit_score_alignment(self, table_index, profile_units, alignment):
+        if not logger.isEnabledFor(logging.INFO):
+            return
+
+        perfect_matches = []
+        partial_matches = []
+        missing_matches = []
+
+        for slot_index, (profile_data_index, profile_unit) in enumerate(profile_units):
+            alignment_match = alignment.get(profile_data_index, {})
+            input_unit = alignment_match.get('input_unit')
+            score = alignment_match.get('score')
+            profile_found = str(profile_unit.get('found', ''))
+            input_found = '' if input_unit is None else str(input_unit.get('found', ''))
+
+            entry = {
+                'slot_index': slot_index,
+                'profile_found': profile_found,
+                'input_found': input_found,
+                'score': score,
+            }
+
+            if input_unit is None or score is None:
+                missing_matches.append(entry)
+            elif score == 1000:
+                perfect_matches.append(entry)
+            else:
+                partial_matches.append(entry)
+
+        profile_width = max(
+            [len(entry['profile_found']) for entry in perfect_matches + partial_matches + missing_matches] + [1]
+        )
+
+        lines = [f'SI Units score alignment for input table {table_index}:']
+        lines.extend(self._format_unit_alignment_log_section(
+            'Perfect matches (score 1000):',
+            perfect_matches,
+            profile_width,
+            include_arrow=True,
+            include_score=False,
+        ))
+        lines.extend(self._format_unit_alignment_log_section(
+            'Partial matches:',
+            partial_matches,
+            profile_width,
+            include_arrow=True,
+            include_score=True,
+        ))
+        lines.extend(self._format_unit_alignment_log_section(
+            'No match:',
+            missing_matches,
+            profile_width,
+            include_arrow=False,
+            include_score=False,
+        ))
+
+        logger.info('\n'.join(lines))
+
+    @staticmethod
+    def _format_unit_alignment_log_section(title, entries, profile_width, include_arrow, include_score):
+        lines = [title]
+        if not entries:
+            lines.append('  (none)')
+            return lines
+
+        for entry in entries:
+            line = f"  {entry['slot_index']}:  {entry['profile_found']:<{profile_width}}"
+            if include_arrow:
+                line += f" -> {entry['input_found']}"
+            if include_score:
+                line += f"      (score {entry['score']})"
+            lines.append(line)
+        return lines
+
+    @staticmethod
+    def _resolve_unit_table_index(unit, fallback=None):
+        try:
+            return int(unit.get('tableIndex'))
+        except (AttributeError, TypeError, ValueError):
+            return fallback
+
+    def _score_profile_input_unit_match(self, profile_unit, input_unit):
+        if profile_unit is None or input_unit is None:
+            return -10000
+
+        profile_uuid = profile_unit.get('uuid')
+        input_uuid = input_unit.get('uuid')
+        if profile_uuid is not None and input_uuid is not None and str(profile_uuid) == str(input_uuid):
+            return 1000
+
+        score = 0
+        profile_found = self._normalize_unit_text(profile_unit.get('found'))
+        input_found = self._normalize_unit_text(input_unit.get('found'))
+
+        if profile_found and profile_found == input_found:
+            score += 500
+
+        if self._shares_base_unit(profile_unit, input_unit):
+            score += 300
+
+            profile_conversion_factor = self._to_float(profile_unit.get('conversion_factor'))
+            input_conversion_factor = self._to_float(input_unit.get('conversion_factor'))
+            if profile_conversion_factor is not None and input_conversion_factor is not None:
+                if self._is_close(profile_conversion_factor, input_conversion_factor):
+                    score += 200
+                elif profile_conversion_factor != 0 and input_conversion_factor != 0:
+                    conversion_ratio = abs(profile_conversion_factor / input_conversion_factor)
+                    if conversion_ratio < 1:
+                        conversion_ratio = 1 / conversion_ratio
+                    if conversion_ratio <= 10:
+                        score += 120
+                    elif conversion_ratio <= 100:
+                        score += 80
+                    elif conversion_ratio <= 1000:
+                        score += 40
+
+        linear_operations = self._build_linear_unit_operations(input_unit.get('found'), profile_unit.get('found'))
+        if linear_operations is not None:
+            score += 180
+            if not linear_operations:
+                score += 80
+
+        if score == 0:
+            return -10000
+        return score
+
+    def _get_profile_unit_table_index(self, profile_unit):
+        return self._to_int(profile_unit.get('inputColumn', {}).get('tableIndex'))
+
+    def _units_match(self, left_unit, right_unit):
+        if left_unit is None or right_unit is None:
+            return False
+
+        left_uuid = left_unit.get('uuid')
+        right_uuid = right_unit.get('uuid')
+        if left_uuid is not None and right_uuid is not None and str(left_uuid) == str(right_uuid):
+            return True
+
+        if not self._shares_base_unit(left_unit, right_unit):
+            return False
+
+        left_found = self._normalize_unit_text(left_unit.get('found'))
+        right_found = self._normalize_unit_text(right_unit.get('found'))
+        if not left_found or left_found != right_found:
+            return False
+
+        left_factor = self._to_float(left_unit.get('conversion_factor'))
+        right_factor = self._to_float(right_unit.get('conversion_factor'))
+        if left_factor is None or right_factor is None:
+            return False
+
+        return self._is_close(left_factor, right_factor)
 
     def _build_linear_unit_operations(self, source_found, target_found):
         source_unit = self.unit_finder.resolve_unit(str(source_found))
@@ -817,12 +1141,15 @@ class Converter:
         conversion_factor,
         corrected_operations,
     ):
+        position_description = self._describe_unit_position(profile_unit, input_unit)
+        selection_description = self._describe_input_unit_selection(input_unit)
         return [
             (
                 f'[SI Units Auto-Correction] Output Table #{output_table_index} {axis} values were auto-corrected '
                 f'because the profile unit "{profile_unit.get("found")}" (UUID {profile_unit.get("uuid")}) '
-                f'was not found in the input file. The input unit "{input_unit.get("found")}" with shared base '
-                f'unit "{input_unit.get("base_unit")}" is used temporarily instead. The runtime details below '
+                f'was not found unchanged within {position_description}. The input unit "{input_unit.get("found")}" '
+                f'{selection_description} with shared base unit "{input_unit.get("base_unit")}" is used temporarily '
+                f'instead. The runtime details below '
                 f'override the static profile description for this conversion run.'
             ),
             (
@@ -839,12 +1166,15 @@ class Converter:
         input_unit,
         corrected_operations,
     ):
+        position_description = self._describe_unit_position(profile_unit, input_unit)
+        selection_description = self._describe_input_unit_selection(input_unit)
         return [
             (
                 f'[SI Units Auto-Correction] Output Table #{output_table_index} {axis} values were auto-corrected '
                 f'because the profile unit "{profile_unit.get("found")}" (UUID {profile_unit.get("uuid")}) '
-                f'was not found in the input file. The input unit "{input_unit.get("found")}" was converted '
-                f'temporarily to the profile unit "{profile_unit.get("found")}" via Astropy. The runtime details '
+                f'was not found unchanged within {position_description}. The input unit "{input_unit.get("found")}" '
+                f'{selection_description} was converted temporarily to the profile unit '
+                f'"{profile_unit.get("found")}" via Astropy. The runtime details '
                 f'below override the static profile description for this conversion run.'
             ),
             (
@@ -853,14 +1183,23 @@ class Converter:
             ),
         ]
 
-    def _build_failed_unit_correction_warning_descriptions(self, output_table_index, axis, profile_unit):
+    def _build_failed_unit_correction_warning_descriptions(
+        self,
+        output_table_index,
+        axis,
+        profile_unit,
+        input_unit=None,
+    ):
+        position_description = self._describe_unit_position(profile_unit)
+        input_unit_description = self._describe_current_input_unit(input_unit)
         return [
             (
                 f'[SI Units Auto-Correction] Output Table #{output_table_index} {axis} values could not be '
                 f'auto-corrected for profile unit "{profile_unit.get("found")}" (UUID {profile_unit.get("uuid")}). '
-                f'No compatible input unit was found for unit mode "{profile_unit.get("unitMode")}".'
+                f'No compatible input unit could be matched within {position_description} for unit mode '
+                f'"{profile_unit.get("unitMode")}". {input_unit_description}'
             ),
-            '[SI Units Auto-Correction] The original profile operations are used unchanged for this conversion run.',
+            '[WARNING][SI Units Auto-Correction] The original profile operations are used unchanged for this conversion run.',
         ]
 
     @staticmethod
@@ -876,6 +1215,46 @@ class Converter:
             return ' '.join(runtime_parts)
         return 'No additional runtime SI operation was required.'
 
+    def _describe_unit_position(self, profile_unit, input_unit=None):
+        table_index = None
+
+        if input_unit is not None:
+            table_index = self._to_int(input_unit.get('tableIndex'))
+        if table_index is None:
+            table_index = self._get_profile_unit_table_index(profile_unit)
+
+        if table_index is not None:
+            return f'the aligned SI unit list for input table #{table_index}'
+        return 'the aligned SI unit list for the configured input data'
+
+    @staticmethod
+    def _describe_current_input_unit(input_unit):
+        if input_unit is None:
+            return 'No compatible unit metadata was found in the current input file for the aligned matching context.'
+
+        found = input_unit.get('found')
+        base_unit = input_unit.get('base_unit')
+        conversion_factor = input_unit.get('conversion_factor')
+
+        return (
+            'The current input file provides '
+            f'found="{found}", base_unit="{base_unit}", conversion_factor="{conversion_factor}" '
+            'for the best available matched input candidate.'
+        )
+
+    @staticmethod
+    def _describe_input_unit_selection(input_unit):
+        if input_unit is None:
+            return 'selected as the best available input candidate'
+
+        match_strategy = str(input_unit.get('matchStrategy', '')).strip()
+        match_score = input_unit.get('matchScore')
+        if match_strategy == 'scoreAlignment':
+            if match_score is not None:
+                return f'selected by score matching (score {match_score})'
+            return 'selected by score matching'
+        return 'selected as the best available input candidate'
+
     def _append_after_last_si_unit_operation(self, operations, temporary_operation):
         updated_operations = [copy.deepcopy(operation) for operation in operations]
         last_si_unit_index = None
@@ -890,41 +1269,6 @@ class Converter:
             updated_operations.insert(last_si_unit_index + 1, copy.deepcopy(temporary_operation))
 
         return updated_operations
-
-    def _find_preferred_input_unit(self, profile_unit, matcher):
-        preferred_index = self._get_profile_data_unit_index(profile_unit.get('uuid'))
-        if preferred_index is not None and preferred_index < len(self.input_units):
-            preferred_unit = self.input_units[preferred_index]
-            if matcher(preferred_unit):
-                return preferred_unit
-
-        for index, input_unit in enumerate(self.input_units):
-            if index == preferred_index:
-                continue
-            if matcher(input_unit):
-                return input_unit
-
-        return None
-
-    def _get_profile_data_unit_index(self, unit_uuid):
-        normalized_uuid = str(unit_uuid) if unit_uuid is not None else None
-        if normalized_uuid is None:
-            return None
-
-        for index, profile_data_unit in enumerate(self.profile_data_units):
-            if str(profile_data_unit.get('uuid')) == normalized_uuid:
-                return index
-        return None
-
-    def _get_input_unit_by_uuid(self, unit_uuid):
-        normalized_uuid = str(unit_uuid) if unit_uuid is not None else None
-        if normalized_uuid is None:
-            return None
-
-        for input_unit in self.input_units:
-            if str(input_unit.get('uuid')) == normalized_uuid:
-                return input_unit
-        return None
 
     def _shares_base_unit(self, left_unit, right_unit):
         left_base_unit = self._normalize_unit_text(left_unit.get('base_unit'))

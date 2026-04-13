@@ -254,13 +254,12 @@ class Reader:
 
     def apply_unit_finder(self) -> None:
         """
-        Apply unit detection to all tables and store the results in table metadata
-        and in the reader-level ``self.units`` list.
+        Apply unit detection to all tables and store the results in the
+        reader-level ``self.units`` list.
         """
         self.units = []
-        seen_unit_ids = set()
 
-        for table in self.tables or []:
+        for table_index, table in enumerate(self.tables or []):
             unit_values = self.get_table_unit_values(table)
             if not unit_values:
                 continue
@@ -268,21 +267,13 @@ class Reader:
             unit_results = self.unit_finder.find_units(unit_values)
             self.unit_finder.found_units_to_options_list()
 
-            for index, unit_result in enumerate(unit_results):
-                table['metadata'][f'unit_{index:02d}_found'] = str(unit_result['found'])
-                table['metadata'][f'unit_{index:02d}_conversion_factor'] = str(unit_result['conversion_factor'])
-                table['metadata'][f'unit_{index:02d}_base_unit'] = str(unit_result['base_unit'])
-
-                unit_id = str(unit_result['uuid'])
-                if unit_id in seen_unit_ids:
-                    continue
-
-                seen_unit_ids.add(unit_id)
+            for unit_result in unit_results:
                 self.units.append({
                     'found': str(unit_result['found']),
                     'conversion_factor': str(unit_result['conversion_factor']),
                     'base_unit': str(unit_result['base_unit']),
-                    'uuid': unit_id,
+                    'uuid': str(unit_result['uuid']),
+                    'tableIndex': table_index,
                 })
 
     def prepare_tables(self) -> list[Table]:
