@@ -1,4 +1,3 @@
-import importlib.metadata
 import json
 import os
 import mimetypes
@@ -6,11 +5,9 @@ from pathlib import Path
 from typing import Literal
 
 from werkzeug.datastructures import FileStorage
+from converter_app.package_metadata import TITLE, VERSION
 
 os.environ["TYPEGUARD_DISABLE"] = "1"
-
-TITLE = importlib.metadata.distribution('chemotion-converter-app').name
-VERSION = importlib.metadata.version('chemotion-converter-app')
 
 if __name__ == '__main__':
     print(f"{TITLE} version {VERSION}")

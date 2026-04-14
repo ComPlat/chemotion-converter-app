@@ -4,9 +4,9 @@ import sys
 from collections import defaultdict
 from typing import Any, Generator
 
-from converter_app.writers  .base import Writer
-from converter_app import TITLE, VERSION
+from converter_app.writers.base import Writer
 from converter_app.options import DATA_TYPES, DATA_CLASSES, XUNITS, YUNITS
+from converter_app.package_metadata import TITLE, VERSION
 
 
 class JcampWriter(Writer):
@@ -217,7 +217,7 @@ class JcampWriter(Writer):
             # 'VAR_TYPE': 'INDEPENDENT, DEPENDENT',
             # 'VAR_FORM': 'AFFN, AFFN',
             #'VAR_DIM': ', ',
-            'UNITS': f'{header.get('XUNITS', XUNITS[0])}, {header.get('YUNITS', YUNITS[0])}',
+            'UNITS': f"{header.get('XUNITS', XUNITS[0])}, {header.get('YUNITS', YUNITS[0])}",
             #'FIRST': '',
             #'LAST': '',
         })

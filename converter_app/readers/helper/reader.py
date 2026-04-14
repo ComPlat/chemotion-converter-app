@@ -40,7 +40,11 @@ class Readers:
         :return:
         """
         if reader.identifier in self._registry['readers']:
-            raise ValueError(f'Identifier ({reader.identifier}) is already registered. Make sure you import the user wit its full path "import converter_app.readers.{reader.__class__.__name__}" ')
+            raise ValueError(
+                f'Identifier ({reader.identifier}) is already registered. '
+                'Make sure you import the user wit its full path '
+                f'"import converter_app.readers.{reader.__class__.__name__}" '
+            )
         self._registry['readers'][reader.identifier] = reader
 
     @property

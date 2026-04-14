@@ -72,12 +72,12 @@ class Reader:
     float_de_pattern = re.compile(r'(-?[\d.]+,\d*[eE+\-\d]*)')
     float_us_pattern = re.compile(r'(-?[\d,]+.\d*[eE+\-\d]*)')
     float_on_zeros = re.compile(r'.0*$')
+    _empty_values = ('', 'n.a.')
 
     identifier = None
     priority = 100
 
     def __init__(self, file, *tar_content):
-        self._empty_values = ['', 'n.a.']
         self.metadata = None
         self.tables = None
         self.file = file
@@ -219,8 +219,8 @@ class Reader:
         """
         finder = UnitFinder()
         normalized_unit_text = finder.normalize_text(unit_text)
-        normalized_source_unit = finder._to_unit(source_unit)
-        normalized_base_unit = finder._to_unit(base_unit) if base_unit is not None else None
+        normalized_source_unit = finder.to_unit(source_unit)
+        normalized_base_unit = finder.to_unit(base_unit) if base_unit is not None else None
         self.std_units[normalized_unit_text] = UnitRule(
             source_unit=normalized_source_unit,
             base_unit=normalized_base_unit,

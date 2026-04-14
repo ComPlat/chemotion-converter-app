@@ -58,7 +58,7 @@ class AscHelper:
                     date = value.split(".")
                     value = f"{date[2]}-{date[1]}-{date[0]}"
 
-            except:
+            except (IndexError, TypeError, ValueError):
                 field = 'default'
                 if "Time" in item:
                     field = "Time"

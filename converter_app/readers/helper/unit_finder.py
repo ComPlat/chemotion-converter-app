@@ -111,8 +111,8 @@ class UnitFinder:
         conversion_factor: float | None = None,
     ) -> None:
         normalized_unit_text = self.normalize_text(unit_text)
-        normalized_source_unit = self._to_unit(source_unit)
-        normalized_base_unit = self._to_unit(base_unit) if base_unit is not None else None
+        normalized_source_unit = self.to_unit(source_unit)
+        normalized_base_unit = self.to_unit(base_unit) if base_unit is not None else None
         self.unit_map[normalized_unit_text] = UnitRule(
             source_unit=normalized_source_unit,
             base_unit=normalized_base_unit,
@@ -178,7 +178,7 @@ class UnitFinder:
             return rule
 
         try:
-            source_unit = self._to_unit(normalized_unit_text)
+            source_unit = self.to_unit(normalized_unit_text)
         except Exception:
             return None
 
@@ -291,6 +291,9 @@ class UnitFinder:
         if rule.base_unit is None:
             return (1 * rule.source_unit).si.value
         return (1 * rule.source_unit).to(base_unit).value
+
+    def to_unit(self, value: str | u.UnitBase) -> u.UnitBase:
+        return self._to_unit(value)
 
     def _to_unit(self, value: str | u.UnitBase) -> u.UnitBase:
         if isinstance(value, str):

@@ -11,10 +11,6 @@ from typing import Optional
 
 import git
 
-from converter_app.writers.jcamp import JcampWriter
-from converter_app.writers.jcampzip import JcampZipWriter
-from converter_app.writers.rdf import RDFWriter
-
 
 def cli_home_path():
     return Path.home().joinpath('.ChemConverter')
@@ -76,6 +72,10 @@ def checkpw(password, hashed_password):
 
 def run_conversion(converter, conversion_format):
     if converter:
+        from converter_app.writers.jcamp import JcampWriter
+        from converter_app.writers.jcampzip import JcampZipWriter
+        from converter_app.writers.rdf import RDFWriter
+
         converter.process()
         if conversion_format == 'jcampzip':
             writer = JcampZipWriter(converter)
