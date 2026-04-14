@@ -7,7 +7,7 @@ from types import MappingProxyType
 from typing import Iterable
 
 from astropy import units as u
-from astropy.units import NamedUnit, PrefixUnit, StructuredUnit
+from astropy.units import NamedUnit, PrefixUnit, StructuredUnit, UnitsError
 from converter_app import options
 
 BRACKET_UNIT_PATTERN = re.compile(r"\\?\[([^\]]+)\]")
@@ -37,48 +37,50 @@ UNIT_RESULT_NAMESPACE = uuid.uuid5(
 
 @dataclass(frozen=True)
 class UnitRule:
+    """Normalized mapping entry from a found unit label to conversion metadata."""
+
     source_unit: u.UnitBase
     base_unit: u.UnitBase | None = None
     conversion_factor: float | None = None
 
 
 StdUnits = MappingProxyType({
-    "%": UnitRule(u.percent),
-    "°C": UnitRule(u.deg_C, u.K, 1.0),
-    "deg C": UnitRule(u.deg_C, u.K, 1.0),
-    "deg. C": UnitRule(u.deg_C, u.K, 1.0),
-    "bar a": UnitRule(u.bar, u.Pa),
-    "bar": UnitRule(u.bar, u.Pa),
-    "hPa": UnitRule(u.hPa, u.Pa),
-    "mbar": UnitRule(u.mbar, u.Pa),
-    "Torr": UnitRule(u.Torr, u.Pa),
-    "ml/min": UnitRule(u.mL / u.min),
-    "mL/min": UnitRule(u.mL / u.min),
-    "L/h": UnitRule(u.L / u.h, u.m**3 / u.s),
-    "mL/h": UnitRule(u.mL / u.h, u.m**3 / u.s),
-    "µL/min": UnitRule(u.uL / u.min, u.m**3 / u.s),
-    "uL/min": UnitRule(u.uL / u.min, u.m**3 / u.s),
-    "kWh": UnitRule(u.kW * u.h, u.J),
-    "Wh": UnitRule(u.W * u.h, u.J),
-    "Ah": UnitRule(u.A * u.h, u.C),
-    "mAh": UnitRule(u.mA * u.h, u.C),
-    "mS/cm": UnitRule(u.mS / u.cm, u.S / u.m),
-    "µS/cm": UnitRule(u.uS / u.cm, u.S / u.m),
-    "uS/cm": UnitRule(u.uS / u.cm, u.S / u.m),
-    "cm-1": UnitRule(1 / u.cm, 1 / u.m),
-    "cm^-1": UnitRule(1 / u.cm, 1 / u.m),
-    "1/cm": UnitRule(1 / u.cm, 1 / u.m),
-    "N/mm²": UnitRule(u.N / (u.mm ** 2), u.Pa),
-    "N/mm2": UnitRule(u.N / (u.mm ** 2), u.Pa),
-    "mg/L": UnitRule(u.mg / u.L, u.kg / (u.m ** 3)),
-    "µg/L": UnitRule(u.ug / u.L, u.kg / (u.m ** 3)),
-    "ug/L": UnitRule(u.ug / u.L, u.kg / (u.m ** 3)),
-    "g/L": UnitRule(u.g / u.L, u.kg / (u.m ** 3)),
-    "mg/mL": UnitRule(u.mg / u.mL, u.kg / (u.m ** 3)),
-    "deg/s": UnitRule(u.deg / u.s, u.rad / u.s),
-    "°/s": UnitRule(u.deg / u.s, u.rad / u.s),
-    "unix seconds": UnitRule(u.s),
-    "Time (unix seconds)": UnitRule(u.s),
+    "%": UnitRule(u.Unit("%")),
+    "°C": UnitRule(u.Unit("deg_C"), u.Unit("K"), 1.0),
+    "deg C": UnitRule(u.Unit("deg_C"), u.Unit("K"), 1.0),
+    "deg. C": UnitRule(u.Unit("deg_C"), u.Unit("K"), 1.0),
+    "bar a": UnitRule(u.Unit("bar"), u.Unit("Pa")),
+    "bar": UnitRule(u.Unit("bar"), u.Unit("Pa")),
+    "hPa": UnitRule(u.Unit("hPa"), u.Unit("Pa")),
+    "mbar": UnitRule(u.Unit("mbar"), u.Unit("Pa")),
+    "Torr": UnitRule(u.Unit("Torr"), u.Unit("Pa")),
+    "ml/min": UnitRule(u.Unit("mL") / u.Unit("min")),
+    "mL/min": UnitRule(u.Unit("mL") / u.Unit("min")),
+    "L/h": UnitRule(u.Unit("L") / u.Unit("h"), u.Unit("m") ** 3 / u.Unit("s")),
+    "mL/h": UnitRule(u.Unit("mL") / u.Unit("h"), u.Unit("m") ** 3 / u.Unit("s")),
+    "µL/min": UnitRule(u.Unit("uL") / u.Unit("min"), u.Unit("m") ** 3 / u.Unit("s")),
+    "uL/min": UnitRule(u.Unit("uL") / u.Unit("min"), u.Unit("m") ** 3 / u.Unit("s")),
+    "kWh": UnitRule(u.Unit("kW") * u.Unit("h"), u.Unit("J")),
+    "Wh": UnitRule(u.Unit("W") * u.Unit("h"), u.Unit("J")),
+    "Ah": UnitRule(u.Unit("A") * u.Unit("h"), u.Unit("C")),
+    "mAh": UnitRule(u.Unit("mA") * u.Unit("h"), u.Unit("C")),
+    "mS/cm": UnitRule(u.Unit("mS") / u.Unit("cm"), u.Unit("S") / u.Unit("m")),
+    "µS/cm": UnitRule(u.Unit("uS") / u.Unit("cm"), u.Unit("S") / u.Unit("m")),
+    "uS/cm": UnitRule(u.Unit("uS") / u.Unit("cm"), u.Unit("S") / u.Unit("m")),
+    "cm-1": UnitRule(1 / u.Unit("cm"), 1 / u.Unit("m")),
+    "cm^-1": UnitRule(1 / u.Unit("cm"), 1 / u.Unit("m")),
+    "1/cm": UnitRule(1 / u.Unit("cm"), 1 / u.Unit("m")),
+    "N/mm²": UnitRule(u.Unit("N") / (u.Unit("mm") ** 2), u.Unit("Pa")),
+    "N/mm2": UnitRule(u.Unit("N") / (u.Unit("mm") ** 2), u.Unit("Pa")),
+    "mg/L": UnitRule(u.Unit("mg") / u.Unit("L"), u.Unit("kg") / (u.Unit("m") ** 3)),
+    "µg/L": UnitRule(u.Unit("ug") / u.Unit("L"), u.Unit("kg") / (u.Unit("m") ** 3)),
+    "ug/L": UnitRule(u.Unit("ug") / u.Unit("L"), u.Unit("kg") / (u.Unit("m") ** 3)),
+    "g/L": UnitRule(u.Unit("g") / u.Unit("L"), u.Unit("kg") / (u.Unit("m") ** 3)),
+    "mg/mL": UnitRule(u.Unit("mg") / u.Unit("mL"), u.Unit("kg") / (u.Unit("m") ** 3)),
+    "deg/s": UnitRule(u.Unit("deg") / u.Unit("s"), u.Unit("rad") / u.Unit("s")),
+    "°/s": UnitRule(u.Unit("deg") / u.Unit("s"), u.Unit("rad") / u.Unit("s")),
+    "unix seconds": UnitRule(u.Unit("s")),
+    "Time (unix seconds)": UnitRule(u.Unit("s")),
 })
 
 
@@ -110,6 +112,7 @@ class UnitFinder:
         base_unit: str | u.UnitBase | None = None,
         conversion_factor: float | None = None,
     ) -> None:
+        """Register or override a unit mapping for this finder instance."""
         normalized_unit_text = self.normalize_text(unit_text)
         normalized_source_unit = self.to_unit(source_unit)
         normalized_base_unit = self.to_unit(base_unit) if base_unit is not None else None
@@ -146,6 +149,7 @@ class UnitFinder:
         return units
 
     def find_units(self, values: Iterable[str]) -> list[dict[str, str | float]]:
+        """Extract unique unit candidates from the given values and resolve them."""
         results = []
         seen_units = set()
 
@@ -172,6 +176,7 @@ class UnitFinder:
             options.YUNITS += tuple([unit["found"]])
 
     def get_rule(self, unit_text: str) -> UnitRule | None:
+        """Return the resolved rule for a unit label or ``None`` if it is unknown."""
         normalized_unit_text = self.normalize_text(unit_text)
         rule = self.unit_map.get(normalized_unit_text)
         if rule is not None:
@@ -179,7 +184,7 @@ class UnitFinder:
 
         try:
             source_unit = self.to_unit(normalized_unit_text)
-        except Exception:
+        except (TypeError, ValueError, UnitsError):
             return None
 
         if isinstance(source_unit, StructuredUnit):
@@ -188,6 +193,7 @@ class UnitFinder:
         return UnitRule(source_unit=source_unit)
 
     def resolve_unit(self, unit_text: str) -> u.UnitBase | None:
+        """Resolve a unit label to its Astropy unit object."""
         rule = self.get_rule(unit_text)
         if rule is None:
             return None
@@ -293,6 +299,7 @@ class UnitFinder:
         return (1 * rule.source_unit).to(base_unit).value
 
     def to_unit(self, value: str | u.UnitBase) -> u.UnitBase:
+        """Convert a string or unit-like value into an Astropy unit object."""
         return self._to_unit(value)
 
     def _to_unit(self, value: str | u.UnitBase) -> u.UnitBase:
@@ -313,6 +320,7 @@ class UnitFinder:
 
     @staticmethod
     def normalize_text(value: str) -> str:
+        """Collapse whitespace and unescape bracket markers in raw unit text."""
         return " ".join(UnitFinder._prepare_raw_text(value).split())
 
     @staticmethod
@@ -320,9 +328,9 @@ class UnitFinder:
         return html.unescape(str(value)).replace("\\[", "[").replace("\\]", "]")
 
 if __name__ == "__main__":
-    testData = ["1000 [mL]; Hallo; Test \t kg/m*s² | km/h | kW*h"] # data allows splitting via tab, semicolon or pipe
+    test_data = ["1000 [mL]; Hallo; Test \t kg/m*s² | km/h | kW*h"] # data allows splitting via tab, semicolon or pipe
     finder = UnitFinder()
-    print(finder.find_units(testData))
+    print(finder.find_units(test_data))
 
     print("-----\n")
 
