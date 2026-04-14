@@ -27,7 +27,7 @@ UNICODE_POWER_TRANSLATION = str.maketrans({
     "⁹": "9",
     "⁻": "-",
 })
-EXPONENT_PATTERN = re.compile(r"(?<=[A-Za-zµΩ°])(-?\d+)")
+EXPONENT_PATTERN = re.compile(r"(?<=[A-Za-zµΩ°])([+-]?\d)(?!\d)")
 
 UNIT_RESULT_NAMESPACE = uuid.uuid5(
     uuid.NAMESPACE_DNS,
@@ -242,10 +242,13 @@ class UnitFinder:
         if rule is None:
             return None
 
-        base_unit = self._get_base_unit(rule)
-        if self.ignore_dimless and base_unit == u.dimensionless_unscaled:
+        try:
+            base_unit = self._get_base_unit(rule)
+            if self.ignore_dimless and base_unit == u.dimensionless_unscaled:
+                return None
+            conversion_factor = self._get_conversion_factor(rule, base_unit)
+        except OverflowError:
             return None
-        conversion_factor = self._get_conversion_factor(rule, base_unit)
 
         base_unit = self._format_unit(base_unit)
 
