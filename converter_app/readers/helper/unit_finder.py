@@ -7,7 +7,7 @@ from types import MappingProxyType
 from typing import Iterable
 
 from astropy import units as u
-from astropy.units import NamedUnit, PrefixUnit, StructuredUnit, UnitsError
+from astropy.units import NamedUnit, PrefixUnit, StructuredUnit, UnitConversionError, UnitsError
 from converter_app import options
 
 BRACKET_UNIT_PATTERN = re.compile(r"\\?\[([^\]]+)\]")
@@ -49,6 +49,7 @@ StdUnits = MappingProxyType({
     "°C": UnitRule(u.Unit("deg_C"), u.Unit("K"), 1.0),
     "deg C": UnitRule(u.Unit("deg_C"), u.Unit("K"), 1.0),
     "deg. C": UnitRule(u.Unit("deg_C"), u.Unit("K"), 1.0),
+    "deg_C": UnitRule(u.Unit("deg_C"), u.Unit("K"), 1.0),
     "bar a": UnitRule(u.Unit("bar"), u.Unit("Pa")),
     "bar": UnitRule(u.Unit("bar"), u.Unit("Pa")),
     "hPa": UnitRule(u.Unit("hPa"), u.Unit("Pa")),
@@ -258,9 +259,19 @@ class UnitFinder:
         }
 
     def _get_base_unit(self, rule: UnitRule) -> u.UnitBase:
+        """
+        Return the base unit for a resolved rule.
+
+        Some Astropy units such as ``bit`` or ``ph`` cannot be decomposed into
+        SI bases. In that case, keep the original unit as the base unit instead
+        of failing the whole unit-detection pass.
+        """
         if rule.base_unit is not None:
             return rule.base_unit
-        return (1 * rule.source_unit).si.unit
+        try:
+            return (1 * rule.source_unit).si.unit
+        except (TypeError, ValueError, UnitsError, UnitConversionError):
+            return rule.source_unit
 
     def _get_conversion_factor(self, rule: UnitRule, base_unit: u.UnitBase) -> float:
         """
@@ -291,11 +302,19 @@ class UnitFinder:
 
         When a custom rule already defines ``base_unit``, this method instead converts
         directly to that explicit target unit and returns only the numeric factor.
+
+        If Astropy cannot express the unit in SI base terms, the caller keeps the
+        original unit and this method falls back to ``1.0`` as the conversion
+        factor. That preserves units such as ``bit`` or ``ph`` in the output
+        metadata without raising an exception.
         """
         if rule.conversion_factor is not None:
             return rule.conversion_factor
         if rule.base_unit is None:
-            return (1 * rule.source_unit).si.value
+            try:
+                return (1 * rule.source_unit).si.value
+            except (TypeError, ValueError, UnitsError, UnitConversionError):
+                return 1.0
         return (1 * rule.source_unit).to(base_unit).value
 
     def to_unit(self, value: str | u.UnitBase) -> u.UnitBase:
