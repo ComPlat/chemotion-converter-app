@@ -1,98 +1,100 @@
 {
     "converter_version": "1.8.0",
-    "data": {
-        "metadata": {
-            "content_type": "text/csv",
-            "delimiter": "comma",
-            "doublequote": "False",
-            "extension": ".csv",
-            "file_name": "EI-MS_Pulegon.csv",
-            "lineterminator": "\\r\\n",
-            "mime_type": "application/csv",
-            "quotechar": "\"",
-            "quoting": "0",
-            "reader": "CSVReader",
-            "skipinitialspace": "False",
-            "uploaded": "2023-03-13T06:19:29.086940"
-        },
-        "tables": [
-            {
-                "columns": [
-                    {
-                        "key": "0",
-                        "name": "Column #0"
+    "data": [
+        {
+            "metadata": {
+                "content_type": "text/csv",
+                "delimiter": "comma",
+                "doublequote": "False",
+                "extension": ".csv",
+                "file_name": "EI-MS_Pulegon.csv",
+                "lineterminator": "\\r\\n",
+                "mime_type": "application/csv",
+                "quotechar": "\"",
+                "quoting": "0",
+                "reader": "CSVReader",
+                "skipinitialspace": "False",
+                "uploaded": "2023-03-13T06:19:29.086940"
+            },
+            "tables": [
+                {
+                    "columns": [
+                        {
+                            "key": "0",
+                            "name": "Column #0"
+                        },
+                        {
+                            "key": "1",
+                            "name": "Column #1"
+                        },
+                        {
+                            "key": "2",
+                            "name": "Column #2"
+                        }
+                    ],
+                    "header": [
+                        "\ufeff\"long name, units\",\"mass over charge, m/z\",\"intensity, %\""
+                    ],
+                    "metadata": {
+                        "columns": "3",
+                        "rows": "115"
                     },
-                    {
-                        "key": "1",
-                        "name": "Column #1"
-                    },
-                    {
-                        "key": "2",
-                        "name": "Column #2"
-                    }
-                ],
-                "header": [
-                    "\ufeff\"long name, units\",\"mass over charge, m/z\",\"intensity, %\""
-                ],
-                "metadata": {
-                    "columns": "3",
-                    "rows": "115"
-                },
-                "rows": [
-                    [
-                        "1",
-                        "40",
-                        "6.32"
-                    ],
-                    [
-                        "2",
-                        "41",
-                        "40.71"
-                    ],
-                    [
-                        "3",
-                        "42",
-                        "5.98"
-                    ],
-                    [
-                        "4",
-                        "43",
-                        "16.51"
-                    ],
-                    [
-                        "5",
-                        "44",
-                        "1.17"
-                    ],
-                    [
-                        "6",
-                        "45",
-                        "1.42"
-                    ],
-                    [
-                        "7",
-                        "46",
-                        "0.00"
-                    ],
-                    [
-                        "8",
-                        "47",
-                        "0.00"
-                    ],
-                    [
-                        "9",
-                        "48",
-                        "0.00"
-                    ],
-                    [
-                        "10",
-                        "49",
-                        "0.00"
+                    "rows": [
+                        [
+                            "1",
+                            "40",
+                            "6.32"
+                        ],
+                        [
+                            "2",
+                            "41",
+                            "40.71"
+                        ],
+                        [
+                            "3",
+                            "42",
+                            "5.98"
+                        ],
+                        [
+                            "4",
+                            "43",
+                            "16.51"
+                        ],
+                        [
+                            "5",
+                            "44",
+                            "1.17"
+                        ],
+                        [
+                            "6",
+                            "45",
+                            "1.42"
+                        ],
+                        [
+                            "7",
+                            "46",
+                            "0.00"
+                        ],
+                        [
+                            "8",
+                            "47",
+                            "0.00"
+                        ],
+                        [
+                            "9",
+                            "48",
+                            "0.00"
+                        ],
+                        [
+                            "10",
+                            "49",
+                            "0.00"
+                        ]
                     ]
-                ]
-            }
-        ]
-    },
+                }
+            ]
+        }
+    ],
     "datatypes": [],
     "description": "Finnigian MAT8230, ref location: ---, data: +, metadata: -",
     "devices": [],

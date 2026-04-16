@@ -1,643 +1,645 @@
 {
     "converter_version": "1.8.0",
-    "data": {
-        "metadata": {
-            "content_type": "application/vnd.ms-excel",
-            "extension": ".xls",
-            "file_name": "TGA example with derivative.xls",
-            "mime_type": "application/vnd.ms-excel",
-            "reader": "OldExcelReader",
-            "uploaded": "2023-10-25T12:16:40.880357"
-        },
-        "tables": [
-            {
-                "columns": [],
-                "header": [
-                    "Filename\tAG-377_neu",
-                    "Instrument name\t5500-0290 (192.168.1.99)",
-                    "Operator\tAG",
-                    "rundate\t22.09.2023",
-                    "Sample name\tAG-377_neu",
-                    "proceduresegments\tSelect Gas: Gas 1 ; Equilibrate 30,00 \u00b0C; Isothermal 3,0 min; Ramp 10,00 \u00b0C/min to 900,00 \u00b0C; Equilibrate 900,00 \u00b0C; Select Gas: Gas 2 ; Isothermal 10,0 min",
-                    "[File Parameters]\t",
-                    "Run date\t22.09.2023 23:17:31",
-                    "Trios version\t5.0.0.44608",
-                    "Original File Name\tZ:\\Alex\\AG-377_neu.tri",
-                    "Current File Name\tZ:\\Analysis\\TGA_CW\\Alex\\AG-377_neu.tri",
-                    "[Procedure]\t",
-                    "Procedure Name\tAG Standard 900 \u00b0C",
-                    "Sample Name\tAG-377_neu",
-                    "Pan Number\t5.0",
-                    "Sample Mass\t2,291 mg",
-                    "Pan Type\tPlatinum HT",
-                    "Comments\t",
-                    "Project Name\t",
-                    "Operator\tAG",
-                    "Test\tCustom",
-                    "Skip Weight Stabilization\t0",
-                    "Sample mass pre-weigh\tNot Available",
-                    "Stop on Gas Flow Error\tYes",
-                    "[Signal List]\t",
-                    "Signal #1\tTime (s)",
-                    "Signal #2\tTemperature (\u00b0C)",
-                    "Signal #3\tWeight (mg)",
-                    "Signal #4\tTemperature Difference (\u00b0C)",
-                    "Signal #5\tSample Purge (mL/s)",
-                    "Signal #6\tBalance Purge (mL/s)",
-                    "Signal #7\tSet Point Temperature (\u00b0C)",
-                    "Signal #8\tPower Delivered (W)",
-                    "Signal #9\tRamp Rate (\u00b0C/s)",
-                    "[Configuration]\t",
-                    "Company Name\tKIT",
-                    "Instrument Name\t5500-0290",
-                    "Instrument Type\tTGA5500",
-                    "Serial Number\t5500-0290",
-                    "IP\t192.168.1.99",
-                    "Location of Instrument\tManufacturing Test",
-                    "DisplayType\tTianmaV2",
-                    "Sample Interval \t0,1 s/pt",
-                    "Gas 1\tNitrogen",
-                    "Gas 2\tAir",
-                    "Selected Gas Channel\t1.0",
-                    "MTGA HiRes Licensed\tYes",
-                    "[Versions]\t",
-                    "Common IDD Version\t1.0",
-                    "Cortex Version\tVER 2.1.2.69",
-                    "Driver\t5.0.0.7",
-                    "GDM Version\t1.2.1.2",
-                    "TouchscreenVersion\t1.0.0.14551",
-                    "PCU Version\t1.2.0.22",
-                    "Transducer Version\t1.1.0.32",
-                    "[Experiment Logs]\t",
-                    "Experiment Log Entry # 1\tGas Select Segment is 1",
-                    "Experiment Log Entry # 3\tEquilibrate Segment 30 (C) Started",
-                    "Experiment Log Entry # 5\tIsothermal Segment 3 min started",
-                    "Experiment Log Entry # 7\tRamp Segment 10 C/min to 900 C Started",
-                    "Experiment Log Entry # 9\tEquilibrate Segment 900 (C) Started",
-                    "Experiment Log Entry # 11\tGas Select Segment is 2",
-                    "Experiment Log Entry # 13\tIsothermal Segment 10 min started",
-                    "[Method Log]\t",
-                    "Method Log Entry # 1\tGas Selected 1",
-                    "Method Log Entry # 2\tEquilibrate 30 \u00b0C",
-                    "Method Log Entry # 3\tIsothermal 3 minutes",
-                    "Method Log Entry # 4\t(Ramp 88036) Ramp 10 \u00b0C/minute to 900 \u00b0C",
-                    "Method Log Entry # 5\tEquilibrate 900 \u00b0C",
-                    "Method Log Entry # 6\tGas Selected 2",
-                    "Method Log Entry # 7\tIsothermal 10 minutes",
-                    "[Weight Calibration]\t",
-                    "Date Applied\t14.06.2023 07:39:55",
-                    "Empty Pan Number\t23.0",
-                    "Empty Pan Weight\t325,000 mg",
-                    "Low Reference Weight Pan Number\t24.0",
-                    "Low Reference Weight\t425,000 mg",
-                    "High Reference Weight Pan Number\t25.0",
-                    "High Reference Weight\t1.325,000 mg",
-                    "Low Gain Meter Reading\t9,5856E-006 mg/count",
-                    "High Gain Meter Reading\t8,6100E-005 mg/count",
-                    "Low Meter Offset\t47,9314 mg",
-                    "High Meter Offset\t684,5124 mg",
-                    "[Curie Calibration]\t",
-                    "Date Applied\t14.06.2023 07:05:13",
-                    "Description\tFrom 308.200 \u00b0C to 408.200 \u00b0C at 10.000\u00b0C/min",
-                    "Gas Type\tNitrogen",
-                    "Pan Type\tPlatinum HT",
-                    "Source Files 1\tC:\\Users\\ITCP-AKT.ITCP-AKT-003\\Documents\\Nickel(6).tri",
-                    "Measured 1\t3558379.0",
-                    "Known 1\t358,2"
-                ],
-                "metadata": {
-                    "Comments": "",
-                    "Common IDD Version": 1,
-                    "Company Name": "KIT",
-                    "Cortex Version": "VER 2.1.2.69",
-                    "Current File Name": "Z:\\Analysis\\TGA_CW\\Alex\\AG-377_neu.tri",
-                    "Date Applied": "14.06.2023 07:39:55",
-                    "Date Applied (1)": "14.06.2023 07:05:13",
-                    "Description": "From 308.200 \u00b0C to 408.200 \u00b0C at 10.000\u00b0C/min",
-                    "DisplayType": "TianmaV2",
-                    "Driver": "5.0.0.7",
-                    "Empty Pan Number": 23,
-                    "Empty Pan Weight": "325,000 mg",
-                    "Experiment Log Entry # 1": "Gas Select Segment is 1",
-                    "Experiment Log Entry # 11": "Gas Select Segment is 2",
-                    "Experiment Log Entry # 13": "Isothermal Segment 10 min started",
-                    "Experiment Log Entry # 3": "Equilibrate Segment 30 (C) Started",
-                    "Experiment Log Entry # 5": "Isothermal Segment 3 min started",
-                    "Experiment Log Entry # 7": "Ramp Segment 10 C/min to 900 C Started",
-                    "Experiment Log Entry # 9": "Equilibrate Segment 900 (C) Started",
-                    "Filename": "AG-377_neu",
-                    "GDM Version": "1.2.1.2",
-                    "Gas 1": "Nitrogen",
-                    "Gas 2": "Air",
-                    "Gas Type": "Nitrogen",
-                    "High Gain Meter Reading": "8,6100E-005 mg/count",
-                    "High Meter Offset": "684,5124 mg",
-                    "High Reference Weight": "1.325,000 mg",
-                    "High Reference Weight Pan Number": 25,
-                    "IP": "192.168.1.99",
-                    "Instrument Name": "5500-0290",
-                    "Instrument Type": "TGA5500",
-                    "Instrument name": "5500-0290 (192.168.1.99)",
-                    "Known 1": "358,2",
-                    "Location of Instrument": "Manufacturing Test",
-                    "Low Gain Meter Reading": "9,5856E-006 mg/count",
-                    "Low Meter Offset": "47,9314 mg",
-                    "Low Reference Weight": "425,000 mg",
-                    "Low Reference Weight Pan Number": 24,
-                    "MTGA HiRes Licensed": "Yes",
-                    "Measured 1": 3558379,
-                    "Method Log Entry # 1": "Gas Selected 1",
-                    "Method Log Entry # 2": "Equilibrate 30 \u00b0C",
-                    "Method Log Entry # 3": "Isothermal 3 minutes",
-                    "Method Log Entry # 4": "(Ramp 88036) Ramp 10 \u00b0C/minute to 900 \u00b0C",
-                    "Method Log Entry # 5": "Equilibrate 900 \u00b0C",
-                    "Method Log Entry # 6": "Gas Selected 2",
-                    "Method Log Entry # 7": "Isothermal 10 minutes",
-                    "Operator": "AG",
-                    "Operator (1)": "AG",
-                    "Original File Name": "Z:\\Alex\\AG-377_neu.tri",
-                    "PCU Version": "1.2.0.22",
-                    "Pan Number": 5,
-                    "Pan Type": "Platinum HT",
-                    "Pan Type (1)": "Platinum HT",
-                    "Procedure Name": "AG Standard 900 \u00b0C",
-                    "Project Name": "",
-                    "Run date": "22.09.2023 23:17:31",
-                    "Sample Interval ": "0,1 s/pt",
-                    "Sample Mass": "2,291 mg",
-                    "Sample Name": "AG-377_neu",
-                    "Sample mass pre-weigh": "Not Available",
-                    "Sample name": "AG-377_neu",
-                    "Selected Gas Channel": 1,
-                    "Serial Number": "5500-0290",
-                    "Signal #1": "Time (s)",
-                    "Signal #2": "Temperature (\u00b0C)",
-                    "Signal #3": "Weight (mg)",
-                    "Signal #4": "Temperature Difference (\u00b0C)",
-                    "Signal #5": "Sample Purge (mL/s)",
-                    "Signal #6": "Balance Purge (mL/s)",
-                    "Signal #7": "Set Point Temperature (\u00b0C)",
-                    "Signal #8": "Power Delivered (W)",
-                    "Signal #9": "Ramp Rate (\u00b0C/s)",
-                    "Skip Weight Stabilization": 0,
-                    "Source Files 1": "C:\\Users\\ITCP-AKT.ITCP-AKT-003\\Documents\\Nickel(6).tri",
-                    "Stop on Gas Flow Error": "Yes",
-                    "Test": "Custom",
-                    "TouchscreenVersion": "1.0.0.14551",
-                    "Transducer Version": "1.1.0.32",
-                    "Trios version": "5.0.0.44608",
-                    "[Configuration]": "",
-                    "[Curie Calibration]": "",
-                    "[Experiment Logs]": "",
-                    "[File Parameters]": "",
-                    "[Method Log]": "",
-                    "[Procedure]": "",
-                    "[Signal List]": "",
-                    "[Versions]": "",
-                    "[Weight Calibration]": "",
-                    "columns": "0",
-                    "proceduresegments": "Select Gas: Gas 1 ; Equilibrate 30,00 \u00b0C; Isothermal 3,0 min; Ramp 10,00 \u00b0C/min to 900,00 \u00b0C; Equilibrate 900,00 \u00b0C; Select Gas: Gas 2 ; Isothermal 10,0 min",
-                    "rows": "0",
-                    "rundate": "22.09.2023"
-                },
-                "rows": []
+    "data": [
+        {
+            "metadata": {
+                "content_type": "application/vnd.ms-excel",
+                "extension": ".xls",
+                "file_name": "TGA example with derivative.xls",
+                "mime_type": "application/vnd.ms-excel",
+                "reader": "OldExcelReader",
+                "uploaded": "2023-10-25T12:16:40.880357"
             },
-            {
-                "columns": [
-                    {
-                        "key": "0",
-                        "name": "Column #0"
+            "tables": [
+                {
+                    "columns": [],
+                    "header": [
+                        "Filename\tAG-377_neu",
+                        "Instrument name\t5500-0290 (192.168.1.99)",
+                        "Operator\tAG",
+                        "rundate\t22.09.2023",
+                        "Sample name\tAG-377_neu",
+                        "proceduresegments\tSelect Gas: Gas 1 ; Equilibrate 30,00 \u00b0C; Isothermal 3,0 min; Ramp 10,00 \u00b0C/min to 900,00 \u00b0C; Equilibrate 900,00 \u00b0C; Select Gas: Gas 2 ; Isothermal 10,0 min",
+                        "[File Parameters]\t",
+                        "Run date\t22.09.2023 23:17:31",
+                        "Trios version\t5.0.0.44608",
+                        "Original File Name\tZ:\\Alex\\AG-377_neu.tri",
+                        "Current File Name\tZ:\\Analysis\\TGA_CW\\Alex\\AG-377_neu.tri",
+                        "[Procedure]\t",
+                        "Procedure Name\tAG Standard 900 \u00b0C",
+                        "Sample Name\tAG-377_neu",
+                        "Pan Number\t5.0",
+                        "Sample Mass\t2,291 mg",
+                        "Pan Type\tPlatinum HT",
+                        "Comments\t",
+                        "Project Name\t",
+                        "Operator\tAG",
+                        "Test\tCustom",
+                        "Skip Weight Stabilization\t0",
+                        "Sample mass pre-weigh\tNot Available",
+                        "Stop on Gas Flow Error\tYes",
+                        "[Signal List]\t",
+                        "Signal #1\tTime (s)",
+                        "Signal #2\tTemperature (\u00b0C)",
+                        "Signal #3\tWeight (mg)",
+                        "Signal #4\tTemperature Difference (\u00b0C)",
+                        "Signal #5\tSample Purge (mL/s)",
+                        "Signal #6\tBalance Purge (mL/s)",
+                        "Signal #7\tSet Point Temperature (\u00b0C)",
+                        "Signal #8\tPower Delivered (W)",
+                        "Signal #9\tRamp Rate (\u00b0C/s)",
+                        "[Configuration]\t",
+                        "Company Name\tKIT",
+                        "Instrument Name\t5500-0290",
+                        "Instrument Type\tTGA5500",
+                        "Serial Number\t5500-0290",
+                        "IP\t192.168.1.99",
+                        "Location of Instrument\tManufacturing Test",
+                        "DisplayType\tTianmaV2",
+                        "Sample Interval \t0,1 s/pt",
+                        "Gas 1\tNitrogen",
+                        "Gas 2\tAir",
+                        "Selected Gas Channel\t1.0",
+                        "MTGA HiRes Licensed\tYes",
+                        "[Versions]\t",
+                        "Common IDD Version\t1.0",
+                        "Cortex Version\tVER 2.1.2.69",
+                        "Driver\t5.0.0.7",
+                        "GDM Version\t1.2.1.2",
+                        "TouchscreenVersion\t1.0.0.14551",
+                        "PCU Version\t1.2.0.22",
+                        "Transducer Version\t1.1.0.32",
+                        "[Experiment Logs]\t",
+                        "Experiment Log Entry # 1\tGas Select Segment is 1",
+                        "Experiment Log Entry # 3\tEquilibrate Segment 30 (C) Started",
+                        "Experiment Log Entry # 5\tIsothermal Segment 3 min started",
+                        "Experiment Log Entry # 7\tRamp Segment 10 C/min to 900 C Started",
+                        "Experiment Log Entry # 9\tEquilibrate Segment 900 (C) Started",
+                        "Experiment Log Entry # 11\tGas Select Segment is 2",
+                        "Experiment Log Entry # 13\tIsothermal Segment 10 min started",
+                        "[Method Log]\t",
+                        "Method Log Entry # 1\tGas Selected 1",
+                        "Method Log Entry # 2\tEquilibrate 30 \u00b0C",
+                        "Method Log Entry # 3\tIsothermal 3 minutes",
+                        "Method Log Entry # 4\t(Ramp 88036) Ramp 10 \u00b0C/minute to 900 \u00b0C",
+                        "Method Log Entry # 5\tEquilibrate 900 \u00b0C",
+                        "Method Log Entry # 6\tGas Selected 2",
+                        "Method Log Entry # 7\tIsothermal 10 minutes",
+                        "[Weight Calibration]\t",
+                        "Date Applied\t14.06.2023 07:39:55",
+                        "Empty Pan Number\t23.0",
+                        "Empty Pan Weight\t325,000 mg",
+                        "Low Reference Weight Pan Number\t24.0",
+                        "Low Reference Weight\t425,000 mg",
+                        "High Reference Weight Pan Number\t25.0",
+                        "High Reference Weight\t1.325,000 mg",
+                        "Low Gain Meter Reading\t9,5856E-006 mg/count",
+                        "High Gain Meter Reading\t8,6100E-005 mg/count",
+                        "Low Meter Offset\t47,9314 mg",
+                        "High Meter Offset\t684,5124 mg",
+                        "[Curie Calibration]\t",
+                        "Date Applied\t14.06.2023 07:05:13",
+                        "Description\tFrom 308.200 \u00b0C to 408.200 \u00b0C at 10.000\u00b0C/min",
+                        "Gas Type\tNitrogen",
+                        "Pan Type\tPlatinum HT",
+                        "Source Files 1\tC:\\Users\\ITCP-AKT.ITCP-AKT-003\\Documents\\Nickel(6).tri",
+                        "Measured 1\t3558379.0",
+                        "Known 1\t358,2"
+                    ],
+                    "metadata": {
+                        "Comments": "",
+                        "Common IDD Version": 1,
+                        "Company Name": "KIT",
+                        "Cortex Version": "VER 2.1.2.69",
+                        "Current File Name": "Z:\\Analysis\\TGA_CW\\Alex\\AG-377_neu.tri",
+                        "Date Applied": "14.06.2023 07:39:55",
+                        "Date Applied (1)": "14.06.2023 07:05:13",
+                        "Description": "From 308.200 \u00b0C to 408.200 \u00b0C at 10.000\u00b0C/min",
+                        "DisplayType": "TianmaV2",
+                        "Driver": "5.0.0.7",
+                        "Empty Pan Number": 23,
+                        "Empty Pan Weight": "325,000 mg",
+                        "Experiment Log Entry # 1": "Gas Select Segment is 1",
+                        "Experiment Log Entry # 11": "Gas Select Segment is 2",
+                        "Experiment Log Entry # 13": "Isothermal Segment 10 min started",
+                        "Experiment Log Entry # 3": "Equilibrate Segment 30 (C) Started",
+                        "Experiment Log Entry # 5": "Isothermal Segment 3 min started",
+                        "Experiment Log Entry # 7": "Ramp Segment 10 C/min to 900 C Started",
+                        "Experiment Log Entry # 9": "Equilibrate Segment 900 (C) Started",
+                        "Filename": "AG-377_neu",
+                        "GDM Version": "1.2.1.2",
+                        "Gas 1": "Nitrogen",
+                        "Gas 2": "Air",
+                        "Gas Type": "Nitrogen",
+                        "High Gain Meter Reading": "8,6100E-005 mg/count",
+                        "High Meter Offset": "684,5124 mg",
+                        "High Reference Weight": "1.325,000 mg",
+                        "High Reference Weight Pan Number": 25,
+                        "IP": "192.168.1.99",
+                        "Instrument Name": "5500-0290",
+                        "Instrument Type": "TGA5500",
+                        "Instrument name": "5500-0290 (192.168.1.99)",
+                        "Known 1": "358,2",
+                        "Location of Instrument": "Manufacturing Test",
+                        "Low Gain Meter Reading": "9,5856E-006 mg/count",
+                        "Low Meter Offset": "47,9314 mg",
+                        "Low Reference Weight": "425,000 mg",
+                        "Low Reference Weight Pan Number": 24,
+                        "MTGA HiRes Licensed": "Yes",
+                        "Measured 1": 3558379,
+                        "Method Log Entry # 1": "Gas Selected 1",
+                        "Method Log Entry # 2": "Equilibrate 30 \u00b0C",
+                        "Method Log Entry # 3": "Isothermal 3 minutes",
+                        "Method Log Entry # 4": "(Ramp 88036) Ramp 10 \u00b0C/minute to 900 \u00b0C",
+                        "Method Log Entry # 5": "Equilibrate 900 \u00b0C",
+                        "Method Log Entry # 6": "Gas Selected 2",
+                        "Method Log Entry # 7": "Isothermal 10 minutes",
+                        "Operator": "AG",
+                        "Operator (1)": "AG",
+                        "Original File Name": "Z:\\Alex\\AG-377_neu.tri",
+                        "PCU Version": "1.2.0.22",
+                        "Pan Number": 5,
+                        "Pan Type": "Platinum HT",
+                        "Pan Type (1)": "Platinum HT",
+                        "Procedure Name": "AG Standard 900 \u00b0C",
+                        "Project Name": "",
+                        "Run date": "22.09.2023 23:17:31",
+                        "Sample Interval ": "0,1 s/pt",
+                        "Sample Mass": "2,291 mg",
+                        "Sample Name": "AG-377_neu",
+                        "Sample mass pre-weigh": "Not Available",
+                        "Sample name": "AG-377_neu",
+                        "Selected Gas Channel": 1,
+                        "Serial Number": "5500-0290",
+                        "Signal #1": "Time (s)",
+                        "Signal #2": "Temperature (\u00b0C)",
+                        "Signal #3": "Weight (mg)",
+                        "Signal #4": "Temperature Difference (\u00b0C)",
+                        "Signal #5": "Sample Purge (mL/s)",
+                        "Signal #6": "Balance Purge (mL/s)",
+                        "Signal #7": "Set Point Temperature (\u00b0C)",
+                        "Signal #8": "Power Delivered (W)",
+                        "Signal #9": "Ramp Rate (\u00b0C/s)",
+                        "Skip Weight Stabilization": 0,
+                        "Source Files 1": "C:\\Users\\ITCP-AKT.ITCP-AKT-003\\Documents\\Nickel(6).tri",
+                        "Stop on Gas Flow Error": "Yes",
+                        "Test": "Custom",
+                        "TouchscreenVersion": "1.0.0.14551",
+                        "Transducer Version": "1.1.0.32",
+                        "Trios version": "5.0.0.44608",
+                        "[Configuration]": "",
+                        "[Curie Calibration]": "",
+                        "[Experiment Logs]": "",
+                        "[File Parameters]": "",
+                        "[Method Log]": "",
+                        "[Procedure]": "",
+                        "[Signal List]": "",
+                        "[Versions]": "",
+                        "[Weight Calibration]": "",
+                        "columns": "0",
+                        "proceduresegments": "Select Gas: Gas 1 ; Equilibrate 30,00 \u00b0C; Isothermal 3,0 min; Ramp 10,00 \u00b0C/min to 900,00 \u00b0C; Equilibrate 900,00 \u00b0C; Select Gas: Gas 2 ; Isothermal 10,0 min",
+                        "rows": "0",
+                        "rundate": "22.09.2023"
                     },
-                    {
-                        "key": "1",
-                        "name": "Column #1"
-                    },
-                    {
-                        "key": "2",
-                        "name": "Column #2"
-                    },
-                    {
-                        "key": "3",
-                        "name": "Column #3"
-                    }
-                ],
-                "header": [
-                    "Isothermal 3.0 min\t\t\t",
-                    "Time\tTemperature\tWeight\tWeight",
-                    "s\t\u00b0C\tmg\t%"
-                ],
-                "metadata": {
-                    "Isothermal 3.0 min": "",
-                    "Isothermal 3.0 min (1)": "",
-                    "Isothermal 3.0 min (2)": "",
-                    "Time": "Temperature",
-                    "Time (1)": "Weight",
-                    "Time (2)": "Weight",
-                    "columns": "4",
-                    "rows": "1800",
-                    "s": "\u00b0C",
-                    "s (1)": "mg",
-                    "s (2)": "%"
+                    "rows": []
                 },
-                "rows": [
-                    [
-                        0,
-                        29.88,
-                        2.29,
-                        99.957
+                {
+                    "columns": [
+                        {
+                            "key": "0",
+                            "name": "Column #0"
+                        },
+                        {
+                            "key": "1",
+                            "name": "Column #1"
+                        },
+                        {
+                            "key": "2",
+                            "name": "Column #2"
+                        },
+                        {
+                            "key": "3",
+                            "name": "Column #3"
+                        }
                     ],
-                    [
-                        0.1,
-                        29.88,
-                        2.29,
-                        99.956
+                    "header": [
+                        "Isothermal 3.0 min\t\t\t",
+                        "Time\tTemperature\tWeight\tWeight",
+                        "s\t\u00b0C\tmg\t%"
                     ],
-                    [
-                        0.2,
-                        29.88,
-                        2.29,
-                        99.956
-                    ],
-                    [
-                        0.3,
-                        29.88,
-                        2.29,
-                        99.955
-                    ],
-                    [
-                        0.4,
-                        29.88,
-                        2.29,
-                        99.956
-                    ],
-                    [
-                        0.5,
-                        29.88,
-                        2.29,
-                        99.956
-                    ],
-                    [
-                        0.6,
-                        29.88,
-                        2.29,
-                        99.957
-                    ],
-                    [
-                        0.7,
-                        29.88,
-                        2.29,
-                        99.956
-                    ],
-                    [
-                        0.8,
-                        29.88,
-                        2.29,
-                        99.955
-                    ],
-                    [
-                        0.9,
-                        29.88,
-                        2.29,
-                        99.955
+                    "metadata": {
+                        "Isothermal 3.0 min": "",
+                        "Isothermal 3.0 min (1)": "",
+                        "Isothermal 3.0 min (2)": "",
+                        "Time": "Temperature",
+                        "Time (1)": "Weight",
+                        "Time (2)": "Weight",
+                        "columns": "4",
+                        "rows": "1800",
+                        "s": "\u00b0C",
+                        "s (1)": "mg",
+                        "s (2)": "%"
+                    },
+                    "rows": [
+                        [
+                            0,
+                            29.88,
+                            2.29,
+                            99.957
+                        ],
+                        [
+                            0.1,
+                            29.88,
+                            2.29,
+                            99.956
+                        ],
+                        [
+                            0.2,
+                            29.88,
+                            2.29,
+                            99.956
+                        ],
+                        [
+                            0.3,
+                            29.88,
+                            2.29,
+                            99.955
+                        ],
+                        [
+                            0.4,
+                            29.88,
+                            2.29,
+                            99.956
+                        ],
+                        [
+                            0.5,
+                            29.88,
+                            2.29,
+                            99.956
+                        ],
+                        [
+                            0.6,
+                            29.88,
+                            2.29,
+                            99.957
+                        ],
+                        [
+                            0.7,
+                            29.88,
+                            2.29,
+                            99.956
+                        ],
+                        [
+                            0.8,
+                            29.88,
+                            2.29,
+                            99.955
+                        ],
+                        [
+                            0.9,
+                            29.88,
+                            2.29,
+                            99.955
+                        ]
                     ]
-                ]
-            },
-            {
-                "columns": [
-                    {
-                        "key": "0",
-                        "name": "Column #0"
-                    },
-                    {
-                        "key": "1",
-                        "name": "Column #1"
-                    },
-                    {
-                        "key": "2",
-                        "name": "Column #2"
-                    },
-                    {
-                        "key": "3",
-                        "name": "Column #3"
-                    },
-                    {
-                        "key": "4",
-                        "name": "Column #4"
-                    }
-                ],
-                "header": [
-                    "Ramp 10.00 \u00b0C/min to 900.00 \u00b0C\t\t\t\t",
-                    "Time\tTemperature\tWeight\tWeight\tDeriv. Weight",
-                    "s\t\u00b0C\tmg\t%\t% / \u00b0C"
-                ],
-                "metadata": {
-                    "Ramp 10.00 \u00b0C/min to 900.00 \u00b0C": "",
-                    "Ramp 10.00 \u00b0C/min to 900.00 \u00b0C (1)": "",
-                    "Ramp 10.00 \u00b0C/min to 900.00 \u00b0C (2)": "",
-                    "Ramp 10.00 \u00b0C/min to 900.00 \u00b0C (3)": "",
-                    "Time": "Temperature",
-                    "Time (1)": "Weight",
-                    "Time (2)": "Weight",
-                    "Time (3)": "Deriv. Weight",
-                    "columns": "5",
-                    "rows": "52491",
-                    "s": "\u00b0C",
-                    "s (1)": "mg",
-                    "s (2)": "%",
-                    "s (3)": "% / \u00b0C"
                 },
-                "rows": [
-                    [
-                        180,
-                        29.43,
-                        2.289,
-                        99.901,
-                        0.0744128
+                {
+                    "columns": [
+                        {
+                            "key": "0",
+                            "name": "Column #0"
+                        },
+                        {
+                            "key": "1",
+                            "name": "Column #1"
+                        },
+                        {
+                            "key": "2",
+                            "name": "Column #2"
+                        },
+                        {
+                            "key": "3",
+                            "name": "Column #3"
+                        },
+                        {
+                            "key": "4",
+                            "name": "Column #4"
+                        }
                     ],
-                    [
-                        180.1,
-                        29.43,
-                        2.289,
-                        99.901,
-                        0.0187089
+                    "header": [
+                        "Ramp 10.00 \u00b0C/min to 900.00 \u00b0C\t\t\t\t",
+                        "Time\tTemperature\tWeight\tWeight\tDeriv. Weight",
+                        "s\t\u00b0C\tmg\t%\t% / \u00b0C"
                     ],
-                    [
-                        180.2,
-                        29.43,
-                        2.289,
-                        99.901,
-                        -0.0218336
-                    ],
-                    [
-                        180.3,
-                        29.43,
-                        2.289,
-                        99.901,
-                        -0.0860284
-                    ],
-                    [
-                        180.4,
-                        29.43,
-                        2.289,
-                        99.901,
-                        -0.0967582
-                    ],
-                    [
-                        180.5,
-                        29.43,
-                        2.289,
-                        99.901,
-                        -0.0601264
-                    ],
-                    [
-                        180.6,
-                        29.43,
-                        2.289,
-                        99.901,
-                        -0.00789877
-                    ],
-                    [
-                        180.7,
-                        29.43,
-                        2.289,
-                        99.901,
-                        0.0196889
-                    ],
-                    [
-                        180.8,
-                        29.43,
-                        2.289,
-                        99.901,
-                        0.00787204
-                    ],
-                    [
-                        180.9,
-                        29.43,
-                        2.289,
-                        99.901,
-                        -0.031546
+                    "metadata": {
+                        "Ramp 10.00 \u00b0C/min to 900.00 \u00b0C": "",
+                        "Ramp 10.00 \u00b0C/min to 900.00 \u00b0C (1)": "",
+                        "Ramp 10.00 \u00b0C/min to 900.00 \u00b0C (2)": "",
+                        "Ramp 10.00 \u00b0C/min to 900.00 \u00b0C (3)": "",
+                        "Time": "Temperature",
+                        "Time (1)": "Weight",
+                        "Time (2)": "Weight",
+                        "Time (3)": "Deriv. Weight",
+                        "columns": "5",
+                        "rows": "52491",
+                        "s": "\u00b0C",
+                        "s (1)": "mg",
+                        "s (2)": "%",
+                        "s (3)": "% / \u00b0C"
+                    },
+                    "rows": [
+                        [
+                            180,
+                            29.43,
+                            2.289,
+                            99.901,
+                            0.0744128
+                        ],
+                        [
+                            180.1,
+                            29.43,
+                            2.289,
+                            99.901,
+                            0.0187089
+                        ],
+                        [
+                            180.2,
+                            29.43,
+                            2.289,
+                            99.901,
+                            -0.0218336
+                        ],
+                        [
+                            180.3,
+                            29.43,
+                            2.289,
+                            99.901,
+                            -0.0860284
+                        ],
+                        [
+                            180.4,
+                            29.43,
+                            2.289,
+                            99.901,
+                            -0.0967582
+                        ],
+                        [
+                            180.5,
+                            29.43,
+                            2.289,
+                            99.901,
+                            -0.0601264
+                        ],
+                        [
+                            180.6,
+                            29.43,
+                            2.289,
+                            99.901,
+                            -0.00789877
+                        ],
+                        [
+                            180.7,
+                            29.43,
+                            2.289,
+                            99.901,
+                            0.0196889
+                        ],
+                        [
+                            180.8,
+                            29.43,
+                            2.289,
+                            99.901,
+                            0.00787204
+                        ],
+                        [
+                            180.9,
+                            29.43,
+                            2.289,
+                            99.901,
+                            -0.031546
+                        ]
                     ]
-                ]
-            },
-            {
-                "columns": [
-                    {
-                        "key": "0",
-                        "name": "Column #0"
-                    },
-                    {
-                        "key": "1",
-                        "name": "Column #1"
-                    },
-                    {
-                        "key": "2",
-                        "name": "Column #2"
-                    },
-                    {
-                        "key": "3",
-                        "name": "Column #3"
-                    }
-                ],
-                "header": [
-                    "Equilibrate 900.00 \u00b0C\t\t\t",
-                    "Time\tTemperature\tWeight\tWeight",
-                    "s\t\u00b0C\tmg\t%"
-                ],
-                "metadata": {
-                    "Equilibrate 900.00 \u00b0C": "",
-                    "Equilibrate 900.00 \u00b0C (1)": "",
-                    "Equilibrate 900.00 \u00b0C (2)": "",
-                    "Time": "Temperature",
-                    "Time (1)": "Weight",
-                    "Time (2)": "Weight",
-                    "columns": "4",
-                    "rows": "1651",
-                    "s": "\u00b0C",
-                    "s (1)": "mg",
-                    "s (2)": "%"
                 },
-                "rows": [
-                    [
-                        5429.1,
-                        898.41,
-                        0.031,
-                        1.34
+                {
+                    "columns": [
+                        {
+                            "key": "0",
+                            "name": "Column #0"
+                        },
+                        {
+                            "key": "1",
+                            "name": "Column #1"
+                        },
+                        {
+                            "key": "2",
+                            "name": "Column #2"
+                        },
+                        {
+                            "key": "3",
+                            "name": "Column #3"
+                        }
                     ],
-                    [
-                        5429.2,
-                        898.43,
-                        0.031,
-                        1.341
+                    "header": [
+                        "Equilibrate 900.00 \u00b0C\t\t\t",
+                        "Time\tTemperature\tWeight\tWeight",
+                        "s\t\u00b0C\tmg\t%"
                     ],
-                    [
-                        5429.3,
-                        898.44,
-                        0.031,
-                        1.341
-                    ],
-                    [
-                        5429.4,
-                        898.46,
-                        0.031,
-                        1.341
-                    ],
-                    [
-                        5429.5,
-                        898.47,
-                        0.031,
-                        1.341
-                    ],
-                    [
-                        5429.6,
-                        898.49,
-                        0.031,
-                        1.34
-                    ],
-                    [
-                        5429.7,
-                        898.51,
-                        0.031,
-                        1.34
-                    ],
-                    [
-                        5429.8,
-                        898.52,
-                        0.031,
-                        1.34
-                    ],
-                    [
-                        5429.9,
-                        898.54,
-                        0.031,
-                        1.34
-                    ],
-                    [
-                        5430,
-                        898.55,
-                        0.031,
-                        1.34
+                    "metadata": {
+                        "Equilibrate 900.00 \u00b0C": "",
+                        "Equilibrate 900.00 \u00b0C (1)": "",
+                        "Equilibrate 900.00 \u00b0C (2)": "",
+                        "Time": "Temperature",
+                        "Time (1)": "Weight",
+                        "Time (2)": "Weight",
+                        "columns": "4",
+                        "rows": "1651",
+                        "s": "\u00b0C",
+                        "s (1)": "mg",
+                        "s (2)": "%"
+                    },
+                    "rows": [
+                        [
+                            5429.1,
+                            898.41,
+                            0.031,
+                            1.34
+                        ],
+                        [
+                            5429.2,
+                            898.43,
+                            0.031,
+                            1.341
+                        ],
+                        [
+                            5429.3,
+                            898.44,
+                            0.031,
+                            1.341
+                        ],
+                        [
+                            5429.4,
+                            898.46,
+                            0.031,
+                            1.341
+                        ],
+                        [
+                            5429.5,
+                            898.47,
+                            0.031,
+                            1.341
+                        ],
+                        [
+                            5429.6,
+                            898.49,
+                            0.031,
+                            1.34
+                        ],
+                        [
+                            5429.7,
+                            898.51,
+                            0.031,
+                            1.34
+                        ],
+                        [
+                            5429.8,
+                            898.52,
+                            0.031,
+                            1.34
+                        ],
+                        [
+                            5429.9,
+                            898.54,
+                            0.031,
+                            1.34
+                        ],
+                        [
+                            5430,
+                            898.55,
+                            0.031,
+                            1.34
+                        ]
                     ]
-                ]
-            },
-            {
-                "columns": [
-                    {
-                        "key": "0",
-                        "name": "Column #0"
-                    },
-                    {
-                        "key": "1",
-                        "name": "Column #1"
-                    },
-                    {
-                        "key": "2",
-                        "name": "Column #2"
-                    },
-                    {
-                        "key": "3",
-                        "name": "Column #3"
-                    },
-                    {
-                        "key": "4",
-                        "name": "Column #4"
-                    }
-                ],
-                "header": [
-                    "Isothermal 10.0 min\t\t\t\t",
-                    "Time\tTemperature\tWeight\tWeight\tDeriv. Weight",
-                    "s\t\u00b0C\tmg\t%\t% / \u00b0C"
-                ],
-                "metadata": {
-                    "Isothermal 10.0 min": "",
-                    "Isothermal 10.0 min (1)": "",
-                    "Isothermal 10.0 min (2)": "",
-                    "Isothermal 10.0 min (3)": "",
-                    "Time": "Temperature",
-                    "Time (1)": "Weight",
-                    "Time (2)": "Weight",
-                    "Time (3)": "Deriv. Weight",
-                    "columns": "5",
-                    "rows": "6000",
-                    "s": "\u00b0C",
-                    "s (1)": "mg",
-                    "s (2)": "%",
-                    "s (3)": "% / \u00b0C"
                 },
-                "rows": [
-                    [
-                        5594.2,
-                        899.64,
-                        0.028,
-                        1.233,
-                        -0.574304
+                {
+                    "columns": [
+                        {
+                            "key": "0",
+                            "name": "Column #0"
+                        },
+                        {
+                            "key": "1",
+                            "name": "Column #1"
+                        },
+                        {
+                            "key": "2",
+                            "name": "Column #2"
+                        },
+                        {
+                            "key": "3",
+                            "name": "Column #3"
+                        },
+                        {
+                            "key": "4",
+                            "name": "Column #4"
+                        }
                     ],
-                    [
-                        5594.3,
-                        899.64,
-                        0.028,
-                        1.233,
-                        -0.634343
+                    "header": [
+                        "Isothermal 10.0 min\t\t\t\t",
+                        "Time\tTemperature\tWeight\tWeight\tDeriv. Weight",
+                        "s\t\u00b0C\tmg\t%\t% / \u00b0C"
                     ],
-                    [
-                        5594.4,
-                        899.64,
-                        0.028,
-                        1.233,
-                        -0.71035
-                    ],
-                    [
-                        5594.5,
-                        899.64,
-                        0.028,
-                        1.232,
-                        -0.860732
-                    ],
-                    [
-                        5594.6,
-                        899.65,
-                        0.028,
-                        1.232,
-                        -0.973215
-                    ],
-                    [
-                        5594.7,
-                        899.65,
-                        0.028,
-                        1.231,
-                        -1.04324
-                    ],
-                    [
-                        5594.8,
-                        899.65,
-                        0.028,
-                        1.231,
-                        -1.02144
-                    ],
-                    [
-                        5594.9,
-                        899.65,
-                        0.028,
-                        1.23,
-                        -0.898512
-                    ],
-                    [
-                        5595,
-                        899.65,
-                        0.028,
-                        1.23,
-                        -0.719348
-                    ],
-                    [
-                        5595.1,
-                        899.65,
-                        0.028,
-                        1.229,
-                        -0.473816
+                    "metadata": {
+                        "Isothermal 10.0 min": "",
+                        "Isothermal 10.0 min (1)": "",
+                        "Isothermal 10.0 min (2)": "",
+                        "Isothermal 10.0 min (3)": "",
+                        "Time": "Temperature",
+                        "Time (1)": "Weight",
+                        "Time (2)": "Weight",
+                        "Time (3)": "Deriv. Weight",
+                        "columns": "5",
+                        "rows": "6000",
+                        "s": "\u00b0C",
+                        "s (1)": "mg",
+                        "s (2)": "%",
+                        "s (3)": "% / \u00b0C"
+                    },
+                    "rows": [
+                        [
+                            5594.2,
+                            899.64,
+                            0.028,
+                            1.233,
+                            -0.574304
+                        ],
+                        [
+                            5594.3,
+                            899.64,
+                            0.028,
+                            1.233,
+                            -0.634343
+                        ],
+                        [
+                            5594.4,
+                            899.64,
+                            0.028,
+                            1.233,
+                            -0.71035
+                        ],
+                        [
+                            5594.5,
+                            899.64,
+                            0.028,
+                            1.232,
+                            -0.860732
+                        ],
+                        [
+                            5594.6,
+                            899.65,
+                            0.028,
+                            1.232,
+                            -0.973215
+                        ],
+                        [
+                            5594.7,
+                            899.65,
+                            0.028,
+                            1.231,
+                            -1.04324
+                        ],
+                        [
+                            5594.8,
+                            899.65,
+                            0.028,
+                            1.231,
+                            -1.02144
+                        ],
+                        [
+                            5594.9,
+                            899.65,
+                            0.028,
+                            1.23,
+                            -0.898512
+                        ],
+                        [
+                            5595,
+                            899.65,
+                            0.028,
+                            1.23,
+                            -0.719348
+                        ],
+                        [
+                            5595.1,
+                            899.65,
+                            0.028,
+                            1.229,
+                            -0.473816
+                        ]
                     ]
-                ]
-            }
-        ]
-    },
+                }
+            ]
+        }
+    ],
     "datatypes": [],
     "description": "TGA - Campus West, KIT with Isothermal\nand Derivative",
     "devices": [],

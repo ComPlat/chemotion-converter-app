@@ -1,165 +1,167 @@
 {
     "converter_version": "1.8.0",
-    "data": {
-        "metadata": {
-            "content_type": "text/csv",
-            "delimiter": "comma",
-            "doublequote": "False",
-            "extension": ".csv",
-            "file_name": "File015_UV_Vis_RWTH_Cary60.csv",
-            "lineterminator": "\\r\\n",
-            "mime_type": "application/csv",
-            "quotechar": "\"",
-            "quoting": "0",
-            "reader": "CSVReader",
-            "skipinitialspace": "False",
-            "uploaded": "2023-03-12T13:38:16.374616"
-        },
-        "tables": [
-            {
-                "columns": [
-                    {
-                        "key": "0",
-                        "name": "Column #0 (Wavelength (nm))"
-                    },
-                    {
-                        "key": "1",
-                        "name": "Column #1 (Abs)"
-                    },
-                    {
-                        "key": "2",
-                        "name": "Column #2"
-                    }
-                ],
-                "header": [
-                    "sample2,,"
-                ],
-                "metadata": {
-                    "column_00": "Wavelength (nm)",
-                    "column_01": "Abs",
-                    "column_02": "",
-                    "columns": "3",
-                    "rows": "801"
-                },
-                "rows": [
-                    [
-                        "999.996582",
-                        "0.1122883111",
-                        ""
-                    ],
-                    [
-                        "998.9900513",
-                        "0.1217524335",
-                        ""
-                    ],
-                    [
-                        "998.0142822",
-                        "0.1188288555",
-                        ""
-                    ],
-                    [
-                        "997.0065918",
-                        "0.1160570979",
-                        ""
-                    ],
-                    [
-                        "995.9980469",
-                        "0.1162985414",
-                        ""
-                    ],
-                    [
-                        "994.9890747",
-                        "0.1120941862",
-                        ""
-                    ],
-                    [
-                        "994.0110474",
-                        "0.1132294014",
-                        ""
-                    ],
-                    [
-                        "993.0007935",
-                        "0.1145916581",
-                        ""
-                    ],
-                    [
-                        "991.9899292",
-                        "0.1179390699",
-                        ""
-                    ],
-                    [
-                        "991.0100708",
-                        "0.1168322116",
-                        ""
-                    ]
-                ]
+    "data": [
+        {
+            "metadata": {
+                "content_type": "text/csv",
+                "delimiter": "comma",
+                "doublequote": "False",
+                "extension": ".csv",
+                "file_name": "File015_UV_Vis_RWTH_Cary60.csv",
+                "lineterminator": "\\r\\n",
+                "mime_type": "application/csv",
+                "quotechar": "\"",
+                "quoting": "0",
+                "reader": "CSVReader",
+                "skipinitialspace": "False",
+                "uploaded": "2023-03-12T13:38:16.374616"
             },
-            {
-                "columns": [
-                    {
-                        "key": "0",
-                        "name": "Column #0"
-                    }
-                ],
-                "header": [
-                    "",
-                    "sample2,"
-                ],
-                "metadata": {
-                    "columns": "1",
-                    "rows": "24"
-                },
-                "rows": [
-                    [
-                        "sample2"
+            "tables": [
+                {
+                    "columns": [
+                        {
+                            "key": "0",
+                            "name": "Column #0 (Wavelength (nm))"
+                        },
+                        {
+                            "key": "1",
+                            "name": "Column #1 (Abs)"
+                        },
+                        {
+                            "key": "2",
+                            "name": "Column #2"
+                        }
                     ],
-                    [
-                        "Collection Time: 6/17/2021 4:53:42 PM"
+                    "header": [
+                        "sample2,,"
                     ],
-                    [
-                        "Operator Name  :"
-                    ],
-                    [
-                        "Scan Version 5.1.0.1016"
-                    ],
-                    [
-                        "Parameter List :"
-                    ],
-                    [
-                        "Instrument  Cary 60"
-                    ],
-                    [
-                        "Instrument Version  2.00"
-                    ],
-                    [
-                        "Start (nm)  1000.0"
-                    ],
-                    [
-                        "Stop (nm)  200.0"
-                    ],
-                    [
-                        "X Mode  Nanometers"
+                    "metadata": {
+                        "column_00": "Wavelength (nm)",
+                        "column_01": "Abs",
+                        "column_02": "",
+                        "columns": "3",
+                        "rows": "801"
+                    },
+                    "rows": [
+                        [
+                            "999.996582",
+                            "0.1122883111",
+                            ""
+                        ],
+                        [
+                            "998.9900513",
+                            "0.1217524335",
+                            ""
+                        ],
+                        [
+                            "998.0142822",
+                            "0.1188288555",
+                            ""
+                        ],
+                        [
+                            "997.0065918",
+                            "0.1160570979",
+                            ""
+                        ],
+                        [
+                            "995.9980469",
+                            "0.1162985414",
+                            ""
+                        ],
+                        [
+                            "994.9890747",
+                            "0.1120941862",
+                            ""
+                        ],
+                        [
+                            "994.0110474",
+                            "0.1132294014",
+                            ""
+                        ],
+                        [
+                            "993.0007935",
+                            "0.1145916581",
+                            ""
+                        ],
+                        [
+                            "991.9899292",
+                            "0.1179390699",
+                            ""
+                        ],
+                        [
+                            "991.0100708",
+                            "0.1168322116",
+                            ""
+                        ]
                     ]
-                ]
-            },
-            {
-                "columns": [],
-                "header": [
-                    "Baseline Correction Changed: 6/17/2021 2:53:47 PM, Old:0, New:1",
-                    "X Start nm Changed: 6/17/2021 2:54:32 PM, Old:  800.0, New: 1000.0",
-                    "Common Interval nm Changed: 6/17/2021 4:45:17 PM, Old:     5.00, New:     1.00",
-                    "End Method Modifications",
-                    "<Current Wavelength> , 215.0",
-                    ""
-                ],
-                "metadata": {
-                    "columns": "0",
-                    "rows": "0"
                 },
-                "rows": []
-            }
-        ]
-    },
+                {
+                    "columns": [
+                        {
+                            "key": "0",
+                            "name": "Column #0"
+                        }
+                    ],
+                    "header": [
+                        "",
+                        "sample2,"
+                    ],
+                    "metadata": {
+                        "columns": "1",
+                        "rows": "24"
+                    },
+                    "rows": [
+                        [
+                            "sample2"
+                        ],
+                        [
+                            "Collection Time: 6/17/2021 4:53:42 PM"
+                        ],
+                        [
+                            "Operator Name  :"
+                        ],
+                        [
+                            "Scan Version 5.1.0.1016"
+                        ],
+                        [
+                            "Parameter List :"
+                        ],
+                        [
+                            "Instrument  Cary 60"
+                        ],
+                        [
+                            "Instrument Version  2.00"
+                        ],
+                        [
+                            "Start (nm)  1000.0"
+                        ],
+                        [
+                            "Stop (nm)  200.0"
+                        ],
+                        [
+                            "X Mode  Nanometers"
+                        ]
+                    ]
+                },
+                {
+                    "columns": [],
+                    "header": [
+                        "Baseline Correction Changed: 6/17/2021 2:53:47 PM, Old:0, New:1",
+                        "X Start nm Changed: 6/17/2021 2:54:32 PM, Old:  800.0, New: 1000.0",
+                        "Common Interval nm Changed: 6/17/2021 4:45:17 PM, Old:     5.00, New:     1.00",
+                        "End Method Modifications",
+                        "<Current Wavelength> , 215.0",
+                        ""
+                    ],
+                    "metadata": {
+                        "columns": "0",
+                        "rows": "0"
+                    },
+                    "rows": []
+                }
+            ]
+        }
+    ],
     "datatypes": [],
     "description": "Cary 60; ref location: KIT CN, data: +, metadata: +",
     "devices": [],

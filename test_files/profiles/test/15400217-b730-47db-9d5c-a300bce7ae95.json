@@ -1,199 +1,201 @@
 {
     "converter_version": "1.8.0",
-    "data": {
-        "metadata": {
-            "content_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-            "extension": ".xlsx",
-            "file_name": "20230329_YA_100_DMF_10uM (1).xlsx",
-            "mime_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-            "reader": "ExcelReader",
-            "uploaded": "2023-08-11T07:42:03.599770"
-        },
-        "tables": [
-            {
-                "columns": [
-                    {
-                        "key": "0",
-                        "name": "Column #0"
-                    },
-                    {
-                        "key": "1",
-                        "name": "Column #1"
-                    },
-                    {
-                        "key": "2",
-                        "name": "Column #2"
-                    },
-                    {
-                        "key": "3",
-                        "name": "Column #3"
-                    }
-                ],
-                "header": [
-                    [
-                        null,
-                        null,
-                        null,
-                        null
-                    ]
-                ],
-                "metadata": {
-                    "columns": "4",
-                    "rows": "601"
-                },
-                "rows": [
-                    [
-                        800,
-                        0.02022929303,
-                        800,
-                        -0.001422947738
-                    ],
-                    [
-                        799,
-                        0.02123860642,
-                        799,
-                        -0.0006592291757
-                    ],
-                    [
-                        798,
-                        0.02075253986,
-                        798,
-                        -0.0004054438032
-                    ],
-                    [
-                        797,
-                        0.02124768496,
-                        797,
-                        -0.001108470955
-                    ],
-                    [
-                        796,
-                        0.02095827274,
-                        796,
-                        -0.0006755639915
-                    ],
-                    [
-                        795,
-                        0.02084152959,
-                        795,
-                        -0.00138728891
-                    ],
-                    [
-                        794,
-                        0.02113042958,
-                        794,
-                        -0.0003371115308
-                    ],
-                    [
-                        793,
-                        0.02119810507,
-                        793,
-                        -0.0008236864815
-                    ],
-                    [
-                        792,
-                        0.02096161433,
-                        792,
-                        -0.0008340211352
-                    ],
-                    [
-                        791,
-                        0.02130754851,
-                        791,
-                        -0.001054916997
-                    ]
-                ]
+    "data": [
+        {
+            "metadata": {
+                "content_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                "extension": ".xlsx",
+                "file_name": "20230329_YA_100_DMF_10uM (1).xlsx",
+                "mime_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                "reader": "ExcelReader",
+                "uploaded": "2023-08-11T07:42:03.599770"
             },
-            {
-                "columns": [],
-                "header": [
-                    "Baseline 100%T\tNone\tNone\tNone",
-                    "Baseline 100%T\tNone\tNone\tNone",
-                    "Collection Time: 29/03/2023 15:30:20\tNone\tNone\tNone",
-                    "Operator Name  :\tNone\tNone\tNone",
-                    "Scan Software Version: 3.00(339)\tNone\tNone\tNone",
-                    "Parameter List :\tNone\tNone\tNone",
-                    "Instrument                        Cary 300\tNone\tNone\tNone",
-                    "Instrument Version                9.00\tNone\tNone\tNone",
-                    "Start (nm)                        800.00\tNone\tNone\tNone",
-                    "Stop (nm)                         200.00\tNone\tNone\tNone",
-                    "X Mode                            Nanometers\tNone\tNone\tNone",
-                    "Y Mode                            Abs\tNone\tNone\tNone",
-                    "UV-Vis Scan Rate (nm/min)         600.000\tNone\tNone\tNone",
-                    "UV-Vis Data Interval (nm)         1.000\tNone\tNone\tNone",
-                    "UV-Vis Ave. Time (sec)            0.100\tNone\tNone\tNone",
-                    "UV-Vis SBW (nm)                   2.0\tNone\tNone\tNone",
-                    "Beam Mode                         Double\tNone\tNone\tNone",
-                    "Signal-to-noise Mode              Off\tNone\tNone\tNone",
-                    "UV Source                         On\tNone\tNone\tNone",
-                    "Vis Source                        On\tNone\tNone\tNone",
-                    "Source Changeover (nm)            350.00\tNone\tNone\tNone",
-                    "Baseline Correction               On\tNone\tNone\tNone",
-                    "Baseline Type                     Baseline correction\tNone\tNone\tNone",
-                    "Baseline File Name\tNone\tNone\tNone",
-                    "Baseline Std Ref File Name\tNone\tNone\tNone",
-                    "Cycle Mode                        Off\tNone\tNone\tNone",
-                    "Comments\tNone\tNone\tNone",
-                    "Method Log     :\tNone\tNone\tNone",
-                    "Method Name    :\tNone\tNone\tNone",
-                    "Date/Time stamp: 29/03/2023 15:29:54\tNone\tNone\tNone",
-                    "Method Modifications:\tNone\tNone\tNone",
-                    "Baseline Correction Changed: 29/03/2023 15:30:17\t Old:0\t New:1\tNone",
-                    "End Method Modifications\tNone\tNone\tNone",
-                    "<SBW (nm)> \t2\tNone\tNone",
-                    "<Energy> \t175\tNone\tNone",
-                    "<Current Wavelength> \t200\tNone\tNone",
-                    [
-                        null,
-                        null,
-                        null,
-                        null
+            "tables": [
+                {
+                    "columns": [
+                        {
+                            "key": "0",
+                            "name": "Column #0"
+                        },
+                        {
+                            "key": "1",
+                            "name": "Column #1"
+                        },
+                        {
+                            "key": "2",
+                            "name": "Column #2"
+                        },
+                        {
+                            "key": "3",
+                            "name": "Column #3"
+                        }
                     ],
-                    "sample1\tNone\tNone\tNone",
-                    "sample1\tNone\tNone\tNone",
-                    "Collection Time: 29/03/2023 15:33:07\tNone\tNone\tNone",
-                    "Operator Name  :\tNone\tNone\tNone",
-                    "Scan Software Version: 3.00(339)\tNone\tNone\tNone",
-                    "Parameter List :\tNone\tNone\tNone",
-                    "Instrument                        Cary 300\tNone\tNone\tNone",
-                    "Instrument Version                9.00\tNone\tNone\tNone",
-                    "Start (nm)                        800.00\tNone\tNone\tNone",
-                    "Stop (nm)                         200.00\tNone\tNone\tNone",
-                    "X Mode                            Nanometers\tNone\tNone\tNone",
-                    "Y Mode                            Abs\tNone\tNone\tNone",
-                    "UV-Vis Scan Rate (nm/min)         600.000\tNone\tNone\tNone",
-                    "UV-Vis Data Interval (nm)         1.000\tNone\tNone\tNone",
-                    "UV-Vis Ave. Time (sec)            0.100\tNone\tNone\tNone",
-                    "UV-Vis SBW (nm)                   2.0\tNone\tNone\tNone",
-                    "Beam Mode                         Double\tNone\tNone\tNone",
-                    "Signal-to-noise Mode              Off\tNone\tNone\tNone",
-                    "UV Source                         On\tNone\tNone\tNone",
-                    "Vis Source                        On\tNone\tNone\tNone",
-                    "Source Changeover (nm)            350.00\tNone\tNone\tNone",
-                    "Baseline Correction               On\tNone\tNone\tNone",
-                    "Baseline Type                     Baseline correction\tNone\tNone\tNone",
-                    "Baseline File Name\tNone\tNone\tNone",
-                    "Baseline Std Ref File Name\tNone\tNone\tNone",
-                    "Cycle Mode                        Off\tNone\tNone\tNone",
-                    "Comments\tNone\tNone\tNone",
-                    "Method Log     :\tNone\tNone\tNone",
-                    "Method Name    :\tNone\tNone\tNone",
-                    "Date/Time stamp: 29/03/2023 15:29:54\tNone\tNone\tNone",
-                    "Method Modifications:\tNone\tNone\tNone",
-                    "Baseline Correction Changed: 29/03/2023 15:30:17\t Old:0\t New:1\tNone",
-                    "End Method Modifications\tNone\tNone\tNone",
-                    "<SBW (nm)> \t2\tNone\tNone",
-                    "<Energy> \t175\tNone\tNone",
-                    "<Current Wavelength> \t200\tNone\tNone"
-                ],
-                "metadata": {
-                    "columns": "0",
-                    "rows": "0"
+                    "header": [
+                        [
+                            null,
+                            null,
+                            null,
+                            null
+                        ]
+                    ],
+                    "metadata": {
+                        "columns": "4",
+                        "rows": "601"
+                    },
+                    "rows": [
+                        [
+                            800,
+                            0.02022929303,
+                            800,
+                            -0.001422947738
+                        ],
+                        [
+                            799,
+                            0.02123860642,
+                            799,
+                            -0.0006592291757
+                        ],
+                        [
+                            798,
+                            0.02075253986,
+                            798,
+                            -0.0004054438032
+                        ],
+                        [
+                            797,
+                            0.02124768496,
+                            797,
+                            -0.001108470955
+                        ],
+                        [
+                            796,
+                            0.02095827274,
+                            796,
+                            -0.0006755639915
+                        ],
+                        [
+                            795,
+                            0.02084152959,
+                            795,
+                            -0.00138728891
+                        ],
+                        [
+                            794,
+                            0.02113042958,
+                            794,
+                            -0.0003371115308
+                        ],
+                        [
+                            793,
+                            0.02119810507,
+                            793,
+                            -0.0008236864815
+                        ],
+                        [
+                            792,
+                            0.02096161433,
+                            792,
+                            -0.0008340211352
+                        ],
+                        [
+                            791,
+                            0.02130754851,
+                            791,
+                            -0.001054916997
+                        ]
+                    ]
                 },
-                "rows": []
-            }
-        ]
-    },
+                {
+                    "columns": [],
+                    "header": [
+                        "Baseline 100%T\tNone\tNone\tNone",
+                        "Baseline 100%T\tNone\tNone\tNone",
+                        "Collection Time: 29/03/2023 15:30:20\tNone\tNone\tNone",
+                        "Operator Name  :\tNone\tNone\tNone",
+                        "Scan Software Version: 3.00(339)\tNone\tNone\tNone",
+                        "Parameter List :\tNone\tNone\tNone",
+                        "Instrument                        Cary 300\tNone\tNone\tNone",
+                        "Instrument Version                9.00\tNone\tNone\tNone",
+                        "Start (nm)                        800.00\tNone\tNone\tNone",
+                        "Stop (nm)                         200.00\tNone\tNone\tNone",
+                        "X Mode                            Nanometers\tNone\tNone\tNone",
+                        "Y Mode                            Abs\tNone\tNone\tNone",
+                        "UV-Vis Scan Rate (nm/min)         600.000\tNone\tNone\tNone",
+                        "UV-Vis Data Interval (nm)         1.000\tNone\tNone\tNone",
+                        "UV-Vis Ave. Time (sec)            0.100\tNone\tNone\tNone",
+                        "UV-Vis SBW (nm)                   2.0\tNone\tNone\tNone",
+                        "Beam Mode                         Double\tNone\tNone\tNone",
+                        "Signal-to-noise Mode              Off\tNone\tNone\tNone",
+                        "UV Source                         On\tNone\tNone\tNone",
+                        "Vis Source                        On\tNone\tNone\tNone",
+                        "Source Changeover (nm)            350.00\tNone\tNone\tNone",
+                        "Baseline Correction               On\tNone\tNone\tNone",
+                        "Baseline Type                     Baseline correction\tNone\tNone\tNone",
+                        "Baseline File Name\tNone\tNone\tNone",
+                        "Baseline Std Ref File Name\tNone\tNone\tNone",
+                        "Cycle Mode                        Off\tNone\tNone\tNone",
+                        "Comments\tNone\tNone\tNone",
+                        "Method Log     :\tNone\tNone\tNone",
+                        "Method Name    :\tNone\tNone\tNone",
+                        "Date/Time stamp: 29/03/2023 15:29:54\tNone\tNone\tNone",
+                        "Method Modifications:\tNone\tNone\tNone",
+                        "Baseline Correction Changed: 29/03/2023 15:30:17\t Old:0\t New:1\tNone",
+                        "End Method Modifications\tNone\tNone\tNone",
+                        "<SBW (nm)> \t2\tNone\tNone",
+                        "<Energy> \t175\tNone\tNone",
+                        "<Current Wavelength> \t200\tNone\tNone",
+                        [
+                            null,
+                            null,
+                            null,
+                            null
+                        ],
+                        "sample1\tNone\tNone\tNone",
+                        "sample1\tNone\tNone\tNone",
+                        "Collection Time: 29/03/2023 15:33:07\tNone\tNone\tNone",
+                        "Operator Name  :\tNone\tNone\tNone",
+                        "Scan Software Version: 3.00(339)\tNone\tNone\tNone",
+                        "Parameter List :\tNone\tNone\tNone",
+                        "Instrument                        Cary 300\tNone\tNone\tNone",
+                        "Instrument Version                9.00\tNone\tNone\tNone",
+                        "Start (nm)                        800.00\tNone\tNone\tNone",
+                        "Stop (nm)                         200.00\tNone\tNone\tNone",
+                        "X Mode                            Nanometers\tNone\tNone\tNone",
+                        "Y Mode                            Abs\tNone\tNone\tNone",
+                        "UV-Vis Scan Rate (nm/min)         600.000\tNone\tNone\tNone",
+                        "UV-Vis Data Interval (nm)         1.000\tNone\tNone\tNone",
+                        "UV-Vis Ave. Time (sec)            0.100\tNone\tNone\tNone",
+                        "UV-Vis SBW (nm)                   2.0\tNone\tNone\tNone",
+                        "Beam Mode                         Double\tNone\tNone\tNone",
+                        "Signal-to-noise Mode              Off\tNone\tNone\tNone",
+                        "UV Source                         On\tNone\tNone\tNone",
+                        "Vis Source                        On\tNone\tNone\tNone",
+                        "Source Changeover (nm)            350.00\tNone\tNone\tNone",
+                        "Baseline Correction               On\tNone\tNone\tNone",
+                        "Baseline Type                     Baseline correction\tNone\tNone\tNone",
+                        "Baseline File Name\tNone\tNone\tNone",
+                        "Baseline Std Ref File Name\tNone\tNone\tNone",
+                        "Cycle Mode                        Off\tNone\tNone\tNone",
+                        "Comments\tNone\tNone\tNone",
+                        "Method Log     :\tNone\tNone\tNone",
+                        "Method Name    :\tNone\tNone\tNone",
+                        "Date/Time stamp: 29/03/2023 15:29:54\tNone\tNone\tNone",
+                        "Method Modifications:\tNone\tNone\tNone",
+                        "Baseline Correction Changed: 29/03/2023 15:30:17\t Old:0\t New:1\tNone",
+                        "End Method Modifications\tNone\tNone\tNone",
+                        "<SBW (nm)> \t2\tNone\tNone",
+                        "<Energy> \t175\tNone\tNone",
+                        "<Current Wavelength> \t200\tNone\tNone"
+                    ],
+                    "metadata": {
+                        "columns": "0",
+                        "rows": "0"
+                    },
+                    "rows": []
+                }
+            ]
+        }
+    ],
     "datatypes": [],
     "description": "multicolumn (2) XLSX file with header at the end - Data from Tasnim",
     "devices": [],
