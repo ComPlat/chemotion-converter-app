@@ -1,204 +1,206 @@
 {
     "converter_version": "1.8.0",
-    "data": {
-        "metadata": {
-            "content_type": "text/plain",
-            "extension": ".txt",
-            "file_name": "cm1c01804_si_003.txt",
-            "mime_type": "text/plain",
-            "reader": "AifReader",
-            "uploaded": "2023-01-09T10:14:48.543817"
-        },
-        "tables": [
-            {
-                "columns": [
-                    {
-                        "key": "0",
-                        "name": "Column #0"
-                    },
-                    {
-                        "key": "1",
-                        "name": "Column #1"
-                    },
-                    {
-                        "key": "2",
-                        "name": "Column #2"
-                    }
-                ],
-                "header": [
-                    "data_data_raw2aifv004",
-                    "_exptl_operator 'Volodymyr'",
-                    "_exptl_date 2020-04-30T00:00:00",
-                    "_exptl_instrument 'BEL 00218'",
-                    "_exptl_adsorptive CH4",
-                    "_exptl_temperature 111.00",
-                    "_exptl_sample_mass 0.00980",
-                    "_sample_id 'aus der BOX'",
-                    "_sample_material_id 'DUT-140(Cu)'",
-                    "_units_temperature K",
-                    "_units_pressure kPa",
-                    "_units_mass g",
-                    "_units_loading 'ml(STP) g-1'",
-                    "loop_",
-                    "_adsorp_pressure",
-                    "_adsorp_p0",
-                    "_adsorp_loading"
-                ],
-                "metadata": {
-                    "Unit_column_#0": "_adsorp_pressure",
-                    "Unit_column_#1": "_adsorp_p0",
-                    "Unit_column_#2": "_adsorp_loading",
-                    "_exptl_adsorptive": "CH4",
-                    "_exptl_date": "2020-04-30T00:00:00",
-                    "_exptl_instrument": "BEL 00218",
-                    "_exptl_operator": "Volodymyr",
-                    "_exptl_sample_mass": "0.00980",
-                    "_exptl_temperature": "111.00",
-                    "_sample_id": "aus der BOX",
-                    "_sample_material_id": "DUT-140(Cu)",
-                    "_units_loading": "ml(STP) g-1",
-                    "_units_mass": "g",
-                    "_units_pressure": "kPa",
-                    "_units_temperature": "K",
-                    "columns": "3",
-                    "rows": "96"
-                },
-                "rows": [
-                    [
-                        "0.021604",
-                        "101.33",
-                        "10.631"
-                    ],
-                    [
-                        "0.091127",
-                        "101.33",
-                        "66.609"
-                    ],
-                    [
-                        "0.17133",
-                        "101.33",
-                        "120.28"
-                    ],
-                    [
-                        "0.29439",
-                        "101.33",
-                        "170.14"
-                    ],
-                    [
-                        "0.46759",
-                        "101.33",
-                        "214.69"
-                    ],
-                    [
-                        "0.88129",
-                        "101.33",
-                        "282.5"
-                    ],
-                    [
-                        "1.2344",
-                        "101.33",
-                        "322.52"
-                    ],
-                    [
-                        "1.6844",
-                        "101.33",
-                        "360.27"
-                    ],
-                    [
-                        "2.2991",
-                        "101.33",
-                        "401.55"
-                    ],
-                    [
-                        "2.4741",
-                        "101.33",
-                        "412.09"
-                    ]
-                ]
+    "data": [
+        {
+            "metadata": {
+                "content_type": "text/plain",
+                "extension": ".txt",
+                "file_name": "cm1c01804_si_003.txt",
+                "mime_type": "text/plain",
+                "reader": "AifReader",
+                "uploaded": "2023-01-09T10:14:48.543817"
             },
-            {
-                "columns": [
-                    {
-                        "key": "0",
-                        "name": "Column #0"
+            "tables": [
+                {
+                    "columns": [
+                        {
+                            "key": "0",
+                            "name": "Column #0"
+                        },
+                        {
+                            "key": "1",
+                            "name": "Column #1"
+                        },
+                        {
+                            "key": "2",
+                            "name": "Column #2"
+                        }
+                    ],
+                    "header": [
+                        "data_data_raw2aifv004",
+                        "_exptl_operator 'Volodymyr'",
+                        "_exptl_date 2020-04-30T00:00:00",
+                        "_exptl_instrument 'BEL 00218'",
+                        "_exptl_adsorptive CH4",
+                        "_exptl_temperature 111.00",
+                        "_exptl_sample_mass 0.00980",
+                        "_sample_id 'aus der BOX'",
+                        "_sample_material_id 'DUT-140(Cu)'",
+                        "_units_temperature K",
+                        "_units_pressure kPa",
+                        "_units_mass g",
+                        "_units_loading 'ml(STP) g-1'",
+                        "loop_",
+                        "_adsorp_pressure",
+                        "_adsorp_p0",
+                        "_adsorp_loading"
+                    ],
+                    "metadata": {
+                        "Unit_column_#0": "_adsorp_pressure",
+                        "Unit_column_#1": "_adsorp_p0",
+                        "Unit_column_#2": "_adsorp_loading",
+                        "_exptl_adsorptive": "CH4",
+                        "_exptl_date": "2020-04-30T00:00:00",
+                        "_exptl_instrument": "BEL 00218",
+                        "_exptl_operator": "Volodymyr",
+                        "_exptl_sample_mass": "0.00980",
+                        "_exptl_temperature": "111.00",
+                        "_sample_id": "aus der BOX",
+                        "_sample_material_id": "DUT-140(Cu)",
+                        "_units_loading": "ml(STP) g-1",
+                        "_units_mass": "g",
+                        "_units_pressure": "kPa",
+                        "_units_temperature": "K",
+                        "columns": "3",
+                        "rows": "96"
                     },
-                    {
-                        "key": "1",
-                        "name": "Column #1"
-                    },
-                    {
-                        "key": "2",
-                        "name": "Column #2"
-                    }
-                ],
-                "header": [
-                    "loop_",
-                    "_desorp_pressure",
-                    "_desorp_p0",
-                    "_desorp_loading"
-                ],
-                "metadata": {
-                    "Unit_column_#0": "_desorp_pressure",
-                    "Unit_column_#1": "_desorp_p0",
-                    "Unit_column_#2": "_desorp_loading",
-                    "columns": "3",
-                    "rows": "82"
-                },
-                "rows": [
-                    [
-                        "96.892",
-                        "101.33",
-                        "1479.7"
-                    ],
-                    [
-                        "95.687",
-                        "101.33",
-                        "1477.3"
-                    ],
-                    [
-                        "94.458",
-                        "101.33",
-                        "1475.6"
-                    ],
-                    [
-                        "93.269",
-                        "101.33",
-                        "1472.5"
-                    ],
-                    [
-                        "92.044",
-                        "101.33",
-                        "1469.0"
-                    ],
-                    [
-                        "90.819",
-                        "101.33",
-                        "1465.6"
-                    ],
-                    [
-                        "89.553",
-                        "101.33",
-                        "1462.7"
-                    ],
-                    [
-                        "88.352",
-                        "101.33",
-                        "1459.8"
-                    ],
-                    [
-                        "87.135",
-                        "101.33",
-                        "1456.7"
-                    ],
-                    [
-                        "85.869",
-                        "101.33",
-                        "1454.9"
+                    "rows": [
+                        [
+                            "0.021604",
+                            "101.33",
+                            "10.631"
+                        ],
+                        [
+                            "0.091127",
+                            "101.33",
+                            "66.609"
+                        ],
+                        [
+                            "0.17133",
+                            "101.33",
+                            "120.28"
+                        ],
+                        [
+                            "0.29439",
+                            "101.33",
+                            "170.14"
+                        ],
+                        [
+                            "0.46759",
+                            "101.33",
+                            "214.69"
+                        ],
+                        [
+                            "0.88129",
+                            "101.33",
+                            "282.5"
+                        ],
+                        [
+                            "1.2344",
+                            "101.33",
+                            "322.52"
+                        ],
+                        [
+                            "1.6844",
+                            "101.33",
+                            "360.27"
+                        ],
+                        [
+                            "2.2991",
+                            "101.33",
+                            "401.55"
+                        ],
+                        [
+                            "2.4741",
+                            "101.33",
+                            "412.09"
+                        ]
                     ]
-                ]
-            }
-        ]
-    },
+                },
+                {
+                    "columns": [
+                        {
+                            "key": "0",
+                            "name": "Column #0"
+                        },
+                        {
+                            "key": "1",
+                            "name": "Column #1"
+                        },
+                        {
+                            "key": "2",
+                            "name": "Column #2"
+                        }
+                    ],
+                    "header": [
+                        "loop_",
+                        "_desorp_pressure",
+                        "_desorp_p0",
+                        "_desorp_loading"
+                    ],
+                    "metadata": {
+                        "Unit_column_#0": "_desorp_pressure",
+                        "Unit_column_#1": "_desorp_p0",
+                        "Unit_column_#2": "_desorp_loading",
+                        "columns": "3",
+                        "rows": "82"
+                    },
+                    "rows": [
+                        [
+                            "96.892",
+                            "101.33",
+                            "1479.7"
+                        ],
+                        [
+                            "95.687",
+                            "101.33",
+                            "1477.3"
+                        ],
+                        [
+                            "94.458",
+                            "101.33",
+                            "1475.6"
+                        ],
+                        [
+                            "93.269",
+                            "101.33",
+                            "1472.5"
+                        ],
+                        [
+                            "92.044",
+                            "101.33",
+                            "1469.0"
+                        ],
+                        [
+                            "90.819",
+                            "101.33",
+                            "1465.6"
+                        ],
+                        [
+                            "89.553",
+                            "101.33",
+                            "1462.7"
+                        ],
+                        [
+                            "88.352",
+                            "101.33",
+                            "1459.8"
+                        ],
+                        [
+                            "87.135",
+                            "101.33",
+                            "1456.7"
+                        ],
+                        [
+                            "85.869",
+                            "101.33",
+                            "1454.9"
+                        ]
+                    ]
+                }
+            ]
+        }
+    ],
     "datatypes": [],
     "description": "---; ref location: TU Dresden, data: +, metadata: + \n",
     "devices": [],

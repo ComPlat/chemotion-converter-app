@@ -1,156 +1,158 @@
 {
     "converter_version": "1.8.0",
-    "data": {
-        "metadata": {
-            "content_type": "text/plain",
-            "delimiter": "tab",
-            "doublequote": "False",
-            "extension": ".txt",
-            "file_name": "Example of fluorescence measurement.txt",
-            "lineterminator": "\\r\\n",
-            "mime_type": "text/plain",
-            "quotechar": "\"",
-            "quoting": "0",
-            "reader": "CSVReader",
-            "skipinitialspace": "False",
-            "uploaded": "2023-05-17T08:23:18.182320"
-        },
-        "tables": [
-            {
-                "columns": [
-                    {
-                        "key": "0",
-                        "name": "Column #0 (XYDATA)"
-                    },
-                    {
-                        "key": "1",
-                        "name": "Column #1"
-                    }
-                ],
-                "header": [
-                    "TITLE\t1hCys",
-                    "DATA TYPE\tFLUORESCENCE SPECTRUM",
-                    "ORIGIN\tJASCO",
-                    "OWNER\t",
-                    "DATE\t22/09/30",
-                    "TIME\t13:33:31",
-                    "SPECTROMETER/DATA SYSTEM\t",
-                    "LOCALE\t1031",
-                    "RESOLUTION\t",
-                    "DELTAX\t0.5",
-                    "XUNITS\tNANOMETERS",
-                    "YUNITS\tINTENSITY",
-                    "FIRSTX\t  400.0000",
-                    "LASTX\t  800.0000",
-                    "NPOINTS\t     801",
-                    "FIRSTY\t     0.60881",
-                    "MAXY\t   295.57501",
-                    "MINY\t     0.01132"
-                ],
-                "metadata": {
-                    "column_00": "XYDATA",
-                    "columns": "2",
-                    "rows": "801"
-                },
-                "rows": [
-                    [
-                        "400.0000",
-                        "0.608811"
-                    ],
-                    [
-                        "400.5000",
-                        "0.615689"
-                    ],
-                    [
-                        "401.0000",
-                        "0.616443"
-                    ],
-                    [
-                        "401.5000",
-                        "0.610617"
-                    ],
-                    [
-                        "402.0000",
-                        "0.618529"
-                    ],
-                    [
-                        "402.5000",
-                        "0.625898"
-                    ],
-                    [
-                        "403.0000",
-                        "0.626745"
-                    ],
-                    [
-                        "403.5000",
-                        "0.642452"
-                    ],
-                    [
-                        "404.0000",
-                        "0.653984"
-                    ],
-                    [
-                        "404.5000",
-                        "0.668426"
-                    ]
-                ]
+    "data": [
+        {
+            "metadata": {
+                "content_type": "text/plain",
+                "delimiter": "tab",
+                "doublequote": "False",
+                "extension": ".txt",
+                "file_name": "Example of fluorescence measurement.txt",
+                "lineterminator": "\\r\\n",
+                "mime_type": "text/plain",
+                "quotechar": "\"",
+                "quoting": "0",
+                "reader": "CSVReader",
+                "skipinitialspace": "False",
+                "uploaded": "2023-05-17T08:23:18.182320"
             },
-            {
-                "columns": [],
-                "header": [
-                    "",
-                    "##### Extended Information",
-                    "[Comments]",
-                    "Sample name\t1hCys",
-                    "Comment",
-                    "User",
-                    "Division",
-                    "Company\tINT",
-                    "",
-                    "[Detailed Information]",
-                    "Creation date\t30.09.2022 13:33",
-                    "",
-                    "Data array type\tLinear data array",
-                    "Horizontal axis\tWavelength [nm]",
-                    "Vertical axis\tInt.",
-                    "Start\t400 nm",
-                    "End\t800 nm",
-                    "Data interval\t0.5 nm",
-                    "Data points\t801     ",
-                    "",
-                    "[Measurement Information]",
-                    "Model name\tFP-8300",
-                    "Serial No.\tC048861450",
-                    "  Ex filter holder\tNone",
-                    "  Em filter holder\tNone",
-                    "",
-                    "Measurement date\t30.09.2022 13:33",
-                    "",
-                    "Mode\tEmission",
-                    "Ex bandwidth\t2.5 nm",
-                    "Em bandwidth\t2.5 nm",
-                    "Response\t1 sec",
-                    "Sensitivity\tMedium",
-                    "Measurement range\t400 - 800 nm",
-                    "Data interval\t0.5 nm",
-                    "Ex wavelength\t380.0 nm",
-                    "Scan speed\t1000 nm/min",
-                    "No. of cycles\t1",
-                    "Auto gain\tOff",
-                    "Shutter control\tOpen only for measurement",
-                    "Light source\tXe lamp",
-                    "Filter\tContinue scan for exchanging filter",
-                    "Blank correction\tOff",
-                    ""
-                ],
-                "metadata": {
-                    "columns": "0",
-                    "rows": "0"
+            "tables": [
+                {
+                    "columns": [
+                        {
+                            "key": "0",
+                            "name": "Column #0 (XYDATA)"
+                        },
+                        {
+                            "key": "1",
+                            "name": "Column #1"
+                        }
+                    ],
+                    "header": [
+                        "TITLE\t1hCys",
+                        "DATA TYPE\tFLUORESCENCE SPECTRUM",
+                        "ORIGIN\tJASCO",
+                        "OWNER\t",
+                        "DATE\t22/09/30",
+                        "TIME\t13:33:31",
+                        "SPECTROMETER/DATA SYSTEM\t",
+                        "LOCALE\t1031",
+                        "RESOLUTION\t",
+                        "DELTAX\t0.5",
+                        "XUNITS\tNANOMETERS",
+                        "YUNITS\tINTENSITY",
+                        "FIRSTX\t  400.0000",
+                        "LASTX\t  800.0000",
+                        "NPOINTS\t     801",
+                        "FIRSTY\t     0.60881",
+                        "MAXY\t   295.57501",
+                        "MINY\t     0.01132"
+                    ],
+                    "metadata": {
+                        "column_00": "XYDATA",
+                        "columns": "2",
+                        "rows": "801"
+                    },
+                    "rows": [
+                        [
+                            "400.0000",
+                            "0.608811"
+                        ],
+                        [
+                            "400.5000",
+                            "0.615689"
+                        ],
+                        [
+                            "401.0000",
+                            "0.616443"
+                        ],
+                        [
+                            "401.5000",
+                            "0.610617"
+                        ],
+                        [
+                            "402.0000",
+                            "0.618529"
+                        ],
+                        [
+                            "402.5000",
+                            "0.625898"
+                        ],
+                        [
+                            "403.0000",
+                            "0.626745"
+                        ],
+                        [
+                            "403.5000",
+                            "0.642452"
+                        ],
+                        [
+                            "404.0000",
+                            "0.653984"
+                        ],
+                        [
+                            "404.5000",
+                            "0.668426"
+                        ]
+                    ]
                 },
-                "rows": []
-            }
-        ]
-    },
+                {
+                    "columns": [],
+                    "header": [
+                        "",
+                        "##### Extended Information",
+                        "[Comments]",
+                        "Sample name\t1hCys",
+                        "Comment",
+                        "User",
+                        "Division",
+                        "Company\tINT",
+                        "",
+                        "[Detailed Information]",
+                        "Creation date\t30.09.2022 13:33",
+                        "",
+                        "Data array type\tLinear data array",
+                        "Horizontal axis\tWavelength [nm]",
+                        "Vertical axis\tInt.",
+                        "Start\t400 nm",
+                        "End\t800 nm",
+                        "Data interval\t0.5 nm",
+                        "Data points\t801     ",
+                        "",
+                        "[Measurement Information]",
+                        "Model name\tFP-8300",
+                        "Serial No.\tC048861450",
+                        "  Ex filter holder\tNone",
+                        "  Em filter holder\tNone",
+                        "",
+                        "Measurement date\t30.09.2022 13:33",
+                        "",
+                        "Mode\tEmission",
+                        "Ex bandwidth\t2.5 nm",
+                        "Em bandwidth\t2.5 nm",
+                        "Response\t1 sec",
+                        "Sensitivity\tMedium",
+                        "Measurement range\t400 - 800 nm",
+                        "Data interval\t0.5 nm",
+                        "Ex wavelength\t380.0 nm",
+                        "Scan speed\t1000 nm/min",
+                        "No. of cycles\t1",
+                        "Auto gain\tOff",
+                        "Shutter control\tOpen only for measurement",
+                        "Light source\tXe lamp",
+                        "Filter\tContinue scan for exchanging filter",
+                        "Blank correction\tOff",
+                        ""
+                    ],
+                    "metadata": {
+                        "columns": "0",
+                        "rows": "0"
+                    },
+                    "rows": []
+                }
+            ]
+        }
+    ],
     "datatypes": [],
     "description": "(fluorescence) emission spectrum with generic dataset (FI)",
     "devices": [],

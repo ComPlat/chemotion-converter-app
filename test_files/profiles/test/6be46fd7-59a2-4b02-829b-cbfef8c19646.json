@@ -1,101 +1,103 @@
 {
     "converter_version": "1.8.0",
-    "data": {
-        "metadata": {
-            "content_type": "text/plain",
-            "delimiter": "tab",
-            "doublequote": "False",
-            "extension": ".txt",
-            "file_name": "BF2PhOEtAcPh-2.txt",
-            "lineterminator": "\\r\\n",
-            "mime_type": "text/plain",
-            "quotechar": "\"",
-            "quoting": "0",
-            "reader": "CSVReader",
-            "skipinitialspace": "False",
-            "uploaded": "2023-07-04T22:23:07.376088"
-        },
-        "tables": [
-            {
-                "columns": [
-                    {
-                        "key": "0",
-                        "name": "Column #0 (XYDATA)"
+    "data": [
+        {
+            "metadata": {
+                "content_type": "text/plain",
+                "delimiter": "tab",
+                "doublequote": "False",
+                "extension": ".txt",
+                "file_name": "BF2PhOEtAcPh-2.txt",
+                "lineterminator": "\\r\\n",
+                "mime_type": "text/plain",
+                "quotechar": "\"",
+                "quoting": "0",
+                "reader": "CSVReader",
+                "skipinitialspace": "False",
+                "uploaded": "2023-07-04T22:23:07.376088"
+            },
+            "tables": [
+                {
+                    "columns": [
+                        {
+                            "key": "0",
+                            "name": "Column #0 (XYDATA)"
+                        },
+                        {
+                            "key": "1",
+                            "name": "Column #1"
+                        }
+                    ],
+                    "header": [
+                        "TITLE\t",
+                        "DATA TYPE\t",
+                        "ORIGIN\tJASCO",
+                        "OWNER\t",
+                        "DATE\t23/02/10",
+                        "TIME\t10:59:44",
+                        "SPECTROMETER/DATA SYSTEM\tJASCO Corp., V-570, Rev. 1.00",
+                        "RESOLUTION\t",
+                        "DELTAX\t-2",
+                        "XUNITS\tNANOMETERS",
+                        "YUNITS\tABSORBANCE",
+                        "FIRSTX\t700.0000",
+                        "LASTX\t300.0000",
+                        "NPOINTS\t201",
+                        "FIRSTY\t0.00576",
+                        "MAXY\t0.12182",
+                        "MINY\t0.00559"
+                    ],
+                    "metadata": {
+                        "column_00": "XYDATA",
+                        "columns": "2",
+                        "rows": "201"
                     },
-                    {
-                        "key": "1",
-                        "name": "Column #1"
-                    }
-                ],
-                "header": [
-                    "TITLE\t",
-                    "DATA TYPE\t",
-                    "ORIGIN\tJASCO",
-                    "OWNER\t",
-                    "DATE\t23/02/10",
-                    "TIME\t10:59:44",
-                    "SPECTROMETER/DATA SYSTEM\tJASCO Corp., V-570, Rev. 1.00",
-                    "RESOLUTION\t",
-                    "DELTAX\t-2",
-                    "XUNITS\tNANOMETERS",
-                    "YUNITS\tABSORBANCE",
-                    "FIRSTX\t700.0000",
-                    "LASTX\t300.0000",
-                    "NPOINTS\t201",
-                    "FIRSTY\t0.00576",
-                    "MAXY\t0.12182",
-                    "MINY\t0.00559"
-                ],
-                "metadata": {
-                    "column_00": "XYDATA",
-                    "columns": "2",
-                    "rows": "201"
-                },
-                "rows": [
-                    [
-                        "700.0000",
-                        "0.00576"
-                    ],
-                    [
-                        "698.0000",
-                        "0.00561"
-                    ],
-                    [
-                        "696.0000",
-                        "0.0056"
-                    ],
-                    [
-                        "694.0000",
-                        "0.00559"
-                    ],
-                    [
-                        "692.0000",
-                        "0.00577"
-                    ],
-                    [
-                        "690.0000",
-                        "0.00616"
-                    ],
-                    [
-                        "688.0000",
-                        "0.00658"
-                    ],
-                    [
-                        "686.0000",
-                        "0.007"
-                    ],
-                    [
-                        "684.0000",
-                        "0.00726"
-                    ],
-                    [
-                        "682.0000",
-                        "0.00733"
+                    "rows": [
+                        [
+                            "700.0000",
+                            "0.00576"
+                        ],
+                        [
+                            "698.0000",
+                            "0.00561"
+                        ],
+                        [
+                            "696.0000",
+                            "0.0056"
+                        ],
+                        [
+                            "694.0000",
+                            "0.00559"
+                        ],
+                        [
+                            "692.0000",
+                            "0.00577"
+                        ],
+                        [
+                            "690.0000",
+                            "0.00616"
+                        ],
+                        [
+                            "688.0000",
+                            "0.00658"
+                        ],
+                        [
+                            "686.0000",
+                            "0.007"
+                        ],
+                        [
+                            "684.0000",
+                            "0.00726"
+                        ],
+                        [
+                            "682.0000",
+                            "0.00733"
+                        ]
                     ]
-                ]
-            }
-        ]
-    },
+                }
+            ]
+        }
+    ],
     "datatypes": [],
     "description": "JASCO V-570; ref location: KIT CN, data: +, metadata: +",
     "devices": [],
