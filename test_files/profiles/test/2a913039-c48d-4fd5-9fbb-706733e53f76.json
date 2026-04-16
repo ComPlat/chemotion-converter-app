@@ -189,7 +189,8 @@
         }
     ],
     "isDisabled": false,
-    "last_migration": "20260113143334",
+    "last_migration": "20260323144702",
+    "objects": [],
     "ols": "CHMO:0000292",
     "ontology": "",
     "predicates": [],

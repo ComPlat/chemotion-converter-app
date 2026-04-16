@@ -1,4 +1,5 @@
 import json
+from urllib.error import URLError
 
 from rdflib import Graph, Namespace
 from rdflib.namespace import RDF, RDFS
@@ -74,10 +75,14 @@ def refresh_rdf_summery():
         "http://www.w3.org/1999/02/22-rdf-syntax-ns.rdf",
         "http://www.w3.org/2000/01/rdf-schema.rdf"
     ]
+    rdf_json_path = get_app_root() / 'converter_app/rdf/rdf_terms_info.json'
 
     g = Graph()
-    for url in urls:
-        g.parse(url, format="xml")
+    try:
+        for url in urls:
+            g.parse(url, format="xml")
+    except URLError:
+        return get_app_root() / 'converter_app/rdf/rdf_terms_info_default.json'
 
     def split_namespace(uri):
         uri = str(uri)
@@ -118,7 +123,7 @@ def refresh_rdf_summery():
             seen.add(id)
     terms_info += get_xml_property_list()
 
-    rdf_json_path = get_app_root() / 'converter_app/rdf/rdf_terms_info.json'
+
     with open(rdf_json_path, 'w') as fp:
         json.dump(terms_info, fp)
     return rdf_json_path

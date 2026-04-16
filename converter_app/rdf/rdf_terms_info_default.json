@@ -1,0 +1,1804 @@
+[
+  {
+    "id": "RDF:property:http://www.w3.org/1999/02/22-rdf-syntax-ns#direction",
+    "iri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#direction",
+    "label": "direction",
+    "description": [
+      "The base direction component of a CompoundLiteral."
+    ],
+    "namespace": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "obo_id": "RDF:direction",
+    "ontology_name": "rdf",
+    "ontology_prefix": "RDF",
+    "short_form": "RDF_direction",
+    "type": "Property"
+  },
+  {
+    "id": "RDF:property:http://www.w3.org/1999/02/22-rdf-syntax-ns#CompoundLiteral",
+    "iri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#CompoundLiteral",
+    "label": "CompoundLiteral",
+    "description": [
+      "A class representing a compound literal."
+    ],
+    "namespace": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "obo_id": "RDF:CompoundLiteral",
+    "ontology_name": "rdf",
+    "ontology_prefix": "RDF",
+    "short_form": "RDF_CompoundLiteral",
+    "type": "Class"
+  },
+  {
+    "id": "RDF:property:http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral",
+    "iri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral",
+    "label": "PlainLiteral",
+    "description": [
+      "The class of plain (i.e. untyped) literal values, as used in RIF and OWL 2"
+    ],
+    "namespace": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "obo_id": "RDF:PlainLiteral",
+    "ontology_name": "rdf",
+    "ontology_prefix": "RDF",
+    "short_form": "RDF_PlainLiteral",
+    "type": "Datatype"
+  },
+  {
+    "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#subPropertyOf",
+    "iri": "http://www.w3.org/2000/01/rdf-schema#subPropertyOf",
+    "label": "subPropertyOf",
+    "description": [
+      "The subject is a subproperty of a property."
+    ],
+    "namespace": "http://www.w3.org/2000/01/rdf-schema#",
+    "obo_id": "RDFS:subPropertyOf",
+    "ontology_name": "rdfs",
+    "ontology_prefix": "RDFS",
+    "short_form": "RDFS_subPropertyOf",
+    "type": "Property"
+  },
+  {
+    "id": "RDF:property:http://www.w3.org/1999/02/22-rdf-syntax-ns#List",
+    "iri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#List",
+    "label": "List",
+    "description": [
+      "The class of RDF Lists."
+    ],
+    "namespace": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "obo_id": "RDF:List",
+    "ontology_name": "rdf",
+    "ontology_prefix": "RDF",
+    "short_form": "RDF_List",
+    "type": "Class"
+  },
+  {
+    "id": "RDF:property:http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+    "iri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+    "label": "langString",
+    "description": [
+      "The datatype of language-tagged string values"
+    ],
+    "namespace": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "obo_id": "RDF:langString",
+    "ontology_name": "rdf",
+    "ontology_prefix": "RDF",
+    "short_form": "RDF_langString",
+    "type": "Datatype"
+  },
+  {
+    "id": "RDF:property:http://www.w3.org/1999/02/22-rdf-syntax-ns#JSON",
+    "iri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#JSON",
+    "label": "JSON",
+    "description": [
+      "The datatype of RDF literals storing JSON content."
+    ],
+    "namespace": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "obo_id": "RDF:JSON",
+    "ontology_name": "rdf",
+    "ontology_prefix": "RDF",
+    "short_form": "RDF_JSON",
+    "type": "Datatype"
+  },
+  {
+    "id": "RDF:property:http://www.w3.org/1999/02/22-rdf-syntax-ns#object",
+    "iri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#object",
+    "label": "object",
+    "description": [
+      "The object of the subject RDF statement."
+    ],
+    "namespace": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "obo_id": "RDF:object",
+    "ontology_name": "rdf",
+    "ontology_prefix": "RDF",
+    "short_form": "RDF_object",
+    "type": "Property"
+  },
+  {
+    "id": "RDF:property:http://www.w3.org/1999/02/22-rdf-syntax-ns#value",
+    "iri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#value",
+    "label": "value",
+    "description": [
+      "Idiomatic property used for structured values."
+    ],
+    "namespace": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "obo_id": "RDF:value",
+    "ontology_name": "rdf",
+    "ontology_prefix": "RDF",
+    "short_form": "RDF_value",
+    "type": "Property"
+  },
+  {
+    "id": "RDF:property:http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag",
+    "iri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag",
+    "label": "Bag",
+    "description": [
+      "The class of unordered containers."
+    ],
+    "namespace": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "obo_id": "RDF:Bag",
+    "ontology_name": "rdf",
+    "ontology_prefix": "RDF",
+    "short_form": "RDF_Bag",
+    "type": "Class"
+  },
+  {
+    "id": "RDF:property:http://www.w3.org/1999/02/22-rdf-syntax-ns#nil",
+    "iri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#nil",
+    "label": "nil",
+    "description": [
+      "The empty list, with no items in it. If the rest of a list is nil then the list has no more items in it."
+    ],
+    "namespace": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "obo_id": "RDF:nil",
+    "ontology_name": "rdf",
+    "ontology_prefix": "RDF",
+    "short_form": "RDF_nil",
+    "type": "List"
+  },
+  {
+    "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#comment",
+    "iri": "http://www.w3.org/2000/01/rdf-schema#comment",
+    "label": "comment",
+    "description": [
+      "A description of the subject resource."
+    ],
+    "namespace": "http://www.w3.org/2000/01/rdf-schema#",
+    "obo_id": "RDFS:comment",
+    "ontology_name": "rdfs",
+    "ontology_prefix": "RDFS",
+    "short_form": "RDFS_comment",
+    "type": "Property"
+  },
+  {
+    "id": "RDF:property:http://www.w3.org/1999/02/22-rdf-syntax-ns#Property",
+    "iri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property",
+    "label": "Property",
+    "description": [
+      "The class of RDF properties."
+    ],
+    "namespace": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "obo_id": "RDF:Property",
+    "ontology_name": "rdf",
+    "ontology_prefix": "RDF",
+    "short_form": "RDF_Property",
+    "type": "Class"
+  },
+  {
+    "id": "RDF:property:http://www.w3.org/1999/02/22-rdf-syntax-ns#language",
+    "iri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#language",
+    "label": "language",
+    "description": [
+      "The language component of a CompoundLiteral."
+    ],
+    "namespace": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "obo_id": "RDF:language",
+    "ontology_name": "rdf",
+    "ontology_prefix": "RDF",
+    "short_form": "RDF_language",
+    "type": "Property"
+  },
+  {
+    "id": "RDF:property:http://www.w3.org/1999/02/22-rdf-syntax-ns#HTML",
+    "iri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#HTML",
+    "label": "HTML",
+    "description": [
+      "The datatype of RDF literals storing fragments of HTML content"
+    ],
+    "namespace": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "obo_id": "RDF:HTML",
+    "ontology_name": "rdf",
+    "ontology_prefix": "RDF",
+    "short_form": "RDF_HTML",
+    "type": "Datatype"
+  },
+  {
+    "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#subClassOf",
+    "iri": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+    "label": "subClassOf",
+    "description": [
+      "The subject is a subclass of a class."
+    ],
+    "namespace": "http://www.w3.org/2000/01/rdf-schema#",
+    "obo_id": "RDFS:subClassOf",
+    "ontology_name": "rdfs",
+    "ontology_prefix": "RDFS",
+    "short_form": "RDFS_subClassOf",
+    "type": "Property"
+  },
+  {
+    "id": "RDF:property:http://www.w3.org/1999/02/22-rdf-syntax-ns#Seq",
+    "iri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Seq",
+    "label": "Seq",
+    "description": [
+      "The class of ordered containers."
+    ],
+    "namespace": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "obo_id": "RDF:Seq",
+    "ontology_name": "rdf",
+    "ontology_prefix": "RDF",
+    "short_form": "RDF_Seq",
+    "type": "Class"
+  },
+  {
+    "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#member",
+    "iri": "http://www.w3.org/2000/01/rdf-schema#member",
+    "label": "member",
+    "description": [
+      "A member of the subject resource."
+    ],
+    "namespace": "http://www.w3.org/2000/01/rdf-schema#",
+    "obo_id": "RDFS:member",
+    "ontology_name": "rdfs",
+    "ontology_prefix": "RDFS",
+    "short_form": "RDFS_member",
+    "type": "Property"
+  },
+  {
+    "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Literal",
+    "iri": "http://www.w3.org/2000/01/rdf-schema#Literal",
+    "label": "Literal",
+    "description": [
+      "The class of literal values, eg. textual strings and integers."
+    ],
+    "namespace": "http://www.w3.org/2000/01/rdf-schema#",
+    "obo_id": "RDFS:Literal",
+    "ontology_name": "rdfs",
+    "ontology_prefix": "RDFS",
+    "short_form": "RDFS_Literal",
+    "type": "Class"
+  },
+  {
+    "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Datatype",
+    "iri": "http://www.w3.org/2000/01/rdf-schema#Datatype",
+    "label": "Datatype",
+    "description": [
+      "The class of RDF datatypes."
+    ],
+    "namespace": "http://www.w3.org/2000/01/rdf-schema#",
+    "obo_id": "RDFS:Datatype",
+    "ontology_name": "rdfs",
+    "ontology_prefix": "RDFS",
+    "short_form": "RDFS_Datatype",
+    "type": "Class"
+  },
+  {
+    "id": "RDF:property:http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate",
+    "iri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate",
+    "label": "predicate",
+    "description": [
+      "The predicate of the subject RDF statement."
+    ],
+    "namespace": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "obo_id": "RDF:predicate",
+    "ontology_name": "rdf",
+    "ontology_prefix": "RDF",
+    "short_form": "RDF_predicate",
+    "type": "Property"
+  },
+  {
+    "id": "RDF:property:http://www.w3.org/1999/02/22-rdf-syntax-ns#Alt",
+    "iri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Alt",
+    "label": "Alt",
+    "description": [
+      "The class of containers of alternatives."
+    ],
+    "namespace": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "obo_id": "RDF:Alt",
+    "ontology_name": "rdf",
+    "ontology_prefix": "RDF",
+    "short_form": "RDF_Alt",
+    "type": "Class"
+  },
+  {
+    "id": "RDF:property:http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "iri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "label": null,
+    "description": [],
+    "namespace": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "obo_id": "RDF:",
+    "ontology_name": "rdf",
+    "ontology_prefix": "RDF",
+    "short_form": "RDF_",
+    "type": "Ontology"
+  },
+  {
+    "id": "RDF:property:http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement",
+    "iri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement",
+    "label": "Statement",
+    "description": [
+      "The class of RDF statements."
+    ],
+    "namespace": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "obo_id": "RDF:Statement",
+    "ontology_name": "rdf",
+    "ontology_prefix": "RDF",
+    "short_form": "RDF_Statement",
+    "type": "Class"
+  },
+  {
+    "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#seeAlso",
+    "iri": "http://www.w3.org/2000/01/rdf-schema#seeAlso",
+    "label": "seeAlso",
+    "description": [
+      "Further information about the subject resource."
+    ],
+    "namespace": "http://www.w3.org/2000/01/rdf-schema#",
+    "obo_id": "RDFS:seeAlso",
+    "ontology_name": "rdfs",
+    "ontology_prefix": "RDFS",
+    "short_form": "RDFS_seeAlso",
+    "type": "Property"
+  },
+  {
+    "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Container",
+    "iri": "http://www.w3.org/2000/01/rdf-schema#Container",
+    "label": "Container",
+    "description": [
+      "The class of RDF containers."
+    ],
+    "namespace": "http://www.w3.org/2000/01/rdf-schema#",
+    "obo_id": "RDFS:Container",
+    "ontology_name": "rdfs",
+    "ontology_prefix": "RDFS",
+    "short_form": "RDFS_Container",
+    "type": "Class"
+  },
+  {
+    "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#range",
+    "iri": "http://www.w3.org/2000/01/rdf-schema#range",
+    "label": "range",
+    "description": [
+      "A range of the subject property."
+    ],
+    "namespace": "http://www.w3.org/2000/01/rdf-schema#",
+    "obo_id": "RDFS:range",
+    "ontology_name": "rdfs",
+    "ontology_prefix": "RDFS",
+    "short_form": "RDFS_range",
+    "type": "Property"
+  },
+  {
+    "id": "RDF:property:http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+    "iri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+    "label": "type",
+    "description": [
+      "The subject is an instance of a class."
+    ],
+    "namespace": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "obo_id": "RDF:type",
+    "ontology_name": "rdf",
+    "ontology_prefix": "RDF",
+    "short_form": "RDF_type",
+    "type": "Property"
+  },
+  {
+    "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#domain",
+    "iri": "http://www.w3.org/2000/01/rdf-schema#domain",
+    "label": "domain",
+    "description": [
+      "A domain of the subject property."
+    ],
+    "namespace": "http://www.w3.org/2000/01/rdf-schema#",
+    "obo_id": "RDFS:domain",
+    "ontology_name": "rdfs",
+    "ontology_prefix": "RDFS",
+    "short_form": "RDFS_domain",
+    "type": "Property"
+  },
+  {
+    "id": "RDF:property:http://www.w3.org/1999/02/22-rdf-syntax-ns#rest",
+    "iri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#rest",
+    "label": "rest",
+    "description": [
+      "The rest of the subject RDF list after the first item."
+    ],
+    "namespace": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "obo_id": "RDF:rest",
+    "ontology_name": "rdf",
+    "ontology_prefix": "RDF",
+    "short_form": "RDF_rest",
+    "type": "Property"
+  },
+  {
+    "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#isDefinedBy",
+    "iri": "http://www.w3.org/2000/01/rdf-schema#isDefinedBy",
+    "label": "isDefinedBy",
+    "description": [
+      "The definition of the subject resource."
+    ],
+    "namespace": "http://www.w3.org/2000/01/rdf-schema#",
+    "obo_id": "RDFS:isDefinedBy",
+    "ontology_name": "rdfs",
+    "ontology_prefix": "RDFS",
+    "short_form": "RDFS_isDefinedBy",
+    "type": "Property"
+  },
+  {
+    "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Class",
+    "iri": "http://www.w3.org/2000/01/rdf-schema#Class",
+    "label": "Class",
+    "description": [
+      "The class of classes."
+    ],
+    "namespace": "http://www.w3.org/2000/01/rdf-schema#",
+    "obo_id": "RDFS:Class",
+    "ontology_name": "rdfs",
+    "ontology_prefix": "RDFS",
+    "short_form": "RDFS_Class",
+    "type": "Class"
+  },
+  {
+    "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#ContainerMembershipProperty",
+    "iri": "http://www.w3.org/2000/01/rdf-schema#ContainerMembershipProperty",
+    "label": "ContainerMembershipProperty",
+    "description": [
+      "The class of container membership properties, rdf:_1, rdf:_2, ..., all of which are sub-properties of 'member'."
+    ],
+    "namespace": "http://www.w3.org/2000/01/rdf-schema#",
+    "obo_id": "RDFS:ContainerMembershipProperty",
+    "ontology_name": "rdfs",
+    "ontology_prefix": "RDFS",
+    "short_form": "RDFS_ContainerMembershipProperty",
+    "type": "Class"
+  },
+  {
+    "id": "RDF:property:http://www.w3.org/1999/02/22-rdf-syntax-ns#first",
+    "iri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#first",
+    "label": "first",
+    "description": [
+      "The first item in the subject RDF list."
+    ],
+    "namespace": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "obo_id": "RDF:first",
+    "ontology_name": "rdf",
+    "ontology_prefix": "RDF",
+    "short_form": "RDF_first",
+    "type": "Property"
+  },
+  {
+    "id": "RDF:property:http://www.w3.org/1999/02/22-rdf-syntax-ns#subject",
+    "iri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#subject",
+    "label": "subject",
+    "description": [
+      "The subject of the subject RDF statement."
+    ],
+    "namespace": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "obo_id": "RDF:subject",
+    "ontology_name": "rdf",
+    "ontology_prefix": "RDF",
+    "short_form": "RDF_subject",
+    "type": "Property"
+  },
+  {
+    "id": "RDF:property:http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral",
+    "iri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral",
+    "label": "XMLLiteral",
+    "description": [
+      "The datatype of XML literal values."
+    ],
+    "namespace": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "obo_id": "RDF:XMLLiteral",
+    "ontology_name": "rdf",
+    "ontology_prefix": "RDF",
+    "short_form": "RDF_XMLLiteral",
+    "type": "Datatype"
+  },
+  {
+    "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#label",
+    "iri": "http://www.w3.org/2000/01/rdf-schema#label",
+    "label": "label",
+    "description": [
+      "A human-readable name for the subject."
+    ],
+    "namespace": "http://www.w3.org/2000/01/rdf-schema#",
+    "obo_id": "RDFS:label",
+    "ontology_name": "rdfs",
+    "ontology_prefix": "RDFS",
+    "short_form": "RDFS_label",
+    "type": "Property"
+  },
+  {
+    "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#",
+    "iri": "http://www.w3.org/2000/01/rdf-schema#",
+    "label": null,
+    "description": [],
+    "namespace": "http://www.w3.org/2000/01/rdf-schema#",
+    "obo_id": "RDFS:",
+    "ontology_name": "rdfs",
+    "ontology_prefix": "RDFS",
+    "short_form": "RDFS_",
+    "type": "Ontology"
+  },
+  {
+    "id": "RDFS:property:http://www.w3.org/2000/01/rdf-schema#Resource",
+    "iri": "http://www.w3.org/2000/01/rdf-schema#Resource",
+    "label": "Resource",
+    "description": [
+      "The class resource, everything."
+    ],
+    "namespace": "http://www.w3.org/2000/01/rdf-schema#",
+    "obo_id": "RDFS:Resource",
+    "ontology_name": "rdfs",
+    "ontology_prefix": "RDFS",
+    "short_form": "RDFS_Resource",
+    "type": "Class"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#formChoice",
+    "iri": "http://www.w3.org/2001/XMLSchema#formChoice",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_formChoice",
+    "description": [
+      "The XML Schema datatype 'formChoice'."
+    ],
+    "label": "formChoice",
+    "obo_id": "XSD:formChoice",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#reducedDerivationControl",
+    "iri": "http://www.w3.org/2001/XMLSchema#reducedDerivationControl",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_reducedDerivationControl",
+    "description": [
+      "The XML Schema datatype 'reducedDerivationControl'."
+    ],
+    "label": "reducedDerivationControl",
+    "obo_id": "XSD:reducedDerivationControl",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#derivationSet",
+    "iri": "http://www.w3.org/2001/XMLSchema#derivationSet",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_derivationSet",
+    "description": [
+      "The XML Schema datatype 'derivationSet'."
+    ],
+    "label": "derivationSet",
+    "obo_id": "XSD:derivationSet",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#typeDerivationControl",
+    "iri": "http://www.w3.org/2001/XMLSchema#typeDerivationControl",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_typeDerivationControl",
+    "description": [
+      "The XML Schema datatype 'typeDerivationControl'."
+    ],
+    "label": "typeDerivationControl",
+    "obo_id": "XSD:typeDerivationControl",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#fullDerivationSet",
+    "iri": "http://www.w3.org/2001/XMLSchema#fullDerivationSet",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_fullDerivationSet",
+    "description": [
+      "The XML Schema datatype 'fullDerivationSet'."
+    ],
+    "label": "fullDerivationSet",
+    "obo_id": "XSD:fullDerivationSet",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#allNNI",
+    "iri": "http://www.w3.org/2001/XMLSchema#allNNI",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_allNNI",
+    "description": [
+      "The XML Schema datatype 'allNNI'."
+    ],
+    "label": "allNNI",
+    "obo_id": "XSD:allNNI",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#blockSet",
+    "iri": "http://www.w3.org/2001/XMLSchema#blockSet",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_blockSet",
+    "description": [
+      "The XML Schema datatype 'blockSet'."
+    ],
+    "label": "blockSet",
+    "obo_id": "XSD:blockSet",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#namespaceList",
+    "iri": "http://www.w3.org/2001/XMLSchema#namespaceList",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_namespaceList",
+    "description": [
+      "The XML Schema datatype 'namespaceList'."
+    ],
+    "label": "namespaceList",
+    "obo_id": "XSD:namespaceList",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#public",
+    "iri": "http://www.w3.org/2001/XMLSchema#public",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_public",
+    "description": [
+      "The XML Schema datatype 'public'."
+    ],
+    "label": "public",
+    "obo_id": "XSD:public",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#string",
+    "iri": "http://www.w3.org/2001/XMLSchema#string",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_string",
+    "description": [
+      "The XML Schema datatype 'string'."
+    ],
+    "label": "string",
+    "obo_id": "XSD:string",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#boolean",
+    "iri": "http://www.w3.org/2001/XMLSchema#boolean",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_boolean",
+    "description": [
+      "The XML Schema datatype 'boolean'."
+    ],
+    "label": "boolean",
+    "obo_id": "XSD:boolean",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#float",
+    "iri": "http://www.w3.org/2001/XMLSchema#float",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_float",
+    "description": [
+      "The XML Schema datatype 'float'."
+    ],
+    "label": "float",
+    "obo_id": "XSD:float",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#double",
+    "iri": "http://www.w3.org/2001/XMLSchema#double",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_double",
+    "description": [
+      "The XML Schema datatype 'double'."
+    ],
+    "label": "double",
+    "obo_id": "XSD:double",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#decimal",
+    "iri": "http://www.w3.org/2001/XMLSchema#decimal",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_decimal",
+    "description": [
+      "The XML Schema datatype 'decimal'."
+    ],
+    "label": "decimal",
+    "obo_id": "XSD:decimal",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#duration",
+    "iri": "http://www.w3.org/2001/XMLSchema#duration",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_duration",
+    "description": [
+      "The XML Schema datatype 'duration'."
+    ],
+    "label": "duration",
+    "obo_id": "XSD:duration",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#dateTime",
+    "iri": "http://www.w3.org/2001/XMLSchema#dateTime",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_dateTime",
+    "description": [
+      "The XML Schema datatype 'dateTime'."
+    ],
+    "label": "dateTime",
+    "obo_id": "XSD:dateTime",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#time",
+    "iri": "http://www.w3.org/2001/XMLSchema#time",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_time",
+    "description": [
+      "The XML Schema datatype 'time'."
+    ],
+    "label": "time",
+    "obo_id": "XSD:time",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#date",
+    "iri": "http://www.w3.org/2001/XMLSchema#date",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_date",
+    "description": [
+      "The XML Schema datatype 'date'."
+    ],
+    "label": "date",
+    "obo_id": "XSD:date",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#gYearMonth",
+    "iri": "http://www.w3.org/2001/XMLSchema#gYearMonth",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_gYearMonth",
+    "description": [
+      "The XML Schema datatype 'gYearMonth'."
+    ],
+    "label": "gYearMonth",
+    "obo_id": "XSD:gYearMonth",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#gYear",
+    "iri": "http://www.w3.org/2001/XMLSchema#gYear",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_gYear",
+    "description": [
+      "The XML Schema datatype 'gYear'."
+    ],
+    "label": "gYear",
+    "obo_id": "XSD:gYear",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#gMonthDay",
+    "iri": "http://www.w3.org/2001/XMLSchema#gMonthDay",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_gMonthDay",
+    "description": [
+      "The XML Schema datatype 'gMonthDay'."
+    ],
+    "label": "gMonthDay",
+    "obo_id": "XSD:gMonthDay",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#gDay",
+    "iri": "http://www.w3.org/2001/XMLSchema#gDay",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_gDay",
+    "description": [
+      "The XML Schema datatype 'gDay'."
+    ],
+    "label": "gDay",
+    "obo_id": "XSD:gDay",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#gMonth",
+    "iri": "http://www.w3.org/2001/XMLSchema#gMonth",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_gMonth",
+    "description": [
+      "The XML Schema datatype 'gMonth'."
+    ],
+    "label": "gMonth",
+    "obo_id": "XSD:gMonth",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#hexBinary",
+    "iri": "http://www.w3.org/2001/XMLSchema#hexBinary",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_hexBinary",
+    "description": [
+      "The XML Schema datatype 'hexBinary'."
+    ],
+    "label": "hexBinary",
+    "obo_id": "XSD:hexBinary",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#base64Binary",
+    "iri": "http://www.w3.org/2001/XMLSchema#base64Binary",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_base64Binary",
+    "description": [
+      "The XML Schema datatype 'base64Binary'."
+    ],
+    "label": "base64Binary",
+    "obo_id": "XSD:base64Binary",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#anyURI",
+    "iri": "http://www.w3.org/2001/XMLSchema#anyURI",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_anyURI",
+    "description": [
+      "The XML Schema datatype 'anyURI'."
+    ],
+    "label": "anyURI",
+    "obo_id": "XSD:anyURI",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#QName",
+    "iri": "http://www.w3.org/2001/XMLSchema#QName",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_QName",
+    "description": [
+      "The XML Schema datatype 'QName'."
+    ],
+    "label": "QName",
+    "obo_id": "XSD:QName",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#NOTATION",
+    "iri": "http://www.w3.org/2001/XMLSchema#NOTATION",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_NOTATION",
+    "description": [
+      "The XML Schema datatype 'NOTATION'."
+    ],
+    "label": "NOTATION",
+    "obo_id": "XSD:NOTATION",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#normalizedString",
+    "iri": "http://www.w3.org/2001/XMLSchema#normalizedString",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_normalizedString",
+    "description": [
+      "The XML Schema datatype 'normalizedString'."
+    ],
+    "label": "normalizedString",
+    "obo_id": "XSD:normalizedString",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#token",
+    "iri": "http://www.w3.org/2001/XMLSchema#token",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_token",
+    "description": [
+      "The XML Schema datatype 'token'."
+    ],
+    "label": "token",
+    "obo_id": "XSD:token",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#language",
+    "iri": "http://www.w3.org/2001/XMLSchema#language",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_language",
+    "description": [
+      "The XML Schema datatype 'language'."
+    ],
+    "label": "language",
+    "obo_id": "XSD:language",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#IDREFS",
+    "iri": "http://www.w3.org/2001/XMLSchema#IDREFS",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_IDREFS",
+    "description": [
+      "The XML Schema datatype 'IDREFS'."
+    ],
+    "label": "IDREFS",
+    "obo_id": "XSD:IDREFS",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#ENTITIES",
+    "iri": "http://www.w3.org/2001/XMLSchema#ENTITIES",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_ENTITIES",
+    "description": [
+      "The XML Schema datatype 'ENTITIES'."
+    ],
+    "label": "ENTITIES",
+    "obo_id": "XSD:ENTITIES",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#NMTOKEN",
+    "iri": "http://www.w3.org/2001/XMLSchema#NMTOKEN",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_NMTOKEN",
+    "description": [
+      "The XML Schema datatype 'NMTOKEN'."
+    ],
+    "label": "NMTOKEN",
+    "obo_id": "XSD:NMTOKEN",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#NMTOKENS",
+    "iri": "http://www.w3.org/2001/XMLSchema#NMTOKENS",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_NMTOKENS",
+    "description": [
+      "The XML Schema datatype 'NMTOKENS'."
+    ],
+    "label": "NMTOKENS",
+    "obo_id": "XSD:NMTOKENS",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#Name",
+    "iri": "http://www.w3.org/2001/XMLSchema#Name",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_Name",
+    "description": [
+      "The XML Schema datatype 'Name'."
+    ],
+    "label": "Name",
+    "obo_id": "XSD:Name",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#NCName",
+    "iri": "http://www.w3.org/2001/XMLSchema#NCName",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_NCName",
+    "description": [
+      "The XML Schema datatype 'NCName'."
+    ],
+    "label": "NCName",
+    "obo_id": "XSD:NCName",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#ID",
+    "iri": "http://www.w3.org/2001/XMLSchema#ID",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_ID",
+    "description": [
+      "The XML Schema datatype 'ID'."
+    ],
+    "label": "ID",
+    "obo_id": "XSD:ID",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#IDREF",
+    "iri": "http://www.w3.org/2001/XMLSchema#IDREF",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_IDREF",
+    "description": [
+      "The XML Schema datatype 'IDREF'."
+    ],
+    "label": "IDREF",
+    "obo_id": "XSD:IDREF",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#ENTITY",
+    "iri": "http://www.w3.org/2001/XMLSchema#ENTITY",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_ENTITY",
+    "description": [
+      "The XML Schema datatype 'ENTITY'."
+    ],
+    "label": "ENTITY",
+    "obo_id": "XSD:ENTITY",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#integer",
+    "iri": "http://www.w3.org/2001/XMLSchema#integer",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_integer",
+    "description": [
+      "The XML Schema datatype 'integer'."
+    ],
+    "label": "integer",
+    "obo_id": "XSD:integer",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#nonPositiveInteger",
+    "iri": "http://www.w3.org/2001/XMLSchema#nonPositiveInteger",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_nonPositiveInteger",
+    "description": [
+      "The XML Schema datatype 'nonPositiveInteger'."
+    ],
+    "label": "nonPositiveInteger",
+    "obo_id": "XSD:nonPositiveInteger",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#negativeInteger",
+    "iri": "http://www.w3.org/2001/XMLSchema#negativeInteger",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_negativeInteger",
+    "description": [
+      "The XML Schema datatype 'negativeInteger'."
+    ],
+    "label": "negativeInteger",
+    "obo_id": "XSD:negativeInteger",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#long",
+    "iri": "http://www.w3.org/2001/XMLSchema#long",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_long",
+    "description": [
+      "The XML Schema datatype 'long'."
+    ],
+    "label": "long",
+    "obo_id": "XSD:long",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#int",
+    "iri": "http://www.w3.org/2001/XMLSchema#int",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_int",
+    "description": [
+      "The XML Schema datatype 'int'."
+    ],
+    "label": "int",
+    "obo_id": "XSD:int",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#short",
+    "iri": "http://www.w3.org/2001/XMLSchema#short",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_short",
+    "description": [
+      "The XML Schema datatype 'short'."
+    ],
+    "label": "short",
+    "obo_id": "XSD:short",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#byte",
+    "iri": "http://www.w3.org/2001/XMLSchema#byte",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_byte",
+    "description": [
+      "The XML Schema datatype 'byte'."
+    ],
+    "label": "byte",
+    "obo_id": "XSD:byte",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#nonNegativeInteger",
+    "iri": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_nonNegativeInteger",
+    "description": [
+      "The XML Schema datatype 'nonNegativeInteger'."
+    ],
+    "label": "nonNegativeInteger",
+    "obo_id": "XSD:nonNegativeInteger",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#unsignedLong",
+    "iri": "http://www.w3.org/2001/XMLSchema#unsignedLong",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_unsignedLong",
+    "description": [
+      "The XML Schema datatype 'unsignedLong'."
+    ],
+    "label": "unsignedLong",
+    "obo_id": "XSD:unsignedLong",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#unsignedInt",
+    "iri": "http://www.w3.org/2001/XMLSchema#unsignedInt",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_unsignedInt",
+    "description": [
+      "The XML Schema datatype 'unsignedInt'."
+    ],
+    "label": "unsignedInt",
+    "obo_id": "XSD:unsignedInt",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#unsignedShort",
+    "iri": "http://www.w3.org/2001/XMLSchema#unsignedShort",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_unsignedShort",
+    "description": [
+      "The XML Schema datatype 'unsignedShort'."
+    ],
+    "label": "unsignedShort",
+    "obo_id": "XSD:unsignedShort",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#unsignedByte",
+    "iri": "http://www.w3.org/2001/XMLSchema#unsignedByte",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_unsignedByte",
+    "description": [
+      "The XML Schema datatype 'unsignedByte'."
+    ],
+    "label": "unsignedByte",
+    "obo_id": "XSD:unsignedByte",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#positiveInteger",
+    "iri": "http://www.w3.org/2001/XMLSchema#positiveInteger",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_positiveInteger",
+    "description": [
+      "The XML Schema datatype 'positiveInteger'."
+    ],
+    "label": "positiveInteger",
+    "obo_id": "XSD:positiveInteger",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#derivationControl",
+    "iri": "http://www.w3.org/2001/XMLSchema#derivationControl",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_derivationControl",
+    "description": [
+      "The XML Schema datatype 'derivationControl'."
+    ],
+    "label": "derivationControl",
+    "obo_id": "XSD:derivationControl",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#simpleDerivationSet",
+    "iri": "http://www.w3.org/2001/XMLSchema#simpleDerivationSet",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_simpleDerivationSet",
+    "description": [
+      "The XML Schema datatype 'simpleDerivationSet'."
+    ],
+    "label": "simpleDerivationSet",
+    "obo_id": "XSD:simpleDerivationSet",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#openAttrs",
+    "iri": "http://www.w3.org/2001/XMLSchema#openAttrs",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_openAttrs",
+    "description": [
+      "The XML Schema datatype 'openAttrs'."
+    ],
+    "label": "openAttrs",
+    "obo_id": "XSD:openAttrs",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#annotated",
+    "iri": "http://www.w3.org/2001/XMLSchema#annotated",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_annotated",
+    "description": [
+      "The XML Schema datatype 'annotated'."
+    ],
+    "label": "annotated",
+    "obo_id": "XSD:annotated",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#attribute",
+    "iri": "http://www.w3.org/2001/XMLSchema#attribute",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_attribute",
+    "description": [
+      "The XML Schema datatype 'attribute'."
+    ],
+    "label": "attribute",
+    "obo_id": "XSD:attribute",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#topLevelAttribute",
+    "iri": "http://www.w3.org/2001/XMLSchema#topLevelAttribute",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_topLevelAttribute",
+    "description": [
+      "The XML Schema datatype 'topLevelAttribute'."
+    ],
+    "label": "topLevelAttribute",
+    "obo_id": "XSD:topLevelAttribute",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#complexType",
+    "iri": "http://www.w3.org/2001/XMLSchema#complexType",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_complexType",
+    "description": [
+      "The XML Schema datatype 'complexType'."
+    ],
+    "label": "complexType",
+    "obo_id": "XSD:complexType",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#topLevelComplexType",
+    "iri": "http://www.w3.org/2001/XMLSchema#topLevelComplexType",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_topLevelComplexType",
+    "description": [
+      "The XML Schema datatype 'topLevelComplexType'."
+    ],
+    "label": "topLevelComplexType",
+    "obo_id": "XSD:topLevelComplexType",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#localComplexType",
+    "iri": "http://www.w3.org/2001/XMLSchema#localComplexType",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_localComplexType",
+    "description": [
+      "The XML Schema datatype 'localComplexType'."
+    ],
+    "label": "localComplexType",
+    "obo_id": "XSD:localComplexType",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#restrictionType",
+    "iri": "http://www.w3.org/2001/XMLSchema#restrictionType",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_restrictionType",
+    "description": [
+      "The XML Schema datatype 'restrictionType'."
+    ],
+    "label": "restrictionType",
+    "obo_id": "XSD:restrictionType",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#complexRestrictionType",
+    "iri": "http://www.w3.org/2001/XMLSchema#complexRestrictionType",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_complexRestrictionType",
+    "description": [
+      "The XML Schema datatype 'complexRestrictionType'."
+    ],
+    "label": "complexRestrictionType",
+    "obo_id": "XSD:complexRestrictionType",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#extensionType",
+    "iri": "http://www.w3.org/2001/XMLSchema#extensionType",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_extensionType",
+    "description": [
+      "The XML Schema datatype 'extensionType'."
+    ],
+    "label": "extensionType",
+    "obo_id": "XSD:extensionType",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#simpleRestrictionType",
+    "iri": "http://www.w3.org/2001/XMLSchema#simpleRestrictionType",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_simpleRestrictionType",
+    "description": [
+      "The XML Schema datatype 'simpleRestrictionType'."
+    ],
+    "label": "simpleRestrictionType",
+    "obo_id": "XSD:simpleRestrictionType",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#simpleExtensionType",
+    "iri": "http://www.w3.org/2001/XMLSchema#simpleExtensionType",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_simpleExtensionType",
+    "description": [
+      "The XML Schema datatype 'simpleExtensionType'."
+    ],
+    "label": "simpleExtensionType",
+    "obo_id": "XSD:simpleExtensionType",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#element",
+    "iri": "http://www.w3.org/2001/XMLSchema#element",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_element",
+    "description": [
+      "The XML Schema datatype 'element'."
+    ],
+    "label": "element",
+    "obo_id": "XSD:element",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#topLevelElement",
+    "iri": "http://www.w3.org/2001/XMLSchema#topLevelElement",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_topLevelElement",
+    "description": [
+      "The XML Schema datatype 'topLevelElement'."
+    ],
+    "label": "topLevelElement",
+    "obo_id": "XSD:topLevelElement",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#localElement",
+    "iri": "http://www.w3.org/2001/XMLSchema#localElement",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_localElement",
+    "description": [
+      "The XML Schema datatype 'localElement'."
+    ],
+    "label": "localElement",
+    "obo_id": "XSD:localElement",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#group",
+    "iri": "http://www.w3.org/2001/XMLSchema#group",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_group",
+    "description": [
+      "The XML Schema datatype 'group'."
+    ],
+    "label": "group",
+    "obo_id": "XSD:group",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#realGroup",
+    "iri": "http://www.w3.org/2001/XMLSchema#realGroup",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_realGroup",
+    "description": [
+      "The XML Schema datatype 'realGroup'."
+    ],
+    "label": "realGroup",
+    "obo_id": "XSD:realGroup",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#namedGroup",
+    "iri": "http://www.w3.org/2001/XMLSchema#namedGroup",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_namedGroup",
+    "description": [
+      "The XML Schema datatype 'namedGroup'."
+    ],
+    "label": "namedGroup",
+    "obo_id": "XSD:namedGroup",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#groupRef",
+    "iri": "http://www.w3.org/2001/XMLSchema#groupRef",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_groupRef",
+    "description": [
+      "The XML Schema datatype 'groupRef'."
+    ],
+    "label": "groupRef",
+    "obo_id": "XSD:groupRef",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#explicitGroup",
+    "iri": "http://www.w3.org/2001/XMLSchema#explicitGroup",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_explicitGroup",
+    "description": [
+      "The XML Schema datatype 'explicitGroup'."
+    ],
+    "label": "explicitGroup",
+    "obo_id": "XSD:explicitGroup",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#simpleExplicitGroup",
+    "iri": "http://www.w3.org/2001/XMLSchema#simpleExplicitGroup",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_simpleExplicitGroup",
+    "description": [
+      "The XML Schema datatype 'simpleExplicitGroup'."
+    ],
+    "label": "simpleExplicitGroup",
+    "obo_id": "XSD:simpleExplicitGroup",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#narrowMaxMin",
+    "iri": "http://www.w3.org/2001/XMLSchema#narrowMaxMin",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_narrowMaxMin",
+    "description": [
+      "The XML Schema datatype 'narrowMaxMin'."
+    ],
+    "label": "narrowMaxMin",
+    "obo_id": "XSD:narrowMaxMin",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#all",
+    "iri": "http://www.w3.org/2001/XMLSchema#all",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_all",
+    "description": [
+      "The XML Schema datatype 'all'."
+    ],
+    "label": "all",
+    "obo_id": "XSD:all",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#wildcard",
+    "iri": "http://www.w3.org/2001/XMLSchema#wildcard",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_wildcard",
+    "description": [
+      "The XML Schema datatype 'wildcard'."
+    ],
+    "label": "wildcard",
+    "obo_id": "XSD:wildcard",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#attributeGroup",
+    "iri": "http://www.w3.org/2001/XMLSchema#attributeGroup",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_attributeGroup",
+    "description": [
+      "The XML Schema datatype 'attributeGroup'."
+    ],
+    "label": "attributeGroup",
+    "obo_id": "XSD:attributeGroup",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#namedAttributeGroup",
+    "iri": "http://www.w3.org/2001/XMLSchema#namedAttributeGroup",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_namedAttributeGroup",
+    "description": [
+      "The XML Schema datatype 'namedAttributeGroup'."
+    ],
+    "label": "namedAttributeGroup",
+    "obo_id": "XSD:namedAttributeGroup",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#attributeGroupRef",
+    "iri": "http://www.w3.org/2001/XMLSchema#attributeGroupRef",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_attributeGroupRef",
+    "description": [
+      "The XML Schema datatype 'attributeGroupRef'."
+    ],
+    "label": "attributeGroupRef",
+    "obo_id": "XSD:attributeGroupRef",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#keybase",
+    "iri": "http://www.w3.org/2001/XMLSchema#keybase",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_keybase",
+    "description": [
+      "The XML Schema datatype 'keybase'."
+    ],
+    "label": "keybase",
+    "obo_id": "XSD:keybase",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#anyType",
+    "iri": "http://www.w3.org/2001/XMLSchema#anyType",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_anyType",
+    "description": [
+      "The XML Schema datatype 'anyType'."
+    ],
+    "label": "anyType",
+    "obo_id": "XSD:anyType",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#simpleType",
+    "iri": "http://www.w3.org/2001/XMLSchema#simpleType",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_simpleType",
+    "description": [
+      "The XML Schema datatype 'simpleType'."
+    ],
+    "label": "simpleType",
+    "obo_id": "XSD:simpleType",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#topLevelSimpleType",
+    "iri": "http://www.w3.org/2001/XMLSchema#topLevelSimpleType",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_topLevelSimpleType",
+    "description": [
+      "The XML Schema datatype 'topLevelSimpleType'."
+    ],
+    "label": "topLevelSimpleType",
+    "obo_id": "XSD:topLevelSimpleType",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#localSimpleType",
+    "iri": "http://www.w3.org/2001/XMLSchema#localSimpleType",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_localSimpleType",
+    "description": [
+      "The XML Schema datatype 'localSimpleType'."
+    ],
+    "label": "localSimpleType",
+    "obo_id": "XSD:localSimpleType",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#facet",
+    "iri": "http://www.w3.org/2001/XMLSchema#facet",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_facet",
+    "description": [
+      "The XML Schema datatype 'facet'."
+    ],
+    "label": "facet",
+    "obo_id": "XSD:facet",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#noFixedFacet",
+    "iri": "http://www.w3.org/2001/XMLSchema#noFixedFacet",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_noFixedFacet",
+    "description": [
+      "The XML Schema datatype 'noFixedFacet'."
+    ],
+    "label": "noFixedFacet",
+    "obo_id": "XSD:noFixedFacet",
+    "type": "property"
+  },
+  {
+    "id": "XSD:property:http://www.w3.org/2001/XMLSchema#numFacet",
+    "iri": "http://www.w3.org/2001/XMLSchema#numFacet",
+    "ontology_name": "xsd",
+    "namespace": "http://www.w3.org/2001/XMLSchema#",
+    "ontology_prefix": "XSD",
+    "short_form": "XSD_numFacet",
+    "description": [
+      "The XML Schema datatype 'numFacet'."
+    ],
+    "label": "numFacet",
+    "obo_id": "XSD:numFacet",
+    "type": "property"
+  }
+]
