@@ -1,99 +1,97 @@
 {
     "converter_version": "1.8.0",
-    "data": [
-        {
-            "metadata": {
-                "content_type": "text/plain",
-                "delimiter": "tab",
-                "doublequote": "False",
-                "extension": ".txt",
-                "file_name": "Absorbance_14-42-39-645.txt",
-                "lineterminator": "\\r\\n",
-                "mime_type": "text/plain",
-                "quotechar": "\"",
-                "quoting": "0",
-                "reader": "CSVReader",
-                "skipinitialspace": "True",
-                "uploaded": "2023-08-09T08:07:01.753910"
-            },
-            "tables": [
-                {
-                    "columns": [
-                        {
-                            "key": "0",
-                            "name": "Column #0 (>>>>>Begin Spectral Data<<<<<)"
-                        },
-                        {
-                            "key": "1",
-                            "name": "Column #1"
-                        }
-                    ],
-                    "header": [
-                        "Data from Absorbance_14-42-39-645.txt Node",
-                        "",
-                        "Date: Mon Jul 24 14:42:39 CEST 2023",
-                        "User: AK Th\u00e9ato Seminar",
-                        "Spectrometer: HDX00655",
-                        "Trigger mode: 0",
-                        "Integration Time (sec): 1.000000E-1",
-                        "Scans to average: 1",
-                        "Nonlinearity correction enabled: false",
-                        "Boxcar width: 0",
-                        "Storing dark spectrum: false",
-                        "XAxis mode: Wavelengths",
-                        "Number of Pixels in Spectrum: 2068"
-                    ],
-                    "metadata": {
-                        "column_00": ">>>>>Begin Spectral Data<<<<<",
-                        "columns": "2",
-                        "rows": "2068"
+    "data": {
+        "metadata": {
+            "content_type": "text/plain",
+            "delimiter": "tab",
+            "doublequote": "False",
+            "extension": ".txt",
+            "file_name": "Absorbance_14-42-39-645.txt",
+            "lineterminator": "\\r\\n",
+            "mime_type": "text/plain",
+            "quotechar": "\"",
+            "quoting": "0",
+            "reader": "CSVReader",
+            "skipinitialspace": "True",
+            "uploaded": "2023-08-09T08:07:01.753910"
+        },
+        "tables": [
+            {
+                "columns": [
+                    {
+                        "key": "0",
+                        "name": "Column #0 (>>>>>Begin Spectral Data<<<<<)"
                     },
-                    "rows": [
-                        [
-                            "194.076",
-                            "-0.37"
-                        ],
-                        [
-                            "194.628",
-                            "-0"
-                        ],
-                        [
-                            "195.18",
-                            "-0"
-                        ],
-                        [
-                            "195.732",
-                            "-0"
-                        ],
-                        [
-                            "196.284",
-                            "-0.33"
-                        ],
-                        [
-                            "196.835",
-                            "-0.09"
-                        ],
-                        [
-                            "197.387",
-                            "-0.11"
-                        ],
-                        [
-                            "197.938",
-                            "-0.01"
-                        ],
-                        [
-                            "198.49",
-                            "0.18"
-                        ],
-                        [
-                            "199.041",
-                            "-0.08"
-                        ]
+                    {
+                        "key": "1",
+                        "name": "Column #1"
+                    }
+                ],
+                "header": [
+                    "Data from Absorbance_14-42-39-645.txt Node",
+                    "",
+                    "Date: Mon Jul 24 14:42:39 CEST 2023",
+                    "User: AK Th\u00e9ato Seminar",
+                    "Spectrometer: HDX00655",
+                    "Trigger mode: 0",
+                    "Integration Time (sec): 1.000000E-1",
+                    "Scans to average: 1",
+                    "Nonlinearity correction enabled: false",
+                    "Boxcar width: 0",
+                    "Storing dark spectrum: false",
+                    "XAxis mode: Wavelengths",
+                    "Number of Pixels in Spectrum: 2068"
+                ],
+                "metadata": {
+                    "column_00": ">>>>>Begin Spectral Data<<<<<",
+                    "columns": "2",
+                    "rows": "2068"
+                },
+                "rows": [
+                    [
+                        "194.076",
+                        "-0.37"
+                    ],
+                    [
+                        "194.628",
+                        "-0"
+                    ],
+                    [
+                        "195.18",
+                        "-0"
+                    ],
+                    [
+                        "195.732",
+                        "-0"
+                    ],
+                    [
+                        "196.284",
+                        "-0.33"
+                    ],
+                    [
+                        "196.835",
+                        "-0.09"
+                    ],
+                    [
+                        "197.387",
+                        "-0.11"
+                    ],
+                    [
+                        "197.938",
+                        "-0.01"
+                    ],
+                    [
+                        "198.49",
+                        "0.18"
+                    ],
+                    [
+                        "199.041",
+                        "-0.08"
                     ]
-                }
-            ]
-        }
-    ],
+                ]
+            }
+        ]
+    },
     "datatypes": [],
     "description": "UV-Vis (AK Th\u00e9ato Seminar) - Campus West, KIT",
     "devices": [],
@@ -120,7 +118,8 @@
         }
     ],
     "isDisabled": false,
-    "last_migration": "20260401123327",
+    "last_migration": "20260323144702",
+    "objects": [],
     "ols": null,
     "ontology": "",
     "predicates": [],
@@ -128,13 +127,13 @@
         "description": [
             "A planned process that has the objective to produce information about a material entity (the evaluant) by examining it."
         ],
-        "id": "OBI:property:http://purl.obolibrary.org/obo/OBI_0000070",
+        "id": "obi:class:http://purl.obolibrary.org/obo/OBI_0000070",
         "iri": "http://purl.obolibrary.org/obo/OBI_0000070",
         "label": "assay",
         "namespace": "http://purl.obolibrary.org/obo/",
         "obo_id": "OBI:0000070",
-        "ontology_name": "chmo",
-        "ontology_prefix": "CHMO",
+        "ontology_name": "obi",
+        "ontology_prefix": "OBI",
         "short_form": "OBI_0000070",
         "type": "class"
     },

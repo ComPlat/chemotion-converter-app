@@ -1,158 +1,156 @@
 {
     "converter_version": "1.8.0",
-    "data": [
-        {
-            "metadata": {
-                "content_type": "text/plain",
-                "delimiter": "tab",
-                "doublequote": "False",
-                "extension": ".txt",
-                "file_name": "Example of fluorescence measurement.txt",
-                "lineterminator": "\\r\\n",
-                "mime_type": "text/plain",
-                "quotechar": "\"",
-                "quoting": "0",
-                "reader": "CSVReader",
-                "skipinitialspace": "False",
-                "uploaded": "2023-05-17T08:23:18.182320"
-            },
-            "tables": [
-                {
-                    "columns": [
-                        {
-                            "key": "0",
-                            "name": "Column #0 (XYDATA)"
-                        },
-                        {
-                            "key": "1",
-                            "name": "Column #1"
-                        }
-                    ],
-                    "header": [
-                        "TITLE\t1hCys",
-                        "DATA TYPE\tFLUORESCENCE SPECTRUM",
-                        "ORIGIN\tJASCO",
-                        "OWNER\t",
-                        "DATE\t22/09/30",
-                        "TIME\t13:33:31",
-                        "SPECTROMETER/DATA SYSTEM\t",
-                        "LOCALE\t1031",
-                        "RESOLUTION\t",
-                        "DELTAX\t0.5",
-                        "XUNITS\tNANOMETERS",
-                        "YUNITS\tINTENSITY",
-                        "FIRSTX\t  400.0000",
-                        "LASTX\t  800.0000",
-                        "NPOINTS\t     801",
-                        "FIRSTY\t     0.60881",
-                        "MAXY\t   295.57501",
-                        "MINY\t     0.01132"
-                    ],
-                    "metadata": {
-                        "column_00": "XYDATA",
-                        "columns": "2",
-                        "rows": "801"
+    "data": {
+        "metadata": {
+            "content_type": "text/plain",
+            "delimiter": "tab",
+            "doublequote": "False",
+            "extension": ".txt",
+            "file_name": "Example of fluorescence measurement.txt",
+            "lineterminator": "\\r\\n",
+            "mime_type": "text/plain",
+            "quotechar": "\"",
+            "quoting": "0",
+            "reader": "CSVReader",
+            "skipinitialspace": "False",
+            "uploaded": "2023-05-17T08:23:18.182320"
+        },
+        "tables": [
+            {
+                "columns": [
+                    {
+                        "key": "0",
+                        "name": "Column #0 (XYDATA)"
                     },
-                    "rows": [
-                        [
-                            "400.0000",
-                            "0.608811"
-                        ],
-                        [
-                            "400.5000",
-                            "0.615689"
-                        ],
-                        [
-                            "401.0000",
-                            "0.616443"
-                        ],
-                        [
-                            "401.5000",
-                            "0.610617"
-                        ],
-                        [
-                            "402.0000",
-                            "0.618529"
-                        ],
-                        [
-                            "402.5000",
-                            "0.625898"
-                        ],
-                        [
-                            "403.0000",
-                            "0.626745"
-                        ],
-                        [
-                            "403.5000",
-                            "0.642452"
-                        ],
-                        [
-                            "404.0000",
-                            "0.653984"
-                        ],
-                        [
-                            "404.5000",
-                            "0.668426"
-                        ]
-                    ]
+                    {
+                        "key": "1",
+                        "name": "Column #1"
+                    }
+                ],
+                "header": [
+                    "TITLE\t1hCys",
+                    "DATA TYPE\tFLUORESCENCE SPECTRUM",
+                    "ORIGIN\tJASCO",
+                    "OWNER\t",
+                    "DATE\t22/09/30",
+                    "TIME\t13:33:31",
+                    "SPECTROMETER/DATA SYSTEM\t",
+                    "LOCALE\t1031",
+                    "RESOLUTION\t",
+                    "DELTAX\t0.5",
+                    "XUNITS\tNANOMETERS",
+                    "YUNITS\tINTENSITY",
+                    "FIRSTX\t  400.0000",
+                    "LASTX\t  800.0000",
+                    "NPOINTS\t     801",
+                    "FIRSTY\t     0.60881",
+                    "MAXY\t   295.57501",
+                    "MINY\t     0.01132"
+                ],
+                "metadata": {
+                    "column_00": "XYDATA",
+                    "columns": "2",
+                    "rows": "801"
                 },
-                {
-                    "columns": [],
-                    "header": [
-                        "",
-                        "##### Extended Information",
-                        "[Comments]",
-                        "Sample name\t1hCys",
-                        "Comment",
-                        "User",
-                        "Division",
-                        "Company\tINT",
-                        "",
-                        "[Detailed Information]",
-                        "Creation date\t30.09.2022 13:33",
-                        "",
-                        "Data array type\tLinear data array",
-                        "Horizontal axis\tWavelength [nm]",
-                        "Vertical axis\tInt.",
-                        "Start\t400 nm",
-                        "End\t800 nm",
-                        "Data interval\t0.5 nm",
-                        "Data points\t801     ",
-                        "",
-                        "[Measurement Information]",
-                        "Model name\tFP-8300",
-                        "Serial No.\tC048861450",
-                        "  Ex filter holder\tNone",
-                        "  Em filter holder\tNone",
-                        "",
-                        "Measurement date\t30.09.2022 13:33",
-                        "",
-                        "Mode\tEmission",
-                        "Ex bandwidth\t2.5 nm",
-                        "Em bandwidth\t2.5 nm",
-                        "Response\t1 sec",
-                        "Sensitivity\tMedium",
-                        "Measurement range\t400 - 800 nm",
-                        "Data interval\t0.5 nm",
-                        "Ex wavelength\t380.0 nm",
-                        "Scan speed\t1000 nm/min",
-                        "No. of cycles\t1",
-                        "Auto gain\tOff",
-                        "Shutter control\tOpen only for measurement",
-                        "Light source\tXe lamp",
-                        "Filter\tContinue scan for exchanging filter",
-                        "Blank correction\tOff",
-                        ""
+                "rows": [
+                    [
+                        "400.0000",
+                        "0.608811"
                     ],
-                    "metadata": {
-                        "columns": "0",
-                        "rows": "0"
-                    },
-                    "rows": []
-                }
-            ]
-        }
-    ],
+                    [
+                        "400.5000",
+                        "0.615689"
+                    ],
+                    [
+                        "401.0000",
+                        "0.616443"
+                    ],
+                    [
+                        "401.5000",
+                        "0.610617"
+                    ],
+                    [
+                        "402.0000",
+                        "0.618529"
+                    ],
+                    [
+                        "402.5000",
+                        "0.625898"
+                    ],
+                    [
+                        "403.0000",
+                        "0.626745"
+                    ],
+                    [
+                        "403.5000",
+                        "0.642452"
+                    ],
+                    [
+                        "404.0000",
+                        "0.653984"
+                    ],
+                    [
+                        "404.5000",
+                        "0.668426"
+                    ]
+                ]
+            },
+            {
+                "columns": [],
+                "header": [
+                    "",
+                    "##### Extended Information",
+                    "[Comments]",
+                    "Sample name\t1hCys",
+                    "Comment",
+                    "User",
+                    "Division",
+                    "Company\tINT",
+                    "",
+                    "[Detailed Information]",
+                    "Creation date\t30.09.2022 13:33",
+                    "",
+                    "Data array type\tLinear data array",
+                    "Horizontal axis\tWavelength [nm]",
+                    "Vertical axis\tInt.",
+                    "Start\t400 nm",
+                    "End\t800 nm",
+                    "Data interval\t0.5 nm",
+                    "Data points\t801     ",
+                    "",
+                    "[Measurement Information]",
+                    "Model name\tFP-8300",
+                    "Serial No.\tC048861450",
+                    "  Ex filter holder\tNone",
+                    "  Em filter holder\tNone",
+                    "",
+                    "Measurement date\t30.09.2022 13:33",
+                    "",
+                    "Mode\tEmission",
+                    "Ex bandwidth\t2.5 nm",
+                    "Em bandwidth\t2.5 nm",
+                    "Response\t1 sec",
+                    "Sensitivity\tMedium",
+                    "Measurement range\t400 - 800 nm",
+                    "Data interval\t0.5 nm",
+                    "Ex wavelength\t380.0 nm",
+                    "Scan speed\t1000 nm/min",
+                    "No. of cycles\t1",
+                    "Auto gain\tOff",
+                    "Shutter control\tOpen only for measurement",
+                    "Light source\tXe lamp",
+                    "Filter\tContinue scan for exchanging filter",
+                    "Blank correction\tOff",
+                    ""
+                ],
+                "metadata": {
+                    "columns": "0",
+                    "rows": "0"
+                },
+                "rows": []
+            }
+        ]
+    },
     "datatypes": [],
     "description": "(fluorescence) emission spectrum with generic dataset (FI)",
     "devices": [],
@@ -193,6 +191,7 @@
             "id": "#3tableHeader",
             "lineNumber": null,
             "match": "regex",
+            "object": null,
             "optional": true,
             "outputKey": "fixed_wavelength",
             "outputLayer": "set",
@@ -209,6 +208,7 @@
             "id": "#4tableHeader",
             "lineNumber": "",
             "match": "regex",
+            "object": null,
             "optional": true,
             "outputKey": "mode",
             "outputLayer": "set",
@@ -225,6 +225,7 @@
             "id": "#5tableHeader",
             "lineNumber": "",
             "match": "regex",
+            "object": null,
             "optional": true,
             "outputKey": "ex_bandwidth",
             "outputLayer": "set",
@@ -241,6 +242,7 @@
             "id": "#6tableHeader",
             "lineNumber": "",
             "match": "regex",
+            "object": null,
             "optional": true,
             "outputKey": "em_bandwidth",
             "outputLayer": "set",
@@ -257,6 +259,7 @@
             "id": "#7tableHeader",
             "lineNumber": "",
             "match": "regex",
+            "object": null,
             "optional": true,
             "outputKey": "response",
             "outputLayer": "set",
@@ -273,6 +276,7 @@
             "id": "#8tableHeader",
             "lineNumber": "",
             "match": "regex",
+            "object": null,
             "optional": true,
             "outputKey": "sensitivity",
             "outputLayer": "set",
@@ -289,6 +293,7 @@
             "id": "#9tableHeader",
             "lineNumber": "",
             "match": "regex",
+            "object": null,
             "optional": true,
             "outputKey": "measurement_range",
             "outputLayer": "set",
@@ -305,6 +310,7 @@
             "id": "#10tableHeader",
             "lineNumber": "",
             "match": "regex",
+            "object": null,
             "optional": true,
             "outputKey": "data_interval",
             "outputLayer": "set",
@@ -321,6 +327,7 @@
             "id": "#11tableHeader",
             "lineNumber": "",
             "match": "regex",
+            "object": null,
             "optional": true,
             "outputKey": "scan_speed",
             "outputLayer": "set",
@@ -337,6 +344,7 @@
             "id": "#12tableHeader",
             "lineNumber": "",
             "match": "regex",
+            "object": null,
             "optional": true,
             "outputKey": "no_of_cycles",
             "outputLayer": "set",
@@ -353,6 +361,7 @@
             "id": "#13tableHeader",
             "lineNumber": "",
             "match": "regex",
+            "object": null,
             "optional": true,
             "outputKey": "auto gain",
             "outputLayer": "measurement",
@@ -369,6 +378,7 @@
             "id": "#14tableHeader",
             "lineNumber": "",
             "match": "regex",
+            "object": null,
             "optional": true,
             "outputKey": "shutter_control",
             "outputLayer": "set",
@@ -385,6 +395,7 @@
             "id": "#15tableHeader",
             "lineNumber": "",
             "match": "regex",
+            "object": null,
             "optional": true,
             "outputKey": "light_source",
             "outputLayer": "set",
@@ -401,6 +412,7 @@
             "id": "#16tableHeader",
             "lineNumber": "",
             "match": "regex",
+            "object": null,
             "optional": true,
             "outputKey": "filter",
             "outputLayer": "set",
@@ -417,6 +429,7 @@
             "id": "#17tableHeader",
             "lineNumber": "",
             "match": "regex",
+            "object": null,
             "optional": true,
             "outputKey": "blank_correction",
             "outputLayer": "set",
@@ -433,6 +446,7 @@
             "id": "#18tableHeader",
             "lineNumber": "",
             "match": "regex",
+            "object": null,
             "optional": true,
             "outputKey": "date",
             "outputLayer": "general",
@@ -445,7 +459,8 @@
         }
     ],
     "isDisabled": false,
-    "last_migration": "20260401123327",
+    "last_migration": "20260323144702",
+    "objects": [],
     "ols": "CHMO:0000287",
     "ontology": "",
     "predicates": [],

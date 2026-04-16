@@ -1,711 +1,709 @@
 {
     "converter_version": "1.8.0",
-    "data": [
-        {
-            "metadata": {
-                "content_type": "text/plain",
-                "extension": ".TXT",
-                "file_name": "1_Inj_ Vial  71  JM_03 - 1.TXT",
-                "mime_type": "text/plain",
-                "reader": "SecReader",
-                "uploaded": "2022-12-01T09:51:07.645397"
+    "data": {
+        "metadata": {
+            "content_type": "text/plain",
+            "extension": ".TXT",
+            "file_name": "1_Inj_ Vial  71  JM_03 - 1.TXT",
+            "mime_type": "text/plain",
+            "reader": "SecReader",
+            "uploaded": "2022-12-01T09:51:07.645397"
+        },
+        "tables": [
+            {
+                "columns": [],
+                "header": [
+                    "Sample: Vial  71: JM_03 - 1",
+                    "Method settings: C:\\WINGPC_8#1\\PSS.ChromPilot.Method.Instrument.1.xml",
+                    "Sequence table: C:\\WINGPC_8#1\\PSS.ChromPilot.Sequence.Instrument.1.xml",
+                    "Inject date: Donnerstag   21/07/22   14:30:57",
+                    "Inject volume: 100.000",
+                    "Inject volume_unit: ul",
+                    "Concentration:   1.000",
+                    "Concentration_unit: g/l",
+                    "Project: C:\\DATA\\AKT THF Tosoh\\20220721",
+                    "Calibration: C:\\DATA\\calibration\\20220707-GRAM_DMAc LiBr 0.8 pro L_2Mixed-C S\u00e4ulen_50\u00b0C 0_5ml min_PS.CAL",
+                    "Method: C:\\DATA\\Methoden\\GRAM DMAC LiBr 079g 50\u00b0C_2020 08 28.MET",
+                    "Export file: Z:\\Jennifer\\JM-03\\1_Inj_ Vial  71  JM_03 - 1.TXT",
+                    "Operator: itcp-akt",
+                    "Calibration MH-K:  1.000000",
+                    "Calibration MH-K_unit: ml/g",
+                    "(Calibration MH-K) univ. Calibration MH-K:  0.001000",
+                    "(Calibration MH-K) univ. Calibration MH-K_unit: ml/g",
+                    "Calibration MH-A:  0.000000",
+                    "Calibration MH-A_unit: -",
+                    "(Calibration MH-A) univ. Calibration MH-A:  0.500000",
+                    "(Calibration MH-A) univ. Calibration MH-A_unit: -",
+                    "Internal Standard Calibration:  50.000",
+                    "Internal Standard Calibration_unit: ml",
+                    "Internal Standard Acquisition: -------",
+                    "Internal Standard Acquisition_unit: ml",
+                    "Data Interval:   1.000",
+                    "Data Interval_unit: s",
+                    "Eluent: DMAc 0.79g/2.5L LiBr",
+                    "Flow:   0.500",
+                    "Flow_unit: ml/min",
+                    "Column 1: PLgel Precolumn",
+                    "(Column 1) Temperature:  50.000",
+                    "(Column 1) Temperature_unit: C",
+                    "Column 2: PLgel 5\u00b5m Mixed-C",
+                    "(Column 2) Temperature:  50.000",
+                    "(Column 2) Temperature_unit: C",
+                    "Column 3: PLgel 5\u00b5m Mixed-C",
+                    "(Column 3) Temperature:  50.000",
+                    "(Column 3) Temperature_unit: C",
+                    "Detector 1: I1: RID 1, RI Signal",
+                    "(Detector 1) Delay:   0.000",
+                    "(Detector 1) Delay_unit: min",
+                    "Detector 2: I1: IsoPump 1, Pressure",
+                    "(Detector 2) Delay:   0.000",
+                    "(Detector 2) Delay_unit: min",
+                    "Baseline from:  12.957",
+                    "(Baseline from) to:  15.206",
+                    "(Baseline from) to_unit: ml",
+                    "Integration from:  12.957",
+                    "(Integration from) to:  15.206",
+                    "(Integration from) to_unit: ml",
+                    " I1: RID 1, RI Signal",
+                    "Mn:  5.646E+4",
+                    "Mn_unit: g/mol",
+                    "Mw:  6.301E+4",
+                    "Mw_unit: g/mol",
+                    "Mz:  7.172E+4",
+                    "Mz_unit: g/mol",
+                    "M(z+1):  8.281E+4",
+                    "M(z+1)_unit: g/mol",
+                    "Mv:  0.000E+0",
+                    "Mv_unit: g/mol",
+                    "D:  1.116E+0",
+                    "[n]:  0.000E+0",
+                    "[n]_unit: ml/g",
+                    "Vp:  1.426E+1",
+                    "Vp_unit: ml",
+                    "Mp:  5.286E+4",
+                    "Mp_unit: g/mol",
+                    "Fl:  2.021E+1",
+                    "Fl_unit: ml*V",
+                    "< 21680:       0.00",
+                    "< 21680_unit: %",
+                    "w%:     100.00",
+                    "w%_unit: %",
+                    "> 204962:       0.00",
+                    "> 204962_unit: %"
+                ],
+                "metadata": {
+                    " - ": "I1: RID 1, RI Signal",
+                    "(Baseline from) to": " 15.206",
+                    "(Baseline from) to_unit": "ml",
+                    "(Calibration MH-A) univ. Calibration MH-A": " 0.500000",
+                    "(Calibration MH-A) univ. Calibration MH-A_unit": "-",
+                    "(Calibration MH-K) univ. Calibration MH-K": " 0.001000",
+                    "(Calibration MH-K) univ. Calibration MH-K_unit": "ml/g",
+                    "(Column 1) Temperature": " 50.000",
+                    "(Column 1) Temperature_unit": "C",
+                    "(Column 2) Temperature": " 50.000",
+                    "(Column 2) Temperature_unit": "C",
+                    "(Column 3) Temperature": " 50.000",
+                    "(Column 3) Temperature_unit": "C",
+                    "(Detector 1) Delay": "  0.000",
+                    "(Detector 1) Delay_unit": "min",
+                    "(Detector 2) Delay": "  0.000",
+                    "(Detector 2) Delay_unit": "min",
+                    "(Integration from) to": " 15.206",
+                    "(Integration from) to_unit": "ml",
+                    "< 21680": "      0.00",
+                    "< 21680_unit": "%",
+                    "> 204962": "      0.00",
+                    "> 204962_unit": "%",
+                    "Baseline from": " 12.957",
+                    "Calibration": "C:\\DATA\\calibration\\20220707-GRAM_DMAc LiBr 0.8 pro L_2Mixed-C S\u00e4ulen_50\u00b0C 0_5ml min_PS.CAL",
+                    "Calibration MH-A": " 0.000000",
+                    "Calibration MH-A_unit": "-",
+                    "Calibration MH-K": " 1.000000",
+                    "Calibration MH-K_unit": "ml/g",
+                    "Column 1": "PLgel Precolumn",
+                    "Column 2": "PLgel 5\u00b5m Mixed-C",
+                    "Column 3": "PLgel 5\u00b5m Mixed-C",
+                    "Concentration": "  1.000",
+                    "Concentration_unit": "g/l",
+                    "D": " 1.116E+0",
+                    "Data Interval": "  1.000",
+                    "Data Interval_unit": "s",
+                    "Detector 1": "I1: RID 1, RI Signal",
+                    "Detector 2": "I1: IsoPump 1, Pressure",
+                    "Eluent": "DMAc 0.79g/2.5L LiBr",
+                    "Export file": "Z:\\Jennifer\\JM-03\\1_Inj_ Vial  71  JM_03 - 1.TXT",
+                    "Fl": " 2.021E+1",
+                    "Fl_unit": "ml*V",
+                    "Flow": "  0.500",
+                    "Flow_unit": "ml/min",
+                    "Inject date": "Donnerstag   21/07/22   14:30:57",
+                    "Inject volume": "100.000",
+                    "Inject volume_unit": "ul",
+                    "Integration from": " 12.957",
+                    "Internal Standard Acquisition": "-------",
+                    "Internal Standard Acquisition_unit": "ml",
+                    "Internal Standard Calibration": " 50.000",
+                    "Internal Standard Calibration_unit": "ml",
+                    "M(z+1)": " 8.281E+4",
+                    "M(z+1)_unit": "g/mol",
+                    "Method": "C:\\DATA\\Methoden\\GRAM DMAC LiBr 079g 50\u00b0C_2020 08 28.MET",
+                    "Method settings": "C:\\WINGPC_8#1\\PSS.ChromPilot.Method.Instrument.1.xml",
+                    "Mn": " 5.646E+4",
+                    "Mn_unit": "g/mol",
+                    "Mp": " 5.286E+4",
+                    "Mp_unit": "g/mol",
+                    "Mv": " 0.000E+0",
+                    "Mv_unit": "g/mol",
+                    "Mw": " 6.301E+4",
+                    "Mw_unit": "g/mol",
+                    "Mz": " 7.172E+4",
+                    "Mz_unit": "g/mol",
+                    "Operator": "itcp-akt",
+                    "Project": "C:\\DATA\\AKT THF Tosoh\\20220721",
+                    "Sample": "Vial  71: JM_03 - 1",
+                    "Sequence table": "C:\\WINGPC_8#1\\PSS.ChromPilot.Sequence.Instrument.1.xml",
+                    "Vp": " 1.426E+1",
+                    "Vp_unit": "ml",
+                    "[n]": " 0.000E+0",
+                    "[n]_unit": "ml/g",
+                    "columns": 0,
+                    "rows": 0,
+                    "w%": "    100.00",
+                    "w%_unit": "%"
+                },
+                "rows": []
             },
-            "tables": [
-                {
-                    "columns": [],
-                    "header": [
-                        "Sample: Vial  71: JM_03 - 1",
-                        "Method settings: C:\\WINGPC_8#1\\PSS.ChromPilot.Method.Instrument.1.xml",
-                        "Sequence table: C:\\WINGPC_8#1\\PSS.ChromPilot.Sequence.Instrument.1.xml",
-                        "Inject date: Donnerstag   21/07/22   14:30:57",
-                        "Inject volume: 100.000",
-                        "Inject volume_unit: ul",
-                        "Concentration:   1.000",
-                        "Concentration_unit: g/l",
-                        "Project: C:\\DATA\\AKT THF Tosoh\\20220721",
-                        "Calibration: C:\\DATA\\calibration\\20220707-GRAM_DMAc LiBr 0.8 pro L_2Mixed-C S\u00e4ulen_50\u00b0C 0_5ml min_PS.CAL",
-                        "Method: C:\\DATA\\Methoden\\GRAM DMAC LiBr 079g 50\u00b0C_2020 08 28.MET",
-                        "Export file: Z:\\Jennifer\\JM-03\\1_Inj_ Vial  71  JM_03 - 1.TXT",
-                        "Operator: itcp-akt",
-                        "Calibration MH-K:  1.000000",
-                        "Calibration MH-K_unit: ml/g",
-                        "(Calibration MH-K) univ. Calibration MH-K:  0.001000",
-                        "(Calibration MH-K) univ. Calibration MH-K_unit: ml/g",
-                        "Calibration MH-A:  0.000000",
-                        "Calibration MH-A_unit: -",
-                        "(Calibration MH-A) univ. Calibration MH-A:  0.500000",
-                        "(Calibration MH-A) univ. Calibration MH-A_unit: -",
-                        "Internal Standard Calibration:  50.000",
-                        "Internal Standard Calibration_unit: ml",
-                        "Internal Standard Acquisition: -------",
-                        "Internal Standard Acquisition_unit: ml",
-                        "Data Interval:   1.000",
-                        "Data Interval_unit: s",
-                        "Eluent: DMAc 0.79g/2.5L LiBr",
-                        "Flow:   0.500",
-                        "Flow_unit: ml/min",
-                        "Column 1: PLgel Precolumn",
-                        "(Column 1) Temperature:  50.000",
-                        "(Column 1) Temperature_unit: C",
-                        "Column 2: PLgel 5\u00b5m Mixed-C",
-                        "(Column 2) Temperature:  50.000",
-                        "(Column 2) Temperature_unit: C",
-                        "Column 3: PLgel 5\u00b5m Mixed-C",
-                        "(Column 3) Temperature:  50.000",
-                        "(Column 3) Temperature_unit: C",
-                        "Detector 1: I1: RID 1, RI Signal",
-                        "(Detector 1) Delay:   0.000",
-                        "(Detector 1) Delay_unit: min",
-                        "Detector 2: I1: IsoPump 1, Pressure",
-                        "(Detector 2) Delay:   0.000",
-                        "(Detector 2) Delay_unit: min",
-                        "Baseline from:  12.957",
-                        "(Baseline from) to:  15.206",
-                        "(Baseline from) to_unit: ml",
-                        "Integration from:  12.957",
-                        "(Integration from) to:  15.206",
-                        "(Integration from) to_unit: ml",
-                        " I1: RID 1, RI Signal",
-                        "Mn:  5.646E+4",
-                        "Mn_unit: g/mol",
-                        "Mw:  6.301E+4",
-                        "Mw_unit: g/mol",
-                        "Mz:  7.172E+4",
-                        "Mz_unit: g/mol",
-                        "M(z+1):  8.281E+4",
-                        "M(z+1)_unit: g/mol",
-                        "Mv:  0.000E+0",
-                        "Mv_unit: g/mol",
-                        "D:  1.116E+0",
-                        "[n]:  0.000E+0",
-                        "[n]_unit: ml/g",
-                        "Vp:  1.426E+1",
-                        "Vp_unit: ml",
-                        "Mp:  5.286E+4",
-                        "Mp_unit: g/mol",
-                        "Fl:  2.021E+1",
-                        "Fl_unit: ml*V",
-                        "< 21680:       0.00",
-                        "< 21680_unit: %",
-                        "w%:     100.00",
-                        "w%_unit: %",
-                        "> 204962:       0.00",
-                        "> 204962_unit: %"
-                    ],
-                    "metadata": {
-                        " - ": "I1: RID 1, RI Signal",
-                        "(Baseline from) to": " 15.206",
-                        "(Baseline from) to_unit": "ml",
-                        "(Calibration MH-A) univ. Calibration MH-A": " 0.500000",
-                        "(Calibration MH-A) univ. Calibration MH-A_unit": "-",
-                        "(Calibration MH-K) univ. Calibration MH-K": " 0.001000",
-                        "(Calibration MH-K) univ. Calibration MH-K_unit": "ml/g",
-                        "(Column 1) Temperature": " 50.000",
-                        "(Column 1) Temperature_unit": "C",
-                        "(Column 2) Temperature": " 50.000",
-                        "(Column 2) Temperature_unit": "C",
-                        "(Column 3) Temperature": " 50.000",
-                        "(Column 3) Temperature_unit": "C",
-                        "(Detector 1) Delay": "  0.000",
-                        "(Detector 1) Delay_unit": "min",
-                        "(Detector 2) Delay": "  0.000",
-                        "(Detector 2) Delay_unit": "min",
-                        "(Integration from) to": " 15.206",
-                        "(Integration from) to_unit": "ml",
-                        "< 21680": "      0.00",
-                        "< 21680_unit": "%",
-                        "> 204962": "      0.00",
-                        "> 204962_unit": "%",
-                        "Baseline from": " 12.957",
-                        "Calibration": "C:\\DATA\\calibration\\20220707-GRAM_DMAc LiBr 0.8 pro L_2Mixed-C S\u00e4ulen_50\u00b0C 0_5ml min_PS.CAL",
-                        "Calibration MH-A": " 0.000000",
-                        "Calibration MH-A_unit": "-",
-                        "Calibration MH-K": " 1.000000",
-                        "Calibration MH-K_unit": "ml/g",
-                        "Column 1": "PLgel Precolumn",
-                        "Column 2": "PLgel 5\u00b5m Mixed-C",
-                        "Column 3": "PLgel 5\u00b5m Mixed-C",
-                        "Concentration": "  1.000",
-                        "Concentration_unit": "g/l",
-                        "D": " 1.116E+0",
-                        "Data Interval": "  1.000",
-                        "Data Interval_unit": "s",
-                        "Detector 1": "I1: RID 1, RI Signal",
-                        "Detector 2": "I1: IsoPump 1, Pressure",
-                        "Eluent": "DMAc 0.79g/2.5L LiBr",
-                        "Export file": "Z:\\Jennifer\\JM-03\\1_Inj_ Vial  71  JM_03 - 1.TXT",
-                        "Fl": " 2.021E+1",
-                        "Fl_unit": "ml*V",
-                        "Flow": "  0.500",
-                        "Flow_unit": "ml/min",
-                        "Inject date": "Donnerstag   21/07/22   14:30:57",
-                        "Inject volume": "100.000",
-                        "Inject volume_unit": "ul",
-                        "Integration from": " 12.957",
-                        "Internal Standard Acquisition": "-------",
-                        "Internal Standard Acquisition_unit": "ml",
-                        "Internal Standard Calibration": " 50.000",
-                        "Internal Standard Calibration_unit": "ml",
-                        "M(z+1)": " 8.281E+4",
-                        "M(z+1)_unit": "g/mol",
-                        "Method": "C:\\DATA\\Methoden\\GRAM DMAC LiBr 079g 50\u00b0C_2020 08 28.MET",
-                        "Method settings": "C:\\WINGPC_8#1\\PSS.ChromPilot.Method.Instrument.1.xml",
-                        "Mn": " 5.646E+4",
-                        "Mn_unit": "g/mol",
-                        "Mp": " 5.286E+4",
-                        "Mp_unit": "g/mol",
-                        "Mv": " 0.000E+0",
-                        "Mv_unit": "g/mol",
-                        "Mw": " 6.301E+4",
-                        "Mw_unit": "g/mol",
-                        "Mz": " 7.172E+4",
-                        "Mz_unit": "g/mol",
-                        "Operator": "itcp-akt",
-                        "Project": "C:\\DATA\\AKT THF Tosoh\\20220721",
-                        "Sample": "Vial  71: JM_03 - 1",
-                        "Sequence table": "C:\\WINGPC_8#1\\PSS.ChromPilot.Sequence.Instrument.1.xml",
-                        "Vp": " 1.426E+1",
-                        "Vp_unit": "ml",
-                        "[n]": " 0.000E+0",
-                        "[n]_unit": "ml/g",
-                        "columns": 0,
-                        "rows": 0,
-                        "w%": "    100.00",
-                        "w%_unit": "%"
-                    },
-                    "rows": []
+            {
+                "columns": [],
+                "header": [
+                    "Calibration Coefficients:",
+                    "Vol. min : 10.732670",
+                    "Vol. max : 20.341670",
+                    "R : 9.999171e-01",
+                    "Fit : PSS Poly 5",
+                    "Const.: 4.587262e+00",
+                    "Coef.2: 1.789272e+00",
+                    "Coef.3: -2.625093e-01",
+                    "Coef.4: 1.264916e-02",
+                    "Coef.5: -2.054607e-04",
+                    "Coef.6: -3.078503e-07",
+                    "Coef.7: 0.000000e+00",
+                    "Coef.8: 0.000000e+00"
+                ],
+                "metadata": {
+                    "Coef.2": " 1.789272e+00",
+                    "Coef.3": " -2.625093e-01",
+                    "Coef.4": " 1.264916e-02",
+                    "Coef.5": " -2.054607e-04",
+                    "Coef.6": " -3.078503e-07",
+                    "Coef.7": " 0.000000e+00",
+                    "Coef.8": " 0.000000e+00",
+                    "Const.": " 4.587262e+00",
+                    "Fit ": " PSS Poly 5",
+                    "R ": " 9.999171e-01",
+                    "Vol. max ": " 20.341670",
+                    "Vol. min ": " 10.732670",
+                    "columns": 0,
+                    "rows": 0,
+                    "table_name": "Calibration Coefficients:"
                 },
-                {
-                    "columns": [],
-                    "header": [
-                        "Calibration Coefficients:",
-                        "Vol. min : 10.732670",
-                        "Vol. max : 20.341670",
-                        "R : 9.999171e-01",
-                        "Fit : PSS Poly 5",
-                        "Const.: 4.587262e+00",
-                        "Coef.2: 1.789272e+00",
-                        "Coef.3: -2.625093e-01",
-                        "Coef.4: 1.264916e-02",
-                        "Coef.5: -2.054607e-04",
-                        "Coef.6: -3.078503e-07",
-                        "Coef.7: 0.000000e+00",
-                        "Coef.8: 0.000000e+00"
-                    ],
-                    "metadata": {
-                        "Coef.2": " 1.789272e+00",
-                        "Coef.3": " -2.625093e-01",
-                        "Coef.4": " 1.264916e-02",
-                        "Coef.5": " -2.054607e-04",
-                        "Coef.6": " -3.078503e-07",
-                        "Coef.7": " 0.000000e+00",
-                        "Coef.8": " 0.000000e+00",
-                        "Const.": " 4.587262e+00",
-                        "Fit ": " PSS Poly 5",
-                        "R ": " 9.999171e-01",
-                        "Vol. max ": " 20.341670",
-                        "Vol. min ": " 10.732670",
-                        "columns": 0,
-                        "rows": 0,
-                        "table_name": "Calibration Coefficients:"
+                "rows": []
+            },
+            {
+                "columns": [
+                    {
+                        "key": "0",
+                        "name": "Area"
                     },
-                    "rows": []
+                    {
+                        "key": "1",
+                        "name": "Name"
+                    },
+                    {
+                        "key": "2",
+                        "name": "from"
+                    },
+                    {
+                        "key": "3",
+                        "name": "to"
+                    },
+                    {
+                        "key": "4",
+                        "name": "Unit"
+                    }
+                ],
+                "header": [
+                    "Multi area report ",
+                    "Sample: Vial  71: JM_03 - 1",
+                    "Calibration: C:\\DATA\\calibration\\20220707-GRAM_DMAc LiBr 0.8 pro L_2Mixed-C S\u00e4ulen_50\u00b0C 0_5ml min_PS.CAL",
+                    "Print Date: Freitag      22/07/22   09:44:29",
+                    "Project: C:\\DATA\\AKT THF Tosoh\\20220721",
+                    "Method: C:\\DATA\\Methoden\\GRAM DMAC LiBr 079g 50\u00b0C_2020 08 28"
+                ],
+                "metadata": {
+                    "Calibration": "C:\\DATA\\calibration\\20220707-GRAM_DMAc LiBr 0.8 pro L_2Mixed-C S\u00e4ulen_50\u00b0C 0_5ml min_PS.CAL",
+                    "Method": "C:\\DATA\\Methoden\\GRAM DMAC LiBr 079g 50\u00b0C_2020 08 28",
+                    "Print Date": "Freitag      22/07/22   09:44:29",
+                    "Project": "C:\\DATA\\AKT THF Tosoh\\20220721",
+                    "Sample": "Vial  71: JM_03 - 1",
+                    "columns": 5,
+                    "rows": 8,
+                    "table_name": "Multi area report "
                 },
-                {
-                    "columns": [
-                        {
-                            "key": "0",
-                            "name": "Area"
-                        },
-                        {
-                            "key": "1",
-                            "name": "Name"
-                        },
-                        {
-                            "key": "2",
-                            "name": "from"
-                        },
-                        {
-                            "key": "3",
-                            "name": "to"
-                        },
-                        {
-                            "key": "4",
-                            "name": "Unit"
-                        }
+                "rows": [
+                    [
+                        "1",
+                        "",
+                        "",
+                        "",
+                        ""
                     ],
-                    "header": [
-                        "Multi area report ",
-                        "Sample: Vial  71: JM_03 - 1",
-                        "Calibration: C:\\DATA\\calibration\\20220707-GRAM_DMAc LiBr 0.8 pro L_2Mixed-C S\u00e4ulen_50\u00b0C 0_5ml min_PS.CAL",
-                        "Print Date: Freitag      22/07/22   09:44:29",
-                        "Project: C:\\DATA\\AKT THF Tosoh\\20220721",
-                        "Method: C:\\DATA\\Methoden\\GRAM DMAC LiBr 079g 50\u00b0C_2020 08 28"
+                    [
+                        "2",
+                        "",
+                        "",
+                        "",
+                        ""
                     ],
-                    "metadata": {
-                        "Calibration": "C:\\DATA\\calibration\\20220707-GRAM_DMAc LiBr 0.8 pro L_2Mixed-C S\u00e4ulen_50\u00b0C 0_5ml min_PS.CAL",
-                        "Method": "C:\\DATA\\Methoden\\GRAM DMAC LiBr 079g 50\u00b0C_2020 08 28",
-                        "Print Date": "Freitag      22/07/22   09:44:29",
-                        "Project": "C:\\DATA\\AKT THF Tosoh\\20220721",
-                        "Sample": "Vial  71: JM_03 - 1",
-                        "columns": 5,
-                        "rows": 8,
-                        "table_name": "Multi area report "
-                    },
-                    "rows": [
-                        [
-                            "1",
-                            "",
-                            "",
-                            "",
-                            ""
-                        ],
-                        [
-                            "2",
-                            "",
-                            "",
-                            "",
-                            ""
-                        ],
-                        [
-                            "3",
-                            "",
-                            "",
-                            "",
-                            ""
-                        ],
-                        [
-                            "4",
-                            "",
-                            "",
-                            "",
-                            ""
-                        ],
-                        [
-                            "5",
-                            "",
-                            "",
-                            "",
-                            ""
-                        ],
-                        [
-                            "6",
-                            "",
-                            "",
-                            "",
-                            ""
-                        ],
-                        [
-                            "7",
-                            "",
-                            "",
-                            "",
-                            ""
-                        ],
-                        [
-                            "8",
-                            "",
-                            "",
-                            "",
-                            ""
-                        ]
+                    [
+                        "3",
+                        "",
+                        "",
+                        "",
+                        ""
+                    ],
+                    [
+                        "4",
+                        "",
+                        "",
+                        "",
+                        ""
+                    ],
+                    [
+                        "5",
+                        "",
+                        "",
+                        "",
+                        ""
+                    ],
+                    [
+                        "6",
+                        "",
+                        "",
+                        "",
+                        ""
+                    ],
+                    [
+                        "7",
+                        "",
+                        "",
+                        "",
+                        ""
+                    ],
+                    [
+                        "8",
+                        "",
+                        "",
+                        "",
+                        ""
                     ]
-                },
-                {
-                    "columns": [
-                        {
-                            "key": "0",
-                            "name": " "
-                        },
-                        {
-                            "key": "1",
-                            "name": "Set 1"
-                        },
-                        {
-                            "key": "2",
-                            "name": "Set 2"
-                        },
-                        {
-                            "key": "3",
-                            "name": "Set 3"
-                        },
-                        {
-                            "key": "4",
-                            "name": "Set 4"
-                        },
-                        {
-                            "key": "5",
-                            "name": "Set 5"
-                        },
-                        {
-                            "key": "6",
-                            "name": "Set 6"
-                        },
-                        {
-                            "key": "7",
-                            "name": "Set 7"
-                        },
-                        {
-                            "key": "8",
-                            "name": "Set 8"
-                        }
-                    ],
-                    "header": [
-                        "Unnamed"
-                    ],
-                    "metadata": {
-                        "columns": 9,
-                        "rows": 8,
-                        "table_name": "Unnamed"
+                ]
+            },
+            {
+                "columns": [
+                    {
+                        "key": "0",
+                        "name": " "
                     },
-                    "rows": [
-                        [
-                            "",
-                            "-",
-                            "-",
-                            "-",
-                            "-",
-                            "-",
-                            "-",
-                            "-",
-                            "-"
-                        ],
-                        [
-                            "",
-                            "-",
-                            "-",
-                            "-",
-                            "-",
-                            "-",
-                            "-",
-                            "-",
-                            "-"
-                        ],
-                        [
-                            "",
-                            "-",
-                            "-",
-                            "-",
-                            "-",
-                            "-",
-                            "-",
-                            "-",
-                            "-"
-                        ],
-                        [
-                            "",
-                            "-",
-                            "-",
-                            "-",
-                            "-",
-                            "-",
-                            "-",
-                            "-",
-                            "-"
-                        ],
-                        [
-                            "",
-                            "-",
-                            "-",
-                            "-",
-                            "-",
-                            "-",
-                            "-",
-                            "-",
-                            "-"
-                        ],
-                        [
-                            "",
-                            "-",
-                            "-",
-                            "-",
-                            "-",
-                            "-",
-                            "-",
-                            "-",
-                            "-"
-                        ],
-                        [
-                            "",
-                            "-",
-                            "-",
-                            "-",
-                            "-",
-                            "-",
-                            "-",
-                            "-",
-                            "-"
-                        ],
-                        [
-                            "",
-                            "-",
-                            "-",
-                            "-",
-                            "-",
-                            "-",
-                            "-",
-                            "-",
-                            "-"
-                        ]
+                    {
+                        "key": "1",
+                        "name": "Set 1"
+                    },
+                    {
+                        "key": "2",
+                        "name": "Set 2"
+                    },
+                    {
+                        "key": "3",
+                        "name": "Set 3"
+                    },
+                    {
+                        "key": "4",
+                        "name": "Set 4"
+                    },
+                    {
+                        "key": "5",
+                        "name": "Set 5"
+                    },
+                    {
+                        "key": "6",
+                        "name": "Set 6"
+                    },
+                    {
+                        "key": "7",
+                        "name": "Set 7"
+                    },
+                    {
+                        "key": "8",
+                        "name": "Set 8"
+                    }
+                ],
+                "header": [
+                    "Unnamed"
+                ],
+                "metadata": {
+                    "columns": 9,
+                    "rows": 8,
+                    "table_name": "Unnamed"
+                },
+                "rows": [
+                    [
+                        "",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                        "-"
+                    ],
+                    [
+                        "",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                        "-"
+                    ],
+                    [
+                        "",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                        "-"
+                    ],
+                    [
+                        "",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                        "-"
+                    ],
+                    [
+                        "",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                        "-"
+                    ],
+                    [
+                        "",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                        "-"
+                    ],
+                    [
+                        "",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                        "-"
+                    ],
+                    [
+                        "",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                        "-"
                     ]
+                ]
+            },
+            {
+                "columns": [],
+                "header": [
+                    "Unnamed"
+                ],
+                "metadata": {
+                    "columns": 0,
+                    "rows": 0,
+                    "table_name": "Unnamed"
                 },
-                {
-                    "columns": [],
-                    "header": [
-                        "Unnamed"
-                    ],
-                    "metadata": {
-                        "columns": 0,
-                        "rows": 0,
-                        "table_name": "Unnamed"
+                "rows": []
+            },
+            {
+                "columns": [
+                    {
+                        "key": "0",
+                        "name": "Time"
                     },
-                    "rows": []
+                    {
+                        "key": "1",
+                        "name": "I1: RID 1, RI Signal"
+                    },
+                    {
+                        "key": "2",
+                        "name": "Time"
+                    }
+                ],
+                "header": [
+                    "RAW"
+                ],
+                "metadata": {
+                    "columns": 3,
+                    "rows": 2702,
+                    "table_name": "RAW"
                 },
-                {
-                    "columns": [
-                        {
-                            "key": "0",
-                            "name": "Time"
-                        },
-                        {
-                            "key": "1",
-                            "name": "I1: RID 1, RI Signal"
-                        },
-                        {
-                            "key": "2",
-                            "name": "Time"
-                        }
+                "rows": [
+                    [
+                        "0.00000E+0",
+                        "1.56890E-1",
+                        "14:30:57:04"
                     ],
-                    "header": [
-                        "RAW"
+                    [
+                        "1.66667E-2",
+                        "1.70664E-1",
+                        "14:30:58:04"
                     ],
-                    "metadata": {
-                        "columns": 3,
-                        "rows": 2702,
-                        "table_name": "RAW"
-                    },
-                    "rows": [
-                        [
-                            "0.00000E+0",
-                            "1.56890E-1",
-                            "14:30:57:04"
-                        ],
-                        [
-                            "1.66667E-2",
-                            "1.70664E-1",
-                            "14:30:58:04"
-                        ],
-                        [
-                            "3.33333E-2",
-                            "1.74934E-1",
-                            "14:30:59:04"
-                        ],
-                        [
-                            "5.00000E-2",
-                            "1.69428E-1",
-                            "14:31:00:04"
-                        ],
-                        [
-                            "6.66667E-2",
-                            "1.59691E-1",
-                            "14:31:01:04"
-                        ],
-                        [
-                            "8.33333E-2",
-                            "1.46244E-1",
-                            "14:31:02:04"
-                        ],
-                        [
-                            "1.00000E-1",
-                            "1.35215E-1",
-                            "14:31:03:04"
-                        ],
-                        [
-                            "1.16667E-1",
-                            "1.28664E-1",
-                            "14:31:04:04"
-                        ],
-                        [
-                            "1.33333E-1",
-                            "1.24690E-1",
-                            "14:31:05:04"
-                        ],
-                        [
-                            "1.50000E-1",
-                            "1.23989E-1",
-                            "14:31:06:04"
-                        ]
+                    [
+                        "3.33333E-2",
+                        "1.74934E-1",
+                        "14:30:59:04"
+                    ],
+                    [
+                        "5.00000E-2",
+                        "1.69428E-1",
+                        "14:31:00:04"
+                    ],
+                    [
+                        "6.66667E-2",
+                        "1.59691E-1",
+                        "14:31:01:04"
+                    ],
+                    [
+                        "8.33333E-2",
+                        "1.46244E-1",
+                        "14:31:02:04"
+                    ],
+                    [
+                        "1.00000E-1",
+                        "1.35215E-1",
+                        "14:31:03:04"
+                    ],
+                    [
+                        "1.16667E-1",
+                        "1.28664E-1",
+                        "14:31:04:04"
+                    ],
+                    [
+                        "1.33333E-1",
+                        "1.24690E-1",
+                        "14:31:05:04"
+                    ],
+                    [
+                        "1.50000E-1",
+                        "1.23989E-1",
+                        "14:31:06:04"
                     ]
-                },
-                {
-                    "columns": [
-                        {
-                            "key": "0",
-                            "name": "Volume"
-                        },
-                        {
-                            "key": "1",
-                            "name": "Molar mass"
-                        },
-                        {
-                            "key": "2",
-                            "name": "I1: RID 1, RI Signal"
-                        },
-                        {
-                            "key": "3",
-                            "name": "Integral[%]"
-                        }
-                    ],
-                    "header": [
-                        "ELU"
-                    ],
-                    "metadata": {
-                        "columns": 4,
-                        "rows": 273,
-                        "table_name": "ELU"
+                ]
+            },
+            {
+                "columns": [
+                    {
+                        "key": "0",
+                        "name": "Volume"
                     },
-                    "rows": [
-                        [
-                            "1.29573E+1",
-                            "2.04963E+5",
-                            "0.00000E+0",
-                            "1.00000E+2"
-                        ],
-                        [
-                            "1.29656E+1",
-                            "2.03124E+5",
-                            "1.54321E-2",
-                            "9.99997E+1"
-                        ],
-                        [
-                            "1.29738E+1",
-                            "2.01302E+5",
-                            "3.05854E-2",
-                            "9.99987E+1"
-                        ],
-                        [
-                            "1.29821E+1",
-                            "1.99497E+5",
-                            "4.62413E-2",
-                            "9.99972E+1"
-                        ],
-                        [
-                            "1.29904E+1",
-                            "1.97710E+5",
-                            "6.20113E-2",
-                            "9.99950E+1"
-                        ],
-                        [
-                            "1.29986E+1",
-                            "1.95939E+5",
-                            "7.75943E-2",
-                            "9.99921E+1"
-                        ],
-                        [
-                            "1.30069E+1",
-                            "1.94186E+5",
-                            "9.62842E-2",
-                            "9.99885E+1"
-                        ],
-                        [
-                            "1.30152E+1",
-                            "1.92449E+5",
-                            "1.13579E-1",
-                            "9.99843E+1"
-                        ],
-                        [
-                            "1.30234E+1",
-                            "1.90728E+5",
-                            "1.35403E-1",
-                            "9.99792E+1"
-                        ],
-                        [
-                            "1.30317E+1",
-                            "1.89024E+5",
-                            "1.56856E-1",
-                            "9.99732E+1"
-                        ]
-                    ]
-                },
-                {
-                    "columns": [
-                        {
-                            "key": "0",
-                            "name": "Molar mass"
-                        },
-                        {
-                            "key": "1",
-                            "name": "I1: RID 1, RI Signal"
-                        },
-                        {
-                            "key": "2",
-                            "name": "Integral[%]"
-                        }
-                    ],
-                    "header": [
-                        "MWD"
-                    ],
-                    "metadata": {
-                        "columns": 3,
-                        "rows": 273,
-                        "table_name": "MWD"
+                    {
+                        "key": "1",
+                        "name": "Molar mass"
                     },
-                    "rows": [
-                        [
-                            "2.16801E+4",
-                            "0.00000E+0",
-                            "0.00000E+0"
-                        ],
-                        [
-                            "2.18598E+4",
-                            "1.36268E-3",
-                            "4.88755E-4"
-                        ],
-                        [
-                            "2.20411E+4",
-                            "2.46252E-3",
-                            "1.37199E-3"
-                        ],
-                        [
-                            "2.22239E+4",
-                            "3.94682E-3",
-                            "2.78761E-3"
-                        ],
-                        [
-                            "2.24082E+4",
-                            "5.20158E-3",
-                            "4.65327E-3"
-                        ],
-                        [
-                            "2.25941E+4",
-                            "6.63157E-3",
-                            "7.03183E-3"
-                        ],
-                        [
-                            "2.27814E+4",
-                            "8.45002E-3",
-                            "1.00626E-2"
-                        ],
-                        [
-                            "2.29704E+4",
-                            "9.73357E-3",
-                            "1.35538E-2"
-                        ],
-                        [
-                            "2.31609E+4",
-                            "1.15296E-2",
-                            "1.76891E-2"
-                        ],
-                        [
-                            "2.33529E+4",
-                            "1.31000E-2",
-                            "2.23878E-2"
-                        ]
+                    {
+                        "key": "2",
+                        "name": "I1: RID 1, RI Signal"
+                    },
+                    {
+                        "key": "3",
+                        "name": "Integral[%]"
+                    }
+                ],
+                "header": [
+                    "ELU"
+                ],
+                "metadata": {
+                    "columns": 4,
+                    "rows": 273,
+                    "table_name": "ELU"
+                },
+                "rows": [
+                    [
+                        "1.29573E+1",
+                        "2.04963E+5",
+                        "0.00000E+0",
+                        "1.00000E+2"
+                    ],
+                    [
+                        "1.29656E+1",
+                        "2.03124E+5",
+                        "1.54321E-2",
+                        "9.99997E+1"
+                    ],
+                    [
+                        "1.29738E+1",
+                        "2.01302E+5",
+                        "3.05854E-2",
+                        "9.99987E+1"
+                    ],
+                    [
+                        "1.29821E+1",
+                        "1.99497E+5",
+                        "4.62413E-2",
+                        "9.99972E+1"
+                    ],
+                    [
+                        "1.29904E+1",
+                        "1.97710E+5",
+                        "6.20113E-2",
+                        "9.99950E+1"
+                    ],
+                    [
+                        "1.29986E+1",
+                        "1.95939E+5",
+                        "7.75943E-2",
+                        "9.99921E+1"
+                    ],
+                    [
+                        "1.30069E+1",
+                        "1.94186E+5",
+                        "9.62842E-2",
+                        "9.99885E+1"
+                    ],
+                    [
+                        "1.30152E+1",
+                        "1.92449E+5",
+                        "1.13579E-1",
+                        "9.99843E+1"
+                    ],
+                    [
+                        "1.30234E+1",
+                        "1.90728E+5",
+                        "1.35403E-1",
+                        "9.99792E+1"
+                    ],
+                    [
+                        "1.30317E+1",
+                        "1.89024E+5",
+                        "1.56856E-1",
+                        "9.99732E+1"
                     ]
-                }
-            ]
-        }
-    ],
+                ]
+            },
+            {
+                "columns": [
+                    {
+                        "key": "0",
+                        "name": "Molar mass"
+                    },
+                    {
+                        "key": "1",
+                        "name": "I1: RID 1, RI Signal"
+                    },
+                    {
+                        "key": "2",
+                        "name": "Integral[%]"
+                    }
+                ],
+                "header": [
+                    "MWD"
+                ],
+                "metadata": {
+                    "columns": 3,
+                    "rows": 273,
+                    "table_name": "MWD"
+                },
+                "rows": [
+                    [
+                        "2.16801E+4",
+                        "0.00000E+0",
+                        "0.00000E+0"
+                    ],
+                    [
+                        "2.18598E+4",
+                        "1.36268E-3",
+                        "4.88755E-4"
+                    ],
+                    [
+                        "2.20411E+4",
+                        "2.46252E-3",
+                        "1.37199E-3"
+                    ],
+                    [
+                        "2.22239E+4",
+                        "3.94682E-3",
+                        "2.78761E-3"
+                    ],
+                    [
+                        "2.24082E+4",
+                        "5.20158E-3",
+                        "4.65327E-3"
+                    ],
+                    [
+                        "2.25941E+4",
+                        "6.63157E-3",
+                        "7.03183E-3"
+                    ],
+                    [
+                        "2.27814E+4",
+                        "8.45002E-3",
+                        "1.00626E-2"
+                    ],
+                    [
+                        "2.29704E+4",
+                        "9.73357E-3",
+                        "1.35538E-2"
+                    ],
+                    [
+                        "2.31609E+4",
+                        "1.15296E-2",
+                        "1.76891E-2"
+                    ],
+                    [
+                        "2.33529E+4",
+                        "1.31000E-2",
+                        "2.23878E-2"
+                    ]
+                ]
+            }
+        ]
+    },
     "datatypes": [],
     "description": "Size Exclusion Chromatography (SEC)\nwith one Detector Output\n !migrated for new SEC (all detectors) loop ready reader. Please check if is still correct.\n --autogenerated by converter app for SEC loop",
     "devices": [],
@@ -717,6 +715,7 @@
             "id": "#0tableMetadata",
             "key": "Sample",
             "match": "any",
+            "object": null,
             "optional": true,
             "outputKey": "label",
             "outputLayer": "sample_details",
@@ -733,6 +732,7 @@
             "id": "#1tableMetadata",
             "key": "Export file",
             "match": "any",
+            "object": null,
             "optional": true,
             "outputKey": "comments",
             "outputLayer": "general",
@@ -749,6 +749,7 @@
             "id": "#2tableMetadata",
             "key": "Mn",
             "match": "any",
+            "object": null,
             "optional": true,
             "outputKey": "mn",
             "outputLayer": "eval_data_detec_i",
@@ -765,6 +766,7 @@
             "id": "#3tableMetadata",
             "key": "Mw",
             "match": "any",
+            "object": null,
             "optional": true,
             "outputKey": "mw",
             "outputLayer": "eval_data_detec_i",
@@ -781,6 +783,7 @@
             "id": "#4tableMetadata",
             "key": "D",
             "match": "any",
+            "object": null,
             "optional": true,
             "outputKey": "d",
             "outputLayer": "eval_data_detec_i",
@@ -797,6 +800,7 @@
             "id": "#5tableMetadata",
             "key": "Mp",
             "match": "any",
+            "object": null,
             "optional": true,
             "outputKey": "mp",
             "outputLayer": "eval_data_detec_i",
@@ -813,6 +817,7 @@
             "id": "#6tableMetadata",
             "key": "Detector 1",
             "match": "any",
+            "object": null,
             "optional": true,
             "outputKey": "detec1",
             "outputLayer": "instrument",
@@ -829,6 +834,7 @@
             "id": "#7tableMetadata",
             "key": "Detector 2",
             "match": "any",
+            "object": null,
             "optional": true,
             "outputKey": "detec2",
             "outputLayer": "instrument",
@@ -845,6 +851,7 @@
             "id": "#8tableMetadata",
             "key": "Detector 3",
             "match": "any",
+            "object": null,
             "optional": true,
             "outputKey": "detec3",
             "outputLayer": "instrument",
@@ -861,6 +868,7 @@
             "id": "#11tableMetadata",
             "key": "Column 1",
             "match": "any",
+            "object": null,
             "optional": true,
             "outputKey": "col1",
             "outputLayer": "equipment",
@@ -877,6 +885,7 @@
             "id": "#12tableMetadata",
             "key": "Column 2",
             "match": "any",
+            "object": null,
             "optional": true,
             "outputKey": "col2",
             "outputLayer": "equipment",
@@ -893,6 +902,7 @@
             "id": "#13tableMetadata",
             "key": "Column 3",
             "match": "any",
+            "object": null,
             "optional": true,
             "outputKey": "col3",
             "outputLayer": "equipment",
@@ -909,6 +919,7 @@
             "id": "#14tableMetadata",
             "key": "Inject volume",
             "match": "any",
+            "object": null,
             "optional": true,
             "outputKey": "in_vol",
             "outputLayer": "meta",
@@ -925,6 +936,7 @@
             "id": "#15tableMetadata",
             "key": "Eluent",
             "match": "any",
+            "object": null,
             "optional": true,
             "outputKey": "eluent",
             "outputLayer": "meta",
@@ -941,6 +953,7 @@
             "id": "#16tableMetadata",
             "key": "Flow",
             "match": "any",
+            "object": null,
             "optional": true,
             "outputKey": "flow",
             "outputLayer": "meta",
@@ -957,6 +970,7 @@
             "id": "#17tableMetadata",
             "key": "(Column 1) Temperature",
             "match": "any",
+            "object": null,
             "optional": true,
             "outputKey": "temperature",
             "outputLayer": "meta",
@@ -973,6 +987,7 @@
             "id": "#18tableMetadata",
             "key": "Inject date",
             "match": "regex",
+            "object": null,
             "optional": true,
             "outputKey": "date",
             "outputLayer": "general",
@@ -989,6 +1004,7 @@
             "id": "#19tableMetadata",
             "key": "Inject date",
             "match": "regex",
+            "object": null,
             "optional": true,
             "outputKey": "time",
             "outputLayer": "general",
@@ -1006,6 +1022,7 @@
             "key": "Number of detectors",
             "lineNumber": "",
             "match": "any",
+            "object": null,
             "optional": true,
             "outputKey": "no_dec",
             "outputLayer": "instrument",
@@ -1022,6 +1039,7 @@
             "id": "#21tableHeader",
             "lineNumber": "",
             "match": "regex",
+            "object": null,
             "optional": true,
             "outputKey": "software",
             "outputLayer": "software",
@@ -1038,6 +1056,7 @@
             "id": "#22tableHeader",
             "lineNumber": "",
             "match": "regex",
+            "object": null,
             "optional": true,
             "outputKey": "version",
             "outputLayer": "software",
@@ -1054,6 +1073,7 @@
             "id": "#23tableMetadata",
             "key": "Operator",
             "match": "any",
+            "object": null,
             "optional": true,
             "outputKey": "operator",
             "outputLayer": "general",
@@ -1070,6 +1090,7 @@
             "id": "autogen_A_DECT1",
             "key": "A_DECT1",
             "match": "any",
+            "object": null,
             "optional": true,
             "outputKey": "a",
             "outputLayer": "eval_data_detec_1",
@@ -1086,6 +1107,7 @@
             "id": "autogen_D_DECT1",
             "key": "D_DECT1",
             "match": "any",
+            "object": null,
             "optional": true,
             "outputKey": "d",
             "outputLayer": "eval_data_detec_1",
@@ -1102,6 +1124,7 @@
             "id": "autogen_M(z+1)_DECT1",
             "key": "M(z+1)_DECT1",
             "match": "any",
+            "object": null,
             "optional": true,
             "outputKey": "mz1",
             "outputLayer": "eval_data_detec_1",
@@ -1118,6 +1141,7 @@
             "id": "autogen_Mn_DECT1",
             "key": "Mn_DECT1",
             "match": "any",
+            "object": null,
             "optional": true,
             "outputKey": "mn",
             "outputLayer": "eval_data_detec_1",
@@ -1134,6 +1158,7 @@
             "id": "autogen_Mp_DECT1",
             "key": "Mp_DECT1",
             "match": "any",
+            "object": null,
             "optional": true,
             "outputKey": "mp",
             "outputLayer": "eval_data_detec_1",
@@ -1150,6 +1175,7 @@
             "id": "autogen_Mv_DECT1",
             "key": "Mv_DECT1",
             "match": "any",
+            "object": null,
             "optional": true,
             "outputKey": "mv",
             "outputLayer": "eval_data_detec_1",
@@ -1166,6 +1192,7 @@
             "id": "autogen_Mw_DECT1",
             "key": "Mw_DECT1",
             "match": "any",
+            "object": null,
             "optional": true,
             "outputKey": "mw",
             "outputLayer": "eval_data_detec_1",
@@ -1182,6 +1209,7 @@
             "id": "autogen_Mz_DECT1",
             "key": "Mz_DECT1",
             "match": "any",
+            "object": null,
             "optional": true,
             "outputKey": "mz",
             "outputLayer": "eval_data_detec_1",
@@ -1198,6 +1226,7 @@
             "id": "autogen_Vp_DECT1",
             "key": "Vp_DECT1",
             "match": "any",
+            "object": null,
             "optional": true,
             "outputKey": "vp",
             "outputLayer": "eval_data_detec_1",
@@ -1214,6 +1243,7 @@
             "id": "autogen_[n]_DECT1",
             "key": "[n]_DECT1",
             "match": "any",
+            "object": null,
             "optional": true,
             "outputKey": "n",
             "outputLayer": "eval_data_detec_1",
@@ -1230,6 +1260,7 @@
             "id": "autogen_A_DECT2",
             "key": "A_DECT2",
             "match": "any",
+            "object": null,
             "optional": true,
             "outputKey": "a",
             "outputLayer": "eval_data_detec_2",
@@ -1246,6 +1277,7 @@
             "id": "autogen_D_DECT2",
             "key": "D_DECT2",
             "match": "any",
+            "object": null,
             "optional": true,
             "outputKey": "d",
             "outputLayer": "eval_data_detec_2",
@@ -1262,6 +1294,7 @@
             "id": "autogen_M(z+1)_DECT2",
             "key": "M(z+1)_DECT2",
             "match": "any",
+            "object": null,
             "optional": true,
             "outputKey": "mz1",
             "outputLayer": "eval_data_detec_2",
@@ -1278,6 +1311,7 @@
             "id": "autogen_Mn_DECT2",
             "key": "Mn_DECT2",
             "match": "any",
+            "object": null,
             "optional": true,
             "outputKey": "mn",
             "outputLayer": "eval_data_detec_2",
@@ -1294,6 +1328,7 @@
             "id": "autogen_Mp_DECT2",
             "key": "Mp_DECT2",
             "match": "any",
+            "object": null,
             "optional": true,
             "outputKey": "mp",
             "outputLayer": "eval_data_detec_2",
@@ -1310,6 +1345,7 @@
             "id": "autogen_Mv_DECT2",
             "key": "Mv_DECT2",
             "match": "any",
+            "object": null,
             "optional": true,
             "outputKey": "mv",
             "outputLayer": "eval_data_detec_2",
@@ -1326,6 +1362,7 @@
             "id": "autogen_Mw_DECT2",
             "key": "Mw_DECT2",
             "match": "any",
+            "object": null,
             "optional": true,
             "outputKey": "mw",
             "outputLayer": "eval_data_detec_2",
@@ -1342,6 +1379,7 @@
             "id": "autogen_Mz_DECT2",
             "key": "Mz_DECT2",
             "match": "any",
+            "object": null,
             "optional": true,
             "outputKey": "mz",
             "outputLayer": "eval_data_detec_2",
@@ -1358,6 +1396,7 @@
             "id": "autogen_Vp_DECT2",
             "key": "Vp_DECT2",
             "match": "any",
+            "object": null,
             "optional": true,
             "outputKey": "vp",
             "outputLayer": "eval_data_detec_2",
@@ -1374,6 +1413,7 @@
             "id": "autogen_[n]_DECT2",
             "key": "[n]_DECT2",
             "match": "any",
+            "object": null,
             "optional": true,
             "outputKey": "n",
             "outputLayer": "eval_data_detec_2",
@@ -1390,6 +1430,7 @@
             "id": "autogen_A_DECT3",
             "key": "A_DECT3",
             "match": "any",
+            "object": null,
             "optional": true,
             "outputKey": "a",
             "outputLayer": "eval_data_detec_3",
@@ -1406,6 +1447,7 @@
             "id": "autogen_D_DECT3",
             "key": "D_DECT3",
             "match": "any",
+            "object": null,
             "optional": true,
             "outputKey": "d",
             "outputLayer": "eval_data_detec_3",
@@ -1422,6 +1464,7 @@
             "id": "autogen_M(z+1)_DECT3",
             "key": "M(z+1)_DECT3",
             "match": "any",
+            "object": null,
             "optional": true,
             "outputKey": "mz1",
             "outputLayer": "eval_data_detec_3",
@@ -1438,6 +1481,7 @@
             "id": "autogen_Mn_DECT3",
             "key": "Mn_DECT3",
             "match": "any",
+            "object": null,
             "optional": true,
             "outputKey": "mn",
             "outputLayer": "eval_data_detec_3",
@@ -1454,6 +1498,7 @@
             "id": "autogen_Mp_DECT3",
             "key": "Mp_DECT3",
             "match": "any",
+            "object": null,
             "optional": true,
             "outputKey": "mp",
             "outputLayer": "eval_data_detec_3",
@@ -1470,6 +1515,7 @@
             "id": "autogen_Mv_DECT3",
             "key": "Mv_DECT3",
             "match": "any",
+            "object": null,
             "optional": true,
             "outputKey": "mv",
             "outputLayer": "eval_data_detec_3",
@@ -1486,6 +1532,7 @@
             "id": "autogen_Mw_DECT3",
             "key": "Mw_DECT3",
             "match": "any",
+            "object": null,
             "optional": true,
             "outputKey": "mw",
             "outputLayer": "eval_data_detec_3",
@@ -1502,6 +1549,7 @@
             "id": "autogen_Mz_DECT3",
             "key": "Mz_DECT3",
             "match": "any",
+            "object": null,
             "optional": true,
             "outputKey": "mz",
             "outputLayer": "eval_data_detec_3",
@@ -1518,6 +1566,7 @@
             "id": "autogen_Vp_DECT3",
             "key": "Vp_DECT3",
             "match": "any",
+            "object": null,
             "optional": true,
             "outputKey": "vp",
             "outputLayer": "eval_data_detec_3",
@@ -1534,6 +1583,7 @@
             "id": "autogen_[n]_DECT3",
             "key": "[n]_DECT3",
             "match": "any",
+            "object": null,
             "optional": true,
             "outputKey": "n",
             "outputLayer": "eval_data_detec_3",
@@ -1550,6 +1600,7 @@
             "id": "autogen_A_DECT4",
             "key": "A_DECT4",
             "match": "any",
+            "object": null,
             "optional": true,
             "outputKey": "a",
             "outputLayer": "eval_data_detec_4",
@@ -1566,6 +1617,7 @@
             "id": "autogen_D_DECT4",
             "key": "D_DECT4",
             "match": "any",
+            "object": null,
             "optional": true,
             "outputKey": "d",
             "outputLayer": "eval_data_detec_4",
@@ -1582,6 +1634,7 @@
             "id": "autogen_M(z+1)_DECT4",
             "key": "M(z+1)_DECT4",
             "match": "any",
+            "object": null,
             "optional": true,
             "outputKey": "mz1",
             "outputLayer": "eval_data_detec_4",
@@ -1598,6 +1651,7 @@
             "id": "autogen_Mn_DECT4",
             "key": "Mn_DECT4",
             "match": "any",
+            "object": null,
             "optional": true,
             "outputKey": "mn",
             "outputLayer": "eval_data_detec_4",
@@ -1614,6 +1668,7 @@
             "id": "autogen_Mp_DECT4",
             "key": "Mp_DECT4",
             "match": "any",
+            "object": null,
             "optional": true,
             "outputKey": "mp",
             "outputLayer": "eval_data_detec_4",
@@ -1630,6 +1685,7 @@
             "id": "autogen_Mv_DECT4",
             "key": "Mv_DECT4",
             "match": "any",
+            "object": null,
             "optional": true,
             "outputKey": "mv",
             "outputLayer": "eval_data_detec_4",
@@ -1646,6 +1702,7 @@
             "id": "autogen_Mw_DECT4",
             "key": "Mw_DECT4",
             "match": "any",
+            "object": null,
             "optional": true,
             "outputKey": "mw",
             "outputLayer": "eval_data_detec_4",
@@ -1662,6 +1719,7 @@
             "id": "autogen_Mz_DECT4",
             "key": "Mz_DECT4",
             "match": "any",
+            "object": null,
             "optional": true,
             "outputKey": "mz",
             "outputLayer": "eval_data_detec_4",
@@ -1678,6 +1736,7 @@
             "id": "autogen_Vp_DECT4",
             "key": "Vp_DECT4",
             "match": "any",
+            "object": null,
             "optional": true,
             "outputKey": "vp",
             "outputLayer": "eval_data_detec_4",
@@ -1694,6 +1753,7 @@
             "id": "autogen_[n]_DECT4",
             "key": "[n]_DECT4",
             "match": "any",
+            "object": null,
             "optional": true,
             "outputKey": "n",
             "outputLayer": "eval_data_detec_4",
@@ -1710,6 +1770,7 @@
             "id": "autogen_A_DECT5",
             "key": "A_DECT5",
             "match": "any",
+            "object": null,
             "optional": true,
             "outputKey": "a",
             "outputLayer": "eval_data_detec_5",
@@ -1726,6 +1787,7 @@
             "id": "autogen_D_DECT5",
             "key": "D_DECT5",
             "match": "any",
+            "object": null,
             "optional": true,
             "outputKey": "d",
             "outputLayer": "eval_data_detec_5",
@@ -1742,6 +1804,7 @@
             "id": "autogen_M(z+1)_DECT5",
             "key": "M(z+1)_DECT5",
             "match": "any",
+            "object": null,
             "optional": true,
             "outputKey": "mz1",
             "outputLayer": "eval_data_detec_5",
@@ -1758,6 +1821,7 @@
             "id": "autogen_Mn_DECT5",
             "key": "Mn_DECT5",
             "match": "any",
+            "object": null,
             "optional": true,
             "outputKey": "mn",
             "outputLayer": "eval_data_detec_5",
@@ -1774,6 +1838,7 @@
             "id": "autogen_Mp_DECT5",
             "key": "Mp_DECT5",
             "match": "any",
+            "object": null,
             "optional": true,
             "outputKey": "mp",
             "outputLayer": "eval_data_detec_5",
@@ -1790,6 +1855,7 @@
             "id": "autogen_Mv_DECT5",
             "key": "Mv_DECT5",
             "match": "any",
+            "object": null,
             "optional": true,
             "outputKey": "mv",
             "outputLayer": "eval_data_detec_5",
@@ -1806,6 +1872,7 @@
             "id": "autogen_Mw_DECT5",
             "key": "Mw_DECT5",
             "match": "any",
+            "object": null,
             "optional": true,
             "outputKey": "mw",
             "outputLayer": "eval_data_detec_5",
@@ -1822,6 +1889,7 @@
             "id": "autogen_Mz_DECT5",
             "key": "Mz_DECT5",
             "match": "any",
+            "object": null,
             "optional": true,
             "outputKey": "mz",
             "outputLayer": "eval_data_detec_5",
@@ -1838,6 +1906,7 @@
             "id": "autogen_Vp_DECT5",
             "key": "Vp_DECT5",
             "match": "any",
+            "object": null,
             "optional": true,
             "outputKey": "vp",
             "outputLayer": "eval_data_detec_5",
@@ -1854,6 +1923,7 @@
             "id": "autogen_[n]_DECT5",
             "key": "[n]_DECT5",
             "match": "any",
+            "object": null,
             "optional": true,
             "outputKey": "n",
             "outputLayer": "eval_data_detec_5",
@@ -1884,7 +1954,8 @@
         }
     ],
     "isDisabled": false,
-    "last_migration": "20260401123327",
+    "last_migration": "20260323144702",
+    "objects": [],
     "ols": "CHMO:0001013",
     "ontology": "",
     "predicates": [],

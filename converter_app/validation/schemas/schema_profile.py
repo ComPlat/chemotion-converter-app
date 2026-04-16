@@ -122,6 +122,10 @@ profile_schema = {
             "type": "array",
             "items": ontology_properties
         },
+        "objects": {
+            "type": "array",
+            "items": ontology_properties
+        },
         "datatypes": {
             "type": "array",
             "items": ontology_properties
@@ -165,7 +169,8 @@ profile_schema = {
         "subjectInstances",
         "predicates",
         "datatypes",
-        "subjects"
+        "subjects",
+        "objects"
     ]
 
 }

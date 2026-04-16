@@ -1,133 +1,131 @@
 {
     "converter_version": "1.8.0",
-    "data": [
-        {
-            "metadata": {
-                "content_type": "text/csv",
-                "delimiter": "semicolon",
-                "doublequote": "False",
-                "extension": ".csv",
-                "file_name": "ExpDat_SCH-179-3.csv",
-                "lineterminator": "\\r\\n",
-                "mime_type": "text/plain",
-                "quotechar": "\"",
-                "quoting": "0",
-                "reader": "CSVReader",
-                "skipinitialspace": "False",
-                "uploaded": "2023-06-12T07:08:33.386592"
-            },
-            "tables": [
-                {
-                    "columns": [
-                        {
-                            "key": "0",
-                            "name": "Column #0 (##Temp./\u00b0C)"
-                        },
-                        {
-                            "key": "1",
-                            "name": "Column #1 (DSC/(mW/mg))"
-                        }
-                    ],
-                    "header": [
-                        "#EXPORTTYPE:                 ;DATA COMPARE               ",
-                        "#FILE:                       ;SCH-179.ngb-sdg            ",
-                        "#FORMAT:                     ;NETZSCH5                   ",
-                        "#FTYPE:                      ;ANSI                       ",
-                        "#IDENTITY:                   ;SCH                        ",
-                        "#DECIMAL:                    ;COMMA                      ",
-                        "#SEPARATOR:                  ;SEMICOLON                  ",
-                        "#MTYPE:                      ;DSC                        ",
-                        "#INSTRUMENT:                 ;NETZSCH DSC 214            ",
-                        "#PROJECT:                    ;                           ",
-                        "#DATE/TIME:                  ;20.09.2022 12:44:19 (UTC+2)",
-                        "#CORR. FILE:                 ;                           ",
-                        "#TEMPCAL:                    ;02-09-2022 07:23           ",
-                        "#SENSITIVITY:                ;01-09-2022 19:10           ",
-                        "#LABORATORY:                 ;                           ",
-                        "#OPERATOR:                   ;                           ",
-                        "#REMARK:                     ;                           ",
-                        "#SAMPLE:                     ;SCH-179                    ",
-                        "#SAMPLE MASS /mg:            ;5,21                       ",
-                        "#MATERIAL:                   ;                           ",
-                        "#REFERENCE:                  ;-----                      ",
-                        "#REFERENCE MASS /mg:         ;0                          ",
-                        "#TYPE OF CRUCIBLE:           ;Concavus Al, pierced lid   ",
-                        "#SAMPLE CRUCIBLE MASS /mg:   ;0                          ",
-                        "#REFERENCE CRUCIBLE MASS /mg:;51,142                     ",
-                        "#PURGE 2 MFC:                ;NITROGEN,250,0 ml/min      ",
-                        "#PROTECTIVE MFC:             ;NITROGEN,250,0 ml/min      ",
-                        "#M.RANGE /\u00b5V:                ;5000                       ",
-                        "#TAU-R:                      ;---                        ",
-                        "#CORR. CODE:                 ;000                        ",
-                        "#EXO:                        ;+1                         ",
-                        "#RANGE:                      ;-50\u00b0C/10,0(K/min)/100\u00b0C    ",
-                        "#SEGMENT:                    ;S3/3                       ",
-                        "#SEG. 3:                     ;-50\u00b0C/10,0(K/min)/100\u00b0C    ",
-                        ""
-                    ],
-                    "metadata": {
-                        "column_00": "##Temp./\u00b0C",
-                        "column_01": "DSC/(mW/mg)",
-                        "columns": "2",
-                        "rows": "151"
+    "data": {
+        "metadata": {
+            "content_type": "text/csv",
+            "delimiter": "semicolon",
+            "doublequote": "False",
+            "extension": ".csv",
+            "file_name": "ExpDat_SCH-179-3.csv",
+            "lineterminator": "\\r\\n",
+            "mime_type": "text/plain",
+            "quotechar": "\"",
+            "quoting": "0",
+            "reader": "CSVReader",
+            "skipinitialspace": "False",
+            "uploaded": "2023-06-12T07:08:33.386592"
+        },
+        "tables": [
+            {
+                "columns": [
+                    {
+                        "key": "0",
+                        "name": "Column #0 (##Temp./\u00b0C)"
                     },
-                    "rows": [
-                        [
-                            "-50.41463",
-                            "      0,18933"
-                        ],
-                        [
-                            "-49.41463",
-                            "      0,17147"
-                        ],
-                        [
-                            "-48.41463",
-                            " 7,571247e-02"
-                        ],
-                        [
-                            "-47.41463",
-                            "-1.991063e-02"
-                        ],
-                        [
-                            "-46.41463",
-                            "     -0,10555"
-                        ],
-                        [
-                            "-45.41463",
-                            "     -0,17119"
-                        ],
-                        [
-                            "-44.41463",
-                            "     -0,20034"
-                        ],
-                        [
-                            "-43.41463",
-                            "     -0,17517"
-                        ],
-                        [
-                            "-42.41463",
-                            "     -0,13197"
-                        ],
-                        [
-                            "-41.41463",
-                            "     -0,11781"
-                        ]
-                    ]
+                    {
+                        "key": "1",
+                        "name": "Column #1 (DSC/(mW/mg))"
+                    }
+                ],
+                "header": [
+                    "#EXPORTTYPE:                 ;DATA COMPARE               ",
+                    "#FILE:                       ;SCH-179.ngb-sdg            ",
+                    "#FORMAT:                     ;NETZSCH5                   ",
+                    "#FTYPE:                      ;ANSI                       ",
+                    "#IDENTITY:                   ;SCH                        ",
+                    "#DECIMAL:                    ;COMMA                      ",
+                    "#SEPARATOR:                  ;SEMICOLON                  ",
+                    "#MTYPE:                      ;DSC                        ",
+                    "#INSTRUMENT:                 ;NETZSCH DSC 214            ",
+                    "#PROJECT:                    ;                           ",
+                    "#DATE/TIME:                  ;20.09.2022 12:44:19 (UTC+2)",
+                    "#CORR. FILE:                 ;                           ",
+                    "#TEMPCAL:                    ;02-09-2022 07:23           ",
+                    "#SENSITIVITY:                ;01-09-2022 19:10           ",
+                    "#LABORATORY:                 ;                           ",
+                    "#OPERATOR:                   ;                           ",
+                    "#REMARK:                     ;                           ",
+                    "#SAMPLE:                     ;SCH-179                    ",
+                    "#SAMPLE MASS /mg:            ;5,21                       ",
+                    "#MATERIAL:                   ;                           ",
+                    "#REFERENCE:                  ;-----                      ",
+                    "#REFERENCE MASS /mg:         ;0                          ",
+                    "#TYPE OF CRUCIBLE:           ;Concavus Al, pierced lid   ",
+                    "#SAMPLE CRUCIBLE MASS /mg:   ;0                          ",
+                    "#REFERENCE CRUCIBLE MASS /mg:;51,142                     ",
+                    "#PURGE 2 MFC:                ;NITROGEN,250,0 ml/min      ",
+                    "#PROTECTIVE MFC:             ;NITROGEN,250,0 ml/min      ",
+                    "#M.RANGE /\u00b5V:                ;5000                       ",
+                    "#TAU-R:                      ;---                        ",
+                    "#CORR. CODE:                 ;000                        ",
+                    "#EXO:                        ;+1                         ",
+                    "#RANGE:                      ;-50\u00b0C/10,0(K/min)/100\u00b0C    ",
+                    "#SEGMENT:                    ;S3/3                       ",
+                    "#SEG. 3:                     ;-50\u00b0C/10,0(K/min)/100\u00b0C    ",
+                    ""
+                ],
+                "metadata": {
+                    "column_00": "##Temp./\u00b0C",
+                    "column_01": "DSC/(mW/mg)",
+                    "columns": "2",
+                    "rows": "151"
                 },
-                {
-                    "columns": [],
-                    "header": [
-                        ""
+                "rows": [
+                    [
+                        "-50.41463",
+                        "      0,18933"
                     ],
-                    "metadata": {
-                        "columns": "0",
-                        "rows": "0"
-                    },
-                    "rows": []
-                }
-            ]
-        }
-    ],
+                    [
+                        "-49.41463",
+                        "      0,17147"
+                    ],
+                    [
+                        "-48.41463",
+                        " 7,571247e-02"
+                    ],
+                    [
+                        "-47.41463",
+                        "-1.991063e-02"
+                    ],
+                    [
+                        "-46.41463",
+                        "     -0,10555"
+                    ],
+                    [
+                        "-45.41463",
+                        "     -0,17119"
+                    ],
+                    [
+                        "-44.41463",
+                        "     -0,20034"
+                    ],
+                    [
+                        "-43.41463",
+                        "     -0,17517"
+                    ],
+                    [
+                        "-42.41463",
+                        "     -0,13197"
+                    ],
+                    [
+                        "-41.41463",
+                        "     -0,11781"
+                    ]
+                ]
+            },
+            {
+                "columns": [],
+                "header": [
+                    ""
+                ],
+                "metadata": {
+                    "columns": "0",
+                    "rows": "0"
+                },
+                "rows": []
+            }
+        ]
+    },
     "datatypes": [],
     "description": "differential scanning calorimetry",
     "devices": [],
@@ -178,6 +176,7 @@
             "id": "#4tableHeader",
             "lineNumber": 18,
             "match": "regex",
+            "object": null,
             "optional": true,
             "outputKey": "sample",
             "outputLayer": "sample_details",
@@ -194,6 +193,7 @@
             "id": "#5tableHeader",
             "lineNumber": "",
             "match": "regex",
+            "object": null,
             "optional": true,
             "outputKey": "amount",
             "outputLayer": "sample_details",
@@ -210,6 +210,7 @@
             "id": "#6tableHeader",
             "lineNumber": "",
             "match": "regex",
+            "object": null,
             "optional": true,
             "outputKey": "date",
             "outputLayer": "general",
@@ -226,6 +227,7 @@
             "id": "#7tableHeader",
             "lineNumber": "",
             "match": "regex",
+            "object": null,
             "optional": true,
             "outputKey": "time",
             "outputLayer": "general",
@@ -242,6 +244,7 @@
             "id": "#8tableHeader",
             "lineNumber": "",
             "match": "regex",
+            "object": null,
             "optional": true,
             "outputKey": "reference",
             "outputLayer": "meas",
@@ -258,6 +261,7 @@
             "id": "#9tableHeader",
             "lineNumber": "",
             "match": "regex",
+            "object": null,
             "operations": [
                 {
                     "operator": ":",
@@ -280,6 +284,7 @@
             "id": "#10tableHeader",
             "lineNumber": "",
             "match": "regex",
+            "object": null,
             "optional": true,
             "outputKey": "temp_cal",
             "outputLayer": "meas",
@@ -296,6 +301,7 @@
             "id": "#11tableHeader",
             "lineNumber": "",
             "match": "regex",
+            "object": null,
             "optional": true,
             "outputKey": "sensFile",
             "outputLayer": "meas",
@@ -312,6 +318,7 @@
             "id": "#12tableHeader",
             "lineNumber": "",
             "match": "regex",
+            "object": null,
             "optional": true,
             "outputKey": "segments",
             "outputLayer": "meas",
@@ -328,6 +335,7 @@
             "id": "#13tableHeader",
             "lineNumber": "",
             "match": "regex",
+            "object": null,
             "optional": true,
             "outputKey": "brand",
             "outputLayer": "instrument",
@@ -344,6 +352,7 @@
             "id": "#14tableHeader",
             "lineNumber": "",
             "match": "regex",
+            "object": null,
             "optional": true,
             "outputKey": "instrument",
             "outputLayer": "instrument",
@@ -360,6 +369,7 @@
             "id": "#15tableHeader",
             "lineNumber": "",
             "match": "regex",
+            "object": null,
             "optional": true,
             "outputKey": "crucible",
             "outputLayer": "set",
@@ -376,6 +386,7 @@
             "id": "#16tableHeader",
             "lineNumber": "",
             "match": "regex",
+            "object": null,
             "optional": true,
             "outputKey": "atmosphere",
             "outputLayer": "set",
@@ -392,6 +403,7 @@
             "id": "#17tableHeader",
             "lineNumber": "",
             "match": "regex",
+            "object": null,
             "operations": [
                 {
                     "operator": ":",
@@ -414,6 +426,7 @@
             "id": "#18tableHeader",
             "lineNumber": "",
             "match": "regex",
+            "object": null,
             "optional": true,
             "outputKey": "temperature",
             "outputLayer": "set",
@@ -430,6 +443,7 @@
             "id": "#19tableHeader",
             "lineNumber": "",
             "match": "regex",
+            "object": null,
             "optional": true,
             "outputKey": "operator",
             "outputLayer": "general",
@@ -451,7 +465,8 @@
         }
     ],
     "isDisabled": false,
-    "last_migration": "20260401123327",
+    "last_migration": "20260323144702",
+    "objects": [],
     "ols": "CHMO:0000684",
     "ontology": "",
     "predicates": [],
