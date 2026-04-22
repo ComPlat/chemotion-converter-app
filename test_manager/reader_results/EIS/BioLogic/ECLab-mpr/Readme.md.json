@@ -5,6 +5,11 @@
                 "binary"
             ],
             "metadata": {
+                "__UNIT_PPM": "ppm",
+                "__UNIT_liter": "l",
+                "__UNIT_gram": "g",
+                "__UNIT_%": "%",
+                "__UNIT_mol": "mol",
                 "rows": "0",
                 "columns": "0"
             },
@@ -18,6 +23,6 @@
         "mime_type": "text/plain",
         "extension": ".md",
         "reader": "AsciiReader",
-        "uploaded": "2026-01-13T09:26:00.004852+00:00"
+        "uploaded": "2026-04-22T10:05:27.740891+00:00"
     }
 }

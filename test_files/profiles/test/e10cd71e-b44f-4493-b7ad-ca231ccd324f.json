@@ -41,6 +41,11 @@
                         ]
                     ],
                     "metadata": {
+                        "__UNIT_%": "%",
+                        "__UNIT_PPM": "ppm",
+                        "__UNIT_gram": "g",
+                        "__UNIT_liter": "l",
+                        "__UNIT_mol": "mol",
                         "columns": "2",
                         "rows": "69"
                     },
@@ -175,11 +180,15 @@
         }
     ],
     "isDisabled": false,
-    "last_migration": "20260323144702",
+    "last_migration": "20260422063146",
     "objects": [],
     "ols": null,
     "ontology": "",
     "predicates": [],
+    "reactionVariations": {
+        "elements": [],
+        "identifiers": []
+    },
     "rootOntology": {
         "description": [
             "A planned process that has the objective to produce information about a material entity (the evaluant) by examining it."

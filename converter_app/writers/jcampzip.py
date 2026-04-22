@@ -43,6 +43,11 @@ class JcampZipWriter(Writer):
             self._update_sha_binary(sha_strings, rdf_result, file_name)
             zf.writestr(file_name, rdf_result.decode())
 
+            reaction_variation_file_name = 'metadata/reaction_variation.json'
+            reaction_variation = json.dumps(self._converter.get_reaction_variation_matches(), indent=2)
+            self._update_sha_strings(sha_strings, reaction_variation, reaction_variation_file_name)
+            zf.writestr(reaction_variation_file_name, reaction_variation)
+
             jc = JcampWriter(self._converter)
             for idx, tables in enumerate(jc.process_ntuples_tables()):
                 file_name = f'data/table_NTUPLES{idx}.jdx'

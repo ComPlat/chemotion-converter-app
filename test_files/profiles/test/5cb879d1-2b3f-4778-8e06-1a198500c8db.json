@@ -49,6 +49,11 @@
                         "Unit_column_#0": "_adsorp_pressure",
                         "Unit_column_#1": "_adsorp_p0",
                         "Unit_column_#2": "_adsorp_loading",
+                        "__UNIT_%": "%",
+                        "__UNIT_PPM": "ppm",
+                        "__UNIT_gram": "g",
+                        "__UNIT_liter": "l",
+                        "__UNIT_mol": "mol",
                         "_exptl_adsorptive": "CH4",
                         "_exptl_date": "2020-04-30T00:00:00",
                         "_exptl_instrument": "BEL 00218",
@@ -437,11 +442,15 @@
         }
     ],
     "isDisabled": false,
-    "last_migration": "20260323144702",
+    "last_migration": "20260422063146",
     "objects": [],
     "ols": "CHMO:0001167",
     "ontology": "",
     "predicates": [],
+    "reactionVariations": {
+        "elements": [],
+        "identifiers": []
+    },
     "rootOntology": {
         "description": [
             "A method for determining surface area by measuring the amount of an inert gaseous or liquid substance (the 'sorbent', usually H2 or N2) which adsorbs onto the surface of interest (the 'sorbate'), and the subsequent amount that desorbs at a constant temperature. Regression analysis is then applied to the data, resulting in an isotherm."

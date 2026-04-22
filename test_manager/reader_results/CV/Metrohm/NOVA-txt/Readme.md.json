@@ -1,1 +1,30 @@
-{"tables": [{"header": ["no Metadata", "", "different column separators"], "metadata": {"rows": "0", "columns": "0"}, "columns": [], "rows": []}], "metadata": {"file_name": "Readme.md", "content_type": "", "mime_type": "text/plain", "extension": ".md", "reader": "AsciiReader", "uploaded": "2024-07-15T10:22:10.344240"}}
+{
+    "tables": [
+        {
+            "header": [
+                "no Metadata",
+                "",
+                "different column separators"
+            ],
+            "metadata": {
+                "__UNIT_PPM": "ppm",
+                "__UNIT_liter": "l",
+                "__UNIT_gram": "g",
+                "__UNIT_%": "%",
+                "__UNIT_mol": "mol",
+                "rows": "0",
+                "columns": "0"
+            },
+            "columns": [],
+            "rows": []
+        }
+    ],
+    "metadata": {
+        "file_name": "Readme.md",
+        "content_type": "",
+        "mime_type": "text/plain",
+        "extension": ".md",
+        "reader": "AsciiReader",
+        "uploaded": "2026-04-22T10:07:24.081335+00:00"
+    }
+}

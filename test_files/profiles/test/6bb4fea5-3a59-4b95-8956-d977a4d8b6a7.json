@@ -73,6 +73,11 @@
                     ],
                     "header": [],
                     "metadata": {
+                        "__UNIT_%": "%",
+                        "__UNIT_PPM": "ppm",
+                        "__UNIT_gram": "g",
+                        "__UNIT_liter": "l",
+                        "__UNIT_mol": "mol",
                         "column_00": "Potential applied (V)",
                         "column_00_unit": "V",
                         "column_01": "Time (s)",
@@ -255,11 +260,15 @@
         }
     ],
     "isDisabled": false,
-    "last_migration": "20260323144702",
+    "last_migration": "20260422063146",
     "objects": [],
     "ols": "CHMO:0000025",
     "ontology": "",
     "predicates": [],
+    "reactionVariations": {
+        "elements": [],
+        "identifiers": []
+    },
     "rootOntology": {
         "description": [
             "An electrochemical technique where the cell current is measured as a function of time and as a function of the potential between the indicator and reference electrodes. The potential is varied linearly and inverts at the end point resulting in a cycle."

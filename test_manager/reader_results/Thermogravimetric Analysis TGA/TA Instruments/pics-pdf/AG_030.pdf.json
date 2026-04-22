@@ -26,6 +26,11 @@
                 "___SECTION": "_",
                 "500.": "0. 100. 200. 300. 400.",
                 "Onset x: 178.20 \u00b0C": "End x: 243.59 \u00b0C Change: 2377.30 \u00b5g Change (normalized): 83.16 %",
+                "__UNIT_PPM": "ppm",
+                "__UNIT_liter": "l",
+                "__UNIT_gram": "g",
+                "__UNIT_%": "%",
+                "__UNIT_mol": "mol",
                 "rows": "0",
                 "columns": "0"
             },
@@ -39,6 +44,6 @@
         "mime_type": "application/pdf",
         "extension": ".pdf",
         "reader": "PdfReader",
-        "uploaded": "2026-01-19T10:48:42.967113+00:00"
+        "uploaded": "2026-04-22T10:03:07.866025+00:00"
     }
 }

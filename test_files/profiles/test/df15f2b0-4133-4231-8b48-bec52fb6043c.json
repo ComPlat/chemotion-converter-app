@@ -152,6 +152,11 @@
                     "metadata": {
                         "Block_name": "sg-v3545-6-13",
                         "Loop_name": "_geom_torsion",
+                        "__UNIT_%": "%",
+                        "__UNIT_PPM": "ppm",
+                        "__UNIT_gram": "g",
+                        "__UNIT_liter": "l",
+                        "__UNIT_mol": "mol",
                         "_atom_sites_solution_hydrogens": "geom",
                         "_atom_sites_solution_primary": "dual",
                         "_atom_sites_solution_secondary": "?",
@@ -2056,11 +2061,15 @@
         }
     ],
     "isDisabled": false,
-    "last_migration": "20260323144702",
+    "last_migration": "20260422063146",
     "objects": [],
     "ols": "CHMO:0000159",
     "ontology": "",
     "predicates": [],
+    "reactionVariations": {
+        "elements": [],
+        "identifiers": []
+    },
     "rootOntology": {
         "description": [
             "A method for determining structure by directing a beam of X-rays at a single crystal sample and detecting the positions and intensities of the diffracted X-rays as a pattern of spots on a photographic plate. Single crystal X-ray diffraction is used for protein crystallography."

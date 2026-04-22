@@ -49,6 +49,11 @@
                         "MINY\t     0.01132"
                     ],
                     "metadata": {
+                        "__UNIT_%": "%",
+                        "__UNIT_PPM": "ppm",
+                        "__UNIT_gram": "g",
+                        "__UNIT_liter": "l",
+                        "__UNIT_mol": "mol",
                         "column_00": "XYDATA",
                         "columns": "2",
                         "rows": "801"
@@ -461,11 +466,15 @@
         }
     ],
     "isDisabled": false,
-    "last_migration": "20260323144702",
+    "last_migration": "20260422063146",
     "objects": [],
     "ols": "CHMO:0000287",
     "ontology": "",
     "predicates": [],
+    "reactionVariations": {
+        "elements": [],
+        "identifiers": []
+    },
     "rootOntology": {
         "description": [
             "Spectroscopy where the intensity of the fluorescence emitted by molecules excited by ultraviolet light is detected as a function of wavelength or time."

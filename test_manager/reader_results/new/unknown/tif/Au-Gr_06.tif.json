@@ -2196,6 +2196,11 @@
                 "Sample ID ": " ",
                 "Serial No. ": " SUPRA 40-25-40",
                 "Operator ": " ",
+                "__UNIT_PPM": "ppm",
+                "__UNIT_liter": "l",
+                "__UNIT_gram": "g",
+                "__UNIT_%": "%",
+                "__UNIT_mol": "mol",
                 "rows": "25",
                 "columns": "2"
             },
@@ -2319,6 +2324,6 @@
         "mime_type": "image/tiff",
         "extension": ".tif",
         "reader": "TifReader",
-        "uploaded": "2026-03-03T09:56:15.767483+00:00"
+        "uploaded": "2026-04-22T10:07:35.382001+00:00"
     }
 }

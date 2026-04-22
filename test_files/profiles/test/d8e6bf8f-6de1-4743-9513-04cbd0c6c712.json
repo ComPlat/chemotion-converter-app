@@ -60,6 +60,11 @@
                         "sample1,,0,1 mg mL,,EM-260 0,1,,EM-260 0,01,,"
                     ],
                     "metadata": {
+                        "__UNIT_%": "%",
+                        "__UNIT_PPM": "ppm",
+                        "__UNIT_gram": "g",
+                        "__UNIT_liter": "l",
+                        "__UNIT_mol": "mol",
                         "column_00": "Wavelength (nm)",
                         "column_01": "Abs",
                         "column_02": "Wavelength (nm)",
@@ -254,11 +259,15 @@
         }
     ],
     "isDisabled": false,
-    "last_migration": "20260323144702",
+    "last_migration": "20260422063146",
     "objects": [],
     "ols": "CHMO:0000292",
     "ontology": "",
     "predicates": [],
+    "reactionVariations": {
+        "elements": [],
+        "identifiers": []
+    },
     "rootOntology": {
         "description": [
             "Spectroscopy where the sample absorbs radiation in the range ultraviolet to visible (190-800 nm) resulting in electronic transitions within the sample."
