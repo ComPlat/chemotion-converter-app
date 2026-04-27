@@ -6,6 +6,7 @@ import shutil
 import tarfile
 import tempfile
 import uuid
+import zipfile
 from collections import defaultdict
 from pathlib import Path
 
@@ -334,7 +335,7 @@ class File:
         Checks if the file is a tar archive
         :return: True if the file is a tar archive
         """
-        return self.name.endswith(".gz") or self.name.endswith(".xz") or self.name.endswith(".tar")
+        return self.name.endswith(".gz") or self.name.endswith(".xz") or self.name.endswith(".tar") or self.name.endswith(".zip")
 
     def get_temp_dir(self):
         if not self._temp_dir:
@@ -358,17 +359,21 @@ def extract_tar_archive(file: File) -> list[File]:
             # Save the contents of FileStorage to the temporary file
             temp_tar_file_name = os.path.join(temp_archive, file.name)
             file.fp.save(temp_tar_file_name)
-            if file.name.endswith(".gz"):
-                mode = "r:gz"
-            elif file.name.endswith(".xz"):
-                mode = "r:xz"
-            elif file.name.endswith(".tar"):
-                mode = "r:"
+            if file.name.endswith(".zip"):
+                with zipfile.ZipFile(temp_tar_file_name, 'r') as zip_ref:
+                    zip_ref.extractall(temp_unzipped_dir)
             else:
-                return []
-            with tarfile.open(temp_tar_file_name, mode) as tar:
-                tar.extractall(temp_unzipped_dir)
-                tar.close()
+                if file.name.endswith(".gz"):
+                    mode = "r:gz"
+                elif file.name.endswith(".xz"):
+                    mode = "r:xz"
+                elif file.name.endswith(".tar"):
+                    mode = "r:"
+                else:
+                    return []
+                with tarfile.open(temp_tar_file_name, mode) as tar:
+                    tar.extractall(temp_unzipped_dir)
+                    tar.close()
         except ValueError:
             return []
 
