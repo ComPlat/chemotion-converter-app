@@ -306,19 +306,19 @@ def profile_router(app: Flask, auth: HTTPBasicAuth):
         abort(404)
         return None
 
-
-
-    @app.route('/profiles/restore/<profile_id>/<version>', methods=['GET'])
+    @app.route('/profiles/restore/<profile_id>/<version>', methods=['POST'])
     @auth.login_required
     def restore_profile(profile_id, version):
         hard = str_to_bool(request.args.get("hard"))
         client_id = auth.current_user()
         profile = Profile.retrieve(client_id, profile_id)
-        profile.restore(version, hard)
-        if profile:
-            return jsonify(profile.as_dict), 200
-        abort(404)
-        return None
+        if not profile:
+            abort(404)
+        try:
+            profile.restore(version, hard)
+        except ValueError as e:
+            return jsonify({'error': str(e)}), 404
+        return jsonify(profile.as_dict), 200
 
 
 def utils_router(app: Flask, auth: HTTPBasicAuth):
