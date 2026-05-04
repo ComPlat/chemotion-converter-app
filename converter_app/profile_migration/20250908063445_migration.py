@@ -29,6 +29,9 @@ class ProfileMigrationScript(ProfileMigration):
         """
         Updates the profile.
         """
+        if isinstance(profile["rootOntology"],dict):
+            return
+
         profile["rootOntology"] = {
             "iri": "http://purl.obolibrary.org/obo/OBI_0000070",
             "namespace": "http://purl.obolibrary.org/obo/",

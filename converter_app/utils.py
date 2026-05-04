@@ -20,6 +20,7 @@ from converter_app.writers.meta_info_json import MetaInfoWriter
 def cli_home_path():
     return Path.home().joinpath('.ChemConverter')
 
+
 def human2bytes(string):
     """
     Bytes size converter
@@ -34,23 +35,23 @@ def human2bytes(string):
     if unit in ['kb', 'k']:
         number = number * 1000
     elif unit in ['mb', 'm']:
-        number = number * 1000**2
+        number = number * 1000 ** 2
     elif unit in ['gb', 'g']:
-        number = number * 1000**3
+        number = number * 1000 ** 3
     elif unit in ['tb', 't']:
-        number = number * 1000**4
+        number = number * 1000 ** 4
     elif unit in ['pb', 'p']:
-        number = number * 1000**5
+        number = number * 1000 ** 5
     elif unit == 'kib':
         number = number * 1024
     elif unit == 'mib':
-        number = number * 1024**2
+        number = number * 1024 ** 2
     elif unit == 'gib':
-        number = number * 1024**3
+        number = number * 1024 ** 3
     elif unit == 'tib':
-        number = number * 1024**4
+        number = number * 1024 ** 4
     elif unit == 'pib':
-        number = number * 1024**5
+        number = number * 1024 ** 5
     return number
 
 
@@ -75,6 +76,7 @@ def checkpw(password, hashed_password):
     m.update(password)
     return (b'{SHA}' + base64.b64encode(m.digest())) == hashed_password
 
+
 def run_conversion(converter, conversion_format):
     if converter:
         converter.process()
@@ -98,9 +100,7 @@ def run_conversion(converter, conversion_format):
     raise ValueError('Your file could not be processed. No Profile available!')
 
 
-def load_public_profiles(profiles: Optional[str|Path] = None, data_files: Optional[str|Path] = None):
-
-
+def load_public_profiles(profiles: Optional[str | Path] = None, data_files: Optional[str | Path] = None):
     with tempfile.TemporaryDirectory() as t:
         # Clone into temporary dir
         git.Repo.clone_from('https://github.com/ComPlat/chemotion_saurus.git', t, branch='added_data_files', depth=1)
@@ -118,3 +118,21 @@ def get_app_root() -> Path:
         return Path(sys._MEIPASS)  # PyInstaller temp extraction dir
     else:
         return Path(__file__).parent.parent
+
+
+def remove_keys(obj, keys_to_remove):
+    if not isinstance(keys_to_remove, list):
+        keys_to_remove = [keys_to_remove]
+
+    if isinstance(obj, dict):
+        return {
+            k: v
+            for k, v in obj.items()
+            if k not in keys_to_remove
+        }
+    elif isinstance(obj, list):
+        return [remove_keys(item, keys_to_remove) for item in obj]
+    return obj
+
+def str_to_bool(value):
+    return str(value).lower() in ("true", "1", "yes", "on")
