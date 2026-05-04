@@ -1,3 +1,4 @@
+import copy
 from datetime import datetime, timezone
 import json
 import logging
@@ -153,17 +154,21 @@ class Profile:
         Restores the profile to a previous version by replaying the recorded
         diffs in reverse. With ``hard=True`` the history is truncated and the
         profile is saved without adding a new history entry; otherwise a
-        ``reset:<version>`` entry is appended.
+        ``reset:<version>`` entry is appended. Raises ``RuntimeError`` if any
+        recorded diff fails to apply, leaving the profile unchanged.
         """
         idx = next((i for i, item in enumerate(self.data['diff_history']) if item["profile_version"] == version), -1)
         if idx == -1:
             raise ValueError(f"Version {version} does not exist!")
-        for history_item in reversed(self.data['diff_history'][idx:]):
-            patch = jsonpatch.JsonPatch(history_item['diff'])
-            try:
+
+        snapshot = copy.deepcopy(self.data)
+        try:
+            for history_item in reversed(self.data['diff_history'][idx:]):
+                patch = jsonpatch.JsonPatch(history_item['diff'])
                 self.data = patch.apply(self.data)
-            except jsonpatch.JsonPatchConflict:
-                pass
+        except jsonpatch.JsonPatchException as exc:
+            self.data = snapshot
+            raise RuntimeError(f"Could not restore version {version}: {exc}") from exc
 
         if not hard:
             self.save(trigger=f'reset:{version}')

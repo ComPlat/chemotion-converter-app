@@ -318,6 +318,8 @@ def profile_router(app: Flask, auth: HTTPBasicAuth):
             profile.restore(version, hard)
         except ValueError as e:
             return jsonify({'error': str(e)}), 404
+        except RuntimeError as e:
+            return jsonify({'error': str(e)}), 409
         return jsonify(profile.as_dict), 200
 
 
