@@ -309,7 +309,7 @@ def profile_router(app: Flask, auth: HTTPBasicAuth):
     @app.route('/profiles/restore/<profile_id>/<version>', methods=['POST'])
     @auth.login_required
     def restore_profile(profile_id, version):
-        hard = str_to_bool(request.args.get("hard"))
+        hard = str_to_bool(json.loads(request.data).get("hard"))
         client_id = auth.current_user()
         profile = Profile.retrieve(client_id, profile_id)
         if not profile:
