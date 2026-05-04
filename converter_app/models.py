@@ -46,10 +46,16 @@ class Profile:
 
     @property
     def data(self):
+        """
+        :return: the profile data dictionary
+        """
         return self._data
 
     @data.setter
     def data(self, data):
+        """
+        Replaces the profile data dictionary
+        """
         self._data = data
 
     @property
@@ -121,18 +127,34 @@ class Profile:
                 self.errors['tables'].append('tables have to be provided.')
 
     def increase_version(self):
+        """
+        Increments the minor part of the profile version by 1.
+        """
         self.update_version(miner=1)
 
     def decrease_version(self):
+        """
+        Decrements the minor part of the profile version by 1.
+        """
         self.update_version(miner=-1)
 
     def update_version(self, major=0, miner=0):
+        """
+        Updates the profile version by adding the given offsets to the major
+        and minor numbers.
+        """
         version_numbers = [int(vn) for vn in self.data['profile_version'].split('.')]
         version_numbers[-1] += miner
         version_numbers[0] += major
         self.data['profile_version'] = '.'.join(str(vn) for vn in version_numbers)
 
     def restore(self, version, hard):
+        """
+        Restores the profile to a previous version by replaying the recorded
+        diffs in reverse. With ``hard=True`` the history is truncated and the
+        profile is saved without adding a new history entry; otherwise a
+        ``reset:<version>`` entry is appended.
+        """
         idx = next((i for i, item in enumerate(self.data['diff_history']) if item["profile_version"] == version), -1)
         if idx == -1:
             raise ValueError(f"Version {version} does not exist!")
@@ -151,6 +173,12 @@ class Profile:
             self.save(add_to_history=False)
 
     def update_change_history(self, origin_profile_content: dict, trigger):
+        """
+        Appends a diff between the current profile data and the previous
+        content to ``diff_history`` (capped at 50 entries) and bumps the
+        profile version. No-op if no previous content is provided or there
+        are no changes.
+        """
         if not origin_profile_content:
             return
         [diff_a, diff_b] = remove_keys([self.data, origin_profile_content],

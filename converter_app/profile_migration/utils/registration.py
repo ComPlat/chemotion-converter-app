@@ -97,6 +97,13 @@ class Migrations:
         return self._prepare_migration(client_id, profile_path, force, True)
 
     def restore_unknown_migrations(self, profile, add_history: bool = True):
+        """
+        Reverts profile changes coming from migration scripts that are no
+        longer present in the registry by applying their stored diffs in
+        descending version order. When ``add_history`` is ``True`` an
+        ``undo:<version>`` entry is appended to the diff history for each
+        revert. Returns ``True`` if any migration was reverted.
+        """
         history = profile.data.get('diff_history', [])
         list_of_migration = [{
             'idx': i,

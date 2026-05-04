@@ -121,6 +121,11 @@ def get_app_root() -> Path:
 
 
 def remove_keys(obj, keys_to_remove):
+    """
+    Returns a deep copy of ``obj`` with the given keys removed from any
+    dictionaries it contains. Lists are traversed recursively. ``keys_to_remove``
+    may be a single key or a list of keys.
+    """
     if not isinstance(keys_to_remove, list):
         keys_to_remove = [keys_to_remove]
 
@@ -130,9 +135,14 @@ def remove_keys(obj, keys_to_remove):
             for k, v in obj.items()
             if k not in keys_to_remove
         }
-    elif isinstance(obj, list):
+    if isinstance(obj, list):
         return [remove_keys(item, keys_to_remove) for item in obj]
     return obj
 
+
 def str_to_bool(value):
+    """
+    Converts the given value to a boolean by comparing its lowercase string
+    representation against a set of truthy literals.
+    """
     return str(value).lower() in ("true", "1", "yes", "on")
