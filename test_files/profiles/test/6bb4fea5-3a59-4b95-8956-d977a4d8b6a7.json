@@ -73,11 +73,6 @@
                     ],
                     "header": [],
                     "metadata": {
-                        "__UNIT_%": "%",
-                        "__UNIT_PPM": "ppm",
-                        "__UNIT_gram": "g",
-                        "__UNIT_liter": "l",
-                        "__UNIT_mol": "mol",
                         "column_00": "Potential applied (V)",
                         "column_00_unit": "V",
                         "column_01": "Time (s)",
@@ -227,6 +222,104 @@
     "datatypes": [],
     "description": "Metrohm Autolab Nova; ref location: Uni Aachen, data: +, metadata: (-)\n;(basic Metadata calculation done by Reader)",
     "devices": [],
+    "diff_history": [
+        {
+            "at": "2026-04-30T12:53:58.468981+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "CV data from txt, data: +, metadata: (+)"
+                }
+            ],
+            "profile_version": "1.0",
+            "trigger": "migration:20260430145303"
+        },
+        {
+            "at": "2026-04-30T12:54:02.306595+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "CV data from txt, data: +, metadata: (+)__TEST"
+                }
+            ],
+            "profile_version": "1.1",
+            "trigger": "migration:20260430145303"
+        },
+        {
+            "at": "2026-04-30T13:02:19.664127+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "CV data from txt, data: +, metadata: (+)__TEST__TEST"
+                }
+            ],
+            "profile_version": "1.2",
+            "trigger": "restore_migration:20260430145303"
+        },
+        {
+            "at": "2026-04-30T13:02:19.666014+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "CV data from txt, data: +, metadata: (+)__TEST"
+                }
+            ],
+            "profile_version": "1.3",
+            "trigger": "restore_migration:20260430145303"
+        },
+        {
+            "at": "2026-05-04T04:59:00.272005+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "CV data from txt, data: +, metadata: (+)"
+                }
+            ],
+            "profile_version": "1.4",
+            "trigger": "undo:1.1"
+        },
+        {
+            "at": "2026-05-04T04:59:00.273887+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "CV data from txt, data: +, metadata: (+)__TEST"
+                }
+            ],
+            "profile_version": "1.5",
+            "trigger": "undo:1.0"
+        },
+        {
+            "at": "2026-05-04T04:59:00.274967+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "CV data from txt, data: +, metadata: (+)"
+                }
+            ],
+            "profile_version": "1.6",
+            "trigger": "migration:20260504065656"
+        },
+        {
+            "at": "2026-05-04T07:23:31.253554+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "CV data from txt, data: +, metadata: (+)--TEST"
+                }
+            ],
+            "profile_version": "1.7",
+            "trigger": "undo:1.6"
+        }
+    ],
     "id": "6bb4fea5-3a59-4b95-8956-d977a4d8b6a7",
     "identifiers": [
         {
@@ -260,15 +353,12 @@
         }
     ],
     "isDisabled": false,
-    "last_migration": "20260422063146",
+    "last_migration": "20260504065656",
     "objects": [],
     "ols": "CHMO:0000025",
     "ontology": "",
     "predicates": [],
-    "reactionVariations": {
-        "elements": [],
-        "identifiers": []
-    },
+    "profile_version": "1.8",
     "rootOntology": {
         "description": [
             "An electrochemical technique where the cell current is measured as a function of time and as a function of the potential between the indicator and reference electrodes. The potential is varied linearly and inverts at the end point resulting in a cycle."
@@ -308,5 +398,6 @@
             }
         }
     ],
-    "title": "CV data from txt, data: +, metadata: (+)"
+    "title": "CV data from txt, data: +, metadata: (+)",
+    "version": 0
 }

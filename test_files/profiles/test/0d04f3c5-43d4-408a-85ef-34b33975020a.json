@@ -74,11 +74,6 @@
                         ""
                     ],
                     "metadata": {
-                        "__UNIT_%": "%",
-                        "__UNIT_PPM": "ppm",
-                        "__UNIT_gram": "g",
-                        "__UNIT_liter": "l",
-                        "__UNIT_mol": "mol",
                         "column_00": "##Temp./\u00b0C",
                         "column_01": "Time/min",
                         "column_02": "DSC/(mW/mg)",
@@ -166,6 +161,104 @@
     "datatypes": [],
     "description": "differential scanning calorimetry",
     "devices": [],
+    "diff_history": [
+        {
+            "at": "2026-04-30T12:53:58.498619+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "DSC with Time"
+                }
+            ],
+            "profile_version": "1.0",
+            "trigger": "migration:20260430145303"
+        },
+        {
+            "at": "2026-04-30T12:54:02.445616+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "DSC with Time__TEST"
+                }
+            ],
+            "profile_version": "1.1",
+            "trigger": "migration:20260430145303"
+        },
+        {
+            "at": "2026-04-30T13:02:20.578565+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "DSC with Time__TEST__TEST"
+                }
+            ],
+            "profile_version": "1.2",
+            "trigger": "restore_migration:20260430145303"
+        },
+        {
+            "at": "2026-04-30T13:02:20.582014+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "DSC with Time__TEST"
+                }
+            ],
+            "profile_version": "1.3",
+            "trigger": "restore_migration:20260430145303"
+        },
+        {
+            "at": "2026-05-04T04:59:00.543553+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "DSC with Time"
+                }
+            ],
+            "profile_version": "1.4",
+            "trigger": "undo:1.1"
+        },
+        {
+            "at": "2026-05-04T04:59:00.546708+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "DSC with Time__TEST"
+                }
+            ],
+            "profile_version": "1.5",
+            "trigger": "undo:1.0"
+        },
+        {
+            "at": "2026-05-04T04:59:00.548451+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "DSC with Time"
+                }
+            ],
+            "profile_version": "1.6",
+            "trigger": "migration:20260504065656"
+        },
+        {
+            "at": "2026-05-04T07:23:31.395135+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "DSC with Time--TEST"
+                }
+            ],
+            "profile_version": "1.7",
+            "trigger": "undo:1.6"
+        }
+    ],
     "id": "0d04f3c5-43d4-408a-85ef-34b33975020a",
     "identifiers": [
         {
@@ -502,15 +595,12 @@
         }
     ],
     "isDisabled": false,
-    "last_migration": "20260422063146",
+    "last_migration": "20260504065656",
     "objects": [],
     "ols": "CHMO:0000684",
     "ontology": "",
     "predicates": [],
-    "reactionVariations": {
-        "elements": [],
-        "identifiers": []
-    },
+    "profile_version": "1.8",
     "rootOntology": {
         "description": [
             "The measurement of thermodynamic parameters (e.g. enthalpy) during a chemical or biochemical reaction of both a sample and a reference, by the known variation (step-wise or linear) of one variable, whilst a second is kept constant."
@@ -548,5 +638,6 @@
             }
         }
     ],
-    "title": "DSC with Time"
+    "title": "DSC with Time",
+    "version": 0
 }

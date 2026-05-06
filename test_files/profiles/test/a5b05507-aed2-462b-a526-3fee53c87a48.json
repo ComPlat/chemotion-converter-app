@@ -42,11 +42,6 @@
                     ],
                     "header": [],
                     "metadata": {
-                        "__UNIT_%": "%",
-                        "__UNIT_PPM": "ppm",
-                        "__UNIT_gram": "g",
-                        "__UNIT_liter": "l",
-                        "__UNIT_mol": "mol",
                         "column_00": "X Intensity",
                         "column_01": "Record 253: 2021-09-14_SSP-041_H2O_Run- 1",
                         "column_02": "Record 254: 2021-09-14_SSP-041_H2O_Run- 2",
@@ -134,6 +129,104 @@
     "datatypes": [],
     "description": "---; ref location: ---, data: +, metadata: -\n;Subtype 1",
     "devices": [],
+    "diff_history": [
+        {
+            "at": "2026-04-30T12:53:58.481831+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "DLS data from txt, data: +, metadata: -"
+                }
+            ],
+            "profile_version": "1.0",
+            "trigger": "migration:20260430145303"
+        },
+        {
+            "at": "2026-04-30T12:54:02.369008+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "DLS data from txt, data: +, metadata: -__TEST"
+                }
+            ],
+            "profile_version": "1.1",
+            "trigger": "migration:20260430145303"
+        },
+        {
+            "at": "2026-04-30T13:02:20.081721+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "DLS data from txt, data: +, metadata: -__TEST__TEST"
+                }
+            ],
+            "profile_version": "1.2",
+            "trigger": "restore_migration:20260430145303"
+        },
+        {
+            "at": "2026-04-30T13:02:20.083191+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "DLS data from txt, data: +, metadata: -__TEST"
+                }
+            ],
+            "profile_version": "1.3",
+            "trigger": "restore_migration:20260430145303"
+        },
+        {
+            "at": "2026-05-04T04:59:00.394024+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "DLS data from txt, data: +, metadata: -"
+                }
+            ],
+            "profile_version": "1.4",
+            "trigger": "undo:1.1"
+        },
+        {
+            "at": "2026-05-04T04:59:00.395464+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "DLS data from txt, data: +, metadata: -__TEST"
+                }
+            ],
+            "profile_version": "1.5",
+            "trigger": "undo:1.0"
+        },
+        {
+            "at": "2026-05-04T04:59:00.396318+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "DLS data from txt, data: +, metadata: -"
+                }
+            ],
+            "profile_version": "1.6",
+            "trigger": "migration:20260504065656"
+        },
+        {
+            "at": "2026-05-04T07:23:31.316732+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "DLS data from txt, data: +, metadata: ---TEST"
+                }
+            ],
+            "profile_version": "1.7",
+            "trigger": "undo:1.6"
+        }
+    ],
     "id": "a5b05507-aed2-462b-a526-3fee53c87a48",
     "identifiers": [
         {
@@ -156,15 +249,12 @@
         }
     ],
     "isDisabled": false,
-    "last_migration": "20260422063146",
+    "last_migration": "20260504065656",
     "objects": [],
     "ols": null,
     "ontology": "",
     "predicates": [],
-    "reactionVariations": {
-        "elements": [],
-        "identifiers": []
-    },
+    "profile_version": "1.8",
     "rootOntology": {
         "description": [
             "A planned process that has the objective to produce information about a material entity (the evaluant) by examining it."
@@ -202,5 +292,6 @@
             }
         }
     ],
-    "title": "DLS data from txt, data: +, metadata: -"
+    "title": "DLS data from txt, data: +, metadata: -",
+    "version": 0
 }

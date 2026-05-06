@@ -46,11 +46,6 @@
                     ],
                     "header": [],
                     "metadata": {
-                        "__UNIT_%": "%",
-                        "__UNIT_PPM": "ppm",
-                        "__UNIT_gram": "g",
-                        "__UNIT_liter": "l",
-                        "__UNIT_mol": "mol",
                         "column_00": "Time_s",
                         "column_01": "Force_N",
                         "column_02": "Deformation (fine)_mm",
@@ -149,6 +144,104 @@
     "datatypes": [],
     "description": "Inspect Table 50kN; ref location: Fraunhofer IWS, data: +, metadata: - \n;HighTemp",
     "devices": [],
+    "diff_history": [
+        {
+            "at": "2026-04-30T12:53:58.462001+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "Tensile test data from txt, data: +, metadata: -"
+                }
+            ],
+            "profile_version": "1.0",
+            "trigger": "migration:20260430145303"
+        },
+        {
+            "at": "2026-04-30T12:54:02.272492+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "Tensile test data from txt, data: +, metadata: -__TEST"
+                }
+            ],
+            "profile_version": "1.1",
+            "trigger": "migration:20260430145303"
+        },
+        {
+            "at": "2026-04-30T13:02:19.436320+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "Tensile test data from txt, data: +, metadata: -__TEST__TEST"
+                }
+            ],
+            "profile_version": "1.2",
+            "trigger": "restore_migration:20260430145303"
+        },
+        {
+            "at": "2026-04-30T13:02:19.437928+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "Tensile test data from txt, data: +, metadata: -__TEST"
+                }
+            ],
+            "profile_version": "1.3",
+            "trigger": "restore_migration:20260430145303"
+        },
+        {
+            "at": "2026-05-04T04:59:00.203680+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "Tensile test data from txt, data: +, metadata: -"
+                }
+            ],
+            "profile_version": "1.4",
+            "trigger": "undo:1.1"
+        },
+        {
+            "at": "2026-05-04T04:59:00.205300+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "Tensile test data from txt, data: +, metadata: -__TEST"
+                }
+            ],
+            "profile_version": "1.5",
+            "trigger": "undo:1.0"
+        },
+        {
+            "at": "2026-05-04T04:59:00.206253+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "Tensile test data from txt, data: +, metadata: -"
+                }
+            ],
+            "profile_version": "1.6",
+            "trigger": "migration:20260504065656"
+        },
+        {
+            "at": "2026-05-04T07:23:31.218107+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "Tensile test data from txt, data: +, metadata: ---TEST"
+                }
+            ],
+            "profile_version": "1.7",
+            "trigger": "undo:1.6"
+        }
+    ],
     "id": "c9d63af9-2ce7-425e-895c-c04b8497c26c",
     "identifiers": [
         {
@@ -183,15 +276,12 @@
         }
     ],
     "isDisabled": false,
-    "last_migration": "20260422063146",
+    "last_migration": "20260504065656",
     "objects": [],
     "ols": "CHMO:0001163",
     "ontology": "",
     "predicates": [],
-    "reactionVariations": {
-        "elements": [],
-        "identifiers": []
-    },
+    "profile_version": "1.8",
     "rootOntology": {
         "description": [
             "The measurement of the surface tension of a liquid."
@@ -236,5 +326,6 @@
             }
         }
     ],
-    "title": "Tensile test data from txt, data: +, metadata: -"
+    "title": "Tensile test data from txt, data: +, metadata: -",
+    "version": 0
 }

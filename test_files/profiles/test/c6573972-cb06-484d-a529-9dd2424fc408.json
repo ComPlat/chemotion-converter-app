@@ -218,11 +218,6 @@
                         "USE_TRIGGER_START": "False",
                         "VS_PREV_E": "False",
                         "WEIGHT": "0.000E+000",
-                        "__UNIT_%": "%",
-                        "__UNIT_PPM": "ppm",
-                        "__UNIT_gram": "g",
-                        "__UNIT_liter": "l",
-                        "__UNIT_mol": "mol",
                         "column_00": "time",
                         "column_01": "potential",
                         "column_02": "current",
@@ -868,6 +863,104 @@
     "datatypes": [],
     "description": "PalmSens PSTrace; ref location: IPB Leibniz, data: +, metadata: +",
     "devices": [],
+    "diff_history": [
+        {
+            "at": "2026-04-30T12:53:58.482795+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "CV data from pssession, data: +, metadata: +"
+                }
+            ],
+            "profile_version": "1.0",
+            "trigger": "migration:20260430145303"
+        },
+        {
+            "at": "2026-04-30T12:54:02.375751+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "CV data from pssession, data: +, metadata: +__TEST"
+                }
+            ],
+            "profile_version": "1.1",
+            "trigger": "migration:20260430145303"
+        },
+        {
+            "at": "2026-04-30T13:02:20.100620+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "CV data from pssession, data: +, metadata: +__TEST__TEST"
+                }
+            ],
+            "profile_version": "1.2",
+            "trigger": "restore_migration:20260430145303"
+        },
+        {
+            "at": "2026-04-30T13:02:20.106245+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "CV data from pssession, data: +, metadata: +__TEST"
+                }
+            ],
+            "profile_version": "1.3",
+            "trigger": "restore_migration:20260430145303"
+        },
+        {
+            "at": "2026-05-04T04:59:00.402750+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "CV data from pssession, data: +, metadata: +"
+                }
+            ],
+            "profile_version": "1.4",
+            "trigger": "undo:1.1"
+        },
+        {
+            "at": "2026-05-04T04:59:00.408249+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "CV data from pssession, data: +, metadata: +__TEST"
+                }
+            ],
+            "profile_version": "1.5",
+            "trigger": "undo:1.0"
+        },
+        {
+            "at": "2026-05-04T04:59:00.411180+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "CV data from pssession, data: +, metadata: +"
+                }
+            ],
+            "profile_version": "1.6",
+            "trigger": "migration:20260504065656"
+        },
+        {
+            "at": "2026-05-04T07:23:31.323627+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "CV data from pssession, data: +, metadata: +--TEST"
+                }
+            ],
+            "profile_version": "1.7",
+            "trigger": "undo:1.6"
+        }
+    ],
     "id": "c6573972-cb06-484d-a529-9dd2424fc408",
     "identifiers": [
         {
@@ -1111,15 +1204,12 @@
         }
     ],
     "isDisabled": false,
-    "last_migration": "20260422063146",
+    "last_migration": "20260504065656",
     "objects": [],
     "ols": "CHMO:0000025",
     "ontology": "",
     "predicates": [],
-    "reactionVariations": {
-        "elements": [],
-        "identifiers": []
-    },
+    "profile_version": "1.8",
     "rootOntology": {
         "description": [
             "An electrochemical technique where the cell current is measured as a function of time and as a function of the potential between the indicator and reference electrodes. The potential is varied linearly and inverts at the end point resulting in a cycle."
@@ -1166,5 +1256,6 @@
             }
         }
     ],
-    "title": "CV data from pssession, data: +, metadata: +"
+    "title": "CV data from pssession, data: +, metadata: +",
+    "version": 0
 }
