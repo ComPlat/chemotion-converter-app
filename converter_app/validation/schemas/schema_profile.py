@@ -53,6 +53,15 @@ profile_schema = {
         "converter_version": {
             "type": "string"
         },
+        "profile_version": {
+            "type": "string"
+        },
+        "version": {
+            "type": ["string", "number"]
+        },
+        "diff_history": {
+            "type": "array"
+        },
         "identifiers": {
             "type": "array",
             "items": {
@@ -170,7 +179,8 @@ profile_schema = {
         "predicates",
         "datatypes",
         "subjects",
-        "objects"
+        "objects",
+        "profile_version"
     ]
 
 }

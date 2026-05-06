@@ -25,10 +25,9 @@ class ProfileMigrationScript(ProfileMigration):
 
     def up(self, profile: dict):
         """
-        Add App version to profiles as 'converter_version'
+        Add ontology, devices, software
         """
 
-        profile['converter_version'] = self.app_config.get('VERSION')
         profile['ontology'] = profile.get('ontology', '')
         profile['devices'] = profile.get('devices', [])
         profile['software'] = profile.get('software', [])
