@@ -1,3 +1,5 @@
+import copy
+from datetime import datetime, timezone
 import json
 import logging
 import os
@@ -10,11 +12,13 @@ import zipfile
 from collections import defaultdict
 from pathlib import Path
 
+import jsonpatch
+
 import magic
 from flask import current_app
 from werkzeug.datastructures import FileStorage
 
-from converter_app.utils import check_uuid, cli_home_path
+from converter_app.utils import check_uuid, cli_home_path, remove_keys
 from converter_app.utils import get_app_root
 
 logger = logging.getLogger(__name__)
@@ -35,11 +39,25 @@ class Profile:
 
     def __init__(self, profile_data, client_id, profile_id=None, is_default_profile: bool = False):
         self.isDisabled = profile_data.get('isDisabled', False)
-        self.data = profile_data
+        self._data = profile_data
         self.client_id = client_id
         self._id = profile_id
         self.errors = defaultdict(list)
         self._is_default_profile = is_default_profile
+
+    @property
+    def data(self):
+        """
+        :return: the profile data dictionary
+        """
+        return self._data
+
+    @data.setter
+    def data(self, data):
+        """
+        Replaces the profile data dictionary
+        """
+        self._data = data
 
     @property
     def is_default_profile(self):
@@ -109,7 +127,81 @@ class Profile:
             else:
                 self.errors['tables'].append('tables have to be provided.')
 
-    def save(self):
+    def increase_version(self):
+        """
+        Increments the minor part of the profile version by 1.
+        """
+        self.update_version(miner=1)
+
+    def decrease_version(self):
+        """
+        Decrements the minor part of the profile version by 1.
+        """
+        self.update_version(miner=-1)
+
+    def update_version(self, major=0, miner=0):
+        """
+        Updates the profile version by adding the given offsets to the major
+        and minor numbers.
+        """
+        version_numbers = [int(vn) for vn in self.data['profile_version'].split('.')]
+        version_numbers[-1] += miner
+        version_numbers[0] += major
+        self.data['profile_version'] = '.'.join(str(vn) for vn in version_numbers)
+
+    def restore(self, version, hard):
+        """
+        Restores the profile to a previous version by replaying the recorded
+        diffs in reverse. With ``hard=True`` the history is truncated and the
+        profile is saved without adding a new history entry; otherwise a
+        ``reset:<version>`` entry is appended. Raises ``RuntimeError`` if any
+        recorded diff fails to apply, leaving the profile unchanged.
+        """
+        idx = next((i for i, item in enumerate(self.data['diff_history']) if item["profile_version"] == version), -1)
+        if idx == -1:
+            raise ValueError(f"Version {version} does not exist!")
+
+        snapshot = copy.deepcopy(self.data)
+        try:
+            for history_item in reversed(self.data['diff_history'][idx:]):
+                patch = jsonpatch.JsonPatch(history_item['diff'])
+                self.data = patch.apply(self.data)
+        except jsonpatch.JsonPatchException as exc:
+            self.data = snapshot
+            raise RuntimeError(f"Could not restore version {version}: {exc}") from exc
+
+        if not hard:
+            self.save(trigger=f'reset:{version}')
+        else:
+            self.data['diff_history'] = self.data['diff_history'][:idx]
+            self.data['profile_version'] = version
+            self.save(add_to_history=False)
+
+    def update_change_history(self, origin_profile_content: dict, trigger):
+        """
+        Appends a diff between the current profile data and the previous
+        content to ``diff_history`` (capped at 50 entries) and bumps the
+        profile version. No-op if no previous content is provided or there
+        are no changes.
+        """
+        if not origin_profile_content:
+            return
+        [diff_a, diff_b] = remove_keys([self.data, origin_profile_content],
+                                       ['profile_version', 'diff_history', 'isDefaultProfile', 'isDisabled',
+                                        'last_migration'])
+        diff = jsonpatch.make_patch(diff_a, diff_b).patch
+        if diff:
+            self.data['diff_history'].append(
+                {
+                    'profile_version': self.data['profile_version'],
+                    'at': datetime.now(timezone.utc).isoformat(),
+                    'diff': diff,
+                    'trigger': trigger
+                })
+            self.data['diff_history'] = self.data['diff_history'][-50:]
+            self.increase_version()
+
+    def save(self, trigger='save', add_to_history=True):
         """
         Saves a profile under $PROFILES_DIR/$client_id/$id.json
         """
@@ -119,7 +211,10 @@ class Profile:
         file_path = profiles_path.joinpath(self.id).with_suffix('.json')
         if 'isDefaultProfile' in self.data:
             del self.data['isDefaultProfile']
-
+        if add_to_history and file_path.exists():
+            with open(file_path, 'r', encoding='utf8') as fp:
+                profile_content = json.load(fp)
+            self.update_change_history(profile_content, trigger)
         with open(file_path, 'w+', encoding='utf8') as fp:
             json.dump(self.data, fp, sort_keys=True, indent=4)
 
@@ -157,7 +252,7 @@ class Profile:
     @id.setter
     def id(self, new_id):
         self.data['id'] = self._id = new_id
-        
+
     @classmethod
     def load(cls, file_path: pathlib.PurePath):
         """
@@ -190,9 +285,6 @@ class Profile:
         profile_id = str(file_path.with_suffix('').name)
         profile_data = cls.load(file_path)
         return cls(profile_data, client_id, profile_id)
-
-
-
 
     @classmethod
     def list(cls, client_id):
@@ -335,7 +427,8 @@ class File:
         Checks if the file is a tar archive
         :return: True if the file is a tar archive
         """
-        return self.name.endswith(".gz") or self.name.endswith(".xz") or self.name.endswith(".tar") or self.name.endswith(".zip")
+        return self.name.endswith(".gz") or self.name.endswith(".xz") or self.name.endswith(
+            ".tar") or self.name.endswith(".zip")
 
     def get_temp_dir(self):
         if not self._temp_dir:

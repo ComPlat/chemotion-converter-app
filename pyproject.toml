@@ -47,7 +47,8 @@ dependencies = [
     "rdflib==7.*",
     "GitPython==3.1.*",
     "requests==2.32.*",
-    "click==8.3.*"
+    "click==8.3.*",
+    "jsonpatch==1.33"
 ]
 
 [project.optional-dependencies]
