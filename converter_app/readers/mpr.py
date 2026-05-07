@@ -1,5 +1,6 @@
 import json
 import logging
+import math
 import tempfile
 
 import yadg
@@ -89,7 +90,10 @@ class MprReader(Reader):
                 })
 
                 for i, row in enumerate(table['rows']):
-                    row.append(v.get('data')[i])
+                    val = v.get('data')[i]
+                    if isinstance(val, float) and not math.isfinite(val):
+                        val = None
+                    row.append(val)
 
     def _convert_attrs(self, dict_value, table):
         if 'attrs' in dict_value:
