@@ -49,18 +49,7 @@ class Converter:
             i: self._compute_has_loop(i) for i in range(len(self.profile_output_tables))
         }
         self._loop_match_cache = {}
-        for out_idx, looped in self._has_loop_cache.items():
-            if not looped:
-                continue
-            for in_idx in range(len(self.input_tables)):
-                self._loop_match_cache[(out_idx, in_idx)] = \
-                    self._compute_check_loop_condition(out_idx, in_idx)
-
-        for output_table_index, output_table in enumerate(self.profile_output_tables):
-            if self._has_loop(output_table_index):
-                self._prepare_tables(output_table_index)
-            else:
-                output_table['tableIndexList'] = [output_table['inputTableIndex']]
+        return
 
     def _prepare_tables(self, index):
         # match the output Table to the input tables and adjust the tableIndexes t_get_output_table_indexo the input table
@@ -92,7 +81,8 @@ class Converter:
         key = (index, input_table_index)
         if key in self._loop_match_cache:
             return self._loop_match_cache[key]
-        return self._compute_check_loop_condition(index, input_table_index)
+        self._loop_match_cache[key] = self._compute_check_loop_condition(index, input_table_index)
+        return self._loop_match_cache[key]
 
     def _compute_check_loop_condition(self, index, input_table_index):
         if self.profile_output_tables[index].get('loopType') != 'all':
@@ -153,7 +143,7 @@ class Converter:
         return len(self.matches)
 
     def match_reaction_variation_identifier(self):
-        self.reaction_variation_matches = self._match(self._reaction_variation_identifiers)
+        self.reaction_variation_matches = self._match_identifier(self._reaction_variation_identifiers)
 
     def _match(self, identifiers):
         """
@@ -201,7 +191,7 @@ class Converter:
         # if everything matched, return how many identifiers matched
         return matches
 
-    def match_identifier(self, identifier):
+    def match_identifier(self, identifier, in_idx = None):
         """
         Checks if single identifier matches
         :param identifier: Identifier profile object
@@ -210,9 +200,9 @@ class Converter:
         if identifier.get('type') == 'fileMetadata':
             return self._match_file_metadata(identifier, self.file_metadata)
         if identifier.get('type') == 'tableMetadata':
-            return self._match_table_metadata(identifier, self.input_tables)
+            return self._match_table_metadata(identifier, self.input_tables, in_idx)
         if identifier.get('type') == 'tableHeader':
-            return self._match_table_header(identifier, self.input_tables)
+            return self._match_table_header(identifier, self.input_tables, in_idx)
 
         return False
 
@@ -228,9 +218,10 @@ class Converter:
 
         return False
 
-    def _match_table_metadata(self, identifier, input_tables):
-        input_table_index = identifier.get('tableIndex')
-        input_table = self.get_input_table(input_table_index, input_tables)
+    def _match_table_metadata(self, identifier, input_tables, input_table_index=None):
+        if input_table_index is None:
+            input_table_index = identifier.get('tableIndex')
+        input_table = input_tables[input_table_index]
         if input_table is not None:
             input_key = identifier.get('key', None)
             input_value = input_table.get('metadata', {}).get(input_key, None)
@@ -244,9 +235,10 @@ class Converter:
 
         return False
 
-    def _match_table_header(self, identifier, input_tables):
-        input_table_index = identifier.get('tableIndex')
-        input_table = self.get_input_table(input_table_index, input_tables)
+    def _match_table_header(self, identifier, input_tables, input_table_index=None):
+        if input_table_index is None:
+            input_table_index = identifier.get('tableIndex')
+        input_table = input_tables[input_table_index]
         if input_table is not None:
             # try to get the line_number from the identifier
             try:
@@ -325,9 +317,23 @@ class Converter:
 
 
     def process(self):
+        self.prepare()
+        for in_idx in range(len(self.input_tables)):
+            for output_table_index, output_table in enumerate(self.profile_output_tables):
+                if output_table['inputTableIndex'] == in_idx or self._check_loop_condition(output_table_index, in_idx):
+                    header = self._process_prepare_header(output_table, in_idx)
+                    self._process_prepare_metadata(header, output_table_index)
+
+
+
+
+
+    def _process(self):
         """
         Runs converting process efficiently.
         """
+
+
 
         ntuples_count = defaultdict(int)  # Track NTUPLES_ID occurrences
         self.match_reaction_variation_identifier()
@@ -473,7 +479,7 @@ class Converter:
     def _process_prepare_metadata(self, header, output_table_index):
         # merge the metadata from the profile (header) with the metadata
         # extracted using the identifiers (see self.match)
-        for match in self.matches:
+        for identifier in self.identifiers:
             match_result = match.get('result')
             if match_result:
                 match_output_key = match.get('identifier', {}).get('outputKey')
@@ -486,12 +492,12 @@ class Converter:
                     header[match_output_key] = match_value
 
 
-    def _process_prepare_header(self, output_table):
+    def _process_prepare_header(self, output_table, in_idx):
         header = {}
         for key, value in output_table.get('header', {}).items():
             if isinstance(value, dict):
                 # this is a table identifier, e.g. FIRSTX
-                match = self.match_identifier(value)
+                match = self.match_identifier(value, in_idx)
                 if match:
                     header[key] = match['value']
             else:
