@@ -23,6 +23,11 @@
                 "Run anpassen": "9",
                 "M\u00c4NGEL BETREFFEND KARTUSCHE/MATERIAL, DIE": "TEILEFEHLER VERURSACHEN K\u00d6NNEN: Keine Kartusche eingelegt",
                 "Drucker": "A-021-610-722 (A-021-610-722) Run-Call-sign A-021-610-722-230059 Jobname None Endstatus des Runs Fertig Startdatum 16.11.2023 15:34:49 Enddatum 16.11.2023 23:26:18 Dauer 7:51 h Material LithaLox 350 Basisparametersatz Julia Reaktoren Softwareversion 20Q3 Letzte Kalibrierung 03.12.2021",
+                "__UNIT_PPM": "ppm",
+                "__UNIT_liter": "l",
+                "__UNIT_gram": "g",
+                "__UNIT_%": "%",
+                "__UNIT_mol": "mol",
                 "rows": "0",
                 "columns": "0"
             },
@@ -205,6 +210,6 @@
         "mime_type": "application/pdf",
         "extension": ".pdf",
         "reader": "PdfReader",
-        "uploaded": "2026-01-19T10:51:20.566055+00:00"
+        "uploaded": "2026-04-22T10:07:33.199947+00:00"
     }
 }

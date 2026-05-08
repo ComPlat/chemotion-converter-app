@@ -87,6 +87,28 @@ profile_schema = {
             }
 
         },
+        "reactionVariations": {
+            "type": "object",
+            "properties": {
+                "identifiers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "chemconverter://profile/identifiers/draft-01"
+                    }
+                },
+                "elements": {
+                    "type": "array",
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+
+            "additionalProperties": False,
+        },
         "last_migration": {
             "type": "string"
         },
@@ -180,7 +202,8 @@ profile_schema = {
         "datatypes",
         "subjects",
         "objects",
-        "profile_version"
+        "profile_version",
+        "reactionVariations"
     ]
 
 }

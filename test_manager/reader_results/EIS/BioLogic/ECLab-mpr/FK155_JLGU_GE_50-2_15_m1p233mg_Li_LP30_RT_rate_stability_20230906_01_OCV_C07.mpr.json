@@ -44,6 +44,11 @@
                 "unit.data_vars.time_std_err": "s",
                 "unit.data_vars.<Ewe>": "V",
                 "unit.data_vars.<Ewe>_std_err": "V",
+                "__UNIT_PPM": "ppm",
+                "__UNIT_liter": "l",
+                "__UNIT_gram": "g",
+                "__UNIT_%": "%",
+                "__UNIT_mol": "mol",
                 "rows": "601",
                 "columns": "7"
             },
@@ -5496,6 +5501,6 @@
         "mime_type": "application/octet-stream",
         "extension": ".mpr",
         "reader": "MprReader",
-        "uploaded": "2026-01-13T10:09:44.631775+00:00"
+        "uploaded": "2026-04-22T10:05:27.766593+00:00"
     }
 }

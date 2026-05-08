@@ -51,6 +51,11 @@
                 "N2, 40.0ml/min / N2, 60.0ml/min": "0:0:0/5000 \u00b5V",
                 "-80": "-60 -40 -20 0 20 40 60 80 Temperatur /\u00b0C",
                 "Glas\u00fcbergang: ": "Mittl: Delta-Cp*:",
+                "__UNIT_PPM": "ppm",
+                "__UNIT_liter": "l",
+                "__UNIT_gram": "g",
+                "__UNIT_%": "%",
+                "__UNIT_mol": "mol",
                 "rows": "0",
                 "columns": "0"
             },
@@ -64,6 +69,6 @@
         "mime_type": "application/pdf",
         "extension": ".pdf",
         "reader": "PdfReader",
-        "uploaded": "2026-01-19T10:49:02.157872+00:00"
+        "uploaded": "2026-04-22T10:03:41.158806+00:00"
     }
 }
