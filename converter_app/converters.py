@@ -55,7 +55,6 @@ class Converter:
             for in_idx in range(len(self.input_tables)):
                 self._loop_match_cache[(out_idx, in_idx)] = \
                     self._compute_check_loop_condition(out_idx, in_idx)
-        self._output_index_offset = self._compute_output_index_offsets()
 
         for output_table_index, output_table in enumerate(self.profile_output_tables):
             if self._has_loop(output_table_index):
@@ -68,40 +67,7 @@ class Converter:
         for input_table_index, _ in enumerate(self.input_tables):
             if not self._check_loop_condition(index, input_table_index):
                 continue
-            
 
-    @staticmethod
-    def _clone_output_table_for_loop(source, input_table_index):
-        # Targeted clone of the paths _prepare_tables rewrites and the
-        # operation dicts that process() later mutates with a 'rows' key.
-        # Replaces copy.deepcopy of the whole profile output table, which
-        # was a measurable cost when many input tables fan out a loop.
-        output_table = dict(source)
-        src_table = source.get('table')
-        if not src_table:
-            return output_table
-
-        new_table = dict(src_table)
-        output_table['table'] = new_table
-
-        if 'xColumn' in new_table:
-            new_table['xColumn'] = {**new_table['xColumn'], 'tableIndex': input_table_index}
-        if 'yColumn' in new_table:
-            new_table['yColumn'] = {**new_table['yColumn'], 'tableIndex': input_table_index}
-
-        for op_key in ('xOperations', 'yOperations'):
-            ops = new_table.get(op_key)
-            if not ops:
-                continue
-            cloned_ops = []
-            for op in ops:
-                new_op = dict(op)
-                if new_op.get('column'):
-                    new_op['column'] = {**new_op['column'], 'tableIndex': input_table_index}
-                cloned_ops.append(new_op)
-            new_table[op_key] = cloned_ops
-
-        return output_table
 
     def _prepare_reaction_variation_identifier(self):
         return self.profile.data.get('reactionVariations', {}).get('identifiers', [])
@@ -169,9 +135,6 @@ class Converter:
             return True
         return True
 
-    def _get_output_table_index(self, index: int):
-        return self._output_index_offset.get(index, 0)
-
     def _compute_output_index_offsets(self):
         offsets = {}
         result_index = 0
@@ -193,6 +156,25 @@ class Converter:
         self.reaction_variation_matches = self._match(self._reaction_variation_identifiers)
 
     def _match(self, identifiers):
+        """
+
+        :return:
+        """
+
+        matches = []
+        for identifier in identifiers:
+            if not identifier.get('optional'):
+                match = self.match_identifier(identifier)
+                if match is False:
+                    return False
+
+            # store match
+                matches.append(match)
+
+        # if everything matched, return how many identifiers matched
+        return matches
+
+    def _match_identifier(self, identifiers):
         """
 
         :return:
