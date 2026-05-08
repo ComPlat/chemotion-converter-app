@@ -338,6 +338,33 @@
             ],
             "profile_version": "1.9",
             "trigger": "migration:20260422063146"
+        },
+        {
+            "at": "2026-05-08T07:20:36.489719+00:00",
+            "diff": [
+                {
+                    "from": "/tables/0/inputTableIndex",
+                    "op": "move",
+                    "path": "/tables/0/table/yColumn/tableIndex"
+                },
+                {
+                    "from": "/tables/1/inputTableIndex",
+                    "op": "move",
+                    "path": "/tables/0/table/xColumn/tableIndex"
+                },
+                {
+                    "op": "add",
+                    "path": "/tables/1/table/yColumn/tableIndex",
+                    "value": 0
+                },
+                {
+                    "op": "add",
+                    "path": "/tables/1/table/xColumn/tableIndex",
+                    "value": 0
+                }
+            ],
+            "profile_version": "1.10",
+            "trigger": "migration:20260506160404"
         }
     ],
     "id": "15400217-b730-47db-9d5c-a300bce7ae95",
@@ -372,12 +399,12 @@
         }
     ],
     "isDisabled": false,
-    "last_migration": "20260430125545",
+    "last_migration": "20260506160404",
     "objects": [],
     "ols": null,
     "ontology": "",
     "predicates": [],
-    "profile_version": "1.10",
+    "profile_version": "1.11",
     "reactionVariations": {
         "elements": [],
         "identifiers": []
@@ -407,14 +434,13 @@
                 "XUNITS": "wavelength (nm)",
                 "YUNITS": "ABSORBANCE"
             },
+            "inputTableIndex": 0,
             "table": {
                 "xColumn": {
-                    "columnIndex": 0,
-                    "tableIndex": 0
+                    "columnIndex": 0
                 },
                 "yColumn": {
-                    "columnIndex": 1,
-                    "tableIndex": 0
+                    "columnIndex": 1
                 }
             }
         },
@@ -425,14 +451,13 @@
                 "XUNITS": "wavelength (nm)",
                 "YUNITS": "ABSORBANCE"
             },
+            "inputTableIndex": 0,
             "table": {
                 "xColumn": {
-                    "columnIndex": 2,
-                    "tableIndex": 0
+                    "columnIndex": 2
                 },
                 "yColumn": {
-                    "columnIndex": 3,
-                    "tableIndex": 0
+                    "columnIndex": 3
                 }
             }
         }

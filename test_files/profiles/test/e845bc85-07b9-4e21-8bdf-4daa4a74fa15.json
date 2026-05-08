@@ -782,6 +782,33 @@
             ],
             "profile_version": "1.9",
             "trigger": "migration:20260422063146"
+        },
+        {
+            "at": "2026-05-08T07:20:36.473918+00:00",
+            "diff": [
+                {
+                    "from": "/tables/0/inputTableIndex",
+                    "op": "move",
+                    "path": "/tables/0/table/yColumn/tableIndex"
+                },
+                {
+                    "from": "/tables/1/inputTableIndex",
+                    "op": "move",
+                    "path": "/tables/0/table/xColumn/tableIndex"
+                },
+                {
+                    "op": "add",
+                    "path": "/tables/1/table/yColumn/tableIndex",
+                    "value": 2
+                },
+                {
+                    "op": "add",
+                    "path": "/tables/1/table/xColumn/tableIndex",
+                    "value": 2
+                }
+            ],
+            "profile_version": "1.10",
+            "trigger": "migration:20260506160404"
         }
     ],
     "id": "e845bc85-07b9-4e21-8bdf-4daa4a74fa15",
@@ -827,12 +854,12 @@
         }
     ],
     "isDisabled": false,
-    "last_migration": "20260430125545",
+    "last_migration": "20260506160404",
     "objects": [],
     "ols": null,
     "ontology": "",
     "predicates": [],
-    "profile_version": "1.10",
+    "profile_version": "1.11",
     "reactionVariations": {
         "elements": [],
         "identifiers": []
@@ -862,14 +889,13 @@
                 "XUNITS": "DEGREES CELSIUS",
                 "YUNITS": "Weight %"
             },
+            "inputTableIndex": 2,
             "table": {
                 "xColumn": {
-                    "columnIndex": 1,
-                    "tableIndex": 2
+                    "columnIndex": 1
                 },
                 "yColumn": {
-                    "columnIndex": 3,
-                    "tableIndex": 2
+                    "columnIndex": 3
                 }
             }
         },
@@ -880,14 +906,13 @@
                 "XUNITS": "DEGREES CELSIUS",
                 "YUNITS": "DERIVATIVE WEIGHT"
             },
+            "inputTableIndex": 2,
             "table": {
                 "xColumn": {
-                    "columnIndex": 1,
-                    "tableIndex": 2
+                    "columnIndex": 1
                 },
                 "yColumn": {
-                    "columnIndex": 4,
-                    "tableIndex": 2
+                    "columnIndex": 4
                 }
             }
         }

@@ -304,6 +304,23 @@
             ],
             "profile_version": "1.9",
             "trigger": "migration:20260422063146"
+        },
+        {
+            "at": "2026-05-08T07:20:36.269176+00:00",
+            "diff": [
+                {
+                    "from": "/tables/0/inputTableIndex",
+                    "op": "move",
+                    "path": "/tables/0/table/yColumn/tableIndex"
+                },
+                {
+                    "op": "add",
+                    "path": "/tables/0/table/xColumn/tableIndex",
+                    "value": 0
+                }
+            ],
+            "profile_version": "1.10",
+            "trigger": "migration:20260506160404"
         }
     ],
     "id": "8079b064-6314-4d99-b13b-e4f590cf556f",
@@ -330,12 +347,12 @@
         }
     ],
     "isDisabled": false,
-    "last_migration": "20260430125545",
+    "last_migration": "20260506160404",
     "objects": [],
     "ols": null,
     "ontology": "",
     "predicates": [],
-    "profile_version": "1.10",
+    "profile_version": "1.11",
     "reactionVariations": {
         "elements": [],
         "identifiers": []
@@ -365,14 +382,13 @@
                 "XUNITS": "NANOMETERS",
                 "YUNITS": "ABSORBANCE"
             },
+            "inputTableIndex": 0,
             "table": {
                 "xColumn": {
-                    "columnIndex": 0,
-                    "tableIndex": 0
+                    "columnIndex": 0
                 },
                 "yColumn": {
-                    "columnIndex": 1,
-                    "tableIndex": 0
+                    "columnIndex": 1
                 }
             }
         }

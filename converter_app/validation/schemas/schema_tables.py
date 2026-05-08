@@ -14,6 +14,10 @@ tables_schema = {
                 }
             }
         },
+        "inputTableIndex": {
+            "type": "number",
+            "minimum": 0
+        },
         "loopType": {
             "type": "string"
         },

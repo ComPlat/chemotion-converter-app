@@ -76,10 +76,6 @@ identifiers_schema = {
     "additionalProperties": True,
 
     "required": [
-        "isLoobDatatableOutput",
-        "isDatatableOutput",
-        "isDatasetOutput",
-        "isRdfOutput",
         "match",
         "optional",
         "type",

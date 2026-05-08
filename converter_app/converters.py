@@ -19,6 +19,10 @@ class Converter:
     """
 
     def __init__(self, profile, file_data):
+        self._output_index_offset = None
+        self._has_loop_cache = None
+        self._loop_match_cache = None
+        self._joined_headers = None
         self.profile = profile
         self.matches = []
         self.reaction_variation_matches = []
@@ -28,6 +32,10 @@ class Converter:
         self.profile_output_tables = self.profile.data.get('tables', [])
         self.output_tables = []
 
+        self.identifiers = self._prepare_identifier()
+        self._reaction_variation_identifiers = self._prepare_reaction_variation_identifier()
+
+    def prepare(self):
         # Precomputed once so the loop helpers don't redo the same
         # (output_index, input_index) work on every call. Without these,
         # _get_output_table_index re-scans every output/input pair on every
@@ -49,24 +57,18 @@ class Converter:
                     self._compute_check_loop_condition(out_idx, in_idx)
         self._output_index_offset = self._compute_output_index_offsets()
 
-        self.identifiers = self._prepare_identifier()
-        self._reaction_variation_identifiers = self._prepare_reaction_variation_identifier()
-
         for output_table_index, output_table in enumerate(self.profile_output_tables):
             if self._has_loop(output_table_index):
                 self._prepare_tables(output_table_index)
             else:
-                output_table['tableIndexList'] = []
+                output_table['tableIndexList'] = [output_table['inputTableIndex']]
 
     def _prepare_tables(self, index):
-        # match the output Table to the input tables and adjust the tableIndexes to the input table
-        source = self.profile_output_tables[index]
+        # match the output Table to the input tables and adjust the tableIndexes t_get_output_table_indexo the input table
         for input_table_index, _ in enumerate(self.input_tables):
             if not self._check_loop_condition(index, input_table_index):
                 continue
-            self.output_tables.append(
-                self._clone_output_table_for_loop(source, input_table_index)
-            )
+            
 
     @staticmethod
     def _clone_output_table_for_loop(source, input_table_index):
@@ -102,43 +104,10 @@ class Converter:
         return output_table
 
     def _prepare_reaction_variation_identifier(self):
-        profile_identifiers = self.profile.data.get('reactionVariations', {}).get('identifiers', [])
-        return self._prepare_identifier_object(profile_identifiers)
+        return self.profile.data.get('reactionVariations', {}).get('identifiers', [])
 
     def _prepare_identifier(self):
-        profile_identifiers = self.profile.data.get('identifiers', [])
-        return self._prepare_identifier_object(profile_identifiers)
-
-    def _prepare_identifier_object(self, profile_identifiers):
-        res_identifiers = []
-        for identifier in profile_identifiers:
-            output_table_index = identifier.get('outputTableIndex')
-            if output_table_index is None:
-                # if no outputTableIndex was set this identifier is valid for every table
-                # no adjustment has to be done
-                res_identifiers.append(identifier)
-            else:
-                if self._has_loop(output_table_index):
-                    # adjust this identifier for every input table
-                    base_offset = self._get_output_table_index(output_table_index)
-                    matched_inputs = [
-                        idx for idx in range(len(self.input_tables))
-                        if self._check_loop_condition(output_table_index, idx)
-                    ]
-                    for i, input_table_index in enumerate(matched_inputs):
-                        # shallow copy is enough — only top-level keys are rewritten
-                        identifier_copy = dict(identifier)
-                        identifier_copy['outputTableIndex'] = i + base_offset
-
-                        # adjust the (input)tableIndex as well if it was not null
-                        if identifier_copy.get('tableIndex') is not None:
-                            identifier_copy['tableIndex'] = input_table_index
-
-                        res_identifiers.append(identifier_copy)
-                else:
-                    identifier['outputTableIndex'] = self._get_output_table_index(output_table_index)
-                    res_identifiers.append(identifier)
-        return res_identifiers
+        return self.profile.data.get('identifiers', [])
 
     def _has_loop(self, index):
         return self._has_loop_cache.get(index, False)
@@ -193,7 +162,7 @@ class Converter:
                     if not key in self.input_tables[input_table_index].get('metadata', {}):
                         return False
                 else:
-                    table_index = int(metadata.get('table'))
+                    table_index = self.profile_output_tables[index]['inputTableIndex']
                     value = self.input_tables[table_index].get('metadata', {}).get(key, None)
                     if value != self.input_tables[input_table_index].get('metadata', {}).get(key, None):
                         return False
