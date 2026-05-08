@@ -66,6 +66,11 @@
                         ""
                     ],
                     "metadata": {
+                        "__UNIT_%": "%",
+                        "__UNIT_PPM": "ppm",
+                        "__UNIT_gram": "g",
+                        "__UNIT_liter": "l",
+                        "__UNIT_mol": "mol",
                         "column_00": "##Temp./\u00b0C",
                         "column_01": "DSC/(mW/mg)",
                         "columns": "2",
@@ -227,6 +232,44 @@
             ],
             "profile_version": "1.7",
             "trigger": "undo:1.6"
+        },
+        {
+            "at": "2026-05-06T08:56:29.177920+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/reactionVariations"
+                }
+            ],
+            "profile_version": "1.8",
+            "trigger": "migration:20260417132254"
+        },
+        {
+            "at": "2026-05-06T08:56:29.178312+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_liter"
+                },
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_PPM"
+                },
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_mol"
+                },
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_%"
+                },
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_gram"
+                }
+            ],
+            "profile_version": "1.9",
+            "trigger": "migration:20260422063146"
         }
     ],
     "id": "3e2fb90e-b6b6-4152-9182-ed8e203a58b5",
@@ -565,12 +608,16 @@
         }
     ],
     "isDisabled": false,
-    "last_migration": "20260504065656",
+    "last_migration": "20260430125545",
     "objects": [],
     "ols": "CHMO:0000684",
     "ontology": "",
     "predicates": [],
-    "profile_version": "1.8",
+    "profile_version": "1.10",
+    "reactionVariations": {
+        "elements": [],
+        "identifiers": []
+    },
     "rootOntology": {
         "description": [
             "The measurement of thermodynamic parameters (e.g. enthalpy) during a chemical or biochemical reaction of both a sample and a reference, by the known variation (step-wise or linear) of one variable, whilst a second is kept constant."

@@ -42,6 +42,12 @@ class JcampZipWriter(Writer):
             rdf_result = rdf_writer.write()
             self._update_sha_binary(sha_strings, rdf_result, file_name)
             zf.writestr(file_name, rdf_result.decode())
+            rv_matches = self._converter.get_reaction_variation_matches()
+            if rv_matches['samples']:
+                reaction_variation_file_name = 'metadata/reaction_variation.json'
+                reaction_variation = json.dumps(rv_matches, indent=2)
+                self._update_sha_strings(sha_strings, reaction_variation, reaction_variation_file_name)
+                zf.writestr(reaction_variation_file_name, reaction_variation)
 
             jc = JcampWriter(self._converter)
             for idx, tables in enumerate(jc.process_ntuples_tables()):
