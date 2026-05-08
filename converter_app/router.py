@@ -263,7 +263,7 @@ def profile_router(app: Flask, auth: HTTPBasicAuth):
         profile_data = json.loads(request.data)
         profile = Profile(profile_data, client_id)
         if profile.clean():
-            Migrations().migrate_profile(profile)
+            Migrations().migrate_profile(profile, True)
             try:
                 validate_profile(profile.as_dict)
                 profile.save()

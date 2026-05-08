@@ -218,6 +218,11 @@
                         "USE_TRIGGER_START": "False",
                         "VS_PREV_E": "False",
                         "WEIGHT": "0.000E+000",
+                        "__UNIT_%": "%",
+                        "__UNIT_PPM": "ppm",
+                        "__UNIT_gram": "g",
+                        "__UNIT_liter": "l",
+                        "__UNIT_mol": "mol",
                         "column_00": "time",
                         "column_01": "potential",
                         "column_02": "current",
@@ -961,215 +966,42 @@
             "trigger": "undo:1.6"
         },
         {
-            "at": "2026-05-06T14:31:10.821766+00:00",
+            "at": "2026-05-06T08:56:29.082429+00:00",
             "diff": [
                 {
                     "op": "remove",
-                    "path": "/identifiers/2/isRdfOutput"
-                },
-                {
-                    "op": "remove",
-                    "path": "/identifiers/2/isDatatableOutput"
-                },
-                {
-                    "op": "remove",
-                    "path": "/identifiers/2/isDatasetOutput"
-                },
-                {
-                    "op": "replace",
-                    "path": "/identifiers/2/outputTableIndex",
-                    "value": null
-                },
-                {
-                    "op": "remove",
-                    "path": "/identifiers/3/isRdfOutput"
-                },
-                {
-                    "op": "remove",
-                    "path": "/identifiers/3/isDatatableOutput"
-                },
-                {
-                    "op": "remove",
-                    "path": "/identifiers/3/isDatasetOutput"
-                },
-                {
-                    "op": "replace",
-                    "path": "/identifiers/3/outputTableIndex",
-                    "value": null
-                },
-                {
-                    "op": "remove",
-                    "path": "/identifiers/4/isRdfOutput"
-                },
-                {
-                    "op": "remove",
-                    "path": "/identifiers/4/isDatatableOutput"
-                },
-                {
-                    "op": "remove",
-                    "path": "/identifiers/4/isDatasetOutput"
-                },
-                {
-                    "op": "replace",
-                    "path": "/identifiers/4/outputTableIndex",
-                    "value": null
-                },
-                {
-                    "op": "remove",
-                    "path": "/identifiers/5/isRdfOutput"
-                },
-                {
-                    "op": "remove",
-                    "path": "/identifiers/5/isDatatableOutput"
-                },
-                {
-                    "op": "remove",
-                    "path": "/identifiers/5/isDatasetOutput"
-                },
-                {
-                    "op": "replace",
-                    "path": "/identifiers/5/outputTableIndex",
-                    "value": null
-                },
-                {
-                    "op": "remove",
-                    "path": "/identifiers/6/isRdfOutput"
-                },
-                {
-                    "op": "remove",
-                    "path": "/identifiers/6/isDatatableOutput"
-                },
-                {
-                    "op": "remove",
-                    "path": "/identifiers/6/isDatasetOutput"
-                },
-                {
-                    "op": "replace",
-                    "path": "/identifiers/6/outputTableIndex",
-                    "value": null
-                },
-                {
-                    "op": "remove",
-                    "path": "/identifiers/7/isRdfOutput"
-                },
-                {
-                    "op": "remove",
-                    "path": "/identifiers/7/isDatatableOutput"
-                },
-                {
-                    "op": "remove",
-                    "path": "/identifiers/7/isDatasetOutput"
-                },
-                {
-                    "op": "replace",
-                    "path": "/identifiers/7/outputTableIndex",
-                    "value": null
-                },
-                {
-                    "op": "remove",
-                    "path": "/identifiers/8/isRdfOutput"
-                },
-                {
-                    "op": "remove",
-                    "path": "/identifiers/8/isDatatableOutput"
-                },
-                {
-                    "op": "remove",
-                    "path": "/identifiers/8/isDatasetOutput"
-                },
-                {
-                    "op": "replace",
-                    "path": "/identifiers/8/outputTableIndex",
-                    "value": null
-                },
-                {
-                    "op": "remove",
-                    "path": "/identifiers/9/isRdfOutput"
-                },
-                {
-                    "op": "remove",
-                    "path": "/identifiers/9/isDatatableOutput"
-                },
-                {
-                    "op": "remove",
-                    "path": "/identifiers/9/isDatasetOutput"
-                },
-                {
-                    "op": "replace",
-                    "path": "/identifiers/9/outputTableIndex",
-                    "value": null
-                },
-                {
-                    "op": "remove",
-                    "path": "/identifiers/10/isRdfOutput"
-                },
-                {
-                    "op": "remove",
-                    "path": "/identifiers/10/isDatatableOutput"
-                },
-                {
-                    "op": "remove",
-                    "path": "/identifiers/10/isDatasetOutput"
-                },
-                {
-                    "op": "replace",
-                    "path": "/identifiers/10/outputTableIndex",
-                    "value": null
-                },
-                {
-                    "op": "remove",
-                    "path": "/identifiers/11/isRdfOutput"
-                },
-                {
-                    "op": "remove",
-                    "path": "/identifiers/11/isDatatableOutput"
-                },
-                {
-                    "op": "remove",
-                    "path": "/identifiers/11/isDatasetOutput"
-                },
-                {
-                    "op": "replace",
-                    "path": "/identifiers/11/outputTableIndex",
-                    "value": null
-                },
-                {
-                    "op": "remove",
-                    "path": "/identifiers/12/isRdfOutput"
-                },
-                {
-                    "op": "remove",
-                    "path": "/identifiers/12/isDatatableOutput"
-                },
-                {
-                    "op": "remove",
-                    "path": "/identifiers/12/isDatasetOutput"
-                },
-                {
-                    "op": "replace",
-                    "path": "/identifiers/12/outputTableIndex",
-                    "value": null
-                },
-                {
-                    "op": "remove",
-                    "path": "/identifiers/13/isRdfOutput"
-                },
-                {
-                    "op": "remove",
-                    "path": "/identifiers/13/isDatatableOutput"
-                },
-                {
-                    "op": "remove",
-                    "path": "/identifiers/13/isDatasetOutput"
-                },
-                {
-                    "op": "replace",
-                    "path": "/identifiers/13/outputTableIndex",
-                    "value": null
+                    "path": "/reactionVariations"
                 }
             ],
             "profile_version": "1.8",
-            "trigger": "migration:20260506160404"
+            "trigger": "migration:20260417132254"
+        },
+        {
+            "at": "2026-05-06T08:56:29.083073+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_liter"
+                },
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_mol"
+                },
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_PPM"
+                },
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_%"
+                },
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_gram"
+                }
+            ],
+            "profile_version": "1.9",
+            "trigger": "migration:20260422063146"
         }
     ],
     "id": "CVprofile_pssession",
@@ -1197,18 +1029,13 @@
             "datatype": null,
             "editable": true,
             "id": "#2tableMetadata",
-            "isDatasetOutput": true,
-            "isDatatableOutput": false,
-            "isRdfOutput": false,
             "key": "N_SCANS",
             "match": "any",
             "object": null,
             "optional": true,
             "outputKey": "cycles",
             "outputLayer": "meas",
-            "outputTableIndex": [
-                null
-            ],
+            "outputTableIndex": null,
             "predicate": null,
             "subject": null,
             "tableIndex": 0,
@@ -1219,18 +1046,13 @@
             "datatype": null,
             "editable": true,
             "id": "#3tableHeader",
-            "isDatasetOutput": true,
-            "isDatatableOutput": false,
-            "isRdfOutput": false,
             "lineNumber": 2,
             "match": "regex",
             "object": null,
             "optional": true,
             "outputKey": "time",
             "outputLayer": "general",
-            "outputTableIndex": [
-                null
-            ],
+            "outputTableIndex": null,
             "predicate": null,
             "subject": null,
             "tableIndex": 0,
@@ -1241,18 +1063,13 @@
             "datatype": null,
             "editable": true,
             "id": "#4tableHeader",
-            "isDatasetOutput": true,
-            "isDatatableOutput": false,
-            "isRdfOutput": false,
             "lineNumber": 2,
             "match": "regex",
             "object": null,
             "optional": true,
             "outputKey": "date",
             "outputLayer": "general",
-            "outputTableIndex": [
-                null
-            ],
+            "outputTableIndex": null,
             "predicate": null,
             "subject": null,
             "tableIndex": 0,
@@ -1263,18 +1080,13 @@
             "datatype": null,
             "editable": true,
             "id": "#5tableMetadata",
-            "isDatasetOutput": true,
-            "isDatatableOutput": false,
-            "isRdfOutput": false,
             "key": "deviceserial",
             "match": "any",
             "object": null,
             "optional": true,
             "outputKey": "serial",
             "outputLayer": "instrument",
-            "outputTableIndex": [
-                null
-            ],
+            "outputTableIndex": null,
             "predicate": null,
             "subject": null,
             "tableIndex": 0,
@@ -1285,18 +1097,13 @@
             "datatype": null,
             "editable": true,
             "id": "#6tableMetadata",
-            "isDatasetOutput": true,
-            "isDatatableOutput": false,
-            "isRdfOutput": false,
             "key": "SCAN_RATE",
             "match": "any",
             "object": null,
             "optional": true,
             "outputKey": "scan_rate",
             "outputLayer": "meas",
-            "outputTableIndex": [
-                null
-            ],
+            "outputTableIndex": null,
             "predicate": null,
             "subject": null,
             "tableIndex": 0,
@@ -1307,18 +1114,13 @@
             "datatype": null,
             "editable": true,
             "id": "#7tableHeader",
-            "isDatasetOutput": true,
-            "isDatatableOutput": false,
-            "isRdfOutput": false,
             "lineNumber": 1,
             "match": "regex",
             "object": null,
             "optional": true,
             "outputKey": "software",
             "outputLayer": "software",
-            "outputTableIndex": [
-                null
-            ],
+            "outputTableIndex": null,
             "predicate": null,
             "subject": null,
             "tableIndex": 0,
@@ -1329,18 +1131,13 @@
             "datatype": null,
             "editable": true,
             "id": "#8tableHeader",
-            "isDatasetOutput": true,
-            "isDatatableOutput": false,
-            "isRdfOutput": false,
             "lineNumber": 1,
             "match": "regex",
             "object": null,
             "optional": true,
             "outputKey": "software_version",
             "outputLayer": "software",
-            "outputTableIndex": [
-                null
-            ],
+            "outputTableIndex": null,
             "predicate": null,
             "subject": null,
             "tableIndex": 0,
@@ -1351,18 +1148,13 @@
             "datatype": null,
             "editable": true,
             "id": "#9tableMetadata",
-            "isDatasetOutput": true,
-            "isDatatableOutput": false,
-            "isRdfOutput": false,
             "key": "E_STEP",
             "match": "any",
             "object": null,
             "optional": true,
             "outputKey": "step_size",
             "outputLayer": "meas",
-            "outputTableIndex": [
-                null
-            ],
+            "outputTableIndex": null,
             "predicate": null,
             "subject": null,
             "tableIndex": 0,
@@ -1373,18 +1165,13 @@
             "datatype": null,
             "editable": true,
             "id": "#10tableMetadata",
-            "isDatasetOutput": true,
-            "isDatatableOutput": false,
-            "isRdfOutput": false,
             "key": "E_BEGIN",
             "match": "any",
             "object": null,
             "optional": true,
             "outputKey": "voltage_start",
             "outputLayer": "meas",
-            "outputTableIndex": [
-                null
-            ],
+            "outputTableIndex": null,
             "predicate": null,
             "subject": null,
             "tableIndex": 0,
@@ -1395,18 +1182,13 @@
             "datatype": null,
             "editable": true,
             "id": "#11tableMetadata",
-            "isDatasetOutput": true,
-            "isDatatableOutput": false,
-            "isRdfOutput": false,
             "key": "E_VTX1",
             "match": "any",
             "object": null,
             "optional": true,
             "outputKey": "voltage_limit_one",
             "outputLayer": "meas",
-            "outputTableIndex": [
-                null
-            ],
+            "outputTableIndex": null,
             "predicate": null,
             "subject": null,
             "tableIndex": 0,
@@ -1417,18 +1199,13 @@
             "datatype": null,
             "editable": true,
             "id": "#12tableMetadata",
-            "isDatasetOutput": true,
-            "isDatatableOutput": false,
-            "isRdfOutput": false,
             "key": "E_VTX2",
             "match": "any",
             "object": null,
             "optional": true,
             "outputKey": "voltage_limit_two",
             "outputLayer": "meas",
-            "outputTableIndex": [
-                null
-            ],
+            "outputTableIndex": null,
             "predicate": null,
             "subject": null,
             "tableIndex": 0,
@@ -1439,18 +1216,13 @@
             "datatype": null,
             "editable": true,
             "id": "#13tableMetadata",
-            "isDatasetOutput": true,
-            "isDatatableOutput": false,
-            "isRdfOutput": false,
             "key": "E_END",
             "match": "any",
             "object": null,
             "optional": true,
             "outputKey": "voltage_limit_end",
             "outputLayer": "meas",
-            "outputTableIndex": [
-                null
-            ],
+            "outputTableIndex": null,
             "predicate": null,
             "subject": null,
             "tableIndex": 0,
@@ -1459,12 +1231,16 @@
         }
     ],
     "isDisabled": false,
-    "last_migration": "20260506160404",
+    "last_migration": "20260430125545",
     "objects": [],
     "ols": "CHMO:0000025",
     "ontology": "",
     "predicates": [],
-    "profile_version": "1.9",
+    "profile_version": "1.10",
+    "reactionVariations": {
+        "elements": [],
+        "identifiers": []
+    },
     "rootOntology": {
         "description": [
             "An electrochemical technique where the cell current is measured as a function of time and as a function of the potential between the indicator and reference electrodes. The potential is varied linearly and inverts at the end point resulting in a cycle."

@@ -21,6 +21,7 @@ class Converter:
     def __init__(self, profile, file_data):
         self.profile = profile
         self.matches = []
+        self.reaction_variation_matches = []
         self.tables = []
         self.file_metadata = file_data.get('metadata', {})
         self.input_tables = file_data.get('tables', [])
@@ -48,7 +49,8 @@ class Converter:
                     self._compute_check_loop_condition(out_idx, in_idx)
         self._output_index_offset = self._compute_output_index_offsets()
 
-        self._prepare_identifier()
+        self.identifiers = self._prepare_identifier()
+        self._reaction_variation_identifiers = self._prepare_reaction_variation_identifier()
 
         for output_table_index, output_table in enumerate(self.profile_output_tables):
             if self._has_loop(output_table_index):
@@ -99,15 +101,22 @@ class Converter:
 
         return output_table
 
+    def _prepare_reaction_variation_identifier(self):
+        profile_identifiers = self.profile.data.get('reactionVariations', {}).get('identifiers', [])
+        return self._prepare_identifier_object(profile_identifiers)
+
     def _prepare_identifier(self):
         profile_identifiers = self.profile.data.get('identifiers', [])
-        self.identifiers = []
+        return self._prepare_identifier_object(profile_identifiers)
+
+    def _prepare_identifier_object(self, profile_identifiers):
+        res_identifiers = []
         for identifier in profile_identifiers:
             output_table_index = identifier.get('outputTableIndex')
             if output_table_index is None:
                 # if no outputTableIndex was set this identifier is valid for every table
                 # no adjustment has to be done
-                self.identifiers.append(identifier)
+                res_identifiers.append(identifier)
             else:
                 if self._has_loop(output_table_index):
                     # adjust this identifier for every input table
@@ -125,10 +134,11 @@ class Converter:
                         if identifier_copy.get('tableIndex') is not None:
                             identifier_copy['tableIndex'] = input_table_index
 
-                        self.identifiers.append(identifier_copy)
+                        res_identifiers.append(identifier_copy)
                 else:
                     identifier['outputTableIndex'] = self._get_output_table_index(output_table_index)
-                    self.identifiers.append(identifier)
+                    res_identifiers.append(identifier)
+        return res_identifiers
 
     def _has_loop(self, index):
         return self._has_loop_cache.get(index, False)
@@ -207,11 +217,20 @@ class Converter:
         return offsets
 
     def match(self):
+        self.matches = self._match(self.identifiers)
+        return len(self.matches)
+
+    def match_reaction_variation_identifier(self):
+        self.reaction_variation_matches = self._match(self._reaction_variation_identifiers)
+
+    def _match(self, identifiers):
         """
 
         :return:
         """
-        for identifier in self.identifiers:
+
+        matches = []
+        for identifier in identifiers:
             match = self.match_identifier(identifier)
             if match is False and not identifier.get('optional'):
                 # return immediately if one (non optional) identifier does not match
@@ -223,13 +242,13 @@ class Converter:
                     match['value'] = self._run_identifier_operation(match['value'], match_operation)
 
             # store match
-            self.matches.append({
+            matches.append({
                 'identifier': identifier,
                 'result': match
             })
 
         # if everything matched, return how many identifiers matched
-        return len(self.matches)
+        return matches
 
     def match_identifier(self, identifier):
         """
@@ -342,13 +361,25 @@ class Converter:
         else:
             return False
 
+    def get_reaction_variation_matches(self):
+        values = []
+        for [sample_id, value_id, unit_id] in self.profile.data.get('reactionVariations', {}).get('elements', []):
+            value = next((x for x in self.reaction_variation_matches if x['identifier']['id'] == value_id), {}).get('result', {}).get('value')
+            sample = next((x for x in self.reaction_variation_matches if x['identifier']['id'] == sample_id), {}).get('result', {}).get('value')
+            unit = next((x for x in self.reaction_variation_matches if x['identifier']['id'] == unit_id), {}).get('result', {}).get('value')
+            values.append([sample, value, unit])
+        return {
+            'samples': values
+        }
+
+
     def process(self):
         """
         Runs converting process efficiently.
         """
 
         ntuples_count = defaultdict(int)  # Track NTUPLES_ID occurrences
-
+        self.match_reaction_variation_identifier()
         for output_table_index, output_table in enumerate(self.output_tables):
             # --- Prepare header and metadata ---
             header = self._process_prepare_header(output_table)

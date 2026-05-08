@@ -77,6 +77,8 @@ class CamelCaseName(click.ParamType):
     regex = re.compile(r'^[A-Za-z]+$')
 
     def convert(self, value, param, ctx):
+        if isinstance(value, list):
+            return value
         if not self.regex.match(value):
             raise click.BadParameter(f"{value} is not a valid name! Must be letters only.")
         # Transform to snake-case list like original code

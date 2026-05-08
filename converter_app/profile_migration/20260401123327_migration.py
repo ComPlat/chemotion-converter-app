@@ -20,7 +20,7 @@ class ProfileMigrationScript(ProfileMigration):
         the migration script must be applied.
         """
 
-        return '20260113143334'
+        return '20260323144702'
 
     @property
     def identifier(self):
