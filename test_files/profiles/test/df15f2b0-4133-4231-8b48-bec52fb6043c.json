@@ -1387,6 +1387,744 @@
             ],
             "profile_version": "1.7",
             "trigger": "undo:1.6"
+        },
+        {
+            "at": "2026-05-06T14:31:10.937704+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/identifiers/2/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/2/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/2/isDatasetOutput"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/2/outputTableIndex",
+                    "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/3/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/3/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/3/isDatasetOutput"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/3/outputTableIndex",
+                    "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/4/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/4/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/4/isDatasetOutput"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/4/outputTableIndex",
+                    "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/5/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/5/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/5/isDatasetOutput"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/5/outputTableIndex",
+                    "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/6/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/6/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/6/isDatasetOutput"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/6/outputTableIndex",
+                    "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/7/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/7/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/7/isDatasetOutput"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/7/outputTableIndex",
+                    "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/8/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/8/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/8/isDatasetOutput"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/8/outputTableIndex",
+                    "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/9/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/9/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/9/isDatasetOutput"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/9/outputTableIndex",
+                    "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/10/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/10/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/10/isDatasetOutput"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/10/outputTableIndex",
+                    "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/11/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/11/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/11/isDatasetOutput"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/11/outputTableIndex",
+                    "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/12/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/12/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/12/isDatasetOutput"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/12/outputTableIndex",
+                    "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/13/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/13/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/13/isDatasetOutput"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/13/outputTableIndex",
+                    "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/14/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/14/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/14/isDatasetOutput"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/14/outputTableIndex",
+                    "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/15/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/15/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/15/isDatasetOutput"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/15/outputTableIndex",
+                    "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/16/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/16/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/16/isDatasetOutput"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/16/outputTableIndex",
+                    "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/17/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/17/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/17/isDatasetOutput"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/17/outputTableIndex",
+                    "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/18/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/18/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/18/isDatasetOutput"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/18/outputTableIndex",
+                    "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/19/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/19/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/19/isDatasetOutput"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/19/outputTableIndex",
+                    "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/20/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/20/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/20/isDatasetOutput"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/20/outputTableIndex",
+                    "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/21/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/21/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/21/isDatasetOutput"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/21/outputTableIndex",
+                    "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/22/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/22/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/22/isDatasetOutput"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/22/outputTableIndex",
+                    "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/23/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/23/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/23/isDatasetOutput"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/23/outputTableIndex",
+                    "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/24/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/24/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/24/isDatasetOutput"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/24/outputTableIndex",
+                    "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/25/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/25/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/25/isDatasetOutput"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/25/outputTableIndex",
+                    "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/26/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/26/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/26/isDatasetOutput"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/26/outputTableIndex",
+                    "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/27/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/27/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/27/isDatasetOutput"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/27/outputTableIndex",
+                    "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/28/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/28/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/28/isDatasetOutput"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/28/outputTableIndex",
+                    "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/29/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/29/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/29/isDatasetOutput"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/29/outputTableIndex",
+                    "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/30/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/30/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/30/isDatasetOutput"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/30/outputTableIndex",
+                    "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/31/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/31/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/31/isDatasetOutput"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/31/outputTableIndex",
+                    "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/32/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/32/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/32/isDatasetOutput"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/32/outputTableIndex",
+                    "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/33/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/33/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/33/isDatasetOutput"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/33/outputTableIndex",
+                    "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/34/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/34/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/34/isDatasetOutput"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/34/outputTableIndex",
+                    "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/35/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/35/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/35/isDatasetOutput"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/35/outputTableIndex",
+                    "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/36/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/36/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/36/isDatasetOutput"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/36/outputTableIndex",
+                    "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/37/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/37/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/37/isDatasetOutput"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/37/outputTableIndex",
+                    "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/38/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/38/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/38/isDatasetOutput"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/38/outputTableIndex",
+                    "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/39/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/39/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/39/isDatasetOutput"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/39/outputTableIndex",
+                    "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/40/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/40/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/40/isDatasetOutput"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/40/outputTableIndex",
+                    "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/41/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/41/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/41/isDatasetOutput"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/41/outputTableIndex",
+                    "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/42/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/42/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/42/isDatasetOutput"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/42/outputTableIndex",
+                    "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/43/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/43/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/43/isDatasetOutput"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/43/outputTableIndex",
+                    "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/44/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/44/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/44/isDatasetOutput"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/44/outputTableIndex",
+                    "value": 0
+                }
+            ],
+            "profile_version": "1.8",
+            "trigger": "migration:20260506160404"
         }
     ],
     "id": "df15f2b0-4133-4231-8b48-bec52fb6043c",
@@ -1413,13 +2151,18 @@
             "datatype": null,
             "editable": true,
             "id": "#2tableMetadata",
+            "isDatasetOutput": true,
+            "isDatatableOutput": false,
+            "isRdfOutput": false,
             "key": "_cell_length_a",
             "match": "regex",
             "object": null,
             "optional": true,
             "outputKey": "a",
             "outputLayer": "res",
-            "outputTableIndex": 0,
+            "outputTableIndex": [
+                0
+            ],
             "predicate": null,
             "subject": null,
             "tableIndex": 0,
@@ -1430,13 +2173,18 @@
             "datatype": null,
             "editable": true,
             "id": "#3tableMetadata",
+            "isDatasetOutput": true,
+            "isDatatableOutput": false,
+            "isRdfOutput": false,
             "key": "_cell_length_b",
             "match": "regex",
             "object": null,
             "optional": true,
             "outputKey": "b",
             "outputLayer": "res",
-            "outputTableIndex": 0,
+            "outputTableIndex": [
+                0
+            ],
             "predicate": null,
             "subject": null,
             "tableIndex": 0,
@@ -1447,13 +2195,18 @@
             "datatype": null,
             "editable": true,
             "id": "#4tableMetadata",
+            "isDatasetOutput": true,
+            "isDatatableOutput": false,
+            "isRdfOutput": false,
             "key": "_cell_length_c",
             "match": "regex",
             "object": null,
             "optional": true,
             "outputKey": "c",
             "outputLayer": "res",
-            "outputTableIndex": 0,
+            "outputTableIndex": [
+                0
+            ],
             "predicate": null,
             "subject": null,
             "tableIndex": 0,
@@ -1464,13 +2217,18 @@
             "datatype": null,
             "editable": true,
             "id": "#5tableMetadata",
+            "isDatasetOutput": true,
+            "isDatatableOutput": false,
+            "isRdfOutput": false,
             "key": "_cell_angle_alpha",
             "match": "any",
             "object": null,
             "optional": true,
             "outputKey": "alpha",
             "outputLayer": "res",
-            "outputTableIndex": 0,
+            "outputTableIndex": [
+                0
+            ],
             "predicate": null,
             "subject": null,
             "tableIndex": 0,
@@ -1481,13 +2239,18 @@
             "datatype": null,
             "editable": true,
             "id": "#6tableMetadata",
+            "isDatasetOutput": true,
+            "isDatatableOutput": false,
+            "isRdfOutput": false,
             "key": "_cell_angle_beta",
             "match": "any",
             "object": null,
             "optional": true,
             "outputKey": "beta",
             "outputLayer": "res",
-            "outputTableIndex": 0,
+            "outputTableIndex": [
+                0
+            ],
             "predicate": null,
             "subject": null,
             "tableIndex": 0,
@@ -1498,13 +2261,18 @@
             "datatype": null,
             "editable": true,
             "id": "#7tableMetadata",
+            "isDatasetOutput": true,
+            "isDatatableOutput": false,
+            "isRdfOutput": false,
             "key": "_cell_angle_gamma",
             "match": "any",
             "object": null,
             "optional": true,
             "outputKey": "gamma",
             "outputLayer": "res",
-            "outputTableIndex": 0,
+            "outputTableIndex": [
+                0
+            ],
             "predicate": null,
             "subject": null,
             "tableIndex": 0,
@@ -1515,13 +2283,18 @@
             "datatype": null,
             "editable": true,
             "id": "#8tableMetadata",
+            "isDatasetOutput": true,
+            "isDatatableOutput": false,
+            "isRdfOutput": false,
             "key": "_space_group_crystal_system",
             "match": "any",
             "object": null,
             "optional": true,
             "outputKey": "system",
             "outputLayer": "res",
-            "outputTableIndex": 0,
+            "outputTableIndex": [
+                0
+            ],
             "predicate": null,
             "subject": null,
             "tableIndex": 0,
@@ -1532,13 +2305,18 @@
             "datatype": null,
             "editable": true,
             "id": "#9tableMetadata",
+            "isDatasetOutput": true,
+            "isDatatableOutput": false,
+            "isRdfOutput": false,
             "key": "_space_group_name_H-M_alt",
             "match": "any",
             "object": null,
             "optional": true,
             "outputKey": "space",
             "outputLayer": "res",
-            "outputTableIndex": 0,
+            "outputTableIndex": [
+                0
+            ],
             "predicate": null,
             "subject": null,
             "tableIndex": 0,
@@ -1549,13 +2327,18 @@
             "datatype": null,
             "editable": true,
             "id": "#10tableMetadata",
+            "isDatasetOutput": true,
+            "isDatatableOutput": false,
+            "isRdfOutput": false,
             "key": "_cell_volume",
             "match": "any",
             "object": null,
             "optional": true,
             "outputKey": "volume",
             "outputLayer": "res",
-            "outputTableIndex": 0,
+            "outputTableIndex": [
+                0
+            ],
             "predicate": null,
             "subject": null,
             "tableIndex": 0,
@@ -1566,13 +2349,18 @@
             "datatype": null,
             "editable": true,
             "id": "#11tableMetadata",
+            "isDatasetOutput": true,
+            "isDatatableOutput": false,
+            "isRdfOutput": false,
             "key": "_cell_formula_units_Z",
             "match": "any",
             "object": null,
             "optional": true,
             "outputKey": "Z",
             "outputLayer": "res",
-            "outputTableIndex": 0,
+            "outputTableIndex": [
+                0
+            ],
             "predicate": null,
             "subject": null,
             "tableIndex": 0,
@@ -1583,13 +2371,18 @@
             "datatype": null,
             "editable": true,
             "id": "#12tableMetadata",
+            "isDatasetOutput": true,
+            "isDatatableOutput": false,
+            "isRdfOutput": false,
             "key": "_exptl_crystal_F_000",
             "match": "any",
             "object": null,
             "optional": true,
             "outputKey": "f000",
             "outputLayer": "res",
-            "outputTableIndex": 0,
+            "outputTableIndex": [
+                0
+            ],
             "predicate": null,
             "subject": null,
             "tableIndex": 0,
@@ -1600,13 +2393,18 @@
             "datatype": null,
             "editable": true,
             "id": "#13tableMetadata",
+            "isDatasetOutput": true,
+            "isDatatableOutput": false,
+            "isRdfOutput": false,
             "key": "_exptl_crystal_size_mid",
             "match": "any",
             "object": null,
             "optional": true,
             "outputKey": "size",
             "outputLayer": "res",
-            "outputTableIndex": 0,
+            "outputTableIndex": [
+                0
+            ],
             "predicate": null,
             "subject": null,
             "tableIndex": 0,
@@ -1617,13 +2415,18 @@
             "datatype": null,
             "editable": true,
             "id": "#14tableMetadata",
+            "isDatasetOutput": true,
+            "isDatatableOutput": false,
+            "isRdfOutput": false,
             "key": "_diffrn_radiation_type",
             "match": "any",
             "object": null,
             "optional": true,
             "outputKey": "radiation",
             "outputLayer": "res",
-            "outputTableIndex": 0,
+            "outputTableIndex": [
+                0
+            ],
             "predicate": null,
             "subject": null,
             "tableIndex": 0,
@@ -1634,13 +2437,18 @@
             "datatype": null,
             "editable": true,
             "id": "#15tableMetadata",
+            "isDatasetOutput": true,
+            "isDatatableOutput": false,
+            "isRdfOutput": false,
             "key": "_diffrn_reflns_number",
             "match": "any",
             "object": null,
             "optional": true,
             "outputKey": "reflections",
             "outputLayer": "res",
-            "outputTableIndex": 0,
+            "outputTableIndex": [
+                0
+            ],
             "predicate": null,
             "subject": null,
             "tableIndex": 0,
@@ -1651,13 +2459,18 @@
             "datatype": null,
             "editable": true,
             "id": "#16tableMetadata",
+            "isDatasetOutput": true,
+            "isDatatableOutput": false,
+            "isRdfOutput": false,
             "key": "_reflns_number_total",
             "match": "any",
             "object": null,
             "optional": true,
             "outputKey": "reflections_",
             "outputLayer": "res",
-            "outputTableIndex": 0,
+            "outputTableIndex": [
+                0
+            ],
             "predicate": null,
             "subject": null,
             "tableIndex": 0,
@@ -1668,13 +2481,18 @@
             "datatype": null,
             "editable": true,
             "id": "#17tableMetadata",
+            "isDatasetOutput": true,
+            "isDatatableOutput": false,
+            "isRdfOutput": false,
             "key": "_refine_ls_goodness_of_fit_ref",
             "match": "any",
             "object": null,
             "optional": true,
             "outputKey": "fit",
             "outputLayer": "res",
-            "outputTableIndex": 0,
+            "outputTableIndex": [
+                0
+            ],
             "predicate": null,
             "subject": null,
             "tableIndex": 0,
@@ -1685,13 +2503,18 @@
             "datatype": null,
             "editable": true,
             "id": "#18tableMetadata",
+            "isDatasetOutput": true,
+            "isDatatableOutput": false,
+            "isRdfOutput": false,
             "key": "_refine_ls_R_factor_gt",
             "match": "any",
             "object": null,
             "optional": true,
             "outputKey": "index_first",
             "outputLayer": "res",
-            "outputTableIndex": 0,
+            "outputTableIndex": [
+                0
+            ],
             "predicate": null,
             "subject": null,
             "tableIndex": 0,
@@ -1702,13 +2525,18 @@
             "datatype": null,
             "editable": true,
             "id": "#19tableMetadata",
+            "isDatasetOutput": true,
+            "isDatatableOutput": false,
+            "isRdfOutput": false,
             "key": "_refine_ls_wR_factor_ref",
             "match": "any",
             "object": null,
             "optional": true,
             "outputKey": "index_second",
             "outputLayer": "res",
-            "outputTableIndex": 0,
+            "outputTableIndex": [
+                0
+            ],
             "predicate": null,
             "subject": null,
             "tableIndex": 0,
@@ -1719,13 +2547,18 @@
             "datatype": null,
             "editable": true,
             "id": "#20tableHeader",
+            "isDatasetOutput": true,
+            "isDatatableOutput": false,
+            "isRdfOutput": false,
             "lineNumber": "",
             "match": "regex",
             "object": null,
             "optional": true,
             "outputKey": "diff_hole",
             "outputLayer": "res",
-            "outputTableIndex": 0,
+            "outputTableIndex": [
+                0
+            ],
             "predicate": null,
             "subject": null,
             "tableIndex": 8,
@@ -1736,13 +2569,18 @@
             "datatype": null,
             "editable": true,
             "id": "#21tableHeader",
+            "isDatasetOutput": true,
+            "isDatatableOutput": false,
+            "isRdfOutput": false,
             "lineNumber": "",
             "match": "regex",
             "object": null,
             "optional": true,
             "outputKey": "diff_peak",
             "outputLayer": "res",
-            "outputTableIndex": 0,
+            "outputTableIndex": [
+                0
+            ],
             "predicate": null,
             "subject": null,
             "tableIndex": 8,
@@ -1753,13 +2591,18 @@
             "datatype": null,
             "editable": true,
             "id": "#22tableMetadata",
+            "isDatasetOutput": true,
+            "isDatatableOutput": false,
+            "isRdfOutput": false,
             "key": "_audit_creation_method",
             "match": "regex",
             "object": null,
             "optional": true,
             "outputKey": "software",
             "outputLayer": "soft",
-            "outputTableIndex": 0,
+            "outputTableIndex": [
+                0
+            ],
             "predicate": null,
             "subject": null,
             "tableIndex": 0,
@@ -1770,13 +2613,18 @@
             "datatype": null,
             "editable": true,
             "id": "#23tableMetadata",
+            "isDatasetOutput": true,
+            "isDatatableOutput": false,
+            "isRdfOutput": false,
             "key": "_audit_creation_method",
             "match": "regex",
             "object": null,
             "optional": true,
             "outputKey": "software_version",
             "outputLayer": "soft",
-            "outputTableIndex": 0,
+            "outputTableIndex": [
+                0
+            ],
             "predicate": null,
             "subject": null,
             "tableIndex": 0,
@@ -1787,13 +2635,18 @@
             "datatype": null,
             "editable": true,
             "id": "#24tableMetadata",
+            "isDatasetOutput": true,
+            "isDatatableOutput": false,
+            "isRdfOutput": false,
             "key": "_diffrn_measurement_device_type",
             "match": "any",
             "object": null,
             "optional": true,
             "outputKey": "instrument",
             "outputLayer": "dev",
-            "outputTableIndex": 0,
+            "outputTableIndex": [
+                0
+            ],
             "predicate": null,
             "subject": null,
             "tableIndex": 0,
@@ -1804,13 +2657,18 @@
             "datatype": null,
             "editable": true,
             "id": "#25tableMetadata",
+            "isDatasetOutput": true,
+            "isDatatableOutput": false,
+            "isRdfOutput": false,
             "key": "_diffrn_measurement_device",
             "match": "any",
             "object": null,
             "optional": true,
             "outputKey": "des",
             "outputLayer": "dev",
-            "outputTableIndex": 0,
+            "outputTableIndex": [
+                0
+            ],
             "predicate": null,
             "subject": null,
             "tableIndex": 0,
@@ -1821,13 +2679,18 @@
             "datatype": null,
             "editable": true,
             "id": "#26tableMetadata",
+            "isDatasetOutput": true,
+            "isDatatableOutput": false,
+            "isRdfOutput": false,
             "key": "_audit_creation_date",
             "match": "any",
             "object": null,
             "optional": true,
             "outputKey": "date",
             "outputLayer": "gener",
-            "outputTableIndex": 0,
+            "outputTableIndex": [
+                0
+            ],
             "predicate": null,
             "subject": null,
             "tableIndex": 0,
@@ -1838,13 +2701,18 @@
             "datatype": null,
             "editable": true,
             "id": "#27tableMetadata",
+            "isDatasetOutput": true,
+            "isDatatableOutput": false,
+            "isRdfOutput": false,
             "key": "_diffrn_ambient_temperature",
             "match": "regex",
             "object": null,
             "optional": true,
             "outputKey": "temp",
             "outputLayer": "set",
-            "outputTableIndex": 0,
+            "outputTableIndex": [
+                0
+            ],
             "predicate": null,
             "subject": null,
             "tableIndex": 0,
@@ -1855,13 +2723,18 @@
             "datatype": null,
             "editable": true,
             "id": "#28tableMetadata",
+            "isDatasetOutput": true,
+            "isDatatableOutput": false,
+            "isRdfOutput": false,
             "key": "_refine_ls_number_reflns",
             "match": "any",
             "object": null,
             "optional": true,
             "outputKey": "data",
             "outputLayer": "res",
-            "outputTableIndex": 0,
+            "outputTableIndex": [
+                0
+            ],
             "predicate": null,
             "subject": null,
             "tableIndex": 0,
@@ -1872,13 +2745,18 @@
             "datatype": null,
             "editable": true,
             "id": "#29tableMetadata",
+            "isDatasetOutput": true,
+            "isDatatableOutput": false,
+            "isRdfOutput": false,
             "key": "_refine_ls_number_restraints",
             "match": "any",
             "object": null,
             "optional": true,
             "outputKey": "restraints",
             "outputLayer": "res",
-            "outputTableIndex": 0,
+            "outputTableIndex": [
+                0
+            ],
             "predicate": null,
             "subject": null,
             "tableIndex": 0,
@@ -1889,13 +2767,18 @@
             "datatype": null,
             "editable": true,
             "id": "#30tableMetadata",
+            "isDatasetOutput": true,
+            "isDatatableOutput": false,
+            "isRdfOutput": false,
             "key": "_refine_ls_number_parameters",
             "match": "any",
             "object": null,
             "optional": true,
             "outputKey": "parameters",
             "outputLayer": "res",
-            "outputTableIndex": 0,
+            "outputTableIndex": [
+                0
+            ],
             "predicate": null,
             "subject": null,
             "tableIndex": 0,
@@ -1906,13 +2789,18 @@
             "datatype": null,
             "editable": true,
             "id": "#31tableMetadata",
+            "isDatasetOutput": true,
+            "isDatatableOutput": false,
+            "isRdfOutput": false,
             "key": "_diffrn_reflns_limit_h_max",
             "match": "any",
             "object": null,
             "optional": true,
             "outputKey": "h_max",
             "outputLayer": "res",
-            "outputTableIndex": 0,
+            "outputTableIndex": [
+                0
+            ],
             "predicate": null,
             "subject": null,
             "tableIndex": 0,
@@ -1923,13 +2811,18 @@
             "datatype": null,
             "editable": true,
             "id": "#32tableMetadata",
+            "isDatasetOutput": true,
+            "isDatatableOutput": false,
+            "isRdfOutput": false,
             "key": "_diffrn_reflns_limit_h_min",
             "match": "any",
             "object": null,
             "optional": true,
             "outputKey": "h_min",
             "outputLayer": "res",
-            "outputTableIndex": 0,
+            "outputTableIndex": [
+                0
+            ],
             "predicate": null,
             "subject": null,
             "tableIndex": 0,
@@ -1940,13 +2833,18 @@
             "datatype": null,
             "editable": true,
             "id": "#33tableMetadata",
+            "isDatasetOutput": true,
+            "isDatatableOutput": false,
+            "isRdfOutput": false,
             "key": "_diffrn_reflns_limit_k_max",
             "match": "any",
             "object": null,
             "optional": true,
             "outputKey": "k_max",
             "outputLayer": "res",
-            "outputTableIndex": 0,
+            "outputTableIndex": [
+                0
+            ],
             "predicate": null,
             "subject": null,
             "tableIndex": 0,
@@ -1957,13 +2855,18 @@
             "datatype": null,
             "editable": true,
             "id": "#34tableMetadata",
+            "isDatasetOutput": true,
+            "isDatatableOutput": false,
+            "isRdfOutput": false,
             "key": "_diffrn_reflns_limit_k_min",
             "match": "any",
             "object": null,
             "optional": true,
             "outputKey": "k_min",
             "outputLayer": "res",
-            "outputTableIndex": 0,
+            "outputTableIndex": [
+                0
+            ],
             "predicate": null,
             "subject": null,
             "tableIndex": 0,
@@ -1974,13 +2877,18 @@
             "datatype": null,
             "editable": true,
             "id": "#35tableMetadata",
+            "isDatasetOutput": true,
+            "isDatatableOutput": false,
+            "isRdfOutput": false,
             "key": "_diffrn_reflns_limit_l_max",
             "match": "any",
             "object": null,
             "optional": true,
             "outputKey": "l_max",
             "outputLayer": "res",
-            "outputTableIndex": 0,
+            "outputTableIndex": [
+                0
+            ],
             "predicate": null,
             "subject": null,
             "tableIndex": 0,
@@ -1991,13 +2899,18 @@
             "datatype": null,
             "editable": true,
             "id": "#36tableMetadata",
+            "isDatasetOutput": true,
+            "isDatatableOutput": false,
+            "isRdfOutput": false,
             "key": "_diffrn_reflns_limit_l_min",
             "match": "any",
             "object": null,
             "optional": true,
             "outputKey": "l_min",
             "outputLayer": "res",
-            "outputTableIndex": 0,
+            "outputTableIndex": [
+                0
+            ],
             "predicate": null,
             "subject": null,
             "tableIndex": 0,
@@ -2008,13 +2921,18 @@
             "datatype": null,
             "editable": true,
             "id": "#37tableMetadata",
+            "isDatasetOutput": true,
+            "isDatatableOutput": false,
+            "isRdfOutput": false,
             "key": "_reflns_number_gt",
             "match": "any",
             "object": null,
             "optional": true,
             "outputKey": "reflections_gt",
             "outputLayer": "res",
-            "outputTableIndex": 0,
+            "outputTableIndex": [
+                0
+            ],
             "predicate": null,
             "subject": null,
             "tableIndex": 0,
@@ -2025,13 +2943,18 @@
             "datatype": null,
             "editable": true,
             "id": "#38tableMetadata",
+            "isDatasetOutput": true,
+            "isDatatableOutput": false,
+            "isRdfOutput": false,
             "key": "Block_name",
             "match": "any",
             "object": null,
             "optional": true,
             "outputKey": "sample_id",
             "outputLayer": "sam_details",
-            "outputTableIndex": 0,
+            "outputTableIndex": [
+                0
+            ],
             "predicate": null,
             "subject": null,
             "tableIndex": 0,
@@ -2042,13 +2965,18 @@
             "datatype": null,
             "editable": true,
             "id": "#39tableMetadata",
+            "isDatasetOutput": true,
+            "isDatatableOutput": false,
+            "isRdfOutput": false,
             "key": "_chemical_formula_sum",
             "match": "any",
             "object": null,
             "optional": true,
             "outputKey": "emp_formular",
             "outputLayer": "res",
-            "outputTableIndex": 0,
+            "outputTableIndex": [
+                0
+            ],
             "predicate": null,
             "subject": null,
             "tableIndex": 0,
@@ -2059,13 +2987,18 @@
             "datatype": null,
             "editable": true,
             "id": "#40tableMetadata",
+            "isDatasetOutput": true,
+            "isDatatableOutput": false,
+            "isRdfOutput": false,
             "key": "_chemical_formula_weight",
             "match": "any",
             "object": null,
             "optional": true,
             "outputKey": "formula_weight",
             "outputLayer": "res",
-            "outputTableIndex": 0,
+            "outputTableIndex": [
+                0
+            ],
             "predicate": null,
             "subject": null,
             "tableIndex": 0,
@@ -2076,6 +3009,9 @@
             "datatype": null,
             "editable": true,
             "id": "#41tableMetadata",
+            "isDatasetOutput": true,
+            "isDatatableOutput": false,
+            "isRdfOutput": false,
             "key": "_diffrn_reflns_theta_max",
             "match": "any",
             "object": null,
@@ -2088,7 +3024,9 @@
             "optional": true,
             "outputKey": "theta_max",
             "outputLayer": "res",
-            "outputTableIndex": 0,
+            "outputTableIndex": [
+                0
+            ],
             "predicate": null,
             "subject": null,
             "tableIndex": 0,
@@ -2099,6 +3037,9 @@
             "datatype": null,
             "editable": true,
             "id": "#42tableMetadata",
+            "isDatasetOutput": true,
+            "isDatatableOutput": false,
+            "isRdfOutput": false,
             "key": "_diffrn_reflns_theta_min",
             "match": "any",
             "object": null,
@@ -2111,7 +3052,9 @@
             "optional": true,
             "outputKey": "theta",
             "outputLayer": "res",
-            "outputTableIndex": 0,
+            "outputTableIndex": [
+                0
+            ],
             "predicate": null,
             "subject": null,
             "tableIndex": 0,
@@ -2122,13 +3065,18 @@
             "datatype": null,
             "editable": true,
             "id": "#43tableMetadata",
+            "isDatasetOutput": true,
+            "isDatatableOutput": false,
+            "isRdfOutput": false,
             "key": "_exptl_crystal_density_diffrn",
             "match": "any",
             "object": null,
             "optional": true,
             "outputKey": "roh",
             "outputLayer": "res",
-            "outputTableIndex": 0,
+            "outputTableIndex": [
+                0
+            ],
             "predicate": null,
             "subject": null,
             "tableIndex": 0,
@@ -2139,13 +3087,18 @@
             "datatype": null,
             "editable": true,
             "id": "#44tableMetadata",
+            "isDatasetOutput": true,
+            "isDatatableOutput": false,
+            "isRdfOutput": false,
             "key": "_exptl_absorpt_coefficient_mu",
             "match": "any",
             "object": null,
             "optional": true,
             "outputKey": "my",
             "outputLayer": "res",
-            "outputTableIndex": 0,
+            "outputTableIndex": [
+                0
+            ],
             "predicate": null,
             "subject": null,
             "tableIndex": 0,
@@ -2154,12 +3107,12 @@
         }
     ],
     "isDisabled": false,
-    "last_migration": "20260504065656",
+    "last_migration": "20260506160404",
     "objects": [],
     "ols": "CHMO:0000159",
     "ontology": "",
     "predicates": [],
-    "profile_version": "1.8",
+    "profile_version": "1.9",
     "rootOntology": {
         "description": [
             "A method for determining structure by directing a beam of X-rays at a single crystal sample and detecting the positions and intensities of the diffracted X-rays as a pattern of spots on a photographic plate. Single crystal X-ray diffraction is used for protein crystallography."

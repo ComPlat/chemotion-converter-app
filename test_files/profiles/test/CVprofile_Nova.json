@@ -318,6 +318,115 @@
             ],
             "profile_version": "1.7",
             "trigger": "undo:1.6"
+        },
+        {
+            "at": "2026-05-06T14:31:10.873275+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/identifiers/3/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/3/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/3/isDatasetOutput"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/3/outputTableIndex",
+                    "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/4/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/4/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/4/isDatasetOutput"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/4/outputTableIndex",
+                    "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/5/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/5/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/5/isDatasetOutput"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/5/outputTableIndex",
+                    "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/6/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/6/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/6/isDatasetOutput"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/6/outputTableIndex",
+                    "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/7/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/7/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/7/isDatasetOutput"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/7/outputTableIndex",
+                    "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/8/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/8/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/8/isDatasetOutput"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/8/outputTableIndex",
+                    "value": 0
+                }
+            ],
+            "profile_version": "1.8",
+            "trigger": "migration:20260506160404"
         }
     ],
     "id": "CVprofile_Nova",
@@ -355,13 +464,18 @@
             "datatype": null,
             "editable": true,
             "id": "#3fileMetadata",
+            "isDatasetOutput": true,
+            "isDatatableOutput": false,
+            "isRdfOutput": false,
             "key": "scan_rate",
             "match": "any",
             "object": null,
             "optional": true,
             "outputKey": "scan_rate",
             "outputLayer": "meas",
-            "outputTableIndex": 0,
+            "outputTableIndex": [
+                0
+            ],
             "predicate": null,
             "subject": null,
             "type": "fileMetadata",
@@ -371,13 +485,18 @@
             "datatype": null,
             "editable": true,
             "id": "#4fileMetadata",
+            "isDatasetOutput": true,
+            "isDatatableOutput": false,
+            "isRdfOutput": false,
             "key": "step_size",
             "match": "any",
             "object": null,
             "optional": true,
             "outputKey": "step_size",
             "outputLayer": "meas",
-            "outputTableIndex": 0,
+            "outputTableIndex": [
+                0
+            ],
             "predicate": null,
             "subject": null,
             "type": "fileMetadata",
@@ -387,13 +506,18 @@
             "datatype": null,
             "editable": true,
             "id": "#5fileMetadata",
+            "isDatasetOutput": true,
+            "isDatatableOutput": false,
+            "isRdfOutput": false,
             "key": "v_end",
             "match": "any",
             "object": null,
             "optional": true,
             "outputKey": "voltage_limit_end",
             "outputLayer": "meas",
-            "outputTableIndex": 0,
+            "outputTableIndex": [
+                0
+            ],
             "predicate": null,
             "subject": null,
             "type": "fileMetadata",
@@ -403,13 +527,18 @@
             "datatype": null,
             "editable": true,
             "id": "#6fileMetadata",
+            "isDatasetOutput": true,
+            "isDatatableOutput": false,
+            "isRdfOutput": false,
             "key": "v_init",
             "match": "any",
             "object": null,
             "optional": true,
             "outputKey": "voltage_start",
             "outputLayer": "meas",
-            "outputTableIndex": 0,
+            "outputTableIndex": [
+                0
+            ],
             "predicate": null,
             "subject": null,
             "type": "fileMetadata",
@@ -419,13 +548,18 @@
             "datatype": null,
             "editable": true,
             "id": "#7fileMetadata",
+            "isDatasetOutput": true,
+            "isDatatableOutput": false,
+            "isRdfOutput": false,
             "key": "v_limit1",
             "match": "any",
             "object": null,
             "optional": true,
             "outputKey": "voltage_limit_one",
             "outputLayer": "meas",
-            "outputTableIndex": 0,
+            "outputTableIndex": [
+                0
+            ],
             "predicate": null,
             "subject": null,
             "type": "fileMetadata",
@@ -435,13 +569,18 @@
             "datatype": null,
             "editable": true,
             "id": "#8fileMetadata",
+            "isDatasetOutput": true,
+            "isDatatableOutput": false,
+            "isRdfOutput": false,
             "key": "v_limit2",
             "match": "any",
             "object": null,
             "optional": true,
             "outputKey": "voltage_limit_two",
             "outputLayer": "meas",
-            "outputTableIndex": 0,
+            "outputTableIndex": [
+                0
+            ],
             "predicate": null,
             "subject": null,
             "type": "fileMetadata",
@@ -449,12 +588,12 @@
         }
     ],
     "isDisabled": false,
-    "last_migration": "20260504065656",
+    "last_migration": "20260506160404",
     "objects": [],
     "ols": "CHMO:0000025",
     "ontology": "",
     "predicates": [],
-    "profile_version": "1.8",
+    "profile_version": "1.9",
     "rootOntology": {
         "description": [
             "An electrochemical technique where the cell current is measured as a function of time and as a function of the potential between the indicator and reference electrodes. The potential is varied linearly and inverts at the end point resulting in a cycle."

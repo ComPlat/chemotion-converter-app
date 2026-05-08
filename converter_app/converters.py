@@ -54,7 +54,7 @@ class Converter:
             if self._has_loop(output_table_index):
                 self._prepare_tables(output_table_index)
             else:
-                self.output_tables.append(output_table)
+                output_table['tableIndexList'] = []
 
     def _prepare_tables(self, index):
         # match the output Table to the input tables and adjust the tableIndexes to the input table
