@@ -236,7 +236,10 @@ class JcampWriter(Writer):
 
             if data_class == 'XYDATA':
                 self._process_xydata(header, table.get('y'), False)
-            elif data_class in ['XYPOINTS', 'PEAK TABLE']:
+            elif data_class  == 'XYPOINTS':
+                # JS converter bug
+                self._process_xypoints(header, table.get('x'), table.get('y'), 'XYDATA', False)
+            elif data_class == 'PEAK TABLE':
                 self._process_xypoints(header, table.get('x'), table.get('y'), data_class, False)
 
 
