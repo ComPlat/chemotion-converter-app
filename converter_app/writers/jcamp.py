@@ -177,6 +177,7 @@ class JcampWriter(Writer):
                 maxy = max(maxy, y_float)
             except ValueError:
                 continue
+        data_class = header.get('DATA CLASS', DATA_CLASSES[0])
 
         # write header with xydata specific values
         self._write_header({
@@ -190,7 +191,7 @@ class JcampWriter(Writer):
             'FIRSTY': firsty,
             'XUNITS': header.get('XUNITS', XUNITS[0]),
             'YUNITS': header.get('YUNITS', YUNITS[0]),
-            'XYDATA': '(XY..XY)'
+            data_class: '(XY..XY)'
         })
 
         # write the xypoints
