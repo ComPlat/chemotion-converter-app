@@ -1,5 +1,5 @@
 from converter_app.profile_migration import ProfileMigration
-from options import DATA_LOOP_CLASSES, DATA_CLASSES
+from converter_app.options import DATA_LOOP_CLASSES, DATA_CLASSES
 
 
 def flatten(lst):
