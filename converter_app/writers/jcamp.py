@@ -178,21 +178,26 @@ class JcampWriter(Writer):
             except ValueError:
                 continue
         data_class = header.get('DATA CLASS', DATA_CLASSES[0])
-
-        # write header with xydata specific values
-        self._write_header({
-            'FIRSTX': firstx,
-            'LASTX': lastx,
-            'MINX': minx,
-            'MAXX': maxx,
-            'MINY': miny,
-            'MAXY': maxy,
-            'NPOINTS': npoints,
-            'FIRSTY': firsty,
-            'XUNITS': header.get('XUNITS', XUNITS[0]),
-            'YUNITS': header.get('YUNITS', YUNITS[0]),
-            data_class: '(XY..XY)'
-        })
+        if is_closed:
+            # write header with xydata specific values
+            self._write_header({
+                'FIRSTX': firstx,
+                'LASTX': lastx,
+                'MINX': minx,
+                'MAXX': maxx,
+                'MINY': miny,
+                'MAXY': maxy,
+                'NPOINTS': npoints,
+                'FIRSTY': firsty,
+                'XUNITS': header.get('XUNITS', XUNITS[0]),
+                'YUNITS': header.get('YUNITS', YUNITS[0]),
+                data_class: '(XY..XY)'
+            })
+        else:
+            # write header with xydata specific values
+            self._write_header({
+                data_class: '(XY..XY)'
+            })
 
         # write the xypoints
         self._write_xypoints(x, y)
