@@ -90,7 +90,7 @@ class Converter:
             for header in loop_header:
                 if not header.get('column'):
                     return False
-                table_index = header['column'].get('tableIndex')
+                table_index = input_table_index
                 column_index = header['column'].get('columnIndex')
                 if (table_index is None or column_index is None or len(self.input_tables) <= table_index
                         or len(self.input_tables[table_index].get('columns', [])) <= column_index):
@@ -123,7 +123,8 @@ class Converter:
                     if value != self.input_tables[input_table_index].get('metadata', {}).get(key, None):
                         return False
             return True
-        return True
+        else:
+            return input_table_index == self.profile_output_tables[index]['inputTableIndex']
 
     def match(self):
         matches = self._match(self.identifiers)
@@ -315,7 +316,7 @@ class Converter:
         ntuples_header = dict()
         for in_idx in range(len(self.input_tables)):
             for output_table_index, output_table in enumerate(self.profile_output_tables):
-                if output_table['inputTableIndex'] == in_idx or self._check_loop_condition(output_table_index, in_idx):
+                if self._check_loop_condition(output_table_index, in_idx):
                     header = self._process_prepare_header(output_table, output_table_index, in_idx, ntuples_header)
                     table_data = output_table.get('table', {})
                     x_column = table_data.get('xColumn')
