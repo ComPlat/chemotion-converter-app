@@ -56,7 +56,7 @@ class JcampWriter(Writer):
         if data_class == 'XYDATA':
             self._process_xydata(header, table.get('y'))
         elif data_class in ['XYPOINTS', 'PEAK TABLE']:
-            self._process_xypoints(header, table.get('x'), table.get('y'))
+            self._process_xypoints(header, table.get('x'), table.get('y'), data_class)
 
     def _prepare_main_header(self, header):
         jcamp_header = {
@@ -149,7 +149,7 @@ class JcampWriter(Writer):
             # write the end
             self.buffer.write('##END=$$ End of the data block' + os.linesep)
 
-    def _process_xypoints(self, header, x, y, is_closed=True):
+    def _process_xypoints(self, header, x, y, data_class, is_closed=True):
         assert x
         assert y
 
@@ -177,7 +177,7 @@ class JcampWriter(Writer):
                 maxy = max(maxy, y_float)
             except ValueError:
                 continue
-        data_class = header.get('DATA CLASS', DATA_CLASSES[0])
+
         if is_closed:
             # write header with xydata specific values
             self._write_header({
@@ -237,7 +237,7 @@ class JcampWriter(Writer):
             if data_class == 'XYDATA':
                 self._process_xydata(header, table.get('y'), False)
             elif data_class in ['XYPOINTS', 'PEAK TABLE']:
-                self._process_xypoints(header, table.get('x'), table.get('y'), False)
+                self._process_xypoints(header, table.get('x'), table.get('y'), data_class, False)
 
 
         # write the end
