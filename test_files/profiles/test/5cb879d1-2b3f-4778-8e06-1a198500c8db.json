@@ -619,6 +619,138 @@
             ],
             "profile_version": "1.11",
             "trigger": "migration:20260506160404"
+        },
+        {
+            "at": "2026-05-08T13:41:44.636331+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/identifiers/2/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/3/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/4/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/5/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/6/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/7/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/8/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/9/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/10/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/11/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/12/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/13/outputDatatableLayer"
+                }
+            ],
+            "profile_version": "1.12",
+            "trigger": "migration:20260506160404"
+        },
+        {
+            "at": "2026-05-08T13:44:31.198752+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/identifiers/2/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/3/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/4/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/5/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/6/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/7/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/8/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/9/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/10/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/11/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/12/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/13/outputDatatableKey"
+                }
+            ],
+            "profile_version": "1.13",
+            "trigger": "migration:20260506160404"
+        },
+        {
+            "at": "2026-05-10T05:20:14.422973+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/identifiers/0/loopOutput"
+                }
+            ],
+            "profile_version": "1.14",
+            "trigger": "migration:20260506160404"
+        },
+        {
+            "at": "2026-05-10T05:26:54.096194+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/tables/0/loopOutput"
+                }
+            ],
+            "profile_version": "1.15",
+            "trigger": "migration:20260506160404"
         }
     ],
     "id": "5cb879d1-2b3f-4778-8e06-1a198500c8db",
@@ -627,6 +759,7 @@
             "editable": true,
             "id": "#0fileMetadata",
             "key": "reader",
+            "loopOutput": "MULTI FILE",
             "match": "exact",
             "optional": false,
             "type": "fileMetadata",
@@ -654,6 +787,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "operator",
+            "outputDatatableLayer": "operator",
             "outputKey": "operator",
             "outputLayer": "meas",
             "outputTableIndex": [
@@ -677,6 +812,8 @@
             "match": "regex",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "date",
+            "outputDatatableLayer": "date",
             "outputKey": "date",
             "outputLayer": "gener",
             "outputTableIndex": [
@@ -700,6 +837,8 @@
             "match": "regex",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "serial",
+            "outputDatatableLayer": "serial",
             "outputKey": "serial",
             "outputLayer": "dev",
             "outputTableIndex": [
@@ -723,6 +862,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "adsorptive",
+            "outputDatatableLayer": "adsorptive",
             "outputKey": "adsorptive",
             "outputLayer": "meas",
             "outputTableIndex": [
@@ -752,6 +893,8 @@
                 }
             ],
             "optional": true,
+            "outputDatatableKey": "temperature",
+            "outputDatatableLayer": "temperature",
             "outputKey": "temperature",
             "outputLayer": "meas",
             "outputTableIndex": [
@@ -775,6 +918,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "amount",
+            "outputDatatableLayer": "amount",
             "outputKey": "amount",
             "outputLayer": "sam_details",
             "outputTableIndex": [
@@ -798,6 +943,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "sample_cid",
+            "outputDatatableLayer": "sample_cid",
             "outputKey": "sample_cid",
             "outputLayer": "custom_id",
             "outputTableIndex": [
@@ -821,6 +968,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "sample_mat_id",
+            "outputDatatableLayer": "sample_mat_id",
             "outputKey": "sample_mat_id",
             "outputLayer": "custom_id",
             "outputTableIndex": [
@@ -844,6 +993,8 @@
             "match": "regex",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "software",
+            "outputDatatableLayer": "software",
             "outputKey": "software",
             "outputLayer": "soft",
             "outputTableIndex": [
@@ -867,6 +1018,8 @@
             "match": "regex",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "software_version",
+            "outputDatatableLayer": "software_version",
             "outputKey": "software_version",
             "outputLayer": "soft",
             "outputTableIndex": [
@@ -890,6 +1043,8 @@
             "match": "regex",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "time",
+            "outputDatatableLayer": "time",
             "outputKey": "time",
             "outputLayer": "gener",
             "outputTableIndex": [
@@ -913,6 +1068,8 @@
             "match": "regex",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "brand",
+            "outputDatatableLayer": "brand",
             "outputKey": "brand",
             "outputLayer": "dev",
             "outputTableIndex": [
@@ -931,7 +1088,7 @@
     "ols": "CHMO:0001167",
     "ontology": "",
     "predicates": [],
-    "profile_version": "1.12",
+    "profile_version": "1.16",
     "reactionVariations": {
         "elements": [],
         "identifiers": []
@@ -962,6 +1119,7 @@
                 "YUNITS": "ml/g"
             },
             "inputTableIndex": 0,
+            "loopOutput": "MULTI FILE",
             "loopType": "all",
             "matchTables": true,
             "table": {

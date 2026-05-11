@@ -655,6 +655,181 @@
             ],
             "profile_version": "1.11",
             "trigger": "migration:20260506160404"
+        },
+        {
+            "at": "2026-05-08T13:41:44.920705+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/identifiers/3/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/4/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/5/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/6/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/7/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/8/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/9/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/10/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/11/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/12/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/13/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/14/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/15/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/16/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/17/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/18/outputDatatableLayer"
+                }
+            ],
+            "profile_version": "1.12",
+            "trigger": "migration:20260506160404"
+        },
+        {
+            "at": "2026-05-08T13:44:31.525108+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/identifiers/3/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/4/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/5/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/6/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/7/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/8/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/9/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/10/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/11/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/12/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/13/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/14/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/15/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/16/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/17/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/18/outputDatatableKey"
+                }
+            ],
+            "profile_version": "1.13",
+            "trigger": "migration:20260506160404"
+        },
+        {
+            "at": "2026-05-10T05:20:14.702882+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/identifiers/0/loopOutput"
+                }
+            ],
+            "profile_version": "1.14",
+            "trigger": "migration:20260506160404"
+        },
+        {
+            "at": "2026-05-10T05:26:54.362376+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/tables/0/loopOutput"
+                }
+            ],
+            "profile_version": "1.15",
+            "trigger": "migration:20260506160404"
+        },
+        {
+            "at": "2026-05-10T05:34:33.984170+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/tables/0/loopType"
+                }
+            ],
+            "profile_version": "1.16",
+            "trigger": "migration:20260506160404"
         }
     ],
     "id": "cddfe1ff-ef5a-44fb-a6ba-443a870c7a27",
@@ -663,6 +838,7 @@
             "editable": true,
             "id": "#0fileMetadata",
             "key": "reader",
+            "loopOutput": "MULTI FILE",
             "match": "exact",
             "optional": false,
             "type": "fileMetadata",
@@ -700,6 +876,8 @@
             "match": "regex",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "fixed_wavelength",
+            "outputDatatableLayer": "fixed_wavelength",
             "outputKey": "fixed_wavelength",
             "outputLayer": "set",
             "outputTableIndex": [
@@ -723,6 +901,8 @@
             "match": "regex",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "mode",
+            "outputDatatableLayer": "mode",
             "outputKey": "mode",
             "outputLayer": "set",
             "outputTableIndex": [
@@ -746,6 +926,8 @@
             "match": "regex",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "ex_bandwidth",
+            "outputDatatableLayer": "ex_bandwidth",
             "outputKey": "ex_bandwidth",
             "outputLayer": "set",
             "outputTableIndex": [
@@ -769,6 +951,8 @@
             "match": "regex",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "em_bandwidth",
+            "outputDatatableLayer": "em_bandwidth",
             "outputKey": "em_bandwidth",
             "outputLayer": "set",
             "outputTableIndex": [
@@ -792,6 +976,8 @@
             "match": "regex",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "response",
+            "outputDatatableLayer": "response",
             "outputKey": "response",
             "outputLayer": "set",
             "outputTableIndex": [
@@ -815,6 +1001,8 @@
             "match": "regex",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "sensitivity",
+            "outputDatatableLayer": "sensitivity",
             "outputKey": "sensitivity",
             "outputLayer": "set",
             "outputTableIndex": [
@@ -838,6 +1026,8 @@
             "match": "regex",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "measurement_range",
+            "outputDatatableLayer": "measurement_range",
             "outputKey": "measurement_range",
             "outputLayer": "set",
             "outputTableIndex": [
@@ -861,6 +1051,8 @@
             "match": "regex",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "data_interval",
+            "outputDatatableLayer": "data_interval",
             "outputKey": "data_interval",
             "outputLayer": "set",
             "outputTableIndex": [
@@ -884,6 +1076,8 @@
             "match": "regex",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "scan_speed",
+            "outputDatatableLayer": "scan_speed",
             "outputKey": "scan_speed",
             "outputLayer": "set",
             "outputTableIndex": [
@@ -907,6 +1101,8 @@
             "match": "regex",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "no_of_cycles",
+            "outputDatatableLayer": "no_of_cycles",
             "outputKey": "no_of_cycles",
             "outputLayer": "set",
             "outputTableIndex": [
@@ -930,6 +1126,8 @@
             "match": "regex",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "auto gain",
+            "outputDatatableLayer": "auto gain",
             "outputKey": "auto gain",
             "outputLayer": "measurement",
             "outputTableIndex": [
@@ -953,6 +1151,8 @@
             "match": "regex",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "shutter_control",
+            "outputDatatableLayer": "shutter_control",
             "outputKey": "shutter_control",
             "outputLayer": "set",
             "outputTableIndex": [
@@ -976,6 +1176,8 @@
             "match": "regex",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "light_source",
+            "outputDatatableLayer": "light_source",
             "outputKey": "light_source",
             "outputLayer": "set",
             "outputTableIndex": [
@@ -999,6 +1201,8 @@
             "match": "regex",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "filter",
+            "outputDatatableLayer": "filter",
             "outputKey": "filter",
             "outputLayer": "set",
             "outputTableIndex": [
@@ -1022,6 +1226,8 @@
             "match": "regex",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "blank_correction",
+            "outputDatatableLayer": "blank_correction",
             "outputKey": "blank_correction",
             "outputLayer": "set",
             "outputTableIndex": [
@@ -1045,6 +1251,8 @@
             "match": "regex",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "date",
+            "outputDatatableLayer": "date",
             "outputKey": "date",
             "outputLayer": "general",
             "outputTableIndex": [
@@ -1063,7 +1271,7 @@
     "ols": "CHMO:0000287",
     "ontology": "",
     "predicates": [],
-    "profile_version": "1.12",
+    "profile_version": "1.17",
     "reactionVariations": {
         "elements": [],
         "identifiers": []
@@ -1094,6 +1302,8 @@
                 "YUNITS": "Intensity"
             },
             "inputTableIndex": 0,
+            "loopOutput": "MULTI FILE",
+            "loopType": "none",
             "table": {
                 "xColumn": {
                     "columnIndex": 0

@@ -21,6 +21,12 @@ tables_schema = {
         "loopType": {
             "type": "string"
         },
+        "loopOutput": {
+            "type": "string"
+        },
+        "nTuplePageHeader": {
+            "type": "string"
+        },
         "matchTables": {
             "type": "boolean"
         },

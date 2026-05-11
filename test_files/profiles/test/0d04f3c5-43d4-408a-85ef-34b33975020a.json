@@ -660,6 +660,181 @@
             ],
             "profile_version": "1.11",
             "trigger": "migration:20260506160404"
+        },
+        {
+            "at": "2026-05-08T13:41:44.930969+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/identifiers/5/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/6/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/7/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/8/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/9/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/10/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/11/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/12/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/13/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/14/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/15/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/16/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/17/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/18/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/19/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/20/outputDatatableLayer"
+                }
+            ],
+            "profile_version": "1.12",
+            "trigger": "migration:20260506160404"
+        },
+        {
+            "at": "2026-05-08T13:44:31.537030+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/identifiers/5/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/6/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/7/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/8/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/9/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/10/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/11/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/12/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/13/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/14/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/15/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/16/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/17/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/18/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/19/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/20/outputDatatableKey"
+                }
+            ],
+            "profile_version": "1.13",
+            "trigger": "migration:20260506160404"
+        },
+        {
+            "at": "2026-05-10T05:20:14.713097+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/identifiers/0/loopOutput"
+                }
+            ],
+            "profile_version": "1.14",
+            "trigger": "migration:20260506160404"
+        },
+        {
+            "at": "2026-05-10T05:26:54.372295+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/tables/0/loopOutput"
+                }
+            ],
+            "profile_version": "1.15",
+            "trigger": "migration:20260506160404"
+        },
+        {
+            "at": "2026-05-10T05:34:33.994527+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/tables/0/loopType"
+                }
+            ],
+            "profile_version": "1.16",
+            "trigger": "migration:20260506160404"
         }
     ],
     "id": "0d04f3c5-43d4-408a-85ef-34b33975020a",
@@ -668,6 +843,7 @@
             "editable": true,
             "id": "#0fileMetadata",
             "key": "reader",
+            "loopOutput": "MULTI FILE",
             "match": "exact",
             "optional": false,
             "type": "fileMetadata",
@@ -724,6 +900,8 @@
             "match": "regex",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "sample",
+            "outputDatatableLayer": "sample",
             "outputKey": "sample",
             "outputLayer": "sample_details",
             "outputTableIndex": [
@@ -747,6 +925,8 @@
             "match": "regex",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "amount",
+            "outputDatatableLayer": "amount",
             "outputKey": "amount",
             "outputLayer": "sample_details",
             "outputTableIndex": [
@@ -770,6 +950,8 @@
             "match": "regex",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "date",
+            "outputDatatableLayer": "date",
             "outputKey": "date",
             "outputLayer": "general",
             "outputTableIndex": [
@@ -793,6 +975,8 @@
             "match": "regex",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "time",
+            "outputDatatableLayer": "time",
             "outputKey": "time",
             "outputLayer": "general",
             "outputTableIndex": [
@@ -816,6 +1000,8 @@
             "match": "regex",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "reference",
+            "outputDatatableLayer": "reference",
             "outputKey": "reference",
             "outputLayer": "meas",
             "outputTableIndex": [
@@ -845,6 +1031,8 @@
                 }
             ],
             "optional": true,
+            "outputDatatableKey": "reference_mass",
+            "outputDatatableLayer": "reference_mass",
             "outputKey": "reference_mass",
             "outputLayer": "meas",
             "outputTableIndex": [
@@ -868,6 +1056,8 @@
             "match": "regex",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "temp_cal",
+            "outputDatatableLayer": "temp_cal",
             "outputKey": "temp_cal",
             "outputLayer": "meas",
             "outputTableIndex": [
@@ -891,6 +1081,8 @@
             "match": "regex",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "sensFile",
+            "outputDatatableLayer": "sensFile",
             "outputKey": "sensFile",
             "outputLayer": "meas",
             "outputTableIndex": [
@@ -914,6 +1106,8 @@
             "match": "regex",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "segments",
+            "outputDatatableLayer": "segments",
             "outputKey": "segments",
             "outputLayer": "meas",
             "outputTableIndex": [
@@ -937,6 +1131,8 @@
             "match": "regex",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "brand",
+            "outputDatatableLayer": "brand",
             "outputKey": "brand",
             "outputLayer": "instrument",
             "outputTableIndex": [
@@ -960,6 +1156,8 @@
             "match": "regex",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "instrument",
+            "outputDatatableLayer": "instrument",
             "outputKey": "instrument",
             "outputLayer": "instrument",
             "outputTableIndex": [
@@ -983,6 +1181,8 @@
             "match": "regex",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "crucible",
+            "outputDatatableLayer": "crucible",
             "outputKey": "crucible",
             "outputLayer": "set",
             "outputTableIndex": [
@@ -1006,6 +1206,8 @@
             "match": "regex",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "atmosphere",
+            "outputDatatableLayer": "atmosphere",
             "outputKey": "atmosphere",
             "outputLayer": "set",
             "outputTableIndex": [
@@ -1035,6 +1237,8 @@
                 }
             ],
             "optional": true,
+            "outputDatatableKey": "range",
+            "outputDatatableLayer": "range",
             "outputKey": "range",
             "outputLayer": "set",
             "outputTableIndex": [
@@ -1058,6 +1262,8 @@
             "match": "regex",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "temperature",
+            "outputDatatableLayer": "temperature",
             "outputKey": "temperature",
             "outputLayer": "set",
             "outputTableIndex": [
@@ -1081,6 +1287,8 @@
             "match": "regex",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "operator",
+            "outputDatatableLayer": "operator",
             "outputKey": "operator",
             "outputLayer": "general",
             "outputTableIndex": [
@@ -1099,7 +1307,7 @@
     "ols": "CHMO:0000684",
     "ontology": "",
     "predicates": [],
-    "profile_version": "1.12",
+    "profile_version": "1.17",
     "reactionVariations": {
         "elements": [],
         "identifiers": []
@@ -1130,6 +1338,8 @@
                 "YUNITS": "W/g"
             },
             "inputTableIndex": 0,
+            "loopOutput": "MULTI FILE",
+            "loopType": "none",
             "table": {
                 "xColumn": {
                     "columnIndex": 0

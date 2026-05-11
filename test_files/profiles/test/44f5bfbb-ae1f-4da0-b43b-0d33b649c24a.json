@@ -2404,6 +2404,643 @@
             ],
             "profile_version": "1.11",
             "trigger": "migration:20260506160404"
+        },
+        {
+            "at": "2026-05-08T13:41:44.843767+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/identifiers/0/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/1/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/2/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/3/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/4/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/5/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/6/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/7/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/8/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/9/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/10/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/11/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/12/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/13/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/14/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/15/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/16/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/17/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/18/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/19/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/20/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/21/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/22/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/23/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/24/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/25/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/26/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/27/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/28/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/29/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/30/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/31/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/32/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/33/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/34/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/35/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/36/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/37/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/38/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/39/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/40/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/41/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/42/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/43/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/44/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/45/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/46/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/47/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/48/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/49/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/50/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/51/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/52/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/53/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/54/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/55/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/56/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/57/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/58/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/59/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/60/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/61/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/62/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/63/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/64/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/65/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/66/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/67/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/68/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/69/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/70/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/71/outputDatatableLayer"
+                }
+            ],
+            "profile_version": "1.12",
+            "trigger": "migration:20260506160404"
+        },
+        {
+            "at": "2026-05-08T13:44:31.439384+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/identifiers/0/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/1/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/2/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/3/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/4/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/5/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/6/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/7/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/8/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/9/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/10/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/11/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/12/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/13/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/14/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/15/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/16/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/17/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/18/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/19/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/20/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/21/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/22/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/23/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/24/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/25/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/26/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/27/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/28/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/29/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/30/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/31/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/32/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/33/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/34/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/35/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/36/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/37/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/38/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/39/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/40/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/41/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/42/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/43/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/44/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/45/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/46/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/47/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/48/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/49/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/50/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/51/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/52/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/53/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/54/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/55/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/56/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/57/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/58/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/59/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/60/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/61/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/62/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/63/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/64/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/65/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/66/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/67/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/68/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/69/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/70/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/71/outputDatatableKey"
+                }
+            ],
+            "profile_version": "1.13",
+            "trigger": "migration:20260506160404"
+        },
+        {
+            "at": "2026-05-10T05:20:14.629585+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/identifiers/0/loopOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/1/loopOutput"
+                }
+            ],
+            "profile_version": "1.14",
+            "trigger": "migration:20260506160404"
+        },
+        {
+            "at": "2026-05-10T05:26:54.289687+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/tables/0/loopOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/tables/1/loopOutput"
+                }
+            ],
+            "profile_version": "1.15",
+            "trigger": "migration:20260506160404"
+        },
+        {
+            "at": "2026-05-10T05:34:33.910034+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/tables/0/loopType",
+                    "value": "theader"
+                },
+                {
+                    "op": "replace",
+                    "path": "/tables/1/loopType",
+                    "value": "theader"
+                }
+            ],
+            "profile_version": "1.16",
+            "trigger": "migration:20260506160404"
         }
     ],
     "id": "44f5bfbb-ae1f-4da0-b43b-0d33b649c24a",
@@ -2417,9 +3054,12 @@
             "isLoobDatatableOutput": true,
             "isRdfOutput": false,
             "key": "Sample",
+            "loopOutput": "MULTI FILE",
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "label",
+            "outputDatatableLayer": "label",
             "outputKey": "label",
             "outputLayer": "sample_details",
             "outputTableIndex": [
@@ -2440,9 +3080,12 @@
             "isLoobDatatableOutput": true,
             "isRdfOutput": false,
             "key": "Export file",
+            "loopOutput": "MULTI FILE",
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "comments",
+            "outputDatatableLayer": "comments",
             "outputKey": "comments",
             "outputLayer": "general",
             "outputTableIndex": [
@@ -2466,6 +3109,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "mn",
+            "outputDatatableLayer": "mn",
             "outputKey": "mn",
             "outputLayer": "eval_data_detec_i",
             "outputTableIndex": [
@@ -2489,6 +3134,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "mw",
+            "outputDatatableLayer": "mw",
             "outputKey": "mw",
             "outputLayer": "eval_data_detec_i",
             "outputTableIndex": [
@@ -2512,6 +3159,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "d",
+            "outputDatatableLayer": "d",
             "outputKey": "d",
             "outputLayer": "eval_data_detec_i",
             "outputTableIndex": [
@@ -2535,6 +3184,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "mp",
+            "outputDatatableLayer": "mp",
             "outputKey": "mp",
             "outputLayer": "eval_data_detec_i",
             "outputTableIndex": [
@@ -2558,6 +3209,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "detec1",
+            "outputDatatableLayer": "detec1",
             "outputKey": "detec1",
             "outputLayer": "instrument",
             "outputTableIndex": [
@@ -2581,6 +3234,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "detec2",
+            "outputDatatableLayer": "detec2",
             "outputKey": "detec2",
             "outputLayer": "instrument",
             "outputTableIndex": [
@@ -2604,6 +3259,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "detec3",
+            "outputDatatableLayer": "detec3",
             "outputKey": "detec3",
             "outputLayer": "instrument",
             "outputTableIndex": [
@@ -2627,6 +3284,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "col1",
+            "outputDatatableLayer": "col1",
             "outputKey": "col1",
             "outputLayer": "equipment",
             "outputTableIndex": [
@@ -2650,6 +3309,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "col2",
+            "outputDatatableLayer": "col2",
             "outputKey": "col2",
             "outputLayer": "equipment",
             "outputTableIndex": [
@@ -2673,6 +3334,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "col3",
+            "outputDatatableLayer": "col3",
             "outputKey": "col3",
             "outputLayer": "equipment",
             "outputTableIndex": [
@@ -2696,6 +3359,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "in_vol",
+            "outputDatatableLayer": "in_vol",
             "outputKey": "in_vol",
             "outputLayer": "meta",
             "outputTableIndex": [
@@ -2719,6 +3384,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "eluent",
+            "outputDatatableLayer": "eluent",
             "outputKey": "eluent",
             "outputLayer": "meta",
             "outputTableIndex": [
@@ -2742,6 +3409,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "flow",
+            "outputDatatableLayer": "flow",
             "outputKey": "flow",
             "outputLayer": "meta",
             "outputTableIndex": [
@@ -2765,6 +3434,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "temperature",
+            "outputDatatableLayer": "temperature",
             "outputKey": "temperature",
             "outputLayer": "meta",
             "outputTableIndex": [
@@ -2788,6 +3459,8 @@
             "match": "regex",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "date",
+            "outputDatatableLayer": "date",
             "outputKey": "date",
             "outputLayer": "general",
             "outputTableIndex": [
@@ -2811,6 +3484,8 @@
             "match": "regex",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "time",
+            "outputDatatableLayer": "time",
             "outputKey": "time",
             "outputLayer": "general",
             "outputTableIndex": [
@@ -2835,6 +3510,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "no_dec",
+            "outputDatatableLayer": "no_dec",
             "outputKey": "no_dec",
             "outputLayer": "instrument",
             "outputTableIndex": [
@@ -2858,6 +3535,8 @@
             "match": "regex",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "software",
+            "outputDatatableLayer": "software",
             "outputKey": "software",
             "outputLayer": "software",
             "outputTableIndex": [
@@ -2881,6 +3560,8 @@
             "match": "regex",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "version",
+            "outputDatatableLayer": "version",
             "outputKey": "version",
             "outputLayer": "software",
             "outputTableIndex": [
@@ -2904,6 +3585,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "operator",
+            "outputDatatableLayer": "operator",
             "outputKey": "operator",
             "outputLayer": "general",
             "outputTableIndex": [
@@ -2927,6 +3610,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "a",
+            "outputDatatableLayer": "a",
             "outputKey": "a",
             "outputLayer": "eval_data_detec_1",
             "outputTableIndex": [
@@ -2950,6 +3635,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "d",
+            "outputDatatableLayer": "d",
             "outputKey": "d",
             "outputLayer": "eval_data_detec_1",
             "outputTableIndex": [
@@ -2973,6 +3660,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "mz1",
+            "outputDatatableLayer": "mz1",
             "outputKey": "mz1",
             "outputLayer": "eval_data_detec_1",
             "outputTableIndex": [
@@ -2996,6 +3685,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "mn",
+            "outputDatatableLayer": "mn",
             "outputKey": "mn",
             "outputLayer": "eval_data_detec_1",
             "outputTableIndex": [
@@ -3019,6 +3710,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "mp",
+            "outputDatatableLayer": "mp",
             "outputKey": "mp",
             "outputLayer": "eval_data_detec_1",
             "outputTableIndex": [
@@ -3042,6 +3735,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "mv",
+            "outputDatatableLayer": "mv",
             "outputKey": "mv",
             "outputLayer": "eval_data_detec_1",
             "outputTableIndex": [
@@ -3065,6 +3760,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "mw",
+            "outputDatatableLayer": "mw",
             "outputKey": "mw",
             "outputLayer": "eval_data_detec_1",
             "outputTableIndex": [
@@ -3088,6 +3785,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "mz",
+            "outputDatatableLayer": "mz",
             "outputKey": "mz",
             "outputLayer": "eval_data_detec_1",
             "outputTableIndex": [
@@ -3111,6 +3810,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "vp",
+            "outputDatatableLayer": "vp",
             "outputKey": "vp",
             "outputLayer": "eval_data_detec_1",
             "outputTableIndex": [
@@ -3134,6 +3835,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "n",
+            "outputDatatableLayer": "n",
             "outputKey": "n",
             "outputLayer": "eval_data_detec_1",
             "outputTableIndex": [
@@ -3157,6 +3860,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "a",
+            "outputDatatableLayer": "a",
             "outputKey": "a",
             "outputLayer": "eval_data_detec_2",
             "outputTableIndex": [
@@ -3180,6 +3885,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "d",
+            "outputDatatableLayer": "d",
             "outputKey": "d",
             "outputLayer": "eval_data_detec_2",
             "outputTableIndex": [
@@ -3203,6 +3910,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "mz1",
+            "outputDatatableLayer": "mz1",
             "outputKey": "mz1",
             "outputLayer": "eval_data_detec_2",
             "outputTableIndex": [
@@ -3226,6 +3935,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "mn",
+            "outputDatatableLayer": "mn",
             "outputKey": "mn",
             "outputLayer": "eval_data_detec_2",
             "outputTableIndex": [
@@ -3249,6 +3960,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "mp",
+            "outputDatatableLayer": "mp",
             "outputKey": "mp",
             "outputLayer": "eval_data_detec_2",
             "outputTableIndex": [
@@ -3272,6 +3985,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "mv",
+            "outputDatatableLayer": "mv",
             "outputKey": "mv",
             "outputLayer": "eval_data_detec_2",
             "outputTableIndex": [
@@ -3295,6 +4010,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "mw",
+            "outputDatatableLayer": "mw",
             "outputKey": "mw",
             "outputLayer": "eval_data_detec_2",
             "outputTableIndex": [
@@ -3318,6 +4035,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "mz",
+            "outputDatatableLayer": "mz",
             "outputKey": "mz",
             "outputLayer": "eval_data_detec_2",
             "outputTableIndex": [
@@ -3341,6 +4060,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "vp",
+            "outputDatatableLayer": "vp",
             "outputKey": "vp",
             "outputLayer": "eval_data_detec_2",
             "outputTableIndex": [
@@ -3364,6 +4085,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "n",
+            "outputDatatableLayer": "n",
             "outputKey": "n",
             "outputLayer": "eval_data_detec_2",
             "outputTableIndex": [
@@ -3387,6 +4110,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "a",
+            "outputDatatableLayer": "a",
             "outputKey": "a",
             "outputLayer": "eval_data_detec_3",
             "outputTableIndex": [
@@ -3410,6 +4135,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "d",
+            "outputDatatableLayer": "d",
             "outputKey": "d",
             "outputLayer": "eval_data_detec_3",
             "outputTableIndex": [
@@ -3433,6 +4160,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "mz1",
+            "outputDatatableLayer": "mz1",
             "outputKey": "mz1",
             "outputLayer": "eval_data_detec_3",
             "outputTableIndex": [
@@ -3456,6 +4185,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "mn",
+            "outputDatatableLayer": "mn",
             "outputKey": "mn",
             "outputLayer": "eval_data_detec_3",
             "outputTableIndex": [
@@ -3479,6 +4210,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "mp",
+            "outputDatatableLayer": "mp",
             "outputKey": "mp",
             "outputLayer": "eval_data_detec_3",
             "outputTableIndex": [
@@ -3502,6 +4235,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "mv",
+            "outputDatatableLayer": "mv",
             "outputKey": "mv",
             "outputLayer": "eval_data_detec_3",
             "outputTableIndex": [
@@ -3525,6 +4260,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "mw",
+            "outputDatatableLayer": "mw",
             "outputKey": "mw",
             "outputLayer": "eval_data_detec_3",
             "outputTableIndex": [
@@ -3548,6 +4285,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "mz",
+            "outputDatatableLayer": "mz",
             "outputKey": "mz",
             "outputLayer": "eval_data_detec_3",
             "outputTableIndex": [
@@ -3571,6 +4310,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "vp",
+            "outputDatatableLayer": "vp",
             "outputKey": "vp",
             "outputLayer": "eval_data_detec_3",
             "outputTableIndex": [
@@ -3594,6 +4335,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "n",
+            "outputDatatableLayer": "n",
             "outputKey": "n",
             "outputLayer": "eval_data_detec_3",
             "outputTableIndex": [
@@ -3617,6 +4360,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "a",
+            "outputDatatableLayer": "a",
             "outputKey": "a",
             "outputLayer": "eval_data_detec_4",
             "outputTableIndex": [
@@ -3640,6 +4385,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "d",
+            "outputDatatableLayer": "d",
             "outputKey": "d",
             "outputLayer": "eval_data_detec_4",
             "outputTableIndex": [
@@ -3663,6 +4410,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "mz1",
+            "outputDatatableLayer": "mz1",
             "outputKey": "mz1",
             "outputLayer": "eval_data_detec_4",
             "outputTableIndex": [
@@ -3686,6 +4435,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "mn",
+            "outputDatatableLayer": "mn",
             "outputKey": "mn",
             "outputLayer": "eval_data_detec_4",
             "outputTableIndex": [
@@ -3709,6 +4460,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "mp",
+            "outputDatatableLayer": "mp",
             "outputKey": "mp",
             "outputLayer": "eval_data_detec_4",
             "outputTableIndex": [
@@ -3732,6 +4485,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "mv",
+            "outputDatatableLayer": "mv",
             "outputKey": "mv",
             "outputLayer": "eval_data_detec_4",
             "outputTableIndex": [
@@ -3755,6 +4510,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "mw",
+            "outputDatatableLayer": "mw",
             "outputKey": "mw",
             "outputLayer": "eval_data_detec_4",
             "outputTableIndex": [
@@ -3778,6 +4535,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "mz",
+            "outputDatatableLayer": "mz",
             "outputKey": "mz",
             "outputLayer": "eval_data_detec_4",
             "outputTableIndex": [
@@ -3801,6 +4560,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "vp",
+            "outputDatatableLayer": "vp",
             "outputKey": "vp",
             "outputLayer": "eval_data_detec_4",
             "outputTableIndex": [
@@ -3824,6 +4585,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "n",
+            "outputDatatableLayer": "n",
             "outputKey": "n",
             "outputLayer": "eval_data_detec_4",
             "outputTableIndex": [
@@ -3847,6 +4610,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "a",
+            "outputDatatableLayer": "a",
             "outputKey": "a",
             "outputLayer": "eval_data_detec_5",
             "outputTableIndex": [
@@ -3870,6 +4635,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "d",
+            "outputDatatableLayer": "d",
             "outputKey": "d",
             "outputLayer": "eval_data_detec_5",
             "outputTableIndex": [
@@ -3893,6 +4660,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "mz1",
+            "outputDatatableLayer": "mz1",
             "outputKey": "mz1",
             "outputLayer": "eval_data_detec_5",
             "outputTableIndex": [
@@ -3916,6 +4685,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "mn",
+            "outputDatatableLayer": "mn",
             "outputKey": "mn",
             "outputLayer": "eval_data_detec_5",
             "outputTableIndex": [
@@ -3939,6 +4710,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "mp",
+            "outputDatatableLayer": "mp",
             "outputKey": "mp",
             "outputLayer": "eval_data_detec_5",
             "outputTableIndex": [
@@ -3962,6 +4735,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "mv",
+            "outputDatatableLayer": "mv",
             "outputKey": "mv",
             "outputLayer": "eval_data_detec_5",
             "outputTableIndex": [
@@ -3985,6 +4760,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "mw",
+            "outputDatatableLayer": "mw",
             "outputKey": "mw",
             "outputLayer": "eval_data_detec_5",
             "outputTableIndex": [
@@ -4008,6 +4785,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "mz",
+            "outputDatatableLayer": "mz",
             "outputKey": "mz",
             "outputLayer": "eval_data_detec_5",
             "outputTableIndex": [
@@ -4031,6 +4810,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "vp",
+            "outputDatatableLayer": "vp",
             "outputKey": "vp",
             "outputLayer": "eval_data_detec_5",
             "outputTableIndex": [
@@ -4054,6 +4835,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "n",
+            "outputDatatableLayer": "n",
             "outputKey": "n",
             "outputLayer": "eval_data_detec_5",
             "outputTableIndex": [
@@ -4090,7 +4873,7 @@
     "ols": "CHMO:0001013",
     "ontology": "",
     "predicates": [],
-    "profile_version": "1.12",
+    "profile_version": "1.17",
     "reactionVariations": {
         "elements": [],
         "identifiers": []
@@ -4121,7 +4904,8 @@
                 "YUNITS": "ARBITRARY UNITS"
             },
             "inputTableIndex": 6,
-            "loopType": "theader",
+            "loopOutput": "MULTI FILE",
+            "loopType": "condition",
             "table": {
                 "loop_theader": [
                     {
@@ -4148,7 +4932,8 @@
                 "YUNITS": "ARBITRARY UNITS"
             },
             "inputTableIndex": 7,
-            "loopType": "theader",
+            "loopOutput": "MULTI FILE",
+            "loopType": "condition",
             "table": {
                 "loop_theader": [
                     {

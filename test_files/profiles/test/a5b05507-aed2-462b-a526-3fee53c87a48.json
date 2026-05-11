@@ -285,6 +285,39 @@
             ],
             "profile_version": "1.10",
             "trigger": "migration:20260506160404"
+        },
+        {
+            "at": "2026-05-10T05:20:14.564034+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/identifiers/0/loopOutput"
+                }
+            ],
+            "profile_version": "1.11",
+            "trigger": "migration:20260506160404"
+        },
+        {
+            "at": "2026-05-10T05:26:54.224782+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/tables/0/loopOutput"
+                }
+            ],
+            "profile_version": "1.12",
+            "trigger": "migration:20260506160404"
+        },
+        {
+            "at": "2026-05-10T05:34:33.783199+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/tables/0/loopType"
+                }
+            ],
+            "profile_version": "1.13",
+            "trigger": "migration:20260506160404"
         }
     ],
     "id": "a5b05507-aed2-462b-a526-3fee53c87a48",
@@ -293,6 +326,7 @@
             "editable": true,
             "id": "#0fileMetadata",
             "key": "file_name",
+            "loopOutput": "MULTI FILE",
             "match": "regex",
             "optional": false,
             "type": "fileMetadata",
@@ -314,7 +348,7 @@
     "ols": null,
     "ontology": "",
     "predicates": [],
-    "profile_version": "1.11",
+    "profile_version": "1.14",
     "reactionVariations": {
         "elements": [],
         "identifiers": []
@@ -345,6 +379,8 @@
                 "YUNITS": "Intensity"
             },
             "inputTableIndex": 0,
+            "loopOutput": "MULTI FILE",
+            "loopType": "none",
             "table": {
                 "xColumn": {
                     "columnIndex": 0

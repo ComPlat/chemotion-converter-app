@@ -256,6 +256,39 @@
             ],
             "profile_version": "1.10",
             "trigger": "migration:20260506160404"
+        },
+        {
+            "at": "2026-05-10T05:20:14.588431+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/identifiers/0/loopOutput"
+                }
+            ],
+            "profile_version": "1.11",
+            "trigger": "migration:20260506160404"
+        },
+        {
+            "at": "2026-05-10T05:26:54.249298+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/tables/0/loopOutput"
+                }
+            ],
+            "profile_version": "1.12",
+            "trigger": "migration:20260506160404"
+        },
+        {
+            "at": "2026-05-10T05:34:33.808032+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/tables/0/loopType"
+                }
+            ],
+            "profile_version": "1.13",
+            "trigger": "migration:20260506160404"
         }
     ],
     "id": "af891148-ebcc-4e5d-a481-fa6acc853699",
@@ -264,6 +297,7 @@
             "editable": true,
             "id": "#0tableHeader",
             "lineNumber": 2,
+            "loopOutput": "MULTI FILE",
             "match": "exact",
             "optional": false,
             "tableIndex": 0,
@@ -277,7 +311,7 @@
     "ols": null,
     "ontology": "",
     "predicates": [],
-    "profile_version": "1.11",
+    "profile_version": "1.14",
     "reactionVariations": {
         "elements": [],
         "identifiers": []
@@ -308,6 +342,8 @@
                 "YUNITS": "ABSORBANCE"
             },
             "inputTableIndex": 0,
+            "loopOutput": "MULTI FILE",
+            "loopType": "none",
             "table": {
                 "xColumn": {
                     "columnIndex": 0

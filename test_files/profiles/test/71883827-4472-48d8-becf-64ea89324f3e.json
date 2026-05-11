@@ -1550,6 +1550,297 @@
             ],
             "profile_version": "1.11",
             "trigger": "migration:20260506160404"
+        },
+        {
+            "at": "2026-05-08T13:41:44.714884+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/identifiers/0/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/1/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/2/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/3/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/4/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/5/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/6/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/7/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/8/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/9/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/10/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/11/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/12/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/15/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/16/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/17/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/18/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/19/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/20/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/21/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/22/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/23/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/24/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/25/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/26/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/27/outputDatatableLayer"
+                }
+            ],
+            "profile_version": "1.12",
+            "trigger": "migration:20260506160404"
+        },
+        {
+            "at": "2026-05-08T13:44:31.290951+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/identifiers/0/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/1/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/2/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/3/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/4/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/5/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/6/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/7/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/8/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/9/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/10/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/11/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/12/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/15/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/16/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/17/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/18/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/19/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/20/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/21/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/22/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/23/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/24/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/25/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/26/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/27/outputDatatableKey"
+                }
+            ],
+            "profile_version": "1.13",
+            "trigger": "migration:20260506160404"
+        },
+        {
+            "at": "2026-05-10T05:20:14.503107+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/identifiers/0/loopOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/1/loopOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/2/loopOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/3/loopOutput"
+                }
+            ],
+            "profile_version": "1.14",
+            "trigger": "migration:20260506160404"
+        },
+        {
+            "at": "2026-05-10T05:26:54.169036+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/tables/0/loopOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/tables/1/loopOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/tables/2/loopOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/tables/3/loopOutput"
+                }
+            ],
+            "profile_version": "1.15",
+            "trigger": "migration:20260506160404"
+        },
+        {
+            "at": "2026-05-10T05:34:33.725235+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/tables/0/loopType"
+                },
+                {
+                    "op": "remove",
+                    "path": "/tables/1/loopType"
+                },
+                {
+                    "op": "remove",
+                    "path": "/tables/2/loopType"
+                },
+                {
+                    "op": "remove",
+                    "path": "/tables/3/loopType"
+                }
+            ],
+            "profile_version": "1.16",
+            "trigger": "migration:20260506160404"
         }
     ],
     "id": "71883827-4472-48d8-becf-64ea89324f3e",
@@ -1563,9 +1854,12 @@
             "isLoobDatatableOutput": true,
             "isRdfOutput": false,
             "key": "Sample",
+            "loopOutput": "MULTI FILE",
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "label",
+            "outputDatatableLayer": "label",
             "outputKey": "label",
             "outputLayer": "sample_details",
             "outputTableIndex": [
@@ -1586,9 +1880,12 @@
             "isLoobDatatableOutput": true,
             "isRdfOutput": false,
             "key": "Export file",
+            "loopOutput": "MULTI FILE",
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "comments",
+            "outputDatatableLayer": "comments",
             "outputKey": "comments",
             "outputLayer": "general",
             "outputTableIndex": [
@@ -1609,9 +1906,12 @@
             "isLoobDatatableOutput": true,
             "isRdfOutput": false,
             "key": "Mn",
+            "loopOutput": "MULTI FILE",
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "mn",
+            "outputDatatableLayer": "mn",
             "outputKey": "mn",
             "outputLayer": "eval_data_detec_i",
             "outputTableIndex": [
@@ -1632,9 +1932,12 @@
             "isLoobDatatableOutput": true,
             "isRdfOutput": false,
             "key": "Mn_unit",
+            "loopOutput": "MULTI FILE",
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "mn",
+            "outputDatatableLayer": "mn",
             "outputKey": "mn",
             "outputLayer": "eval_data_detec_ii",
             "outputTableIndex": [
@@ -1658,6 +1961,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "mw",
+            "outputDatatableLayer": "mw",
             "outputKey": "mw",
             "outputLayer": "eval_data_detec_i",
             "outputTableIndex": [
@@ -1681,6 +1986,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "mw",
+            "outputDatatableLayer": "mw",
             "outputKey": "mw",
             "outputLayer": "eval_data_detec_ii",
             "outputTableIndex": [
@@ -1704,6 +2011,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "d",
+            "outputDatatableLayer": "d",
             "outputKey": "d",
             "outputLayer": "eval_data_detec_i",
             "outputTableIndex": [
@@ -1727,6 +2036,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "d",
+            "outputDatatableLayer": "d",
             "outputKey": "d",
             "outputLayer": "eval_data_detec_ii",
             "outputTableIndex": [
@@ -1750,6 +2061,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "mp",
+            "outputDatatableLayer": "mp",
             "outputKey": "mp",
             "outputLayer": "eval_data_detec_i",
             "outputTableIndex": [
@@ -1773,6 +2086,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "mp",
+            "outputDatatableLayer": "mp",
             "outputKey": "mp",
             "outputLayer": "eval_data_detec_ii",
             "outputTableIndex": [
@@ -1796,6 +2111,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "detec1",
+            "outputDatatableLayer": "detec1",
             "outputKey": "detec1",
             "outputLayer": "instrument",
             "outputTableIndex": [
@@ -1819,6 +2136,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "detec2",
+            "outputDatatableLayer": "detec2",
             "outputKey": "detec2",
             "outputLayer": "instrument",
             "outputTableIndex": [
@@ -1842,6 +2161,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "detec3",
+            "outputDatatableLayer": "detec3",
             "outputKey": "detec3",
             "outputLayer": "instrument",
             "outputTableIndex": [
@@ -1884,6 +2205,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "col1",
+            "outputDatatableLayer": "col1",
             "outputKey": "col1",
             "outputLayer": "equipment",
             "outputTableIndex": [
@@ -1907,6 +2230,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "col2",
+            "outputDatatableLayer": "col2",
             "outputKey": "col2",
             "outputLayer": "equipment",
             "outputTableIndex": [
@@ -1930,6 +2255,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "col3",
+            "outputDatatableLayer": "col3",
             "outputKey": "col3",
             "outputLayer": "equipment",
             "outputTableIndex": [
@@ -1953,6 +2280,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "in_vol",
+            "outputDatatableLayer": "in_vol",
             "outputKey": "in_vol",
             "outputLayer": "meta",
             "outputTableIndex": [
@@ -1976,6 +2305,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "eluent",
+            "outputDatatableLayer": "eluent",
             "outputKey": "eluent",
             "outputLayer": "meta",
             "outputTableIndex": [
@@ -1999,6 +2330,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "flow",
+            "outputDatatableLayer": "flow",
             "outputKey": "flow",
             "outputLayer": "meta",
             "outputTableIndex": [
@@ -2022,6 +2355,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "temperature",
+            "outputDatatableLayer": "temperature",
             "outputKey": "temperature",
             "outputLayer": "meta",
             "outputTableIndex": [
@@ -2045,6 +2380,8 @@
             "match": "regex",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "date",
+            "outputDatatableLayer": "date",
             "outputKey": "date",
             "outputLayer": "general",
             "outputTableIndex": [
@@ -2068,6 +2405,8 @@
             "match": "regex",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "time",
+            "outputDatatableLayer": "time",
             "outputKey": "time",
             "outputLayer": "general",
             "outputTableIndex": [
@@ -2091,6 +2430,8 @@
             "match": "regex",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "no_dec",
+            "outputDatatableLayer": "no_dec",
             "outputKey": "no_dec",
             "outputLayer": "instrument",
             "outputTableIndex": [
@@ -2114,6 +2455,8 @@
             "match": "regex",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "software",
+            "outputDatatableLayer": "software",
             "outputKey": "software",
             "outputLayer": "software",
             "outputTableIndex": [
@@ -2137,6 +2480,8 @@
             "match": "regex",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "version",
+            "outputDatatableLayer": "version",
             "outputKey": "version",
             "outputLayer": "software",
             "outputTableIndex": [
@@ -2160,6 +2505,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "operator",
+            "outputDatatableLayer": "operator",
             "outputKey": "operator",
             "outputLayer": "general",
             "outputTableIndex": [
@@ -2188,7 +2535,7 @@
     "ols": "CHMO:0001013",
     "ontology": "",
     "predicates": [],
-    "profile_version": "1.12",
+    "profile_version": "1.17",
     "reactionVariations": {
         "elements": [],
         "identifiers": []
@@ -2219,6 +2566,8 @@
                 "YUNITS": "ARBITRARY UNITS"
             },
             "inputTableIndex": 7,
+            "loopOutput": "MULTI FILE",
+            "loopType": "none",
             "table": {
                 "xColumn": {
                     "columnIndex": 0
@@ -2236,6 +2585,8 @@
                 "YUNITS": "ARBITRARY UNITS"
             },
             "inputTableIndex": 7,
+            "loopOutput": "MULTI FILE",
+            "loopType": "none",
             "table": {
                 "xColumn": {
                     "columnIndex": 0
@@ -2253,6 +2604,8 @@
                 "YUNITS": "ARBITRARY UNITS"
             },
             "inputTableIndex": 6,
+            "loopOutput": "MULTI FILE",
+            "loopType": "none",
             "table": {
                 "xColumn": {
                     "columnIndex": 0
@@ -2270,6 +2623,8 @@
                 "YUNITS": "ARBITRARY UNITS"
             },
             "inputTableIndex": 6,
+            "loopOutput": "MULTI FILE",
+            "loopType": "none",
             "table": {
                 "xColumn": {
                     "columnIndex": 0

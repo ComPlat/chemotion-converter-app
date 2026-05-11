@@ -254,6 +254,39 @@
             ],
             "profile_version": "1.10",
             "trigger": "migration:20260506160404"
+        },
+        {
+            "at": "2026-05-10T05:20:14.482413+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/identifiers/0/loopOutput"
+                }
+            ],
+            "profile_version": "1.11",
+            "trigger": "migration:20260506160404"
+        },
+        {
+            "at": "2026-05-10T05:26:54.149753+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/tables/0/loopOutput"
+                }
+            ],
+            "profile_version": "1.12",
+            "trigger": "migration:20260506160404"
+        },
+        {
+            "at": "2026-05-10T05:34:33.705232+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/tables/0/loopType"
+                }
+            ],
+            "profile_version": "1.13",
+            "trigger": "migration:20260506160404"
         }
     ],
     "id": "c498c925-61e0-455e-a4c6-c46ac9c2f5c6",
@@ -262,6 +295,7 @@
             "editable": true,
             "id": "#0tableHeader",
             "lineNumber": 1,
+            "loopOutput": "MULTI FILE",
             "match": "regex",
             "optional": false,
             "tableIndex": 0,
@@ -295,7 +329,7 @@
     "ols": null,
     "ontology": "",
     "predicates": [],
-    "profile_version": "1.11",
+    "profile_version": "1.14",
     "reactionVariations": {
         "elements": [],
         "identifiers": []
@@ -326,6 +360,8 @@
                 "YUNITS": "Intensity"
             },
             "inputTableIndex": 0,
+            "loopOutput": "MULTI FILE",
+            "loopType": "none",
             "table": {
                 "xColumn": {
                     "columnIndex": 1

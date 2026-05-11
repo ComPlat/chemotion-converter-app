@@ -20,26 +20,22 @@ class JcampWriter(Writer):
         self.buffer: io.StringIO | None = None
 
     def process(self):
-        self.process_table(self.tables[0])
+        self.process_table(next((t for t in self.tables if not isinstance(t, list)), {}))
 
     def process_ntuples_tables(self) -> Generator[list, Any, None]:
         """
         Prepares single jdx for all NTUPLES data tables
         """
-        ntuples_tables = [table for table in self.tables if table.get('header', {}).get('DATA CLASS') == 'NTUPLES']
+        grouped_tables = [table for table in self.tables if isinstance(table, list)]
 
-        # 1. Group the objects using a defaultdict
-        grouped_tables = defaultdict(list)
 
-        for table in ntuples_tables:
-            # Use the 'header' attribute as the key to group by
-            grouped_tables[table['header']['NTUPLES_ID']].append(table)
-
-        for tables in grouped_tables.values():
+        for tables in grouped_tables:
             self.buffer = io.StringIO()
             header = tables[0].get('header', {})
+            data_class = header.get('DATA CLASS', DATA_CLASSES[0])
+            header['DATA CLASS'] = "NTUPLES"
             self._prepare_main_header(header)
-            self._process_ntuples(header, tables)
+            self._process_ntuples(header, tables, data_class)
             yield tables
 
     def process_table(self, table):
@@ -61,8 +57,6 @@ class JcampWriter(Writer):
             self._process_xydata(header, table.get('y'))
         elif data_class in ['XYPOINTS', 'PEAK TABLE']:
             self._process_xypoints(header, table.get('x'), table.get('y'))
-        elif data_class == 'NTUPLES':
-            self._process_ntuples(header, [table])
 
     def _prepare_main_header(self, header):
         jcamp_header = {
@@ -73,7 +67,7 @@ class JcampWriter(Writer):
             'ORIGIN': header.get('ORIGIN', ''),
             'OWNER': header.get('OWNER', '')
         }
-        black_list = ['NTUPLES_PAGE_HEADER_VALUE', 'NTUPLES_ID', 'NTUPLES_PAGE_HEADER']
+        black_list = ['PAGE', 'NTUPLES_ID', 'NTUPLES_PAGE_HEADER']
         for key in header:
             key_upper = key.upper()
             if key_upper not in black_list and key_upper not in jcamp_header:
@@ -98,7 +92,7 @@ class JcampWriter(Writer):
             jcamp_header['CALCULATION_FAILED'] = True
         self._write_header(jcamp_header)
 
-    def _process_xydata(self, header, y):
+    def _process_xydata(self, header, y, is_closed=True):
         firstx = header.get('FIRSTX')
         lastx = header.get('LASTX')
         deltax = header.get('DELTAX')
@@ -151,9 +145,11 @@ class JcampWriter(Writer):
         self._write_xydata(y, npoints, firstx, deltax, max_decimal)
 
         # write the end
-        self.buffer.write('##END=$$ End of the data block' + os.linesep)
+        if is_closed:
+            # write the end
+            self.buffer.write('##END=$$ End of the data block' + os.linesep)
 
-    def _process_xypoints(self, header, x, y):
+    def _process_xypoints(self, header, x, y, is_closed=True):
         assert x
         assert y
 
@@ -200,25 +196,22 @@ class JcampWriter(Writer):
         # write the xypoints
         self._write_xypoints(x, y)
 
-        # write the end
-        self.buffer.write('##END=$$ End of the data block' + os.linesep)
+        if is_closed:
+            # write the end
+            self.buffer.write('##END=$$ End of the data block' + os.linesep)
 
-    def _process_ntuples(self, header, tables):
+    def _process_ntuples(self, header, tables, data_class):
         self._prepare_calculation_header(tables[0], False)
         ph = 'T' if header['NTUPLES_PAGE_HEADER'].startswith('___') else header['NTUPLES_PAGE_HEADER']
 
         dim_xy = len(tables[0].get('x'))
         self._write_header({
             'NTUPLES': 'MULTIDIMENSIONAL',
-            #'VAR_NAME': '',
             'VAR_NAME':  f'{ph}, {header.get('XUNITS', XUNITS[0])}, {header.get('YUNITS', YUNITS[0])}',
             'SYMBOL':    'T, X, Y',
             'VAR_TYPE': 'PAGE, X, Y',
-            # 'VAR_FORM': 'AFFN, AFFN',
             'VAR_DIM': f'{len(tables)}, {dim_xy}, {dim_xy}',
             'UNITS': f', {header.get('XUNITS', XUNITS[0])}, {header.get('YUNITS', YUNITS[0])}',
-            #'FIRST': '',
-            #'LAST': '',
         })
 
         for i, table in enumerate(tables):
@@ -231,13 +224,15 @@ class JcampWriter(Writer):
             # write header for one page
 
             self._write_header({
-                'PAGE': header['NTUPLES_PAGE_HEADER_VALUE'],
-                'XYDATA': '(XY..XY)'
+                'PAGE': header['PAGE'],
 
             })
 
-            # write the xypoints
-            self._write_xypoints(x, y)
+            if data_class == 'XYDATA':
+                self._process_xydata(header, table.get('y'), False)
+            elif data_class in ['XYPOINTS', 'PEAK TABLE']:
+                self._process_xypoints(header, table.get('x'), table.get('y'), False)
+
 
         # write the end
         self.buffer.write(f'##END NTUPLES= MULTIDIMENSIONAL' + os.linesep)

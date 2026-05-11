@@ -1,4 +1,6 @@
 from converter_app.profile_migration import ProfileMigration
+from options import DATA_LOOP_CLASSES, DATA_CLASSES
+
 
 def flatten(lst):
     result = []
@@ -22,6 +24,17 @@ def get_by_path(obj, path, first=True):
     if first:
         return flatten([get_by_path(obj[key], rest, False)])
     return get_by_path(obj[key], rest, False)
+
+def set_by_path(obj, path, value):
+    if len(path) == 1:
+        obj[path[0]] = value
+        return
+    elif not path:
+        return
+
+    key = path[0]
+    rest = path[1:]
+    set_by_path(obj[key], rest, value)
 
 
 
@@ -47,6 +60,14 @@ def delete_by_path(obj, path):
 
     delete_by_path(obj[key], rest)
 
+def compute_has_loop(table):
+    if table.get('loopType') == 'all':
+        return table.get('matchTables')
+    loop_header = table['table'].get('loop_header')
+    loop_metadata = table['table'].get('loop_metadata')
+    loop_theader = table['table'].get('loop_theader')
+    return any(x for x in [loop_header, loop_metadata, loop_theader])
+
 class ProfileMigrationScript(ProfileMigration):
     """
     Extents identifier with output options
@@ -65,6 +86,7 @@ class ProfileMigrationScript(ProfileMigration):
                 profile['identifiers'][i]['isDatatableOutput'] = identifier.get('isDatatableOutput', False)
                 profile['identifiers'][i]['isLoobDatatableOutput'] = identifier.get('isLoobDatatableOutput', True)
                 profile['identifiers'][i]['isRdfOutput'] = identifier.get('isRdfOutput', False)
+                profile['identifiers'][i]['outputDatatableKey'] = identifier.get('outputDatatableKey', identifier.get('outputKey', ''))
                 if not isinstance(identifier['outputTableIndex'], list):
                     profile['identifiers'][i]['outputTableIndex'] = [identifier['outputTableIndex']]
 
@@ -83,7 +105,33 @@ class ProfileMigrationScript(ProfileMigration):
                 except:
                     pass
 
-            profile['tables'][i]['inputTableIndex'] = values[0]  if len(values) > 0 else profile['tables'][i].get('inputTableIndex', 0)
+
+            if 'inputTableIndex' not in profile['tables'][i]:
+                profile['tables'][i]['inputTableIndex'] = values[0]  if len(values) > 0 else profile['tables'][i].get('inputTableIndex', 0)
+            loop_metadata_value_p = ['table', 'loop_metadata']
+            try:
+                for idx, val in enumerate(get_by_path(table, loop_metadata_value_p + [-1, 'value'])):
+                    set_by_path(table, loop_metadata_value_p + [idx, 'metadata'], val)
+            except:
+                pass
+            data_class = profile['tables'][i]['header'].get('DATA CLASS')
+            lot = profile['tables'][i].get('loopOutput')
+            if data_class == 'NTUPLES':
+                profile['tables'][i]['loopOutput'] = DATA_LOOP_CLASSES[1]
+                profile['tables'][i]['header']['DATA CLASS'] = DATA_CLASSES[0]
+                profile['tables'][i]['nTuplePageHeader'] = profile['tables'][i]['header']['NTUPLES_PAGE_HEADER']
+                del profile['tables'][i]['header']['NTUPLES_PAGE_HEADER']
+                del profile['tables'][i]['header']['NTUPLES_ID']
+
+            lt = table.get('loopType')
+            if lt not in ['none', 'condition']:
+                if compute_has_loop(table):
+                    profile['tables'][i]['loopType'] = 'all' if table['loopType'] == 'all' else 'condition'
+                else:
+                    profile['tables'][i]['loopType'] = 'none'
+
+            elif lot is None:
+                profile['tables'][i]['loopOutput'] = DATA_LOOP_CLASSES[0]
 
 
     def to_be_applied_after_migration(self) -> str:

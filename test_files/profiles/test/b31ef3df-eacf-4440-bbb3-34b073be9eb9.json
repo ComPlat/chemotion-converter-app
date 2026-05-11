@@ -5207,6 +5207,51 @@
             ],
             "profile_version": "1.10",
             "trigger": "migration:20260506160404"
+        },
+        {
+            "at": "2026-05-10T05:20:14.453863+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/identifiers/0/loopOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/1/loopOutput"
+                }
+            ],
+            "profile_version": "1.11",
+            "trigger": "migration:20260506160404"
+        },
+        {
+            "at": "2026-05-10T05:26:54.123867+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/tables/0/loopOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/tables/1/loopOutput"
+                }
+            ],
+            "profile_version": "1.12",
+            "trigger": "migration:20260506160404"
+        },
+        {
+            "at": "2026-05-10T05:34:33.678738+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/tables/0/loopType"
+                },
+                {
+                    "op": "remove",
+                    "path": "/tables/1/loopType"
+                }
+            ],
+            "profile_version": "1.13",
+            "trigger": "migration:20260506160404"
         }
     ],
     "id": "b31ef3df-eacf-4440-bbb3-34b073be9eb9",
@@ -5215,6 +5260,7 @@
             "editable": true,
             "id": "#0fileMetadata",
             "key": "reader",
+            "loopOutput": "MULTI FILE",
             "match": "exact",
             "optional": false,
             "type": "fileMetadata",
@@ -5224,6 +5270,7 @@
             "editable": true,
             "id": "#1tableHeader",
             "lineNumber": 2,
+            "loopOutput": "MULTI FILE",
             "match": "regex",
             "optional": false,
             "tableIndex": 0,
@@ -5237,7 +5284,7 @@
     "ols": null,
     "ontology": "",
     "predicates": [],
-    "profile_version": "1.11",
+    "profile_version": "1.14",
     "reactionVariations": {
         "elements": [],
         "identifiers": []
@@ -5268,6 +5315,8 @@
                 "YUNITS": "Intensity"
             },
             "inputTableIndex": 12,
+            "loopOutput": "MULTI FILE",
+            "loopType": "none",
             "table": {
                 "xColumn": {
                     "columnIndex": 0
@@ -5285,6 +5334,8 @@
                 "YUNITS": "Intensity"
             },
             "inputTableIndex": 13,
+            "loopOutput": "MULTI FILE",
+            "loopType": "none",
             "table": {
                 "xColumn": {
                     "columnIndex": 0

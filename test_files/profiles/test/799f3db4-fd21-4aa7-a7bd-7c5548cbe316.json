@@ -1351,6 +1351,146 @@
             ],
             "profile_version": "1.11",
             "trigger": "migration:20260506160404"
+        },
+        {
+            "at": "2026-05-08T13:41:44.611013+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/identifiers/1/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/2/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/3/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/4/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/5/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/6/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/8/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/9/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/10/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/11/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/12/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/13/outputDatatableLayer"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/14/outputDatatableLayer"
+                }
+            ],
+            "profile_version": "1.12",
+            "trigger": "migration:20260506160404"
+        },
+        {
+            "at": "2026-05-08T13:44:31.169036+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/identifiers/1/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/2/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/3/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/4/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/5/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/6/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/8/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/9/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/10/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/11/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/12/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/13/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/14/outputDatatableKey"
+                }
+            ],
+            "profile_version": "1.13",
+            "trigger": "migration:20260506160404"
+        },
+        {
+            "at": "2026-05-10T05:20:14.396260+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/identifiers/0/loopOutput"
+                }
+            ],
+            "profile_version": "1.14",
+            "trigger": "migration:20260506160404"
+        },
+        {
+            "at": "2026-05-10T05:26:54.072240+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/tables/0/loopOutput"
+                }
+            ],
+            "profile_version": "1.15",
+            "trigger": "migration:20260506160404"
         }
     ],
     "id": "799f3db4-fd21-4aa7-a7bd-7c5548cbe316",
@@ -1359,6 +1499,7 @@
             "editable": true,
             "id": "#0fileMetadata",
             "key": "extension",
+            "loopOutput": "MULTI FILE",
             "match": "exact",
             "optional": false,
             "type": "fileMetadata",
@@ -1376,6 +1517,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "date",
+            "outputDatatableLayer": "date",
             "outputKey": "date",
             "outputLayer": "general",
             "outputTableIndex": [
@@ -1405,6 +1548,8 @@
                 }
             ],
             "optional": true,
+            "outputDatatableKey": "scan_rate",
+            "outputDatatableLayer": "scan_rate",
             "outputKey": "scan_rate",
             "outputLayer": "meas",
             "outputTableIndex": [
@@ -1434,6 +1579,8 @@
                 }
             ],
             "optional": true,
+            "outputDatatableKey": "step_size",
+            "outputDatatableLayer": "step_size",
             "outputKey": "step_size",
             "outputLayer": "meas",
             "outputTableIndex": [
@@ -1457,6 +1604,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "cycles",
+            "outputDatatableLayer": "cycles",
             "outputKey": "cycles",
             "outputLayer": "meas",
             "outputTableIndex": [
@@ -1480,6 +1629,8 @@
             "match": "regex",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "software_version",
+            "outputDatatableLayer": "software_version",
             "outputKey": "software_version",
             "outputLayer": "software",
             "outputTableIndex": [
@@ -1503,6 +1654,8 @@
             "match": "regex",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "software",
+            "outputDatatableLayer": "software",
             "outputKey": "software",
             "outputLayer": "software",
             "outputTableIndex": [
@@ -1536,6 +1689,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "time",
+            "outputDatatableLayer": "time",
             "outputKey": "time",
             "outputLayer": "general",
             "outputTableIndex": [
@@ -1559,6 +1714,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "voltage_start",
+            "outputDatatableLayer": "voltage_start",
             "outputKey": "voltage_start",
             "outputLayer": "meas",
             "outputTableIndex": [
@@ -1582,6 +1739,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "voltage_limit_one",
+            "outputDatatableLayer": "voltage_limit_one",
             "outputKey": "voltage_limit_one",
             "outputLayer": "meas",
             "outputTableIndex": [
@@ -1605,6 +1764,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "voltage_limit_two",
+            "outputDatatableLayer": "voltage_limit_two",
             "outputKey": "voltage_limit_two",
             "outputLayer": "meas",
             "outputTableIndex": [
@@ -1628,6 +1789,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "voltage_limit_end",
+            "outputDatatableLayer": "voltage_limit_end",
             "outputKey": "voltage_limit_end",
             "outputLayer": "meas",
             "outputTableIndex": [
@@ -1651,6 +1814,8 @@
             "match": "any",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "serial",
+            "outputDatatableLayer": "serial",
             "outputKey": "serial",
             "outputLayer": "instrument",
             "outputTableIndex": [
@@ -1674,6 +1839,8 @@
             "match": "regex",
             "object": null,
             "optional": true,
+            "outputDatatableKey": "instrument",
+            "outputDatatableLayer": "instrument",
             "outputKey": "instrument",
             "outputLayer": "instrument",
             "outputTableIndex": [
@@ -1692,7 +1859,7 @@
     "ols": "CHMO:0000025",
     "ontology": "",
     "predicates": [],
-    "profile_version": "1.12",
+    "profile_version": "1.16",
     "reactionVariations": {
         "elements": [],
         "identifiers": []
@@ -1723,6 +1890,7 @@
                 "YUNITS": "Current in A"
             },
             "inputTableIndex": 0,
+            "loopOutput": "MULTI FILE",
             "loopType": "all",
             "matchTables": true,
             "table": {

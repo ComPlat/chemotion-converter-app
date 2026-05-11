@@ -56,7 +56,7 @@ class JcampZipWriter(Writer):
                 self._update_sha_binary(sha_strings, binary_string, file_name)
 
             for table_id, table in enumerate(
-                    [t for t in self.tables if t.get('header', {}).get('DATA CLASS') != 'NTUPLES']):
+                    [t for t in self.tables if not isinstance(t, list)]):
                 file_name = f'data/table_{(table_id + 1):02d}.jdx'
                 jc = JcampWriter(self._converter)
                 jc.process_table(table)

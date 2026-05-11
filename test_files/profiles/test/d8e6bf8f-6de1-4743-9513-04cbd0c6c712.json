@@ -388,6 +388,75 @@
             ],
             "profile_version": "1.10",
             "trigger": "migration:20260506160404"
+        },
+        {
+            "at": "2026-05-10T05:20:14.645347+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/identifiers/0/loopOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/1/loopOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/2/loopOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/3/loopOutput"
+                }
+            ],
+            "profile_version": "1.11",
+            "trigger": "migration:20260506160404"
+        },
+        {
+            "at": "2026-05-10T05:26:54.305311+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/tables/0/loopOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/tables/1/loopOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/tables/2/loopOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/tables/3/loopOutput"
+                }
+            ],
+            "profile_version": "1.12",
+            "trigger": "migration:20260506160404"
+        },
+        {
+            "at": "2026-05-10T05:34:33.926945+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/tables/0/loopType"
+                },
+                {
+                    "op": "remove",
+                    "path": "/tables/1/loopType"
+                },
+                {
+                    "op": "remove",
+                    "path": "/tables/2/loopType"
+                },
+                {
+                    "op": "remove",
+                    "path": "/tables/3/loopType"
+                }
+            ],
+            "profile_version": "1.13",
+            "trigger": "migration:20260506160404"
         }
     ],
     "id": "d8e6bf8f-6de1-4743-9513-04cbd0c6c712",
@@ -396,6 +465,7 @@
             "editable": true,
             "id": "#0fileMetadata",
             "key": "reader",
+            "loopOutput": "MULTI FILE",
             "match": "exact",
             "optional": false,
             "type": "fileMetadata",
@@ -405,6 +475,7 @@
             "editable": true,
             "id": "#1fileMetadata",
             "key": "extension",
+            "loopOutput": "MULTI FILE",
             "match": "exact",
             "optional": false,
             "type": "fileMetadata",
@@ -414,6 +485,7 @@
             "editable": true,
             "id": "#2tableMetadata",
             "key": "column_00",
+            "loopOutput": "MULTI FILE",
             "match": "exact",
             "optional": false,
             "tableIndex": 0,
@@ -424,6 +496,7 @@
             "editable": true,
             "id": "#3tableMetadata",
             "key": "column_07",
+            "loopOutput": "MULTI FILE",
             "match": "exact",
             "optional": false,
             "tableIndex": 0,
@@ -447,7 +520,7 @@
     "ols": "CHMO:0000292",
     "ontology": "",
     "predicates": [],
-    "profile_version": "1.11",
+    "profile_version": "1.14",
     "reactionVariations": {
         "elements": [],
         "identifiers": []
@@ -478,6 +551,8 @@
                 "YUNITS": "ABSORBANCE"
             },
             "inputTableIndex": 0,
+            "loopOutput": "MULTI FILE",
+            "loopType": "none",
             "table": {
                 "xColumn": {
                     "columnIndex": 0
@@ -495,6 +570,8 @@
                 "YUNITS": "ABSORBANCE"
             },
             "inputTableIndex": 0,
+            "loopOutput": "MULTI FILE",
+            "loopType": "none",
             "table": {
                 "xColumn": {
                     "columnIndex": 2
@@ -512,6 +589,8 @@
                 "YUNITS": "ABSORBANCE"
             },
             "inputTableIndex": 0,
+            "loopOutput": "MULTI FILE",
+            "loopType": "none",
             "table": {
                 "xColumn": {
                     "columnIndex": 4
@@ -529,6 +608,8 @@
                 "YUNITS": "ABSORBANCE"
             },
             "inputTableIndex": 0,
+            "loopOutput": "MULTI FILE",
+            "loopType": "none",
             "table": {
                 "xColumn": {
                     "columnIndex": 6

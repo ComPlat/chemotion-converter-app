@@ -6,7 +6,7 @@ class Writer(ABC):
     Processes a reader output and prepares all gained date in a single file
     """
     def __init__(self, converter):
-        self.tables = converter.tables
+        self.tables = [t for t in converter.tables]
         self._converter = converter
 
     @abstractmethod

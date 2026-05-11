@@ -378,6 +378,28 @@
             ],
             "profile_version": "1.10",
             "trigger": "migration:20260506160404"
+        },
+        {
+            "at": "2026-05-10T05:20:14.466069+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/identifiers/0/loopOutput"
+                }
+            ],
+            "profile_version": "1.11",
+            "trigger": "migration:20260506160404"
+        },
+        {
+            "at": "2026-05-10T05:26:54.134664+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/tables/0/loopOutput"
+                }
+            ],
+            "profile_version": "1.12",
+            "trigger": "migration:20260506160404"
         }
     ],
     "id": "6bb4fea5-3a59-4b95-8956-d977a4d8b6a7",
@@ -386,6 +408,7 @@
             "editable": true,
             "id": "#0fileMetadata",
             "key": "reader",
+            "loopOutput": "MULTI FILE",
             "match": "exact",
             "optional": false,
             "type": "fileMetadata",
@@ -418,7 +441,7 @@
     "ols": "CHMO:0000025",
     "ontology": "",
     "predicates": [],
-    "profile_version": "1.11",
+    "profile_version": "1.13",
     "reactionVariations": {
         "elements": [],
         "identifiers": []
@@ -449,6 +472,7 @@
                 "YUNITS": "Current in A"
             },
             "inputTableIndex": 0,
+            "loopOutput": "MULTI FILE",
             "loopType": "all",
             "matchTables": true,
             "table": {

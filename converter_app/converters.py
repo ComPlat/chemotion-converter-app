@@ -26,7 +26,7 @@ class Converter:
         self.profile = profile
         self.matches = []
         self.reaction_variation_matches = []
-        self.tables = []
+        self._tables = defaultdict(list)
         self.file_metadata = file_data.get('metadata', {})
         self.input_tables = file_data.get('tables', [])
         self.profile_output_tables = self.profile.data.get('tables', [])
@@ -49,13 +49,19 @@ class Converter:
             i: self._compute_has_loop(i) for i in range(len(self.profile_output_tables))
         }
         self._loop_match_cache = {}
-        return
 
-    def _prepare_tables(self, index):
-        # match the output Table to the input tables and adjust the tableIndexes t_get_output_table_indexo the input table
-        for input_table_index, _ in enumerate(self.input_tables):
-            if not self._check_loop_condition(index, input_table_index):
-                continue
+        self.matches = self._resolve_all_identifiers(self.identifiers)
+
+    @property
+    def tables(self):
+        for tb_idx, out_table_res in self._tables.items():
+            output_table = self.profile_output_tables[tb_idx]
+            is_ntuples = output_table['loopOutput'] == 'SINGLE FILE (NTUPLES)' and output_table['loopType'] != 'none'
+            if is_ntuples:
+                yield out_table_res
+            else:
+                for table in out_table_res:
+                    yield table
 
 
     def _prepare_reaction_variation_identifier(self):
@@ -64,18 +70,10 @@ class Converter:
     def _prepare_identifier(self):
         return self.profile.data.get('identifiers', [])
 
-    def _has_loop(self, index):
-        return self._has_loop_cache.get(index, False)
-
     def _compute_has_loop(self, index):
         if len(self.profile_output_tables) <= index:
             return False
-        if self.profile_output_tables[index].get('loopType') == 'all':
-            return self.profile_output_tables[index].get('matchTables')
-        loop_header = self.profile_output_tables[index]['table'].get('loop_header')
-        loop_metadata = self.profile_output_tables[index]['table'].get('loop_metadata')
-        loop_theader = self.profile_output_tables[index]['table'].get('loop_theader')
-        return any(x for x in [loop_header, loop_metadata, loop_theader])
+        return  self.profile_output_tables[index].get('loopType') != 'none'
 
     def _check_loop_condition(self, index, input_table_index):
         key = (index, input_table_index)
@@ -85,7 +83,9 @@ class Converter:
         return self._loop_match_cache[key]
 
     def _compute_check_loop_condition(self, index, input_table_index):
-        if self.profile_output_tables[index].get('loopType') != 'all':
+        if self.profile_output_tables[index].get('loopType') == 'all':
+            return True
+        if self.profile_output_tables[index].get('loopType') != 'none':
             loop_header = self.profile_output_tables[index]['table'].get('loop_header', [])
             for header in loop_header:
                 if not header.get('column'):
@@ -111,7 +111,7 @@ class Converter:
 
             loop_metadata = self.profile_output_tables[index]['table'].get('loop_metadata', [])
             for metadata in loop_metadata:
-                if not metadata.get('value') or not metadata.get('table'):
+                if not metadata.get('value'):
                     return False
                 key = metadata.get('value')
                 if metadata.get('ignoreValue'):
@@ -125,25 +125,15 @@ class Converter:
             return True
         return True
 
-    def _compute_output_index_offsets(self):
-        offsets = {}
-        result_index = 0
-        for output_table_index in range(len(self.profile_output_tables)):
-            offsets[output_table_index] = result_index
-            if self._has_loop(output_table_index):
-                for input_table_index in range(len(self.input_tables)):
-                    if self._check_loop_condition(output_table_index, input_table_index):
-                        result_index += 1
-            else:
-                result_index += 1
-        return offsets
-
     def match(self):
-        self.matches = self._match(self.identifiers)
-        return len(self.matches)
+        matches = self._match(self.identifiers)
+        if isinstance(matches, list):
+            return len(self._match(self.identifiers))
+        return False
+
 
     def match_reaction_variation_identifier(self):
-        self.reaction_variation_matches = self._match_identifier(self._reaction_variation_identifiers)
+        self.reaction_variation_matches = self._resolve_all_identifiers(self._reaction_variation_identifiers)
 
     def _match(self, identifiers):
         """
@@ -164,7 +154,8 @@ class Converter:
         # if everything matched, return how many identifiers matched
         return matches
 
-    def _match_identifier(self, identifiers):
+
+    def _resolve_all_identifiers(self, identifiers):
         """
 
         :return:
@@ -172,24 +163,27 @@ class Converter:
 
         matches = []
         for identifier in identifiers:
-            match = self.match_identifier(identifier)
-            if match is False and not identifier.get('optional'):
+
+            if identifier.get('optional'):
                 # return immediately if one (non optional) identifier does not match
-                return False
 
-            if match and 'value' in match:
-                match_operations = identifier.get('operations', [])
-                for match_operation in match_operations:
-                    match['value'] = self._run_identifier_operation(match['value'], match_operation)
-
-            # store match
-            matches.append({
-                'identifier': identifier,
-                'result': match
-            })
+                match = self._resolve_identifier(identifier)
+                # store match
+                matches.append({
+                    'identifier': identifier,
+                    'result': match
+                })
 
         # if everything matched, return how many identifiers matched
         return matches
+
+    def _resolve_identifier(self, identifier, in_idx = None):
+        match = self.match_identifier(identifier, in_idx)
+        if match and 'value' in match:
+            match_operations = identifier.get('operations', [])
+            for match_operation in match_operations:
+                match['value'] = self._run_identifier_operation(match['value'], match_operation)
+        return match
 
     def match_identifier(self, identifier, in_idx = None):
         """
@@ -318,107 +312,63 @@ class Converter:
 
     def process(self):
         self.prepare()
+        ntuples_header = dict()
         for in_idx in range(len(self.input_tables)):
             for output_table_index, output_table in enumerate(self.profile_output_tables):
                 if output_table['inputTableIndex'] == in_idx or self._check_loop_condition(output_table_index, in_idx):
-                    header = self._process_prepare_header(output_table, in_idx)
-                    self._process_prepare_metadata(header, output_table_index)
+                    header = self._process_prepare_header(output_table, output_table_index, in_idx, ntuples_header)
+                    table_data = output_table.get('table', {})
+                    x_column = table_data.get('xColumn')
+                    y_column = table_data.get('yColumn')
+                    x_operations = table_data.get('xOperations', [])
+                    y_operations = table_data.get('yOperations', [])
 
+                    # --- Prepare rows (reuse existing lists if possible) ---
+                    for operation in x_operations:
+                        if operation.get('type') == 'column':
+                            operation['rows'] = []
+                    for operation in y_operations:
+                        if operation.get('type') == 'column':
+                            operation['rows'] = []
+                    x_rows = self._process_prepare_data(x_column, x_operations, in_idx)
+                    y_rows  = self._process_prepare_data( y_column, y_operations, in_idx)
 
+                    # --- Prepare data ---
 
+                    # --- Apply operations ---
+                    applied_operators = {
+                        "applied_x_operator": False,
+                        "applied_y_operator": False,
+                        "applied_operator_failed": False,
+                        "x_operations_description": table_data.get('xOperationsDescription'),
+                        "y_operations_description": table_data.get('yOperationsDescription')
+                    }
 
+                    try:
+                        for operation in x_operations:
+                            applied_operators["applied_x_operator"] |= self._run_operation(x_rows, operation)
+                        for operation in y_operations:
+                            applied_operators["applied_y_operator"] |= self._run_operation(y_rows, operation)
+                    except CalculationError:
+                        applied_operators['applied_x_operator'] = False
+                        applied_operators['applied_y_operator'] = False
+                        applied_operators['applied_operator_failed'] = True
+                        x_rows.clear()
+                        y_rows.clear()
 
-    def _process(self):
+                    # --- Append table efficiently ---
+                    table_dict = {
+                        'header': header,
+                        'x': x_rows,
+                        'y': y_rows
+                    }
+                    table_dict.update(applied_operators)
+
+                    self._tables[output_table_index].append(table_dict)
+
+    def _process_prepare_data(self, column, operations, in_idx):
         """
-        Runs converting process efficiently.
-        """
-
-
-
-        ntuples_count = defaultdict(int)  # Track NTUPLES_ID occurrences
-        self.match_reaction_variation_identifier()
-        for output_table_index, output_table in enumerate(self.output_tables):
-            # --- Prepare header and metadata ---
-            header = self._process_prepare_header(output_table)
-            self._process_prepare_metadata(header, output_table_index)
-
-            # --- Extract table info ---
-            table_data = output_table.get('table', {})
-            x_column = table_data.get('xColumn')
-            y_column = table_data.get('yColumn')
-            x_operations = table_data.get('xOperations', [])
-            y_operations = table_data.get('yOperations', [])
-
-            # --- Prepare rows (reuse existing lists if possible) ---
-            x_rows = []
-            y_rows = []
-            for operation in x_operations:
-                if operation.get('type') == 'column':
-                    operation['rows'] = []
-            for operation in y_operations:
-                if operation.get('type') == 'column':
-                    operation['rows'] = []
-
-            # --- Prepare data ---
-            self._process_prepare_data(x_column, x_operations, x_rows,
-                                       y_column, y_operations, y_rows)
-
-            # --- Apply operations ---
-            applied_operators = {
-                "applied_x_operator": False,
-                "applied_y_operator": False,
-                "applied_operator_failed": False,
-                "x_operations_description": table_data.get('xOperationsDescription'),
-                "y_operations_description": table_data.get('yOperationsDescription')
-            }
-
-            try:
-                for operation in x_operations:
-                    applied_operators["applied_x_operator"] |= self._run_operation(x_rows, operation)
-                for operation in y_operations:
-                    applied_operators["applied_y_operator"] |= self._run_operation(y_rows, operation)
-            except CalculationError:
-                applied_operators['applied_x_operator'] = False
-                applied_operators['applied_y_operator'] = False
-                applied_operators['applied_operator_failed'] = True
-                x_rows.clear()
-                y_rows.clear()
-
-            # --- Optimized NTUPLES page header logic ---
-            if header.get('DATA CLASS') == 'NTUPLES':
-                page_header = header.get('NTUPLES_PAGE_HEADER')
-
-                if page_header == '___TABLE_NAME':
-                    header['NTUPLES_PAGE_HEADER_VALUE'] = f'TABLE: {x_column["tableIndex"]}'
-
-                elif page_header == '___+':
-                    this_id = header['NTUPLES_ID']
-                    header['NTUPLES_PAGE_HEADER_VALUE'] = ntuples_count.get(this_id, 0)
-                    ntuples_count[this_id] += 1
-
-                else:
-                    # Cache input metadata for fast access
-                    input_metadata = {}
-                    if x_column is not None:
-                        table_index = x_column.get("tableIndex")
-                        if table_index is not None and table_index < len(self.input_tables):
-                            input_metadata = self.input_tables[table_index].get('metadata', {})
-                    key_value = input_metadata.get(page_header, 'UNKNOWN')
-                    header['NTUPLES_PAGE_HEADER_VALUE'] = f"{page_header}= {key_value}"
-
-            # --- Append table efficiently ---
-            table_dict = {
-                'header': header,
-                'x': x_rows,
-                'y': y_rows
-            }
-            table_dict.update(applied_operators)
-
-            self.tables.append(table_dict)
-
-    def _process_prepare_data(self, x_column, x_operations, x_rows, y_column, y_operations, y_rows):
-        """
-        Efficiently fills x_rows, y_rows, and operation rows using direct table/column access.
+        Efficiently fills rows and operation rows using direct table/column access.
         Avoids scanning all input tables and columns.
         """
 
@@ -433,67 +383,83 @@ class Converter:
                 return False
             return True
 
-        # --- Fill x_rows directly ---
-        if x_column:
-            table_index = x_column['tableIndex']
-            col_index = x_column['columnIndex']
-            if check_indexes(table_index, col_index):
-                table = self.input_tables[table_index]
-                for row in table['rows']:
-                    x_rows.append(self.get_value(row, col_index))
+        rows = []
 
-        # --- Fill y_rows directly ---
-        if y_column:
-            table_index = y_column['tableIndex']
-            col_index = y_column['columnIndex']
+        # --- Fill x_rows directly ---
+        if column:
+            table_index = in_idx
+            col_index = column['columnIndex']
             if check_indexes(table_index, col_index):
                 table = self.input_tables[table_index]
                 for row in table['rows']:
-                    y_rows.append(self.get_value(row, col_index))
+                    rows.append(self.get_value(row, col_index))
 
         # --- Fill x_operations rows directly ---
-        for operation in x_operations:
+        for operation in operations:
             if operation.get('type') == 'column' and operation.get('column'):
                 col = operation['column']
                 col_index =col['columnIndex']
-                table_index = col['tableIndex']
+                table_index = in_idx
                 if check_indexes(table_index, col_index):
                     table = self.input_tables[table_index]
                     op_rows = operation.setdefault('rows', [])
                     for row in table['rows']:
                         op_rows.append(self.get_value(row, col_index))
-
-        # --- Fill y_operations rows directly ---
-        for operation in y_operations:
-            if operation.get('type') == 'column' and operation.get('column'):
-                col = operation['column']
-                col_index =col['columnIndex']
-                table_index = col['tableIndex']
-                if check_indexes(table_index, col_index):
-                    table = self.input_tables[table_index]
-                    op_rows = operation.setdefault('rows', [])
-                    for row in table['rows']:
-                        op_rows.append(self.get_value(row, col_index))
+        return rows
 
 
-    def _process_prepare_metadata(self, header, output_table_index):
+    def _process_prepare_metadata(self, header, output_table_index, in_idx, is_ntuples):
         # merge the metadata from the profile (header) with the metadata
         # extracted using the identifiers (see self.match)
-        for identifier in self.identifiers:
-            match_result = match.get('result')
+        for match in self.matches:
+            if not match['identifier']['isDatatableOutput'] or output_table_index not in match['identifier']['outputTableIndex']:
+                continue
+
+            if not match['identifier']['isLoobDatatableOutput']:
+                match_result = match.get('result')
+            else:
+                match_result = self._resolve_identifier(match['identifier'], in_idx)
             if match_result:
-                match_output_key = match.get('identifier', {}).get('outputKey')
-                match_output_table_index = match.get('identifier', {}).get('outputTableIndex')
-                match_value = match_result.get('value')
-                if match_output_key and (
-                        output_table_index == match_output_table_index or
-                        match_output_table_index is None
-                ):
-                    header[match_output_key] = match_value
+                match_output_key = match.get('identifier', {}).get('outputDatatableKey')
+                if match_output_key:
+                    match_value = match_result.get('value')
+                    if not is_ntuples or not match['identifier']['isLoobDatatableOutput']:
+                        header[match_output_key] = match_value
+                    else:
+                        if match_output_key not in header:
+                            header[match_output_key] = []
+                        header[match_output_key].append(match_value)
 
-
-    def _process_prepare_header(self, output_table, in_idx):
+    def _process_prepare_ntuples_header(self, output_table, output_table_idx, in_idx):
         header = {}
+        page_header = output_table.get('nTuplePageHeader', '___+')
+        header['NTUPLES_PAGE_HEADER'] = page_header
+        if page_header == '___TABLE_NAME':
+            header['PAGE'] = f'TABLE: {in_idx}'
+
+        elif page_header == '___+':
+            header['PAGE'] = len(self._tables[output_table_idx])
+
+        else:
+            # Cache input metadata for fast access
+            input_metadata = {}
+            if in_idx is not None and in_idx < len(self.input_tables):
+                input_metadata = self.input_tables[in_idx].get('metadata', {})
+            key_value = input_metadata.get(page_header, 'UNKNOWN')
+            header['PAGE'] = f"{page_header}= {key_value}"
+        return header
+
+    def _process_prepare_header(self, output_table, output_table_index, in_idx, ntuples_header):
+        header = {}
+        is_ntuples = output_table['loopOutput'] == 'SINGLE FILE (NTUPLES)' and output_table['loopType'] != 'none'
+        if is_ntuples:
+            header = self._process_prepare_ntuples_header(output_table, output_table_index, in_idx)
+            if output_table_index not in ntuples_header:
+                ntuples_header[output_table_index] = header
+            else:
+                self._process_prepare_metadata(ntuples_header[output_table_index], output_table_index, in_idx, is_ntuples)
+                return header
+
         for key, value in output_table.get('header', {}).items():
             if isinstance(value, dict):
                 # this is a table identifier, e.g. FIRSTX
@@ -502,8 +468,9 @@ class Converter:
                     header[key] = match['value']
             else:
                 header[key] = value
-        return header
 
+        self._process_prepare_metadata(header, output_table_index, in_idx, is_ntuples)
+        return header
 
     def _run_operation(self, rows, operation):
         for i, row in enumerate(rows):
@@ -638,11 +605,11 @@ class Converter:
             try:
                 current_converter = cls(profile, file_data)
                 current_matches = current_converter.match()
-            except (ValueError, TypeError, IndexError):
+            except (ValueError, TypeError, IndexError) as e:
                 current_matches = False
             try:
                 profile_uploaded = datetime.datetime.fromisoformat(
-                    profile.as_dict['data']['metadata'].get('uploaded')).timestamp()
+                    profile.as_dict['data'][-1]['metadata'].get('uploaded')).timestamp()
             except (ValueError, TypeError):
                 profile_uploaded = 1
             logger.info('profile=%s matches=%s', profile.id, current_matches)

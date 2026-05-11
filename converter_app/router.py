@@ -178,27 +178,27 @@ def converting_router(app: Flask, auth: HTTPBasicAuth):
         return jcamp based on profiledescription
         '''
 
-        ft = FunctionTimer()
+        # ft = FunctionTimer()
         client_id = auth.current_user()
         error_msg = 'No file provided.'
         if request.files.get('file'):
             file = File(request.files.get('file'))
-            marker = ft.start()
+            #marker = ft.start()
             reader = registry.match_reader(file)
-            marker.stop()
+            #marker.stop()
             error_msg = 'Your file could not be processed. No Reader available!'
 
             if reader:
-                marker = ft.start()
+                #marker = ft.start()
                 reader.process()
-                marker.stop()
-                marker = ft.start()
+                #marker.stop()
+                #marker = ft.start()
                 converter = Converter.match_profile(client_id, reader.as_dict)
-                marker.stop()
-                marker = ft.start()
+                #marker.stop()
+                #marker = ft.start()
                 result = _run_conversion(converter, file)
-                marker.stop()
-                ft.print()
+                #marker.stop()
+                #ft.print()
                 return result
         return jsonify({'error': error_msg}), 400
 
