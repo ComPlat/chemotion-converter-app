@@ -21,7 +21,6 @@ class Converter:
     def __init__(self, profile, file_data):
         self._output_index_offset = None
         self._has_loop_cache = None
-        self._loop_match_cache = None
         self._joined_headers = None
         self.profile = profile
         self.matches = []
@@ -48,7 +47,6 @@ class Converter:
         self._has_loop_cache = {
             i: self._compute_has_loop(i) for i in range(len(self.profile_output_tables))
         }
-        self._loop_match_cache = {}
 
         self.matches = self._resolve_all_identifiers(self.identifiers)
 
@@ -74,13 +72,6 @@ class Converter:
         if len(self.profile_output_tables) <= index:
             return False
         return  self.profile_output_tables[index].get('loopType') != 'none'
-
-    def _check_loop_condition(self, index, input_table_index):
-        key = (index, input_table_index)
-        if key in self._loop_match_cache:
-            return self._loop_match_cache[key]
-        self._loop_match_cache[key] = self._compute_check_loop_condition(index, input_table_index)
-        return self._loop_match_cache[key]
 
     def _compute_check_loop_condition(self, index, input_table_index):
         if self.profile_output_tables[index].get('loopType') == 'all':
@@ -279,7 +270,7 @@ class Converter:
                     match = re.search(pattern, str(value), re.MULTILINE)
                 else:
                     match = re.search(pattern, str(value))
-                logger.debug('match_value pattern="%s" value="%s" match=%s', pattern, value, bool(match))
+                logger.debug('match_value pattern="%s" value="%s" match=%s', pattern, f'{value[:10]}...', bool(match))
                 if match:
                     try:
                         return match.group(1).strip()
@@ -316,7 +307,7 @@ class Converter:
         ntuples_header = dict()
         for in_idx in range(len(self.input_tables)):
             for output_table_index, output_table in enumerate(self.profile_output_tables):
-                if self._check_loop_condition(output_table_index, in_idx):
+                if self._compute_check_loop_condition(output_table_index, in_idx):
                     header = self._process_prepare_header(output_table, output_table_index, in_idx, ntuples_header)
                     table_data = output_table.get('table', {})
                     x_column = table_data.get('xColumn')
@@ -347,9 +338,9 @@ class Converter:
 
                     try:
                         for operation in x_operations:
-                            applied_operators["applied_x_operator"] |= self._run_operation(x_rows, operation)
+                            applied_operators["applied_x_operator"] |= self._run_operation(x_rows, operation, in_idx)
                         for operation in y_operations:
-                            applied_operators["applied_y_operator"] |= self._run_operation(y_rows, operation)
+                            applied_operators["applied_y_operator"] |= self._run_operation(y_rows, operation, in_idx)
                     except CalculationError:
                         applied_operators['applied_x_operator'] = False
                         applied_operators['applied_y_operator'] = False
@@ -473,7 +464,7 @@ class Converter:
         self._process_prepare_metadata(header, output_table_index, in_idx, is_ntuples)
         return header
 
-    def _run_operation(self, rows, operation):
+    def _run_operation(self, rows, operation, in_idx):
         for i, row in enumerate(rows):
             str_value = None
             if operation.get('type') == 'column':
@@ -484,12 +475,9 @@ class Converter:
             elif operation.get('type') == 'value':
                 str_value = operation.get('value')
             elif operation.get('type') == 'metadata_value':
-                str_value = self.input_tables[int(operation.get('table'))]['metadata'].get(operation.get('value'))
+                str_value = self.input_tables[in_idx]['metadata'].get(operation.get('value'))
             elif operation.get('type') == 'header_value':
-                table_id = 0
-                if operation.get('table') is not None:
-                    table_id = int(operation.get('table'))
-                match, str_value = self._search_regex(operation, table_id)
+                match, str_value = self._search_regex(operation, in_idx)
                 if match is not None:
                     if len(match.regs) > 1:
                         str_value = match[1]
