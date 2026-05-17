@@ -1,5 +1,5 @@
 @prefix chemotion: <https://chemotion.net/chemotion/#> .
 @prefix chmo: <http://purl.obolibrary.org/obo/> .
 
-chemotion:CV_data_from_pssession%252C_data__%252B%252C_metadata__%252B a chmo:CHMO_0000025 .
+chemotion:CV_pssession a chmo:CHMO_0000025 .
 

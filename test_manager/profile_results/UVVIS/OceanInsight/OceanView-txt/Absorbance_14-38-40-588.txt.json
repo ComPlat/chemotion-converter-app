@@ -18,6 +18,11 @@
             ],
             "metadata": {
                 "column_00": ">>>>>Begin Spectral Data<<<<<",
+                "__UNIT_PPM": "ppm",
+                "__UNIT_liter": "l",
+                "__UNIT_gram": "g",
+                "__UNIT_%": "%",
+                "__UNIT_mol": "mol",
                 "rows": "2068",
                 "columns": "2"
             },
@@ -8313,7 +8318,7 @@
         "mime_type": "text/plain",
         "extension": ".txt",
         "reader": "CSVReader",
-        "uploaded": "2026-03-10T09:23:27.461364+00:00",
+        "uploaded": "2026-05-17T21:36:22.756351+00:00",
         "lineterminator": "\\r\\n",
         "quoting": "0",
         "doublequote": "False",

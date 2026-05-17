@@ -1,49 +1,26 @@
 {
-  "profileId": "c6573972-cb06-484d-a529-9dd2424fc408",
+  "profileId": "CVprofile_pssession",
   "ols": "CHMO:0000025",
   "matches": [
-    {
-      "identifier": {
-        "editable": true,
-        "id": "#0fileMetadata",
-        "key": "extension",
-        "match": "exact",
-        "optional": false,
-        "type": "fileMetadata",
-        "value": ".pssession"
-      },
-      "result": {
-        "value": ".pssession"
-      }
-    },
-    {
-      "identifier": {
-        "editable": true,
-        "id": "#1tableMetadata",
-        "key": "title",
-        "match": "regex",
-        "optional": false,
-        "tableIndex": 0,
-        "type": "tableMetadata",
-        "value": "(Cyclic Voltammetry)"
-      },
-      "result": {
-        "value": "Cyclic Voltammetry",
-        "tableIndex": 0
-      }
-    },
     {
       "identifier": {
         "datatype": null,
         "editable": true,
         "id": "#2tableMetadata",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
         "key": "N_SCANS",
         "match": "any",
         "object": null,
         "optional": true,
+        "outputDatatableKey": "cycles",
         "outputKey": "cycles",
         "outputLayer": "meas",
-        "outputTableIndex": null,
+        "outputTableIndex": [
+          "98bad96e-8259-4ee4-a84b-f8793b74040a"
+        ],
         "predicate": null,
         "subject": null,
         "tableIndex": 0,
@@ -60,13 +37,20 @@
         "datatype": null,
         "editable": true,
         "id": "#3tableHeader",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
         "lineNumber": 2,
         "match": "regex",
         "object": null,
         "optional": true,
+        "outputDatatableKey": "time",
         "outputKey": "time",
         "outputLayer": "general",
-        "outputTableIndex": null,
+        "outputTableIndex": [
+          "98bad96e-8259-4ee4-a84b-f8793b74040a"
+        ],
         "predicate": null,
         "subject": null,
         "tableIndex": 0,
@@ -84,13 +68,20 @@
         "datatype": null,
         "editable": true,
         "id": "#4tableHeader",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
         "lineNumber": 2,
         "match": "regex",
         "object": null,
         "optional": true,
+        "outputDatatableKey": "date",
         "outputKey": "date",
         "outputLayer": "general",
-        "outputTableIndex": null,
+        "outputTableIndex": [
+          "98bad96e-8259-4ee4-a84b-f8793b74040a"
+        ],
         "predicate": null,
         "subject": null,
         "tableIndex": 0,
@@ -108,13 +99,20 @@
         "datatype": null,
         "editable": true,
         "id": "#5tableMetadata",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
         "key": "deviceserial",
         "match": "any",
         "object": null,
         "optional": true,
-        "outputKey": "title",
-        "outputLayer": "general",
-        "outputTableIndex": null,
+        "outputDatatableKey": "serial",
+        "outputKey": "serial",
+        "outputLayer": "instrument",
+        "outputTableIndex": [
+          "98bad96e-8259-4ee4-a84b-f8793b74040a"
+        ],
         "predicate": null,
         "subject": null,
         "tableIndex": 0,
@@ -131,13 +129,20 @@
         "datatype": null,
         "editable": true,
         "id": "#6tableMetadata",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
         "key": "SCAN_RATE",
         "match": "any",
         "object": null,
         "optional": true,
+        "outputDatatableKey": "scan_rate",
         "outputKey": "scan_rate",
         "outputLayer": "meas",
-        "outputTableIndex": null,
+        "outputTableIndex": [
+          "98bad96e-8259-4ee4-a84b-f8793b74040a"
+        ],
         "predicate": null,
         "subject": null,
         "tableIndex": 0,
@@ -154,13 +159,20 @@
         "datatype": null,
         "editable": true,
         "id": "#7tableHeader",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
         "lineNumber": 1,
         "match": "regex",
         "object": null,
         "optional": true,
+        "outputDatatableKey": "software",
         "outputKey": "software",
         "outputLayer": "software",
-        "outputTableIndex": null,
+        "outputTableIndex": [
+          "98bad96e-8259-4ee4-a84b-f8793b74040a"
+        ],
         "predicate": null,
         "subject": null,
         "tableIndex": 0,
@@ -178,13 +190,20 @@
         "datatype": null,
         "editable": true,
         "id": "#8tableHeader",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
         "lineNumber": 1,
         "match": "regex",
         "object": null,
         "optional": true,
+        "outputDatatableKey": "software_version",
         "outputKey": "software_version",
         "outputLayer": "software",
-        "outputTableIndex": null,
+        "outputTableIndex": [
+          "98bad96e-8259-4ee4-a84b-f8793b74040a"
+        ],
         "predicate": null,
         "subject": null,
         "tableIndex": 0,
@@ -202,13 +221,20 @@
         "datatype": null,
         "editable": true,
         "id": "#9tableMetadata",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
         "key": "E_STEP",
         "match": "any",
         "object": null,
         "optional": true,
+        "outputDatatableKey": "step_size",
         "outputKey": "step_size",
         "outputLayer": "meas",
-        "outputTableIndex": null,
+        "outputTableIndex": [
+          "98bad96e-8259-4ee4-a84b-f8793b74040a"
+        ],
         "predicate": null,
         "subject": null,
         "tableIndex": 0,
@@ -225,13 +251,20 @@
         "datatype": null,
         "editable": true,
         "id": "#10tableMetadata",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
         "key": "E_BEGIN",
         "match": "any",
         "object": null,
         "optional": true,
+        "outputDatatableKey": "voltage_start",
         "outputKey": "voltage_start",
         "outputLayer": "meas",
-        "outputTableIndex": null,
+        "outputTableIndex": [
+          "98bad96e-8259-4ee4-a84b-f8793b74040a"
+        ],
         "predicate": null,
         "subject": null,
         "tableIndex": 0,
@@ -248,13 +281,20 @@
         "datatype": null,
         "editable": true,
         "id": "#11tableMetadata",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
         "key": "E_VTX1",
         "match": "any",
         "object": null,
         "optional": true,
+        "outputDatatableKey": "voltage_limit_one",
         "outputKey": "voltage_limit_one",
         "outputLayer": "meas",
-        "outputTableIndex": null,
+        "outputTableIndex": [
+          "98bad96e-8259-4ee4-a84b-f8793b74040a"
+        ],
         "predicate": null,
         "subject": null,
         "tableIndex": 0,
@@ -271,13 +311,20 @@
         "datatype": null,
         "editable": true,
         "id": "#12tableMetadata",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
         "key": "E_VTX2",
         "match": "any",
         "object": null,
         "optional": true,
+        "outputDatatableKey": "voltage_limit_two",
         "outputKey": "voltage_limit_two",
         "outputLayer": "meas",
-        "outputTableIndex": null,
+        "outputTableIndex": [
+          "98bad96e-8259-4ee4-a84b-f8793b74040a"
+        ],
         "predicate": null,
         "subject": null,
         "tableIndex": 0,
@@ -294,13 +341,20 @@
         "datatype": null,
         "editable": true,
         "id": "#13tableMetadata",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
         "key": "E_END",
         "match": "any",
         "object": null,
         "optional": true,
+        "outputDatatableKey": "voltage_limit_end",
         "outputKey": "voltage_limit_end",
         "outputLayer": "meas",
-        "outputTableIndex": null,
+        "outputTableIndex": [
+          "98bad96e-8259-4ee4-a84b-f8793b74040a"
+        ],
         "predicate": null,
         "subject": null,
         "tableIndex": 0,
@@ -311,132 +365,6 @@
         "value": "5.000E-001",
         "tableIndex": 0
       }
-    },
-    {
-      "identifier": {
-        "datatype": null,
-        "editable": true,
-        "id": "#14fileMetadata",
-        "key": "file_name",
-        "match": "any",
-        "object": null,
-        "optional": true,
-        "outputKey": "comments",
-        "outputLayer": "general",
-        "outputTableIndex": 0,
-        "predicate": null,
-        "subject": null,
-        "type": "fileMetadata",
-        "value": "File053.pssession"
-      },
-      "result": {
-        "value": "p-Cl-Ph-CO2Me_MeCN.pssession"
-      }
-    },
-    {
-      "identifier": {
-        "datatype": null,
-        "editable": true,
-        "id": "#14fileMetadata",
-        "key": "file_name",
-        "match": "any",
-        "object": null,
-        "optional": true,
-        "outputKey": "comments",
-        "outputLayer": "general",
-        "outputTableIndex": 1,
-        "predicate": null,
-        "subject": null,
-        "type": "fileMetadata",
-        "value": "File053.pssession"
-      },
-      "result": {
-        "value": "p-Cl-Ph-CO2Me_MeCN.pssession"
-      }
-    },
-    {
-      "identifier": {
-        "datatype": null,
-        "editable": true,
-        "id": "#14fileMetadata",
-        "key": "file_name",
-        "match": "any",
-        "object": null,
-        "optional": true,
-        "outputKey": "comments",
-        "outputLayer": "general",
-        "outputTableIndex": 2,
-        "predicate": null,
-        "subject": null,
-        "type": "fileMetadata",
-        "value": "File053.pssession"
-      },
-      "result": {
-        "value": "p-Cl-Ph-CO2Me_MeCN.pssession"
-      }
-    },
-    {
-      "identifier": {
-        "datatype": null,
-        "editable": true,
-        "id": "#14fileMetadata",
-        "key": "file_name",
-        "match": "any",
-        "object": null,
-        "optional": true,
-        "outputKey": "comments",
-        "outputLayer": "general",
-        "outputTableIndex": 3,
-        "predicate": null,
-        "subject": null,
-        "type": "fileMetadata",
-        "value": "File053.pssession"
-      },
-      "result": {
-        "value": "p-Cl-Ph-CO2Me_MeCN.pssession"
-      }
-    },
-    {
-      "identifier": {
-        "datatype": null,
-        "editable": true,
-        "id": "#14fileMetadata",
-        "key": "file_name",
-        "match": "any",
-        "object": null,
-        "optional": true,
-        "outputKey": "comments",
-        "outputLayer": "general",
-        "outputTableIndex": 4,
-        "predicate": null,
-        "subject": null,
-        "type": "fileMetadata",
-        "value": "File053.pssession"
-      },
-      "result": {
-        "value": "p-Cl-Ph-CO2Me_MeCN.pssession"
-      }
-    },
-    {
-      "identifier": {
-        "datatype": null,
-        "editable": true,
-        "id": "#14fileMetadata",
-        "key": "file_name",
-        "match": "any",
-        "object": null,
-        "optional": true,
-        "outputKey": "comments",
-        "outputLayer": "general",
-        "outputTableIndex": 5,
-        "predicate": null,
-        "subject": null,
-        "type": "fileMetadata",
-        "value": "File053.pssession"
-      },
-      "result": {
-        "value": "p-Cl-Ph-CO2Me_MeCN.pssession"
-      }
     }
   ],
   "tablesCount": 6,
@@ -446,12 +374,12 @@
       "header": {
         "DATA CLASS": "XYPOINTS",
         "DATA TYPE": "CYCLIC VOLTAMMETRY",
-        "XUNITS": "Voltage in V",
-        "YUNITS": "Current in A",
+        "XUNITS": "Voltage vs Ref",
+        "YUNITS": "Ampere",
         "cycles": "1",
         "time": "14:12:35",
         "date": "2019-10-28",
-        "title": "ES3 16X965",
+        "serial": "ES3 16X965",
         "scan_rate": "2.000E-001",
         "software": "PSTrace",
         "software_version": "5.4.1528.18404",
@@ -459,8 +387,7 @@
         "voltage_start": "0.000E+000",
         "voltage_limit_one": "-2.500E+000",
         "voltage_limit_two": "2.000E+000",
-        "voltage_limit_end": "5.000E-001",
-        "comments": "p-Cl-Ph-CO2Me_MeCN.pssession"
+        "voltage_limit_end": "5.000E-001"
       }
     },
     {
@@ -468,21 +395,20 @@
       "header": {
         "DATA CLASS": "XYPOINTS",
         "DATA TYPE": "CYCLIC VOLTAMMETRY",
-        "XUNITS": "Voltage in V",
-        "YUNITS": "Current in A",
+        "XUNITS": "Voltage vs Ref",
+        "YUNITS": "Ampere",
         "cycles": "1",
         "time": "14:12:35",
         "date": "2019-10-28",
-        "title": "ES3 16X965",
-        "scan_rate": "2.000E-001",
+        "serial": "ES3 16X965",
+        "scan_rate": "1.000E-001",
         "software": "PSTrace",
         "software_version": "5.4.1528.18404",
         "step_size": "1.000E-002",
         "voltage_start": "0.000E+000",
         "voltage_limit_one": "-2.500E+000",
         "voltage_limit_two": "2.000E+000",
-        "voltage_limit_end": "5.000E-001",
-        "comments": "p-Cl-Ph-CO2Me_MeCN.pssession"
+        "voltage_limit_end": "5.000E-001"
       }
     },
     {
@@ -490,21 +416,20 @@
       "header": {
         "DATA CLASS": "XYPOINTS",
         "DATA TYPE": "CYCLIC VOLTAMMETRY",
-        "XUNITS": "Voltage in V",
-        "YUNITS": "Current in A",
+        "XUNITS": "Voltage vs Ref",
+        "YUNITS": "Ampere",
         "cycles": "1",
         "time": "14:12:35",
         "date": "2019-10-28",
-        "title": "ES3 16X965",
-        "scan_rate": "2.000E-001",
+        "serial": "ES3 16X965",
+        "scan_rate": "5.000E-002",
         "software": "PSTrace",
         "software_version": "5.4.1528.18404",
         "step_size": "1.000E-002",
         "voltage_start": "0.000E+000",
         "voltage_limit_one": "-2.500E+000",
         "voltage_limit_two": "2.000E+000",
-        "voltage_limit_end": "5.000E-001",
-        "comments": "p-Cl-Ph-CO2Me_MeCN.pssession"
+        "voltage_limit_end": "5.000E-001"
       }
     },
     {
@@ -512,21 +437,20 @@
       "header": {
         "DATA CLASS": "XYPOINTS",
         "DATA TYPE": "CYCLIC VOLTAMMETRY",
-        "XUNITS": "Voltage in V",
-        "YUNITS": "Current in A",
+        "XUNITS": "Voltage vs Ref",
+        "YUNITS": "Ampere",
         "cycles": "1",
         "time": "14:12:35",
         "date": "2019-10-28",
-        "title": "ES3 16X965",
+        "serial": "ES3 16X965",
         "scan_rate": "2.000E-001",
         "software": "PSTrace",
         "software_version": "5.4.1528.18404",
         "step_size": "1.000E-002",
         "voltage_start": "0.000E+000",
-        "voltage_limit_one": "-2.500E+000",
+        "voltage_limit_one": "-2.700E+000",
         "voltage_limit_two": "2.000E+000",
-        "voltage_limit_end": "5.000E-001",
-        "comments": "p-Cl-Ph-CO2Me_MeCN.pssession"
+        "voltage_limit_end": "5.000E-001"
       }
     },
     {
@@ -534,21 +458,20 @@
       "header": {
         "DATA CLASS": "XYPOINTS",
         "DATA TYPE": "CYCLIC VOLTAMMETRY",
-        "XUNITS": "Voltage in V",
-        "YUNITS": "Current in A",
+        "XUNITS": "Voltage vs Ref",
+        "YUNITS": "Ampere",
         "cycles": "1",
         "time": "14:12:35",
         "date": "2019-10-28",
-        "title": "ES3 16X965",
-        "scan_rate": "2.000E-001",
+        "serial": "ES3 16X965",
+        "scan_rate": "1.000E-001",
         "software": "PSTrace",
         "software_version": "5.4.1528.18404",
         "step_size": "1.000E-002",
         "voltage_start": "0.000E+000",
-        "voltage_limit_one": "-2.500E+000",
+        "voltage_limit_one": "-2.700E+000",
         "voltage_limit_two": "2.000E+000",
-        "voltage_limit_end": "5.000E-001",
-        "comments": "p-Cl-Ph-CO2Me_MeCN.pssession"
+        "voltage_limit_end": "5.000E-001"
       }
     },
     {
@@ -556,21 +479,20 @@
       "header": {
         "DATA CLASS": "XYPOINTS",
         "DATA TYPE": "CYCLIC VOLTAMMETRY",
-        "XUNITS": "Voltage in V",
-        "YUNITS": "Current in A",
+        "XUNITS": "Voltage vs Ref",
+        "YUNITS": "Ampere",
         "cycles": "1",
         "time": "14:12:35",
         "date": "2019-10-28",
-        "title": "ES3 16X965",
-        "scan_rate": "2.000E-001",
+        "serial": "ES3 16X965",
+        "scan_rate": "1.000E-001",
         "software": "PSTrace",
         "software_version": "5.4.1528.18404",
         "step_size": "1.000E-002",
         "voltage_start": "0.000E+000",
-        "voltage_limit_one": "-2.500E+000",
+        "voltage_limit_one": "-2.700E+000",
         "voltage_limit_two": "2.000E+000",
-        "voltage_limit_end": "5.000E-001",
-        "comments": "p-Cl-Ph-CO2Me_MeCN.pssession"
+        "voltage_limit_end": "5.000E-001"
       }
     }
   ]
