@@ -297,8 +297,34 @@
             "trigger": "migration:20260422063146"
         },
         {
-            "at": "2026-05-08T04:26:38.137215+00:00",
+            "at": "2026-05-17T21:09:23.708759+00:00",
             "diff": [
+                {
+                    "op": "remove",
+                    "path": "/tables/0/loopType"
+                },
+                {
+                    "from": "/tables/0/inputTableIndex",
+                    "op": "move",
+                    "path": "/tables/0/table/xColumn/tableIndex"
+                },
+                {
+                    "op": "add",
+                    "path": "/tables/0/table/yColumn/tableIndex",
+                    "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/3/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/3/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/3/outputDatatableKey"
+                },
                 {
                     "op": "remove",
                     "path": "/identifiers/3/isLoobDatatableOutput"
@@ -308,17 +334,21 @@
                     "path": "/identifiers/3/isDatasetOutput"
                 },
                 {
-                    "op": "remove",
-                    "path": "/identifiers/3/isDatatableOutput"
-                },
-                {
-                    "op": "remove",
-                    "path": "/identifiers/3/isRdfOutput"
-                },
-                {
                     "op": "replace",
                     "path": "/identifiers/3/outputTableIndex",
                     "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/4/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/4/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/4/outputDatatableKey"
                 },
                 {
                     "op": "remove",
@@ -329,17 +359,21 @@
                     "path": "/identifiers/4/isDatasetOutput"
                 },
                 {
-                    "op": "remove",
-                    "path": "/identifiers/4/isDatatableOutput"
-                },
-                {
-                    "op": "remove",
-                    "path": "/identifiers/4/isRdfOutput"
-                },
-                {
                     "op": "replace",
                     "path": "/identifiers/4/outputTableIndex",
                     "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/5/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/5/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/5/outputDatatableKey"
                 },
                 {
                     "op": "remove",
@@ -350,17 +384,21 @@
                     "path": "/identifiers/5/isDatasetOutput"
                 },
                 {
-                    "op": "remove",
-                    "path": "/identifiers/5/isDatatableOutput"
-                },
-                {
-                    "op": "remove",
-                    "path": "/identifiers/5/isRdfOutput"
-                },
-                {
                     "op": "replace",
                     "path": "/identifiers/5/outputTableIndex",
                     "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/6/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/6/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/6/outputDatatableKey"
                 },
                 {
                     "op": "remove",
@@ -371,17 +409,21 @@
                     "path": "/identifiers/6/isDatasetOutput"
                 },
                 {
-                    "op": "remove",
-                    "path": "/identifiers/6/isDatatableOutput"
-                },
-                {
-                    "op": "remove",
-                    "path": "/identifiers/6/isRdfOutput"
-                },
-                {
                     "op": "replace",
                     "path": "/identifiers/6/outputTableIndex",
                     "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/7/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/7/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/7/outputDatatableKey"
                 },
                 {
                     "op": "remove",
@@ -392,17 +434,21 @@
                     "path": "/identifiers/7/isDatasetOutput"
                 },
                 {
-                    "op": "remove",
-                    "path": "/identifiers/7/isDatatableOutput"
-                },
-                {
-                    "op": "remove",
-                    "path": "/identifiers/7/isRdfOutput"
-                },
-                {
                     "op": "replace",
                     "path": "/identifiers/7/outputTableIndex",
                     "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/8/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/8/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/8/outputDatatableKey"
                 },
                 {
                     "op": "remove",
@@ -413,17 +459,21 @@
                     "path": "/identifiers/8/isDatasetOutput"
                 },
                 {
-                    "op": "remove",
-                    "path": "/identifiers/8/isDatatableOutput"
-                },
-                {
-                    "op": "remove",
-                    "path": "/identifiers/8/isRdfOutput"
-                },
-                {
                     "op": "replace",
                     "path": "/identifiers/8/outputTableIndex",
                     "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/9/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/9/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/9/outputDatatableKey"
                 },
                 {
                     "op": "remove",
@@ -434,17 +484,21 @@
                     "path": "/identifiers/9/isDatasetOutput"
                 },
                 {
-                    "op": "remove",
-                    "path": "/identifiers/9/isDatatableOutput"
-                },
-                {
-                    "op": "remove",
-                    "path": "/identifiers/9/isRdfOutput"
-                },
-                {
                     "op": "replace",
                     "path": "/identifiers/9/outputTableIndex",
                     "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/10/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/10/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/10/outputDatatableKey"
                 },
                 {
                     "op": "remove",
@@ -455,17 +509,21 @@
                     "path": "/identifiers/10/isDatasetOutput"
                 },
                 {
-                    "op": "remove",
-                    "path": "/identifiers/10/isDatatableOutput"
-                },
-                {
-                    "op": "remove",
-                    "path": "/identifiers/10/isRdfOutput"
-                },
-                {
                     "op": "replace",
                     "path": "/identifiers/10/outputTableIndex",
                     "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/11/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/11/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/11/outputDatatableKey"
                 },
                 {
                     "op": "remove",
@@ -476,17 +534,21 @@
                     "path": "/identifiers/11/isDatasetOutput"
                 },
                 {
-                    "op": "remove",
-                    "path": "/identifiers/11/isDatatableOutput"
-                },
-                {
-                    "op": "remove",
-                    "path": "/identifiers/11/isRdfOutput"
-                },
-                {
                     "op": "replace",
                     "path": "/identifiers/11/outputTableIndex",
                     "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/12/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/12/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/12/outputDatatableKey"
                 },
                 {
                     "op": "remove",
@@ -497,17 +559,21 @@
                     "path": "/identifiers/12/isDatasetOutput"
                 },
                 {
-                    "op": "remove",
-                    "path": "/identifiers/12/isDatatableOutput"
-                },
-                {
-                    "op": "remove",
-                    "path": "/identifiers/12/isRdfOutput"
-                },
-                {
                     "op": "replace",
                     "path": "/identifiers/12/outputTableIndex",
                     "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/13/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/13/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/13/outputDatatableKey"
                 },
                 {
                     "op": "remove",
@@ -518,17 +584,21 @@
                     "path": "/identifiers/13/isDatasetOutput"
                 },
                 {
-                    "op": "remove",
-                    "path": "/identifiers/13/isDatatableOutput"
-                },
-                {
-                    "op": "remove",
-                    "path": "/identifiers/13/isRdfOutput"
-                },
-                {
                     "op": "replace",
                     "path": "/identifiers/13/outputTableIndex",
                     "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/14/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/14/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/14/outputDatatableKey"
                 },
                 {
                     "op": "remove",
@@ -539,17 +609,21 @@
                     "path": "/identifiers/14/isDatasetOutput"
                 },
                 {
-                    "op": "remove",
-                    "path": "/identifiers/14/isDatatableOutput"
-                },
-                {
-                    "op": "remove",
-                    "path": "/identifiers/14/isRdfOutput"
-                },
-                {
                     "op": "replace",
                     "path": "/identifiers/14/outputTableIndex",
                     "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/15/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/15/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/15/outputDatatableKey"
                 },
                 {
                     "op": "remove",
@@ -560,17 +634,21 @@
                     "path": "/identifiers/15/isDatasetOutput"
                 },
                 {
-                    "op": "remove",
-                    "path": "/identifiers/15/isDatatableOutput"
-                },
-                {
-                    "op": "remove",
-                    "path": "/identifiers/15/isRdfOutput"
-                },
-                {
                     "op": "replace",
                     "path": "/identifiers/15/outputTableIndex",
                     "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/16/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/16/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/16/outputDatatableKey"
                 },
                 {
                     "op": "remove",
@@ -581,17 +659,21 @@
                     "path": "/identifiers/16/isDatasetOutput"
                 },
                 {
-                    "op": "remove",
-                    "path": "/identifiers/16/isDatatableOutput"
-                },
-                {
-                    "op": "remove",
-                    "path": "/identifiers/16/isRdfOutput"
-                },
-                {
                     "op": "replace",
                     "path": "/identifiers/16/outputTableIndex",
                     "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/17/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/17/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/17/outputDatatableKey"
                 },
                 {
                     "op": "remove",
@@ -602,17 +684,21 @@
                     "path": "/identifiers/17/isDatasetOutput"
                 },
                 {
-                    "op": "remove",
-                    "path": "/identifiers/17/isDatatableOutput"
-                },
-                {
-                    "op": "remove",
-                    "path": "/identifiers/17/isRdfOutput"
-                },
-                {
                     "op": "replace",
                     "path": "/identifiers/17/outputTableIndex",
                     "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/18/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/18/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/18/outputDatatableKey"
                 },
                 {
                     "op": "remove",
@@ -621,14 +707,6 @@
                 {
                     "op": "remove",
                     "path": "/identifiers/18/isDatasetOutput"
-                },
-                {
-                    "op": "remove",
-                    "path": "/identifiers/18/isDatatableOutput"
-                },
-                {
-                    "op": "remove",
-                    "path": "/identifiers/18/isRdfOutput"
                 },
                 {
                     "op": "replace",
@@ -640,196 +718,99 @@
             "trigger": "migration:20260506160404"
         },
         {
-            "at": "2026-05-08T07:20:36.554259+00:00",
+            "at": "2026-05-17T21:09:23.711448+00:00",
             "diff": [
                 {
-                    "from": "/tables/0/inputTableIndex",
-                    "op": "move",
-                    "path": "/tables/0/table/yColumn/tableIndex"
+                    "op": "remove",
+                    "path": "/tables/0/tableName"
                 },
                 {
-                    "op": "add",
-                    "path": "/tables/0/table/xColumn/tableIndex",
+                    "op": "remove",
+                    "path": "/tables/0/uuid"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/3/outputTableIndex/0",
+                    "value": 0
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/4/outputTableIndex/0",
+                    "value": 0
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/5/outputTableIndex/0",
+                    "value": 0
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/6/outputTableIndex/0",
+                    "value": 0
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/7/outputTableIndex/0",
+                    "value": 0
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/8/outputTableIndex/0",
+                    "value": 0
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/9/outputTableIndex/0",
+                    "value": 0
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/10/outputTableIndex/0",
+                    "value": 0
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/11/outputTableIndex/0",
+                    "value": 0
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/12/outputTableIndex/0",
+                    "value": 0
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/13/outputTableIndex/0",
+                    "value": 0
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/14/outputTableIndex/0",
+                    "value": 0
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/15/outputTableIndex/0",
+                    "value": 0
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/16/outputTableIndex/0",
+                    "value": 0
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/17/outputTableIndex/0",
+                    "value": 0
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/18/outputTableIndex/0",
                     "value": 0
                 }
             ],
             "profile_version": "1.11",
-            "trigger": "migration:20260506160404"
-        },
-        {
-            "at": "2026-05-08T13:41:44.920705+00:00",
-            "diff": [
-                {
-                    "op": "remove",
-                    "path": "/identifiers/3/outputDatatableLayer"
-                },
-                {
-                    "op": "remove",
-                    "path": "/identifiers/4/outputDatatableLayer"
-                },
-                {
-                    "op": "remove",
-                    "path": "/identifiers/5/outputDatatableLayer"
-                },
-                {
-                    "op": "remove",
-                    "path": "/identifiers/6/outputDatatableLayer"
-                },
-                {
-                    "op": "remove",
-                    "path": "/identifiers/7/outputDatatableLayer"
-                },
-                {
-                    "op": "remove",
-                    "path": "/identifiers/8/outputDatatableLayer"
-                },
-                {
-                    "op": "remove",
-                    "path": "/identifiers/9/outputDatatableLayer"
-                },
-                {
-                    "op": "remove",
-                    "path": "/identifiers/10/outputDatatableLayer"
-                },
-                {
-                    "op": "remove",
-                    "path": "/identifiers/11/outputDatatableLayer"
-                },
-                {
-                    "op": "remove",
-                    "path": "/identifiers/12/outputDatatableLayer"
-                },
-                {
-                    "op": "remove",
-                    "path": "/identifiers/13/outputDatatableLayer"
-                },
-                {
-                    "op": "remove",
-                    "path": "/identifiers/14/outputDatatableLayer"
-                },
-                {
-                    "op": "remove",
-                    "path": "/identifiers/15/outputDatatableLayer"
-                },
-                {
-                    "op": "remove",
-                    "path": "/identifiers/16/outputDatatableLayer"
-                },
-                {
-                    "op": "remove",
-                    "path": "/identifiers/17/outputDatatableLayer"
-                },
-                {
-                    "op": "remove",
-                    "path": "/identifiers/18/outputDatatableLayer"
-                }
-            ],
-            "profile_version": "1.12",
-            "trigger": "migration:20260506160404"
-        },
-        {
-            "at": "2026-05-08T13:44:31.525108+00:00",
-            "diff": [
-                {
-                    "op": "remove",
-                    "path": "/identifiers/3/outputDatatableKey"
-                },
-                {
-                    "op": "remove",
-                    "path": "/identifiers/4/outputDatatableKey"
-                },
-                {
-                    "op": "remove",
-                    "path": "/identifiers/5/outputDatatableKey"
-                },
-                {
-                    "op": "remove",
-                    "path": "/identifiers/6/outputDatatableKey"
-                },
-                {
-                    "op": "remove",
-                    "path": "/identifiers/7/outputDatatableKey"
-                },
-                {
-                    "op": "remove",
-                    "path": "/identifiers/8/outputDatatableKey"
-                },
-                {
-                    "op": "remove",
-                    "path": "/identifiers/9/outputDatatableKey"
-                },
-                {
-                    "op": "remove",
-                    "path": "/identifiers/10/outputDatatableKey"
-                },
-                {
-                    "op": "remove",
-                    "path": "/identifiers/11/outputDatatableKey"
-                },
-                {
-                    "op": "remove",
-                    "path": "/identifiers/12/outputDatatableKey"
-                },
-                {
-                    "op": "remove",
-                    "path": "/identifiers/13/outputDatatableKey"
-                },
-                {
-                    "op": "remove",
-                    "path": "/identifiers/14/outputDatatableKey"
-                },
-                {
-                    "op": "remove",
-                    "path": "/identifiers/15/outputDatatableKey"
-                },
-                {
-                    "op": "remove",
-                    "path": "/identifiers/16/outputDatatableKey"
-                },
-                {
-                    "op": "remove",
-                    "path": "/identifiers/17/outputDatatableKey"
-                },
-                {
-                    "op": "remove",
-                    "path": "/identifiers/18/outputDatatableKey"
-                }
-            ],
-            "profile_version": "1.13",
-            "trigger": "migration:20260506160404"
-        },
-        {
-            "at": "2026-05-10T05:20:14.702882+00:00",
-            "diff": [
-                {
-                    "op": "remove",
-                    "path": "/identifiers/0/loopOutput"
-                }
-            ],
-            "profile_version": "1.14",
-            "trigger": "migration:20260506160404"
-        },
-        {
-            "at": "2026-05-10T05:26:54.362376+00:00",
-            "diff": [
-                {
-                    "op": "remove",
-                    "path": "/tables/0/loopOutput"
-                }
-            ],
-            "profile_version": "1.15",
-            "trigger": "migration:20260506160404"
-        },
-        {
-            "at": "2026-05-10T05:34:33.984170+00:00",
-            "diff": [
-                {
-                    "op": "remove",
-                    "path": "/tables/0/loopType"
-                }
-            ],
-            "profile_version": "1.16",
-            "trigger": "migration:20260506160404"
+            "trigger": "migration:20260513094819"
         }
     ],
     "id": "cddfe1ff-ef5a-44fb-a6ba-443a870c7a27",
@@ -838,7 +819,6 @@
             "editable": true,
             "id": "#0fileMetadata",
             "key": "reader",
-            "loopOutput": "MULTI FILE",
             "match": "exact",
             "optional": false,
             "type": "fileMetadata",
@@ -869,7 +849,7 @@
             "editable": true,
             "id": "#3tableHeader",
             "isDatasetOutput": true,
-            "isDatatableOutput": false,
+            "isDatatableOutput": true,
             "isLoobDatatableOutput": true,
             "isRdfOutput": false,
             "lineNumber": null,
@@ -877,11 +857,10 @@
             "object": null,
             "optional": true,
             "outputDatatableKey": "fixed_wavelength",
-            "outputDatatableLayer": "fixed_wavelength",
             "outputKey": "fixed_wavelength",
             "outputLayer": "set",
             "outputTableIndex": [
-                0
+                "97fcf176-0f6c-49a8-8762-dff08be4aa4c"
             ],
             "predicate": null,
             "subject": null,
@@ -894,7 +873,7 @@
             "editable": true,
             "id": "#4tableHeader",
             "isDatasetOutput": true,
-            "isDatatableOutput": false,
+            "isDatatableOutput": true,
             "isLoobDatatableOutput": true,
             "isRdfOutput": false,
             "lineNumber": "",
@@ -902,11 +881,10 @@
             "object": null,
             "optional": true,
             "outputDatatableKey": "mode",
-            "outputDatatableLayer": "mode",
             "outputKey": "mode",
             "outputLayer": "set",
             "outputTableIndex": [
-                0
+                "97fcf176-0f6c-49a8-8762-dff08be4aa4c"
             ],
             "predicate": null,
             "subject": null,
@@ -919,7 +897,7 @@
             "editable": true,
             "id": "#5tableHeader",
             "isDatasetOutput": true,
-            "isDatatableOutput": false,
+            "isDatatableOutput": true,
             "isLoobDatatableOutput": true,
             "isRdfOutput": false,
             "lineNumber": "",
@@ -927,11 +905,10 @@
             "object": null,
             "optional": true,
             "outputDatatableKey": "ex_bandwidth",
-            "outputDatatableLayer": "ex_bandwidth",
             "outputKey": "ex_bandwidth",
             "outputLayer": "set",
             "outputTableIndex": [
-                0
+                "97fcf176-0f6c-49a8-8762-dff08be4aa4c"
             ],
             "predicate": null,
             "subject": null,
@@ -944,7 +921,7 @@
             "editable": true,
             "id": "#6tableHeader",
             "isDatasetOutput": true,
-            "isDatatableOutput": false,
+            "isDatatableOutput": true,
             "isLoobDatatableOutput": true,
             "isRdfOutput": false,
             "lineNumber": "",
@@ -952,11 +929,10 @@
             "object": null,
             "optional": true,
             "outputDatatableKey": "em_bandwidth",
-            "outputDatatableLayer": "em_bandwidth",
             "outputKey": "em_bandwidth",
             "outputLayer": "set",
             "outputTableIndex": [
-                0
+                "97fcf176-0f6c-49a8-8762-dff08be4aa4c"
             ],
             "predicate": null,
             "subject": null,
@@ -969,7 +945,7 @@
             "editable": true,
             "id": "#7tableHeader",
             "isDatasetOutput": true,
-            "isDatatableOutput": false,
+            "isDatatableOutput": true,
             "isLoobDatatableOutput": true,
             "isRdfOutput": false,
             "lineNumber": "",
@@ -977,11 +953,10 @@
             "object": null,
             "optional": true,
             "outputDatatableKey": "response",
-            "outputDatatableLayer": "response",
             "outputKey": "response",
             "outputLayer": "set",
             "outputTableIndex": [
-                0
+                "97fcf176-0f6c-49a8-8762-dff08be4aa4c"
             ],
             "predicate": null,
             "subject": null,
@@ -994,7 +969,7 @@
             "editable": true,
             "id": "#8tableHeader",
             "isDatasetOutput": true,
-            "isDatatableOutput": false,
+            "isDatatableOutput": true,
             "isLoobDatatableOutput": true,
             "isRdfOutput": false,
             "lineNumber": "",
@@ -1002,11 +977,10 @@
             "object": null,
             "optional": true,
             "outputDatatableKey": "sensitivity",
-            "outputDatatableLayer": "sensitivity",
             "outputKey": "sensitivity",
             "outputLayer": "set",
             "outputTableIndex": [
-                0
+                "97fcf176-0f6c-49a8-8762-dff08be4aa4c"
             ],
             "predicate": null,
             "subject": null,
@@ -1019,7 +993,7 @@
             "editable": true,
             "id": "#9tableHeader",
             "isDatasetOutput": true,
-            "isDatatableOutput": false,
+            "isDatatableOutput": true,
             "isLoobDatatableOutput": true,
             "isRdfOutput": false,
             "lineNumber": "",
@@ -1027,11 +1001,10 @@
             "object": null,
             "optional": true,
             "outputDatatableKey": "measurement_range",
-            "outputDatatableLayer": "measurement_range",
             "outputKey": "measurement_range",
             "outputLayer": "set",
             "outputTableIndex": [
-                0
+                "97fcf176-0f6c-49a8-8762-dff08be4aa4c"
             ],
             "predicate": null,
             "subject": null,
@@ -1044,7 +1017,7 @@
             "editable": true,
             "id": "#10tableHeader",
             "isDatasetOutput": true,
-            "isDatatableOutput": false,
+            "isDatatableOutput": true,
             "isLoobDatatableOutput": true,
             "isRdfOutput": false,
             "lineNumber": "",
@@ -1052,11 +1025,10 @@
             "object": null,
             "optional": true,
             "outputDatatableKey": "data_interval",
-            "outputDatatableLayer": "data_interval",
             "outputKey": "data_interval",
             "outputLayer": "set",
             "outputTableIndex": [
-                0
+                "97fcf176-0f6c-49a8-8762-dff08be4aa4c"
             ],
             "predicate": null,
             "subject": null,
@@ -1069,7 +1041,7 @@
             "editable": true,
             "id": "#11tableHeader",
             "isDatasetOutput": true,
-            "isDatatableOutput": false,
+            "isDatatableOutput": true,
             "isLoobDatatableOutput": true,
             "isRdfOutput": false,
             "lineNumber": "",
@@ -1077,11 +1049,10 @@
             "object": null,
             "optional": true,
             "outputDatatableKey": "scan_speed",
-            "outputDatatableLayer": "scan_speed",
             "outputKey": "scan_speed",
             "outputLayer": "set",
             "outputTableIndex": [
-                0
+                "97fcf176-0f6c-49a8-8762-dff08be4aa4c"
             ],
             "predicate": null,
             "subject": null,
@@ -1094,7 +1065,7 @@
             "editable": true,
             "id": "#12tableHeader",
             "isDatasetOutput": true,
-            "isDatatableOutput": false,
+            "isDatatableOutput": true,
             "isLoobDatatableOutput": true,
             "isRdfOutput": false,
             "lineNumber": "",
@@ -1102,11 +1073,10 @@
             "object": null,
             "optional": true,
             "outputDatatableKey": "no_of_cycles",
-            "outputDatatableLayer": "no_of_cycles",
             "outputKey": "no_of_cycles",
             "outputLayer": "set",
             "outputTableIndex": [
-                0
+                "97fcf176-0f6c-49a8-8762-dff08be4aa4c"
             ],
             "predicate": null,
             "subject": null,
@@ -1119,7 +1089,7 @@
             "editable": true,
             "id": "#13tableHeader",
             "isDatasetOutput": true,
-            "isDatatableOutput": false,
+            "isDatatableOutput": true,
             "isLoobDatatableOutput": true,
             "isRdfOutput": false,
             "lineNumber": "",
@@ -1127,11 +1097,10 @@
             "object": null,
             "optional": true,
             "outputDatatableKey": "auto gain",
-            "outputDatatableLayer": "auto gain",
             "outputKey": "auto gain",
             "outputLayer": "measurement",
             "outputTableIndex": [
-                0
+                "97fcf176-0f6c-49a8-8762-dff08be4aa4c"
             ],
             "predicate": null,
             "subject": null,
@@ -1144,7 +1113,7 @@
             "editable": true,
             "id": "#14tableHeader",
             "isDatasetOutput": true,
-            "isDatatableOutput": false,
+            "isDatatableOutput": true,
             "isLoobDatatableOutput": true,
             "isRdfOutput": false,
             "lineNumber": "",
@@ -1152,11 +1121,10 @@
             "object": null,
             "optional": true,
             "outputDatatableKey": "shutter_control",
-            "outputDatatableLayer": "shutter_control",
             "outputKey": "shutter_control",
             "outputLayer": "set",
             "outputTableIndex": [
-                0
+                "97fcf176-0f6c-49a8-8762-dff08be4aa4c"
             ],
             "predicate": null,
             "subject": null,
@@ -1169,7 +1137,7 @@
             "editable": true,
             "id": "#15tableHeader",
             "isDatasetOutput": true,
-            "isDatatableOutput": false,
+            "isDatatableOutput": true,
             "isLoobDatatableOutput": true,
             "isRdfOutput": false,
             "lineNumber": "",
@@ -1177,11 +1145,10 @@
             "object": null,
             "optional": true,
             "outputDatatableKey": "light_source",
-            "outputDatatableLayer": "light_source",
             "outputKey": "light_source",
             "outputLayer": "set",
             "outputTableIndex": [
-                0
+                "97fcf176-0f6c-49a8-8762-dff08be4aa4c"
             ],
             "predicate": null,
             "subject": null,
@@ -1194,7 +1161,7 @@
             "editable": true,
             "id": "#16tableHeader",
             "isDatasetOutput": true,
-            "isDatatableOutput": false,
+            "isDatatableOutput": true,
             "isLoobDatatableOutput": true,
             "isRdfOutput": false,
             "lineNumber": "",
@@ -1202,11 +1169,10 @@
             "object": null,
             "optional": true,
             "outputDatatableKey": "filter",
-            "outputDatatableLayer": "filter",
             "outputKey": "filter",
             "outputLayer": "set",
             "outputTableIndex": [
-                0
+                "97fcf176-0f6c-49a8-8762-dff08be4aa4c"
             ],
             "predicate": null,
             "subject": null,
@@ -1219,7 +1185,7 @@
             "editable": true,
             "id": "#17tableHeader",
             "isDatasetOutput": true,
-            "isDatatableOutput": false,
+            "isDatatableOutput": true,
             "isLoobDatatableOutput": true,
             "isRdfOutput": false,
             "lineNumber": "",
@@ -1227,11 +1193,10 @@
             "object": null,
             "optional": true,
             "outputDatatableKey": "blank_correction",
-            "outputDatatableLayer": "blank_correction",
             "outputKey": "blank_correction",
             "outputLayer": "set",
             "outputTableIndex": [
-                0
+                "97fcf176-0f6c-49a8-8762-dff08be4aa4c"
             ],
             "predicate": null,
             "subject": null,
@@ -1244,7 +1209,7 @@
             "editable": true,
             "id": "#18tableHeader",
             "isDatasetOutput": true,
-            "isDatatableOutput": false,
+            "isDatatableOutput": true,
             "isLoobDatatableOutput": true,
             "isRdfOutput": false,
             "lineNumber": "",
@@ -1252,11 +1217,10 @@
             "object": null,
             "optional": true,
             "outputDatatableKey": "date",
-            "outputDatatableLayer": "date",
             "outputKey": "date",
             "outputLayer": "general",
             "outputTableIndex": [
-                0
+                "97fcf176-0f6c-49a8-8762-dff08be4aa4c"
             ],
             "predicate": null,
             "subject": null,
@@ -1266,12 +1230,12 @@
         }
     ],
     "isDisabled": false,
-    "last_migration": "20260506160404",
+    "last_migration": "20260513094819",
     "objects": [],
     "ols": "CHMO:0000287",
     "ontology": "",
     "predicates": [],
-    "profile_version": "1.17",
+    "profile_version": "1.12",
     "reactionVariations": {
         "elements": [],
         "identifiers": []
@@ -1302,7 +1266,6 @@
                 "YUNITS": "Intensity"
             },
             "inputTableIndex": 0,
-            "loopOutput": "MULTI FILE",
             "loopType": "none",
             "table": {
                 "xColumn": {
@@ -1311,7 +1274,9 @@
                 "yColumn": {
                     "columnIndex": 1
                 }
-            }
+            },
+            "tableName": "Table #1",
+            "uuid": "97fcf176-0f6c-49a8-8762-dff08be4aa4c"
         }
     ],
     "title": "Emission spectrum",

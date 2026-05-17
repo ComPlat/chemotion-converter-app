@@ -5478,26 +5478,34 @@
             "trigger": "migration:20260422063146"
         },
         {
-            "at": "2026-05-08T07:20:36.338598+00:00",
+            "at": "2026-05-17T21:09:23.323564+00:00",
             "diff": [
+                {
+                    "op": "remove",
+                    "path": "/tables/0/loopType"
+                },
                 {
                     "from": "/tables/0/inputTableIndex",
                     "op": "move",
-                    "path": "/tables/0/table/yColumn/tableIndex"
+                    "path": "/tables/0/table/xColumn/tableIndex"
                 },
                 {
                     "op": "add",
-                    "path": "/tables/0/table/xColumn/tableIndex",
+                    "path": "/tables/0/table/yColumn/tableIndex",
                     "value": 11
+                },
+                {
+                    "op": "remove",
+                    "path": "/tables/1/loopType"
                 },
                 {
                     "from": "/tables/1/inputTableIndex",
                     "op": "move",
-                    "path": "/tables/1/table/yColumn/tableIndex"
+                    "path": "/tables/1/table/xColumn/tableIndex"
                 },
                 {
                     "op": "add",
-                    "path": "/tables/1/table/xColumn/tableIndex",
+                    "path": "/tables/1/table/yColumn/tableIndex",
                     "value": 12
                 }
             ],
@@ -5505,49 +5513,27 @@
             "trigger": "migration:20260506160404"
         },
         {
-            "at": "2026-05-10T05:20:14.533777+00:00",
+            "at": "2026-05-17T21:09:23.326653+00:00",
             "diff": [
                 {
                     "op": "remove",
-                    "path": "/identifiers/0/loopOutput"
+                    "path": "/tables/0/tableName"
                 },
                 {
                     "op": "remove",
-                    "path": "/identifiers/1/loopOutput"
+                    "path": "/tables/0/uuid"
+                },
+                {
+                    "op": "remove",
+                    "path": "/tables/1/tableName"
+                },
+                {
+                    "op": "remove",
+                    "path": "/tables/1/uuid"
                 }
             ],
             "profile_version": "1.11",
-            "trigger": "migration:20260506160404"
-        },
-        {
-            "at": "2026-05-10T05:26:54.198197+00:00",
-            "diff": [
-                {
-                    "op": "remove",
-                    "path": "/tables/0/loopOutput"
-                },
-                {
-                    "op": "remove",
-                    "path": "/tables/1/loopOutput"
-                }
-            ],
-            "profile_version": "1.12",
-            "trigger": "migration:20260506160404"
-        },
-        {
-            "at": "2026-05-10T05:34:33.755770+00:00",
-            "diff": [
-                {
-                    "op": "remove",
-                    "path": "/tables/0/loopType"
-                },
-                {
-                    "op": "remove",
-                    "path": "/tables/1/loopType"
-                }
-            ],
-            "profile_version": "1.13",
-            "trigger": "migration:20260506160404"
+            "trigger": "migration:20260513094819"
         }
     ],
     "id": "fb19f78e-8d87-4c5f-a4e1-ac90994300d7",
@@ -5556,7 +5542,6 @@
             "editable": true,
             "id": "#0fileMetadata",
             "key": "reader",
-            "loopOutput": "MULTI FILE",
             "match": "exact",
             "optional": false,
             "type": "fileMetadata",
@@ -5566,7 +5551,6 @@
             "editable": true,
             "id": "#1tableHeader",
             "lineNumber": 2,
-            "loopOutput": "MULTI FILE",
             "match": "regex",
             "optional": false,
             "tableIndex": 0,
@@ -5585,12 +5569,12 @@
         }
     ],
     "isDisabled": false,
-    "last_migration": "20260506160404",
+    "last_migration": "20260513094819",
     "objects": [],
     "ols": null,
     "ontology": "",
     "predicates": [],
-    "profile_version": "1.14",
+    "profile_version": "1.12",
     "reactionVariations": {
         "elements": [],
         "identifiers": []
@@ -5621,7 +5605,6 @@
                 "YUNITS": "Intensity"
             },
             "inputTableIndex": 11,
-            "loopOutput": "MULTI FILE",
             "loopType": "none",
             "table": {
                 "xColumn": {
@@ -5630,7 +5613,9 @@
                 "yColumn": {
                     "columnIndex": 2
                 }
-            }
+            },
+            "tableName": "Table #1",
+            "uuid": "0d066cef-e33d-4b8b-a618-f691f13d85a5"
         },
         {
             "header": {
@@ -5640,7 +5625,6 @@
                 "YUNITS": "Intensity"
             },
             "inputTableIndex": 12,
-            "loopOutput": "MULTI FILE",
             "loopType": "none",
             "table": {
                 "xColumn": {
@@ -5649,7 +5633,9 @@
                 "yColumn": {
                     "columnIndex": 2
                 }
-            }
+            },
+            "tableName": "Table #2",
+            "uuid": "7fa32987-0935-4c5f-af1c-9cff2ce151b6"
         }
     ],
     "title": "CD MS Spectra data from txt, data: +, metadata: -",

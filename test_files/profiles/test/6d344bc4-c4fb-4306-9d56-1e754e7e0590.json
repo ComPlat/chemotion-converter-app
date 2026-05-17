@@ -285,16 +285,20 @@
             "trigger": "migration:20260422063146"
         },
         {
-            "at": "2026-05-08T07:20:36.125825+00:00",
+            "at": "2026-05-17T21:09:23.122826+00:00",
             "diff": [
+                {
+                    "op": "remove",
+                    "path": "/tables/0/loopType"
+                },
                 {
                     "from": "/tables/0/inputTableIndex",
                     "op": "move",
-                    "path": "/tables/0/table/yColumn/tableIndex"
+                    "path": "/tables/0/table/xColumn/tableIndex"
                 },
                 {
                     "op": "add",
-                    "path": "/tables/0/table/xColumn/tableIndex",
+                    "path": "/tables/0/table/yColumn/tableIndex",
                     "value": 0
                 }
             ],
@@ -302,37 +306,19 @@
             "trigger": "migration:20260506160404"
         },
         {
-            "at": "2026-05-10T05:20:14.427634+00:00",
+            "at": "2026-05-17T21:09:23.123340+00:00",
             "diff": [
                 {
                     "op": "remove",
-                    "path": "/identifiers/0/loopOutput"
+                    "path": "/tables/0/tableName"
+                },
+                {
+                    "op": "remove",
+                    "path": "/tables/0/uuid"
                 }
             ],
             "profile_version": "1.11",
-            "trigger": "migration:20260506160404"
-        },
-        {
-            "at": "2026-05-10T05:26:54.100727+00:00",
-            "diff": [
-                {
-                    "op": "remove",
-                    "path": "/tables/0/loopOutput"
-                }
-            ],
-            "profile_version": "1.12",
-            "trigger": "migration:20260506160404"
-        },
-        {
-            "at": "2026-05-10T05:34:33.654943+00:00",
-            "diff": [
-                {
-                    "op": "remove",
-                    "path": "/tables/0/loopType"
-                }
-            ],
-            "profile_version": "1.13",
-            "trigger": "migration:20260506160404"
+            "trigger": "migration:20260513094819"
         }
     ],
     "id": "6d344bc4-c4fb-4306-9d56-1e754e7e0590",
@@ -341,7 +327,6 @@
             "editable": true,
             "id": "#0tableMetadata",
             "key": "column_01",
-            "loopOutput": "MULTI FILE",
             "match": "exact",
             "optional": false,
             "tableIndex": 0,
@@ -370,12 +355,12 @@
         }
     ],
     "isDisabled": false,
-    "last_migration": "20260506160404",
+    "last_migration": "20260513094819",
     "objects": [],
     "ols": "CHMO:0001163",
     "ontology": "",
     "predicates": [],
-    "profile_version": "1.14",
+    "profile_version": "1.12",
     "reactionVariations": {
         "elements": [],
         "identifiers": []
@@ -406,7 +391,6 @@
                 "YUNITS": "Intensity"
             },
             "inputTableIndex": 0,
-            "loopOutput": "MULTI FILE",
             "loopType": "none",
             "table": {
                 "xColumn": {
@@ -422,7 +406,9 @@
                         "value": "1e6"
                     }
                 ]
-            }
+            },
+            "tableName": "Table #1",
+            "uuid": "d0927c7b-8872-4ac4-ab97-f2e324d5f94c"
         }
     ],
     "title": "Tensile test data from txt, data: +, metadata: -",

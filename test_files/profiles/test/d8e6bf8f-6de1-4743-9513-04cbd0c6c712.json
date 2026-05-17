@@ -343,46 +343,62 @@
             "trigger": "migration:20260422063146"
         },
         {
-            "at": "2026-05-08T07:20:36.482844+00:00",
+            "at": "2026-05-17T21:09:23.525890+00:00",
             "diff": [
                 {
-                    "from": "/tables/0/inputTableIndex",
-                    "op": "move",
-                    "path": "/tables/0/table/yColumn/tableIndex"
+                    "op": "remove",
+                    "path": "/tables/0/loopType"
                 },
                 {
-                    "from": "/tables/1/inputTableIndex",
+                    "from": "/tables/0/inputTableIndex",
                     "op": "move",
                     "path": "/tables/0/table/xColumn/tableIndex"
                 },
                 {
+                    "op": "remove",
+                    "path": "/tables/1/loopType"
+                },
+                {
+                    "from": "/tables/1/inputTableIndex",
+                    "op": "move",
+                    "path": "/tables/0/table/yColumn/tableIndex"
+                },
+                {
                     "op": "add",
-                    "path": "/tables/1/table/yColumn/tableIndex",
+                    "path": "/tables/1/table/xColumn/tableIndex",
                     "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/tables/2/loopType"
                 },
                 {
                     "from": "/tables/2/inputTableIndex",
                     "op": "move",
-                    "path": "/tables/1/table/xColumn/tableIndex"
+                    "path": "/tables/1/table/yColumn/tableIndex"
                 },
                 {
                     "op": "add",
-                    "path": "/tables/2/table/yColumn/tableIndex",
+                    "path": "/tables/2/table/xColumn/tableIndex",
                     "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/tables/3/loopType"
                 },
                 {
                     "from": "/tables/3/inputTableIndex",
                     "op": "move",
-                    "path": "/tables/2/table/xColumn/tableIndex"
-                },
-                {
-                    "op": "add",
-                    "path": "/tables/3/table/yColumn/tableIndex",
-                    "value": 0
+                    "path": "/tables/2/table/yColumn/tableIndex"
                 },
                 {
                     "op": "add",
                     "path": "/tables/3/table/xColumn/tableIndex",
+                    "value": 0
+                },
+                {
+                    "op": "add",
+                    "path": "/tables/3/table/yColumn/tableIndex",
                     "value": 0
                 }
             ],
@@ -390,73 +406,43 @@
             "trigger": "migration:20260506160404"
         },
         {
-            "at": "2026-05-10T05:20:14.645347+00:00",
+            "at": "2026-05-17T21:09:23.526733+00:00",
             "diff": [
                 {
                     "op": "remove",
-                    "path": "/identifiers/0/loopOutput"
+                    "path": "/tables/0/tableName"
                 },
                 {
                     "op": "remove",
-                    "path": "/identifiers/1/loopOutput"
+                    "path": "/tables/0/uuid"
                 },
                 {
                     "op": "remove",
-                    "path": "/identifiers/2/loopOutput"
+                    "path": "/tables/1/tableName"
                 },
                 {
                     "op": "remove",
-                    "path": "/identifiers/3/loopOutput"
+                    "path": "/tables/1/uuid"
+                },
+                {
+                    "op": "remove",
+                    "path": "/tables/2/tableName"
+                },
+                {
+                    "op": "remove",
+                    "path": "/tables/2/uuid"
+                },
+                {
+                    "op": "remove",
+                    "path": "/tables/3/tableName"
+                },
+                {
+                    "op": "remove",
+                    "path": "/tables/3/uuid"
                 }
             ],
             "profile_version": "1.11",
-            "trigger": "migration:20260506160404"
-        },
-        {
-            "at": "2026-05-10T05:26:54.305311+00:00",
-            "diff": [
-                {
-                    "op": "remove",
-                    "path": "/tables/0/loopOutput"
-                },
-                {
-                    "op": "remove",
-                    "path": "/tables/1/loopOutput"
-                },
-                {
-                    "op": "remove",
-                    "path": "/tables/2/loopOutput"
-                },
-                {
-                    "op": "remove",
-                    "path": "/tables/3/loopOutput"
-                }
-            ],
-            "profile_version": "1.12",
-            "trigger": "migration:20260506160404"
-        },
-        {
-            "at": "2026-05-10T05:34:33.926945+00:00",
-            "diff": [
-                {
-                    "op": "remove",
-                    "path": "/tables/0/loopType"
-                },
-                {
-                    "op": "remove",
-                    "path": "/tables/1/loopType"
-                },
-                {
-                    "op": "remove",
-                    "path": "/tables/2/loopType"
-                },
-                {
-                    "op": "remove",
-                    "path": "/tables/3/loopType"
-                }
-            ],
-            "profile_version": "1.13",
-            "trigger": "migration:20260506160404"
+            "trigger": "migration:20260513094819"
         }
     ],
     "id": "d8e6bf8f-6de1-4743-9513-04cbd0c6c712",
@@ -465,7 +451,6 @@
             "editable": true,
             "id": "#0fileMetadata",
             "key": "reader",
-            "loopOutput": "MULTI FILE",
             "match": "exact",
             "optional": false,
             "type": "fileMetadata",
@@ -475,7 +460,6 @@
             "editable": true,
             "id": "#1fileMetadata",
             "key": "extension",
-            "loopOutput": "MULTI FILE",
             "match": "exact",
             "optional": false,
             "type": "fileMetadata",
@@ -485,7 +469,6 @@
             "editable": true,
             "id": "#2tableMetadata",
             "key": "column_00",
-            "loopOutput": "MULTI FILE",
             "match": "exact",
             "optional": false,
             "tableIndex": 0,
@@ -496,7 +479,6 @@
             "editable": true,
             "id": "#3tableMetadata",
             "key": "column_07",
-            "loopOutput": "MULTI FILE",
             "match": "exact",
             "optional": false,
             "tableIndex": 0,
@@ -515,12 +497,12 @@
         }
     ],
     "isDisabled": false,
-    "last_migration": "20260506160404",
+    "last_migration": "20260513094819",
     "objects": [],
     "ols": "CHMO:0000292",
     "ontology": "",
     "predicates": [],
-    "profile_version": "1.14",
+    "profile_version": "1.12",
     "reactionVariations": {
         "elements": [],
         "identifiers": []
@@ -551,7 +533,6 @@
                 "YUNITS": "ABSORBANCE"
             },
             "inputTableIndex": 0,
-            "loopOutput": "MULTI FILE",
             "loopType": "none",
             "table": {
                 "xColumn": {
@@ -560,7 +541,9 @@
                 "yColumn": {
                     "columnIndex": 1
                 }
-            }
+            },
+            "tableName": "Table #1",
+            "uuid": "a636c42a-035f-4f27-9885-985cd522a13c"
         },
         {
             "header": {
@@ -570,7 +553,6 @@
                 "YUNITS": "ABSORBANCE"
             },
             "inputTableIndex": 0,
-            "loopOutput": "MULTI FILE",
             "loopType": "none",
             "table": {
                 "xColumn": {
@@ -579,7 +561,9 @@
                 "yColumn": {
                     "columnIndex": 3
                 }
-            }
+            },
+            "tableName": "Table #2",
+            "uuid": "965efb6b-1e34-48aa-9a89-fe31f91f48d7"
         },
         {
             "header": {
@@ -589,7 +573,6 @@
                 "YUNITS": "ABSORBANCE"
             },
             "inputTableIndex": 0,
-            "loopOutput": "MULTI FILE",
             "loopType": "none",
             "table": {
                 "xColumn": {
@@ -598,7 +581,9 @@
                 "yColumn": {
                     "columnIndex": 5
                 }
-            }
+            },
+            "tableName": "Table #3",
+            "uuid": "e2bcd892-bbce-46bc-baab-e8cbb47c3a8c"
         },
         {
             "header": {
@@ -608,7 +593,6 @@
                 "YUNITS": "ABSORBANCE"
             },
             "inputTableIndex": 0,
-            "loopOutput": "MULTI FILE",
             "loopType": "none",
             "table": {
                 "xColumn": {
@@ -617,7 +601,9 @@
                 "yColumn": {
                     "columnIndex": 7
                 }
-            }
+            },
+            "tableName": "Table #4",
+            "uuid": "326e5120-77c3-4fa1-8705-afbcb92751df"
         }
     ],
     "title": "UVVIS CS",

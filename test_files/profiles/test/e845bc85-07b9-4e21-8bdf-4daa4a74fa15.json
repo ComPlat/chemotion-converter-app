@@ -784,26 +784,34 @@
             "trigger": "migration:20260422063146"
         },
         {
-            "at": "2026-05-08T07:20:36.473918+00:00",
+            "at": "2026-05-17T21:09:23.514671+00:00",
             "diff": [
                 {
-                    "from": "/tables/0/inputTableIndex",
-                    "op": "move",
-                    "path": "/tables/0/table/yColumn/tableIndex"
+                    "op": "remove",
+                    "path": "/tables/0/loopType"
                 },
                 {
-                    "from": "/tables/1/inputTableIndex",
+                    "from": "/tables/0/inputTableIndex",
                     "op": "move",
                     "path": "/tables/0/table/xColumn/tableIndex"
                 },
                 {
-                    "op": "add",
-                    "path": "/tables/1/table/yColumn/tableIndex",
-                    "value": 2
+                    "op": "remove",
+                    "path": "/tables/1/loopType"
+                },
+                {
+                    "from": "/tables/1/inputTableIndex",
+                    "op": "move",
+                    "path": "/tables/0/table/yColumn/tableIndex"
                 },
                 {
                     "op": "add",
                     "path": "/tables/1/table/xColumn/tableIndex",
+                    "value": 2
+                },
+                {
+                    "op": "add",
+                    "path": "/tables/1/table/yColumn/tableIndex",
                     "value": 2
                 }
             ],
@@ -811,49 +819,27 @@
             "trigger": "migration:20260506160404"
         },
         {
-            "at": "2026-05-10T05:20:14.640007+00:00",
+            "at": "2026-05-17T21:09:23.515677+00:00",
             "diff": [
                 {
                     "op": "remove",
-                    "path": "/identifiers/0/loopOutput"
+                    "path": "/tables/0/tableName"
                 },
                 {
                     "op": "remove",
-                    "path": "/identifiers/1/loopOutput"
+                    "path": "/tables/0/uuid"
+                },
+                {
+                    "op": "remove",
+                    "path": "/tables/1/tableName"
+                },
+                {
+                    "op": "remove",
+                    "path": "/tables/1/uuid"
                 }
             ],
             "profile_version": "1.11",
-            "trigger": "migration:20260506160404"
-        },
-        {
-            "at": "2026-05-10T05:26:54.299860+00:00",
-            "diff": [
-                {
-                    "op": "remove",
-                    "path": "/tables/0/loopOutput"
-                },
-                {
-                    "op": "remove",
-                    "path": "/tables/1/loopOutput"
-                }
-            ],
-            "profile_version": "1.12",
-            "trigger": "migration:20260506160404"
-        },
-        {
-            "at": "2026-05-10T05:34:33.921320+00:00",
-            "diff": [
-                {
-                    "op": "remove",
-                    "path": "/tables/0/loopType"
-                },
-                {
-                    "op": "remove",
-                    "path": "/tables/1/loopType"
-                }
-            ],
-            "profile_version": "1.13",
-            "trigger": "migration:20260506160404"
+            "trigger": "migration:20260513094819"
         }
     ],
     "id": "e845bc85-07b9-4e21-8bdf-4daa4a74fa15",
@@ -862,7 +848,6 @@
             "editable": true,
             "id": "#0fileMetadata",
             "key": "reader",
-            "loopOutput": "MULTI FILE",
             "match": "exact",
             "optional": false,
             "type": "fileMetadata",
@@ -872,7 +857,6 @@
             "editable": true,
             "id": "#1tableMetadata",
             "key": "Instrument Type",
-            "loopOutput": "MULTI FILE",
             "match": "exact",
             "optional": false,
             "tableIndex": 0,
@@ -901,12 +885,12 @@
         }
     ],
     "isDisabled": false,
-    "last_migration": "20260506160404",
+    "last_migration": "20260513094819",
     "objects": [],
     "ols": null,
     "ontology": "",
     "predicates": [],
-    "profile_version": "1.14",
+    "profile_version": "1.12",
     "reactionVariations": {
         "elements": [],
         "identifiers": []
@@ -937,7 +921,6 @@
                 "YUNITS": "Weight %"
             },
             "inputTableIndex": 2,
-            "loopOutput": "MULTI FILE",
             "loopType": "none",
             "table": {
                 "xColumn": {
@@ -946,7 +929,9 @@
                 "yColumn": {
                     "columnIndex": 3
                 }
-            }
+            },
+            "tableName": "Table #1",
+            "uuid": "e66482ec-fe14-47af-888b-e0a18880e19a"
         },
         {
             "header": {
@@ -956,7 +941,6 @@
                 "YUNITS": "DERIVATIVE WEIGHT"
             },
             "inputTableIndex": 2,
-            "loopOutput": "MULTI FILE",
             "loopType": "none",
             "table": {
                 "xColumn": {
@@ -965,7 +949,9 @@
                 "yColumn": {
                     "columnIndex": 4
                 }
-            }
+            },
+            "tableName": "Table #2",
+            "uuid": "0d315161-ff17-42dd-9323-60b8ec3c107c"
         }
     ],
     "title": "TGA with derivative",

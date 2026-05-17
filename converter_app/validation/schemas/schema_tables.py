@@ -18,6 +18,12 @@ tables_schema = {
             "type": "number",
             "minimum": 0
         },
+        "tableName": {
+            "type": "string"
+        },
+        "uuid": {
+            "type": "string"
+        },
         "loopType": {
             "type": "string"
         },
@@ -25,7 +31,7 @@ tables_schema = {
             "type": "string"
         },
         "nTuplePageHeader": {
-            "type": "string"
+            "type": ["string", "number"]
         },
         "matchTables": {
             "type": "boolean"

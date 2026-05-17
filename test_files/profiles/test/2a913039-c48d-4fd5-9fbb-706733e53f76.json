@@ -299,16 +299,20 @@
             "trigger": "migration:20260422063146"
         },
         {
-            "at": "2026-05-08T07:20:36.258069+00:00",
+            "at": "2026-05-17T21:09:23.203823+00:00",
             "diff": [
+                {
+                    "op": "remove",
+                    "path": "/tables/0/loopType"
+                },
                 {
                     "from": "/tables/0/inputTableIndex",
                     "op": "move",
-                    "path": "/tables/0/table/yColumn/tableIndex"
+                    "path": "/tables/0/table/xColumn/tableIndex"
                 },
                 {
                     "op": "add",
-                    "path": "/tables/0/table/xColumn/tableIndex",
+                    "path": "/tables/0/table/yColumn/tableIndex",
                     "value": 0
                 }
             ],
@@ -316,37 +320,19 @@
             "trigger": "migration:20260506160404"
         },
         {
-            "at": "2026-05-10T05:20:14.470326+00:00",
+            "at": "2026-05-17T21:09:23.204449+00:00",
             "diff": [
                 {
                     "op": "remove",
-                    "path": "/identifiers/0/loopOutput"
+                    "path": "/tables/0/tableName"
+                },
+                {
+                    "op": "remove",
+                    "path": "/tables/0/uuid"
                 }
             ],
             "profile_version": "1.11",
-            "trigger": "migration:20260506160404"
-        },
-        {
-            "at": "2026-05-10T05:26:54.138631+00:00",
-            "diff": [
-                {
-                    "op": "remove",
-                    "path": "/tables/0/loopOutput"
-                }
-            ],
-            "profile_version": "1.12",
-            "trigger": "migration:20260506160404"
-        },
-        {
-            "at": "2026-05-10T05:34:33.693548+00:00",
-            "diff": [
-                {
-                    "op": "remove",
-                    "path": "/tables/0/loopType"
-                }
-            ],
-            "profile_version": "1.13",
-            "trigger": "migration:20260506160404"
+            "trigger": "migration:20260513094819"
         }
     ],
     "id": "2a913039-c48d-4fd5-9fbb-706733e53f76",
@@ -355,7 +341,6 @@
             "editable": true,
             "id": "#0fileMetadata",
             "key": "reader",
-            "loopOutput": "MULTI FILE",
             "match": "exact",
             "optional": false,
             "type": "fileMetadata",
@@ -383,12 +368,12 @@
         }
     ],
     "isDisabled": false,
-    "last_migration": "20260506160404",
+    "last_migration": "20260513094819",
     "objects": [],
     "ols": "CHMO:0000292",
     "ontology": "",
     "predicates": [],
-    "profile_version": "1.14",
+    "profile_version": "1.12",
     "reactionVariations": {
         "elements": [],
         "identifiers": []
@@ -419,7 +404,6 @@
                 "YUNITS": "ABSORBANCE"
             },
             "inputTableIndex": 0,
-            "loopOutput": "MULTI FILE",
             "loopType": "none",
             "table": {
                 "xColumn": {
@@ -428,7 +412,9 @@
                 "yColumn": {
                     "columnIndex": 1
                 }
-            }
+            },
+            "tableName": "Table #1",
+            "uuid": "0c5b231c-04a3-4abd-b383-17b1e8d3c9c2"
         }
     ],
     "title": "UV-Vis",

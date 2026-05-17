@@ -83,12 +83,17 @@ class ProfileMigrationScript(ProfileMigration):
         for i, identifier in enumerate(profile['identifiers']):
             if identifier['optional']:
                 profile['identifiers'][i]['isDatasetOutput'] = identifier.get('isDatasetOutput', True)
-                profile['identifiers'][i]['isDatatableOutput'] = identifier.get('isDatatableOutput', False)
+                profile['identifiers'][i]['isDatatableOutput'] = identifier.get('isDatatableOutput', True)
                 profile['identifiers'][i]['isLoobDatatableOutput'] = identifier.get('isLoobDatatableOutput', True)
                 profile['identifiers'][i]['isRdfOutput'] = identifier.get('isRdfOutput', False)
                 profile['identifiers'][i]['outputDatatableKey'] = identifier.get('outputDatatableKey', identifier.get('outputKey', ''))
                 if not isinstance(identifier['outputTableIndex'], list):
-                    profile['identifiers'][i]['outputTableIndex'] = [identifier['outputTableIndex']]
+                    if identifier['outputTableIndex'] == '' or identifier['outputTableIndex'] is None:
+                        profile['identifiers'][i]['outputTableIndex'] = [i for i, x in enumerate(profile['tables'])]
+                    else:
+                        profile['identifiers'][i]['outputTableIndex'] = [identifier['outputTableIndex']]
+                if len(identifier['outputTableIndex']) == 1 and  identifier['outputTableIndex'] is None:
+                    profile['identifiers'][i]['outputTableIndex'] = [i for i, x in enumerate(profile['tables'])]
 
         for i, table in enumerate(profile['tables']):
             x_in_z_p = ['table', 'xColumn', 'tableIndex']
@@ -110,7 +115,7 @@ class ProfileMigrationScript(ProfileMigration):
                 profile['tables'][i]['inputTableIndex'] = values[0]  if len(values) > 0 else profile['tables'][i].get('inputTableIndex', 0)
             loop_metadata_value_p = ['table', 'loop_metadata']
             try:
-                for idx, val in enumerate(get_by_path(table, loop_metadata_value_p + [-1, 'value'])):
+                for idx, val in enumerate(get_by_path(table, loop_metadata_value_p + [-1, 'metadata'])):
                     set_by_path(table, loop_metadata_value_p + [idx, 'metadata'], val)
             except:
                 pass

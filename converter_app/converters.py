@@ -3,6 +3,7 @@ import logging
 import os
 import re
 from collections import defaultdict
+from typing import LiteralString
 
 from converter_app.models import Profile
 
@@ -52,15 +53,14 @@ class Converter:
 
     @property
     def tables(self):
-        for tb_idx, out_table_res in self._tables.items():
+        for (tb_idx, keys), out_table_res in self._tables.items():
             output_table = self.profile_output_tables[tb_idx]
-            is_ntuples = output_table['loopOutput'] == 'SINGLE FILE (NTUPLES)' and output_table['loopType'] != 'none'
+            is_ntuples = output_table.get('loopOutput') == 'SINGLE FILE (NTUPLES)' and output_table['loopType'] != 'none'
             if is_ntuples:
                 yield out_table_res
             else:
                 for table in out_table_res:
                     yield table
-
 
     def _prepare_reaction_variation_identifier(self):
         return self.profile.data.get('reactionVariations', {}).get('identifiers', [])
@@ -71,58 +71,59 @@ class Converter:
     def _compute_has_loop(self, index):
         if len(self.profile_output_tables) <= index:
             return False
-        return  self.profile_output_tables[index].get('loopType') != 'none'
+        return self.profile_output_tables[index].get('loopType') != 'none'
 
     def _compute_check_loop_condition(self, index, input_table_index):
         if self.profile_output_tables[index].get('loopType') == 'all':
-            return True
+            return (True, )
+
         if self.profile_output_tables[index].get('loopType') != 'none':
+            group_values = [True]
             loop_header = self.profile_output_tables[index]['table'].get('loop_header', [])
             for header in loop_header:
                 if not header.get('column'):
                     return False
-                table_index = input_table_index
-                column_index = header['column'].get('columnIndex')
-                if (table_index is None or column_index is None or len(self.input_tables) <= table_index
-                        or len(self.input_tables[table_index].get('columns', [])) <= column_index):
-                    # No Input Table Column with given Ids found
-                    return False
-                if table_index == input_table_index:
-                    continue
-                column_name = self.input_tables[table_index].get('columns')[column_index].get('name')
-                if (len(self.input_tables[input_table_index].get('columns', [])) <= column_index
-                or column_name != self.input_tables[input_table_index].get('columns')[column_index].get('name')):
+                column_name = header['column']
+
+                has_col_name = any(
+                    col.get('name') == column_name for col in self.input_tables[input_table_index].get('columns', []))
+                if not has_col_name:
                     return False
 
             loop_theader = self.profile_output_tables[index]['table'].get('loop_theader', [])
             for theader in loop_theader:
                 match, _ = self._search_regex(theader, input_table_index)
-                if match is None:
+                if not match:
                     return False
+                if not theader.get('ignoreValue'):
+                    group_values.append(match)
 
             loop_metadata = self.profile_output_tables[index]['table'].get('loop_metadata', [])
             for metadata in loop_metadata:
-                if not metadata.get('value'):
+                if not metadata.get('metadata'):
                     return False
-                key = metadata.get('value')
-                if metadata.get('ignoreValue'):
-                    if not key in self.input_tables[input_table_index].get('metadata', {}):
+                key = metadata.get('metadata')
+                if not key in self.input_tables[input_table_index].get('metadata', {}):
+                    return
+                match_mode = metadata.get('matchMode')
+                if match_mode == 'group':
+                    value = self.input_tables[input_table_index].get('metadata', {}).get(key, None)
+                    group_values.append(value)
+                if match_mode == 'exact':
+                    value = self.input_tables[input_table_index].get('metadata', {}).get(key, None)
+                    if metadata.get('value') != value:
                         return False
-                else:
-                    table_index = self.profile_output_tables[index]['inputTableIndex']
-                    value = self.input_tables[table_index].get('metadata', {}).get(key, None)
-                    if value != self.input_tables[input_table_index].get('metadata', {}).get(key, None):
-                        return False
-            return True
-        else:
-            return input_table_index == self.profile_output_tables[index]['inputTableIndex']
+
+            return tuple(group_values)
+        elif input_table_index == self.profile_output_tables[index]['inputTableIndex']:
+            return (True, )
+        return False
 
     def match(self):
         matches = self._match(self.identifiers)
         if isinstance(matches, list):
             return len(self._match(self.identifiers))
         return False
-
 
     def match_reaction_variation_identifier(self):
         self.reaction_variation_matches = self._resolve_all_identifiers(self._reaction_variation_identifiers)
@@ -140,12 +141,11 @@ class Converter:
                 if match is False:
                     return False
 
-            # store match
+                # store match
                 matches.append(match)
 
         # if everything matched, return how many identifiers matched
         return matches
-
 
     def _resolve_all_identifiers(self, identifiers):
         """
@@ -169,7 +169,7 @@ class Converter:
         # if everything matched, return how many identifiers matched
         return matches
 
-    def _resolve_identifier(self, identifier, in_idx = None):
+    def _resolve_identifier(self, identifier, in_idx=None):
         match = self.match_identifier(identifier, in_idx)
         if match and 'value' in match:
             match_operations = identifier.get('operations', [])
@@ -177,7 +177,7 @@ class Converter:
                 match['value'] = self._run_identifier_operation(match['value'], match_operation)
         return match
 
-    def match_identifier(self, identifier, in_idx = None):
+    def match_identifier(self, identifier, in_idx=None):
         """
         Checks if single identifier matches
         :param identifier: Identifier profile object
@@ -265,19 +265,7 @@ class Converter:
         if value is not None:
             value = str(value)
             if identifier.get('isRegex') or identifier.get('match') == 'regex':
-                pattern = identifier.get('value')
-                if str(pattern).startswith('^') or str(pattern).endswith('$'):
-                    match = re.search(pattern, str(value), re.MULTILINE)
-                else:
-                    match = re.search(pattern, str(value))
-                logger.debug('match_value pattern="%s" value="%s" match=%s', pattern, f'{value[:10]}...', bool(match))
-                if match:
-                    try:
-                        return match.group(1).strip()
-                    except IndexError:
-                        return match.group(0).strip()
-                else:
-                    return False
+                return self._solve_regex(identifier.get('value'), value)
             elif identifier.get('match') == 'any':
                 logger.debug('match_value identifier="%s", value="any" result=%s', identifier.get('value'), bool(value))
                 return value if value else False
@@ -290,25 +278,44 @@ class Converter:
         else:
             return False
 
+    @staticmethod
+    def _solve_regex(pattern, value: str) -> LiteralString | str | bool:
+        if str(pattern).startswith('^') or str(pattern).endswith('$'):
+            match = re.search(pattern, str(value), re.MULTILINE)
+        else:
+            match = re.search(pattern, str(value))
+        logger.debug('match_value pattern="%s" value="%s" match=%s', pattern, f'{value[:10]}...', bool(match))
+        if match:
+            try:
+                return match.group(1).strip()
+            except IndexError:
+                return match.group(0).strip()
+        else:
+            return False
+
     def get_reaction_variation_matches(self):
         values = []
         for [sample_id, value_id, unit_id] in self.profile.data.get('reactionVariations', {}).get('elements', []):
-            value = next((x for x in self.reaction_variation_matches if x['identifier']['id'] == value_id), {}).get('result', {}).get('value')
-            sample = next((x for x in self.reaction_variation_matches if x['identifier']['id'] == sample_id), {}).get('result', {}).get('value')
-            unit = next((x for x in self.reaction_variation_matches if x['identifier']['id'] == unit_id), {}).get('result', {}).get('value')
+            value = next((x for x in self.reaction_variation_matches if x['identifier']['id'] == value_id), {}).get(
+                'result', {}).get('value')
+            sample = next((x for x in self.reaction_variation_matches if x['identifier']['id'] == sample_id), {}).get(
+                'result', {}).get('value')
+            unit = next((x for x in self.reaction_variation_matches if x['identifier']['id'] == unit_id), {}).get(
+                'result', {}).get('value')
             values.append([sample, value, unit])
         return {
             'samples': values
         }
-
 
     def process(self):
         self.prepare()
         ntuples_header = dict()
         for in_idx in range(len(self.input_tables)):
             for output_table_index, output_table in enumerate(self.profile_output_tables):
-                if self._compute_check_loop_condition(output_table_index, in_idx):
-                    header = self._process_prepare_header(output_table, output_table_index, in_idx, ntuples_header)
+                group_values = self._compute_check_loop_condition(output_table_index, in_idx)
+                if group_values:
+                    output_table_key = (output_table_index, group_values)
+                    header = self._process_prepare_header(output_table, output_table_key, in_idx, ntuples_header)
                     table_data = output_table.get('table', {})
                     x_column = table_data.get('xColumn')
                     y_column = table_data.get('yColumn')
@@ -323,7 +330,7 @@ class Converter:
                         if operation.get('type') == 'column':
                             operation['rows'] = []
                     x_rows = self._process_prepare_data(x_column, x_operations, in_idx)
-                    y_rows  = self._process_prepare_data( y_column, y_operations, in_idx)
+                    y_rows = self._process_prepare_data(y_column, y_operations, in_idx)
 
                     # --- Prepare data ---
 
@@ -356,7 +363,7 @@ class Converter:
                     }
                     table_dict.update(applied_operators)
 
-                    self._tables[output_table_index].append(table_dict)
+                    self._tables[output_table_key].append(table_dict)
 
     def _process_prepare_data(self, column, operations, in_idx):
         """
@@ -390,7 +397,7 @@ class Converter:
         for operation in operations:
             if operation.get('type') == 'column' and operation.get('column'):
                 col = operation['column']
-                col_index =col['columnIndex']
+                col_index = col['columnIndex']
                 table_index = in_idx
                 if check_indexes(table_index, col_index):
                     table = self.input_tables[table_index]
@@ -399,20 +406,20 @@ class Converter:
                         op_rows.append(self.get_value(row, col_index))
         return rows
 
-
-    def _process_prepare_metadata(self, header, output_table_index, in_idx, is_ntuples):
+    def _process_prepare_metadata(self, header, output_table, in_idx, is_ntuples):
         # merge the metadata from the profile (header) with the metadata
         # extracted using the identifiers (see self.match)
         for match in self.matches:
-            if not match['identifier']['isDatatableOutput'] or output_table_index not in match['identifier']['outputTableIndex']:
+            table_uuid = output_table['uuid']
+            if not match['identifier']['isDatatableOutput'] or table_uuid not in match['identifier'][
+                'outputTableIndex']:
                 continue
-
-            if not match['identifier']['isLoobDatatableOutput']:
-                match_result = match.get('result')
+            match_output_key = match.get('identifier', {}).get('outputDatatableKey')
+            if match_output_key in header and not match['identifier']['isLoobDatatableOutput']:
+                match_result = False
             else:
                 match_result = self._resolve_identifier(match['identifier'], in_idx)
             if match_result:
-                match_output_key = match.get('identifier', {}).get('outputDatatableKey')
                 if match_output_key:
                     match_value = match_result.get('value')
                     if not is_ntuples or not match['identifier']['isLoobDatatableOutput']:
@@ -441,15 +448,15 @@ class Converter:
             header['PAGE'] = f"{page_header}= {key_value}"
         return header
 
-    def _process_prepare_header(self, output_table, output_table_index, in_idx, ntuples_header):
+    def _process_prepare_header(self, output_table, output_table_key, in_idx, ntuples_header):
         header = {}
-        is_ntuples = output_table['loopOutput'] == 'SINGLE FILE (NTUPLES)' and output_table['loopType'] != 'none'
+        is_ntuples = output_table.get('loopOutput') == 'SINGLE FILE (NTUPLES)' and output_table['loopType'] != 'none'
         if is_ntuples:
-            header = self._process_prepare_ntuples_header(output_table, output_table_index, in_idx)
-            if output_table_index not in ntuples_header:
-                ntuples_header[output_table_index] = header
+            header = self._process_prepare_ntuples_header(output_table, output_table_key, in_idx)
+            if output_table_key not in ntuples_header:
+                ntuples_header[output_table_key] = header
             else:
-                self._process_prepare_metadata(ntuples_header[output_table_index], output_table_index, in_idx, is_ntuples)
+                self._process_prepare_metadata(ntuples_header[output_table_key], output_table, in_idx, is_ntuples)
                 return header
 
         for key, value in output_table.get('header', {}).items():
@@ -461,7 +468,7 @@ class Converter:
             else:
                 header[key] = value
 
-        self._process_prepare_metadata(header, output_table_index, in_idx, is_ntuples)
+        self._process_prepare_metadata(header, output_table, in_idx, is_ntuples)
         return header
 
     def _run_operation(self, rows, operation, in_idx):
@@ -479,10 +486,7 @@ class Converter:
             elif operation.get('type') == 'header_value':
                 match, str_value = self._search_regex(operation, in_idx)
                 if match is not None:
-                    if len(match.regs) > 1:
-                        str_value = match[1]
-                    else:
-                        str_value = match[0]
+                    str_value = match
             else:
                 raise ValueError(f"Unknown operation type: {operation.get('type')}")
             try:
@@ -508,7 +512,7 @@ class Converter:
         pattern = operation.get('regex')
         if header is not None and pattern is not None:
             str_value = header
-            match = re.search(pattern, str_value)
+            match = self._solve_regex(pattern, str_value)
         return match, str_value
 
     def _run_identifier_operation(self, value, operation):
@@ -516,7 +520,6 @@ class Converter:
         if op_value:
             return self.apply_operation(value, op_value, operation.get('operator'))
         return value
-
 
     def apply_operation(self, value, op_value, op_operator):
         """
@@ -541,7 +544,6 @@ class Converter:
             pass
         return None
 
-
     def get_input_table(self, index, input_tables):
         if index is not None:
             try:
@@ -560,7 +562,6 @@ class Converter:
                 return i + 1
         return -1
 
-
     def get_value(self, row, column_index):
         """
         Parses value in row at index into string
@@ -570,11 +571,9 @@ class Converter:
         """
         return self._fix_float(row[column_index])
 
-
     @staticmethod
     def _fix_float(value):
         return str(value).replace(',', '.').replace('e', 'E')
-
 
     @classmethod
     def match_profile(cls, client_id, file_data):

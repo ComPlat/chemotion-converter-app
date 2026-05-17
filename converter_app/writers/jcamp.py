@@ -36,7 +36,7 @@ class JcampWriter(Writer):
             header['DATA CLASS'] = "NTUPLES"
             self._prepare_main_header(header)
             self._process_ntuples(header, tables, data_class)
-            yield tables
+            yield header
 
     def process_table(self, table):
         """
