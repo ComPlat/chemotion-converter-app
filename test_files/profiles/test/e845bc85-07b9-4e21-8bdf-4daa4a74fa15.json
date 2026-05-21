@@ -746,7 +746,7 @@
             "trigger": "undo:1.6"
         },
         {
-            "at": "2026-05-06T08:56:29.142228+00:00",
+            "at": "2026-05-21T11:46:01.784585+00:00",
             "diff": [
                 {
                     "op": "remove",
@@ -757,8 +757,12 @@
             "trigger": "migration:20260417132254"
         },
         {
-            "at": "2026-05-06T08:56:29.142807+00:00",
+            "at": "2026-05-21T11:46:01.784967+00:00",
             "diff": [
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_%"
+                },
                 {
                     "op": "remove",
                     "path": "/data/0/tables/0/metadata/__UNIT_liter"
@@ -769,22 +773,18 @@
                 },
                 {
                     "op": "remove",
-                    "path": "/data/0/tables/0/metadata/__UNIT_PPM"
-                },
-                {
-                    "op": "remove",
-                    "path": "/data/0/tables/0/metadata/__UNIT_%"
-                },
-                {
-                    "op": "remove",
                     "path": "/data/0/tables/0/metadata/__UNIT_gram"
+                },
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_PPM"
                 }
             ],
             "profile_version": "1.9",
             "trigger": "migration:20260422063146"
         },
         {
-            "at": "2026-05-17T21:09:23.514671+00:00",
+            "at": "2026-05-21T11:46:01.785490+00:00",
             "diff": [
                 {
                     "op": "remove",
@@ -796,13 +796,13 @@
                     "path": "/tables/0/table/xColumn/tableIndex"
                 },
                 {
-                    "op": "remove",
-                    "path": "/tables/1/loopType"
-                },
-                {
                     "from": "/tables/1/inputTableIndex",
                     "op": "move",
                     "path": "/tables/0/table/yColumn/tableIndex"
+                },
+                {
+                    "op": "remove",
+                    "path": "/tables/1/loopType"
                 },
                 {
                     "op": "add",
@@ -819,23 +819,23 @@
             "trigger": "migration:20260506160404"
         },
         {
-            "at": "2026-05-17T21:09:23.515677+00:00",
+            "at": "2026-05-21T11:46:01.785822+00:00",
             "diff": [
-                {
-                    "op": "remove",
-                    "path": "/tables/0/tableName"
-                },
                 {
                     "op": "remove",
                     "path": "/tables/0/uuid"
                 },
                 {
                     "op": "remove",
-                    "path": "/tables/1/tableName"
+                    "path": "/tables/0/tableName"
                 },
                 {
                     "op": "remove",
                     "path": "/tables/1/uuid"
+                },
+                {
+                    "op": "remove",
+                    "path": "/tables/1/tableName"
                 }
             ],
             "profile_version": "1.11",
@@ -931,7 +931,7 @@
                 }
             },
             "tableName": "Table #1",
-            "uuid": "e66482ec-fe14-47af-888b-e0a18880e19a"
+            "uuid": "bcf9ee33-e8ac-4f09-97fc-f73948eef39c"
         },
         {
             "header": {
@@ -951,7 +951,7 @@
                 }
             },
             "tableName": "Table #2",
-            "uuid": "0d315161-ff17-42dd-9323-60b8ec3c107c"
+            "uuid": "1dfd2444-06ae-4500-a254-a86284df6ecd"
         }
     ],
     "title": "TGA with derivative",

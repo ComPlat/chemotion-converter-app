@@ -85,15 +85,24 @@ class ProfileMigrationScript(ProfileMigration):
                 profile['identifiers'][i]['isDatasetOutput'] = identifier.get('isDatasetOutput', True)
                 profile['identifiers'][i]['isDatatableOutput'] = identifier.get('isDatatableOutput', True)
                 profile['identifiers'][i]['isLoobDatatableOutput'] = identifier.get('isLoobDatatableOutput', True)
+                profile['identifiers'][i]['isFirstMatch'] = identifier.get('isFirstMatch', True)
                 profile['identifiers'][i]['isRdfOutput'] = identifier.get('isRdfOutput', False)
                 profile['identifiers'][i]['outputDatatableKey'] = identifier.get('outputDatatableKey', identifier.get('outputKey', ''))
-                if not isinstance(identifier['outputTableIndex'], list):
-                    if identifier['outputTableIndex'] == '' or identifier['outputTableIndex'] is None:
+                origin_output_table_index = identifier['outputTableIndex']
+                if not isinstance(origin_output_table_index, list):
+                    if origin_output_table_index == '' or origin_output_table_index is None:
                         profile['identifiers'][i]['outputTableIndex'] = [i for i, x in enumerate(profile['tables'])]
                     else:
-                        profile['identifiers'][i]['outputTableIndex'] = [identifier['outputTableIndex']]
-                if len(identifier['outputTableIndex']) == 1 and  identifier['outputTableIndex'] is None:
-                    profile['identifiers'][i]['outputTableIndex'] = [i for i, x in enumerate(profile['tables'])]
+                        profile['identifiers'][i]['outputTableIndex'] = [int(origin_output_table_index)]
+                new_list = []
+                for idx in profile['identifiers'][i]['outputTableIndex']:
+                    try:
+                        new_list.append(int(idx))
+                    except (ValueError, TypeError):
+                        pass
+                profile['identifiers'][i]['outputTableIndex'] = new_list
+                # print(f'PID: {profile['id']} -> from: {origin_output_table_index} to {new_list}')
+
 
         for i, table in enumerate(profile['tables']):
             x_in_z_p = ['table', 'xColumn', 'tableIndex']

@@ -7,7 +7,7 @@ def get_meta_value(profile, inputTableIndex, key):
     for data in profile['data']:
         try:
             return data['tables'][inputTableIndex]['metadata'][key]
-        except IndexError:
+        except (KeyError, IndexError):
             pass
     return ''
 
@@ -54,10 +54,10 @@ class ProfileMigrationScript(ProfileMigration):
                     t_idx_list = [int(x) for x in identifier['outputTableIndex']]
                 except (ValueError, TypeError):
                     return
-                identifier['outputTableIndex'] = []
+                profile['identifiers'][i]['outputTableIndex'] = []
                 for t_idx in t_idx_list:
                     try:
-                        profile['identifiers'][i]['outputTableIndex'] = [profile['tables'][t_idx]['uuid']]
+                        profile['identifiers'][i]['outputTableIndex'].append(profile['tables'][t_idx]['uuid'])
                     except:
                         pass
 

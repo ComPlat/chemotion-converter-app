@@ -5144,7 +5144,7 @@
             "trigger": "undo:1.6"
         },
         {
-            "at": "2026-05-06T08:56:29.007175+00:00",
+            "at": "2026-05-21T11:46:01.662698+00:00",
             "diff": [
                 {
                     "op": "remove",
@@ -5155,15 +5155,15 @@
             "trigger": "migration:20260417132254"
         },
         {
-            "at": "2026-05-06T08:56:29.008934+00:00",
+            "at": "2026-05-21T11:46:01.663462+00:00",
             "diff": [
                 {
                     "op": "remove",
-                    "path": "/data/0/tables/0/metadata/__UNIT_liter"
+                    "path": "/data/0/tables/0/metadata/__UNIT_%"
                 },
                 {
                     "op": "remove",
-                    "path": "/data/0/tables/0/metadata/__UNIT_PPM"
+                    "path": "/data/0/tables/0/metadata/__UNIT_liter"
                 },
                 {
                     "op": "remove",
@@ -5171,18 +5171,18 @@
                 },
                 {
                     "op": "remove",
-                    "path": "/data/0/tables/0/metadata/__UNIT_%"
+                    "path": "/data/0/tables/0/metadata/__UNIT_gram"
                 },
                 {
                     "op": "remove",
-                    "path": "/data/0/tables/0/metadata/__UNIT_gram"
+                    "path": "/data/0/tables/0/metadata/__UNIT_PPM"
                 }
             ],
             "profile_version": "1.9",
             "trigger": "migration:20260422063146"
         },
         {
-            "at": "2026-05-17T21:09:23.169138+00:00",
+            "at": "2026-05-21T11:46:01.665102+00:00",
             "diff": [
                 {
                     "op": "remove",
@@ -5217,23 +5217,23 @@
             "trigger": "migration:20260506160404"
         },
         {
-            "at": "2026-05-17T21:09:23.172388+00:00",
+            "at": "2026-05-21T11:46:01.665978+00:00",
             "diff": [
-                {
-                    "op": "remove",
-                    "path": "/tables/0/tableName"
-                },
                 {
                     "op": "remove",
                     "path": "/tables/0/uuid"
                 },
                 {
                     "op": "remove",
-                    "path": "/tables/1/tableName"
+                    "path": "/tables/0/tableName"
                 },
                 {
                     "op": "remove",
                     "path": "/tables/1/uuid"
+                },
+                {
+                    "op": "remove",
+                    "path": "/tables/1/tableName"
                 }
             ],
             "profile_version": "1.11",
@@ -5309,7 +5309,7 @@
                 }
             },
             "tableName": "Table #1",
-            "uuid": "1e3ffd7d-3267-41bc-a24b-9d49f43f0141"
+            "uuid": "1558e240-6fc8-4983-8462-ab5fbfac63ca"
         },
         {
             "header": {
@@ -5329,7 +5329,7 @@
                 }
             },
             "tableName": "Table #2",
-            "uuid": "5b85b40f-72ed-4dd7-a22c-41cff19485b0"
+            "uuid": "130bb68f-45c9-43db-9071-1d36c68f5fa8"
         }
     ],
     "title": "CD MS Spectra data from txt, data: +, metadata: -",

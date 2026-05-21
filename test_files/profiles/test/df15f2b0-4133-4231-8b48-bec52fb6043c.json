@@ -1394,7 +1394,7 @@
             "trigger": "undo:1.6"
         },
         {
-            "at": "2026-05-06T08:56:29.163647+00:00",
+            "at": "2026-05-21T11:46:01.679957+00:00",
             "diff": [
                 {
                     "op": "remove",
@@ -1405,8 +1405,12 @@
             "trigger": "migration:20260417132254"
         },
         {
-            "at": "2026-05-06T08:56:29.164692+00:00",
+            "at": "2026-05-21T11:46:01.680523+00:00",
             "diff": [
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_%"
+                },
                 {
                     "op": "remove",
                     "path": "/data/0/tables/0/metadata/__UNIT_liter"
@@ -1417,30 +1421,22 @@
                 },
                 {
                     "op": "remove",
-                    "path": "/data/0/tables/0/metadata/__UNIT_PPM"
-                },
-                {
-                    "op": "remove",
-                    "path": "/data/0/tables/0/metadata/__UNIT_%"
-                },
-                {
-                    "op": "remove",
                     "path": "/data/0/tables/0/metadata/__UNIT_gram"
+                },
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_PPM"
                 }
             ],
             "profile_version": "1.9",
             "trigger": "migration:20260422063146"
         },
         {
-            "at": "2026-05-17T21:09:23.568127+00:00",
+            "at": "2026-05-21T11:46:01.683473+00:00",
             "diff": [
                 {
                     "op": "remove",
                     "path": "/identifiers/2/isRdfOutput"
-                },
-                {
-                    "op": "remove",
-                    "path": "/identifiers/2/isDatatableOutput"
                 },
                 {
                     "op": "remove",
@@ -1452,7 +1448,15 @@
                 },
                 {
                     "op": "remove",
+                    "path": "/identifiers/2/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
                     "path": "/identifiers/2/isDatasetOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/2/isFirstMatch"
                 },
                 {
                     "op": "replace",
@@ -1465,10 +1469,6 @@
                 },
                 {
                     "op": "remove",
-                    "path": "/identifiers/3/isDatatableOutput"
-                },
-                {
-                    "op": "remove",
                     "path": "/identifiers/3/outputDatatableKey"
                 },
                 {
@@ -1477,7 +1477,15 @@
                 },
                 {
                     "op": "remove",
+                    "path": "/identifiers/3/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
                     "path": "/identifiers/3/isDatasetOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/3/isFirstMatch"
                 },
                 {
                     "op": "replace",
@@ -1490,10 +1498,6 @@
                 },
                 {
                     "op": "remove",
-                    "path": "/identifiers/4/isDatatableOutput"
-                },
-                {
-                    "op": "remove",
                     "path": "/identifiers/4/outputDatatableKey"
                 },
                 {
@@ -1502,7 +1506,15 @@
                 },
                 {
                     "op": "remove",
+                    "path": "/identifiers/4/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
                     "path": "/identifiers/4/isDatasetOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/4/isFirstMatch"
                 },
                 {
                     "op": "replace",
@@ -1515,10 +1527,6 @@
                 },
                 {
                     "op": "remove",
-                    "path": "/identifiers/5/isDatatableOutput"
-                },
-                {
-                    "op": "remove",
                     "path": "/identifiers/5/outputDatatableKey"
                 },
                 {
@@ -1527,7 +1535,15 @@
                 },
                 {
                     "op": "remove",
+                    "path": "/identifiers/5/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
                     "path": "/identifiers/5/isDatasetOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/5/isFirstMatch"
                 },
                 {
                     "op": "replace",
@@ -1540,10 +1556,6 @@
                 },
                 {
                     "op": "remove",
-                    "path": "/identifiers/6/isDatatableOutput"
-                },
-                {
-                    "op": "remove",
                     "path": "/identifiers/6/outputDatatableKey"
                 },
                 {
@@ -1552,7 +1564,15 @@
                 },
                 {
                     "op": "remove",
+                    "path": "/identifiers/6/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
                     "path": "/identifiers/6/isDatasetOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/6/isFirstMatch"
                 },
                 {
                     "op": "replace",
@@ -1565,10 +1585,6 @@
                 },
                 {
                     "op": "remove",
-                    "path": "/identifiers/7/isDatatableOutput"
-                },
-                {
-                    "op": "remove",
                     "path": "/identifiers/7/outputDatatableKey"
                 },
                 {
@@ -1577,7 +1593,15 @@
                 },
                 {
                     "op": "remove",
+                    "path": "/identifiers/7/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
                     "path": "/identifiers/7/isDatasetOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/7/isFirstMatch"
                 },
                 {
                     "op": "replace",
@@ -1590,10 +1614,6 @@
                 },
                 {
                     "op": "remove",
-                    "path": "/identifiers/8/isDatatableOutput"
-                },
-                {
-                    "op": "remove",
                     "path": "/identifiers/8/outputDatatableKey"
                 },
                 {
@@ -1602,7 +1622,15 @@
                 },
                 {
                     "op": "remove",
+                    "path": "/identifiers/8/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
                     "path": "/identifiers/8/isDatasetOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/8/isFirstMatch"
                 },
                 {
                     "op": "replace",
@@ -1615,10 +1643,6 @@
                 },
                 {
                     "op": "remove",
-                    "path": "/identifiers/9/isDatatableOutput"
-                },
-                {
-                    "op": "remove",
                     "path": "/identifiers/9/outputDatatableKey"
                 },
                 {
@@ -1627,7 +1651,15 @@
                 },
                 {
                     "op": "remove",
+                    "path": "/identifiers/9/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
                     "path": "/identifiers/9/isDatasetOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/9/isFirstMatch"
                 },
                 {
                     "op": "replace",
@@ -1640,10 +1672,6 @@
                 },
                 {
                     "op": "remove",
-                    "path": "/identifiers/10/isDatatableOutput"
-                },
-                {
-                    "op": "remove",
                     "path": "/identifiers/10/outputDatatableKey"
                 },
                 {
@@ -1652,7 +1680,15 @@
                 },
                 {
                     "op": "remove",
+                    "path": "/identifiers/10/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
                     "path": "/identifiers/10/isDatasetOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/10/isFirstMatch"
                 },
                 {
                     "op": "replace",
@@ -1665,10 +1701,6 @@
                 },
                 {
                     "op": "remove",
-                    "path": "/identifiers/11/isDatatableOutput"
-                },
-                {
-                    "op": "remove",
                     "path": "/identifiers/11/outputDatatableKey"
                 },
                 {
@@ -1677,7 +1709,15 @@
                 },
                 {
                     "op": "remove",
+                    "path": "/identifiers/11/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
                     "path": "/identifiers/11/isDatasetOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/11/isFirstMatch"
                 },
                 {
                     "op": "replace",
@@ -1690,10 +1730,6 @@
                 },
                 {
                     "op": "remove",
-                    "path": "/identifiers/12/isDatatableOutput"
-                },
-                {
-                    "op": "remove",
                     "path": "/identifiers/12/outputDatatableKey"
                 },
                 {
@@ -1702,7 +1738,15 @@
                 },
                 {
                     "op": "remove",
+                    "path": "/identifiers/12/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
                     "path": "/identifiers/12/isDatasetOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/12/isFirstMatch"
                 },
                 {
                     "op": "replace",
@@ -1715,10 +1759,6 @@
                 },
                 {
                     "op": "remove",
-                    "path": "/identifiers/13/isDatatableOutput"
-                },
-                {
-                    "op": "remove",
                     "path": "/identifiers/13/outputDatatableKey"
                 },
                 {
@@ -1727,7 +1767,15 @@
                 },
                 {
                     "op": "remove",
+                    "path": "/identifiers/13/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
                     "path": "/identifiers/13/isDatasetOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/13/isFirstMatch"
                 },
                 {
                     "op": "replace",
@@ -1740,10 +1788,6 @@
                 },
                 {
                     "op": "remove",
-                    "path": "/identifiers/14/isDatatableOutput"
-                },
-                {
-                    "op": "remove",
                     "path": "/identifiers/14/outputDatatableKey"
                 },
                 {
@@ -1752,7 +1796,15 @@
                 },
                 {
                     "op": "remove",
+                    "path": "/identifiers/14/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
                     "path": "/identifiers/14/isDatasetOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/14/isFirstMatch"
                 },
                 {
                     "op": "replace",
@@ -1765,10 +1817,6 @@
                 },
                 {
                     "op": "remove",
-                    "path": "/identifiers/15/isDatatableOutput"
-                },
-                {
-                    "op": "remove",
                     "path": "/identifiers/15/outputDatatableKey"
                 },
                 {
@@ -1777,7 +1825,15 @@
                 },
                 {
                     "op": "remove",
+                    "path": "/identifiers/15/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
                     "path": "/identifiers/15/isDatasetOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/15/isFirstMatch"
                 },
                 {
                     "op": "replace",
@@ -1790,10 +1846,6 @@
                 },
                 {
                     "op": "remove",
-                    "path": "/identifiers/16/isDatatableOutput"
-                },
-                {
-                    "op": "remove",
                     "path": "/identifiers/16/outputDatatableKey"
                 },
                 {
@@ -1802,7 +1854,15 @@
                 },
                 {
                     "op": "remove",
+                    "path": "/identifiers/16/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
                     "path": "/identifiers/16/isDatasetOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/16/isFirstMatch"
                 },
                 {
                     "op": "replace",
@@ -1815,10 +1875,6 @@
                 },
                 {
                     "op": "remove",
-                    "path": "/identifiers/17/isDatatableOutput"
-                },
-                {
-                    "op": "remove",
                     "path": "/identifiers/17/outputDatatableKey"
                 },
                 {
@@ -1827,7 +1883,15 @@
                 },
                 {
                     "op": "remove",
+                    "path": "/identifiers/17/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
                     "path": "/identifiers/17/isDatasetOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/17/isFirstMatch"
                 },
                 {
                     "op": "replace",
@@ -1840,10 +1904,6 @@
                 },
                 {
                     "op": "remove",
-                    "path": "/identifiers/18/isDatatableOutput"
-                },
-                {
-                    "op": "remove",
                     "path": "/identifiers/18/outputDatatableKey"
                 },
                 {
@@ -1852,7 +1912,15 @@
                 },
                 {
                     "op": "remove",
+                    "path": "/identifiers/18/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
                     "path": "/identifiers/18/isDatasetOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/18/isFirstMatch"
                 },
                 {
                     "op": "replace",
@@ -1865,10 +1933,6 @@
                 },
                 {
                     "op": "remove",
-                    "path": "/identifiers/19/isDatatableOutput"
-                },
-                {
-                    "op": "remove",
                     "path": "/identifiers/19/outputDatatableKey"
                 },
                 {
@@ -1877,7 +1941,15 @@
                 },
                 {
                     "op": "remove",
+                    "path": "/identifiers/19/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
                     "path": "/identifiers/19/isDatasetOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/19/isFirstMatch"
                 },
                 {
                     "op": "replace",
@@ -1890,10 +1962,6 @@
                 },
                 {
                     "op": "remove",
-                    "path": "/identifiers/20/isDatatableOutput"
-                },
-                {
-                    "op": "remove",
                     "path": "/identifiers/20/outputDatatableKey"
                 },
                 {
@@ -1902,7 +1970,15 @@
                 },
                 {
                     "op": "remove",
+                    "path": "/identifiers/20/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
                     "path": "/identifiers/20/isDatasetOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/20/isFirstMatch"
                 },
                 {
                     "op": "replace",
@@ -1915,10 +1991,6 @@
                 },
                 {
                     "op": "remove",
-                    "path": "/identifiers/21/isDatatableOutput"
-                },
-                {
-                    "op": "remove",
                     "path": "/identifiers/21/outputDatatableKey"
                 },
                 {
@@ -1927,7 +1999,15 @@
                 },
                 {
                     "op": "remove",
+                    "path": "/identifiers/21/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
                     "path": "/identifiers/21/isDatasetOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/21/isFirstMatch"
                 },
                 {
                     "op": "replace",
@@ -1940,10 +2020,6 @@
                 },
                 {
                     "op": "remove",
-                    "path": "/identifiers/22/isDatatableOutput"
-                },
-                {
-                    "op": "remove",
                     "path": "/identifiers/22/outputDatatableKey"
                 },
                 {
@@ -1952,7 +2028,15 @@
                 },
                 {
                     "op": "remove",
+                    "path": "/identifiers/22/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
                     "path": "/identifiers/22/isDatasetOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/22/isFirstMatch"
                 },
                 {
                     "op": "replace",
@@ -1965,10 +2049,6 @@
                 },
                 {
                     "op": "remove",
-                    "path": "/identifiers/23/isDatatableOutput"
-                },
-                {
-                    "op": "remove",
                     "path": "/identifiers/23/outputDatatableKey"
                 },
                 {
@@ -1977,7 +2057,15 @@
                 },
                 {
                     "op": "remove",
+                    "path": "/identifiers/23/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
                     "path": "/identifiers/23/isDatasetOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/23/isFirstMatch"
                 },
                 {
                     "op": "replace",
@@ -1990,10 +2078,6 @@
                 },
                 {
                     "op": "remove",
-                    "path": "/identifiers/24/isDatatableOutput"
-                },
-                {
-                    "op": "remove",
                     "path": "/identifiers/24/outputDatatableKey"
                 },
                 {
@@ -2002,7 +2086,15 @@
                 },
                 {
                     "op": "remove",
+                    "path": "/identifiers/24/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
                     "path": "/identifiers/24/isDatasetOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/24/isFirstMatch"
                 },
                 {
                     "op": "replace",
@@ -2015,10 +2107,6 @@
                 },
                 {
                     "op": "remove",
-                    "path": "/identifiers/25/isDatatableOutput"
-                },
-                {
-                    "op": "remove",
                     "path": "/identifiers/25/outputDatatableKey"
                 },
                 {
@@ -2027,7 +2115,15 @@
                 },
                 {
                     "op": "remove",
+                    "path": "/identifiers/25/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
                     "path": "/identifiers/25/isDatasetOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/25/isFirstMatch"
                 },
                 {
                     "op": "replace",
@@ -2040,10 +2136,6 @@
                 },
                 {
                     "op": "remove",
-                    "path": "/identifiers/26/isDatatableOutput"
-                },
-                {
-                    "op": "remove",
                     "path": "/identifiers/26/outputDatatableKey"
                 },
                 {
@@ -2052,7 +2144,15 @@
                 },
                 {
                     "op": "remove",
+                    "path": "/identifiers/26/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
                     "path": "/identifiers/26/isDatasetOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/26/isFirstMatch"
                 },
                 {
                     "op": "replace",
@@ -2065,10 +2165,6 @@
                 },
                 {
                     "op": "remove",
-                    "path": "/identifiers/27/isDatatableOutput"
-                },
-                {
-                    "op": "remove",
                     "path": "/identifiers/27/outputDatatableKey"
                 },
                 {
@@ -2077,7 +2173,15 @@
                 },
                 {
                     "op": "remove",
+                    "path": "/identifiers/27/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
                     "path": "/identifiers/27/isDatasetOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/27/isFirstMatch"
                 },
                 {
                     "op": "replace",
@@ -2090,10 +2194,6 @@
                 },
                 {
                     "op": "remove",
-                    "path": "/identifiers/28/isDatatableOutput"
-                },
-                {
-                    "op": "remove",
                     "path": "/identifiers/28/outputDatatableKey"
                 },
                 {
@@ -2102,7 +2202,15 @@
                 },
                 {
                     "op": "remove",
+                    "path": "/identifiers/28/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
                     "path": "/identifiers/28/isDatasetOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/28/isFirstMatch"
                 },
                 {
                     "op": "replace",
@@ -2115,10 +2223,6 @@
                 },
                 {
                     "op": "remove",
-                    "path": "/identifiers/29/isDatatableOutput"
-                },
-                {
-                    "op": "remove",
                     "path": "/identifiers/29/outputDatatableKey"
                 },
                 {
@@ -2127,7 +2231,15 @@
                 },
                 {
                     "op": "remove",
+                    "path": "/identifiers/29/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
                     "path": "/identifiers/29/isDatasetOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/29/isFirstMatch"
                 },
                 {
                     "op": "replace",
@@ -2140,10 +2252,6 @@
                 },
                 {
                     "op": "remove",
-                    "path": "/identifiers/30/isDatatableOutput"
-                },
-                {
-                    "op": "remove",
                     "path": "/identifiers/30/outputDatatableKey"
                 },
                 {
@@ -2152,7 +2260,15 @@
                 },
                 {
                     "op": "remove",
+                    "path": "/identifiers/30/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
                     "path": "/identifiers/30/isDatasetOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/30/isFirstMatch"
                 },
                 {
                     "op": "replace",
@@ -2165,10 +2281,6 @@
                 },
                 {
                     "op": "remove",
-                    "path": "/identifiers/31/isDatatableOutput"
-                },
-                {
-                    "op": "remove",
                     "path": "/identifiers/31/outputDatatableKey"
                 },
                 {
@@ -2177,7 +2289,15 @@
                 },
                 {
                     "op": "remove",
+                    "path": "/identifiers/31/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
                     "path": "/identifiers/31/isDatasetOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/31/isFirstMatch"
                 },
                 {
                     "op": "replace",
@@ -2190,10 +2310,6 @@
                 },
                 {
                     "op": "remove",
-                    "path": "/identifiers/32/isDatatableOutput"
-                },
-                {
-                    "op": "remove",
                     "path": "/identifiers/32/outputDatatableKey"
                 },
                 {
@@ -2202,7 +2318,15 @@
                 },
                 {
                     "op": "remove",
+                    "path": "/identifiers/32/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
                     "path": "/identifiers/32/isDatasetOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/32/isFirstMatch"
                 },
                 {
                     "op": "replace",
@@ -2215,10 +2339,6 @@
                 },
                 {
                     "op": "remove",
-                    "path": "/identifiers/33/isDatatableOutput"
-                },
-                {
-                    "op": "remove",
                     "path": "/identifiers/33/outputDatatableKey"
                 },
                 {
@@ -2227,7 +2347,15 @@
                 },
                 {
                     "op": "remove",
+                    "path": "/identifiers/33/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
                     "path": "/identifiers/33/isDatasetOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/33/isFirstMatch"
                 },
                 {
                     "op": "replace",
@@ -2240,10 +2368,6 @@
                 },
                 {
                     "op": "remove",
-                    "path": "/identifiers/34/isDatatableOutput"
-                },
-                {
-                    "op": "remove",
                     "path": "/identifiers/34/outputDatatableKey"
                 },
                 {
@@ -2252,7 +2376,15 @@
                 },
                 {
                     "op": "remove",
+                    "path": "/identifiers/34/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
                     "path": "/identifiers/34/isDatasetOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/34/isFirstMatch"
                 },
                 {
                     "op": "replace",
@@ -2265,10 +2397,6 @@
                 },
                 {
                     "op": "remove",
-                    "path": "/identifiers/35/isDatatableOutput"
-                },
-                {
-                    "op": "remove",
                     "path": "/identifiers/35/outputDatatableKey"
                 },
                 {
@@ -2277,7 +2405,15 @@
                 },
                 {
                     "op": "remove",
+                    "path": "/identifiers/35/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
                     "path": "/identifiers/35/isDatasetOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/35/isFirstMatch"
                 },
                 {
                     "op": "replace",
@@ -2290,10 +2426,6 @@
                 },
                 {
                     "op": "remove",
-                    "path": "/identifiers/36/isDatatableOutput"
-                },
-                {
-                    "op": "remove",
                     "path": "/identifiers/36/outputDatatableKey"
                 },
                 {
@@ -2302,7 +2434,15 @@
                 },
                 {
                     "op": "remove",
+                    "path": "/identifiers/36/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
                     "path": "/identifiers/36/isDatasetOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/36/isFirstMatch"
                 },
                 {
                     "op": "replace",
@@ -2315,10 +2455,6 @@
                 },
                 {
                     "op": "remove",
-                    "path": "/identifiers/37/isDatatableOutput"
-                },
-                {
-                    "op": "remove",
                     "path": "/identifiers/37/outputDatatableKey"
                 },
                 {
@@ -2327,7 +2463,15 @@
                 },
                 {
                     "op": "remove",
+                    "path": "/identifiers/37/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
                     "path": "/identifiers/37/isDatasetOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/37/isFirstMatch"
                 },
                 {
                     "op": "replace",
@@ -2340,10 +2484,6 @@
                 },
                 {
                     "op": "remove",
-                    "path": "/identifiers/38/isDatatableOutput"
-                },
-                {
-                    "op": "remove",
                     "path": "/identifiers/38/outputDatatableKey"
                 },
                 {
@@ -2352,7 +2492,15 @@
                 },
                 {
                     "op": "remove",
+                    "path": "/identifiers/38/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
                     "path": "/identifiers/38/isDatasetOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/38/isFirstMatch"
                 },
                 {
                     "op": "replace",
@@ -2365,10 +2513,6 @@
                 },
                 {
                     "op": "remove",
-                    "path": "/identifiers/39/isDatatableOutput"
-                },
-                {
-                    "op": "remove",
                     "path": "/identifiers/39/outputDatatableKey"
                 },
                 {
@@ -2377,7 +2521,15 @@
                 },
                 {
                     "op": "remove",
+                    "path": "/identifiers/39/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
                     "path": "/identifiers/39/isDatasetOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/39/isFirstMatch"
                 },
                 {
                     "op": "replace",
@@ -2390,10 +2542,6 @@
                 },
                 {
                     "op": "remove",
-                    "path": "/identifiers/40/isDatatableOutput"
-                },
-                {
-                    "op": "remove",
                     "path": "/identifiers/40/outputDatatableKey"
                 },
                 {
@@ -2402,7 +2550,15 @@
                 },
                 {
                     "op": "remove",
+                    "path": "/identifiers/40/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
                     "path": "/identifiers/40/isDatasetOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/40/isFirstMatch"
                 },
                 {
                     "op": "replace",
@@ -2415,10 +2571,6 @@
                 },
                 {
                     "op": "remove",
-                    "path": "/identifiers/41/isDatatableOutput"
-                },
-                {
-                    "op": "remove",
                     "path": "/identifiers/41/outputDatatableKey"
                 },
                 {
@@ -2427,7 +2579,15 @@
                 },
                 {
                     "op": "remove",
+                    "path": "/identifiers/41/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
                     "path": "/identifiers/41/isDatasetOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/41/isFirstMatch"
                 },
                 {
                     "op": "replace",
@@ -2440,10 +2600,6 @@
                 },
                 {
                     "op": "remove",
-                    "path": "/identifiers/42/isDatatableOutput"
-                },
-                {
-                    "op": "remove",
                     "path": "/identifiers/42/outputDatatableKey"
                 },
                 {
@@ -2452,7 +2608,15 @@
                 },
                 {
                     "op": "remove",
+                    "path": "/identifiers/42/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
                     "path": "/identifiers/42/isDatasetOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/42/isFirstMatch"
                 },
                 {
                     "op": "replace",
@@ -2465,10 +2629,6 @@
                 },
                 {
                     "op": "remove",
-                    "path": "/identifiers/43/isDatatableOutput"
-                },
-                {
-                    "op": "remove",
                     "path": "/identifiers/43/outputDatatableKey"
                 },
                 {
@@ -2477,7 +2637,15 @@
                 },
                 {
                     "op": "remove",
+                    "path": "/identifiers/43/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
                     "path": "/identifiers/43/isDatasetOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/43/isFirstMatch"
                 },
                 {
                     "op": "replace",
@@ -2490,10 +2658,6 @@
                 },
                 {
                     "op": "remove",
-                    "path": "/identifiers/44/isDatatableOutput"
-                },
-                {
-                    "op": "remove",
                     "path": "/identifiers/44/outputDatatableKey"
                 },
                 {
@@ -2502,7 +2666,15 @@
                 },
                 {
                     "op": "remove",
+                    "path": "/identifiers/44/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
                     "path": "/identifiers/44/isDatasetOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/44/isFirstMatch"
                 },
                 {
                     "op": "replace",
@@ -2514,7 +2686,7 @@
             "trigger": "migration:20260506160404"
         },
         {
-            "at": "2026-05-17T21:09:23.574605+00:00",
+            "at": "2026-05-21T11:46:01.685979+00:00",
             "diff": [
                 {
                     "op": "add",
@@ -2762,6 +2934,7 @@
             "id": "#2tableMetadata",
             "isDatasetOutput": true,
             "isDatatableOutput": true,
+            "isFirstMatch": true,
             "isLoobDatatableOutput": true,
             "isRdfOutput": false,
             "key": "_cell_length_a",
@@ -2784,6 +2957,7 @@
             "id": "#3tableMetadata",
             "isDatasetOutput": true,
             "isDatatableOutput": true,
+            "isFirstMatch": true,
             "isLoobDatatableOutput": true,
             "isRdfOutput": false,
             "key": "_cell_length_b",
@@ -2806,6 +2980,7 @@
             "id": "#4tableMetadata",
             "isDatasetOutput": true,
             "isDatatableOutput": true,
+            "isFirstMatch": true,
             "isLoobDatatableOutput": true,
             "isRdfOutput": false,
             "key": "_cell_length_c",
@@ -2828,6 +3003,7 @@
             "id": "#5tableMetadata",
             "isDatasetOutput": true,
             "isDatatableOutput": true,
+            "isFirstMatch": true,
             "isLoobDatatableOutput": true,
             "isRdfOutput": false,
             "key": "_cell_angle_alpha",
@@ -2850,6 +3026,7 @@
             "id": "#6tableMetadata",
             "isDatasetOutput": true,
             "isDatatableOutput": true,
+            "isFirstMatch": true,
             "isLoobDatatableOutput": true,
             "isRdfOutput": false,
             "key": "_cell_angle_beta",
@@ -2872,6 +3049,7 @@
             "id": "#7tableMetadata",
             "isDatasetOutput": true,
             "isDatatableOutput": true,
+            "isFirstMatch": true,
             "isLoobDatatableOutput": true,
             "isRdfOutput": false,
             "key": "_cell_angle_gamma",
@@ -2894,6 +3072,7 @@
             "id": "#8tableMetadata",
             "isDatasetOutput": true,
             "isDatatableOutput": true,
+            "isFirstMatch": true,
             "isLoobDatatableOutput": true,
             "isRdfOutput": false,
             "key": "_space_group_crystal_system",
@@ -2916,6 +3095,7 @@
             "id": "#9tableMetadata",
             "isDatasetOutput": true,
             "isDatatableOutput": true,
+            "isFirstMatch": true,
             "isLoobDatatableOutput": true,
             "isRdfOutput": false,
             "key": "_space_group_name_H-M_alt",
@@ -2938,6 +3118,7 @@
             "id": "#10tableMetadata",
             "isDatasetOutput": true,
             "isDatatableOutput": true,
+            "isFirstMatch": true,
             "isLoobDatatableOutput": true,
             "isRdfOutput": false,
             "key": "_cell_volume",
@@ -2960,6 +3141,7 @@
             "id": "#11tableMetadata",
             "isDatasetOutput": true,
             "isDatatableOutput": true,
+            "isFirstMatch": true,
             "isLoobDatatableOutput": true,
             "isRdfOutput": false,
             "key": "_cell_formula_units_Z",
@@ -2982,6 +3164,7 @@
             "id": "#12tableMetadata",
             "isDatasetOutput": true,
             "isDatatableOutput": true,
+            "isFirstMatch": true,
             "isLoobDatatableOutput": true,
             "isRdfOutput": false,
             "key": "_exptl_crystal_F_000",
@@ -3004,6 +3187,7 @@
             "id": "#13tableMetadata",
             "isDatasetOutput": true,
             "isDatatableOutput": true,
+            "isFirstMatch": true,
             "isLoobDatatableOutput": true,
             "isRdfOutput": false,
             "key": "_exptl_crystal_size_mid",
@@ -3026,6 +3210,7 @@
             "id": "#14tableMetadata",
             "isDatasetOutput": true,
             "isDatatableOutput": true,
+            "isFirstMatch": true,
             "isLoobDatatableOutput": true,
             "isRdfOutput": false,
             "key": "_diffrn_radiation_type",
@@ -3048,6 +3233,7 @@
             "id": "#15tableMetadata",
             "isDatasetOutput": true,
             "isDatatableOutput": true,
+            "isFirstMatch": true,
             "isLoobDatatableOutput": true,
             "isRdfOutput": false,
             "key": "_diffrn_reflns_number",
@@ -3070,6 +3256,7 @@
             "id": "#16tableMetadata",
             "isDatasetOutput": true,
             "isDatatableOutput": true,
+            "isFirstMatch": true,
             "isLoobDatatableOutput": true,
             "isRdfOutput": false,
             "key": "_reflns_number_total",
@@ -3092,6 +3279,7 @@
             "id": "#17tableMetadata",
             "isDatasetOutput": true,
             "isDatatableOutput": true,
+            "isFirstMatch": true,
             "isLoobDatatableOutput": true,
             "isRdfOutput": false,
             "key": "_refine_ls_goodness_of_fit_ref",
@@ -3114,6 +3302,7 @@
             "id": "#18tableMetadata",
             "isDatasetOutput": true,
             "isDatatableOutput": true,
+            "isFirstMatch": true,
             "isLoobDatatableOutput": true,
             "isRdfOutput": false,
             "key": "_refine_ls_R_factor_gt",
@@ -3136,6 +3325,7 @@
             "id": "#19tableMetadata",
             "isDatasetOutput": true,
             "isDatatableOutput": true,
+            "isFirstMatch": true,
             "isLoobDatatableOutput": true,
             "isRdfOutput": false,
             "key": "_refine_ls_wR_factor_ref",
@@ -3158,6 +3348,7 @@
             "id": "#20tableHeader",
             "isDatasetOutput": true,
             "isDatatableOutput": true,
+            "isFirstMatch": true,
             "isLoobDatatableOutput": true,
             "isRdfOutput": false,
             "lineNumber": "",
@@ -3180,6 +3371,7 @@
             "id": "#21tableHeader",
             "isDatasetOutput": true,
             "isDatatableOutput": true,
+            "isFirstMatch": true,
             "isLoobDatatableOutput": true,
             "isRdfOutput": false,
             "lineNumber": "",
@@ -3202,6 +3394,7 @@
             "id": "#22tableMetadata",
             "isDatasetOutput": true,
             "isDatatableOutput": true,
+            "isFirstMatch": true,
             "isLoobDatatableOutput": true,
             "isRdfOutput": false,
             "key": "_audit_creation_method",
@@ -3224,6 +3417,7 @@
             "id": "#23tableMetadata",
             "isDatasetOutput": true,
             "isDatatableOutput": true,
+            "isFirstMatch": true,
             "isLoobDatatableOutput": true,
             "isRdfOutput": false,
             "key": "_audit_creation_method",
@@ -3246,6 +3440,7 @@
             "id": "#24tableMetadata",
             "isDatasetOutput": true,
             "isDatatableOutput": true,
+            "isFirstMatch": true,
             "isLoobDatatableOutput": true,
             "isRdfOutput": false,
             "key": "_diffrn_measurement_device_type",
@@ -3268,6 +3463,7 @@
             "id": "#25tableMetadata",
             "isDatasetOutput": true,
             "isDatatableOutput": true,
+            "isFirstMatch": true,
             "isLoobDatatableOutput": true,
             "isRdfOutput": false,
             "key": "_diffrn_measurement_device",
@@ -3290,6 +3486,7 @@
             "id": "#26tableMetadata",
             "isDatasetOutput": true,
             "isDatatableOutput": true,
+            "isFirstMatch": true,
             "isLoobDatatableOutput": true,
             "isRdfOutput": false,
             "key": "_audit_creation_date",
@@ -3312,6 +3509,7 @@
             "id": "#27tableMetadata",
             "isDatasetOutput": true,
             "isDatatableOutput": true,
+            "isFirstMatch": true,
             "isLoobDatatableOutput": true,
             "isRdfOutput": false,
             "key": "_diffrn_ambient_temperature",
@@ -3334,6 +3532,7 @@
             "id": "#28tableMetadata",
             "isDatasetOutput": true,
             "isDatatableOutput": true,
+            "isFirstMatch": true,
             "isLoobDatatableOutput": true,
             "isRdfOutput": false,
             "key": "_refine_ls_number_reflns",
@@ -3356,6 +3555,7 @@
             "id": "#29tableMetadata",
             "isDatasetOutput": true,
             "isDatatableOutput": true,
+            "isFirstMatch": true,
             "isLoobDatatableOutput": true,
             "isRdfOutput": false,
             "key": "_refine_ls_number_restraints",
@@ -3378,6 +3578,7 @@
             "id": "#30tableMetadata",
             "isDatasetOutput": true,
             "isDatatableOutput": true,
+            "isFirstMatch": true,
             "isLoobDatatableOutput": true,
             "isRdfOutput": false,
             "key": "_refine_ls_number_parameters",
@@ -3400,6 +3601,7 @@
             "id": "#31tableMetadata",
             "isDatasetOutput": true,
             "isDatatableOutput": true,
+            "isFirstMatch": true,
             "isLoobDatatableOutput": true,
             "isRdfOutput": false,
             "key": "_diffrn_reflns_limit_h_max",
@@ -3422,6 +3624,7 @@
             "id": "#32tableMetadata",
             "isDatasetOutput": true,
             "isDatatableOutput": true,
+            "isFirstMatch": true,
             "isLoobDatatableOutput": true,
             "isRdfOutput": false,
             "key": "_diffrn_reflns_limit_h_min",
@@ -3444,6 +3647,7 @@
             "id": "#33tableMetadata",
             "isDatasetOutput": true,
             "isDatatableOutput": true,
+            "isFirstMatch": true,
             "isLoobDatatableOutput": true,
             "isRdfOutput": false,
             "key": "_diffrn_reflns_limit_k_max",
@@ -3466,6 +3670,7 @@
             "id": "#34tableMetadata",
             "isDatasetOutput": true,
             "isDatatableOutput": true,
+            "isFirstMatch": true,
             "isLoobDatatableOutput": true,
             "isRdfOutput": false,
             "key": "_diffrn_reflns_limit_k_min",
@@ -3488,6 +3693,7 @@
             "id": "#35tableMetadata",
             "isDatasetOutput": true,
             "isDatatableOutput": true,
+            "isFirstMatch": true,
             "isLoobDatatableOutput": true,
             "isRdfOutput": false,
             "key": "_diffrn_reflns_limit_l_max",
@@ -3510,6 +3716,7 @@
             "id": "#36tableMetadata",
             "isDatasetOutput": true,
             "isDatatableOutput": true,
+            "isFirstMatch": true,
             "isLoobDatatableOutput": true,
             "isRdfOutput": false,
             "key": "_diffrn_reflns_limit_l_min",
@@ -3532,6 +3739,7 @@
             "id": "#37tableMetadata",
             "isDatasetOutput": true,
             "isDatatableOutput": true,
+            "isFirstMatch": true,
             "isLoobDatatableOutput": true,
             "isRdfOutput": false,
             "key": "_reflns_number_gt",
@@ -3554,6 +3762,7 @@
             "id": "#38tableMetadata",
             "isDatasetOutput": true,
             "isDatatableOutput": true,
+            "isFirstMatch": true,
             "isLoobDatatableOutput": true,
             "isRdfOutput": false,
             "key": "Block_name",
@@ -3576,6 +3785,7 @@
             "id": "#39tableMetadata",
             "isDatasetOutput": true,
             "isDatatableOutput": true,
+            "isFirstMatch": true,
             "isLoobDatatableOutput": true,
             "isRdfOutput": false,
             "key": "_chemical_formula_sum",
@@ -3598,6 +3808,7 @@
             "id": "#40tableMetadata",
             "isDatasetOutput": true,
             "isDatatableOutput": true,
+            "isFirstMatch": true,
             "isLoobDatatableOutput": true,
             "isRdfOutput": false,
             "key": "_chemical_formula_weight",
@@ -3620,6 +3831,7 @@
             "id": "#41tableMetadata",
             "isDatasetOutput": true,
             "isDatatableOutput": true,
+            "isFirstMatch": true,
             "isLoobDatatableOutput": true,
             "isRdfOutput": false,
             "key": "_diffrn_reflns_theta_max",
@@ -3648,6 +3860,7 @@
             "id": "#42tableMetadata",
             "isDatasetOutput": true,
             "isDatatableOutput": true,
+            "isFirstMatch": true,
             "isLoobDatatableOutput": true,
             "isRdfOutput": false,
             "key": "_diffrn_reflns_theta_min",
@@ -3676,6 +3889,7 @@
             "id": "#43tableMetadata",
             "isDatasetOutput": true,
             "isDatatableOutput": true,
+            "isFirstMatch": true,
             "isLoobDatatableOutput": true,
             "isRdfOutput": false,
             "key": "_exptl_crystal_density_diffrn",
@@ -3698,6 +3912,7 @@
             "id": "#44tableMetadata",
             "isDatasetOutput": true,
             "isDatatableOutput": true,
+            "isFirstMatch": true,
             "isLoobDatatableOutput": true,
             "isRdfOutput": false,
             "key": "_exptl_absorpt_coefficient_mu",

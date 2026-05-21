@@ -37,21 +37,24 @@ def compare_tables(tables_res, tables_exp):
 
 def compare_reader_result(src_path, res_path, file):
     expected_result = {}
+    content = {}
+    has_reader = False
     try:
         with open(os.path.join(src_path, file), 'rb') as fp:
             file_storage = FileStorage(fp)
+            reader = registry.match_reader(File(file_storage))
+            if reader:
+                reader.process()
+                content = reader.as_dict
+                has_reader = True
             with open(os.path.join(res_path, file + '.json'), 'r', encoding='utf8') as f_res:
                 expected_result = json.loads(f_res.read())
                 f_res.close()
-                reader = registry.match_reader(File(file_storage))
-                if reader:
-                    reader.process()
-                    content = reader.as_dict
-                    return (expected_result, content, True)
+
     except FileNotFoundError:
         print('Reader result not found')
         print(traceback.format_exc())
-    return (expected_result, {}, False)
+    return (expected_result, content, has_reader)
 
 
 def get_profile_result(reader_dict, file):

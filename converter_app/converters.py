@@ -74,37 +74,52 @@ class Converter:
         return self.profile_output_tables[index].get('loopType') != 'none'
 
     def _compute_check_loop_condition(self, index, input_table_index):
+        """
+        Return a tuple that says whether this output table should process the
+        current input table. The first item is the match flag; remaining items
+        are grouping values used to build the output table key.
+        """
+        # "all" loop tables accept every input table without further checks.
         if self.profile_output_tables[index].get('loopType') == 'all':
             return (True, )
 
         if self.profile_output_tables[index].get('loopType') != 'none':
+            # For looped tables, every configured loop selector must match the
+            # input table. Group selectors append their value to group_values so
+            # matching input tables are collected into the same output bucket.
             group_values = [True]
             loop_header = self.profile_output_tables[index]['table'].get('loop_header', [])
             for header in loop_header:
                 if not header.get('column'):
-                    return False
+                    return (False, )
                 column_name = header['column']
 
+                # loop_header entries require a column with the configured name
+                # to exist in the candidate input table.
                 has_col_name = any(
                     col.get('name') == column_name for col in self.input_tables[input_table_index].get('columns', []))
                 if not has_col_name:
-                    return False
+                    return (False, )
 
             loop_theader = self.profile_output_tables[index]['table'].get('loop_theader', [])
             for theader in loop_theader:
+                # Header regex selectors must match. Unless ignoreValue is set,
+                # the captured value becomes part of the grouping key.
                 match, _ = self._search_regex(theader, input_table_index)
                 if not match:
-                    return False
+                    return (False, )
                 if not theader.get('ignoreValue'):
                     group_values.append(match)
 
             loop_metadata = self.profile_output_tables[index]['table'].get('loop_metadata', [])
             for metadata in loop_metadata:
+                # Metadata selectors can either contribute a grouping value or
+                # require an exact metadata value on the input table.
                 if not metadata.get('metadata'):
-                    return False
+                    return (False, )
                 key = metadata.get('metadata')
                 if not key in self.input_tables[input_table_index].get('metadata', {}):
-                    return
+                    return (False, )
                 match_mode = metadata.get('matchMode')
                 if match_mode == 'group':
                     value = self.input_tables[input_table_index].get('metadata', {}).get(key, None)
@@ -112,12 +127,13 @@ class Converter:
                 if match_mode == 'exact':
                     value = self.input_tables[input_table_index].get('metadata', {}).get(key, None)
                     if metadata.get('value') != value:
-                        return False
+                        return (False, )
 
             return tuple(group_values)
         elif input_table_index == self.profile_output_tables[index]['inputTableIndex']:
+            # Non-looped tables only process their configured input table.
             return (True, )
-        return False
+        return (False, )
 
     def match(self):
         matches = self._match(self.identifiers)
@@ -313,7 +329,7 @@ class Converter:
         for in_idx in range(len(self.input_tables)):
             for output_table_index, output_table in enumerate(self.profile_output_tables):
                 group_values = self._compute_check_loop_condition(output_table_index, in_idx)
-                if group_values:
+                if group_values[0]:
                     output_table_key = (output_table_index, group_values)
                     header = self._process_prepare_header(output_table, output_table_key, in_idx, ntuples_header)
                     table_data = output_table.get('table', {})
@@ -415,14 +431,18 @@ class Converter:
                 'outputTableIndex']:
                 continue
             match_output_key = match.get('identifier', {}).get('outputDatatableKey')
-            if match_output_key in header and not match['identifier']['isLoobDatatableOutput']:
+
+            if match_output_key in header and (not match['identifier']['isLoobDatatableOutput'] or match['identifier']['isFirstMatch']):
                 match_result = False
+            elif not match['identifier']['isLoobDatatableOutput']:
+                match_result = match['result']
             else:
-                match_result = self._resolve_identifier(match['identifier'], in_idx)
+                match_result = self._resolve_identifier(match['identifier'], in_idx) or match['result']
+
             if match_result:
                 if match_output_key:
                     match_value = match_result.get('value')
-                    if not is_ntuples or not match['identifier']['isLoobDatatableOutput']:
+                    if not is_ntuples or (not match['identifier']['isLoobDatatableOutput'] or match['identifier']['isFirstMatch']):
                         header[match_output_key] = match_value
                     else:
                         if match_output_key not in header:

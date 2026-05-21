@@ -1,5 +1,6 @@
 import copy
 import json
+import traceback
 from pathlib import Path
 from typing import Optional
 
@@ -141,7 +142,8 @@ class Migrations:
             except Exception as e:
                 if raise_exceptions:
                     raise
-                print(f'{profile_path} cannot be migrated: {e}')
+                print(f'{profile_path} cannot be migrated: {type(e).__name__}: {e}')
+                traceback.print_exc()
 
     def migrate_profile(self, profile: Profile, force: bool = False, add_history: bool = True):
         if force:

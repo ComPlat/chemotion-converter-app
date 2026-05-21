@@ -305,7 +305,7 @@
             "trigger": "undo:1.6"
         },
         {
-            "at": "2026-05-06T08:56:29.147194+00:00",
+            "at": "2026-05-21T11:46:01.715611+00:00",
             "diff": [
                 {
                     "op": "remove",
@@ -316,15 +316,15 @@
             "trigger": "migration:20260417132254"
         },
         {
-            "at": "2026-05-06T08:56:29.147546+00:00",
+            "at": "2026-05-21T11:46:01.715871+00:00",
             "diff": [
                 {
                     "op": "remove",
-                    "path": "/data/0/tables/0/metadata/__UNIT_liter"
+                    "path": "/data/0/tables/0/metadata/__UNIT_%"
                 },
                 {
                     "op": "remove",
-                    "path": "/data/0/tables/0/metadata/__UNIT_PPM"
+                    "path": "/data/0/tables/0/metadata/__UNIT_liter"
                 },
                 {
                     "op": "remove",
@@ -332,18 +332,18 @@
                 },
                 {
                     "op": "remove",
-                    "path": "/data/0/tables/0/metadata/__UNIT_%"
+                    "path": "/data/0/tables/0/metadata/__UNIT_gram"
                 },
                 {
                     "op": "remove",
-                    "path": "/data/0/tables/0/metadata/__UNIT_gram"
+                    "path": "/data/0/tables/0/metadata/__UNIT_PPM"
                 }
             ],
             "profile_version": "1.9",
             "trigger": "migration:20260422063146"
         },
         {
-            "at": "2026-05-17T21:09:23.525890+00:00",
+            "at": "2026-05-21T11:46:01.716446+00:00",
             "diff": [
                 {
                     "op": "remove",
@@ -355,13 +355,13 @@
                     "path": "/tables/0/table/xColumn/tableIndex"
                 },
                 {
-                    "op": "remove",
-                    "path": "/tables/1/loopType"
-                },
-                {
                     "from": "/tables/1/inputTableIndex",
                     "op": "move",
                     "path": "/tables/0/table/yColumn/tableIndex"
+                },
+                {
+                    "op": "remove",
+                    "path": "/tables/1/loopType"
                 },
                 {
                     "op": "add",
@@ -369,13 +369,13 @@
                     "value": 0
                 },
                 {
-                    "op": "remove",
-                    "path": "/tables/2/loopType"
-                },
-                {
                     "from": "/tables/2/inputTableIndex",
                     "op": "move",
                     "path": "/tables/1/table/yColumn/tableIndex"
+                },
+                {
+                    "op": "remove",
+                    "path": "/tables/2/loopType"
                 },
                 {
                     "op": "add",
@@ -383,13 +383,13 @@
                     "value": 0
                 },
                 {
-                    "op": "remove",
-                    "path": "/tables/3/loopType"
-                },
-                {
                     "from": "/tables/3/inputTableIndex",
                     "op": "move",
                     "path": "/tables/2/table/yColumn/tableIndex"
+                },
+                {
+                    "op": "remove",
+                    "path": "/tables/3/loopType"
                 },
                 {
                     "op": "add",
@@ -406,19 +406,15 @@
             "trigger": "migration:20260506160404"
         },
         {
-            "at": "2026-05-17T21:09:23.526733+00:00",
+            "at": "2026-05-21T11:46:01.716771+00:00",
             "diff": [
-                {
-                    "op": "remove",
-                    "path": "/tables/0/tableName"
-                },
                 {
                     "op": "remove",
                     "path": "/tables/0/uuid"
                 },
                 {
                     "op": "remove",
-                    "path": "/tables/1/tableName"
+                    "path": "/tables/0/tableName"
                 },
                 {
                     "op": "remove",
@@ -426,7 +422,7 @@
                 },
                 {
                     "op": "remove",
-                    "path": "/tables/2/tableName"
+                    "path": "/tables/1/tableName"
                 },
                 {
                     "op": "remove",
@@ -434,11 +430,15 @@
                 },
                 {
                     "op": "remove",
-                    "path": "/tables/3/tableName"
+                    "path": "/tables/2/tableName"
                 },
                 {
                     "op": "remove",
                     "path": "/tables/3/uuid"
+                },
+                {
+                    "op": "remove",
+                    "path": "/tables/3/tableName"
                 }
             ],
             "profile_version": "1.11",
@@ -543,7 +543,7 @@
                 }
             },
             "tableName": "Table #1",
-            "uuid": "a636c42a-035f-4f27-9885-985cd522a13c"
+            "uuid": "11db538c-b165-4dcd-a5c8-35c3295d0fa7"
         },
         {
             "header": {
@@ -563,7 +563,7 @@
                 }
             },
             "tableName": "Table #2",
-            "uuid": "965efb6b-1e34-48aa-9a89-fe31f91f48d7"
+            "uuid": "30e84c42-5e5d-4661-960c-dd6c1853d7bc"
         },
         {
             "header": {
@@ -583,7 +583,7 @@
                 }
             },
             "tableName": "Table #3",
-            "uuid": "e2bcd892-bbce-46bc-baab-e8cbb47c3a8c"
+            "uuid": "9ab2122e-32e3-4f72-a6ef-5c0e39ac73c2"
         },
         {
             "header": {
@@ -603,7 +603,7 @@
                 }
             },
             "tableName": "Table #4",
-            "uuid": "326e5120-77c3-4fa1-8705-afbcb92751df"
+            "uuid": "cae4dc72-8b8b-4995-960c-15e3535a2729"
         }
     ],
     "title": "UVVIS CS",

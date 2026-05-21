@@ -261,7 +261,7 @@
             "trigger": "undo:1.6"
         },
         {
-            "at": "2026-05-06T08:56:29.022629+00:00",
+            "at": "2026-05-21T11:46:01.830525+00:00",
             "diff": [
                 {
                     "op": "remove",
@@ -272,15 +272,15 @@
             "trigger": "migration:20260417132254"
         },
         {
-            "at": "2026-05-06T08:56:29.022899+00:00",
+            "at": "2026-05-21T11:46:01.830732+00:00",
             "diff": [
                 {
                     "op": "remove",
-                    "path": "/data/0/tables/0/metadata/__UNIT_liter"
+                    "path": "/data/0/tables/0/metadata/__UNIT_%"
                 },
                 {
                     "op": "remove",
-                    "path": "/data/0/tables/0/metadata/__UNIT_PPM"
+                    "path": "/data/0/tables/0/metadata/__UNIT_liter"
                 },
                 {
                     "op": "remove",
@@ -288,18 +288,18 @@
                 },
                 {
                     "op": "remove",
-                    "path": "/data/0/tables/0/metadata/__UNIT_%"
+                    "path": "/data/0/tables/0/metadata/__UNIT_gram"
                 },
                 {
                     "op": "remove",
-                    "path": "/data/0/tables/0/metadata/__UNIT_gram"
+                    "path": "/data/0/tables/0/metadata/__UNIT_PPM"
                 }
             ],
             "profile_version": "1.9",
             "trigger": "migration:20260422063146"
         },
         {
-            "at": "2026-05-17T21:09:23.203823+00:00",
+            "at": "2026-05-21T11:46:01.831058+00:00",
             "diff": [
                 {
                     "op": "remove",
@@ -320,15 +320,15 @@
             "trigger": "migration:20260506160404"
         },
         {
-            "at": "2026-05-17T21:09:23.204449+00:00",
+            "at": "2026-05-21T11:46:01.831251+00:00",
             "diff": [
                 {
                     "op": "remove",
-                    "path": "/tables/0/tableName"
+                    "path": "/tables/0/uuid"
                 },
                 {
                     "op": "remove",
-                    "path": "/tables/0/uuid"
+                    "path": "/tables/0/tableName"
                 }
             ],
             "profile_version": "1.11",
@@ -414,7 +414,7 @@
                 }
             },
             "tableName": "Table #1",
-            "uuid": "0c5b231c-04a3-4abd-b383-17b1e8d3c9c2"
+            "uuid": "db501c85-c99c-4132-9af8-76a361bf94f0"
         }
     ],
     "title": "UV-Vis",

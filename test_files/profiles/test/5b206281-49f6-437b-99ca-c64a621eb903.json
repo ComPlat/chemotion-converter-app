@@ -182,7 +182,7 @@
             "trigger": "undo:1.6"
         },
         {
-            "at": "2026-05-06T08:56:29.087007+00:00",
+            "at": "2026-05-21T11:46:01.704885+00:00",
             "diff": [
                 {
                     "op": "remove",
@@ -193,15 +193,15 @@
             "trigger": "migration:20260417132254"
         },
         {
-            "at": "2026-05-06T08:56:29.087240+00:00",
+            "at": "2026-05-21T11:46:01.705072+00:00",
             "diff": [
                 {
                     "op": "remove",
-                    "path": "/data/0/tables/0/metadata/__UNIT_liter"
+                    "path": "/data/0/tables/0/metadata/__UNIT_%"
                 },
                 {
                     "op": "remove",
-                    "path": "/data/0/tables/0/metadata/__UNIT_PPM"
+                    "path": "/data/0/tables/0/metadata/__UNIT_liter"
                 },
                 {
                     "op": "remove",
@@ -209,18 +209,18 @@
                 },
                 {
                     "op": "remove",
-                    "path": "/data/0/tables/0/metadata/__UNIT_%"
+                    "path": "/data/0/tables/0/metadata/__UNIT_gram"
                 },
                 {
                     "op": "remove",
-                    "path": "/data/0/tables/0/metadata/__UNIT_gram"
+                    "path": "/data/0/tables/0/metadata/__UNIT_PPM"
                 }
             ],
             "profile_version": "1.9",
             "trigger": "migration:20260422063146"
         },
         {
-            "at": "2026-05-17T21:09:23.360372+00:00",
+            "at": "2026-05-21T11:46:01.705382+00:00",
             "diff": [
                 {
                     "op": "remove",
@@ -241,15 +241,15 @@
             "trigger": "migration:20260506160404"
         },
         {
-            "at": "2026-05-17T21:09:23.360854+00:00",
+            "at": "2026-05-21T11:46:01.705559+00:00",
             "diff": [
                 {
                     "op": "remove",
-                    "path": "/tables/0/tableName"
+                    "path": "/tables/0/uuid"
                 },
                 {
                     "op": "remove",
-                    "path": "/tables/0/uuid"
+                    "path": "/tables/0/tableName"
                 }
             ],
             "profile_version": "1.11",
@@ -316,7 +316,7 @@
                 }
             },
             "tableName": "Table #1",
-            "uuid": "f8e5e48a-8ffe-490a-a09e-df0f01fcdcac"
+            "uuid": "16043526-2b69-4239-9fb6-2141d0ad24f9"
         }
     ],
     "title": "Mass spectrometry from general xy format, data: +, metadata: -",

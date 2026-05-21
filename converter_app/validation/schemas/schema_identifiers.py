@@ -45,6 +45,9 @@ identifiers_schema = {
         "isLoobDatatableOutput": {
             "type": "boolean"
         },
+        "isFirstMatch": {
+            "type": "boolean"
+        },
         "key": {
             "type": "string"
         },
