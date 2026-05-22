@@ -18,6 +18,7 @@ jobs:
         run: |
           pip install --upgrade pip
           pip install ".[dev]"
+          sudo apt-get install -y libmagic1 file
       - name: Build tests
         run: |
           python -m test_manager -t -gt -tp
