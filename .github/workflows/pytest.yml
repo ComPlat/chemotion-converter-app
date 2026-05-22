@@ -16,9 +16,9 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Install dependencies
         run: |
+          sudo apt-get install -y libmagic1 file
           pip install --upgrade pip
           pip install ".[dev]"
-          sudo apt-get install -y libmagic1 file
       - name: Build tests
         run: |
           python -m test_manager -t -gt -tp
