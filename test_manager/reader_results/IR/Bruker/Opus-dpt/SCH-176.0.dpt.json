@@ -7056,10 +7056,10 @@
     "metadata": {
         "file_name": "SCH-176.0.dpt",
         "content_type": "",
-        "mime_type": "text/plain",
+        "mime_type": "text/csv",
         "extension": ".dpt",
         "reader": "CSVReader",
-        "uploaded": "2026-05-22T09:38:08.099405+00:00",
+        "uploaded": "2026-05-22T11:04:15.565303+00:00",
         "lineterminator": "\\r\\n",
         "quoting": "0",
         "doublequote": "False",

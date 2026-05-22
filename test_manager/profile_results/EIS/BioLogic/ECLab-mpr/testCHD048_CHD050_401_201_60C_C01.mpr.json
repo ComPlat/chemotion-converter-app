@@ -5,7 +5,7 @@
             "metadata": {
                 "___TABLE_NAME__": "/",
                 "settings.technique": "PEIS",
-                "settings.comments": "c1 AB-3b 1:15 I\r\nc2 AB-3b 1:15 II\r\nc3 AB-3b 1:15 III",
+                "settings.comments": "",
                 "settings.active_material_mass": "0.0010000000474974513",
                 "settings.at_x": "0.0",
                 "settings.molecular_weight": "0.0010000000474974513",
@@ -19,19 +19,6 @@
                 "settings.characteristic_mass": "0.0010000000474974513",
                 "settings.battery_capacity": "0.0",
                 "settings.battery_capacity_unit": "0",
-                "log.channel_number": "1",
-                "log.channel_sn": "13484",
-                "log.Ewe_ctrl_min": "-2.5",
-                "log.Ewe_ctrl_max": "2.5",
-                "log.ole_timestamp": "45093.55598834491",
-                "log.filename": "D:\\DATA\\Cornelius Hub\\20230615\\CHD048_CHD050_60C_C02.mpr",
-                "log.host": "192.109.209.127",
-                "log.address": "192.109.209.128",
-                "log.ec_lab_version": "11.36",
-                "log.server_version": "11.36",
-                "log.interpreter_version": "11.36",
-                "log.device_sn": "0473",
-                "log.averaging_points": "0",
                 "params.Mode.0": "0",
                 "params.E (V).0": "0.0",
                 "params.E (V) vs..0": "Eoc",
@@ -100,17 +87,17 @@
             ],
             "rows": [
                 [
-                    1686921637.393
+                    0
                 ]
             ]
         }
     ],
     "metadata": {
-        "file_name": "CHD048_CHD050_60C_C02.mpr",
+        "file_name": "testCHD048_CHD050_401_201_60C_C01.mpr",
         "content_type": "",
         "mime_type": "application/octet-stream",
         "extension": ".mpr",
         "reader": "MprReader",
-        "uploaded": "2026-05-22T11:05:15.386710+00:00"
+        "uploaded": "2026-05-22T11:07:00.971355+00:00"
     }
 }

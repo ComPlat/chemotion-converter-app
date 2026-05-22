@@ -19,12 +19,12 @@
                 "settings.characteristic_mass": "0.0010000000474974513",
                 "settings.battery_capacity": "0.0",
                 "settings.battery_capacity_unit": "0",
-                "log.channel_number": "1",
-                "log.channel_sn": "13484",
+                "log.channel_number": "0",
+                "log.channel_sn": "12498",
                 "log.Ewe_ctrl_min": "-2.5",
                 "log.Ewe_ctrl_max": "2.5",
                 "log.ole_timestamp": "45093.55598834491",
-                "log.filename": "D:\\DATA\\Cornelius Hub\\20230615\\CHD048_CHD050_60C_C02.mpr",
+                "log.filename": "D:\\DATA\\Cornelius Hub\\20230615\\CHD048_CHD050_60C_C01.mpr",
                 "log.host": "192.109.209.127",
                 "log.address": "192.109.209.128",
                 "log.ec_lab_version": "11.36",
@@ -106,11 +106,11 @@
         }
     ],
     "metadata": {
-        "file_name": "CHD048_CHD050_60C_C02.mpr",
+        "file_name": "CHD048_CHD050_60C_C01.mpr",
         "content_type": "",
         "mime_type": "application/octet-stream",
         "extension": ".mpr",
         "reader": "MprReader",
-        "uploaded": "2026-05-22T11:05:15.386710+00:00"
+        "uploaded": "2026-05-22T11:07:01.970846+00:00"
     }
 }
