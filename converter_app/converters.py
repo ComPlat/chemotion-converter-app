@@ -62,7 +62,12 @@ class Converter:
 
     @property
     def tables(self):
-        for (tb_idx, keys), out_table_res in self._tables.items():
+        sorted_items = sorted(
+            self._tables.items(),
+            key=lambda item: item[0][0]
+        )
+
+        for (tb_idx, keys), out_table_res in sorted_items:
             output_table = self.profile_output_tables[tb_idx]
             is_ntuples = output_table.get('loopOutput') == 'SINGLE FILE (NTUPLES)' and output_table['loopType'] != 'none'
             if is_ntuples:

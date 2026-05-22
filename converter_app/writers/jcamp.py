@@ -177,6 +177,7 @@ class JcampWriter(Writer):
                 maxy = max(maxy, y_float)
             except ValueError:
                 continue
+        data_class = data_class if data_class == 'PEAK TABLE' else 'XYDATA'
 
         if is_closed:
             # write header with xydata specific values
@@ -236,10 +237,8 @@ class JcampWriter(Writer):
 
             if data_class == 'XYDATA':
                 self._process_xydata(header, table.get('y'), False)
-            elif data_class  == 'XYPOINTS':
+            elif data_class in ['XYPOINTS', 'PEAK TABLE'] :
                 # JS converter bug
-                self._process_xypoints(header, table.get('x'), table.get('y'), 'XYDATA', False)
-            elif data_class == 'PEAK TABLE':
                 self._process_xypoints(header, table.get('x'), table.get('y'), data_class, False)
 
 

@@ -1,5 +1,5 @@
 {
-  "profileId": "CVprofile_pssession",
+  "profileId": "c6573972-cb06-484d-a529-9dd2424fc408",
   "ols": "CHMO:0000025",
   "matches": [
     {
@@ -20,7 +20,7 @@
         "outputKey": "cycles",
         "outputLayer": "meas",
         "outputTableIndex": [
-          "a42ad0f9-a2d4-473d-95f2-194c7de79ba9"
+          "ee68516a-43de-49ef-a039-41e5dabfa46f"
         ],
         "predicate": null,
         "subject": null,
@@ -51,7 +51,7 @@
         "outputKey": "time",
         "outputLayer": "general",
         "outputTableIndex": [
-          "a42ad0f9-a2d4-473d-95f2-194c7de79ba9"
+          "ee68516a-43de-49ef-a039-41e5dabfa46f"
         ],
         "predicate": null,
         "subject": null,
@@ -83,7 +83,7 @@
         "outputKey": "date",
         "outputLayer": "general",
         "outputTableIndex": [
-          "a42ad0f9-a2d4-473d-95f2-194c7de79ba9"
+          "ee68516a-43de-49ef-a039-41e5dabfa46f"
         ],
         "predicate": null,
         "subject": null,
@@ -111,11 +111,11 @@
         "match": "any",
         "object": null,
         "optional": true,
-        "outputDatatableKey": "serial",
-        "outputKey": "serial",
-        "outputLayer": "instrument",
+        "outputDatatableKey": "title",
+        "outputKey": "title",
+        "outputLayer": "general",
         "outputTableIndex": [
-          "a42ad0f9-a2d4-473d-95f2-194c7de79ba9"
+          "ee68516a-43de-49ef-a039-41e5dabfa46f"
         ],
         "predicate": null,
         "subject": null,
@@ -146,7 +146,7 @@
         "outputKey": "scan_rate",
         "outputLayer": "meas",
         "outputTableIndex": [
-          "a42ad0f9-a2d4-473d-95f2-194c7de79ba9"
+          "ee68516a-43de-49ef-a039-41e5dabfa46f"
         ],
         "predicate": null,
         "subject": null,
@@ -177,7 +177,7 @@
         "outputKey": "software",
         "outputLayer": "software",
         "outputTableIndex": [
-          "a42ad0f9-a2d4-473d-95f2-194c7de79ba9"
+          "ee68516a-43de-49ef-a039-41e5dabfa46f"
         ],
         "predicate": null,
         "subject": null,
@@ -209,7 +209,7 @@
         "outputKey": "software_version",
         "outputLayer": "software",
         "outputTableIndex": [
-          "a42ad0f9-a2d4-473d-95f2-194c7de79ba9"
+          "ee68516a-43de-49ef-a039-41e5dabfa46f"
         ],
         "predicate": null,
         "subject": null,
@@ -241,7 +241,7 @@
         "outputKey": "step_size",
         "outputLayer": "meas",
         "outputTableIndex": [
-          "a42ad0f9-a2d4-473d-95f2-194c7de79ba9"
+          "ee68516a-43de-49ef-a039-41e5dabfa46f"
         ],
         "predicate": null,
         "subject": null,
@@ -272,7 +272,7 @@
         "outputKey": "voltage_start",
         "outputLayer": "meas",
         "outputTableIndex": [
-          "a42ad0f9-a2d4-473d-95f2-194c7de79ba9"
+          "ee68516a-43de-49ef-a039-41e5dabfa46f"
         ],
         "predicate": null,
         "subject": null,
@@ -303,7 +303,7 @@
         "outputKey": "voltage_limit_one",
         "outputLayer": "meas",
         "outputTableIndex": [
-          "a42ad0f9-a2d4-473d-95f2-194c7de79ba9"
+          "ee68516a-43de-49ef-a039-41e5dabfa46f"
         ],
         "predicate": null,
         "subject": null,
@@ -334,7 +334,7 @@
         "outputKey": "voltage_limit_two",
         "outputLayer": "meas",
         "outputTableIndex": [
-          "a42ad0f9-a2d4-473d-95f2-194c7de79ba9"
+          "ee68516a-43de-49ef-a039-41e5dabfa46f"
         ],
         "predicate": null,
         "subject": null,
@@ -365,7 +365,7 @@
         "outputKey": "voltage_limit_end",
         "outputLayer": "meas",
         "outputTableIndex": [
-          "a42ad0f9-a2d4-473d-95f2-194c7de79ba9"
+          "ee68516a-43de-49ef-a039-41e5dabfa46f"
         ],
         "predicate": null,
         "subject": null,
@@ -377,6 +377,35 @@
         "value": "5.000E-001",
         "tableIndex": 0
       }
+    },
+    {
+      "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#14fileMetadata",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
+        "key": "file_name",
+        "match": "any",
+        "object": null,
+        "optional": true,
+        "outputDatatableKey": "comments",
+        "outputKey": "comments",
+        "outputLayer": "general",
+        "outputTableIndex": [
+          "ee68516a-43de-49ef-a039-41e5dabfa46f"
+        ],
+        "predicate": null,
+        "subject": null,
+        "type": "fileMetadata",
+        "value": "File053.pssession"
+      },
+      "result": {
+        "value": "p-Cl-Ph-CO2Me_MeCN.pssession"
+      }
     }
   ],
   "tablesCount": 6,
@@ -386,12 +415,12 @@
       "header": {
         "DATA CLASS": "XYPOINTS",
         "DATA TYPE": "CYCLIC VOLTAMMETRY",
-        "XUNITS": "Voltage vs Ref",
-        "YUNITS": "Ampere",
+        "XUNITS": "Voltage in V",
+        "YUNITS": "Current in A",
         "cycles": "1",
         "time": "14:12:35",
         "date": "2019-10-28",
-        "serial": "ES3 16X965",
+        "title": "ES3 16X965",
         "scan_rate": "2.000E-001",
         "software": "PSTrace",
         "software_version": "5.4.1528.18404",
@@ -399,7 +428,8 @@
         "voltage_start": "0.000E+000",
         "voltage_limit_one": "-2.500E+000",
         "voltage_limit_two": "2.000E+000",
-        "voltage_limit_end": "5.000E-001"
+        "voltage_limit_end": "5.000E-001",
+        "comments": "p-Cl-Ph-CO2Me_MeCN.pssession"
       }
     },
     {
@@ -407,12 +437,12 @@
       "header": {
         "DATA CLASS": "XYPOINTS",
         "DATA TYPE": "CYCLIC VOLTAMMETRY",
-        "XUNITS": "Voltage vs Ref",
-        "YUNITS": "Ampere",
+        "XUNITS": "Voltage in V",
+        "YUNITS": "Current in A",
         "cycles": "1",
         "time": "14:12:35",
         "date": "2019-10-28",
-        "serial": "ES3 16X965",
+        "title": "ES3 16X965",
         "scan_rate": "1.000E-001",
         "software": "PSTrace",
         "software_version": "5.4.1528.18404",
@@ -420,7 +450,8 @@
         "voltage_start": "0.000E+000",
         "voltage_limit_one": "-2.500E+000",
         "voltage_limit_two": "2.000E+000",
-        "voltage_limit_end": "5.000E-001"
+        "voltage_limit_end": "5.000E-001",
+        "comments": "p-Cl-Ph-CO2Me_MeCN.pssession"
       }
     },
     {
@@ -428,12 +459,12 @@
       "header": {
         "DATA CLASS": "XYPOINTS",
         "DATA TYPE": "CYCLIC VOLTAMMETRY",
-        "XUNITS": "Voltage vs Ref",
-        "YUNITS": "Ampere",
+        "XUNITS": "Voltage in V",
+        "YUNITS": "Current in A",
         "cycles": "1",
         "time": "14:12:35",
         "date": "2019-10-28",
-        "serial": "ES3 16X965",
+        "title": "ES3 16X965",
         "scan_rate": "5.000E-002",
         "software": "PSTrace",
         "software_version": "5.4.1528.18404",
@@ -441,7 +472,8 @@
         "voltage_start": "0.000E+000",
         "voltage_limit_one": "-2.500E+000",
         "voltage_limit_two": "2.000E+000",
-        "voltage_limit_end": "5.000E-001"
+        "voltage_limit_end": "5.000E-001",
+        "comments": "p-Cl-Ph-CO2Me_MeCN.pssession"
       }
     },
     {
@@ -449,12 +481,12 @@
       "header": {
         "DATA CLASS": "XYPOINTS",
         "DATA TYPE": "CYCLIC VOLTAMMETRY",
-        "XUNITS": "Voltage vs Ref",
-        "YUNITS": "Ampere",
+        "XUNITS": "Voltage in V",
+        "YUNITS": "Current in A",
         "cycles": "1",
         "time": "14:12:35",
         "date": "2019-10-28",
-        "serial": "ES3 16X965",
+        "title": "ES3 16X965",
         "scan_rate": "2.000E-001",
         "software": "PSTrace",
         "software_version": "5.4.1528.18404",
@@ -462,7 +494,8 @@
         "voltage_start": "0.000E+000",
         "voltage_limit_one": "-2.700E+000",
         "voltage_limit_two": "2.000E+000",
-        "voltage_limit_end": "5.000E-001"
+        "voltage_limit_end": "5.000E-001",
+        "comments": "p-Cl-Ph-CO2Me_MeCN.pssession"
       }
     },
     {
@@ -470,12 +503,12 @@
       "header": {
         "DATA CLASS": "XYPOINTS",
         "DATA TYPE": "CYCLIC VOLTAMMETRY",
-        "XUNITS": "Voltage vs Ref",
-        "YUNITS": "Ampere",
+        "XUNITS": "Voltage in V",
+        "YUNITS": "Current in A",
         "cycles": "1",
         "time": "14:12:35",
         "date": "2019-10-28",
-        "serial": "ES3 16X965",
+        "title": "ES3 16X965",
         "scan_rate": "1.000E-001",
         "software": "PSTrace",
         "software_version": "5.4.1528.18404",
@@ -483,7 +516,8 @@
         "voltage_start": "0.000E+000",
         "voltage_limit_one": "-2.700E+000",
         "voltage_limit_two": "2.000E+000",
-        "voltage_limit_end": "5.000E-001"
+        "voltage_limit_end": "5.000E-001",
+        "comments": "p-Cl-Ph-CO2Me_MeCN.pssession"
       }
     },
     {
@@ -491,12 +525,12 @@
       "header": {
         "DATA CLASS": "XYPOINTS",
         "DATA TYPE": "CYCLIC VOLTAMMETRY",
-        "XUNITS": "Voltage vs Ref",
-        "YUNITS": "Ampere",
+        "XUNITS": "Voltage in V",
+        "YUNITS": "Current in A",
         "cycles": "1",
         "time": "14:12:35",
         "date": "2019-10-28",
-        "serial": "ES3 16X965",
+        "title": "ES3 16X965",
         "scan_rate": "1.000E-001",
         "software": "PSTrace",
         "software_version": "5.4.1528.18404",
@@ -504,7 +538,8 @@
         "voltage_start": "0.000E+000",
         "voltage_limit_one": "-2.700E+000",
         "voltage_limit_two": "2.000E+000",
-        "voltage_limit_end": "5.000E-001"
+        "voltage_limit_end": "5.000E-001",
+        "comments": "p-Cl-Ph-CO2Me_MeCN.pssession"
       }
     }
   ]

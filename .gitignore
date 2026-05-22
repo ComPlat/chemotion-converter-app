@@ -40,3 +40,4 @@ test_manager/test_readers.py
 /test_files/profiles/private/
 /test_files/profiles/dev/
 /___timer_results/*
+/changes_results.diff

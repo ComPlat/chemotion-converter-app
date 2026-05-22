@@ -1,7 +1,182 @@
 {
   "profileId": "6bb4fea5-3a59-4b95-8956-d977a4d8b6a7",
   "ols": "CHMO:0000025",
-  "matches": [],
+  "matches": [
+    {
+      "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#3fileMetadata",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
+        "key": "scan_rate",
+        "match": "any",
+        "object": null,
+        "optional": true,
+        "outputDatatableKey": "scan_rate",
+        "outputKey": "scan_rate",
+        "outputLayer": "meas",
+        "outputTableIndex": [
+          "481b1750-e584-483e-9869-c20134e4ac6d"
+        ],
+        "predicate": null,
+        "subject": null,
+        "type": "fileMetadata",
+        "value": "0.09998236414401321"
+      },
+      "result": {
+        "value": "0.09980451"
+      }
+    },
+    {
+      "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#4fileMetadata",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
+        "key": "step_size",
+        "match": "any",
+        "object": null,
+        "optional": true,
+        "outputDatatableKey": "step_size",
+        "outputKey": "step_size",
+        "outputLayer": "meas",
+        "outputTableIndex": [
+          "481b1750-e584-483e-9869-c20134e4ac6d"
+        ],
+        "predicate": null,
+        "subject": null,
+        "type": "fileMetadata",
+        "value": "0.0010679116287260553"
+      },
+      "result": {
+        "value": "0.00197972"
+      }
+    },
+    {
+      "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#5fileMetadata",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
+        "key": "v_end",
+        "match": "any",
+        "object": null,
+        "optional": true,
+        "outputDatatableKey": "voltage_limit_end",
+        "outputKey": "voltage_limit_end",
+        "outputLayer": "meas",
+        "outputTableIndex": [
+          "481b1750-e584-483e-9869-c20134e4ac6d"
+        ],
+        "predicate": null,
+        "subject": null,
+        "type": "fileMetadata",
+        "value": "0"
+      },
+      "result": {
+        "value": "1.00006103"
+      }
+    },
+    {
+      "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#6fileMetadata",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
+        "key": "v_init",
+        "match": "any",
+        "object": null,
+        "optional": true,
+        "outputDatatableKey": "voltage_start",
+        "outputKey": "voltage_start",
+        "outputLayer": "meas",
+        "outputTableIndex": [
+          "481b1750-e584-483e-9869-c20134e4ac6d"
+        ],
+        "predicate": null,
+        "subject": null,
+        "type": "fileMetadata",
+        "value": "0.001068115234375"
+      },
+      "result": {
+        "value": "0.99807739"
+      }
+    },
+    {
+      "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#7fileMetadata",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
+        "key": "v_limit1",
+        "match": "any",
+        "object": null,
+        "optional": true,
+        "outputDatatableKey": "voltage_limit_one",
+        "outputKey": "voltage_limit_one",
+        "outputLayer": "meas",
+        "outputTableIndex": [
+          "481b1750-e584-483e-9869-c20134e4ac6d"
+        ],
+        "predicate": null,
+        "subject": null,
+        "type": "fileMetadata",
+        "value": "1.50070190429688"
+      },
+      "result": {
+        "value": "0.79971313"
+      }
+    },
+    {
+      "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#8fileMetadata",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
+        "key": "v_limit2",
+        "match": "any",
+        "object": null,
+        "optional": true,
+        "outputDatatableKey": "voltage_limit_two",
+        "outputKey": "voltage_limit_two",
+        "outputLayer": "meas",
+        "outputTableIndex": [
+          "481b1750-e584-483e-9869-c20134e4ac6d"
+        ],
+        "predicate": null,
+        "subject": null,
+        "type": "fileMetadata",
+        "value": "-1.30096435546875"
+      },
+      "result": {
+        "value": "1.30157470"
+      }
+    }
+  ],
   "tablesCount": 1,
   "tables": [
     {
@@ -9,8 +184,14 @@
       "header": {
         "DATA CLASS": "XYPOINTS",
         "DATA TYPE": "CYCLIC VOLTAMMETRY",
-        "XUNITS": "Voltage in V",
-        "YUNITS": "Current in A"
+        "XUNITS": "Voltage vs Ref",
+        "YUNITS": "Ampere",
+        "scan_rate": "0.09980451",
+        "step_size": "0.00197972",
+        "voltage_limit_end": "1.00006103",
+        "voltage_start": "0.99807739",
+        "voltage_limit_one": "0.79971313",
+        "voltage_limit_two": "1.30157470"
       }
     }
   ]
