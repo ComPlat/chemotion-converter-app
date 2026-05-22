@@ -9,6 +9,7 @@
         "id": "#1tableMetadata",
         "isDatasetOutput": true,
         "isDatatableOutput": true,
+        "isFirstMatch": true,
         "isLoobDatatableOutput": true,
         "isRdfOutput": false,
         "key": "DATE",
@@ -19,7 +20,7 @@
         "outputKey": "date",
         "outputLayer": "general",
         "outputTableIndex": [
-          "3fde957b-f5e7-4767-8ac2-a2f48c0746be"
+          "23bd3ca7-c108-4f48-98da-11718de9d33d"
         ],
         "predicate": null,
         "subject": null,
@@ -39,6 +40,7 @@
         "id": "#2tableMetadata",
         "isDatasetOutput": true,
         "isDatatableOutput": true,
+        "isFirstMatch": true,
         "isLoobDatatableOutput": true,
         "isRdfOutput": false,
         "key": "SCANRATE",
@@ -55,7 +57,7 @@
         "outputKey": "scan_rate",
         "outputLayer": "meas",
         "outputTableIndex": [
-          "3fde957b-f5e7-4767-8ac2-a2f48c0746be"
+          "23bd3ca7-c108-4f48-98da-11718de9d33d"
         ],
         "predicate": null,
         "subject": null,
@@ -75,6 +77,7 @@
         "id": "#3tableMetadata",
         "isDatasetOutput": true,
         "isDatatableOutput": true,
+        "isFirstMatch": true,
         "isLoobDatatableOutput": true,
         "isRdfOutput": false,
         "key": "STEPSIZE",
@@ -91,7 +94,7 @@
         "outputKey": "step_size",
         "outputLayer": "meas",
         "outputTableIndex": [
-          "3fde957b-f5e7-4767-8ac2-a2f48c0746be"
+          "23bd3ca7-c108-4f48-98da-11718de9d33d"
         ],
         "predicate": null,
         "subject": null,
@@ -111,6 +114,7 @@
         "id": "#4tableMetadata",
         "isDatasetOutput": true,
         "isDatatableOutput": true,
+        "isFirstMatch": true,
         "isLoobDatatableOutput": true,
         "isRdfOutput": false,
         "key": "CYCLES",
@@ -121,7 +125,7 @@
         "outputKey": "cycles",
         "outputLayer": "meas",
         "outputTableIndex": [
-          "3fde957b-f5e7-4767-8ac2-a2f48c0746be"
+          "23bd3ca7-c108-4f48-98da-11718de9d33d"
         ],
         "predicate": null,
         "subject": null,
@@ -141,6 +145,7 @@
         "id": "#5tableHeader",
         "isDatasetOutput": true,
         "isDatatableOutput": true,
+        "isFirstMatch": true,
         "isLoobDatatableOutput": true,
         "isRdfOutput": false,
         "lineNumber": null,
@@ -151,7 +156,7 @@
         "outputKey": "software_version",
         "outputLayer": "software",
         "outputTableIndex": [
-          "3fde957b-f5e7-4767-8ac2-a2f48c0746be"
+          "23bd3ca7-c108-4f48-98da-11718de9d33d"
         ],
         "predicate": null,
         "subject": null,
@@ -172,6 +177,7 @@
         "id": "#6tableHeader",
         "isDatasetOutput": true,
         "isDatatableOutput": true,
+        "isFirstMatch": true,
         "isLoobDatatableOutput": true,
         "isRdfOutput": false,
         "lineNumber": null,
@@ -182,7 +188,7 @@
         "outputKey": "software",
         "outputLayer": "software",
         "outputTableIndex": [
-          "3fde957b-f5e7-4767-8ac2-a2f48c0746be"
+          "23bd3ca7-c108-4f48-98da-11718de9d33d"
         ],
         "predicate": null,
         "subject": null,
@@ -203,6 +209,7 @@
         "id": "#8tableMetadata",
         "isDatasetOutput": true,
         "isDatatableOutput": true,
+        "isFirstMatch": true,
         "isLoobDatatableOutput": true,
         "isRdfOutput": false,
         "key": "TIME",
@@ -213,7 +220,7 @@
         "outputKey": "time",
         "outputLayer": "general",
         "outputTableIndex": [
-          "3fde957b-f5e7-4767-8ac2-a2f48c0746be"
+          "23bd3ca7-c108-4f48-98da-11718de9d33d"
         ],
         "predicate": null,
         "subject": null,
@@ -233,6 +240,7 @@
         "id": "#9tableMetadata",
         "isDatasetOutput": true,
         "isDatatableOutput": true,
+        "isFirstMatch": true,
         "isLoobDatatableOutput": true,
         "isRdfOutput": false,
         "key": "VINIT",
@@ -243,7 +251,7 @@
         "outputKey": "voltage_start",
         "outputLayer": "meas",
         "outputTableIndex": [
-          "3fde957b-f5e7-4767-8ac2-a2f48c0746be"
+          "23bd3ca7-c108-4f48-98da-11718de9d33d"
         ],
         "predicate": null,
         "subject": null,
@@ -263,6 +271,7 @@
         "id": "#10tableMetadata",
         "isDatasetOutput": true,
         "isDatatableOutput": true,
+        "isFirstMatch": true,
         "isLoobDatatableOutput": true,
         "isRdfOutput": false,
         "key": "VLIMIT1",
@@ -273,7 +282,7 @@
         "outputKey": "voltage_limit_one",
         "outputLayer": "meas",
         "outputTableIndex": [
-          "3fde957b-f5e7-4767-8ac2-a2f48c0746be"
+          "23bd3ca7-c108-4f48-98da-11718de9d33d"
         ],
         "predicate": null,
         "subject": null,
@@ -293,6 +302,7 @@
         "id": "#11tableMetadata",
         "isDatasetOutput": true,
         "isDatatableOutput": true,
+        "isFirstMatch": true,
         "isLoobDatatableOutput": true,
         "isRdfOutput": false,
         "key": "VLIMIT2",
@@ -303,7 +313,7 @@
         "outputKey": "voltage_limit_two",
         "outputLayer": "meas",
         "outputTableIndex": [
-          "3fde957b-f5e7-4767-8ac2-a2f48c0746be"
+          "23bd3ca7-c108-4f48-98da-11718de9d33d"
         ],
         "predicate": null,
         "subject": null,
@@ -323,6 +333,7 @@
         "id": "#12tableMetadata",
         "isDatasetOutput": true,
         "isDatatableOutput": true,
+        "isFirstMatch": true,
         "isLoobDatatableOutput": true,
         "isRdfOutput": false,
         "key": "VFINAL",
@@ -333,7 +344,7 @@
         "outputKey": "voltage_limit_end",
         "outputLayer": "meas",
         "outputTableIndex": [
-          "3fde957b-f5e7-4767-8ac2-a2f48c0746be"
+          "23bd3ca7-c108-4f48-98da-11718de9d33d"
         ],
         "predicate": null,
         "subject": null,
@@ -353,6 +364,7 @@
         "id": "#13tableMetadata",
         "isDatasetOutput": true,
         "isDatatableOutput": true,
+        "isFirstMatch": true,
         "isLoobDatatableOutput": true,
         "isRdfOutput": false,
         "key": "PSTAT",
@@ -363,7 +375,7 @@
         "outputKey": "serial",
         "outputLayer": "instrument",
         "outputTableIndex": [
-          "3fde957b-f5e7-4767-8ac2-a2f48c0746be"
+          "23bd3ca7-c108-4f48-98da-11718de9d33d"
         ],
         "predicate": null,
         "subject": null,
@@ -383,6 +395,7 @@
         "id": "#14tableHeader",
         "isDatasetOutput": true,
         "isDatatableOutput": true,
+        "isFirstMatch": true,
         "isLoobDatatableOutput": true,
         "isRdfOutput": false,
         "lineNumber": "",
@@ -393,7 +406,7 @@
         "outputKey": "instrument",
         "outputLayer": "instrument",
         "outputTableIndex": [
-          "3fde957b-f5e7-4767-8ac2-a2f48c0746be"
+          "23bd3ca7-c108-4f48-98da-11718de9d33d"
         ],
         "predicate": null,
         "subject": null,
@@ -438,7 +451,20 @@
         "DATA CLASS": "XYPOINTS",
         "DATA TYPE": "CYCLIC VOLTAMMETRY",
         "XUNITS": "Voltage in V",
-        "YUNITS": "Current in A"
+        "YUNITS": "Current in A",
+        "date": "27.4.2022",
+        "scan_rate": 0.0999998,
+        "step_size": 0.005,
+        "cycles": "10",
+        "software_version": "7.8.6",
+        "software": "Framework",
+        "time": "16:28:33",
+        "voltage_start": "-8.00000E-001",
+        "voltage_limit_one": "-2.00000E+000",
+        "voltage_limit_two": "-8.00000E-001",
+        "voltage_limit_end": "-8.00000E-001",
+        "serial": "IFC1010-28176",
+        "instrument": "Potentiostat"
       }
     },
     {
@@ -447,7 +473,20 @@
         "DATA CLASS": "XYPOINTS",
         "DATA TYPE": "CYCLIC VOLTAMMETRY",
         "XUNITS": "Voltage in V",
-        "YUNITS": "Current in A"
+        "YUNITS": "Current in A",
+        "date": "27.4.2022",
+        "scan_rate": 0.0999998,
+        "step_size": 0.005,
+        "cycles": "10",
+        "software_version": "7.8.6",
+        "software": "Framework",
+        "time": "16:28:33",
+        "voltage_start": "-8.00000E-001",
+        "voltage_limit_one": "-2.00000E+000",
+        "voltage_limit_two": "-8.00000E-001",
+        "voltage_limit_end": "-8.00000E-001",
+        "serial": "IFC1010-28176",
+        "instrument": "Potentiostat"
       }
     },
     {
@@ -456,7 +495,20 @@
         "DATA CLASS": "XYPOINTS",
         "DATA TYPE": "CYCLIC VOLTAMMETRY",
         "XUNITS": "Voltage in V",
-        "YUNITS": "Current in A"
+        "YUNITS": "Current in A",
+        "date": "27.4.2022",
+        "scan_rate": 0.0999998,
+        "step_size": 0.005,
+        "cycles": "10",
+        "software_version": "7.8.6",
+        "software": "Framework",
+        "time": "16:28:33",
+        "voltage_start": "-8.00000E-001",
+        "voltage_limit_one": "-2.00000E+000",
+        "voltage_limit_two": "-8.00000E-001",
+        "voltage_limit_end": "-8.00000E-001",
+        "serial": "IFC1010-28176",
+        "instrument": "Potentiostat"
       }
     },
     {
@@ -465,7 +517,20 @@
         "DATA CLASS": "XYPOINTS",
         "DATA TYPE": "CYCLIC VOLTAMMETRY",
         "XUNITS": "Voltage in V",
-        "YUNITS": "Current in A"
+        "YUNITS": "Current in A",
+        "date": "27.4.2022",
+        "scan_rate": 0.0999998,
+        "step_size": 0.005,
+        "cycles": "10",
+        "software_version": "7.8.6",
+        "software": "Framework",
+        "time": "16:28:33",
+        "voltage_start": "-8.00000E-001",
+        "voltage_limit_one": "-2.00000E+000",
+        "voltage_limit_two": "-8.00000E-001",
+        "voltage_limit_end": "-8.00000E-001",
+        "serial": "IFC1010-28176",
+        "instrument": "Potentiostat"
       }
     },
     {
@@ -474,7 +539,20 @@
         "DATA CLASS": "XYPOINTS",
         "DATA TYPE": "CYCLIC VOLTAMMETRY",
         "XUNITS": "Voltage in V",
-        "YUNITS": "Current in A"
+        "YUNITS": "Current in A",
+        "date": "27.4.2022",
+        "scan_rate": 0.0999998,
+        "step_size": 0.005,
+        "cycles": "10",
+        "software_version": "7.8.6",
+        "software": "Framework",
+        "time": "16:28:33",
+        "voltage_start": "-8.00000E-001",
+        "voltage_limit_one": "-2.00000E+000",
+        "voltage_limit_two": "-8.00000E-001",
+        "voltage_limit_end": "-8.00000E-001",
+        "serial": "IFC1010-28176",
+        "instrument": "Potentiostat"
       }
     },
     {
@@ -483,7 +561,20 @@
         "DATA CLASS": "XYPOINTS",
         "DATA TYPE": "CYCLIC VOLTAMMETRY",
         "XUNITS": "Voltage in V",
-        "YUNITS": "Current in A"
+        "YUNITS": "Current in A",
+        "date": "27.4.2022",
+        "scan_rate": 0.0999998,
+        "step_size": 0.005,
+        "cycles": "10",
+        "software_version": "7.8.6",
+        "software": "Framework",
+        "time": "16:28:33",
+        "voltage_start": "-8.00000E-001",
+        "voltage_limit_one": "-2.00000E+000",
+        "voltage_limit_two": "-8.00000E-001",
+        "voltage_limit_end": "-8.00000E-001",
+        "serial": "IFC1010-28176",
+        "instrument": "Potentiostat"
       }
     },
     {
@@ -492,7 +583,20 @@
         "DATA CLASS": "XYPOINTS",
         "DATA TYPE": "CYCLIC VOLTAMMETRY",
         "XUNITS": "Voltage in V",
-        "YUNITS": "Current in A"
+        "YUNITS": "Current in A",
+        "date": "27.4.2022",
+        "scan_rate": 0.0999998,
+        "step_size": 0.005,
+        "cycles": "10",
+        "software_version": "7.8.6",
+        "software": "Framework",
+        "time": "16:28:33",
+        "voltage_start": "-8.00000E-001",
+        "voltage_limit_one": "-2.00000E+000",
+        "voltage_limit_two": "-8.00000E-001",
+        "voltage_limit_end": "-8.00000E-001",
+        "serial": "IFC1010-28176",
+        "instrument": "Potentiostat"
       }
     },
     {
@@ -501,7 +605,20 @@
         "DATA CLASS": "XYPOINTS",
         "DATA TYPE": "CYCLIC VOLTAMMETRY",
         "XUNITS": "Voltage in V",
-        "YUNITS": "Current in A"
+        "YUNITS": "Current in A",
+        "date": "27.4.2022",
+        "scan_rate": 0.0999998,
+        "step_size": 0.005,
+        "cycles": "10",
+        "software_version": "7.8.6",
+        "software": "Framework",
+        "time": "16:28:33",
+        "voltage_start": "-8.00000E-001",
+        "voltage_limit_one": "-2.00000E+000",
+        "voltage_limit_two": "-8.00000E-001",
+        "voltage_limit_end": "-8.00000E-001",
+        "serial": "IFC1010-28176",
+        "instrument": "Potentiostat"
       }
     },
     {
@@ -510,7 +627,20 @@
         "DATA CLASS": "XYPOINTS",
         "DATA TYPE": "CYCLIC VOLTAMMETRY",
         "XUNITS": "Voltage in V",
-        "YUNITS": "Current in A"
+        "YUNITS": "Current in A",
+        "date": "27.4.2022",
+        "scan_rate": 0.0999998,
+        "step_size": 0.005,
+        "cycles": "10",
+        "software_version": "7.8.6",
+        "software": "Framework",
+        "time": "16:28:33",
+        "voltage_start": "-8.00000E-001",
+        "voltage_limit_one": "-2.00000E+000",
+        "voltage_limit_two": "-8.00000E-001",
+        "voltage_limit_end": "-8.00000E-001",
+        "serial": "IFC1010-28176",
+        "instrument": "Potentiostat"
       }
     },
     {
@@ -519,7 +649,20 @@
         "DATA CLASS": "XYPOINTS",
         "DATA TYPE": "CYCLIC VOLTAMMETRY",
         "XUNITS": "Voltage in V",
-        "YUNITS": "Current in A"
+        "YUNITS": "Current in A",
+        "date": "27.4.2022",
+        "scan_rate": 0.0999998,
+        "step_size": 0.005,
+        "cycles": "10",
+        "software_version": "7.8.6",
+        "software": "Framework",
+        "time": "16:28:33",
+        "voltage_start": "-8.00000E-001",
+        "voltage_limit_one": "-2.00000E+000",
+        "voltage_limit_two": "-8.00000E-001",
+        "voltage_limit_end": "-8.00000E-001",
+        "serial": "IFC1010-28176",
+        "instrument": "Potentiostat"
       }
     }
   ]

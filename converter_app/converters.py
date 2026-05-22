@@ -35,6 +35,15 @@ class Converter:
         self.identifiers = self._prepare_identifier()
         self._reaction_variation_identifiers = self._prepare_reaction_variation_identifier()
 
+    def get_matches(self, rdf=False, dataset=False):
+        return_matches = []
+        for match in self.matches:
+            if rdf and match['identifier']['isRdfOutput']:
+                return_matches.append(match)
+            if dataset and match['identifier']['isDatasetOutput']:
+                return_matches.append(match)
+        return return_matches
+
     def prepare(self):
         # Precomputed once so the loop helpers don't redo the same
         # (output_index, input_index) work on every call. Without these,

@@ -9,6 +9,7 @@
         "id": "#5tableHeader",
         "isDatasetOutput": true,
         "isDatatableOutput": true,
+        "isFirstMatch": true,
         "isLoobDatatableOutput": true,
         "isRdfOutput": false,
         "lineNumber": 18,
@@ -19,7 +20,7 @@
         "outputKey": "sample",
         "outputLayer": "sample_details",
         "outputTableIndex": [
-          "828fbbb9-0943-4df6-8a8c-c2af82722147"
+          "a0be3a60-17c5-448b-9888-e32ba24f6007"
         ],
         "predicate": null,
         "subject": null,
@@ -40,6 +41,7 @@
         "id": "#6tableHeader",
         "isDatasetOutput": true,
         "isDatatableOutput": true,
+        "isFirstMatch": true,
         "isLoobDatatableOutput": true,
         "isRdfOutput": false,
         "lineNumber": "",
@@ -50,7 +52,7 @@
         "outputKey": "amount",
         "outputLayer": "sample_details",
         "outputTableIndex": [
-          "828fbbb9-0943-4df6-8a8c-c2af82722147"
+          "a0be3a60-17c5-448b-9888-e32ba24f6007"
         ],
         "predicate": null,
         "subject": null,
@@ -71,6 +73,7 @@
         "id": "#7tableHeader",
         "isDatasetOutput": true,
         "isDatatableOutput": true,
+        "isFirstMatch": true,
         "isLoobDatatableOutput": true,
         "isRdfOutput": false,
         "lineNumber": "",
@@ -81,7 +84,7 @@
         "outputKey": "date",
         "outputLayer": "general",
         "outputTableIndex": [
-          "828fbbb9-0943-4df6-8a8c-c2af82722147"
+          "a0be3a60-17c5-448b-9888-e32ba24f6007"
         ],
         "predicate": null,
         "subject": null,
@@ -102,6 +105,7 @@
         "id": "#8tableHeader",
         "isDatasetOutput": true,
         "isDatatableOutput": true,
+        "isFirstMatch": true,
         "isLoobDatatableOutput": true,
         "isRdfOutput": false,
         "lineNumber": "",
@@ -112,7 +116,7 @@
         "outputKey": "time",
         "outputLayer": "general",
         "outputTableIndex": [
-          "828fbbb9-0943-4df6-8a8c-c2af82722147"
+          "a0be3a60-17c5-448b-9888-e32ba24f6007"
         ],
         "predicate": null,
         "subject": null,
@@ -133,6 +137,7 @@
         "id": "#9tableHeader",
         "isDatasetOutput": true,
         "isDatatableOutput": true,
+        "isFirstMatch": true,
         "isLoobDatatableOutput": true,
         "isRdfOutput": false,
         "lineNumber": "",
@@ -143,7 +148,7 @@
         "outputKey": "reference",
         "outputLayer": "meas",
         "outputTableIndex": [
-          "828fbbb9-0943-4df6-8a8c-c2af82722147"
+          "a0be3a60-17c5-448b-9888-e32ba24f6007"
         ],
         "predicate": null,
         "subject": null,
@@ -164,6 +169,7 @@
         "id": "#10tableHeader",
         "isDatasetOutput": true,
         "isDatatableOutput": true,
+        "isFirstMatch": true,
         "isLoobDatatableOutput": true,
         "isRdfOutput": false,
         "lineNumber": "",
@@ -180,7 +186,7 @@
         "outputKey": "reference_mass",
         "outputLayer": "meas",
         "outputTableIndex": [
-          "828fbbb9-0943-4df6-8a8c-c2af82722147"
+          "a0be3a60-17c5-448b-9888-e32ba24f6007"
         ],
         "predicate": null,
         "subject": null,
@@ -201,6 +207,7 @@
         "id": "#11tableHeader",
         "isDatasetOutput": true,
         "isDatatableOutput": true,
+        "isFirstMatch": true,
         "isLoobDatatableOutput": true,
         "isRdfOutput": false,
         "lineNumber": "",
@@ -211,7 +218,7 @@
         "outputKey": "temp_cal",
         "outputLayer": "meas",
         "outputTableIndex": [
-          "828fbbb9-0943-4df6-8a8c-c2af82722147"
+          "a0be3a60-17c5-448b-9888-e32ba24f6007"
         ],
         "predicate": null,
         "subject": null,
@@ -232,6 +239,7 @@
         "id": "#12tableHeader",
         "isDatasetOutput": true,
         "isDatatableOutput": true,
+        "isFirstMatch": true,
         "isLoobDatatableOutput": true,
         "isRdfOutput": false,
         "lineNumber": "",
@@ -242,7 +250,7 @@
         "outputKey": "sensFile",
         "outputLayer": "meas",
         "outputTableIndex": [
-          "828fbbb9-0943-4df6-8a8c-c2af82722147"
+          "a0be3a60-17c5-448b-9888-e32ba24f6007"
         ],
         "predicate": null,
         "subject": null,
@@ -263,6 +271,7 @@
         "id": "#13tableHeader",
         "isDatasetOutput": true,
         "isDatatableOutput": true,
+        "isFirstMatch": true,
         "isLoobDatatableOutput": true,
         "isRdfOutput": false,
         "lineNumber": "",
@@ -273,7 +282,7 @@
         "outputKey": "segments",
         "outputLayer": "meas",
         "outputTableIndex": [
-          "828fbbb9-0943-4df6-8a8c-c2af82722147"
+          "a0be3a60-17c5-448b-9888-e32ba24f6007"
         ],
         "predicate": null,
         "subject": null,
@@ -294,6 +303,7 @@
         "id": "#14tableHeader",
         "isDatasetOutput": true,
         "isDatatableOutput": true,
+        "isFirstMatch": true,
         "isLoobDatatableOutput": true,
         "isRdfOutput": false,
         "lineNumber": "",
@@ -304,7 +314,7 @@
         "outputKey": "brand",
         "outputLayer": "instrument",
         "outputTableIndex": [
-          "828fbbb9-0943-4df6-8a8c-c2af82722147"
+          "a0be3a60-17c5-448b-9888-e32ba24f6007"
         ],
         "predicate": null,
         "subject": null,
@@ -325,6 +335,7 @@
         "id": "#15tableHeader",
         "isDatasetOutput": true,
         "isDatatableOutput": true,
+        "isFirstMatch": true,
         "isLoobDatatableOutput": true,
         "isRdfOutput": false,
         "lineNumber": "",
@@ -335,7 +346,7 @@
         "outputKey": "instrument",
         "outputLayer": "instrument",
         "outputTableIndex": [
-          "828fbbb9-0943-4df6-8a8c-c2af82722147"
+          "a0be3a60-17c5-448b-9888-e32ba24f6007"
         ],
         "predicate": null,
         "subject": null,
@@ -356,6 +367,7 @@
         "id": "#16tableHeader",
         "isDatasetOutput": true,
         "isDatatableOutput": true,
+        "isFirstMatch": true,
         "isLoobDatatableOutput": true,
         "isRdfOutput": false,
         "lineNumber": "",
@@ -366,7 +378,7 @@
         "outputKey": "crucible",
         "outputLayer": "set",
         "outputTableIndex": [
-          "828fbbb9-0943-4df6-8a8c-c2af82722147"
+          "a0be3a60-17c5-448b-9888-e32ba24f6007"
         ],
         "predicate": null,
         "subject": null,
@@ -387,6 +399,7 @@
         "id": "#17tableHeader",
         "isDatasetOutput": true,
         "isDatatableOutput": true,
+        "isFirstMatch": true,
         "isLoobDatatableOutput": true,
         "isRdfOutput": false,
         "lineNumber": "",
@@ -397,7 +410,7 @@
         "outputKey": "atmosphere",
         "outputLayer": "set",
         "outputTableIndex": [
-          "828fbbb9-0943-4df6-8a8c-c2af82722147"
+          "a0be3a60-17c5-448b-9888-e32ba24f6007"
         ],
         "predicate": null,
         "subject": null,
@@ -418,6 +431,7 @@
         "id": "#18tableHeader",
         "isDatasetOutput": true,
         "isDatatableOutput": true,
+        "isFirstMatch": true,
         "isLoobDatatableOutput": true,
         "isRdfOutput": false,
         "lineNumber": "",
@@ -434,7 +448,7 @@
         "outputKey": "range",
         "outputLayer": "set",
         "outputTableIndex": [
-          "828fbbb9-0943-4df6-8a8c-c2af82722147"
+          "a0be3a60-17c5-448b-9888-e32ba24f6007"
         ],
         "predicate": null,
         "subject": null,
@@ -455,6 +469,7 @@
         "id": "#19tableHeader",
         "isDatasetOutput": true,
         "isDatatableOutput": true,
+        "isFirstMatch": true,
         "isLoobDatatableOutput": true,
         "isRdfOutput": false,
         "lineNumber": "",
@@ -465,7 +480,7 @@
         "outputKey": "temperature",
         "outputLayer": "set",
         "outputTableIndex": [
-          "828fbbb9-0943-4df6-8a8c-c2af82722147"
+          "a0be3a60-17c5-448b-9888-e32ba24f6007"
         ],
         "predicate": null,
         "subject": null,
@@ -486,6 +501,7 @@
         "id": "#20tableHeader",
         "isDatasetOutput": true,
         "isDatatableOutput": true,
+        "isFirstMatch": true,
         "isLoobDatatableOutput": true,
         "isRdfOutput": false,
         "lineNumber": "",
@@ -496,7 +512,7 @@
         "outputKey": "operator",
         "outputLayer": "general",
         "outputTableIndex": [
-          "828fbbb9-0943-4df6-8a8c-c2af82722147"
+          "a0be3a60-17c5-448b-9888-e32ba24f6007"
         ],
         "predicate": null,
         "subject": null,

@@ -75,7 +75,9 @@ def get_profile_result(reader_dict, file):
                 data = []
                 meta_data = []
                 if os.path.exists(os.path.join(res_path, file, 'data')):
-                    for data_file in os.listdir(os.path.join(res_path, file, 'data')):
+                    data_files = os.listdir(os.path.join(res_path, file, 'data'))
+                    data_files_sorted = sorted(data_files)
+                    for data_file in data_files_sorted:
                         with open(os.path.join(res_path, file, 'data', data_file), 'r', encoding='utf8') as f:
                             data.append(f.read())
 
@@ -112,8 +114,11 @@ def compare_profile_result(src_path, res_path, file):
         data_expected = []
         meta_expected = []
         if os.path.exists(os.path.join(res_path, file, 'data')):
-            for data_file in os.listdir(str(os.path.join(res_path, file, 'data'))):
+            data_files = os.listdir(str(os.path.join(res_path, file, 'data')))
+            data_files_sorted = sorted(data_files)
+            for data_file in data_files_sorted:
                 with open(os.path.join(res_path, file, 'data', data_file), 'r', encoding='utf8') as f:
+
                     data_expected.append(f.read())
 
         if os.path.exists(os.path.join(res_path, file, 'metadata')):

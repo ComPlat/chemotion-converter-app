@@ -1,5 +1,6 @@
 import logging
 import zipfile
+from datetime import datetime
 
 import openpyxl
 
@@ -50,8 +51,15 @@ class ExcelReader(Reader):
             keys = []
 
             previous_shape = None
-            for row in ws.values:
-                shape = self.get_shape(row)
+            for row_tuple in ws.values:
+                shape = self.get_shape(row_tuple)
+                row = [None] * len(row_tuple)
+                for idx, elem_shape in enumerate(shape):
+                    if elem_shape == 'dt':
+                        shape[idx] = 'f'
+                        row[idx] = row_tuple[idx].isoformat()
+                    else:
+                        row[idx] = row_tuple[idx]
 
                 if 's' in shape:
                     # there is a string in this row, this cant be the table

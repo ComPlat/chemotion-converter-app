@@ -19,7 +19,7 @@ class JcampZipWriter(Writer):
     def __init__(self, converter):
         super().__init__(converter)
         self.profile = converter.profile
-        self.matches = converter.matches
+        self.matches = converter.get_matches(dataset=True)
         self.zipbuffer = io.BytesIO()
 
     def process(self):

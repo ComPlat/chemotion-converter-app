@@ -9,6 +9,7 @@
         "id": "#2tableMetadata",
         "isDatasetOutput": true,
         "isDatatableOutput": true,
+        "isFirstMatch": true,
         "isLoobDatatableOutput": true,
         "isRdfOutput": false,
         "key": "N_SCANS",
@@ -19,7 +20,7 @@
         "outputKey": "cycles",
         "outputLayer": "meas",
         "outputTableIndex": [
-          "98bad96e-8259-4ee4-a84b-f8793b74040a"
+          "a42ad0f9-a2d4-473d-95f2-194c7de79ba9"
         ],
         "predicate": null,
         "subject": null,
@@ -39,6 +40,7 @@
         "id": "#3tableHeader",
         "isDatasetOutput": true,
         "isDatatableOutput": true,
+        "isFirstMatch": true,
         "isLoobDatatableOutput": true,
         "isRdfOutput": false,
         "lineNumber": 2,
@@ -49,7 +51,7 @@
         "outputKey": "time",
         "outputLayer": "general",
         "outputTableIndex": [
-          "98bad96e-8259-4ee4-a84b-f8793b74040a"
+          "a42ad0f9-a2d4-473d-95f2-194c7de79ba9"
         ],
         "predicate": null,
         "subject": null,
@@ -70,6 +72,7 @@
         "id": "#4tableHeader",
         "isDatasetOutput": true,
         "isDatatableOutput": true,
+        "isFirstMatch": true,
         "isLoobDatatableOutput": true,
         "isRdfOutput": false,
         "lineNumber": 2,
@@ -80,7 +83,7 @@
         "outputKey": "date",
         "outputLayer": "general",
         "outputTableIndex": [
-          "98bad96e-8259-4ee4-a84b-f8793b74040a"
+          "a42ad0f9-a2d4-473d-95f2-194c7de79ba9"
         ],
         "predicate": null,
         "subject": null,
@@ -101,6 +104,7 @@
         "id": "#5tableMetadata",
         "isDatasetOutput": true,
         "isDatatableOutput": true,
+        "isFirstMatch": true,
         "isLoobDatatableOutput": true,
         "isRdfOutput": false,
         "key": "deviceserial",
@@ -111,7 +115,7 @@
         "outputKey": "serial",
         "outputLayer": "instrument",
         "outputTableIndex": [
-          "98bad96e-8259-4ee4-a84b-f8793b74040a"
+          "a42ad0f9-a2d4-473d-95f2-194c7de79ba9"
         ],
         "predicate": null,
         "subject": null,
@@ -131,6 +135,7 @@
         "id": "#6tableMetadata",
         "isDatasetOutput": true,
         "isDatatableOutput": true,
+        "isFirstMatch": true,
         "isLoobDatatableOutput": true,
         "isRdfOutput": false,
         "key": "SCAN_RATE",
@@ -141,7 +146,7 @@
         "outputKey": "scan_rate",
         "outputLayer": "meas",
         "outputTableIndex": [
-          "98bad96e-8259-4ee4-a84b-f8793b74040a"
+          "a42ad0f9-a2d4-473d-95f2-194c7de79ba9"
         ],
         "predicate": null,
         "subject": null,
@@ -161,6 +166,7 @@
         "id": "#7tableHeader",
         "isDatasetOutput": true,
         "isDatatableOutput": true,
+        "isFirstMatch": true,
         "isLoobDatatableOutput": true,
         "isRdfOutput": false,
         "lineNumber": 1,
@@ -171,7 +177,7 @@
         "outputKey": "software",
         "outputLayer": "software",
         "outputTableIndex": [
-          "98bad96e-8259-4ee4-a84b-f8793b74040a"
+          "a42ad0f9-a2d4-473d-95f2-194c7de79ba9"
         ],
         "predicate": null,
         "subject": null,
@@ -192,6 +198,7 @@
         "id": "#8tableHeader",
         "isDatasetOutput": true,
         "isDatatableOutput": true,
+        "isFirstMatch": true,
         "isLoobDatatableOutput": true,
         "isRdfOutput": false,
         "lineNumber": 1,
@@ -202,7 +209,7 @@
         "outputKey": "software_version",
         "outputLayer": "software",
         "outputTableIndex": [
-          "98bad96e-8259-4ee4-a84b-f8793b74040a"
+          "a42ad0f9-a2d4-473d-95f2-194c7de79ba9"
         ],
         "predicate": null,
         "subject": null,
@@ -223,6 +230,7 @@
         "id": "#9tableMetadata",
         "isDatasetOutput": true,
         "isDatatableOutput": true,
+        "isFirstMatch": true,
         "isLoobDatatableOutput": true,
         "isRdfOutput": false,
         "key": "E_STEP",
@@ -233,7 +241,7 @@
         "outputKey": "step_size",
         "outputLayer": "meas",
         "outputTableIndex": [
-          "98bad96e-8259-4ee4-a84b-f8793b74040a"
+          "a42ad0f9-a2d4-473d-95f2-194c7de79ba9"
         ],
         "predicate": null,
         "subject": null,
@@ -253,6 +261,7 @@
         "id": "#10tableMetadata",
         "isDatasetOutput": true,
         "isDatatableOutput": true,
+        "isFirstMatch": true,
         "isLoobDatatableOutput": true,
         "isRdfOutput": false,
         "key": "E_BEGIN",
@@ -263,7 +272,7 @@
         "outputKey": "voltage_start",
         "outputLayer": "meas",
         "outputTableIndex": [
-          "98bad96e-8259-4ee4-a84b-f8793b74040a"
+          "a42ad0f9-a2d4-473d-95f2-194c7de79ba9"
         ],
         "predicate": null,
         "subject": null,
@@ -283,6 +292,7 @@
         "id": "#11tableMetadata",
         "isDatasetOutput": true,
         "isDatatableOutput": true,
+        "isFirstMatch": true,
         "isLoobDatatableOutput": true,
         "isRdfOutput": false,
         "key": "E_VTX1",
@@ -293,7 +303,7 @@
         "outputKey": "voltage_limit_one",
         "outputLayer": "meas",
         "outputTableIndex": [
-          "98bad96e-8259-4ee4-a84b-f8793b74040a"
+          "a42ad0f9-a2d4-473d-95f2-194c7de79ba9"
         ],
         "predicate": null,
         "subject": null,
@@ -313,6 +323,7 @@
         "id": "#12tableMetadata",
         "isDatasetOutput": true,
         "isDatatableOutput": true,
+        "isFirstMatch": true,
         "isLoobDatatableOutput": true,
         "isRdfOutput": false,
         "key": "E_VTX2",
@@ -323,7 +334,7 @@
         "outputKey": "voltage_limit_two",
         "outputLayer": "meas",
         "outputTableIndex": [
-          "98bad96e-8259-4ee4-a84b-f8793b74040a"
+          "a42ad0f9-a2d4-473d-95f2-194c7de79ba9"
         ],
         "predicate": null,
         "subject": null,
@@ -343,6 +354,7 @@
         "id": "#13tableMetadata",
         "isDatasetOutput": true,
         "isDatatableOutput": true,
+        "isFirstMatch": true,
         "isLoobDatatableOutput": true,
         "isRdfOutput": false,
         "key": "E_END",
@@ -353,7 +365,7 @@
         "outputKey": "voltage_limit_end",
         "outputLayer": "meas",
         "outputTableIndex": [
-          "98bad96e-8259-4ee4-a84b-f8793b74040a"
+          "a42ad0f9-a2d4-473d-95f2-194c7de79ba9"
         ],
         "predicate": null,
         "subject": null,

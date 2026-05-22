@@ -34,7 +34,7 @@
         {
             "header": [
                 "Channel\tStart DateTime\tSchedule File Name\tCreator\tComments\tSoftware Version\tSchedule Version\tItem ID\tHas Aux\tHas Specail\tLog Aux Data Flag\tLog Special Flag\tNone\tNone\tNone",
-                "22\t2023-04-28 11:42:32\tMassimo\\Battery_Precycling_Anoge-GE_Crate-Upto5C-1C-Cycling_280423.sdu\tNone\tNone\tMits7  PV Build: 201903USB\tSchedule Version 7.00.15\tNone\tNone\tNone\tNone\t0\t0\tTrue\tTrue"
+                "22\t2023-04-28T11:42:32\tMassimo\\Battery_Precycling_Anoge-GE_Crate-Upto5C-1C-Cycling_280423.sdu\tNone\tNone\tMits7  PV Build: 201903USB\tSchedule Version 7.00.15\tNone\tNone\tNone\tNone\t0\t0\tTrue\tTrue"
             ],
             "metadata": {
                 "rows": "0",
@@ -3412,11 +3412,11 @@
             "header": [],
             "metadata": {
                 "TEST REPORT": "MX33_MCell-KS_C-Rate-5C-Cycling-1C-LP30_WE-GEcc-n2-1p1784mg_CE-Li",
-                "MX33_MCell-KS_C-Rate-5C-Cycling-1C-LP30_WE-GEcc-n2-1p1784mg_CE-Li": "2023-05-17 00:00:00",
+                "MX33_MCell-KS_C-Rate-5C-Cycling-1C-LP30_WE-GEcc-n2-1p1784mg_CE-Li": "2023-05-17T00:00:00",
                 "Serial Number": "205847",
                 "F:\\Arbin_Export\\Juanlu\\MX33_MCell-KS_C-Rate-5C-Cycling-1C-LP30_WE-GEcc-n2-1p1784mg_CE-Li\\Channel_22\\MX33_MCell-KS_C-Rate-5C-Cycling-1C-LP30_WE-GEcc-n2-1p1784mg_CE-Li_Statistices.xlsx": "None",
                 "Channel": "22",
-                "Start DateTime": "2023-04-28 11:42:32",
+                "Start DateTime": "2023-04-28T11:42:32",
                 "Schedule File Name": "Massimo\\Battery_Precycling_Anoge-GE_Crate-Upto5C-1C-Cycling_280423.sdu",
                 "Creator": "None",
                 "Comments": "None",
@@ -3427,7 +3427,7 @@
                 "Has Specail": "None",
                 "Log Aux Data Flag": "None",
                 "Log Special Flag": "0",
-                "Date_Time": "2023-04-30 11:35:56.686000",
+                "Date_Time": "2023-04-30T11:35:56.686000",
                 "Test_Time(s)": "172413.63058",
                 "Step_Time(s)": "71890.2953",
                 "Step_Index": "4",
@@ -3468,6 +3468,6 @@
         "mime_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
         "extension": ".xlsx",
         "reader": "ExcelReader",
-        "uploaded": "2026-04-22T10:05:32.123513+00:00"
+        "uploaded": "2026-05-22T05:09:58.960457+00:00"
     }
 }
