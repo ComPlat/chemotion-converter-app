@@ -1,0 +1,44 @@
+name: build_test_results.yml
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.13"]
+    steps:
+      - uses: actions/checkout@v5
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v6
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install ".[dev]"
+      - name: Build tests
+        run: |
+          python -m test_manager -t -gt -tp
+      - name: Test the code with pytest
+        run: |
+          pytest -m test_manager -e
+          pytest -m test_manager -ep
+
+      - name: Configure git
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+
+      - name: Commit changes
+        run: |
+          git add -A
+          git commit -m "Update [skip ci]" || echo "nothing to commit"
+
+      - name: Push changes
+        if: github.ref_type != 'pull_request'
+        run: |
+          git push https://${{ secrets.GH_PAT }}@github.com/${{ github.repository }}.git HEAD:refs/heads/${GITHUB_REF_NAME}
+
