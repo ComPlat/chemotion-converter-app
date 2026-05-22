@@ -32,12 +32,18 @@ class HplcReader(Reader):
         if self.is_tar_ball:
             try:
                 if len(self.file_content) > 1:
-                    self.df = read_chromatograms(self.file_content[0].file_path)
+                    fp = Path(self.file_content[0].file_path)
+                    if not any(fp.glob("*.ch")):
+                        if any(fp.parent.glob("*.ch")):
+                            fp = fp.parent
+                        else:
+                            return False
+                    self.df = read_chromatograms(str(fp))
                 else:
                     return False
                 return True
 
-            except ValueError:
+            except ValueError as e:
                 return False
 
         return False
