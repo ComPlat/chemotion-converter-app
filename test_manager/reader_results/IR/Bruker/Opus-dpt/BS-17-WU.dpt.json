@@ -7059,7 +7059,7 @@
         "mime_type": "text/csv",
         "extension": ".dpt",
         "reader": "CSVReader",
-        "uploaded": "2026-05-22T11:04:15.798094+00:00",
+        "uploaded": "2026-05-25T19:39:42.920565+00:00",
         "lineterminator": "\\r\\n",
         "quoting": "0",
         "doublequote": "False",

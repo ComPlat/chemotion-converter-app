@@ -52,8 +52,7 @@ def compare_reader_result(src_path, res_path, file):
                 f_res.close()
 
     except FileNotFoundError:
-        print('Reader result not found')
-        print(traceback.format_exc())
+        print(f' {file}: Reader result not found')
     return (expected_result, content, has_reader)
 
 
@@ -87,16 +86,14 @@ def get_profile_result(reader_dict, file):
                         meta_data.append(json.loads(f.read()))
                 return data, meta_data, True
             else:
-                raise FileNotFoundError('No profile found')
+                print(f' {file}: Profile not found')
         except FileNotFoundError:
-            print('Reader or Profile not found')
-            print(traceback.format_exc())
+            pass
+            print(f' {file}: Reader or Profile not found')
         except AssertionError:
-            print('Profile not matching')
-            print(traceback.format_exc())
+            print(f' {file}: Profile not matching')
         except AttributeError:
-            print('Converter con not write')
-            print(traceback.format_exc())
+            print(f' {file}: Converter con not write')
         finally:
             shutil.rmtree(res_path)
     return [], [], False
