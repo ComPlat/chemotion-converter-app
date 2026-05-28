@@ -32,7 +32,7 @@ class Converter:
         self.input_tables = file_data.get('tables', [])
         self.input_units = file_data.get('units', [])
         self.profile_units = self.profile.data.get('units', [])
-        self.profile_data_units = self.profile.data.get('data', {}).get('units', [])
+        self.profile_data_units = self._get_profile_data_units()
         self.profile_output_tables = self.profile.data.get('tables', [])
         self.output_tables = []
         self.output_table_profile_indexes = []
@@ -48,6 +48,20 @@ class Converter:
             else:
                 self.output_table_profile_indexes.append(output_table_index)
                 self.output_tables.append(output_table)
+
+    def _get_profile_data_units(self):
+        profile_data = self.profile.data.get('data', {})
+        if isinstance(profile_data, list):
+            profile_data_units = []
+            for data_entry in profile_data:
+                if isinstance(data_entry, dict) and isinstance(data_entry.get('units'), list):
+                    profile_data_units.extend(data_entry['units'])
+            return profile_data_units
+
+        if isinstance(profile_data, dict):
+            return profile_data.get('units', [])
+
+        return []
 
     def _prepare_tables(self, index):
         # match the output Table to the input tables and adjust the tableIndexes to the input table
