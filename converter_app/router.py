@@ -25,7 +25,7 @@ from converter_app.models import File, Profile
 from converter_app.options import compose_options
 from converter_app.profile_migration.utils.registration import Migrations
 from converter_app.readers import READERS as registry
-from converter_app.utils import checkpw, run_conversion, get_app_root
+from converter_app.utils import checkpw, run_conversion, get_app_root, str_to_bool
 from converter_app.validation import validate_profile
 
 is_shutdown = False
@@ -250,7 +250,7 @@ def profile_router(app: Flask, auth: HTTPBasicAuth):
         profile_data = json.loads(request.data)
         profile = Profile(profile_data, client_id)
         if profile.clean():
-            Migrations().migrate_profile(profile)
+            Migrations().migrate_profile(profile, True)
             try:
                 validate_profile(profile.as_dict)
                 profile.save()
@@ -282,7 +282,7 @@ def profile_router(app: Flask, auth: HTTPBasicAuth):
                 return jsonify({'error': 'Bad request'}), 400
 
             if profile.clean():
-                Migrations().migrate_profile(profile)
+                Migrations().migrate_profile(profile, add_history=False)
                 try:
                     validate_profile(profile.as_dict)
                     profile.save()
@@ -304,6 +304,22 @@ def profile_router(app: Flask, auth: HTTPBasicAuth):
             return '', 204
         abort(404)
         return None
+
+    @app.route('/profiles/restore/<profile_id>/<version>', methods=['POST'])
+    @auth.login_required
+    def restore_profile(profile_id, version):
+        hard = str_to_bool(json.loads(request.data).get("hard"))
+        client_id = auth.current_user()
+        profile = Profile.retrieve(client_id, profile_id)
+        if not profile:
+            abort(404)
+        try:
+            profile.restore(version, hard)
+        except ValueError as e:
+            return jsonify({'error': str(e)}), 404
+        except RuntimeError as e:
+            return jsonify({'error': str(e)}), 409
+        return jsonify(profile.as_dict), 200
 
 
 def utils_router(app: Flask, auth: HTTPBasicAuth):

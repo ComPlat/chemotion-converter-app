@@ -1,82 +1,225 @@
 {
     "converter_version": "1.8.0",
-    "data": {
-        "metadata": {
-            "content_type": "application/octet-stream",
-            "extension": ".xy",
-            "file_name": "DMEG4NMe2qu.xy",
-            "mime_type": "text/plain",
-            "reader": "AsciiReader",
-            "uploaded": "2023-03-12T12:51:38.960628"
-        },
-        "tables": [
-            {
-                "columns": [
-                    {
-                        "key": "0",
-                        "name": "Column #0"
+    "data": [
+        {
+            "metadata": {
+                "content_type": "application/octet-stream",
+                "extension": ".xy",
+                "file_name": "DMEG4NMe2qu.xy",
+                "mime_type": "text/plain",
+                "reader": "AsciiReader",
+                "uploaded": "2023-03-12T12:51:38.960628"
+            },
+            "tables": [
+                {
+                    "columns": [
+                        {
+                            "key": "0",
+                            "name": "Column #0"
+                        },
+                        {
+                            "key": "1",
+                            "name": "Column #1"
+                        }
+                    ],
+                    "header": [
+                        "mass_spectrometry, general_xy",
+                        ""
+                    ],
+                    "metadata": {
+                        "__UNIT_%": "%",
+                        "__UNIT_PPM": "ppm",
+                        "__UNIT_gram": "g",
+                        "__UNIT_liter": "l",
+                        "__UNIT_mol": "mol",
+                        "columns": "2",
+                        "rows": "401"
                     },
-                    {
-                        "key": "1",
-                        "name": "Column #1"
-                    }
-                ],
-                "header": [
-                    "mass_spectrometry, general_xy",
-                    ""
-                ],
-                "metadata": {
-                    "columns": "2",
-                    "rows": "401"
-                },
-                "rows": [
-                    [
-                        "284.14275",
-                        "0"
-                    ],
-                    [
-                        "284.14357",
-                        "0"
-                    ],
-                    [
-                        "284.14440",
-                        "0"
-                    ],
-                    [
-                        "284.14522",
-                        "0"
-                    ],
-                    [
-                        "284.14605",
-                        "0"
-                    ],
-                    [
-                        "284.14687",
-                        "0"
-                    ],
-                    [
-                        "284.14770",
-                        "0"
-                    ],
-                    [
-                        "284.14852",
-                        "0"
-                    ],
-                    [
-                        "284.14935",
-                        "0"
-                    ],
-                    [
-                        "284.15017",
-                        "0"
+                    "rows": [
+                        [
+                            "284.14275",
+                            "0"
+                        ],
+                        [
+                            "284.14357",
+                            "0"
+                        ],
+                        [
+                            "284.14440",
+                            "0"
+                        ],
+                        [
+                            "284.14522",
+                            "0"
+                        ],
+                        [
+                            "284.14605",
+                            "0"
+                        ],
+                        [
+                            "284.14687",
+                            "0"
+                        ],
+                        [
+                            "284.14770",
+                            "0"
+                        ],
+                        [
+                            "284.14852",
+                            "0"
+                        ],
+                        [
+                            "284.14935",
+                            "0"
+                        ],
+                        [
+                            "284.15017",
+                            "0"
+                        ]
                     ]
-                ]
-            }
-        ]
-    },
+                }
+            ]
+        }
+    ],
     "datatypes": [],
     "description": "generic data table only; ref location: Uni Aachen, data: +, metadata: -",
     "devices": [],
+    "diff_history": [
+        {
+            "at": "2026-04-30T12:53:58.480576+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "Mass spectrometry from general xy format, data: +, metadata: -"
+                }
+            ],
+            "profile_version": "1.0",
+            "trigger": "migration:20260430145303"
+        },
+        {
+            "at": "2026-04-30T12:54:02.363272+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "Mass spectrometry from general xy format, data: +, metadata: -__TEST"
+                }
+            ],
+            "profile_version": "1.1",
+            "trigger": "migration:20260430145303"
+        },
+        {
+            "at": "2026-04-30T13:02:20.047881+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "Mass spectrometry from general xy format, data: +, metadata: -__TEST__TEST"
+                }
+            ],
+            "profile_version": "1.2",
+            "trigger": "restore_migration:20260430145303"
+        },
+        {
+            "at": "2026-04-30T13:02:20.049080+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "Mass spectrometry from general xy format, data: +, metadata: -__TEST"
+                }
+            ],
+            "profile_version": "1.3",
+            "trigger": "restore_migration:20260430145303"
+        },
+        {
+            "at": "2026-05-04T04:59:00.383659+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "Mass spectrometry from general xy format, data: +, metadata: -"
+                }
+            ],
+            "profile_version": "1.4",
+            "trigger": "undo:1.1"
+        },
+        {
+            "at": "2026-05-04T04:59:00.384844+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "Mass spectrometry from general xy format, data: +, metadata: -__TEST"
+                }
+            ],
+            "profile_version": "1.5",
+            "trigger": "undo:1.0"
+        },
+        {
+            "at": "2026-05-04T04:59:00.385623+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "Mass spectrometry from general xy format, data: +, metadata: -"
+                }
+            ],
+            "profile_version": "1.6",
+            "trigger": "migration:20260504065656"
+        },
+        {
+            "at": "2026-05-04T07:23:31.311020+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "Mass spectrometry from general xy format, data: +, metadata: ---TEST"
+                }
+            ],
+            "profile_version": "1.7",
+            "trigger": "undo:1.6"
+        },
+        {
+            "at": "2026-05-06T08:56:29.087007+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/reactionVariations"
+                }
+            ],
+            "profile_version": "1.8",
+            "trigger": "migration:20260417132254"
+        },
+        {
+            "at": "2026-05-06T08:56:29.087240+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_liter"
+                },
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_PPM"
+                },
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_mol"
+                },
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_%"
+                },
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_gram"
+                }
+            ],
+            "profile_version": "1.9",
+            "trigger": "migration:20260422063146"
+        }
+    ],
     "id": "5b206281-49f6-437b-99ca-c64a621eb903",
     "identifiers": [
         {
@@ -91,21 +234,27 @@
         }
     ],
     "isDisabled": false,
-    "last_migration": "20260113143334",
+    "last_migration": "20260430125545",
+    "objects": [],
     "ols": null,
     "ontology": "",
     "predicates": [],
+    "profile_version": "1.10",
+    "reactionVariations": {
+        "elements": [],
+        "identifiers": []
+    },
     "rootOntology": {
         "description": [
             "A planned process that has the objective to produce information about a material entity (the evaluant) by examining it."
         ],
-        "id": "OBI:property:http://purl.obolibrary.org/obo/OBI_0000070",
+        "id": "obi:class:http://purl.obolibrary.org/obo/OBI_0000070",
         "iri": "http://purl.obolibrary.org/obo/OBI_0000070",
         "label": "assay",
         "namespace": "http://purl.obolibrary.org/obo/",
         "obo_id": "OBI:0000070",
-        "ontology_name": "chmo",
-        "ontology_prefix": "CHMO",
+        "ontology_name": "obi",
+        "ontology_prefix": "OBI",
         "short_form": "OBI_0000070",
         "type": "class"
     },
@@ -132,5 +281,6 @@
             }
         }
     ],
-    "title": "Mass spectrometry from general xy format, data: +, metadata: -"
+    "title": "Mass spectrometry from general xy format, data: +, metadata: -",
+    "version": 0
 }

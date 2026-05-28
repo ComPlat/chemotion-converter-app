@@ -1,918 +1,1061 @@
 {
     "converter_version": "1.8.0",
-    "data": {
-        "metadata": {
-            "content_type": "application/octet-stream",
-            "extension": ".DTA",
-            "file_name": "2mMLSH-R415A_AcNiDrop_BVTPtChip_no10.DTA",
-            "mime_type": "text/plain",
-            "reader": "DtaReader"
-        },
-        "tables": [
-            {
-                "columns": [
-                    {
-                        "key": "0",
-                        "name": "Column #0 (Pt)"
-                    },
-                    {
-                        "key": "1",
-                        "name": "Column #1 (T)"
-                    },
-                    {
-                        "key": "2",
-                        "name": "Column #2 (Vf)"
-                    },
-                    {
-                        "key": "3",
-                        "name": "Column #3 (Im)"
-                    },
-                    {
-                        "key": "4",
-                        "name": "Column #4 (Vu)"
-                    },
-                    {
-                        "key": "5",
-                        "name": "Column #5 (Sig)"
-                    },
-                    {
-                        "key": "6",
-                        "name": "Column #6 (Ach)"
-                    },
-                    {
-                        "key": "7",
-                        "name": "Column #7 (IERange)"
-                    },
-                    {
-                        "key": "8",
-                        "name": "Column #8 (Over)"
-                    },
-                    {
-                        "key": "9",
-                        "name": "Column #9 (Temp)"
-                    }
-                ],
-                "header": [
-                    "EXPLAIN",
-                    "TAG\tCV",
-                    "TITLE\tLABEL\tCyclic Voltammetry\tTest &Identifier",
-                    "DATE\tLABEL\t23.5.2022\tDate",
-                    "TIME\tLABEL\t16:09:50\tTime",
-                    "NOTES\tNOTES\t1\t&Notes...",
-                    "",
-                    "PSTAT\tPSTAT\tIFC1010-30147\tPotentiostat",
-                    "VINIT\tPOTEN\t0,00000E+000\tF\tInitial &E (V)",
-                    "VLIMIT1\tPOTEN\t-1,20000E+000\tF\tScan Limit &1 (V)",
-                    "VLIMIT2\tPOTEN\t1,10000E+000\tF\tScan Limit &2 (V)",
-                    "VFINAL\tPOTEN\t0,00000E+000\tF\tFinal &E (V)",
-                    "SCANRATE\tQUANT\t9,99998E+001\t&Scan Rate (mV/s)",
-                    "STEPSIZE\tQUANT\t5,00000E+000\tSt&ep Size (mV)",
-                    "CYCLES\tIQUANT\t3\tC&ycles (#)",
-                    "IMODE\tSELECTOR\t0\tI/E Range &Mode",
-                    "IRANGE\tQUANT\t2,00000E-001\t&Max Current (mA)",
-                    "AREA\tQUANT\t1,00000E+000\tElectrode &Area (cm^2)",
-                    "ELECTRODETYPE\tSELECTOR\t0\tElectrode Type",
-                    "STRIPPING\tTOGGLE\tF\tUsed for Stripping",
-                    "CONDIT\tTWOPARAM\tF\t1,50000E+001\t0,00000E+000\tConditionin&g\tTime(s)\tE(V)",
-                    "DELAY\tTWOPARAM\tF\t3,00000E+001\t0,00000E+000\tInit. De&lay\tTime(s)\tStab.(mV/s)",
-                    "EQDELAY\tQUANT\t2,00000E+000\tEquil. &Time (s)",
-                    "IRCOMP\tSELECTOR\t0\tIRCom&p",
-                    "PFCOR\tQUANT\t0,00000E+000\tPF Corr. (ohm)",
-                    "SAMPLINGMODE\tSELECTOR\t1\tSampling &Mode",
-                    "EOC\tQUANT\t0\tOpen Circuit (V)",
-                    "PSTATMODEL\tIQUANT\t64\tPstat Model",
-                    "PSTATSECTION\tLABEL\tIFC1010-30147\tPstat Section",
-                    "PSTATSERIALNO\tLABEL\t30147\tPstat Serial Number",
-                    "CTRLMODE\tIQUANT\t1\tControl Mode",
-                    "ELECTROMETER\tIQUANT\t0\tRE=0 or CS=1",
-                    "IESTAB\tIQUANT\t2\tI/E Stability",
-                    "CASPEED\tIQUANT\t4\tControl Amp Speed",
-                    "CONVENTION\tIQUANT\t1\tCurrent Convention",
-                    "ICHRANGE\tIQUANT\t2\tIch Range",
-                    "ICHRANGEMODE\tTOGGLE\tF\tIch Auto Range",
-                    "ICHOFFSETENABLE\tTOGGLE\tF\tIch Offset Enable",
-                    "ICHOFFSET\tQUANT\t0\tIch Offset (V)",
-                    "ICHFILTER\tIQUANT\t3\tIch Filter",
-                    "VCHRANGE\tIQUANT\t2\tVch Range",
-                    "VCHRANGEMODE\tTOGGLE\tF\tVch Auto Range",
-                    "VCHOFFSETENABLE\tTOGGLE\tF\tVch Offset Enable",
-                    "VCHOFFSET\tQUANT\t0\tVch Offset (V)",
-                    "VCHFILTER\tIQUANT\t3\tVch Filter",
-                    "IERANGELOWERLIMIT\tIQUANT\t4\tI/E Range Lower Limit",
-                    "IERANGEMODE\tTOGGLE\tT\tI/E AutoRange",
-                    "IERANGE\tIQUANT\t9\tI/E Range",
-                    "ACHSELECT\tIQUANT\t0\tAch Select",
-                    "ACHRANGE\tIQUANT\t2\tAch Range",
-                    "ACHOFFSETENABLE\tTOGGLE\tF\tAch Offset Enable",
-                    "ACHOFFSET\tQUANT\t0\tAch Offset (V)",
-                    "ACHFILTER\tIQUANT\t1\tAch Filter",
-                    "SENSECABLEID\tIQUANT\t14\tSense Cable ID",
-                    "PWRCABLEID\tIQUANT\t14\tPower Cable ID",
-                    "DCCALDATE\tLABEL\t5/13/2022\tDC Calibration Date",
-                    "ACCALDATE\tLABEL\t8/12/2021\tAC Calibration Date",
-                    "FRAMEWORKVERSION\tLABEL\t7.8.6\tFramework Version",
-                    "INSTRUMENTVERSION\tLABEL\t4.50\tInstrument Version",
-                    "CURVE1\tTABLE"
-                ],
-                "metadata": {
-                    "ACCALDATE": "8/12/2021",
-                    "ACHFILTER": "1",
-                    "ACHOFFSET": "0",
-                    "ACHOFFSETENABLE": "F",
-                    "ACHRANGE": "2",
-                    "ACHSELECT": "0",
-                    "AREA": "1,00000E+000",
-                    "CASPEED": "4",
-                    "CONDIT": "F",
-                    "CONVENTION": "1",
-                    "CTRLMODE": "1",
-                    "CYCLES": "3",
-                    "DATE": "23.5.2022",
-                    "DCCALDATE": "5/13/2022",
-                    "DELAY": "F",
-                    "ELECTRODETYPE": "0",
-                    "ELECTROMETER": "0",
-                    "EOC": "0",
-                    "EQDELAY": "2,00000E+000",
-                    "FRAMEWORKVERSION": "7.8.6",
-                    "ICHFILTER": "3",
-                    "ICHOFFSET": "0",
-                    "ICHOFFSETENABLE": "F",
-                    "ICHRANGE": "2",
-                    "ICHRANGEMODE": "F",
-                    "IERANGE": "9",
-                    "IERANGELOWERLIMIT": "4",
-                    "IERANGEMODE": "T",
-                    "IESTAB": "2",
-                    "IMODE": "0",
-                    "INSTRUMENTVERSION": "4.50",
-                    "IRANGE": "2,00000E-001",
-                    "IRCOMP": "0",
-                    "NOTES": "1",
-                    "PFCOR": "0,00000E+000",
-                    "PSTAT": "IFC1010-30147",
-                    "PSTATMODEL": "64",
-                    "PSTATSECTION": "IFC1010-30147",
-                    "PSTATSERIALNO": "30147",
-                    "PWRCABLEID": "14",
-                    "SAMPLINGMODE": "1",
-                    "SCANRATE": "9,99998E+001",
-                    "SENSECABLEID": "14",
-                    "STEPSIZE": "5,00000E+000",
-                    "STRIPPING": "F",
-                    "TIME": "16:09:50",
-                    "TITLE": "Cyclic",
-                    "VCHFILTER": "3",
-                    "VCHOFFSET": "0",
-                    "VCHOFFSETENABLE": "F",
-                    "VCHRANGE": "2",
-                    "VCHRANGEMODE": "F",
-                    "VFINAL": "0,00000E+000",
-                    "VINIT": "0,00000E+000",
-                    "VLIMIT1": "-1,20000E+000",
-                    "VLIMIT2": "1,10000E+000",
-                    "column_00": "Pt",
-                    "column_00_unit": "#",
-                    "column_01": "T",
-                    "column_01_unit": "s",
-                    "column_02": "Vf",
-                    "column_02_unit": "V",
-                    "column_03": "Im",
-                    "column_03_unit": "vs.",
-                    "column_04": "Vu",
-                    "column_04_unit": "Ref.",
-                    "column_05": "Sig",
-                    "column_05_unit": "A",
-                    "column_06": "Ach",
-                    "column_06_unit": "V",
-                    "column_07": "IERange",
-                    "column_07_unit": "V",
-                    "column_08": "Over",
-                    "column_08_unit": "V",
-                    "column_09": "Temp",
-                    "column_09_unit": "#",
-                    "column_10_unit": "bits",
-                    "column_11_unit": "deg",
-                    "column_12_unit": "C",
-                    "columns": 10,
-                    "rows": 701
-                },
-                "rows": [
-                    [
-                        "0",
-                        "0.05",
-                        "1.10407E-005",
-                        "-7.42159E-006",
-                        "0.00000E+000",
-                        "1.75089E-006",
-                        "0.00000E+000",
-                        "9",
-                        "...........",
-                        "1387.94"
-                    ],
-                    [
-                        "1",
-                        "0.1",
-                        "-4.99727E-003",
-                        "-7.49944E-006",
-                        "0.00000E+000",
-                        "-4.99606E-003",
-                        "0.00000E+000",
-                        "8",
-                        "...........",
-                        "1387.94"
-                    ],
-                    [
-                        "2",
-                        "0.15",
-                        "-9.96957E-003",
-                        "-7.53218E-006",
-                        "0.00000E+000",
-                        "-9.99387E-003",
-                        "0.00000E+000",
-                        "7",
-                        "...........",
-                        "1387.94"
-                    ],
-                    [
-                        "3",
-                        "0.2",
-                        "-1.49946E-002",
-                        "-7.56641E-006",
-                        "0.00000E+000",
-                        "-1.49917E-002",
-                        "0.00000E+000",
-                        "7",
-                        "...........",
-                        "1387.94"
-                    ],
-                    [
-                        "4",
-                        "0.25",
-                        "-1.99829E-002",
-                        "-7.59748E-006",
-                        "0.00000E+000",
-                        "-1.99895E-002",
-                        "0.00000E+000",
-                        "7",
-                        "...........",
-                        "1387.94"
-                    ],
-                    [
-                        "5",
-                        "0.3",
-                        "-2.49942E-002",
-                        "-7.62093E-006",
-                        "0.00000E+000",
-                        "-2.49873E-002",
-                        "0.00000E+000",
-                        "7",
-                        "...........",
-                        "1387.94"
-                    ],
-                    [
-                        "6",
-                        "0.35",
-                        "-3.00002E-002",
-                        "-7.64102E-006",
-                        "0.00000E+000",
-                        "-2.99851E-002",
-                        "0.00000E+000",
-                        "7",
-                        "...........",
-                        "1387.94"
-                    ],
-                    [
-                        "7",
-                        "0.4",
-                        "-3.49758E-002",
-                        "-7.66746E-006",
-                        "0.00000E+000",
-                        "-3.49829E-002",
-                        "0.00000E+000",
-                        "7",
-                        "...........",
-                        "1387.94"
-                    ],
-                    [
-                        "8",
-                        "0.45",
-                        "-3.99893E-002",
-                        "-7.68228E-006",
-                        "0.00000E+000",
-                        "-3.99807E-002",
-                        "0.00000E+000",
-                        "7",
-                        "...........",
-                        "1387.94"
-                    ],
-                    [
-                        "9",
-                        "0.5",
-                        "-4.49699E-002",
-                        "-7.69809E-006",
-                        "0.00000E+000",
-                        "-4.49785E-002",
-                        "0.00000E+000",
-                        "7",
-                        "...........",
-                        "1387.94"
-                    ]
-                ]
+    "data": [
+        {
+            "metadata": {
+                "content_type": "application/octet-stream",
+                "extension": ".DTA",
+                "file_name": "2mMLSH-R415A_AcNiDrop_BVTPtChip_no10.DTA",
+                "mime_type": "text/plain",
+                "reader": "DtaReader"
             },
-            {
-                "columns": [
-                    {
-                        "key": "0",
-                        "name": "Column #0 (Pt)"
-                    },
-                    {
-                        "key": "1",
-                        "name": "Column #1 (T)"
-                    },
-                    {
-                        "key": "2",
-                        "name": "Column #2 (Vf)"
-                    },
-                    {
-                        "key": "3",
-                        "name": "Column #3 (Im)"
-                    },
-                    {
-                        "key": "4",
-                        "name": "Column #4 (Vu)"
-                    },
-                    {
-                        "key": "5",
-                        "name": "Column #5 (Sig)"
-                    },
-                    {
-                        "key": "6",
-                        "name": "Column #6 (Ach)"
-                    },
-                    {
-                        "key": "7",
-                        "name": "Column #7 (IERange)"
-                    },
-                    {
-                        "key": "8",
-                        "name": "Column #8 (Over)"
-                    },
-                    {
-                        "key": "9",
-                        "name": "Column #9 (Temp)"
-                    }
-                ],
-                "header": [
-                    "CURVE2\tTABLE"
-                ],
-                "metadata": {
-                    "column_00": "Pt",
-                    "column_00_unit": "#",
-                    "column_01": "T",
-                    "column_01_unit": "s",
-                    "column_02": "Vf",
-                    "column_02_unit": "V",
-                    "column_03": "Im",
-                    "column_03_unit": "vs.",
-                    "column_04": "Vu",
-                    "column_04_unit": "Ref.",
-                    "column_05": "Sig",
-                    "column_05_unit": "A",
-                    "column_06": "Ach",
-                    "column_06_unit": "V",
-                    "column_07": "IERange",
-                    "column_07_unit": "V",
-                    "column_08": "Over",
-                    "column_08_unit": "V",
-                    "column_09": "Temp",
-                    "column_09_unit": "#",
-                    "column_10_unit": "bits",
-                    "column_11_unit": "deg",
-                    "column_12_unit": "C",
-                    "columns": 10,
-                    "rows": 920
-                },
-                "rows": [
-                    [
-                        "701",
-                        "35.1",
-                        "1.09533E+000",
-                        "2.79444E-005",
-                        "0.00000E+000",
-                        "1.09502E+000",
-                        "0.00000E+000",
-                        "8",
-                        "...........",
-                        "1387.77"
+            "tables": [
+                {
+                    "columns": [
+                        {
+                            "key": "0",
+                            "name": "Column #0 (Pt)"
+                        },
+                        {
+                            "key": "1",
+                            "name": "Column #1 (T)"
+                        },
+                        {
+                            "key": "2",
+                            "name": "Column #2 (Vf)"
+                        },
+                        {
+                            "key": "3",
+                            "name": "Column #3 (Im)"
+                        },
+                        {
+                            "key": "4",
+                            "name": "Column #4 (Vu)"
+                        },
+                        {
+                            "key": "5",
+                            "name": "Column #5 (Sig)"
+                        },
+                        {
+                            "key": "6",
+                            "name": "Column #6 (Ach)"
+                        },
+                        {
+                            "key": "7",
+                            "name": "Column #7 (IERange)"
+                        },
+                        {
+                            "key": "8",
+                            "name": "Column #8 (Over)"
+                        },
+                        {
+                            "key": "9",
+                            "name": "Column #9 (Temp)"
+                        }
                     ],
-                    [
-                        "702",
-                        "35.15",
-                        "1.09032E+000",
-                        "2.70470E-005",
-                        "0.00000E+000",
-                        "1.09002E+000",
-                        "0.00000E+000",
-                        "8",
-                        "...........",
-                        "1387.77"
+                    "header": [
+                        "EXPLAIN",
+                        "TAG\tCV",
+                        "TITLE\tLABEL\tCyclic Voltammetry\tTest &Identifier",
+                        "DATE\tLABEL\t23.5.2022\tDate",
+                        "TIME\tLABEL\t16:09:50\tTime",
+                        "NOTES\tNOTES\t1\t&Notes...",
+                        "",
+                        "PSTAT\tPSTAT\tIFC1010-30147\tPotentiostat",
+                        "VINIT\tPOTEN\t0,00000E+000\tF\tInitial &E (V)",
+                        "VLIMIT1\tPOTEN\t-1,20000E+000\tF\tScan Limit &1 (V)",
+                        "VLIMIT2\tPOTEN\t1,10000E+000\tF\tScan Limit &2 (V)",
+                        "VFINAL\tPOTEN\t0,00000E+000\tF\tFinal &E (V)",
+                        "SCANRATE\tQUANT\t9,99998E+001\t&Scan Rate (mV/s)",
+                        "STEPSIZE\tQUANT\t5,00000E+000\tSt&ep Size (mV)",
+                        "CYCLES\tIQUANT\t3\tC&ycles (#)",
+                        "IMODE\tSELECTOR\t0\tI/E Range &Mode",
+                        "IRANGE\tQUANT\t2,00000E-001\t&Max Current (mA)",
+                        "AREA\tQUANT\t1,00000E+000\tElectrode &Area (cm^2)",
+                        "ELECTRODETYPE\tSELECTOR\t0\tElectrode Type",
+                        "STRIPPING\tTOGGLE\tF\tUsed for Stripping",
+                        "CONDIT\tTWOPARAM\tF\t1,50000E+001\t0,00000E+000\tConditionin&g\tTime(s)\tE(V)",
+                        "DELAY\tTWOPARAM\tF\t3,00000E+001\t0,00000E+000\tInit. De&lay\tTime(s)\tStab.(mV/s)",
+                        "EQDELAY\tQUANT\t2,00000E+000\tEquil. &Time (s)",
+                        "IRCOMP\tSELECTOR\t0\tIRCom&p",
+                        "PFCOR\tQUANT\t0,00000E+000\tPF Corr. (ohm)",
+                        "SAMPLINGMODE\tSELECTOR\t1\tSampling &Mode",
+                        "EOC\tQUANT\t0\tOpen Circuit (V)",
+                        "PSTATMODEL\tIQUANT\t64\tPstat Model",
+                        "PSTATSECTION\tLABEL\tIFC1010-30147\tPstat Section",
+                        "PSTATSERIALNO\tLABEL\t30147\tPstat Serial Number",
+                        "CTRLMODE\tIQUANT\t1\tControl Mode",
+                        "ELECTROMETER\tIQUANT\t0\tRE=0 or CS=1",
+                        "IESTAB\tIQUANT\t2\tI/E Stability",
+                        "CASPEED\tIQUANT\t4\tControl Amp Speed",
+                        "CONVENTION\tIQUANT\t1\tCurrent Convention",
+                        "ICHRANGE\tIQUANT\t2\tIch Range",
+                        "ICHRANGEMODE\tTOGGLE\tF\tIch Auto Range",
+                        "ICHOFFSETENABLE\tTOGGLE\tF\tIch Offset Enable",
+                        "ICHOFFSET\tQUANT\t0\tIch Offset (V)",
+                        "ICHFILTER\tIQUANT\t3\tIch Filter",
+                        "VCHRANGE\tIQUANT\t2\tVch Range",
+                        "VCHRANGEMODE\tTOGGLE\tF\tVch Auto Range",
+                        "VCHOFFSETENABLE\tTOGGLE\tF\tVch Offset Enable",
+                        "VCHOFFSET\tQUANT\t0\tVch Offset (V)",
+                        "VCHFILTER\tIQUANT\t3\tVch Filter",
+                        "IERANGELOWERLIMIT\tIQUANT\t4\tI/E Range Lower Limit",
+                        "IERANGEMODE\tTOGGLE\tT\tI/E AutoRange",
+                        "IERANGE\tIQUANT\t9\tI/E Range",
+                        "ACHSELECT\tIQUANT\t0\tAch Select",
+                        "ACHRANGE\tIQUANT\t2\tAch Range",
+                        "ACHOFFSETENABLE\tTOGGLE\tF\tAch Offset Enable",
+                        "ACHOFFSET\tQUANT\t0\tAch Offset (V)",
+                        "ACHFILTER\tIQUANT\t1\tAch Filter",
+                        "SENSECABLEID\tIQUANT\t14\tSense Cable ID",
+                        "PWRCABLEID\tIQUANT\t14\tPower Cable ID",
+                        "DCCALDATE\tLABEL\t5/13/2022\tDC Calibration Date",
+                        "ACCALDATE\tLABEL\t8/12/2021\tAC Calibration Date",
+                        "FRAMEWORKVERSION\tLABEL\t7.8.6\tFramework Version",
+                        "INSTRUMENTVERSION\tLABEL\t4.50\tInstrument Version",
+                        "CURVE1\tTABLE"
                     ],
-                    [
-                        "703",
-                        "35.2",
-                        "1.08528E+000",
-                        "2.62460E-005",
-                        "0.00000E+000",
-                        "1.08498E+000",
-                        "0.00000E+000",
-                        "8",
-                        "...........",
-                        "1387.77"
-                    ],
-                    [
-                        "704",
-                        "35.25",
-                        "1.08027E+000",
-                        "2.54852E-005",
-                        "0.00000E+000",
-                        "1.07998E+000",
-                        "0.00000E+000",
-                        "8",
-                        "...........",
-                        "1387.77"
-                    ],
-                    [
-                        "705",
-                        "35.3",
-                        "1.07526E+000",
-                        "2.47952E-005",
-                        "0.00000E+000",
-                        "1.07498E+000",
-                        "0.00000E+000",
-                        "8",
-                        "...........",
-                        "1387.77"
-                    ],
-                    [
-                        "706",
-                        "35.35",
-                        "1.07027E+000",
-                        "2.41404E-005",
-                        "0.00000E+000",
-                        "1.06998E+000",
-                        "0.00000E+000",
-                        "8",
-                        "...........",
-                        "1387.77"
-                    ],
-                    [
-                        "707",
-                        "35.4",
-                        "1.06527E+000",
-                        "2.35276E-005",
-                        "0.00000E+000",
-                        "1.06498E+000",
-                        "0.00000E+000",
-                        "8",
-                        "...........",
-                        "1387.77"
-                    ],
-                    [
-                        "708",
-                        "35.45",
-                        "1.06029E+000",
-                        "2.29496E-005",
-                        "0.00000E+000",
-                        "1.05999E+000",
-                        "0.00000E+000",
-                        "8",
-                        "...........",
-                        "1387.77"
-                    ],
-                    [
-                        "709",
-                        "35.5",
-                        "1.05527E+000",
-                        "2.24081E-005",
-                        "0.00000E+000",
-                        "1.05499E+000",
-                        "0.00000E+000",
-                        "8",
-                        "...........",
-                        "1387.77"
-                    ],
-                    [
-                        "710",
-                        "35.55",
-                        "1.05029E+000",
-                        "2.19072E-005",
-                        "0.00000E+000",
-                        "1.04999E+000",
-                        "0.00000E+000",
-                        "8",
-                        "...........",
-                        "1387.77"
+                    "metadata": {
+                        "ACCALDATE": "8/12/2021",
+                        "ACHFILTER": "1",
+                        "ACHOFFSET": "0",
+                        "ACHOFFSETENABLE": "F",
+                        "ACHRANGE": "2",
+                        "ACHSELECT": "0",
+                        "AREA": "1,00000E+000",
+                        "CASPEED": "4",
+                        "CONDIT": "F",
+                        "CONVENTION": "1",
+                        "CTRLMODE": "1",
+                        "CYCLES": "3",
+                        "DATE": "23.5.2022",
+                        "DCCALDATE": "5/13/2022",
+                        "DELAY": "F",
+                        "ELECTRODETYPE": "0",
+                        "ELECTROMETER": "0",
+                        "EOC": "0",
+                        "EQDELAY": "2,00000E+000",
+                        "FRAMEWORKVERSION": "7.8.6",
+                        "ICHFILTER": "3",
+                        "ICHOFFSET": "0",
+                        "ICHOFFSETENABLE": "F",
+                        "ICHRANGE": "2",
+                        "ICHRANGEMODE": "F",
+                        "IERANGE": "9",
+                        "IERANGELOWERLIMIT": "4",
+                        "IERANGEMODE": "T",
+                        "IESTAB": "2",
+                        "IMODE": "0",
+                        "INSTRUMENTVERSION": "4.50",
+                        "IRANGE": "2,00000E-001",
+                        "IRCOMP": "0",
+                        "NOTES": "1",
+                        "PFCOR": "0,00000E+000",
+                        "PSTAT": "IFC1010-30147",
+                        "PSTATMODEL": "64",
+                        "PSTATSECTION": "IFC1010-30147",
+                        "PSTATSERIALNO": "30147",
+                        "PWRCABLEID": "14",
+                        "SAMPLINGMODE": "1",
+                        "SCANRATE": "9,99998E+001",
+                        "SENSECABLEID": "14",
+                        "STEPSIZE": "5,00000E+000",
+                        "STRIPPING": "F",
+                        "TIME": "16:09:50",
+                        "TITLE": "Cyclic",
+                        "VCHFILTER": "3",
+                        "VCHOFFSET": "0",
+                        "VCHOFFSETENABLE": "F",
+                        "VCHRANGE": "2",
+                        "VCHRANGEMODE": "F",
+                        "VFINAL": "0,00000E+000",
+                        "VINIT": "0,00000E+000",
+                        "VLIMIT1": "-1,20000E+000",
+                        "VLIMIT2": "1,10000E+000",
+                        "__UNIT_%": "%",
+                        "__UNIT_PPM": "ppm",
+                        "__UNIT_gram": "g",
+                        "__UNIT_liter": "l",
+                        "__UNIT_mol": "mol",
+                        "column_00": "Pt",
+                        "column_00_unit": "#",
+                        "column_01": "T",
+                        "column_01_unit": "s",
+                        "column_02": "Vf",
+                        "column_02_unit": "V",
+                        "column_03": "Im",
+                        "column_03_unit": "vs.",
+                        "column_04": "Vu",
+                        "column_04_unit": "Ref.",
+                        "column_05": "Sig",
+                        "column_05_unit": "A",
+                        "column_06": "Ach",
+                        "column_06_unit": "V",
+                        "column_07": "IERange",
+                        "column_07_unit": "V",
+                        "column_08": "Over",
+                        "column_08_unit": "V",
+                        "column_09": "Temp",
+                        "column_09_unit": "#",
+                        "column_10_unit": "bits",
+                        "column_11_unit": "deg",
+                        "column_12_unit": "C",
+                        "columns": 10,
+                        "rows": 701
+                    },
+                    "rows": [
+                        [
+                            "0",
+                            "0.05",
+                            "1.10407E-005",
+                            "-7.42159E-006",
+                            "0.00000E+000",
+                            "1.75089E-006",
+                            "0.00000E+000",
+                            "9",
+                            "...........",
+                            "1387.94"
+                        ],
+                        [
+                            "1",
+                            "0.1",
+                            "-4.99727E-003",
+                            "-7.49944E-006",
+                            "0.00000E+000",
+                            "-4.99606E-003",
+                            "0.00000E+000",
+                            "8",
+                            "...........",
+                            "1387.94"
+                        ],
+                        [
+                            "2",
+                            "0.15",
+                            "-9.96957E-003",
+                            "-7.53218E-006",
+                            "0.00000E+000",
+                            "-9.99387E-003",
+                            "0.00000E+000",
+                            "7",
+                            "...........",
+                            "1387.94"
+                        ],
+                        [
+                            "3",
+                            "0.2",
+                            "-1.49946E-002",
+                            "-7.56641E-006",
+                            "0.00000E+000",
+                            "-1.49917E-002",
+                            "0.00000E+000",
+                            "7",
+                            "...........",
+                            "1387.94"
+                        ],
+                        [
+                            "4",
+                            "0.25",
+                            "-1.99829E-002",
+                            "-7.59748E-006",
+                            "0.00000E+000",
+                            "-1.99895E-002",
+                            "0.00000E+000",
+                            "7",
+                            "...........",
+                            "1387.94"
+                        ],
+                        [
+                            "5",
+                            "0.3",
+                            "-2.49942E-002",
+                            "-7.62093E-006",
+                            "0.00000E+000",
+                            "-2.49873E-002",
+                            "0.00000E+000",
+                            "7",
+                            "...........",
+                            "1387.94"
+                        ],
+                        [
+                            "6",
+                            "0.35",
+                            "-3.00002E-002",
+                            "-7.64102E-006",
+                            "0.00000E+000",
+                            "-2.99851E-002",
+                            "0.00000E+000",
+                            "7",
+                            "...........",
+                            "1387.94"
+                        ],
+                        [
+                            "7",
+                            "0.4",
+                            "-3.49758E-002",
+                            "-7.66746E-006",
+                            "0.00000E+000",
+                            "-3.49829E-002",
+                            "0.00000E+000",
+                            "7",
+                            "...........",
+                            "1387.94"
+                        ],
+                        [
+                            "8",
+                            "0.45",
+                            "-3.99893E-002",
+                            "-7.68228E-006",
+                            "0.00000E+000",
+                            "-3.99807E-002",
+                            "0.00000E+000",
+                            "7",
+                            "...........",
+                            "1387.94"
+                        ],
+                        [
+                            "9",
+                            "0.5",
+                            "-4.49699E-002",
+                            "-7.69809E-006",
+                            "0.00000E+000",
+                            "-4.49785E-002",
+                            "0.00000E+000",
+                            "7",
+                            "...........",
+                            "1387.94"
+                        ]
                     ]
-                ]
-            },
-            {
-                "columns": [
-                    {
-                        "key": "0",
-                        "name": "Column #0 (Pt)"
-                    },
-                    {
-                        "key": "1",
-                        "name": "Column #1 (T)"
-                    },
-                    {
-                        "key": "2",
-                        "name": "Column #2 (Vf)"
-                    },
-                    {
-                        "key": "3",
-                        "name": "Column #3 (Im)"
-                    },
-                    {
-                        "key": "4",
-                        "name": "Column #4 (Vu)"
-                    },
-                    {
-                        "key": "5",
-                        "name": "Column #5 (Sig)"
-                    },
-                    {
-                        "key": "6",
-                        "name": "Column #6 (Ach)"
-                    },
-                    {
-                        "key": "7",
-                        "name": "Column #7 (IERange)"
-                    },
-                    {
-                        "key": "8",
-                        "name": "Column #8 (Over)"
-                    },
-                    {
-                        "key": "9",
-                        "name": "Column #9 (Temp)"
-                    }
-                ],
-                "header": [
-                    "CURVE3\tTABLE"
-                ],
-                "metadata": {
-                    "column_00": "Pt",
-                    "column_00_unit": "#",
-                    "column_01": "T",
-                    "column_01_unit": "s",
-                    "column_02": "Vf",
-                    "column_02_unit": "V",
-                    "column_03": "Im",
-                    "column_03_unit": "vs.",
-                    "column_04": "Vu",
-                    "column_04_unit": "Ref.",
-                    "column_05": "Sig",
-                    "column_05_unit": "A",
-                    "column_06": "Ach",
-                    "column_06_unit": "V",
-                    "column_07": "IERange",
-                    "column_07_unit": "V",
-                    "column_08": "Over",
-                    "column_08_unit": "V",
-                    "column_09": "Temp",
-                    "column_09_unit": "#",
-                    "column_10_unit": "bits",
-                    "column_11_unit": "deg",
-                    "column_12_unit": "C",
-                    "columns": 10,
-                    "rows": 920
                 },
-                "rows": [
-                    [
-                        "1621",
-                        "81.1",
-                        "1.09531E+000",
-                        "2.54817E-005",
-                        "0.00000E+000",
-                        "1.09502E+000",
-                        "0.00000E+000",
-                        "8",
-                        "...........",
-                        "1387.42"
+                {
+                    "columns": [
+                        {
+                            "key": "0",
+                            "name": "Column #0 (Pt)"
+                        },
+                        {
+                            "key": "1",
+                            "name": "Column #1 (T)"
+                        },
+                        {
+                            "key": "2",
+                            "name": "Column #2 (Vf)"
+                        },
+                        {
+                            "key": "3",
+                            "name": "Column #3 (Im)"
+                        },
+                        {
+                            "key": "4",
+                            "name": "Column #4 (Vu)"
+                        },
+                        {
+                            "key": "5",
+                            "name": "Column #5 (Sig)"
+                        },
+                        {
+                            "key": "6",
+                            "name": "Column #6 (Ach)"
+                        },
+                        {
+                            "key": "7",
+                            "name": "Column #7 (IERange)"
+                        },
+                        {
+                            "key": "8",
+                            "name": "Column #8 (Over)"
+                        },
+                        {
+                            "key": "9",
+                            "name": "Column #9 (Temp)"
+                        }
                     ],
-                    [
-                        "1622",
-                        "81.15",
-                        "1.09032E+000",
-                        "2.31856E-005",
-                        "0.00000E+000",
-                        "1.09002E+000",
-                        "0.00000E+000",
-                        "8",
-                        "...........",
-                        "1387.42"
+                    "header": [
+                        "CURVE2\tTABLE"
                     ],
-                    [
-                        "1623",
-                        "81.2",
-                        "1.08526E+000",
-                        "1.79838E-005",
-                        "0.00000E+000",
-                        "1.08498E+000",
-                        "0.00000E+000",
-                        "8",
-                        "...........",
-                        "1387.42"
-                    ],
-                    [
-                        "1624",
-                        "81.25",
-                        "1.08027E+000",
-                        "1.66488E-005",
-                        "0.00000E+000",
-                        "1.07998E+000",
-                        "0.00000E+000",
-                        "8",
-                        "...........",
-                        "1387.42"
-                    ],
-                    [
-                        "1625",
-                        "81.3",
-                        "1.07524E+000",
-                        "1.52873E-005",
-                        "0.00000E+000",
-                        "1.07498E+000",
-                        "0.00000E+000",
-                        "8",
-                        "...........",
-                        "1387.42"
-                    ],
-                    [
-                        "1626",
-                        "81.35",
-                        "1.07026E+000",
-                        "1.37548E-005",
-                        "0.00000E+000",
-                        "1.06998E+000",
-                        "0.00000E+000",
-                        "8",
-                        "...........",
-                        "1387.42"
-                    ],
-                    [
-                        "1627",
-                        "81.4",
-                        "1.06526E+000",
-                        "1.25790E-005",
-                        "0.00000E+000",
-                        "1.06498E+000",
-                        "0.00000E+000",
-                        "8",
-                        "...........",
-                        "1387.42"
-                    ],
-                    [
-                        "1628",
-                        "81.45",
-                        "1.06026E+000",
-                        "1.19672E-005",
-                        "0.00000E+000",
-                        "1.05999E+000",
-                        "0.00000E+000",
-                        "8",
-                        "...........",
-                        "1387.42"
-                    ],
-                    [
-                        "1629",
-                        "81.5",
-                        "1.05526E+000",
-                        "1.14598E-005",
-                        "0.00000E+000",
-                        "1.05499E+000",
-                        "0.00000E+000",
-                        "8",
-                        "...........",
-                        "1387.42"
-                    ],
-                    [
-                        "1630",
-                        "81.55",
-                        "1.05027E+000",
-                        "1.09927E-005",
-                        "0.00000E+000",
-                        "1.04999E+000",
-                        "0.00000E+000",
-                        "8",
-                        "...........",
-                        "1387.42"
+                    "metadata": {
+                        "column_00": "Pt",
+                        "column_00_unit": "#",
+                        "column_01": "T",
+                        "column_01_unit": "s",
+                        "column_02": "Vf",
+                        "column_02_unit": "V",
+                        "column_03": "Im",
+                        "column_03_unit": "vs.",
+                        "column_04": "Vu",
+                        "column_04_unit": "Ref.",
+                        "column_05": "Sig",
+                        "column_05_unit": "A",
+                        "column_06": "Ach",
+                        "column_06_unit": "V",
+                        "column_07": "IERange",
+                        "column_07_unit": "V",
+                        "column_08": "Over",
+                        "column_08_unit": "V",
+                        "column_09": "Temp",
+                        "column_09_unit": "#",
+                        "column_10_unit": "bits",
+                        "column_11_unit": "deg",
+                        "column_12_unit": "C",
+                        "columns": 10,
+                        "rows": 920
+                    },
+                    "rows": [
+                        [
+                            "701",
+                            "35.1",
+                            "1.09533E+000",
+                            "2.79444E-005",
+                            "0.00000E+000",
+                            "1.09502E+000",
+                            "0.00000E+000",
+                            "8",
+                            "...........",
+                            "1387.77"
+                        ],
+                        [
+                            "702",
+                            "35.15",
+                            "1.09032E+000",
+                            "2.70470E-005",
+                            "0.00000E+000",
+                            "1.09002E+000",
+                            "0.00000E+000",
+                            "8",
+                            "...........",
+                            "1387.77"
+                        ],
+                        [
+                            "703",
+                            "35.2",
+                            "1.08528E+000",
+                            "2.62460E-005",
+                            "0.00000E+000",
+                            "1.08498E+000",
+                            "0.00000E+000",
+                            "8",
+                            "...........",
+                            "1387.77"
+                        ],
+                        [
+                            "704",
+                            "35.25",
+                            "1.08027E+000",
+                            "2.54852E-005",
+                            "0.00000E+000",
+                            "1.07998E+000",
+                            "0.00000E+000",
+                            "8",
+                            "...........",
+                            "1387.77"
+                        ],
+                        [
+                            "705",
+                            "35.3",
+                            "1.07526E+000",
+                            "2.47952E-005",
+                            "0.00000E+000",
+                            "1.07498E+000",
+                            "0.00000E+000",
+                            "8",
+                            "...........",
+                            "1387.77"
+                        ],
+                        [
+                            "706",
+                            "35.35",
+                            "1.07027E+000",
+                            "2.41404E-005",
+                            "0.00000E+000",
+                            "1.06998E+000",
+                            "0.00000E+000",
+                            "8",
+                            "...........",
+                            "1387.77"
+                        ],
+                        [
+                            "707",
+                            "35.4",
+                            "1.06527E+000",
+                            "2.35276E-005",
+                            "0.00000E+000",
+                            "1.06498E+000",
+                            "0.00000E+000",
+                            "8",
+                            "...........",
+                            "1387.77"
+                        ],
+                        [
+                            "708",
+                            "35.45",
+                            "1.06029E+000",
+                            "2.29496E-005",
+                            "0.00000E+000",
+                            "1.05999E+000",
+                            "0.00000E+000",
+                            "8",
+                            "...........",
+                            "1387.77"
+                        ],
+                        [
+                            "709",
+                            "35.5",
+                            "1.05527E+000",
+                            "2.24081E-005",
+                            "0.00000E+000",
+                            "1.05499E+000",
+                            "0.00000E+000",
+                            "8",
+                            "...........",
+                            "1387.77"
+                        ],
+                        [
+                            "710",
+                            "35.55",
+                            "1.05029E+000",
+                            "2.19072E-005",
+                            "0.00000E+000",
+                            "1.04999E+000",
+                            "0.00000E+000",
+                            "8",
+                            "...........",
+                            "1387.77"
+                        ]
                     ]
-                ]
-            },
-            {
-                "columns": [
-                    {
-                        "key": "0",
-                        "name": "Column #0 (Pt)"
-                    },
-                    {
-                        "key": "1",
-                        "name": "Column #1 (T)"
-                    },
-                    {
-                        "key": "2",
-                        "name": "Column #2 (Vf)"
-                    },
-                    {
-                        "key": "3",
-                        "name": "Column #3 (Im)"
-                    },
-                    {
-                        "key": "4",
-                        "name": "Column #4 (Vu)"
-                    },
-                    {
-                        "key": "5",
-                        "name": "Column #5 (Sig)"
-                    },
-                    {
-                        "key": "6",
-                        "name": "Column #6 (Ach)"
-                    },
-                    {
-                        "key": "7",
-                        "name": "Column #7 (IERange)"
-                    },
-                    {
-                        "key": "8",
-                        "name": "Column #8 (Over)"
-                    },
-                    {
-                        "key": "9",
-                        "name": "Column #9 (Temp)"
-                    }
-                ],
-                "header": [
-                    "CURVE4\tTABLE"
-                ],
-                "metadata": {
-                    "column_00": "Pt",
-                    "column_00_unit": "#",
-                    "column_01": "T",
-                    "column_01_unit": "s",
-                    "column_02": "Vf",
-                    "column_02_unit": "V",
-                    "column_03": "Im",
-                    "column_03_unit": "vs.",
-                    "column_04": "Vu",
-                    "column_04_unit": "Ref.",
-                    "column_05": "Sig",
-                    "column_05_unit": "A",
-                    "column_06": "Ach",
-                    "column_06_unit": "V",
-                    "column_07": "IERange",
-                    "column_07_unit": "V",
-                    "column_08": "Over",
-                    "column_08_unit": "V",
-                    "column_09": "Temp",
-                    "column_09_unit": "#",
-                    "column_10_unit": "bits",
-                    "column_11_unit": "deg",
-                    "column_12_unit": "C",
-                    "columns": 10,
-                    "rows": 220
                 },
-                "rows": [
-                    [
-                        "2541",
-                        "127.1",
-                        "1.09531E+000",
-                        "1.47940E-005",
-                        "0.00000E+000",
-                        "1.09502E+000",
-                        "0.00000E+000",
-                        "8",
-                        "...........",
-                        "1387.33"
+                {
+                    "columns": [
+                        {
+                            "key": "0",
+                            "name": "Column #0 (Pt)"
+                        },
+                        {
+                            "key": "1",
+                            "name": "Column #1 (T)"
+                        },
+                        {
+                            "key": "2",
+                            "name": "Column #2 (Vf)"
+                        },
+                        {
+                            "key": "3",
+                            "name": "Column #3 (Im)"
+                        },
+                        {
+                            "key": "4",
+                            "name": "Column #4 (Vu)"
+                        },
+                        {
+                            "key": "5",
+                            "name": "Column #5 (Sig)"
+                        },
+                        {
+                            "key": "6",
+                            "name": "Column #6 (Ach)"
+                        },
+                        {
+                            "key": "7",
+                            "name": "Column #7 (IERange)"
+                        },
+                        {
+                            "key": "8",
+                            "name": "Column #8 (Over)"
+                        },
+                        {
+                            "key": "9",
+                            "name": "Column #9 (Temp)"
+                        }
                     ],
-                    [
-                        "2542",
-                        "127.15",
-                        "1.09030E+000",
-                        "1.41668E-005",
-                        "0.00000E+000",
-                        "1.09002E+000",
-                        "0.00000E+000",
-                        "8",
-                        "...........",
-                        "1387.33"
+                    "header": [
+                        "CURVE3\tTABLE"
                     ],
-                    [
-                        "2543",
-                        "127.2",
-                        "1.08526E+000",
-                        "1.36022E-005",
-                        "0.00000E+000",
-                        "1.08498E+000",
-                        "0.00000E+000",
-                        "8",
-                        "...........",
-                        "1387.33"
-                    ],
-                    [
-                        "2544",
-                        "127.25",
-                        "1.08024E+000",
-                        "1.31265E-005",
-                        "0.00000E+000",
-                        "1.07998E+000",
-                        "0.00000E+000",
-                        "8",
-                        "...........",
-                        "1387.33"
-                    ],
-                    [
-                        "2545",
-                        "127.3",
-                        "1.07525E+000",
-                        "1.25726E-005",
-                        "0.00000E+000",
-                        "1.07498E+000",
-                        "0.00000E+000",
-                        "8",
-                        "...........",
-                        "1387.33"
-                    ],
-                    [
-                        "2546",
-                        "127.35",
-                        "1.07026E+000",
-                        "1.20936E-005",
-                        "0.00000E+000",
-                        "1.06998E+000",
-                        "0.00000E+000",
-                        "8",
-                        "...........",
-                        "1387.33"
-                    ],
-                    [
-                        "2547",
-                        "127.4",
-                        "1.06526E+000",
-                        "1.16701E-005",
-                        "0.00000E+000",
-                        "1.06498E+000",
-                        "0.00000E+000",
-                        "8",
-                        "...........",
-                        "1387.33"
-                    ],
-                    [
-                        "2548",
-                        "127.45",
-                        "1.06027E+000",
-                        "1.12586E-005",
-                        "0.00000E+000",
-                        "1.05999E+000",
-                        "0.00000E+000",
-                        "8",
-                        "...........",
-                        "1387.33"
-                    ],
-                    [
-                        "2549",
-                        "127.5",
-                        "1.05524E+000",
-                        "1.09229E-005",
-                        "0.00000E+000",
-                        "1.05499E+000",
-                        "0.00000E+000",
-                        "8",
-                        "...........",
-                        "1387.33"
-                    ],
-                    [
-                        "2550",
-                        "127.55",
-                        "1.05027E+000",
-                        "1.06354E-005",
-                        "0.00000E+000",
-                        "1.04999E+000",
-                        "0.00000E+000",
-                        "8",
-                        "...........",
-                        "1387.33"
+                    "metadata": {
+                        "column_00": "Pt",
+                        "column_00_unit": "#",
+                        "column_01": "T",
+                        "column_01_unit": "s",
+                        "column_02": "Vf",
+                        "column_02_unit": "V",
+                        "column_03": "Im",
+                        "column_03_unit": "vs.",
+                        "column_04": "Vu",
+                        "column_04_unit": "Ref.",
+                        "column_05": "Sig",
+                        "column_05_unit": "A",
+                        "column_06": "Ach",
+                        "column_06_unit": "V",
+                        "column_07": "IERange",
+                        "column_07_unit": "V",
+                        "column_08": "Over",
+                        "column_08_unit": "V",
+                        "column_09": "Temp",
+                        "column_09_unit": "#",
+                        "column_10_unit": "bits",
+                        "column_11_unit": "deg",
+                        "column_12_unit": "C",
+                        "columns": 10,
+                        "rows": 920
+                    },
+                    "rows": [
+                        [
+                            "1621",
+                            "81.1",
+                            "1.09531E+000",
+                            "2.54817E-005",
+                            "0.00000E+000",
+                            "1.09502E+000",
+                            "0.00000E+000",
+                            "8",
+                            "...........",
+                            "1387.42"
+                        ],
+                        [
+                            "1622",
+                            "81.15",
+                            "1.09032E+000",
+                            "2.31856E-005",
+                            "0.00000E+000",
+                            "1.09002E+000",
+                            "0.00000E+000",
+                            "8",
+                            "...........",
+                            "1387.42"
+                        ],
+                        [
+                            "1623",
+                            "81.2",
+                            "1.08526E+000",
+                            "1.79838E-005",
+                            "0.00000E+000",
+                            "1.08498E+000",
+                            "0.00000E+000",
+                            "8",
+                            "...........",
+                            "1387.42"
+                        ],
+                        [
+                            "1624",
+                            "81.25",
+                            "1.08027E+000",
+                            "1.66488E-005",
+                            "0.00000E+000",
+                            "1.07998E+000",
+                            "0.00000E+000",
+                            "8",
+                            "...........",
+                            "1387.42"
+                        ],
+                        [
+                            "1625",
+                            "81.3",
+                            "1.07524E+000",
+                            "1.52873E-005",
+                            "0.00000E+000",
+                            "1.07498E+000",
+                            "0.00000E+000",
+                            "8",
+                            "...........",
+                            "1387.42"
+                        ],
+                        [
+                            "1626",
+                            "81.35",
+                            "1.07026E+000",
+                            "1.37548E-005",
+                            "0.00000E+000",
+                            "1.06998E+000",
+                            "0.00000E+000",
+                            "8",
+                            "...........",
+                            "1387.42"
+                        ],
+                        [
+                            "1627",
+                            "81.4",
+                            "1.06526E+000",
+                            "1.25790E-005",
+                            "0.00000E+000",
+                            "1.06498E+000",
+                            "0.00000E+000",
+                            "8",
+                            "...........",
+                            "1387.42"
+                        ],
+                        [
+                            "1628",
+                            "81.45",
+                            "1.06026E+000",
+                            "1.19672E-005",
+                            "0.00000E+000",
+                            "1.05999E+000",
+                            "0.00000E+000",
+                            "8",
+                            "...........",
+                            "1387.42"
+                        ],
+                        [
+                            "1629",
+                            "81.5",
+                            "1.05526E+000",
+                            "1.14598E-005",
+                            "0.00000E+000",
+                            "1.05499E+000",
+                            "0.00000E+000",
+                            "8",
+                            "...........",
+                            "1387.42"
+                        ],
+                        [
+                            "1630",
+                            "81.55",
+                            "1.05027E+000",
+                            "1.09927E-005",
+                            "0.00000E+000",
+                            "1.04999E+000",
+                            "0.00000E+000",
+                            "8",
+                            "...........",
+                            "1387.42"
+                        ]
                     ]
-                ]
-            }
-        ]
-    },
+                },
+                {
+                    "columns": [
+                        {
+                            "key": "0",
+                            "name": "Column #0 (Pt)"
+                        },
+                        {
+                            "key": "1",
+                            "name": "Column #1 (T)"
+                        },
+                        {
+                            "key": "2",
+                            "name": "Column #2 (Vf)"
+                        },
+                        {
+                            "key": "3",
+                            "name": "Column #3 (Im)"
+                        },
+                        {
+                            "key": "4",
+                            "name": "Column #4 (Vu)"
+                        },
+                        {
+                            "key": "5",
+                            "name": "Column #5 (Sig)"
+                        },
+                        {
+                            "key": "6",
+                            "name": "Column #6 (Ach)"
+                        },
+                        {
+                            "key": "7",
+                            "name": "Column #7 (IERange)"
+                        },
+                        {
+                            "key": "8",
+                            "name": "Column #8 (Over)"
+                        },
+                        {
+                            "key": "9",
+                            "name": "Column #9 (Temp)"
+                        }
+                    ],
+                    "header": [
+                        "CURVE4\tTABLE"
+                    ],
+                    "metadata": {
+                        "column_00": "Pt",
+                        "column_00_unit": "#",
+                        "column_01": "T",
+                        "column_01_unit": "s",
+                        "column_02": "Vf",
+                        "column_02_unit": "V",
+                        "column_03": "Im",
+                        "column_03_unit": "vs.",
+                        "column_04": "Vu",
+                        "column_04_unit": "Ref.",
+                        "column_05": "Sig",
+                        "column_05_unit": "A",
+                        "column_06": "Ach",
+                        "column_06_unit": "V",
+                        "column_07": "IERange",
+                        "column_07_unit": "V",
+                        "column_08": "Over",
+                        "column_08_unit": "V",
+                        "column_09": "Temp",
+                        "column_09_unit": "#",
+                        "column_10_unit": "bits",
+                        "column_11_unit": "deg",
+                        "column_12_unit": "C",
+                        "columns": 10,
+                        "rows": 220
+                    },
+                    "rows": [
+                        [
+                            "2541",
+                            "127.1",
+                            "1.09531E+000",
+                            "1.47940E-005",
+                            "0.00000E+000",
+                            "1.09502E+000",
+                            "0.00000E+000",
+                            "8",
+                            "...........",
+                            "1387.33"
+                        ],
+                        [
+                            "2542",
+                            "127.15",
+                            "1.09030E+000",
+                            "1.41668E-005",
+                            "0.00000E+000",
+                            "1.09002E+000",
+                            "0.00000E+000",
+                            "8",
+                            "...........",
+                            "1387.33"
+                        ],
+                        [
+                            "2543",
+                            "127.2",
+                            "1.08526E+000",
+                            "1.36022E-005",
+                            "0.00000E+000",
+                            "1.08498E+000",
+                            "0.00000E+000",
+                            "8",
+                            "...........",
+                            "1387.33"
+                        ],
+                        [
+                            "2544",
+                            "127.25",
+                            "1.08024E+000",
+                            "1.31265E-005",
+                            "0.00000E+000",
+                            "1.07998E+000",
+                            "0.00000E+000",
+                            "8",
+                            "...........",
+                            "1387.33"
+                        ],
+                        [
+                            "2545",
+                            "127.3",
+                            "1.07525E+000",
+                            "1.25726E-005",
+                            "0.00000E+000",
+                            "1.07498E+000",
+                            "0.00000E+000",
+                            "8",
+                            "...........",
+                            "1387.33"
+                        ],
+                        [
+                            "2546",
+                            "127.35",
+                            "1.07026E+000",
+                            "1.20936E-005",
+                            "0.00000E+000",
+                            "1.06998E+000",
+                            "0.00000E+000",
+                            "8",
+                            "...........",
+                            "1387.33"
+                        ],
+                        [
+                            "2547",
+                            "127.4",
+                            "1.06526E+000",
+                            "1.16701E-005",
+                            "0.00000E+000",
+                            "1.06498E+000",
+                            "0.00000E+000",
+                            "8",
+                            "...........",
+                            "1387.33"
+                        ],
+                        [
+                            "2548",
+                            "127.45",
+                            "1.06027E+000",
+                            "1.12586E-005",
+                            "0.00000E+000",
+                            "1.05999E+000",
+                            "0.00000E+000",
+                            "8",
+                            "...........",
+                            "1387.33"
+                        ],
+                        [
+                            "2549",
+                            "127.5",
+                            "1.05524E+000",
+                            "1.09229E-005",
+                            "0.00000E+000",
+                            "1.05499E+000",
+                            "0.00000E+000",
+                            "8",
+                            "...........",
+                            "1387.33"
+                        ],
+                        [
+                            "2550",
+                            "127.55",
+                            "1.05027E+000",
+                            "1.06354E-005",
+                            "0.00000E+000",
+                            "1.04999E+000",
+                            "0.00000E+000",
+                            "8",
+                            "...........",
+                            "1387.33"
+                        ]
+                    ]
+                }
+            ]
+        }
+    ],
     "datatypes": [],
     "description": "Gamry Interface Framework; ref location: KIT CN, data: +, metadata: +",
     "devices": [],
+    "diff_history": [
+        {
+            "at": "2026-04-30T12:53:58.459154+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "CV data from DTA, data: +, metadata: +"
+                }
+            ],
+            "profile_version": "1.0",
+            "trigger": "migration:20260430145303"
+        },
+        {
+            "at": "2026-04-30T12:54:02.261975+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "CV data from DTA, data: +, metadata: +__TEST"
+                }
+            ],
+            "profile_version": "1.1",
+            "trigger": "migration:20260430145303"
+        },
+        {
+            "at": "2026-04-30T13:02:19.341829+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "CV data from DTA, data: +, metadata: +__TEST__TEST"
+                }
+            ],
+            "profile_version": "1.2",
+            "trigger": "restore_migration:20260430145303"
+        },
+        {
+            "at": "2026-04-30T13:02:19.347525+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "CV data from DTA, data: +, metadata: +__TEST"
+                }
+            ],
+            "profile_version": "1.3",
+            "trigger": "restore_migration:20260430145303"
+        },
+        {
+            "at": "2026-05-04T04:59:00.177654+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "CV data from DTA, data: +, metadata: +"
+                }
+            ],
+            "profile_version": "1.4",
+            "trigger": "undo:1.1"
+        },
+        {
+            "at": "2026-05-04T04:59:00.183146+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "CV data from DTA, data: +, metadata: +__TEST"
+                }
+            ],
+            "profile_version": "1.5",
+            "trigger": "undo:1.0"
+        },
+        {
+            "at": "2026-05-04T04:59:00.186106+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "CV data from DTA, data: +, metadata: +"
+                }
+            ],
+            "profile_version": "1.6",
+            "trigger": "migration:20260504065656"
+        },
+        {
+            "at": "2026-05-04T07:23:31.207362+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "CV data from DTA, data: +, metadata: +--TEST"
+                }
+            ],
+            "profile_version": "1.7",
+            "trigger": "undo:1.6"
+        },
+        {
+            "at": "2026-05-06T08:56:28.964721+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/reactionVariations"
+                }
+            ],
+            "profile_version": "1.8",
+            "trigger": "migration:20260417132254"
+        },
+        {
+            "at": "2026-05-06T08:56:28.965461+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_liter"
+                },
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_mol"
+                },
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_PPM"
+                },
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_%"
+                },
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_gram"
+                }
+            ],
+            "profile_version": "1.9",
+            "trigger": "migration:20260422063146"
+        }
+    ],
     "id": "799f3db4-fd21-4aa7-a7bd-7c5548cbe316",
     "identifiers": [
         {
@@ -930,6 +1073,7 @@
             "id": "#1tableMetadata",
             "key": "DATE",
             "match": "any",
+            "object": null,
             "optional": true,
             "outputKey": "date",
             "outputLayer": "general",
@@ -946,6 +1090,7 @@
             "id": "#2tableMetadata",
             "key": "SCANRATE",
             "match": "any",
+            "object": null,
             "operations": [
                 {
                     "operator": ":",
@@ -968,6 +1113,7 @@
             "id": "#3tableMetadata",
             "key": "STEPSIZE",
             "match": "any",
+            "object": null,
             "operations": [
                 {
                     "operator": ":",
@@ -990,6 +1136,7 @@
             "id": "#4tableMetadata",
             "key": "CYCLES",
             "match": "any",
+            "object": null,
             "optional": true,
             "outputKey": "cycles",
             "outputLayer": "meas",
@@ -1006,6 +1153,7 @@
             "id": "#5tableHeader",
             "lineNumber": null,
             "match": "regex",
+            "object": null,
             "optional": true,
             "outputKey": "software_version",
             "outputLayer": "software",
@@ -1022,6 +1170,7 @@
             "id": "#6tableHeader",
             "lineNumber": null,
             "match": "regex",
+            "object": null,
             "optional": true,
             "outputKey": "software",
             "outputLayer": "software",
@@ -1048,6 +1197,7 @@
             "id": "#8tableMetadata",
             "key": "TIME",
             "match": "any",
+            "object": null,
             "optional": true,
             "outputKey": "time",
             "outputLayer": "general",
@@ -1064,6 +1214,7 @@
             "id": "#9tableMetadata",
             "key": "VINIT",
             "match": "any",
+            "object": null,
             "optional": true,
             "outputKey": "voltage_start",
             "outputLayer": "meas",
@@ -1080,6 +1231,7 @@
             "id": "#10tableMetadata",
             "key": "VLIMIT1",
             "match": "any",
+            "object": null,
             "optional": true,
             "outputKey": "voltage_limit_one",
             "outputLayer": "meas",
@@ -1096,6 +1248,7 @@
             "id": "#11tableMetadata",
             "key": "VLIMIT2",
             "match": "any",
+            "object": null,
             "optional": true,
             "outputKey": "voltage_limit_two",
             "outputLayer": "meas",
@@ -1112,6 +1265,7 @@
             "id": "#12tableMetadata",
             "key": "VFINAL",
             "match": "any",
+            "object": null,
             "optional": true,
             "outputKey": "voltage_limit_end",
             "outputLayer": "meas",
@@ -1128,6 +1282,7 @@
             "id": "#13tableMetadata",
             "key": "PSTAT",
             "match": "any",
+            "object": null,
             "optional": true,
             "outputKey": "serial",
             "outputLayer": "instrument",
@@ -1144,6 +1299,7 @@
             "id": "#14tableHeader",
             "lineNumber": "",
             "match": "regex",
+            "object": null,
             "optional": true,
             "outputKey": "instrument",
             "outputLayer": "instrument",
@@ -1156,10 +1312,16 @@
         }
     ],
     "isDisabled": false,
-    "last_migration": "20260113143334",
+    "last_migration": "20260430125545",
+    "objects": [],
     "ols": "CHMO:0000025",
     "ontology": "",
     "predicates": [],
+    "profile_version": "1.10",
+    "reactionVariations": {
+        "elements": [],
+        "identifiers": []
+    },
     "rootOntology": {
         "description": [
             "An electrochemical technique where the cell current is measured as a function of time and as a function of the potential between the indicator and reference electrodes. The potential is varied linearly and inverts at the end point resulting in a cycle."
@@ -1199,5 +1361,6 @@
             }
         }
     ],
-    "title": "CV data from DTA, data: +, metadata: +"
+    "title": "CV data from DTA, data: +, metadata: +",
+    "version": 0
 }

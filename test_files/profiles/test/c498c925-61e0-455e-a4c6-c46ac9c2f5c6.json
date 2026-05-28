@@ -1,101 +1,244 @@
 {
     "converter_version": "1.8.0",
-    "data": {
-        "metadata": {
-            "content_type": "text/csv",
-            "delimiter": "comma",
-            "doublequote": "False",
-            "extension": ".csv",
-            "file_name": "EI-MS_Pulegon.csv",
-            "lineterminator": "\\r\\n",
-            "mime_type": "application/csv",
-            "quotechar": "\"",
-            "quoting": "0",
-            "reader": "CSVReader",
-            "skipinitialspace": "False",
-            "uploaded": "2023-03-13T06:19:29.086940"
-        },
-        "tables": [
-            {
-                "columns": [
-                    {
-                        "key": "0",
-                        "name": "Column #0"
+    "data": [
+        {
+            "metadata": {
+                "content_type": "text/csv",
+                "delimiter": "comma",
+                "doublequote": "False",
+                "extension": ".csv",
+                "file_name": "EI-MS_Pulegon.csv",
+                "lineterminator": "\\r\\n",
+                "mime_type": "application/csv",
+                "quotechar": "\"",
+                "quoting": "0",
+                "reader": "CSVReader",
+                "skipinitialspace": "False",
+                "uploaded": "2023-03-13T06:19:29.086940"
+            },
+            "tables": [
+                {
+                    "columns": [
+                        {
+                            "key": "0",
+                            "name": "Column #0"
+                        },
+                        {
+                            "key": "1",
+                            "name": "Column #1"
+                        },
+                        {
+                            "key": "2",
+                            "name": "Column #2"
+                        }
+                    ],
+                    "header": [
+                        "\ufeff\"long name, units\",\"mass over charge, m/z\",\"intensity, %\""
+                    ],
+                    "metadata": {
+                        "__UNIT_%": "%",
+                        "__UNIT_PPM": "ppm",
+                        "__UNIT_gram": "g",
+                        "__UNIT_liter": "l",
+                        "__UNIT_mol": "mol",
+                        "columns": "3",
+                        "rows": "115"
                     },
-                    {
-                        "key": "1",
-                        "name": "Column #1"
-                    },
-                    {
-                        "key": "2",
-                        "name": "Column #2"
-                    }
-                ],
-                "header": [
-                    "\ufeff\"long name, units\",\"mass over charge, m/z\",\"intensity, %\""
-                ],
-                "metadata": {
-                    "columns": "3",
-                    "rows": "115"
-                },
-                "rows": [
-                    [
-                        "1",
-                        "40",
-                        "6.32"
-                    ],
-                    [
-                        "2",
-                        "41",
-                        "40.71"
-                    ],
-                    [
-                        "3",
-                        "42",
-                        "5.98"
-                    ],
-                    [
-                        "4",
-                        "43",
-                        "16.51"
-                    ],
-                    [
-                        "5",
-                        "44",
-                        "1.17"
-                    ],
-                    [
-                        "6",
-                        "45",
-                        "1.42"
-                    ],
-                    [
-                        "7",
-                        "46",
-                        "0.00"
-                    ],
-                    [
-                        "8",
-                        "47",
-                        "0.00"
-                    ],
-                    [
-                        "9",
-                        "48",
-                        "0.00"
-                    ],
-                    [
-                        "10",
-                        "49",
-                        "0.00"
+                    "rows": [
+                        [
+                            "1",
+                            "40",
+                            "6.32"
+                        ],
+                        [
+                            "2",
+                            "41",
+                            "40.71"
+                        ],
+                        [
+                            "3",
+                            "42",
+                            "5.98"
+                        ],
+                        [
+                            "4",
+                            "43",
+                            "16.51"
+                        ],
+                        [
+                            "5",
+                            "44",
+                            "1.17"
+                        ],
+                        [
+                            "6",
+                            "45",
+                            "1.42"
+                        ],
+                        [
+                            "7",
+                            "46",
+                            "0.00"
+                        ],
+                        [
+                            "8",
+                            "47",
+                            "0.00"
+                        ],
+                        [
+                            "9",
+                            "48",
+                            "0.00"
+                        ],
+                        [
+                            "10",
+                            "49",
+                            "0.00"
+                        ]
                     ]
-                ]
-            }
-        ]
-    },
+                }
+            ]
+        }
+    ],
     "datatypes": [],
     "description": "Finnigian MAT8230, ref location: ---, data: +, metadata: -",
     "devices": [],
+    "diff_history": [
+        {
+            "at": "2026-04-30T12:53:58.471218+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "Mass spectrometry from txt, data: +, metadata: -"
+                }
+            ],
+            "profile_version": "1.0",
+            "trigger": "migration:20260430145303"
+        },
+        {
+            "at": "2026-04-30T12:54:02.315996+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "Mass spectrometry from txt, data: +, metadata: -__TEST"
+                }
+            ],
+            "profile_version": "1.1",
+            "trigger": "migration:20260430145303"
+        },
+        {
+            "at": "2026-04-30T13:02:19.724570+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "Mass spectrometry from txt, data: +, metadata: -__TEST__TEST"
+                }
+            ],
+            "profile_version": "1.2",
+            "trigger": "restore_migration:20260430145303"
+        },
+        {
+            "at": "2026-04-30T13:02:19.725886+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "Mass spectrometry from txt, data: +, metadata: -__TEST"
+                }
+            ],
+            "profile_version": "1.3",
+            "trigger": "restore_migration:20260430145303"
+        },
+        {
+            "at": "2026-05-04T04:59:00.289996+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "Mass spectrometry from txt, data: +, metadata: -"
+                }
+            ],
+            "profile_version": "1.4",
+            "trigger": "undo:1.1"
+        },
+        {
+            "at": "2026-05-04T04:59:00.291413+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "Mass spectrometry from txt, data: +, metadata: -__TEST"
+                }
+            ],
+            "profile_version": "1.5",
+            "trigger": "undo:1.0"
+        },
+        {
+            "at": "2026-05-04T04:59:00.292238+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "Mass spectrometry from txt, data: +, metadata: -"
+                }
+            ],
+            "profile_version": "1.6",
+            "trigger": "migration:20260504065656"
+        },
+        {
+            "at": "2026-05-04T07:23:31.263189+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "Mass spectrometry from txt, data: +, metadata: ---TEST"
+                }
+            ],
+            "profile_version": "1.7",
+            "trigger": "undo:1.6"
+        },
+        {
+            "at": "2026-05-06T08:56:29.032149+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/reactionVariations"
+                }
+            ],
+            "profile_version": "1.8",
+            "trigger": "migration:20260417132254"
+        },
+        {
+            "at": "2026-05-06T08:56:29.032396+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_liter"
+                },
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_PPM"
+                },
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_mol"
+                },
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_%"
+                },
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_gram"
+                }
+            ],
+            "profile_version": "1.9",
+            "trigger": "migration:20260422063146"
+        }
+    ],
     "id": "c498c925-61e0-455e-a4c6-c46ac9c2f5c6",
     "identifiers": [
         {
@@ -130,21 +273,27 @@
         }
     ],
     "isDisabled": false,
-    "last_migration": "20260113143334",
+    "last_migration": "20260430125545",
+    "objects": [],
     "ols": null,
     "ontology": "",
     "predicates": [],
+    "profile_version": "1.10",
+    "reactionVariations": {
+        "elements": [],
+        "identifiers": []
+    },
     "rootOntology": {
         "description": [
             "A planned process that has the objective to produce information about a material entity (the evaluant) by examining it."
         ],
-        "id": "OBI:property:http://purl.obolibrary.org/obo/OBI_0000070",
+        "id": "obi:class:http://purl.obolibrary.org/obo/OBI_0000070",
         "iri": "http://purl.obolibrary.org/obo/OBI_0000070",
         "label": "assay",
         "namespace": "http://purl.obolibrary.org/obo/",
         "obo_id": "OBI:0000070",
-        "ontology_name": "chmo",
-        "ontology_prefix": "CHMO",
+        "ontology_name": "obi",
+        "ontology_prefix": "OBI",
         "short_form": "OBI_0000070",
         "type": "class"
     },
@@ -171,5 +320,6 @@
             }
         }
     ],
-    "title": "Mass spectrometry from txt, data: +, metadata: -"
+    "title": "Mass spectrometry from txt, data: +, metadata: -",
+    "version": 0
 }

@@ -1,290 +1,433 @@
 {
     "converter_version": "1.8.0",
-    "data": {
-        "metadata": {
-            "content_type": "application/vnd.ms-excel",
-            "extension": ".xls",
-            "file_name": "AG_015.xls",
-            "mime_type": "application/vnd.ms-excel",
-            "reader": "OldExcelReader",
-            "uploaded": "2023-08-09T12:21:19.568196"
-        },
-        "tables": [
-            {
-                "columns": [],
-                "header": [
-                    "Filename\tAG_015",
-                    "Instrument name\t5500-0290 (192.168.1.55)",
-                    "Operator\tAlexander Grimm",
-                    "rundate\t29.03.2021",
-                    "Sample name\tAG_015",
-                    "proceduresegments\tRamp 10.00 \u00b0C/min to 1000.00 \u00b0C; Select Gas: Gas 2 ; Isothermal 5.0 min",
-                    "[File Parameters]\t",
-                    "Run date\t29.03.2021 13:18:33",
-                    "Trios version\t5.0.0.44608",
-                    "Original File Name\tC:\\Users\\ITCP-AKT.ITCP-AKT-003\\Documents\\AG_015.tri",
-                    "Current File Name\tC:/Users/ITCP-AKT.ITCP-AKT-003/Documents/AG_015.tri",
-                    "[Procedure]\t",
-                    "Procedure Name\t",
-                    "Sample Name\tAG_015",
-                    "Pan Number\t8.0",
-                    "Sample Mass\t3.423 mg",
-                    "Pan Type\tPlatinum HT",
-                    "Comments\t",
-                    "Project Name\t",
-                    "Operator\tAlexander Grimm",
-                    "Test\tCustom",
-                    "Skip Weight Stabilization\t0",
-                    "Sample mass pre-weigh\tNot Available",
-                    "Stop on Gas Flow Error\tNo",
-                    "[Signal List]\t",
-                    "Signal #1\tTime (min)",
-                    "Signal #2\tTemperature (\u00b0C)",
-                    "Signal #3\tWeight (\u00b5g)",
-                    "Signal #4\tTemperature Difference (\u00b0C)",
-                    "Signal #5\tSample Purge (mL/min)",
-                    "Signal #6\tBalance Purge (mL/min)",
-                    "Signal #7\tSet Point Temperature (\u00b0C)",
-                    "Signal #8\tPower Delivered (W)",
-                    "Signal #9\tRamp Rate (\u00b0C/min)",
-                    "[Configuration]\t",
-                    "Company Name\tKIT",
-                    "Instrument Name\t5500-0290",
-                    "Instrument Type\tTGA5500",
-                    "Serial Number\t5500-0290",
-                    "IP\t192.168.1.55",
-                    "Location of Instrument\tManufacturing Test",
-                    "DisplayType\tTianmaV2",
-                    "Sampling Rate\t0.1",
-                    "Gas 1\tNitrogen",
-                    "Gas 2\tAir",
-                    "Selected Gas Channel\t1.0",
-                    "MTGA HiRes Licensed\tYes",
-                    "[Versions]\t",
-                    "Common IDD Version\t1.0",
-                    "Cortex Version\tVER 2.1.2.50",
-                    "Driver\t5.0.0.6",
-                    "GDM Version\t1.2.1.2",
-                    "TouchscreenVersion\t1.0.0.14551",
-                    "PCU Version\t1.2.0.9",
-                    "Transducer Version\t1.1.0.32",
-                    "[Experiment Logs]\t",
-                    "Experiment Log Entry # 1\tRamp Segment 10 C/min to 1000 C Started",
-                    "Experiment Log Entry # 3\tGas Select Segment is 2",
-                    "Experiment Log Entry # 5\tIsothermal Segment 5 min started",
-                    "[Method Log]\t",
-                    "Method Log Entry # 1\t(Ramp 152020) Ramp 10 \u00b0C/minute to 1000 \u00b0C",
-                    "Method Log Entry # 2\tGas Selected 2",
-                    "Method Log Entry # 3\tIsothermal 5 minutes",
-                    "[Weight Calibration]\t",
-                    "Date Applied\t24.02.2020 13:05:13",
-                    "Empty Pan Weight\t0.000 mg",
-                    "Low Reference Weight\t100.000 mg",
-                    "High Reference Weight\t1,000.000 mg",
-                    "Low Gain Meter Reading\t9.7908E-006 mg/count",
-                    "High Gain Meter Reading\t7.7909E-005 mg/count",
-                    "Low Meter Offset\t48.6466 mg",
-                    "High Meter Offset\t619.0736 mg",
-                    "[Curie Calibration]\t",
-                    "Date Applied\t16.01.2020 11:59:42",
-                    "Description\tFrom 308.200 \u00b0C to 408.200 \u00b0C at 10.000\u00b0C/min",
-                    "Gas Type\tNitrogen",
-                    "Pan Type\tPlatinum HT",
-                    "Source Files 1\tC:\\Users\\ITCP-AKT.ITCP-AKT-003\\Documents\\Nickel(3).tri",
-                    "Measured 1\t371.1597",
-                    "Known 1\t358.2"
-                ],
-                "metadata": {
-                    "Comments": "",
-                    "Common IDD Version": 1,
-                    "Company Name": "KIT",
-                    "Cortex Version": "VER 2.1.2.50",
-                    "Current File Name": "C:/Users/ITCP-AKT.ITCP-AKT-003/Documents/AG_015.tri",
-                    "Date Applied": "24.02.2020 13:05:13",
-                    "Date Applied (1)": "16.01.2020 11:59:42",
-                    "Description": "From 308.200 \u00b0C to 408.200 \u00b0C at 10.000\u00b0C/min",
-                    "DisplayType": "TianmaV2",
-                    "Driver": "5.0.0.6",
-                    "Empty Pan Weight": "0.000 mg",
-                    "Experiment Log Entry # 1": "Ramp Segment 10 C/min to 1000 C Started",
-                    "Experiment Log Entry # 3": "Gas Select Segment is 2",
-                    "Experiment Log Entry # 5": "Isothermal Segment 5 min started",
-                    "Filename": "AG_015",
-                    "GDM Version": "1.2.1.2",
-                    "Gas 1": "Nitrogen",
-                    "Gas 2": "Air",
-                    "Gas Type": "Nitrogen",
-                    "High Gain Meter Reading": "7.7909E-005 mg/count",
-                    "High Meter Offset": "619.0736 mg",
-                    "High Reference Weight": "1,000.000 mg",
-                    "IP": "192.168.1.55",
-                    "Instrument Name": "5500-0290",
-                    "Instrument Type": "TGA5500",
-                    "Instrument name": "5500-0290 (192.168.1.55)",
-                    "Known 1": 358.2,
-                    "Location of Instrument": "Manufacturing Test",
-                    "Low Gain Meter Reading": "9.7908E-006 mg/count",
-                    "Low Meter Offset": "48.6466 mg",
-                    "Low Reference Weight": "100.000 mg",
-                    "MTGA HiRes Licensed": "Yes",
-                    "Measured 1": 371.1597,
-                    "Method Log Entry # 1": "(Ramp 152020) Ramp 10 \u00b0C/minute to 1000 \u00b0C",
-                    "Method Log Entry # 2": "Gas Selected 2",
-                    "Method Log Entry # 3": "Isothermal 5 minutes",
-                    "Operator": "Alexander Grimm",
-                    "Operator (1)": "Alexander Grimm",
-                    "Original File Name": "C:\\Users\\ITCP-AKT.ITCP-AKT-003\\Documents\\AG_015.tri",
-                    "PCU Version": "1.2.0.9",
-                    "Pan Number": 8,
-                    "Pan Type": "Platinum HT",
-                    "Pan Type (1)": "Platinum HT",
-                    "Procedure Name": "",
-                    "Project Name": "",
-                    "Run date": "29.03.2021 13:18:33",
-                    "Sample Mass": "3.423 mg",
-                    "Sample Name": "AG_015",
-                    "Sample mass pre-weigh": "Not Available",
-                    "Sample name": "AG_015",
-                    "Sampling Rate": 0.1,
-                    "Selected Gas Channel": 1,
-                    "Serial Number": "5500-0290",
-                    "Signal #1": "Time (min)",
-                    "Signal #2": "Temperature (\u00b0C)",
-                    "Signal #3": "Weight (\u00b5g)",
-                    "Signal #4": "Temperature Difference (\u00b0C)",
-                    "Signal #5": "Sample Purge (mL/min)",
-                    "Signal #6": "Balance Purge (mL/min)",
-                    "Signal #7": "Set Point Temperature (\u00b0C)",
-                    "Signal #8": "Power Delivered (W)",
-                    "Signal #9": "Ramp Rate (\u00b0C/min)",
-                    "Skip Weight Stabilization": 0,
-                    "Source Files 1": "C:\\Users\\ITCP-AKT.ITCP-AKT-003\\Documents\\Nickel(3).tri",
-                    "Stop on Gas Flow Error": "No",
-                    "Test": "Custom",
-                    "TouchscreenVersion": "1.0.0.14551",
-                    "Transducer Version": "1.1.0.32",
-                    "Trios version": "5.0.0.44608",
-                    "[Configuration]": "",
-                    "[Curie Calibration]": "",
-                    "[Experiment Logs]": "",
-                    "[File Parameters]": "",
-                    "[Method Log]": "",
-                    "[Procedure]": "",
-                    "[Signal List]": "",
-                    "[Versions]": "",
-                    "[Weight Calibration]": "",
-                    "columns": "0",
-                    "proceduresegments": "Ramp 10.00 \u00b0C/min to 1000.00 \u00b0C; Select Gas: Gas 2 ; Isothermal 5.0 min",
-                    "rows": "0",
-                    "rundate": "29.03.2021"
-                },
-                "rows": []
+    "data": [
+        {
+            "metadata": {
+                "content_type": "application/vnd.ms-excel",
+                "extension": ".xls",
+                "file_name": "AG_015.xls",
+                "mime_type": "application/vnd.ms-excel",
+                "reader": "OldExcelReader",
+                "uploaded": "2023-08-09T12:21:19.568196"
             },
-            {
-                "columns": [
-                    {
-                        "key": "0",
-                        "name": "Column #0"
+            "tables": [
+                {
+                    "columns": [],
+                    "header": [
+                        "Filename\tAG_015",
+                        "Instrument name\t5500-0290 (192.168.1.55)",
+                        "Operator\tAlexander Grimm",
+                        "rundate\t29.03.2021",
+                        "Sample name\tAG_015",
+                        "proceduresegments\tRamp 10.00 \u00b0C/min to 1000.00 \u00b0C; Select Gas: Gas 2 ; Isothermal 5.0 min",
+                        "[File Parameters]\t",
+                        "Run date\t29.03.2021 13:18:33",
+                        "Trios version\t5.0.0.44608",
+                        "Original File Name\tC:\\Users\\ITCP-AKT.ITCP-AKT-003\\Documents\\AG_015.tri",
+                        "Current File Name\tC:/Users/ITCP-AKT.ITCP-AKT-003/Documents/AG_015.tri",
+                        "[Procedure]\t",
+                        "Procedure Name\t",
+                        "Sample Name\tAG_015",
+                        "Pan Number\t8.0",
+                        "Sample Mass\t3.423 mg",
+                        "Pan Type\tPlatinum HT",
+                        "Comments\t",
+                        "Project Name\t",
+                        "Operator\tAlexander Grimm",
+                        "Test\tCustom",
+                        "Skip Weight Stabilization\t0",
+                        "Sample mass pre-weigh\tNot Available",
+                        "Stop on Gas Flow Error\tNo",
+                        "[Signal List]\t",
+                        "Signal #1\tTime (min)",
+                        "Signal #2\tTemperature (\u00b0C)",
+                        "Signal #3\tWeight (\u00b5g)",
+                        "Signal #4\tTemperature Difference (\u00b0C)",
+                        "Signal #5\tSample Purge (mL/min)",
+                        "Signal #6\tBalance Purge (mL/min)",
+                        "Signal #7\tSet Point Temperature (\u00b0C)",
+                        "Signal #8\tPower Delivered (W)",
+                        "Signal #9\tRamp Rate (\u00b0C/min)",
+                        "[Configuration]\t",
+                        "Company Name\tKIT",
+                        "Instrument Name\t5500-0290",
+                        "Instrument Type\tTGA5500",
+                        "Serial Number\t5500-0290",
+                        "IP\t192.168.1.55",
+                        "Location of Instrument\tManufacturing Test",
+                        "DisplayType\tTianmaV2",
+                        "Sampling Rate\t0.1",
+                        "Gas 1\tNitrogen",
+                        "Gas 2\tAir",
+                        "Selected Gas Channel\t1.0",
+                        "MTGA HiRes Licensed\tYes",
+                        "[Versions]\t",
+                        "Common IDD Version\t1.0",
+                        "Cortex Version\tVER 2.1.2.50",
+                        "Driver\t5.0.0.6",
+                        "GDM Version\t1.2.1.2",
+                        "TouchscreenVersion\t1.0.0.14551",
+                        "PCU Version\t1.2.0.9",
+                        "Transducer Version\t1.1.0.32",
+                        "[Experiment Logs]\t",
+                        "Experiment Log Entry # 1\tRamp Segment 10 C/min to 1000 C Started",
+                        "Experiment Log Entry # 3\tGas Select Segment is 2",
+                        "Experiment Log Entry # 5\tIsothermal Segment 5 min started",
+                        "[Method Log]\t",
+                        "Method Log Entry # 1\t(Ramp 152020) Ramp 10 \u00b0C/minute to 1000 \u00b0C",
+                        "Method Log Entry # 2\tGas Selected 2",
+                        "Method Log Entry # 3\tIsothermal 5 minutes",
+                        "[Weight Calibration]\t",
+                        "Date Applied\t24.02.2020 13:05:13",
+                        "Empty Pan Weight\t0.000 mg",
+                        "Low Reference Weight\t100.000 mg",
+                        "High Reference Weight\t1,000.000 mg",
+                        "Low Gain Meter Reading\t9.7908E-006 mg/count",
+                        "High Gain Meter Reading\t7.7909E-005 mg/count",
+                        "Low Meter Offset\t48.6466 mg",
+                        "High Meter Offset\t619.0736 mg",
+                        "[Curie Calibration]\t",
+                        "Date Applied\t16.01.2020 11:59:42",
+                        "Description\tFrom 308.200 \u00b0C to 408.200 \u00b0C at 10.000\u00b0C/min",
+                        "Gas Type\tNitrogen",
+                        "Pan Type\tPlatinum HT",
+                        "Source Files 1\tC:\\Users\\ITCP-AKT.ITCP-AKT-003\\Documents\\Nickel(3).tri",
+                        "Measured 1\t371.1597",
+                        "Known 1\t358.2"
+                    ],
+                    "metadata": {
+                        "Comments": "",
+                        "Common IDD Version": 1,
+                        "Company Name": "KIT",
+                        "Cortex Version": "VER 2.1.2.50",
+                        "Current File Name": "C:/Users/ITCP-AKT.ITCP-AKT-003/Documents/AG_015.tri",
+                        "Date Applied": "24.02.2020 13:05:13",
+                        "Date Applied (1)": "16.01.2020 11:59:42",
+                        "Description": "From 308.200 \u00b0C to 408.200 \u00b0C at 10.000\u00b0C/min",
+                        "DisplayType": "TianmaV2",
+                        "Driver": "5.0.0.6",
+                        "Empty Pan Weight": "0.000 mg",
+                        "Experiment Log Entry # 1": "Ramp Segment 10 C/min to 1000 C Started",
+                        "Experiment Log Entry # 3": "Gas Select Segment is 2",
+                        "Experiment Log Entry # 5": "Isothermal Segment 5 min started",
+                        "Filename": "AG_015",
+                        "GDM Version": "1.2.1.2",
+                        "Gas 1": "Nitrogen",
+                        "Gas 2": "Air",
+                        "Gas Type": "Nitrogen",
+                        "High Gain Meter Reading": "7.7909E-005 mg/count",
+                        "High Meter Offset": "619.0736 mg",
+                        "High Reference Weight": "1,000.000 mg",
+                        "IP": "192.168.1.55",
+                        "Instrument Name": "5500-0290",
+                        "Instrument Type": "TGA5500",
+                        "Instrument name": "5500-0290 (192.168.1.55)",
+                        "Known 1": 358.2,
+                        "Location of Instrument": "Manufacturing Test",
+                        "Low Gain Meter Reading": "9.7908E-006 mg/count",
+                        "Low Meter Offset": "48.6466 mg",
+                        "Low Reference Weight": "100.000 mg",
+                        "MTGA HiRes Licensed": "Yes",
+                        "Measured 1": 371.1597,
+                        "Method Log Entry # 1": "(Ramp 152020) Ramp 10 \u00b0C/minute to 1000 \u00b0C",
+                        "Method Log Entry # 2": "Gas Selected 2",
+                        "Method Log Entry # 3": "Isothermal 5 minutes",
+                        "Operator": "Alexander Grimm",
+                        "Operator (1)": "Alexander Grimm",
+                        "Original File Name": "C:\\Users\\ITCP-AKT.ITCP-AKT-003\\Documents\\AG_015.tri",
+                        "PCU Version": "1.2.0.9",
+                        "Pan Number": 8,
+                        "Pan Type": "Platinum HT",
+                        "Pan Type (1)": "Platinum HT",
+                        "Procedure Name": "",
+                        "Project Name": "",
+                        "Run date": "29.03.2021 13:18:33",
+                        "Sample Mass": "3.423 mg",
+                        "Sample Name": "AG_015",
+                        "Sample mass pre-weigh": "Not Available",
+                        "Sample name": "AG_015",
+                        "Sampling Rate": 0.1,
+                        "Selected Gas Channel": 1,
+                        "Serial Number": "5500-0290",
+                        "Signal #1": "Time (min)",
+                        "Signal #2": "Temperature (\u00b0C)",
+                        "Signal #3": "Weight (\u00b5g)",
+                        "Signal #4": "Temperature Difference (\u00b0C)",
+                        "Signal #5": "Sample Purge (mL/min)",
+                        "Signal #6": "Balance Purge (mL/min)",
+                        "Signal #7": "Set Point Temperature (\u00b0C)",
+                        "Signal #8": "Power Delivered (W)",
+                        "Signal #9": "Ramp Rate (\u00b0C/min)",
+                        "Skip Weight Stabilization": 0,
+                        "Source Files 1": "C:\\Users\\ITCP-AKT.ITCP-AKT-003\\Documents\\Nickel(3).tri",
+                        "Stop on Gas Flow Error": "No",
+                        "Test": "Custom",
+                        "TouchscreenVersion": "1.0.0.14551",
+                        "Transducer Version": "1.1.0.32",
+                        "Trios version": "5.0.0.44608",
+                        "[Configuration]": "",
+                        "[Curie Calibration]": "",
+                        "[Experiment Logs]": "",
+                        "[File Parameters]": "",
+                        "[Method Log]": "",
+                        "[Procedure]": "",
+                        "[Signal List]": "",
+                        "[Versions]": "",
+                        "[Weight Calibration]": "",
+                        "__UNIT_%": "%",
+                        "__UNIT_PPM": "ppm",
+                        "__UNIT_gram": "g",
+                        "__UNIT_liter": "l",
+                        "__UNIT_mol": "mol",
+                        "columns": "0",
+                        "proceduresegments": "Ramp 10.00 \u00b0C/min to 1000.00 \u00b0C; Select Gas: Gas 2 ; Isothermal 5.0 min",
+                        "rows": "0",
+                        "rundate": "29.03.2021"
                     },
-                    {
-                        "key": "1",
-                        "name": "Column #1"
-                    },
-                    {
-                        "key": "2",
-                        "name": "Column #2"
-                    },
-                    {
-                        "key": "3",
-                        "name": "Column #3"
-                    }
-                ],
-                "header": [
-                    "Ramp 10.00 \u00b0C/min to 1000.00 \u00b0C\t\t\t",
-                    "Time\tTemperature\tWeight\tWeight",
-                    "min\t\u00b0C\t\u00b5g\t%"
-                ],
-                "metadata": {
-                    "Ramp 10.00 \u00b0C/min to 1000.00 \u00b0C": "",
-                    "Ramp 10.00 \u00b0C/min to 1000.00 \u00b0C (1)": "",
-                    "Ramp 10.00 \u00b0C/min to 1000.00 \u00b0C (2)": "",
-                    "Time": "Temperature",
-                    "Time (1)": "Weight",
-                    "Time (2)": "Weight",
-                    "columns": "4",
-                    "min": "\u00b0C",
-                    "min (1)": "\u00b5g",
-                    "min (2)": "%",
-                    "rows": "58665"
+                    "rows": []
                 },
-                "rows": [
-                    [
-                        0,
-                        28.15,
-                        3423.36,
-                        100
+                {
+                    "columns": [
+                        {
+                            "key": "0",
+                            "name": "Column #0"
+                        },
+                        {
+                            "key": "1",
+                            "name": "Column #1"
+                        },
+                        {
+                            "key": "2",
+                            "name": "Column #2"
+                        },
+                        {
+                            "key": "3",
+                            "name": "Column #3"
+                        }
                     ],
-                    [
-                        0.00166667,
-                        28.15,
-                        3423.36,
-                        100
+                    "header": [
+                        "Ramp 10.00 \u00b0C/min to 1000.00 \u00b0C\t\t\t",
+                        "Time\tTemperature\tWeight\tWeight",
+                        "min\t\u00b0C\t\u00b5g\t%"
                     ],
-                    [
-                        0.00333333,
-                        28.15,
-                        3423.37,
-                        100
-                    ],
-                    [
-                        0.005,
-                        28.15,
-                        3423.4,
-                        100
-                    ],
-                    [
-                        0.00666667,
-                        28.15,
-                        3423.41,
-                        100
-                    ],
-                    [
-                        0.00833333,
-                        28.15,
-                        3423.41,
-                        100
-                    ],
-                    [
-                        0.01,
-                        28.15,
-                        3423.39,
-                        100
-                    ],
-                    [
-                        0.0116667,
-                        28.15,
-                        3423.39,
-                        100
-                    ],
-                    [
-                        0.0133333,
-                        28.15,
-                        3423.39,
-                        100
-                    ],
-                    [
-                        0.015,
-                        28.15,
-                        3423.41,
-                        100
+                    "metadata": {
+                        "Ramp 10.00 \u00b0C/min to 1000.00 \u00b0C": "",
+                        "Ramp 10.00 \u00b0C/min to 1000.00 \u00b0C (1)": "",
+                        "Ramp 10.00 \u00b0C/min to 1000.00 \u00b0C (2)": "",
+                        "Time": "Temperature",
+                        "Time (1)": "Weight",
+                        "Time (2)": "Weight",
+                        "columns": "4",
+                        "min": "\u00b0C",
+                        "min (1)": "\u00b5g",
+                        "min (2)": "%",
+                        "rows": "58665"
+                    },
+                    "rows": [
+                        [
+                            0,
+                            28.15,
+                            3423.36,
+                            100
+                        ],
+                        [
+                            0.00166667,
+                            28.15,
+                            3423.36,
+                            100
+                        ],
+                        [
+                            0.00333333,
+                            28.15,
+                            3423.37,
+                            100
+                        ],
+                        [
+                            0.005,
+                            28.15,
+                            3423.4,
+                            100
+                        ],
+                        [
+                            0.00666667,
+                            28.15,
+                            3423.41,
+                            100
+                        ],
+                        [
+                            0.00833333,
+                            28.15,
+                            3423.41,
+                            100
+                        ],
+                        [
+                            0.01,
+                            28.15,
+                            3423.39,
+                            100
+                        ],
+                        [
+                            0.0116667,
+                            28.15,
+                            3423.39,
+                            100
+                        ],
+                        [
+                            0.0133333,
+                            28.15,
+                            3423.39,
+                            100
+                        ],
+                        [
+                            0.015,
+                            28.15,
+                            3423.41,
+                            100
+                        ]
                     ]
-                ]
-            }
-        ]
-    },
+                }
+            ]
+        }
+    ],
     "datatypes": [],
     "description": "TGA - Campus West, KIT without Isothermal",
     "devices": [],
+    "diff_history": [
+        {
+            "at": "2026-04-30T12:53:58.481189+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "TGA 2"
+                }
+            ],
+            "profile_version": "1.0",
+            "trigger": "migration:20260430145303"
+        },
+        {
+            "at": "2026-04-30T12:54:02.366554+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "TGA 2__TEST"
+                }
+            ],
+            "profile_version": "1.1",
+            "trigger": "migration:20260430145303"
+        },
+        {
+            "at": "2026-04-30T13:02:20.061248+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "TGA 2__TEST__TEST"
+                }
+            ],
+            "profile_version": "1.2",
+            "trigger": "restore_migration:20260430145303"
+        },
+        {
+            "at": "2026-04-30T13:02:20.063439+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "TGA 2__TEST"
+                }
+            ],
+            "profile_version": "1.3",
+            "trigger": "restore_migration:20260430145303"
+        },
+        {
+            "at": "2026-05-04T04:59:00.388353+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "TGA 2"
+                }
+            ],
+            "profile_version": "1.4",
+            "trigger": "undo:1.1"
+        },
+        {
+            "at": "2026-05-04T04:59:00.390498+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "TGA 2__TEST"
+                }
+            ],
+            "profile_version": "1.5",
+            "trigger": "undo:1.0"
+        },
+        {
+            "at": "2026-05-04T04:59:00.391742+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "TGA 2"
+                }
+            ],
+            "profile_version": "1.6",
+            "trigger": "migration:20260504065656"
+        },
+        {
+            "at": "2026-05-04T07:23:31.314181+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "TGA 2--TEST"
+                }
+            ],
+            "profile_version": "1.7",
+            "trigger": "undo:1.6"
+        },
+        {
+            "at": "2026-05-06T08:56:29.090879+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/reactionVariations"
+                }
+            ],
+            "profile_version": "1.8",
+            "trigger": "migration:20260417132254"
+        },
+        {
+            "at": "2026-05-06T08:56:29.091295+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_liter"
+                },
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_mol"
+                },
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_PPM"
+                },
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_%"
+                },
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_gram"
+                }
+            ],
+            "profile_version": "1.9",
+            "trigger": "migration:20260422063146"
+        }
+    ],
     "id": "fb63e718-3842-4d45-9b39-84a53b27e483",
     "identifiers": [
         {
@@ -318,21 +461,27 @@
         }
     ],
     "isDisabled": false,
-    "last_migration": "20260113143334",
+    "last_migration": "20260430125545",
+    "objects": [],
     "ols": null,
     "ontology": "",
     "predicates": [],
+    "profile_version": "1.10",
+    "reactionVariations": {
+        "elements": [],
+        "identifiers": []
+    },
     "rootOntology": {
         "description": [
             "A planned process that has the objective to produce information about a material entity (the evaluant) by examining it."
         ],
-        "id": "OBI:property:http://purl.obolibrary.org/obo/OBI_0000070",
+        "id": "obi:class:http://purl.obolibrary.org/obo/OBI_0000070",
         "iri": "http://purl.obolibrary.org/obo/OBI_0000070",
         "label": "assay",
         "namespace": "http://purl.obolibrary.org/obo/",
         "obo_id": "OBI:0000070",
-        "ontology_name": "chmo",
-        "ontology_prefix": "CHMO",
+        "ontology_name": "obi",
+        "ontology_prefix": "OBI",
         "short_form": "OBI_0000070",
         "type": "class"
     },
@@ -359,5 +508,6 @@
             }
         }
     ],
-    "title": "TGA 2"
+    "title": "TGA 2",
+    "version": 0
 }

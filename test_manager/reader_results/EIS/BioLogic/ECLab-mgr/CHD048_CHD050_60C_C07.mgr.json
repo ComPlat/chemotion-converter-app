@@ -285,6 +285,11 @@
                 "</Configuration>"
             ],
             "metadata": {
+                "__UNIT_PPM": "ppm",
+                "__UNIT_liter": "l",
+                "__UNIT_gram": "g",
+                "__UNIT_%": "%",
+                "__UNIT_mol": "mol",
                 "rows": "0",
                 "columns": "0"
             },
@@ -298,6 +303,6 @@
         "mime_type": "text/xml",
         "extension": ".mgr",
         "reader": "AsciiReader",
-        "uploaded": "2025-10-10T12:20:04.697120"
+        "uploaded": "2026-04-22T10:04:50.072225+00:00"
     }
 }

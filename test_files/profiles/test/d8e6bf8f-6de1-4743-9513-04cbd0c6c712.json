@@ -1,205 +1,348 @@
 {
     "converter_version": "1.8.0",
-    "data": {
-        "metadata": {
-            "content_type": "text/csv",
-            "delimiter": "comma",
-            "doublequote": "False",
-            "extension": ".csv",
-            "file_name": "1mg mL-1.csv",
-            "lineterminator": "\\r\\n",
-            "mime_type": "text/plain",
-            "quotechar": "\"",
-            "quoting": "0",
-            "reader": "CSVReader",
-            "skipinitialspace": "False",
-            "uploaded": "2023-08-10T11:08:48.304598"
-        },
-        "tables": [
-            {
-                "columns": [
-                    {
-                        "key": "0",
-                        "name": "Column #0 (Wavelength (nm))"
-                    },
-                    {
-                        "key": "1",
-                        "name": "Column #1 (Abs)"
-                    },
-                    {
-                        "key": "2",
-                        "name": "Column #2 (Wavelength (nm))"
-                    },
-                    {
-                        "key": "3",
-                        "name": "Column #3 (Abs)"
-                    },
-                    {
-                        "key": "4",
-                        "name": "Column #4 (Wavelength (nm))"
-                    },
-                    {
-                        "key": "5",
-                        "name": "Column #5 (Abs)"
-                    },
-                    {
-                        "key": "6",
-                        "name": "Column #6 (Wavelength (nm))"
-                    },
-                    {
-                        "key": "7",
-                        "name": "Column #7 (Abs)"
-                    },
-                    {
-                        "key": "8",
-                        "name": "Column #8"
-                    }
-                ],
-                "header": [
-                    "sample1,,0,1 mg mL,,EM-260 0,1,,EM-260 0,01,,"
-                ],
-                "metadata": {
-                    "column_00": "Wavelength (nm)",
-                    "column_01": "Abs",
-                    "column_02": "Wavelength (nm)",
-                    "column_03": "Abs",
-                    "column_04": "Wavelength (nm)",
-                    "column_05": "Abs",
-                    "column_06": "Wavelength (nm)",
-                    "column_07": "Abs",
-                    "column_08": "",
-                    "columns": "9",
-                    "rows": "601"
-                },
-                "rows": [
-                    [
-                        "800",
-                        "0.1076506451",
-                        "800",
-                        "0.01664798148",
-                        "800",
-                        "0.001214531949",
-                        "800",
-                        "0.0003741875116",
-                        ""
-                    ],
-                    [
-                        "799",
-                        "0.1068535969",
-                        "799",
-                        "0.01678100973",
-                        "799",
-                        "0.001186497742",
-                        "799",
-                        "-0.0002207512007",
-                        ""
-                    ],
-                    [
-                        "798",
-                        "0.1072618291",
-                        "798",
-                        "0.01694252901",
-                        "798",
-                        "0.001021392061",
-                        "798",
-                        "0.0001457883482",
-                        ""
-                    ],
-                    [
-                        "797",
-                        "0.1071170717",
-                        "797",
-                        "0.01689954661",
-                        "797",
-                        "0.001003878191",
-                        "797",
-                        "-0.0001123305774",
-                        ""
-                    ],
-                    [
-                        "796",
-                        "0.1078387797",
-                        "796",
-                        "0.01666137576",
-                        "796",
-                        "0.0004589417658",
-                        "796",
-                        "0.0001892935688",
-                        ""
-                    ],
-                    [
-                        "795",
-                        "0.1078049988",
-                        "795",
-                        "0.0166294761",
-                        "795",
-                        "0.001681671944",
-                        "795",
-                        "0.0003185400856",
-                        ""
-                    ],
-                    [
-                        "794",
-                        "0.1074582487",
-                        "794",
-                        "0.01654508337",
-                        "794",
-                        "0.001648176811",
-                        "794",
-                        "0.0009072146495",
-                        ""
-                    ],
-                    [
-                        "793",
-                        "0.1067937762",
-                        "793",
-                        "0.0167161189",
-                        "793",
-                        "0.0006932874676",
-                        "793",
-                        "-0.0001531143935",
-                        ""
-                    ],
-                    [
-                        "792",
-                        "0.1070645005",
-                        "792",
-                        "0.01659432426",
-                        "792",
-                        "0.001130045392",
-                        "792",
-                        "0.0003101987822",
-                        ""
-                    ],
-                    [
-                        "791",
-                        "0.1067053676",
-                        "791",
-                        "0.01647320949",
-                        "791",
-                        "0.0006840056158",
-                        "791",
-                        "0.0004389371315",
-                        ""
-                    ]
-                ]
+    "data": [
+        {
+            "metadata": {
+                "content_type": "text/csv",
+                "delimiter": "comma",
+                "doublequote": "False",
+                "extension": ".csv",
+                "file_name": "1mg mL-1.csv",
+                "lineterminator": "\\r\\n",
+                "mime_type": "text/plain",
+                "quotechar": "\"",
+                "quoting": "0",
+                "reader": "CSVReader",
+                "skipinitialspace": "False",
+                "uploaded": "2023-08-10T11:08:48.304598"
             },
-            {
-                "columns": [],
-                "header": [
-                    ""
-                ],
-                "metadata": {
-                    "columns": "0",
-                    "rows": "0"
+            "tables": [
+                {
+                    "columns": [
+                        {
+                            "key": "0",
+                            "name": "Column #0 (Wavelength (nm))"
+                        },
+                        {
+                            "key": "1",
+                            "name": "Column #1 (Abs)"
+                        },
+                        {
+                            "key": "2",
+                            "name": "Column #2 (Wavelength (nm))"
+                        },
+                        {
+                            "key": "3",
+                            "name": "Column #3 (Abs)"
+                        },
+                        {
+                            "key": "4",
+                            "name": "Column #4 (Wavelength (nm))"
+                        },
+                        {
+                            "key": "5",
+                            "name": "Column #5 (Abs)"
+                        },
+                        {
+                            "key": "6",
+                            "name": "Column #6 (Wavelength (nm))"
+                        },
+                        {
+                            "key": "7",
+                            "name": "Column #7 (Abs)"
+                        },
+                        {
+                            "key": "8",
+                            "name": "Column #8"
+                        }
+                    ],
+                    "header": [
+                        "sample1,,0,1 mg mL,,EM-260 0,1,,EM-260 0,01,,"
+                    ],
+                    "metadata": {
+                        "__UNIT_%": "%",
+                        "__UNIT_PPM": "ppm",
+                        "__UNIT_gram": "g",
+                        "__UNIT_liter": "l",
+                        "__UNIT_mol": "mol",
+                        "column_00": "Wavelength (nm)",
+                        "column_01": "Abs",
+                        "column_02": "Wavelength (nm)",
+                        "column_03": "Abs",
+                        "column_04": "Wavelength (nm)",
+                        "column_05": "Abs",
+                        "column_06": "Wavelength (nm)",
+                        "column_07": "Abs",
+                        "column_08": "",
+                        "columns": "9",
+                        "rows": "601"
+                    },
+                    "rows": [
+                        [
+                            "800",
+                            "0.1076506451",
+                            "800",
+                            "0.01664798148",
+                            "800",
+                            "0.001214531949",
+                            "800",
+                            "0.0003741875116",
+                            ""
+                        ],
+                        [
+                            "799",
+                            "0.1068535969",
+                            "799",
+                            "0.01678100973",
+                            "799",
+                            "0.001186497742",
+                            "799",
+                            "-0.0002207512007",
+                            ""
+                        ],
+                        [
+                            "798",
+                            "0.1072618291",
+                            "798",
+                            "0.01694252901",
+                            "798",
+                            "0.001021392061",
+                            "798",
+                            "0.0001457883482",
+                            ""
+                        ],
+                        [
+                            "797",
+                            "0.1071170717",
+                            "797",
+                            "0.01689954661",
+                            "797",
+                            "0.001003878191",
+                            "797",
+                            "-0.0001123305774",
+                            ""
+                        ],
+                        [
+                            "796",
+                            "0.1078387797",
+                            "796",
+                            "0.01666137576",
+                            "796",
+                            "0.0004589417658",
+                            "796",
+                            "0.0001892935688",
+                            ""
+                        ],
+                        [
+                            "795",
+                            "0.1078049988",
+                            "795",
+                            "0.0166294761",
+                            "795",
+                            "0.001681671944",
+                            "795",
+                            "0.0003185400856",
+                            ""
+                        ],
+                        [
+                            "794",
+                            "0.1074582487",
+                            "794",
+                            "0.01654508337",
+                            "794",
+                            "0.001648176811",
+                            "794",
+                            "0.0009072146495",
+                            ""
+                        ],
+                        [
+                            "793",
+                            "0.1067937762",
+                            "793",
+                            "0.0167161189",
+                            "793",
+                            "0.0006932874676",
+                            "793",
+                            "-0.0001531143935",
+                            ""
+                        ],
+                        [
+                            "792",
+                            "0.1070645005",
+                            "792",
+                            "0.01659432426",
+                            "792",
+                            "0.001130045392",
+                            "792",
+                            "0.0003101987822",
+                            ""
+                        ],
+                        [
+                            "791",
+                            "0.1067053676",
+                            "791",
+                            "0.01647320949",
+                            "791",
+                            "0.0006840056158",
+                            "791",
+                            "0.0004389371315",
+                            ""
+                        ]
+                    ]
                 },
-                "rows": []
-            }
-        ]
-    },
+                {
+                    "columns": [],
+                    "header": [
+                        ""
+                    ],
+                    "metadata": {
+                        "columns": "0",
+                        "rows": "0"
+                    },
+                    "rows": []
+                }
+            ]
+        }
+    ],
     "datatypes": [],
     "description": "multicolumn (4) file with no header - Data from Tasnim",
     "devices": [],
+    "diff_history": [
+        {
+            "at": "2026-04-30T12:53:58.490606+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "UVVIS CS"
+                }
+            ],
+            "profile_version": "1.0",
+            "trigger": "migration:20260430145303"
+        },
+        {
+            "at": "2026-04-30T12:54:02.411677+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "UVVIS CS__TEST"
+                }
+            ],
+            "profile_version": "1.1",
+            "trigger": "migration:20260430145303"
+        },
+        {
+            "at": "2026-04-30T13:02:20.360005+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "UVVIS CS__TEST__TEST"
+                }
+            ],
+            "profile_version": "1.2",
+            "trigger": "restore_migration:20260430145303"
+        },
+        {
+            "at": "2026-04-30T13:02:20.362027+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "UVVIS CS__TEST"
+                }
+            ],
+            "profile_version": "1.3",
+            "trigger": "restore_migration:20260430145303"
+        },
+        {
+            "at": "2026-05-04T04:59:00.477997+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "UVVIS CS"
+                }
+            ],
+            "profile_version": "1.4",
+            "trigger": "undo:1.1"
+        },
+        {
+            "at": "2026-05-04T04:59:00.480121+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "UVVIS CS__TEST"
+                }
+            ],
+            "profile_version": "1.5",
+            "trigger": "undo:1.0"
+        },
+        {
+            "at": "2026-05-04T04:59:00.481286+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "UVVIS CS"
+                }
+            ],
+            "profile_version": "1.6",
+            "trigger": "migration:20260504065656"
+        },
+        {
+            "at": "2026-05-04T07:23:31.360682+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "UVVIS CS--TEST"
+                }
+            ],
+            "profile_version": "1.7",
+            "trigger": "undo:1.6"
+        },
+        {
+            "at": "2026-05-06T08:56:29.147194+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/reactionVariations"
+                }
+            ],
+            "profile_version": "1.8",
+            "trigger": "migration:20260417132254"
+        },
+        {
+            "at": "2026-05-06T08:56:29.147546+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_liter"
+                },
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_PPM"
+                },
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_mol"
+                },
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_%"
+                },
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_gram"
+                }
+            ],
+            "profile_version": "1.9",
+            "trigger": "migration:20260422063146"
+        }
+    ],
     "id": "d8e6bf8f-6de1-4743-9513-04cbd0c6c712",
     "identifiers": [
         {
@@ -252,10 +395,16 @@
         }
     ],
     "isDisabled": false,
-    "last_migration": "20260113143334",
+    "last_migration": "20260430125545",
+    "objects": [],
     "ols": "CHMO:0000292",
     "ontology": "",
     "predicates": [],
+    "profile_version": "1.10",
+    "reactionVariations": {
+        "elements": [],
+        "identifiers": []
+    },
     "rootOntology": {
         "description": [
             "Spectroscopy where the sample absorbs radiation in the range ultraviolet to visible (190-800 nm) resulting in electronic transitions within the sample."
@@ -347,5 +496,6 @@
             }
         }
     ],
-    "title": "UVVIS CS"
+    "title": "UVVIS CS",
+    "version": 0
 }

@@ -1,4 +1,5 @@
 """Array Constant definitions for dropdown select options"""
+import importlib
 import json
 
 DATA_TYPES = (
@@ -17,6 +18,7 @@ DATA_TYPES = (
     'INFRARED SPECTRUM',
     'INFRARED TRANSFERED SPECTRUM',
     'MASS SPECTRUM',
+    'MASS TIC',
     'NMP PEAK ASSIGNMENTS',
     'NMR FID',
     'NMR PEAK TABLE',
@@ -61,7 +63,7 @@ XUNITS = (
     'MOLECULAR MASS / DA',
     'NANOMETERS',
     'OHM',
-    'p/p0', # Normalaized dimension
+    'p/p0',  # Normalaized dimension
     'SECONDS',
     'Voltage in V',
     'Voltage vs Ref',
@@ -74,7 +76,7 @@ YUNITS = (
     'ACF (a.u.)',
     'Ampere',
     'ARBITRARY UNITS',
-    'cm³*K', # non-molar Susceptibility χ -> needs to be divided by amount of substance to get χ_m
+    'cm³*K',  # non-molar Susceptibility χ -> needs to be divided by amount of substance to get χ_m
     'Current in A',
     'COUNTS',
     'DEGREES CELSIUS',
@@ -104,9 +106,10 @@ OPTIONS = {
     'DATA CLASS': DATA_CLASSES,
     'XUNITS': XUNITS,
     'YUNITS': YUNITS,
+    'VERSION': importlib.metadata.version('chemotion-converter-app')
 }
 
 def compose_options(rdf_path):
-    with open(rdf_path, 'r') as fp:#
+    with open(rdf_path, 'r') as fp:  #
         rdf_content = json.load(fp)
     return OPTIONS | {'rdf': rdf_content}

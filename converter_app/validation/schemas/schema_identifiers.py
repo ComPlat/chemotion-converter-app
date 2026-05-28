@@ -57,6 +57,7 @@ identifiers_schema = {
             "type": ["string", "number"]
         },
         "predicate": ontology_id,
+        "object": ontology_id,
         "subject": ontology_subjects_id,
         "datatype": ontology_id,
     },

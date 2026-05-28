@@ -1,104 +1,247 @@
 {
     "converter_version": "1.8.0",
-    "data": {
-        "metadata": {
-            "content_type": "text/plain",
-            "delimiter": "tab",
-            "doublequote": "False",
-            "extension": ".txt",
-            "file_name": "BF2PhOEtAcPh-2.txt",
-            "lineterminator": "\\r\\n",
-            "mime_type": "text/plain",
-            "quotechar": "\"",
-            "quoting": "0",
-            "reader": "CSVReader",
-            "skipinitialspace": "False",
-            "uploaded": "2023-07-04T22:23:07.376088"
-        },
-        "tables": [
-            {
-                "columns": [
-                    {
-                        "key": "0",
-                        "name": "Column #0 (XYDATA)"
+    "data": [
+        {
+            "metadata": {
+                "content_type": "text/plain",
+                "delimiter": "tab",
+                "doublequote": "False",
+                "extension": ".txt",
+                "file_name": "BF2PhOEtAcPh-2.txt",
+                "lineterminator": "\\r\\n",
+                "mime_type": "text/plain",
+                "quotechar": "\"",
+                "quoting": "0",
+                "reader": "CSVReader",
+                "skipinitialspace": "False",
+                "uploaded": "2023-07-04T22:23:07.376088"
+            },
+            "tables": [
+                {
+                    "columns": [
+                        {
+                            "key": "0",
+                            "name": "Column #0 (XYDATA)"
+                        },
+                        {
+                            "key": "1",
+                            "name": "Column #1"
+                        }
+                    ],
+                    "header": [
+                        "TITLE\t",
+                        "DATA TYPE\t",
+                        "ORIGIN\tJASCO",
+                        "OWNER\t",
+                        "DATE\t23/02/10",
+                        "TIME\t10:59:44",
+                        "SPECTROMETER/DATA SYSTEM\tJASCO Corp., V-570, Rev. 1.00",
+                        "RESOLUTION\t",
+                        "DELTAX\t-2",
+                        "XUNITS\tNANOMETERS",
+                        "YUNITS\tABSORBANCE",
+                        "FIRSTX\t700.0000",
+                        "LASTX\t300.0000",
+                        "NPOINTS\t201",
+                        "FIRSTY\t0.00576",
+                        "MAXY\t0.12182",
+                        "MINY\t0.00559"
+                    ],
+                    "metadata": {
+                        "__UNIT_%": "%",
+                        "__UNIT_PPM": "ppm",
+                        "__UNIT_gram": "g",
+                        "__UNIT_liter": "l",
+                        "__UNIT_mol": "mol",
+                        "column_00": "XYDATA",
+                        "columns": "2",
+                        "rows": "201"
                     },
-                    {
-                        "key": "1",
-                        "name": "Column #1"
-                    }
-                ],
-                "header": [
-                    "TITLE\t",
-                    "DATA TYPE\t",
-                    "ORIGIN\tJASCO",
-                    "OWNER\t",
-                    "DATE\t23/02/10",
-                    "TIME\t10:59:44",
-                    "SPECTROMETER/DATA SYSTEM\tJASCO Corp., V-570, Rev. 1.00",
-                    "RESOLUTION\t",
-                    "DELTAX\t-2",
-                    "XUNITS\tNANOMETERS",
-                    "YUNITS\tABSORBANCE",
-                    "FIRSTX\t700.0000",
-                    "LASTX\t300.0000",
-                    "NPOINTS\t201",
-                    "FIRSTY\t0.00576",
-                    "MAXY\t0.12182",
-                    "MINY\t0.00559"
-                ],
-                "metadata": {
-                    "column_00": "XYDATA",
-                    "columns": "2",
-                    "rows": "201"
-                },
-                "rows": [
-                    [
-                        "700.0000",
-                        "0.00576"
-                    ],
-                    [
-                        "698.0000",
-                        "0.00561"
-                    ],
-                    [
-                        "696.0000",
-                        "0.0056"
-                    ],
-                    [
-                        "694.0000",
-                        "0.00559"
-                    ],
-                    [
-                        "692.0000",
-                        "0.00577"
-                    ],
-                    [
-                        "690.0000",
-                        "0.00616"
-                    ],
-                    [
-                        "688.0000",
-                        "0.00658"
-                    ],
-                    [
-                        "686.0000",
-                        "0.007"
-                    ],
-                    [
-                        "684.0000",
-                        "0.00726"
-                    ],
-                    [
-                        "682.0000",
-                        "0.00733"
+                    "rows": [
+                        [
+                            "700.0000",
+                            "0.00576"
+                        ],
+                        [
+                            "698.0000",
+                            "0.00561"
+                        ],
+                        [
+                            "696.0000",
+                            "0.0056"
+                        ],
+                        [
+                            "694.0000",
+                            "0.00559"
+                        ],
+                        [
+                            "692.0000",
+                            "0.00577"
+                        ],
+                        [
+                            "690.0000",
+                            "0.00616"
+                        ],
+                        [
+                            "688.0000",
+                            "0.00658"
+                        ],
+                        [
+                            "686.0000",
+                            "0.007"
+                        ],
+                        [
+                            "684.0000",
+                            "0.00726"
+                        ],
+                        [
+                            "682.0000",
+                            "0.00733"
+                        ]
                     ]
-                ]
-            }
-        ]
-    },
+                }
+            ]
+        }
+    ],
     "datatypes": [],
     "description": "JASCO V-570; ref location: KIT CN, data: +, metadata: +",
     "devices": [],
+    "diff_history": [
+        {
+            "at": "2026-04-30T12:53:58.474001+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "UV-VIS data from txt, data: +, metadata: -"
+                }
+            ],
+            "profile_version": "1.0",
+            "trigger": "migration:20260430145303"
+        },
+        {
+            "at": "2026-04-30T12:54:02.329450+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "UV-VIS data from txt, data: +, metadata: -__TEST"
+                }
+            ],
+            "profile_version": "1.1",
+            "trigger": "migration:20260430145303"
+        },
+        {
+            "at": "2026-04-30T13:02:19.812096+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "UV-VIS data from txt, data: +, metadata: -__TEST__TEST"
+                }
+            ],
+            "profile_version": "1.2",
+            "trigger": "restore_migration:20260430145303"
+        },
+        {
+            "at": "2026-04-30T13:02:19.813470+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "UV-VIS data from txt, data: +, metadata: -__TEST"
+                }
+            ],
+            "profile_version": "1.3",
+            "trigger": "restore_migration:20260430145303"
+        },
+        {
+            "at": "2026-05-04T04:59:00.316329+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "UV-VIS data from txt, data: +, metadata: -"
+                }
+            ],
+            "profile_version": "1.4",
+            "trigger": "undo:1.1"
+        },
+        {
+            "at": "2026-05-04T04:59:00.317640+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "UV-VIS data from txt, data: +, metadata: -__TEST"
+                }
+            ],
+            "profile_version": "1.5",
+            "trigger": "undo:1.0"
+        },
+        {
+            "at": "2026-05-04T04:59:00.318447+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "UV-VIS data from txt, data: +, metadata: -"
+                }
+            ],
+            "profile_version": "1.6",
+            "trigger": "migration:20260504065656"
+        },
+        {
+            "at": "2026-05-04T07:23:31.276990+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "UV-VIS data from txt, data: +, metadata: ---TEST"
+                }
+            ],
+            "profile_version": "1.7",
+            "trigger": "undo:1.6"
+        },
+        {
+            "at": "2026-05-06T08:56:29.048773+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/reactionVariations"
+                }
+            ],
+            "profile_version": "1.8",
+            "trigger": "migration:20260417132254"
+        },
+        {
+            "at": "2026-05-06T08:56:29.049022+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_liter"
+                },
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_PPM"
+                },
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_mol"
+                },
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_%"
+                },
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_gram"
+                }
+            ],
+            "profile_version": "1.9",
+            "trigger": "migration:20260422063146"
+        }
+    ],
     "id": "6be46fd7-59a2-4b02-829b-cbfef8c19646",
     "identifiers": [
         {
@@ -122,21 +265,27 @@
         }
     ],
     "isDisabled": false,
-    "last_migration": "20260113143334",
+    "last_migration": "20260430125545",
+    "objects": [],
     "ols": null,
     "ontology": "",
     "predicates": [],
+    "profile_version": "1.10",
+    "reactionVariations": {
+        "elements": [],
+        "identifiers": []
+    },
     "rootOntology": {
         "description": [
             "A planned process that has the objective to produce information about a material entity (the evaluant) by examining it."
         ],
-        "id": "OBI:property:http://purl.obolibrary.org/obo/OBI_0000070",
+        "id": "obi:class:http://purl.obolibrary.org/obo/OBI_0000070",
         "iri": "http://purl.obolibrary.org/obo/OBI_0000070",
         "label": "assay",
         "namespace": "http://purl.obolibrary.org/obo/",
         "obo_id": "OBI:0000070",
-        "ontology_name": "chmo",
-        "ontology_prefix": "CHMO",
+        "ontology_name": "obi",
+        "ontology_prefix": "OBI",
         "short_form": "OBI_0000070",
         "type": "class"
     },
@@ -163,5 +312,6 @@
             }
         }
     ],
-    "title": "UV-VIS data from txt, data: +, metadata: -"
+    "title": "UV-VIS data from txt, data: +, metadata: -",
+    "version": 0
 }

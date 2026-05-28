@@ -73,7 +73,7 @@ class JcampWriter(Writer):
             'ORIGIN': header.get('ORIGIN', ''),
             'OWNER': header.get('OWNER', '')
         }
-        black_list = ['NTUPLES_PAGE_HEADER_VALUE']
+        black_list = ['NTUPLES_PAGE_HEADER_VALUE', 'NTUPLES_ID', 'NTUPLES_PAGE_HEADER']
         for key in header:
             key_upper = key.upper()
             if key_upper not in black_list and key_upper not in jcamp_header:
@@ -199,7 +199,7 @@ class JcampWriter(Writer):
             'FIRSTY': firsty,
             'XUNITS': header.get('XUNITS', XUNITS[0]),
             'YUNITS': header.get('YUNITS', YUNITS[0]),
-            'XYPOINTS': '(XY..XY)'
+            'XYDATA': '(XY..XY)'
         })
 
         # write the xypoints
@@ -210,14 +210,18 @@ class JcampWriter(Writer):
 
     def _process_ntuples(self, header, tables):
         self._prepare_calculation_header(tables[0], False)
+        ph = 'T' if header['NTUPLES_PAGE_HEADER'].startswith('___') else header['NTUPLES_PAGE_HEADER']
+
+        dim_xy = len(tables[0].get('x'))
         self._write_header({
-            'NTUPLES': '(XY..XY)',
+            'NTUPLES': 'MULTIDIMENSIONAL',
             #'VAR_NAME': '',
-            #'SYMBOL': 'X, Y',
-            # 'VAR_TYPE': 'INDEPENDENT, DEPENDENT',
+            'VAR_NAME':  f'{ph}, {header.get('XUNITS', XUNITS[0])}, {header.get('YUNITS', YUNITS[0])}',
+            'SYMBOL':    'T, X, Y',
+            'VAR_TYPE': 'PAGE, X, Y',
             # 'VAR_FORM': 'AFFN, AFFN',
-            #'VAR_DIM': ', ',
-            'UNITS': f"{header.get('XUNITS', XUNITS[0])}, {header.get('YUNITS', YUNITS[0])}",
+            'VAR_DIM': f'{len(tables)}, {dim_xy}, {dim_xy}',
+            'UNITS': f', {header.get('XUNITS', XUNITS[0])}, {header.get('YUNITS', YUNITS[0])}',
             #'FIRST': '',
             #'LAST': '',
         })
@@ -229,14 +233,11 @@ class JcampWriter(Writer):
             assert y
 
             header = table.get('header')
-
-            npoints = len(x)
             # write header for one page
 
             self._write_header({
                 'PAGE': header['NTUPLES_PAGE_HEADER_VALUE'],
-                'NPOINTS': npoints,
-                'DATA TABLE': '(XY..XY)'
+                'XYDATA': '(XY..XY)'
 
             })
 
@@ -244,7 +245,7 @@ class JcampWriter(Writer):
             self._write_xypoints(x, y)
 
         # write the end
-        self.buffer.write(f'##END NTUPLES' + os.linesep)
+        self.buffer.write(f'##END NTUPLES= MULTIDIMENSIONAL' + os.linesep)
         self.buffer.write('##END=$$ End of the data block' + os.linesep)
 
     def _write_header(self, header):

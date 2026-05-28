@@ -43,12 +43,13 @@ dependencies = [
     "yadg==6.2.3",
     "numpy==2.*",
     "xmltodict==1.*",
-    "binaryparser @ git+https://github.com/ComPlat/BinaryParser@main",
+    "binaryparser @ git+https://github.com/ComPlat/BinaryParser.git@v.1.3.0",
     "rdflib==7.*",
     "GitPython==3.1.*",
     "requests==2.32.*",
     "click==8.3.*",
-    "astropy==7.2.*"
+    "astropy==7.2.*",
+    "jsonpatch==1.33"
 ]
 
 [project.optional-dependencies]
@@ -66,7 +67,8 @@ dev = [
     "setuptools",
     "jinja2",
     "pytest-timeout",
-    "pyinstaller"
+    "pyinstaller",
+    "pip-licenses"
 ]
 
 [project.urls]

@@ -57,6 +57,11 @@
                 "N2, 40.0ml/min / N2, 60.0ml/min": "0:0:0/5000 \u00b5V",
                 "-40": "-20 0 20 40 60 80 100 Temperature /\u00b0C",
                 "Main    2022-09-22 13:25    User: Poly": "SCH-179-3.ngb-odg",
+                "__UNIT_PPM": "ppm",
+                "__UNIT_liter": "l",
+                "__UNIT_gram": "g",
+                "__UNIT_%": "%",
+                "__UNIT_mol": "mol",
                 "rows": "0",
                 "columns": "0"
             },
@@ -70,6 +75,6 @@
         "mime_type": "application/pdf",
         "extension": ".pdf",
         "reader": "PdfReader",
-        "uploaded": "2026-01-19T10:49:02.138343+00:00"
+        "uploaded": "2026-04-22T10:03:41.139418+00:00"
     }
 }
