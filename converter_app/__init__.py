@@ -1,4 +1,3 @@
-import importlib.metadata
 import json
 import os
 import mimetypes
@@ -6,11 +5,13 @@ from pathlib import Path
 from typing import Literal
 
 from werkzeug.datastructures import FileStorage
+from converter_app.converters import Converter
+from converter_app.models import File, Profile
+from converter_app.package_metadata import TITLE, VERSION
+from converter_app.readers.helper.reader import Readers
+from converter_app.utils import run_conversion
 
 os.environ["TYPEGUARD_DISABLE"] = "1"
-
-TITLE = importlib.metadata.distribution('chemotion-converter-app').name
-VERSION = importlib.metadata.version('chemotion-converter-app')
 
 if __name__ == '__main__':
     print(f"{TITLE} version {VERSION}")
@@ -58,8 +59,6 @@ else:
             parsed table data.
         """
 
-        from converter_app.readers.helper.reader import Readers
-        from converter_app.models import File
         input_file_path = Path(path)
         if not input_file_path.exists():
             raise ValueError(f"{path} does not exist!")
@@ -103,9 +102,6 @@ else:
         :param output: Output type: jcampzip for .zip Bagit archive and  or rdf for a .ttl file.
         :return: Converted file content as bytes
         """
-        from converter_app.converters import Converter
-        from converter_app.models import Profile
-        from converter_app.utils import run_conversion
         reader_dict = read(raw_file)
         with open(profile_path, 'r') as f:
             json_data = json.load(f)

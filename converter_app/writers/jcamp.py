@@ -4,9 +4,9 @@ import sys
 from collections import defaultdict
 from typing import Any, Generator
 
-from converter_app.writers  .base import Writer
-from converter_app import TITLE, VERSION
+from converter_app.writers.base import Writer
 from converter_app.options import DATA_TYPES, DATA_CLASSES, XUNITS, YUNITS
+from converter_app.package_metadata import TITLE, VERSION
 
 
 class JcampWriter(Writer):
@@ -82,17 +82,22 @@ class JcampWriter(Writer):
 
     def _prepare_calculation_header(self, table, add_comment = True):
         jcamp_header = {}
+        x_operations_description = table.get('x_operations_description') or []
+        y_operations_description = table.get('y_operations_description') or []
+
         if table.get('applied_x_operator'):
             jcamp_header['CALCULATION_APPLIED_X'] = True
-            if add_comment and table.get('x_operations_description'):
-                self.write_comment_header(
-                    ['X operations description:'] + table.get('x_operations_description'))
 
         if table.get('applied_y_operator'):
             jcamp_header['CALCULATION_APPLIED_Y'] = True
-            if add_comment and table.get('y_operations_description'):
-                self.write_comment_header(
-                    ['Y operations description:'] + table.get('y_operations_description'))
+
+        if add_comment and x_operations_description:
+            self.write_comment_header(
+                ['X operations description:'] + x_operations_description)
+
+        if add_comment and y_operations_description:
+            self.write_comment_header(
+                ['Y operations description:'] + y_operations_description)
 
         if table.get('applied_operator_failed'):
             jcamp_header['CALCULATION_FAILED'] = True

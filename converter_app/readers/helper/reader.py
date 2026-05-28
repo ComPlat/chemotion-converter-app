@@ -1,10 +1,12 @@
+import logging
 import inspect
 from collections import OrderedDict
 
 from flask import current_app
 
-from converter_app.converters import logger
 from converter_app.models import File, extract_tar_archive
+
+logger = logging.getLogger(__name__)
 
 
 class Readers:
@@ -38,7 +40,11 @@ class Readers:
         :return:
         """
         if reader.identifier in self._registry['readers']:
-            raise ValueError(f'Identifier ({reader.identifier}) is already registered. Make sure you import the user wit its full path "import converter_app.readers.{reader.__class__.__name__}" ')
+            raise ValueError(
+                f'Identifier ({reader.identifier}) is already registered. '
+                'Make sure you import the user wit its full path '
+                f'"import converter_app.readers.{reader.__class__.__name__}" '
+            )
         self._registry['readers'][reader.identifier] = reader
 
     @property

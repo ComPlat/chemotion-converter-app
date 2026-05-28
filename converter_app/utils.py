@@ -10,7 +10,6 @@ from pathlib import Path
 from typing import Optional
 
 import git
-
 from converter_app.writers.jcamp import JcampWriter
 from converter_app.writers.jcampzip import JcampZipWriter
 from converter_app.writers.rdf import RDFWriter

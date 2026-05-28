@@ -8,6 +8,9 @@ users with the capability to effortlessly create profiles for the conversion pro
 """
 import json
 import os
+import signal
+import threading
+import time
 from pathlib import Path
 
 import jsonschema
@@ -125,7 +128,6 @@ def converting_router(app: Flask, auth: HTTPBasicAuth):
         @app.before_request
         def auto_cancel_on_activity():
             # Cancel shutdown if ANY route except /shutdown is called
-            from flask import request
             if request.endpoint != "shutdown":
                 global is_shutdown
                 is_shutdown = False
@@ -133,9 +135,6 @@ def converting_router(app: Flask, auth: HTTPBasicAuth):
         @app.route("/shutdown", methods=["POST", "GET"])
         def shutdown():
             global is_shutdown
-            import signal
-            import time
-            import threading
 
             is_shutdown = True
             def delayed_shutdown():

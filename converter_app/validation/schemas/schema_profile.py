@@ -109,6 +109,9 @@ profile_schema = {
 
             "additionalProperties": False,
         },
+        "units": {
+            "type": "array",
+        },
         "last_migration": {
             "type": "string"
         },

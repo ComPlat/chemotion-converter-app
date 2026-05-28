@@ -63,7 +63,6 @@ class AsciiReader(Reader):
                     table['header'].append(row)
 
             previous_count = count
-
         return tables
 
 
