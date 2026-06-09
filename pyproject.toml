@@ -43,7 +43,7 @@ dependencies = [
     "yadg==6.2.3",
     "numpy==2.*",
     "xmltodict==1.*",
-    "binaryparser @ git+https://github.com/ComPlat/BinaryParser.git@v.1.4.0",
+    "binaryparser @ git+https://github.com/ComPlat/BinaryParser.git@v1.4.0",
     "rdflib==7.*",
     "GitPython==3.1.*",
     "requests==2.32.*",
