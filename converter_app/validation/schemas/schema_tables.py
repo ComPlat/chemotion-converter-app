@@ -14,8 +14,24 @@ tables_schema = {
                 }
             }
         },
+        "inputTableIndex": {
+            "type": "number",
+            "minimum": 0
+        },
+        "tableName": {
+            "type": "string"
+        },
+        "uuid": {
+            "type": "string"
+        },
         "loopType": {
             "type": "string"
+        },
+        "loopOutput": {
+            "type": "string"
+        },
+        "nTuplePageHeader": {
+            "type": ["string", "number"]
         },
         "matchTables": {
             "type": "boolean"

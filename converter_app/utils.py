@@ -1,10 +1,13 @@
 import base64
+import datetime
 import hashlib
+import inspect
 import os
 import re
 import shutil
 import sys
 import tempfile
+import time
 import uuid
 from pathlib import Path
 from typing import Optional
@@ -146,3 +149,41 @@ def str_to_bool(value):
     representation against a set of truthy literals.
     """
     return str(value).lower() in ("true", "1", "yes", "on")
+
+
+class FunctionTimer:
+
+    class TimeMark:
+        def __init__(self, function, lineno, filename):
+            self.function = function
+            self.lineno = lineno
+            self.filename = filename
+            self.start = time.perf_counter()
+            self.end = None
+
+        def stop(self):
+            self.end = time.perf_counter()
+
+        def toStr(self):
+            return f'{self.function}\t{self.filename}:{self.lineno}\t{self.end-self.start}'
+
+    def __init__(self):
+        self.marks = []
+
+    def start(self):
+        stack = inspect.stack()
+        caller = stack[1]
+        print("Called from:", caller.function)
+        print("Line:", caller.lineno)
+        print("File:", caller.filename)
+        marker = FunctionTimer.TimeMark(caller.function, caller.lineno, caller.filename)
+        self.marks.append(marker)
+        return marker
+
+    def print(self):
+        markers = [marker.toStr() for marker in self.marks]
+        for marker in markers:
+            print(marker)
+        os.makedirs('___timer_results', exist_ok=True)
+        with open(f'./___timer_results/timer{datetime.datetime.now(datetime.UTC).isoformat()}.txt', 'w+') as f:
+            f.write('\n'.join(markers))

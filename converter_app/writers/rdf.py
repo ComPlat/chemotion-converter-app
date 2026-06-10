@@ -168,7 +168,7 @@ class RDFWriter(Writer):
         self.datatypes += profile['datatypes']
         self.objects += profile['objects']
         self.instances.update(profile['subjectInstances'])
-        identifiers = [i['identifier'] | i['result'] for i in self._converter.matches if i['result']]
+        identifiers = [i['identifier'] | i['result'] for i in self._converter.get_matches(rdf=True) if i['result']]
 
         for element in [self.root_ontology] + self.subjects + self.predicates + self.datatypes + self.objects:
             temp_namespaces[Namespace(element['namespace'])].add(element['ontology_name'])

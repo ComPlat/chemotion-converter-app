@@ -1,22 +1,7 @@
 {
   "profileId": "0d7dd8d4-a599-4151-855e-643956a7362c",
   "ols": null,
-  "matches": [
-    {
-      "identifier": {
-        "editable": true,
-        "id": "#0fileMetadata",
-        "key": "extension",
-        "match": "exact",
-        "optional": false,
-        "type": "fileMetadata",
-        "value": ".brml"
-      },
-      "result": {
-        "value": ".brml"
-      }
-    }
-  ],
+  "matches": [],
   "tablesCount": 1,
   "tables": [
     {
