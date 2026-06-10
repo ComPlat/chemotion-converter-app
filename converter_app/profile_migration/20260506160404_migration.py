@@ -93,15 +93,10 @@ class ProfileMigrationScript(ProfileMigration):
                     if origin_output_table_index == '' or origin_output_table_index is None:
                         profile['identifiers'][i]['outputTableIndex'] = [i for i, x in enumerate(profile['tables'])]
                     else:
-                        profile['identifiers'][i]['outputTableIndex'] = [int(origin_output_table_index)]
-                new_list = []
-                for idx in profile['identifiers'][i]['outputTableIndex']:
-                    try:
-                        new_list.append(int(idx))
-                    except (ValueError, TypeError):
-                        pass
-                profile['identifiers'][i]['outputTableIndex'] = new_list
-                # print(f'PID: {profile['id']} -> from: {origin_output_table_index} to {new_list}')
+                        try:
+                            profile['identifiers'][i]['outputTableIndex'] = [int(origin_output_table_index)]
+                        except (ValueError, TypeError):
+                            profile['identifiers'][i]['outputTableIndex'] = []
 
 
         for i, table in enumerate(profile['tables']):
