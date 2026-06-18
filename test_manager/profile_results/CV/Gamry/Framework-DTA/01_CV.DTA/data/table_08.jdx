@@ -1,5 +1,5 @@
 ##TITLE=Spectrum
-##JCAMP-DX=5.00 $$ chemotion-converter-app (1.5.0)
+##JCAMP-DX=5.00 $$ chemotion-converter-app (1.8.0)
 ##DATA TYPE=CYCLIC VOLTAMMETRY
 ##DATA CLASS=XYPOINTS
 ##ORIGIN=
@@ -24,7 +24,7 @@
 ##FIRSTY=-4.03503E-005
 ##XUNITS=Voltage in V
 ##YUNITS=Current in A
-##XYPOINTS=(XY..XY)
+##XYDATA=(XY..XY)
 -8.05219E-001, -4.03503E-005
 -8.10235E-001, -4.24965E-005
 -8.15221E-001, -4.41473E-005

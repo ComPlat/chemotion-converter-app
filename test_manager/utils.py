@@ -7,10 +7,17 @@ BLACK_LIST = [
     "EIS/BioLogic/ECLab-mgr/CHD048_CHD050_60C_C06.mgr",
     "EIS/BioLogic/ECLab-mpr/CHD048_CHD050_60C_C07.mpr",
     "EIS/BioLogic/ECLab-mgr/testCHD048_CHD050_401_201_60C_C01.mgr",
+    "GCBID/Shimadzu/LabSolutions-gcdtxt/EF-R205.2__GC-BID_inc-5min-30_GC-3min-40-7min-180-2min_Calibrated_11142023_1210_002.gcd.txt",
+    "UVVIS/Agilent/Cary300-Excel/MX33_MCell-KS_C-Rate-5C-Cycling-1C-LP30_WE-GEcc-n2-1p1784mg_CE-Li_Channel_22.xlsx",
+
 ]
 
+def _sort_handler(text:str):
+    return text[::-1]
+
 def _walk_step(src_path: str):
-    for entry in os.listdir(src_path):
+    sorted_dir = sorted(os.listdir(src_path), key=_sort_handler)
+    for entry in sorted_dir:
         entry_path = os.path.join(src_path, entry)
         if os.path.isdir(entry_path):
             yield entry, entry_path

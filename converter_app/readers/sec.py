@@ -31,18 +31,18 @@ class SecReader(Reader):
         """
         :return: True if it fits
         """
-        result = False
-        if self.file.suffix.lower() == '.txt' and self.file.mime_type == 'text/plain':
-            first_lines = [self.file.string.splitlines()[0], self.file.string.splitlines()[1],
-                           self.file.string.splitlines()[2]]
-            result_a = 'Sample :' in first_lines[0] and 'Method settings :' in first_lines[1] and 'Sequence table :' in \
-                       first_lines[2]
-            result_b = 'Sample :' in first_lines[0] and 'Inject date :' in first_lines[1] and 'Inject volume :' in \
-                       first_lines[2]
 
-            result = result_a or result_b
+        if self.file.suffix.lower() != '.txt' or self.file.mime_type != 'text/plain':
+            return False
+        line_split = self.file.string.splitlines()
+        if len(line_split) < 3:
+            return False
+        result_a = 'Sample :' in line_split[0] and 'Method settings :' in line_split[1] and 'Sequence table :' in \
+                   line_split[2]
+        result_b = 'Sample :' in line_split[0] and 'Inject date :' in line_split[1] and 'Inject volume :' in \
+                   line_split[2]
 
-        return result
+        return result_a or result_b
 
     def _append_table(self, tables):
         self._has_header = False

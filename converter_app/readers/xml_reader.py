@@ -22,9 +22,16 @@ class XMLReader(Reader):
         self._table = None
         self._data_tables = []
         self._potential_data_tables = {}
+        self.root_node = None
 
     def check(self):
-        return self.file.suffix.lower() in self._file_extensions
+        if self.file.suffix.lower() in self._file_extensions:
+            try:
+                self.root_node = ET.XML(self.file.content)
+            except ET.ParseError:
+                return False
+            return True
+        return False
 
     def _get_tag_name(self, node: ET.Element):
         return node.tag.split('}', 1)[-1]
@@ -105,6 +112,7 @@ class XMLReader(Reader):
         root = ET.XML(content)
         tables = []
         self._table = self.append_table(tables)
+        root = self.root_node
         self._read_node(root)
         self._merge_tables(self._data_tables, tables)
 

@@ -1,7 +1,24 @@
 import base64
 import hashlib
+import os
 import re
+import shutil
+import sys
+import tempfile
 import uuid
+from pathlib import Path
+from typing import Optional
+
+import git
+
+from converter_app.writers.jcamp import JcampWriter
+from converter_app.writers.jcampzip import JcampZipWriter
+from converter_app.writers.rdf import RDFWriter
+from converter_app.writers.meta_info_json import MetaInfoWriter
+
+
+def cli_home_path():
+    return Path.home().joinpath('.ChemConverter')
 
 
 def human2bytes(string):
@@ -18,23 +35,23 @@ def human2bytes(string):
     if unit in ['kb', 'k']:
         number = number * 1000
     elif unit in ['mb', 'm']:
-        number = number * 1000**2
+        number = number * 1000 ** 2
     elif unit in ['gb', 'g']:
-        number = number * 1000**3
+        number = number * 1000 ** 3
     elif unit in ['tb', 't']:
-        number = number * 1000**4
+        number = number * 1000 ** 4
     elif unit in ['pb', 'p']:
-        number = number * 1000**5
+        number = number * 1000 ** 5
     elif unit == 'kib':
         number = number * 1024
     elif unit == 'mib':
-        number = number * 1024**2
+        number = number * 1024 ** 2
     elif unit == 'gib':
-        number = number * 1024**3
+        number = number * 1024 ** 3
     elif unit == 'tib':
-        number = number * 1024**4
+        number = number * 1024 ** 4
     elif unit == 'pib':
-        number = number * 1024**5
+        number = number * 1024 ** 5
     return number
 
 
@@ -58,3 +75,74 @@ def checkpw(password, hashed_password):
     m = hashlib.sha1()
     m.update(password)
     return (b'{SHA}' + base64.b64encode(m.digest())) == hashed_password
+
+
+def run_conversion(converter, conversion_format):
+    if converter:
+        converter.process()
+        if conversion_format == 'metajson':
+            writer = MetaInfoWriter(converter)
+        elif conversion_format == 'jcampzip':
+            writer = JcampZipWriter(converter)
+        elif conversion_format == 'rdf':
+            writer = RDFWriter(converter)
+        elif conversion_format == 'jcamp':
+            if len(converter.tables) == 1:
+                writer = JcampWriter(converter)
+            else:
+                raise ValueError('Conversion to a single JCAMP file is not supported for this file.')
+        else:
+            raise ValueError('Conversion format is not supported.')
+
+        writer.process()
+        return writer
+
+    raise ValueError('Your file could not be processed. No Profile available!')
+
+
+def load_public_profiles(profiles: Optional[str | Path] = None, data_files: Optional[str | Path] = None):
+    with tempfile.TemporaryDirectory() as t:
+        # Clone into temporary dir
+        git.Repo.clone_from('https://github.com/ComPlat/chemotion_saurus.git', t, branch='added_data_files', depth=1)
+
+        if profiles:
+            os.makedirs(os.path.dirname(profiles), exist_ok=True)
+            shutil.move(os.path.join(t, 'static/files/shared_ChemConverter_files/profiles'), profiles)
+        if data_files:
+            os.makedirs(os.path.dirname(data_files), exist_ok=True)
+            shutil.move(os.path.join(t, 'static/files/shared_ChemConverter_files/data_files'), data_files)
+
+
+def get_app_root() -> Path:
+    if getattr(sys, 'frozen', False):
+        return Path(sys._MEIPASS)  # PyInstaller temp extraction dir
+    else:
+        return Path(__file__).parent.parent
+
+
+def remove_keys(obj, keys_to_remove):
+    """
+    Returns a deep copy of ``obj`` with the given keys removed from any
+    dictionaries it contains. Lists are traversed recursively. ``keys_to_remove``
+    may be a single key or a list of keys.
+    """
+    if not isinstance(keys_to_remove, list):
+        keys_to_remove = [keys_to_remove]
+
+    if isinstance(obj, dict):
+        return {
+            k: v
+            for k, v in obj.items()
+            if k not in keys_to_remove
+        }
+    if isinstance(obj, list):
+        return [remove_keys(item, keys_to_remove) for item in obj]
+    return obj
+
+
+def str_to_bool(value):
+    """
+    Converts the given value to a boolean by comparing its lowercase string
+    representation against a set of truthy literals.
+    """
+    return str(value).lower() in ("true", "1", "yes", "on")

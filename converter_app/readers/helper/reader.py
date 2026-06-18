@@ -1,6 +1,8 @@
 import inspect
 from collections import OrderedDict
 
+from flask import current_app
+
 from converter_app.converters import logger
 from converter_app.models import File, extract_tar_archive
 
@@ -36,7 +38,7 @@ class Readers:
         :return:
         """
         if reader.identifier in self._registry['readers']:
-            raise ValueError(f'Identifier ({reader.identifier}) is already registered')
+            raise ValueError(f'Identifier ({reader.identifier}) is already registered. Make sure you import the user wit its full path "import converter_app.readers.{reader.__class__.__name__}" ')
         self._registry['readers'][reader.identifier] = reader
 
     @property
@@ -47,6 +49,12 @@ class Readers:
         """
         sorted_readers = sorted(self._registry['readers'].values(), key=lambda reader: reader.priority)
         return OrderedDict([(reader.identifier, reader) for reader in sorted_readers])
+
+    @readers.setter
+    def readers(self, value):
+        if current_app:
+            raise EnvironmentError('Setting the readers is only supported for testing purposes!')
+        self._registry['readers'] = value
 
     def match_reader(self, file: File):
         """

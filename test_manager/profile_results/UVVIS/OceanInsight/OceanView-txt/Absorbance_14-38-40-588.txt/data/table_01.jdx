@@ -1,5 +1,5 @@
 ##TITLE=Spectrum
-##JCAMP-DX=5.00 $$ chemotion-converter-app (1.5.0)
+##JCAMP-DX=5.00 $$ chemotion-converter-app (1.8.0)
 ##DATA TYPE=UV-VIS
 ##DATA CLASS=XYPOINTS
 ##ORIGIN=
@@ -16,7 +16,7 @@
 ##FIRSTY=-0.67
 ##XUNITS=%
 ##YUNITS=ABSORBANCE
-##XYPOINTS=(XY..XY)
+##XYDATA=(XY..XY)
 194.076, -0.67
 194.628, 0.22
 195.18, -0.48

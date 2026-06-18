@@ -1,0 +1,5 @@
+@prefix chemotion: <https://chemotion.net/chemotion/#> .
+@prefix chmo: <http://purl.obolibrary.org/obo/> .
+
+chemotion:X-ray_diffraction_data_from_brml%252C_data__%252B%252C_metadata__- a chmo:OBI_0000070 .
+

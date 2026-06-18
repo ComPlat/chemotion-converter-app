@@ -138,6 +138,9 @@ class TifReader(Reader):
         # txt = re.sub(r'^.+@@@@@{5,9}0\\r\\n', '', txt)
         lines = [l for l in re.split(r'\\r\\n', txt) if str(l).count("@") <= 5]
         del lines[-1]
+        # TODO: merge conflict from master
+        # txt = re.sub(r'^.+@@@@@@0\\r\\n', '', txt)
+        # lines = [x for x in re.split(r'\\r\\n', txt) if len(x) < 120 and len(x) > 2]
         return [x.split('=') for x in lines]
 
     def get_value(self, value):
@@ -164,7 +167,11 @@ class TifReader(Reader):
             if len(val) == 1:
                 num_val = self.get_value(val[0])
                 if num_val is not None:
-                    table['rows'].append([len(table['rows']), float(num_val)])
+                    try:
+                       num_val = float(num_val)
+                    except ValueError:
+                        pass
+                    table['rows'].append([len(table['rows']), num_val])
             else:
                 table['metadata'][val[0]] = '='.join(val[1:])
             table['header'].append(f"{'='.join(val)}")

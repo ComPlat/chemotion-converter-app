@@ -1,0 +1,440 @@
+{
+    "converter_version": "1.8.0",
+    "data": [
+        {
+            "metadata": {
+                "content_type": "application/octet-stream",
+                "extension": ".brml",
+                "file_name": "2021-09-24_IW-SPGA-4.brml",
+                "mime_type": "application/zip",
+                "reader": "BrmlReader",
+                "uploaded": "2023-02-13T14:00:44.692476"
+            },
+            "tables": [
+                {
+                    "columns": [
+                        {
+                            "key": "0",
+                            "name": "Column #0"
+                        },
+                        {
+                            "key": "1",
+                            "name": "Column #1"
+                        },
+                        {
+                            "key": "2",
+                            "name": "Column #2"
+                        },
+                        {
+                            "key": "3",
+                            "name": "Column #3"
+                        },
+                        {
+                            "key": "4",
+                            "name": "Column #4"
+                        }
+                    ],
+                    "header": [],
+                    "metadata": {
+                        "__UNIT_%": "%",
+                        "__UNIT_PPM": "ppm",
+                        "__UNIT_gram": "g",
+                        "__UNIT_liter": "l",
+                        "__UNIT_mol": "mol",
+                        "columns": "5",
+                        "rows": "1135"
+                    },
+                    "rows": [
+                        [
+                            "384",
+                            "1",
+                            "3",
+                            "1.5",
+                            "3071"
+                        ],
+                        [
+                            "384",
+                            "1",
+                            "3.0194",
+                            "1.5097",
+                            "3088"
+                        ],
+                        [
+                            "384",
+                            "1",
+                            "3.0388",
+                            "1.5194",
+                            "3014"
+                        ],
+                        [
+                            "384",
+                            "1",
+                            "3.0582",
+                            "1.5291",
+                            "3073"
+                        ],
+                        [
+                            "384",
+                            "1",
+                            "3.0777",
+                            "1.5388",
+                            "3015"
+                        ],
+                        [
+                            "384",
+                            "1",
+                            "3.0971",
+                            "1.5485",
+                            "3000"
+                        ],
+                        [
+                            "384",
+                            "1",
+                            "3.1165",
+                            "1.5582",
+                            "2941"
+                        ],
+                        [
+                            "384",
+                            "1",
+                            "3.1359",
+                            "1.5679",
+                            "2892"
+                        ],
+                        [
+                            "384",
+                            "1",
+                            "3.1553",
+                            "1.5777",
+                            "2843"
+                        ],
+                        [
+                            "384",
+                            "1",
+                            "3.1747",
+                            "1.5874",
+                            "2762"
+                        ]
+                    ]
+                },
+                {
+                    "columns": [
+                        {
+                            "key": "0",
+                            "name": "Column #0"
+                        },
+                        {
+                            "key": "1",
+                            "name": "Column #1"
+                        },
+                        {
+                            "key": "2",
+                            "name": "Column #2"
+                        },
+                        {
+                            "key": "3",
+                            "name": "Column #3"
+                        },
+                        {
+                            "key": "4",
+                            "name": "Column #4"
+                        }
+                    ],
+                    "header": [],
+                    "metadata": {
+                        "columns": "5",
+                        "rows": "246"
+                    },
+                    "rows": [
+                        [
+                            "9.6",
+                            "1",
+                            "37.5",
+                            "18.75",
+                            "3010"
+                        ],
+                        [
+                            "9.6",
+                            "1",
+                            "37.5102",
+                            "18.7551",
+                            "3089"
+                        ],
+                        [
+                            "9.6",
+                            "1",
+                            "37.5204",
+                            "18.7602",
+                            "3221"
+                        ],
+                        [
+                            "9.6",
+                            "1",
+                            "37.5307",
+                            "18.7653",
+                            "3233"
+                        ],
+                        [
+                            "9.6",
+                            "1",
+                            "37.5409",
+                            "18.7704",
+                            "3367"
+                        ],
+                        [
+                            "9.6",
+                            "1",
+                            "37.5511",
+                            "18.7755",
+                            "3402"
+                        ],
+                        [
+                            "9.6",
+                            "1",
+                            "37.5613",
+                            "18.7807",
+                            "3494"
+                        ],
+                        [
+                            "9.6",
+                            "1",
+                            "37.5715",
+                            "18.7858",
+                            "3499"
+                        ],
+                        [
+                            "9.6",
+                            "1",
+                            "37.5817",
+                            "18.7909",
+                            "3549"
+                        ],
+                        [
+                            "9.6",
+                            "1",
+                            "37.592",
+                            "18.796",
+                            "3497"
+                        ]
+                    ]
+                }
+            ]
+        }
+    ],
+    "datatypes": [],
+    "description": "---; ref location: ---, data: +, metadata: -",
+    "devices": [],
+    "diff_history": [
+        {
+            "at": "2026-04-30T12:53:58.483941+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "X-ray diffraction data from brml, data: +, metadata: -"
+                }
+            ],
+            "profile_version": "1.0",
+            "trigger": "migration:20260430145303"
+        },
+        {
+            "at": "2026-04-30T12:54:02.379137+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "X-ray diffraction data from brml, data: +, metadata: -__TEST"
+                }
+            ],
+            "profile_version": "1.1",
+            "trigger": "migration:20260430145303"
+        },
+        {
+            "at": "2026-04-30T13:02:20.148246+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "X-ray diffraction data from brml, data: +, metadata: -__TEST__TEST"
+                }
+            ],
+            "profile_version": "1.2",
+            "trigger": "restore_migration:20260430145303"
+        },
+        {
+            "at": "2026-04-30T13:02:20.149970+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "X-ray diffraction data from brml, data: +, metadata: -__TEST"
+                }
+            ],
+            "profile_version": "1.3",
+            "trigger": "restore_migration:20260430145303"
+        },
+        {
+            "at": "2026-05-04T04:59:00.414700+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "X-ray diffraction data from brml, data: +, metadata: -"
+                }
+            ],
+            "profile_version": "1.4",
+            "trigger": "undo:1.1"
+        },
+        {
+            "at": "2026-05-04T04:59:00.416407+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "X-ray diffraction data from brml, data: +, metadata: -__TEST"
+                }
+            ],
+            "profile_version": "1.5",
+            "trigger": "undo:1.0"
+        },
+        {
+            "at": "2026-05-04T04:59:00.417470+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "X-ray diffraction data from brml, data: +, metadata: -"
+                }
+            ],
+            "profile_version": "1.6",
+            "trigger": "migration:20260504065656"
+        },
+        {
+            "at": "2026-05-04T07:23:31.327173+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "X-ray diffraction data from brml, data: +, metadata: ---TEST"
+                }
+            ],
+            "profile_version": "1.7",
+            "trigger": "undo:1.6"
+        },
+        {
+            "at": "2026-05-06T08:56:29.107030+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/reactionVariations"
+                }
+            ],
+            "profile_version": "1.8",
+            "trigger": "migration:20260417132254"
+        },
+        {
+            "at": "2026-05-06T08:56:29.107295+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_liter"
+                },
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_PPM"
+                },
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_mol"
+                },
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_%"
+                },
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_gram"
+                }
+            ],
+            "profile_version": "1.9",
+            "trigger": "migration:20260422063146"
+        }
+    ],
+    "id": "0d7dd8d4-a599-4151-855e-643956a7362c",
+    "identifiers": [
+        {
+            "editable": true,
+            "id": "#0fileMetadata",
+            "key": "extension",
+            "match": "exact",
+            "optional": false,
+            "type": "fileMetadata",
+            "value": ".brml"
+        }
+    ],
+    "isDisabled": false,
+    "last_migration": "20260430125545",
+    "objects": [],
+    "ols": null,
+    "ontology": "",
+    "predicates": [],
+    "profile_version": "1.10",
+    "reactionVariations": {
+        "elements": [],
+        "identifiers": []
+    },
+    "rootOntology": {
+        "description": [
+            "A planned process that has the objective to produce information about a material entity (the evaluant) by examining it."
+        ],
+        "id": "obi:class:http://purl.obolibrary.org/obo/OBI_0000070",
+        "iri": "http://purl.obolibrary.org/obo/OBI_0000070",
+        "label": "assay",
+        "namespace": "http://purl.obolibrary.org/obo/",
+        "obo_id": "OBI:0000070",
+        "ontology_name": "obi",
+        "ontology_prefix": "OBI",
+        "short_form": "OBI_0000070",
+        "type": "class"
+    },
+    "software": [],
+    "subjectInstances": {},
+    "subjects": [],
+    "tables": [
+        {
+            "header": {
+                "DATA CLASS": "XYPOINTS",
+                "DATA TYPE": "X-RAY DIFFRACTION",
+                "XUNITS": "2Theta",
+                "YUNITS": "Intensity"
+            },
+            "table": {
+                "xColumn": {
+                    "columnIndex": 2,
+                    "tableIndex": 0
+                },
+                "yColumn": {
+                    "columnIndex": 4,
+                    "tableIndex": 0
+                },
+                "yOperations": [
+                    {
+                        "column": {
+                            "columnIndex": 0,
+                            "tableIndex": 0
+                        },
+                        "operator": ":",
+                        "type": "column"
+                    },
+                    {
+                        "operator": ":",
+                        "type": "value",
+                        "value": "5"
+                    }
+                ]
+            }
+        }
+    ],
+    "title": "X-ray diffraction data from brml, data: +, metadata: -",
+    "version": 0
+}

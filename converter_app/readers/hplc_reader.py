@@ -1,7 +1,10 @@
 import logging
+from pathlib import Path
 
-import hplc as ph
+from binary_parser import read_chromatograms ,read_chemstation_file
+import pandas as pd
 
+from converter_app.readers.helper.ms_helper import MsHelper
 from converter_app.readers.helper.base import Reader
 from converter_app.readers.helper.reader import Readers
 
@@ -19,6 +22,7 @@ class HplcReader(Reader):
         super().__init__(file, *tar_files)
         self.df = None
         self.temp_dir = None
+        self.internal_name = "chemstation"
 
     def check(self):
         """
@@ -28,12 +32,14 @@ class HplcReader(Reader):
         if self.is_tar_ball:
             try:
                 if len(self.file_content) > 1:
-                    self.df = ph.read_chromatograms(self.file_content[0].file_path)
+                    self.df = read_chromatograms(self.file_content[0].file_path)
                 else:
                     return False
                 return True
+
             except ValueError:
-                pass
+                return False
+
         return False
 
     def prepare_tables(self):
@@ -56,7 +62,33 @@ class HplcReader(Reader):
                 'key': str(idx),
                 'name': f'{value}'
             } for idx, value in enumerate(['Time', 'Wavelength'])]
+
+            # look and check if MS is included in folder
+        try:
+            mypath = self.find_ms(self.file_content[0].file_path)
+            if mypath is not None:
+                df_ms = read_chemstation_file(str(mypath))
+            else:
+                df_ms = []
+        except ValueError or AssertionError:
+            pass
+        else:
+            df_ms = [df_ms] if not isinstance(df_ms, list) else df_ms
+            ms_tables = MsHelper.create_ms_tables(df_ms, self.internal_name)
+            tables.extend(ms_tables)
+
         return tables
+
+    @staticmethod
+    def find_ms(path):
+        base_dir = Path(path)
+        # Find all files ending with .MS (case-sensitive)
+        files = list(base_dir.rglob("*.MS"))
+        if len(files) == 0:
+            return None
+        return files[0]
+
+
 
 
 Readers.instance().register(HplcReader)

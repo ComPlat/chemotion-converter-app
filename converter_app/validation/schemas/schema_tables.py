@@ -10,7 +10,7 @@ tables_schema = {
             "type": "object",
             "patternProperties": {
                 "^[^\n]+$": {
-                    "type": ["number", "string"]
+                    "type": ["number", "string", "object"]
                 }
             }
         },

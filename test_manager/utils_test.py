@@ -57,7 +57,7 @@ def compare_reader_result(src_path, res_path, file):
 def get_profile_result(reader_dict, file):
     with set_flask_test_config().app_context():
         res_path = tempfile.mkdtemp()
-        converter = Converter.match_profile('dev', reader_dict)
+        converter = Converter.match_profile('test', reader_dict)
         try:
             if converter:
                 converter.process()
@@ -77,9 +77,9 @@ def get_profile_result(reader_dict, file):
                             data.append(f.read())
 
                 if os.path.exists(os.path.join(res_path, file, 'metadata')):
-                    for data_file in os.listdir(os.path.join(res_path, file, 'metadata')):
-                        with open(os.path.join(res_path, file, 'metadata', data_file), 'r', encoding='utf8') as f:
-                            meta_data.append(json.loads(f.read()))
+                    data_file = 'converter.json'
+                    with open(os.path.join(res_path, file, 'metadata', data_file), 'r', encoding='utf8') as f:
+                        meta_data.append(json.loads(f.read()))
                 return data, meta_data, True
             else:
                 raise FileNotFoundError('No profile found')
@@ -114,9 +114,9 @@ def compare_profile_result(src_path, res_path, file):
                     data_expected.append(f.read())
 
         if os.path.exists(os.path.join(res_path, file, 'metadata')):
-            for data_file in os.listdir(str(os.path.join(res_path, file, 'metadata'))):
-                with open(os.path.join(res_path, file, 'metadata', data_file), 'r', encoding='utf8') as f:
-                    meta_expected.append(json.loads(f.read()))
+            data_file = 'converter.json'
+            with open(os.path.join(res_path, file, 'metadata', data_file), 'r', encoding='utf8') as f:
+                meta_expected.append(json.loads(f.read()))
         expected += meta_expected + data_expected
     if len(is_values) > 1:
         pass

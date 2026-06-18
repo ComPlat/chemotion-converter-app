@@ -1,0 +1,313 @@
+{
+    "converter_version": "1.8.0",
+    "data": [
+        {
+            "metadata": {
+                "content_type": "text/plain",
+                "delimiter": "tab",
+                "doublequote": "False",
+                "extension": ".txt",
+                "file_name": "Absorbance_14-42-39-645.txt",
+                "lineterminator": "\\r\\n",
+                "mime_type": "text/plain",
+                "quotechar": "\"",
+                "quoting": "0",
+                "reader": "CSVReader",
+                "skipinitialspace": "True",
+                "uploaded": "2023-08-09T08:07:01.753910"
+            },
+            "tables": [
+                {
+                    "columns": [
+                        {
+                            "key": "0",
+                            "name": "Column #0 (>>>>>Begin Spectral Data<<<<<)"
+                        },
+                        {
+                            "key": "1",
+                            "name": "Column #1"
+                        }
+                    ],
+                    "header": [
+                        "Data from Absorbance_14-42-39-645.txt Node",
+                        "",
+                        "Date: Mon Jul 24 14:42:39 CEST 2023",
+                        "User: AK Th\u00e9ato Seminar",
+                        "Spectrometer: HDX00655",
+                        "Trigger mode: 0",
+                        "Integration Time (sec): 1.000000E-1",
+                        "Scans to average: 1",
+                        "Nonlinearity correction enabled: false",
+                        "Boxcar width: 0",
+                        "Storing dark spectrum: false",
+                        "XAxis mode: Wavelengths",
+                        "Number of Pixels in Spectrum: 2068"
+                    ],
+                    "metadata": {
+                        "__UNIT_%": "%",
+                        "__UNIT_PPM": "ppm",
+                        "__UNIT_gram": "g",
+                        "__UNIT_liter": "l",
+                        "__UNIT_mol": "mol",
+                        "column_00": ">>>>>Begin Spectral Data<<<<<",
+                        "columns": "2",
+                        "rows": "2068"
+                    },
+                    "rows": [
+                        [
+                            "194.076",
+                            "-0.37"
+                        ],
+                        [
+                            "194.628",
+                            "-0"
+                        ],
+                        [
+                            "195.18",
+                            "-0"
+                        ],
+                        [
+                            "195.732",
+                            "-0"
+                        ],
+                        [
+                            "196.284",
+                            "-0.33"
+                        ],
+                        [
+                            "196.835",
+                            "-0.09"
+                        ],
+                        [
+                            "197.387",
+                            "-0.11"
+                        ],
+                        [
+                            "197.938",
+                            "-0.01"
+                        ],
+                        [
+                            "198.49",
+                            "0.18"
+                        ],
+                        [
+                            "199.041",
+                            "-0.08"
+                        ]
+                    ]
+                }
+            ]
+        }
+    ],
+    "datatypes": [],
+    "description": "UV-Vis (AK Th\u00e9ato Seminar) - Campus West, KIT",
+    "devices": [],
+    "diff_history": [
+        {
+            "at": "2026-04-30T12:53:58.460299+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "UV-Vis"
+                }
+            ],
+            "profile_version": "1.0",
+            "trigger": "migration:20260430145303"
+        },
+        {
+            "at": "2026-04-30T12:54:02.264870+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "UV-Vis__TEST"
+                }
+            ],
+            "profile_version": "1.1",
+            "trigger": "migration:20260430145303"
+        },
+        {
+            "at": "2026-04-30T13:02:19.389580+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "UV-Vis__TEST__TEST"
+                }
+            ],
+            "profile_version": "1.2",
+            "trigger": "restore_migration:20260430145303"
+        },
+        {
+            "at": "2026-04-30T13:02:19.390897+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "UV-Vis__TEST"
+                }
+            ],
+            "profile_version": "1.3",
+            "trigger": "restore_migration:20260430145303"
+        },
+        {
+            "at": "2026-05-04T04:59:00.188653+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "UV-Vis"
+                }
+            ],
+            "profile_version": "1.4",
+            "trigger": "undo:1.1"
+        },
+        {
+            "at": "2026-05-04T04:59:00.189947+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "UV-Vis__TEST"
+                }
+            ],
+            "profile_version": "1.5",
+            "trigger": "undo:1.0"
+        },
+        {
+            "at": "2026-05-04T04:59:00.190766+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "UV-Vis"
+                }
+            ],
+            "profile_version": "1.6",
+            "trigger": "migration:20260504065656"
+        },
+        {
+            "at": "2026-05-04T07:23:31.210432+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "UV-Vis--TEST"
+                }
+            ],
+            "profile_version": "1.7",
+            "trigger": "undo:1.6"
+        },
+        {
+            "at": "2026-05-06T08:56:28.969239+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/reactionVariations"
+                }
+            ],
+            "profile_version": "1.8",
+            "trigger": "migration:20260417132254"
+        },
+        {
+            "at": "2026-05-06T08:56:28.969504+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_liter"
+                },
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_PPM"
+                },
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_mol"
+                },
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_%"
+                },
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_gram"
+                }
+            ],
+            "profile_version": "1.9",
+            "trigger": "migration:20260422063146"
+        }
+    ],
+    "id": "c7e3130f-6c23-432a-a886-a82d11632da2",
+    "identifiers": [
+        {
+            "editable": true,
+            "id": "#0fileMetadata",
+            "key": "reader",
+            "match": "exact",
+            "optional": false,
+            "type": "fileMetadata",
+            "value": "CSVReader"
+        },
+        {
+            "editable": true,
+            "id": "#1tableHeader",
+            "lineNumber": 4,
+            "match": "exact",
+            "optional": false,
+            "tableIndex": 0,
+            "type": "tableHeader",
+            "value": "User: AK Th\u00e9ato Seminar"
+        }
+    ],
+    "isDisabled": false,
+    "last_migration": "20260430125545",
+    "objects": [],
+    "ols": null,
+    "ontology": "",
+    "predicates": [],
+    "profile_version": "1.10",
+    "reactionVariations": {
+        "elements": [],
+        "identifiers": []
+    },
+    "rootOntology": {
+        "description": [
+            "A planned process that has the objective to produce information about a material entity (the evaluant) by examining it."
+        ],
+        "id": "obi:class:http://purl.obolibrary.org/obo/OBI_0000070",
+        "iri": "http://purl.obolibrary.org/obo/OBI_0000070",
+        "label": "assay",
+        "namespace": "http://purl.obolibrary.org/obo/",
+        "obo_id": "OBI:0000070",
+        "ontology_name": "obi",
+        "ontology_prefix": "OBI",
+        "short_form": "OBI_0000070",
+        "type": "class"
+    },
+    "software": [],
+    "subjectInstances": {},
+    "subjects": [],
+    "tables": [
+        {
+            "header": {
+                "DATA CLASS": "XYPOINTS",
+                "DATA TYPE": "UV-VIS",
+                "XUNITS": "%",
+                "YUNITS": "ABSORBANCE"
+            },
+            "table": {
+                "xColumn": {
+                    "columnIndex": 0,
+                    "tableIndex": 0
+                },
+                "yColumn": {
+                    "columnIndex": 1,
+                    "tableIndex": 0
+                }
+            }
+        }
+    ],
+    "title": "UV-Vis",
+    "version": 0
+}
