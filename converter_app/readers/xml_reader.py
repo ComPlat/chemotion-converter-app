@@ -98,7 +98,10 @@ class XMLReader(Reader):
 
             self.handle_node(child, xml_path, local_name)
             if not self.ignore_node(child, xml_path, local_name):
-                if text is not None and not self._filter_data_rows(child, text, new_path):
+                # Skip container nodes whose own text is only whitespace; their
+                # values live in the child nodes and would otherwise be recorded
+                # as empty metadata entries.
+                if text is not None and text.strip() and not self._filter_data_rows(child, text, new_path):
                     self._add_metadata(new_path, text.strip(), node)
                 for k, v in child.attrib.items():
                     self._add_metadata(f'{new_path}.{k}', v, node)
