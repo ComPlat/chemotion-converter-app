@@ -38,7 +38,8 @@ def _generate_profile_tests(src_path, file, _unused, res_path):
     TEST_DICT[os.path.join(src_path, file)] = test_name
 
     with open(TEST_FILE, 'a', encoding='utf8') as test_file:
-        test_file.write(f'\n\n\ndef {test_name}():'
+        test_file.write(f'\n\n\n@pytest.mark.timeout(300)'
+                        f'\ndef {test_name}():'
                         f'\n    global all_reader'
                         f'\n    (a, b)=compare_profile_result(r\'{src_path}\',r\'{res_path}\',r\'{file}\')'
                         f'\n    assert len(a) == len(b)'
@@ -67,20 +68,22 @@ def _generate_expected_profiles_results(src_path, file, _unused, res_path):
             mod = importlib.import_module('test_manager.test_profiles')
             getattr(mod, TEST_DICT[src_path_file])()
             return
-        except (ModuleNotFoundError, FileNotFoundError, AssertionError, JSONDecodeError):
+        except:
             pass
     print(f"Generating expected profiles results for {src_path_file}")
     with open(os.path.join(src_path, file), 'rb') as file_pointer:
         file_storage = FileStorage(file_pointer)
-        # os.makedirs(os.path.join(res_path, file) , exist_ok=True)
         reader_content_str = '{}'
         try:
             reader = registry.match_reader(File(file_storage))
             if reader:
                 reader.process()
                 reader_dict = reader.as_dict
-                reader_content_str = json.dumps(reader_dict, indent=4)
-                converter = Converter.match_profile('dev', reader_dict)
+                try:
+                    reader_content_str = json.dumps(reader_dict, indent=4)
+                except:
+                    pass
+                converter = Converter.match_profile('test', reader_dict)
                 if converter:
                     converter.process()
                     writer = JcampZipWriter(converter)
@@ -100,13 +103,10 @@ def _generate_expected_profiles_results(src_path, file, _unused, res_path):
                 raise FileNotFoundError('No reader found')
         except FileNotFoundError:
             print('Reader or Profile not found')
-            print(traceback.format_exc())
         except AssertionError:
             print('Profile not matching')
-            print(traceback.format_exc())
         except AttributeError:
             print('Converter con not write')
-            print(traceback.format_exc())
         finally:
             with open(os.path.join(res_path, file + '.json'), 'w+', encoding='utf8') as f_res:
                 f_res.write(reader_content_str)
@@ -127,10 +127,10 @@ def generate_profile_tests():
     TEST_IDX = 0
     TEST_DICT = {}
     with open(TEST_FILE, 'w+', encoding='utf8') as fp:
-        fp.write("from .utils_test import compare_profile_result\n"
+        fp.write("import pytest\n"
                  "from converter_app.readers import READERS as registry\n"
                  "from converter_app.models import Profile\n"
-                 "from test_manager.utils_test import set_flask_test_config\n"
+                 "from test_manager.utils_test import set_flask_test_config, compare_profile_result\n"
                  "\nall_reader = set()"
                  "\nall_profiles = set()\n")
     basic_walk(_generate_profile_tests)

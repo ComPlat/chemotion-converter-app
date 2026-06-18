@@ -1,0 +1,2243 @@
+{
+  "profileId": "44f5bfbb-ae1f-4da0-b43b-0d33b649c24a",
+  "ols": "CHMO:0001013",
+  "matches": [
+    {
+      "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#0tableMetadata",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
+        "key": "Sample",
+        "match": "any",
+        "object": null,
+        "optional": true,
+        "outputDatatableKey": "label",
+        "outputKey": "label",
+        "outputLayer": "sample_details",
+        "outputTableIndex": [
+          "716e2c89-0be5-4e90-a370-52df92dda81c",
+          "1a4c93f6-c369-4b24-8dbd-dfe302bf1d2b"
+        ],
+        "predicate": null,
+        "subject": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "Vial   1: MS139 - 1"
+      },
+      "result": {
+        "value": "Vial  71: JM_03 - 1",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#1tableMetadata",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
+        "key": "Export file",
+        "match": "any",
+        "object": null,
+        "optional": true,
+        "outputDatatableKey": "comments",
+        "outputKey": "comments",
+        "outputLayer": "general",
+        "outputTableIndex": [
+          "716e2c89-0be5-4e90-a370-52df92dda81c",
+          "1a4c93f6-c369-4b24-8dbd-dfe302bf1d2b"
+        ],
+        "predicate": null,
+        "subject": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "X:\\Marvin Subarew\\AETMC Polymerization\\MS139\\2021-07-22 MS139.TXT"
+      },
+      "result": {
+        "value": "Z:\\Jennifer\\JM-03\\1_Inj_ Vial  71  JM_03 - 1.TXT",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#2tableMetadata",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
+        "key": "Mn",
+        "match": "any",
+        "object": null,
+        "optional": true,
+        "outputDatatableKey": "mn",
+        "outputKey": "mn",
+        "outputLayer": "eval_data_detec_i",
+        "outputTableIndex": [
+          "716e2c89-0be5-4e90-a370-52df92dda81c",
+          "1a4c93f6-c369-4b24-8dbd-dfe302bf1d2b"
+        ],
+        "predicate": null,
+        "subject": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": " 6.999E+3"
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#3tableMetadata",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
+        "key": "Mw",
+        "match": "any",
+        "object": null,
+        "optional": true,
+        "outputDatatableKey": "mw",
+        "outputKey": "mw",
+        "outputLayer": "eval_data_detec_i",
+        "outputTableIndex": [
+          "716e2c89-0be5-4e90-a370-52df92dda81c",
+          "1a4c93f6-c369-4b24-8dbd-dfe302bf1d2b"
+        ],
+        "predicate": null,
+        "subject": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": " 9.417E+3"
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#4tableMetadata",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
+        "key": "D",
+        "match": "any",
+        "object": null,
+        "optional": true,
+        "outputDatatableKey": "d",
+        "outputKey": "d",
+        "outputLayer": "eval_data_detec_i",
+        "outputTableIndex": [
+          "716e2c89-0be5-4e90-a370-52df92dda81c",
+          "1a4c93f6-c369-4b24-8dbd-dfe302bf1d2b"
+        ],
+        "predicate": null,
+        "subject": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": " 1.346E+0"
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#5tableMetadata",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
+        "key": "Mp",
+        "match": "any",
+        "object": null,
+        "optional": true,
+        "outputDatatableKey": "mp",
+        "outputKey": "mp",
+        "outputLayer": "eval_data_detec_i",
+        "outputTableIndex": [
+          "716e2c89-0be5-4e90-a370-52df92dda81c",
+          "1a4c93f6-c369-4b24-8dbd-dfe302bf1d2b"
+        ],
+        "predicate": null,
+        "subject": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": " 9.724E+3"
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#6tableMetadata",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
+        "key": "Detector 1",
+        "match": "any",
+        "object": null,
+        "optional": true,
+        "outputDatatableKey": "detec1",
+        "outputKey": "detec1",
+        "outputLayer": "instrument",
+        "outputTableIndex": [
+          "716e2c89-0be5-4e90-a370-52df92dda81c",
+          "1a4c93f6-c369-4b24-8dbd-dfe302bf1d2b"
+        ],
+        "predicate": null,
+        "subject": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "I2: RI Detector 1, RI Signal"
+      },
+      "result": {
+        "value": "I1: RID 1, RI Signal",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#7tableMetadata",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
+        "key": "Detector 2",
+        "match": "any",
+        "object": null,
+        "optional": true,
+        "outputDatatableKey": "detec2",
+        "outputKey": "detec2",
+        "outputLayer": "instrument",
+        "outputTableIndex": [
+          "716e2c89-0be5-4e90-a370-52df92dda81c",
+          "1a4c93f6-c369-4b24-8dbd-dfe302bf1d2b"
+        ],
+        "predicate": null,
+        "subject": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "I2: UV Detector 1, UV Signal"
+      },
+      "result": {
+        "value": "I1: IsoPump 1, Pressure",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#8tableMetadata",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
+        "key": "Detector 3",
+        "match": "any",
+        "object": null,
+        "optional": true,
+        "outputDatatableKey": "detec3",
+        "outputKey": "detec3",
+        "outputLayer": "instrument",
+        "outputTableIndex": [
+          "716e2c89-0be5-4e90-a370-52df92dda81c",
+          "1a4c93f6-c369-4b24-8dbd-dfe302bf1d2b"
+        ],
+        "predicate": null,
+        "subject": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "I2: Pump 1, Sample Pump Pressure"
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#11tableMetadata",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
+        "key": "Column 1",
+        "match": "any",
+        "object": null,
+        "optional": true,
+        "outputDatatableKey": "col1",
+        "outputKey": "col1",
+        "outputLayer": "equipment",
+        "outputTableIndex": [
+          "716e2c89-0be5-4e90-a370-52df92dda81c",
+          "1a4c93f6-c369-4b24-8dbd-dfe302bf1d2b"
+        ],
+        "predicate": null,
+        "subject": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "PSS SDV 5\u00b5m"
+      },
+      "result": {
+        "value": "PLgel Precolumn",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#12tableMetadata",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
+        "key": "Column 2",
+        "match": "any",
+        "object": null,
+        "optional": true,
+        "outputDatatableKey": "col2",
+        "outputKey": "col2",
+        "outputLayer": "equipment",
+        "outputTableIndex": [
+          "716e2c89-0be5-4e90-a370-52df92dda81c",
+          "1a4c93f6-c369-4b24-8dbd-dfe302bf1d2b"
+        ],
+        "predicate": null,
+        "subject": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "PSS SDV 5\u00b5m"
+      },
+      "result": {
+        "value": "PLgel 5\u00b5m Mixed-C",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#13tableMetadata",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
+        "key": "Column 3",
+        "match": "any",
+        "object": null,
+        "optional": true,
+        "outputDatatableKey": "col3",
+        "outputKey": "col3",
+        "outputLayer": "equipment",
+        "outputTableIndex": [
+          "716e2c89-0be5-4e90-a370-52df92dda81c",
+          "1a4c93f6-c369-4b24-8dbd-dfe302bf1d2b"
+        ],
+        "predicate": null,
+        "subject": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "PSS SDV 5\u00b5m"
+      },
+      "result": {
+        "value": "PLgel 5\u00b5m Mixed-C",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#14tableMetadata",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
+        "key": "Inject volume",
+        "match": "any",
+        "object": null,
+        "optional": true,
+        "outputDatatableKey": "in_vol",
+        "outputKey": "in_vol",
+        "outputLayer": "meta",
+        "outputTableIndex": [
+          "716e2c89-0be5-4e90-a370-52df92dda81c",
+          "1a4c93f6-c369-4b24-8dbd-dfe302bf1d2b"
+        ],
+        "predicate": null,
+        "subject": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": " 50.000"
+      },
+      "result": {
+        "value": "100.000",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#15tableMetadata",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
+        "key": "Eluent",
+        "match": "any",
+        "object": null,
+        "optional": true,
+        "outputDatatableKey": "eluent",
+        "outputKey": "eluent",
+        "outputLayer": "meta",
+        "outputTableIndex": [
+          "716e2c89-0be5-4e90-a370-52df92dda81c",
+          "1a4c93f6-c369-4b24-8dbd-dfe302bf1d2b"
+        ],
+        "predicate": null,
+        "subject": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "THF"
+      },
+      "result": {
+        "value": "DMAc 0.79g/2.5L LiBr",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#16tableMetadata",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
+        "key": "Flow",
+        "match": "any",
+        "object": null,
+        "optional": true,
+        "outputDatatableKey": "flow",
+        "outputKey": "flow",
+        "outputLayer": "meta",
+        "outputTableIndex": [
+          "716e2c89-0be5-4e90-a370-52df92dda81c",
+          "1a4c93f6-c369-4b24-8dbd-dfe302bf1d2b"
+        ],
+        "predicate": null,
+        "subject": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "  1.000"
+      },
+      "result": {
+        "value": "0.500",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#17tableMetadata",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
+        "key": "(Column 1) Temperature",
+        "match": "any",
+        "object": null,
+        "optional": true,
+        "outputDatatableKey": "temperature",
+        "outputKey": "temperature",
+        "outputLayer": "meta",
+        "outputTableIndex": [
+          "716e2c89-0be5-4e90-a370-52df92dda81c",
+          "1a4c93f6-c369-4b24-8dbd-dfe302bf1d2b"
+        ],
+        "predicate": null,
+        "subject": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": " 35.000"
+      },
+      "result": {
+        "value": "50.000",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#18tableMetadata",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
+        "key": "Inject date",
+        "match": "regex",
+        "object": null,
+        "optional": true,
+        "outputDatatableKey": "date",
+        "outputKey": "date",
+        "outputLayer": "general",
+        "outputTableIndex": [
+          "716e2c89-0be5-4e90-a370-52df92dda81c",
+          "1a4c93f6-c369-4b24-8dbd-dfe302bf1d2b"
+        ],
+        "predicate": null,
+        "subject": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "^\\S+\\s(.*?)(\\s\\d+\\:\\d+\\:\\d+)"
+      },
+      "result": {
+        "value": "21/07/22",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#19tableMetadata",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
+        "key": "Inject date",
+        "match": "regex",
+        "object": null,
+        "optional": true,
+        "outputDatatableKey": "time",
+        "outputKey": "time",
+        "outputLayer": "general",
+        "outputTableIndex": [
+          "716e2c89-0be5-4e90-a370-52df92dda81c",
+          "1a4c93f6-c369-4b24-8dbd-dfe302bf1d2b"
+        ],
+        "predicate": null,
+        "subject": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "(\\d+\\:\\d+\\:\\d+)"
+      },
+      "result": {
+        "value": "14:30:57",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#20tableHeader",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
+        "key": "Number of detectors",
+        "lineNumber": "",
+        "match": "any",
+        "object": null,
+        "optional": true,
+        "outputDatatableKey": "no_dec",
+        "outputKey": "no_dec",
+        "outputLayer": "instrument",
+        "outputTableIndex": [
+          "716e2c89-0be5-4e90-a370-52df92dda81c",
+          "1a4c93f6-c369-4b24-8dbd-dfe302bf1d2b"
+        ],
+        "predicate": null,
+        "subject": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#21tableHeader",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
+        "lineNumber": "",
+        "match": "regex",
+        "object": null,
+        "optional": true,
+        "outputDatatableKey": "software",
+        "outputKey": "software",
+        "outputLayer": "software",
+        "outputTableIndex": [
+          "716e2c89-0be5-4e90-a370-52df92dda81c",
+          "1a4c93f6-c369-4b24-8dbd-dfe302bf1d2b"
+        ],
+        "predicate": null,
+        "subject": null,
+        "tableIndex": 0,
+        "type": "tableHeader",
+        "value": "WINGPC"
+      },
+      "result": {
+        "value": "WINGPC",
+        "tableIndex": 0,
+        "lineNumber": 2
+      }
+    },
+    {
+      "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#22tableHeader",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
+        "lineNumber": "",
+        "match": "regex",
+        "object": null,
+        "optional": true,
+        "outputDatatableKey": "version",
+        "outputKey": "version",
+        "outputLayer": "software",
+        "outputTableIndex": [
+          "716e2c89-0be5-4e90-a370-52df92dda81c",
+          "1a4c93f6-c369-4b24-8dbd-dfe302bf1d2b"
+        ],
+        "predicate": null,
+        "subject": null,
+        "tableIndex": 0,
+        "type": "tableHeader",
+        "value": "WINGPC_(\\d+#\\d+)"
+      },
+      "result": {
+        "value": "8#1",
+        "tableIndex": 0,
+        "lineNumber": 2
+      }
+    },
+    {
+      "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#23tableMetadata",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
+        "key": "Operator",
+        "match": "any",
+        "object": null,
+        "optional": true,
+        "outputDatatableKey": "operator",
+        "outputKey": "operator",
+        "outputLayer": "general",
+        "outputTableIndex": [
+          "716e2c89-0be5-4e90-a370-52df92dda81c",
+          "1a4c93f6-c369-4b24-8dbd-dfe302bf1d2b"
+        ],
+        "predicate": null,
+        "subject": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": "itcp-akt"
+      },
+      "result": {
+        "value": "itcp-akt",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "autogen_A_DECT1",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
+        "key": "A_DECT1",
+        "match": "any",
+        "object": null,
+        "optional": true,
+        "outputDatatableKey": "a",
+        "outputKey": "a",
+        "outputLayer": "eval_data_detec_1",
+        "outputTableIndex": [
+          "716e2c89-0be5-4e90-a370-52df92dda81c",
+          "1a4c93f6-c369-4b24-8dbd-dfe302bf1d2b"
+        ],
+        "predicate": null,
+        "subject": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "autogen_D_DECT1",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
+        "key": "D_DECT1",
+        "match": "any",
+        "object": null,
+        "optional": true,
+        "outputDatatableKey": "d",
+        "outputKey": "d",
+        "outputLayer": "eval_data_detec_1",
+        "outputTableIndex": [
+          "716e2c89-0be5-4e90-a370-52df92dda81c",
+          "1a4c93f6-c369-4b24-8dbd-dfe302bf1d2b"
+        ],
+        "predicate": null,
+        "subject": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": {
+        "value": "1.116E+0",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "autogen_M(z+1)_DECT1",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
+        "key": "M(z+1)_DECT1",
+        "match": "any",
+        "object": null,
+        "optional": true,
+        "outputDatatableKey": "mz1",
+        "outputKey": "mz1",
+        "outputLayer": "eval_data_detec_1",
+        "outputTableIndex": [
+          "716e2c89-0be5-4e90-a370-52df92dda81c",
+          "1a4c93f6-c369-4b24-8dbd-dfe302bf1d2b"
+        ],
+        "predicate": null,
+        "subject": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": {
+        "value": "8.281E+4",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "autogen_Mn_DECT1",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
+        "key": "Mn_DECT1",
+        "match": "any",
+        "object": null,
+        "optional": true,
+        "outputDatatableKey": "mn",
+        "outputKey": "mn",
+        "outputLayer": "eval_data_detec_1",
+        "outputTableIndex": [
+          "716e2c89-0be5-4e90-a370-52df92dda81c",
+          "1a4c93f6-c369-4b24-8dbd-dfe302bf1d2b"
+        ],
+        "predicate": null,
+        "subject": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": {
+        "value": "5.646E+4",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "autogen_Mp_DECT1",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
+        "key": "Mp_DECT1",
+        "match": "any",
+        "object": null,
+        "optional": true,
+        "outputDatatableKey": "mp",
+        "outputKey": "mp",
+        "outputLayer": "eval_data_detec_1",
+        "outputTableIndex": [
+          "716e2c89-0be5-4e90-a370-52df92dda81c",
+          "1a4c93f6-c369-4b24-8dbd-dfe302bf1d2b"
+        ],
+        "predicate": null,
+        "subject": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": {
+        "value": "5.286E+4",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "autogen_Mv_DECT1",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
+        "key": "Mv_DECT1",
+        "match": "any",
+        "object": null,
+        "optional": true,
+        "outputDatatableKey": "mv",
+        "outputKey": "mv",
+        "outputLayer": "eval_data_detec_1",
+        "outputTableIndex": [
+          "716e2c89-0be5-4e90-a370-52df92dda81c",
+          "1a4c93f6-c369-4b24-8dbd-dfe302bf1d2b"
+        ],
+        "predicate": null,
+        "subject": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": {
+        "value": "0.000E+0",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "autogen_Mw_DECT1",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
+        "key": "Mw_DECT1",
+        "match": "any",
+        "object": null,
+        "optional": true,
+        "outputDatatableKey": "mw",
+        "outputKey": "mw",
+        "outputLayer": "eval_data_detec_1",
+        "outputTableIndex": [
+          "716e2c89-0be5-4e90-a370-52df92dda81c",
+          "1a4c93f6-c369-4b24-8dbd-dfe302bf1d2b"
+        ],
+        "predicate": null,
+        "subject": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": {
+        "value": "6.301E+4",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "autogen_Mz_DECT1",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
+        "key": "Mz_DECT1",
+        "match": "any",
+        "object": null,
+        "optional": true,
+        "outputDatatableKey": "mz",
+        "outputKey": "mz",
+        "outputLayer": "eval_data_detec_1",
+        "outputTableIndex": [
+          "716e2c89-0be5-4e90-a370-52df92dda81c",
+          "1a4c93f6-c369-4b24-8dbd-dfe302bf1d2b"
+        ],
+        "predicate": null,
+        "subject": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": {
+        "value": "7.172E+4",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "autogen_Vp_DECT1",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
+        "key": "Vp_DECT1",
+        "match": "any",
+        "object": null,
+        "optional": true,
+        "outputDatatableKey": "vp",
+        "outputKey": "vp",
+        "outputLayer": "eval_data_detec_1",
+        "outputTableIndex": [
+          "716e2c89-0be5-4e90-a370-52df92dda81c",
+          "1a4c93f6-c369-4b24-8dbd-dfe302bf1d2b"
+        ],
+        "predicate": null,
+        "subject": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": {
+        "value": "1.426E+1",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "autogen_[n]_DECT1",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
+        "key": "[n]_DECT1",
+        "match": "any",
+        "object": null,
+        "optional": true,
+        "outputDatatableKey": "n",
+        "outputKey": "n",
+        "outputLayer": "eval_data_detec_1",
+        "outputTableIndex": [
+          "716e2c89-0be5-4e90-a370-52df92dda81c",
+          "1a4c93f6-c369-4b24-8dbd-dfe302bf1d2b"
+        ],
+        "predicate": null,
+        "subject": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": {
+        "value": "0.000E+0",
+        "tableIndex": 0
+      }
+    },
+    {
+      "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "autogen_A_DECT2",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
+        "key": "A_DECT2",
+        "match": "any",
+        "object": null,
+        "optional": true,
+        "outputDatatableKey": "a",
+        "outputKey": "a",
+        "outputLayer": "eval_data_detec_2",
+        "outputTableIndex": [
+          "716e2c89-0be5-4e90-a370-52df92dda81c",
+          "1a4c93f6-c369-4b24-8dbd-dfe302bf1d2b"
+        ],
+        "predicate": null,
+        "subject": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "autogen_D_DECT2",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
+        "key": "D_DECT2",
+        "match": "any",
+        "object": null,
+        "optional": true,
+        "outputDatatableKey": "d",
+        "outputKey": "d",
+        "outputLayer": "eval_data_detec_2",
+        "outputTableIndex": [
+          "716e2c89-0be5-4e90-a370-52df92dda81c",
+          "1a4c93f6-c369-4b24-8dbd-dfe302bf1d2b"
+        ],
+        "predicate": null,
+        "subject": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "autogen_M(z+1)_DECT2",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
+        "key": "M(z+1)_DECT2",
+        "match": "any",
+        "object": null,
+        "optional": true,
+        "outputDatatableKey": "mz1",
+        "outputKey": "mz1",
+        "outputLayer": "eval_data_detec_2",
+        "outputTableIndex": [
+          "716e2c89-0be5-4e90-a370-52df92dda81c",
+          "1a4c93f6-c369-4b24-8dbd-dfe302bf1d2b"
+        ],
+        "predicate": null,
+        "subject": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "autogen_Mn_DECT2",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
+        "key": "Mn_DECT2",
+        "match": "any",
+        "object": null,
+        "optional": true,
+        "outputDatatableKey": "mn",
+        "outputKey": "mn",
+        "outputLayer": "eval_data_detec_2",
+        "outputTableIndex": [
+          "716e2c89-0be5-4e90-a370-52df92dda81c",
+          "1a4c93f6-c369-4b24-8dbd-dfe302bf1d2b"
+        ],
+        "predicate": null,
+        "subject": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "autogen_Mp_DECT2",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
+        "key": "Mp_DECT2",
+        "match": "any",
+        "object": null,
+        "optional": true,
+        "outputDatatableKey": "mp",
+        "outputKey": "mp",
+        "outputLayer": "eval_data_detec_2",
+        "outputTableIndex": [
+          "716e2c89-0be5-4e90-a370-52df92dda81c",
+          "1a4c93f6-c369-4b24-8dbd-dfe302bf1d2b"
+        ],
+        "predicate": null,
+        "subject": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "autogen_Mv_DECT2",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
+        "key": "Mv_DECT2",
+        "match": "any",
+        "object": null,
+        "optional": true,
+        "outputDatatableKey": "mv",
+        "outputKey": "mv",
+        "outputLayer": "eval_data_detec_2",
+        "outputTableIndex": [
+          "716e2c89-0be5-4e90-a370-52df92dda81c",
+          "1a4c93f6-c369-4b24-8dbd-dfe302bf1d2b"
+        ],
+        "predicate": null,
+        "subject": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "autogen_Mw_DECT2",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
+        "key": "Mw_DECT2",
+        "match": "any",
+        "object": null,
+        "optional": true,
+        "outputDatatableKey": "mw",
+        "outputKey": "mw",
+        "outputLayer": "eval_data_detec_2",
+        "outputTableIndex": [
+          "716e2c89-0be5-4e90-a370-52df92dda81c",
+          "1a4c93f6-c369-4b24-8dbd-dfe302bf1d2b"
+        ],
+        "predicate": null,
+        "subject": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "autogen_Mz_DECT2",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
+        "key": "Mz_DECT2",
+        "match": "any",
+        "object": null,
+        "optional": true,
+        "outputDatatableKey": "mz",
+        "outputKey": "mz",
+        "outputLayer": "eval_data_detec_2",
+        "outputTableIndex": [
+          "716e2c89-0be5-4e90-a370-52df92dda81c",
+          "1a4c93f6-c369-4b24-8dbd-dfe302bf1d2b"
+        ],
+        "predicate": null,
+        "subject": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "autogen_Vp_DECT2",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
+        "key": "Vp_DECT2",
+        "match": "any",
+        "object": null,
+        "optional": true,
+        "outputDatatableKey": "vp",
+        "outputKey": "vp",
+        "outputLayer": "eval_data_detec_2",
+        "outputTableIndex": [
+          "716e2c89-0be5-4e90-a370-52df92dda81c",
+          "1a4c93f6-c369-4b24-8dbd-dfe302bf1d2b"
+        ],
+        "predicate": null,
+        "subject": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "autogen_[n]_DECT2",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
+        "key": "[n]_DECT2",
+        "match": "any",
+        "object": null,
+        "optional": true,
+        "outputDatatableKey": "n",
+        "outputKey": "n",
+        "outputLayer": "eval_data_detec_2",
+        "outputTableIndex": [
+          "716e2c89-0be5-4e90-a370-52df92dda81c",
+          "1a4c93f6-c369-4b24-8dbd-dfe302bf1d2b"
+        ],
+        "predicate": null,
+        "subject": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "autogen_A_DECT3",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
+        "key": "A_DECT3",
+        "match": "any",
+        "object": null,
+        "optional": true,
+        "outputDatatableKey": "a",
+        "outputKey": "a",
+        "outputLayer": "eval_data_detec_3",
+        "outputTableIndex": [
+          "716e2c89-0be5-4e90-a370-52df92dda81c",
+          "1a4c93f6-c369-4b24-8dbd-dfe302bf1d2b"
+        ],
+        "predicate": null,
+        "subject": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "autogen_D_DECT3",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
+        "key": "D_DECT3",
+        "match": "any",
+        "object": null,
+        "optional": true,
+        "outputDatatableKey": "d",
+        "outputKey": "d",
+        "outputLayer": "eval_data_detec_3",
+        "outputTableIndex": [
+          "716e2c89-0be5-4e90-a370-52df92dda81c",
+          "1a4c93f6-c369-4b24-8dbd-dfe302bf1d2b"
+        ],
+        "predicate": null,
+        "subject": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "autogen_M(z+1)_DECT3",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
+        "key": "M(z+1)_DECT3",
+        "match": "any",
+        "object": null,
+        "optional": true,
+        "outputDatatableKey": "mz1",
+        "outputKey": "mz1",
+        "outputLayer": "eval_data_detec_3",
+        "outputTableIndex": [
+          "716e2c89-0be5-4e90-a370-52df92dda81c",
+          "1a4c93f6-c369-4b24-8dbd-dfe302bf1d2b"
+        ],
+        "predicate": null,
+        "subject": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "autogen_Mn_DECT3",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
+        "key": "Mn_DECT3",
+        "match": "any",
+        "object": null,
+        "optional": true,
+        "outputDatatableKey": "mn",
+        "outputKey": "mn",
+        "outputLayer": "eval_data_detec_3",
+        "outputTableIndex": [
+          "716e2c89-0be5-4e90-a370-52df92dda81c",
+          "1a4c93f6-c369-4b24-8dbd-dfe302bf1d2b"
+        ],
+        "predicate": null,
+        "subject": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "autogen_Mp_DECT3",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
+        "key": "Mp_DECT3",
+        "match": "any",
+        "object": null,
+        "optional": true,
+        "outputDatatableKey": "mp",
+        "outputKey": "mp",
+        "outputLayer": "eval_data_detec_3",
+        "outputTableIndex": [
+          "716e2c89-0be5-4e90-a370-52df92dda81c",
+          "1a4c93f6-c369-4b24-8dbd-dfe302bf1d2b"
+        ],
+        "predicate": null,
+        "subject": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "autogen_Mv_DECT3",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
+        "key": "Mv_DECT3",
+        "match": "any",
+        "object": null,
+        "optional": true,
+        "outputDatatableKey": "mv",
+        "outputKey": "mv",
+        "outputLayer": "eval_data_detec_3",
+        "outputTableIndex": [
+          "716e2c89-0be5-4e90-a370-52df92dda81c",
+          "1a4c93f6-c369-4b24-8dbd-dfe302bf1d2b"
+        ],
+        "predicate": null,
+        "subject": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "autogen_Mw_DECT3",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
+        "key": "Mw_DECT3",
+        "match": "any",
+        "object": null,
+        "optional": true,
+        "outputDatatableKey": "mw",
+        "outputKey": "mw",
+        "outputLayer": "eval_data_detec_3",
+        "outputTableIndex": [
+          "716e2c89-0be5-4e90-a370-52df92dda81c",
+          "1a4c93f6-c369-4b24-8dbd-dfe302bf1d2b"
+        ],
+        "predicate": null,
+        "subject": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "autogen_Mz_DECT3",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
+        "key": "Mz_DECT3",
+        "match": "any",
+        "object": null,
+        "optional": true,
+        "outputDatatableKey": "mz",
+        "outputKey": "mz",
+        "outputLayer": "eval_data_detec_3",
+        "outputTableIndex": [
+          "716e2c89-0be5-4e90-a370-52df92dda81c",
+          "1a4c93f6-c369-4b24-8dbd-dfe302bf1d2b"
+        ],
+        "predicate": null,
+        "subject": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "autogen_Vp_DECT3",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
+        "key": "Vp_DECT3",
+        "match": "any",
+        "object": null,
+        "optional": true,
+        "outputDatatableKey": "vp",
+        "outputKey": "vp",
+        "outputLayer": "eval_data_detec_3",
+        "outputTableIndex": [
+          "716e2c89-0be5-4e90-a370-52df92dda81c",
+          "1a4c93f6-c369-4b24-8dbd-dfe302bf1d2b"
+        ],
+        "predicate": null,
+        "subject": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "autogen_[n]_DECT3",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
+        "key": "[n]_DECT3",
+        "match": "any",
+        "object": null,
+        "optional": true,
+        "outputDatatableKey": "n",
+        "outputKey": "n",
+        "outputLayer": "eval_data_detec_3",
+        "outputTableIndex": [
+          "716e2c89-0be5-4e90-a370-52df92dda81c",
+          "1a4c93f6-c369-4b24-8dbd-dfe302bf1d2b"
+        ],
+        "predicate": null,
+        "subject": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "autogen_A_DECT4",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
+        "key": "A_DECT4",
+        "match": "any",
+        "object": null,
+        "optional": true,
+        "outputDatatableKey": "a",
+        "outputKey": "a",
+        "outputLayer": "eval_data_detec_4",
+        "outputTableIndex": [
+          "716e2c89-0be5-4e90-a370-52df92dda81c",
+          "1a4c93f6-c369-4b24-8dbd-dfe302bf1d2b"
+        ],
+        "predicate": null,
+        "subject": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "autogen_D_DECT4",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
+        "key": "D_DECT4",
+        "match": "any",
+        "object": null,
+        "optional": true,
+        "outputDatatableKey": "d",
+        "outputKey": "d",
+        "outputLayer": "eval_data_detec_4",
+        "outputTableIndex": [
+          "716e2c89-0be5-4e90-a370-52df92dda81c",
+          "1a4c93f6-c369-4b24-8dbd-dfe302bf1d2b"
+        ],
+        "predicate": null,
+        "subject": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "autogen_M(z+1)_DECT4",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
+        "key": "M(z+1)_DECT4",
+        "match": "any",
+        "object": null,
+        "optional": true,
+        "outputDatatableKey": "mz1",
+        "outputKey": "mz1",
+        "outputLayer": "eval_data_detec_4",
+        "outputTableIndex": [
+          "716e2c89-0be5-4e90-a370-52df92dda81c",
+          "1a4c93f6-c369-4b24-8dbd-dfe302bf1d2b"
+        ],
+        "predicate": null,
+        "subject": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "autogen_Mn_DECT4",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
+        "key": "Mn_DECT4",
+        "match": "any",
+        "object": null,
+        "optional": true,
+        "outputDatatableKey": "mn",
+        "outputKey": "mn",
+        "outputLayer": "eval_data_detec_4",
+        "outputTableIndex": [
+          "716e2c89-0be5-4e90-a370-52df92dda81c",
+          "1a4c93f6-c369-4b24-8dbd-dfe302bf1d2b"
+        ],
+        "predicate": null,
+        "subject": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "autogen_Mp_DECT4",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
+        "key": "Mp_DECT4",
+        "match": "any",
+        "object": null,
+        "optional": true,
+        "outputDatatableKey": "mp",
+        "outputKey": "mp",
+        "outputLayer": "eval_data_detec_4",
+        "outputTableIndex": [
+          "716e2c89-0be5-4e90-a370-52df92dda81c",
+          "1a4c93f6-c369-4b24-8dbd-dfe302bf1d2b"
+        ],
+        "predicate": null,
+        "subject": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "autogen_Mv_DECT4",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
+        "key": "Mv_DECT4",
+        "match": "any",
+        "object": null,
+        "optional": true,
+        "outputDatatableKey": "mv",
+        "outputKey": "mv",
+        "outputLayer": "eval_data_detec_4",
+        "outputTableIndex": [
+          "716e2c89-0be5-4e90-a370-52df92dda81c",
+          "1a4c93f6-c369-4b24-8dbd-dfe302bf1d2b"
+        ],
+        "predicate": null,
+        "subject": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "autogen_Mw_DECT4",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
+        "key": "Mw_DECT4",
+        "match": "any",
+        "object": null,
+        "optional": true,
+        "outputDatatableKey": "mw",
+        "outputKey": "mw",
+        "outputLayer": "eval_data_detec_4",
+        "outputTableIndex": [
+          "716e2c89-0be5-4e90-a370-52df92dda81c",
+          "1a4c93f6-c369-4b24-8dbd-dfe302bf1d2b"
+        ],
+        "predicate": null,
+        "subject": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "autogen_Mz_DECT4",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
+        "key": "Mz_DECT4",
+        "match": "any",
+        "object": null,
+        "optional": true,
+        "outputDatatableKey": "mz",
+        "outputKey": "mz",
+        "outputLayer": "eval_data_detec_4",
+        "outputTableIndex": [
+          "716e2c89-0be5-4e90-a370-52df92dda81c",
+          "1a4c93f6-c369-4b24-8dbd-dfe302bf1d2b"
+        ],
+        "predicate": null,
+        "subject": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "autogen_Vp_DECT4",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
+        "key": "Vp_DECT4",
+        "match": "any",
+        "object": null,
+        "optional": true,
+        "outputDatatableKey": "vp",
+        "outputKey": "vp",
+        "outputLayer": "eval_data_detec_4",
+        "outputTableIndex": [
+          "716e2c89-0be5-4e90-a370-52df92dda81c",
+          "1a4c93f6-c369-4b24-8dbd-dfe302bf1d2b"
+        ],
+        "predicate": null,
+        "subject": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "autogen_[n]_DECT4",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
+        "key": "[n]_DECT4",
+        "match": "any",
+        "object": null,
+        "optional": true,
+        "outputDatatableKey": "n",
+        "outputKey": "n",
+        "outputLayer": "eval_data_detec_4",
+        "outputTableIndex": [
+          "716e2c89-0be5-4e90-a370-52df92dda81c",
+          "1a4c93f6-c369-4b24-8dbd-dfe302bf1d2b"
+        ],
+        "predicate": null,
+        "subject": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "autogen_A_DECT5",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
+        "key": "A_DECT5",
+        "match": "any",
+        "object": null,
+        "optional": true,
+        "outputDatatableKey": "a",
+        "outputKey": "a",
+        "outputLayer": "eval_data_detec_5",
+        "outputTableIndex": [
+          "716e2c89-0be5-4e90-a370-52df92dda81c",
+          "1a4c93f6-c369-4b24-8dbd-dfe302bf1d2b"
+        ],
+        "predicate": null,
+        "subject": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "autogen_D_DECT5",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
+        "key": "D_DECT5",
+        "match": "any",
+        "object": null,
+        "optional": true,
+        "outputDatatableKey": "d",
+        "outputKey": "d",
+        "outputLayer": "eval_data_detec_5",
+        "outputTableIndex": [
+          "716e2c89-0be5-4e90-a370-52df92dda81c",
+          "1a4c93f6-c369-4b24-8dbd-dfe302bf1d2b"
+        ],
+        "predicate": null,
+        "subject": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "autogen_M(z+1)_DECT5",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
+        "key": "M(z+1)_DECT5",
+        "match": "any",
+        "object": null,
+        "optional": true,
+        "outputDatatableKey": "mz1",
+        "outputKey": "mz1",
+        "outputLayer": "eval_data_detec_5",
+        "outputTableIndex": [
+          "716e2c89-0be5-4e90-a370-52df92dda81c",
+          "1a4c93f6-c369-4b24-8dbd-dfe302bf1d2b"
+        ],
+        "predicate": null,
+        "subject": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "autogen_Mn_DECT5",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
+        "key": "Mn_DECT5",
+        "match": "any",
+        "object": null,
+        "optional": true,
+        "outputDatatableKey": "mn",
+        "outputKey": "mn",
+        "outputLayer": "eval_data_detec_5",
+        "outputTableIndex": [
+          "716e2c89-0be5-4e90-a370-52df92dda81c",
+          "1a4c93f6-c369-4b24-8dbd-dfe302bf1d2b"
+        ],
+        "predicate": null,
+        "subject": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "autogen_Mp_DECT5",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
+        "key": "Mp_DECT5",
+        "match": "any",
+        "object": null,
+        "optional": true,
+        "outputDatatableKey": "mp",
+        "outputKey": "mp",
+        "outputLayer": "eval_data_detec_5",
+        "outputTableIndex": [
+          "716e2c89-0be5-4e90-a370-52df92dda81c",
+          "1a4c93f6-c369-4b24-8dbd-dfe302bf1d2b"
+        ],
+        "predicate": null,
+        "subject": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "autogen_Mv_DECT5",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
+        "key": "Mv_DECT5",
+        "match": "any",
+        "object": null,
+        "optional": true,
+        "outputDatatableKey": "mv",
+        "outputKey": "mv",
+        "outputLayer": "eval_data_detec_5",
+        "outputTableIndex": [
+          "716e2c89-0be5-4e90-a370-52df92dda81c",
+          "1a4c93f6-c369-4b24-8dbd-dfe302bf1d2b"
+        ],
+        "predicate": null,
+        "subject": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "autogen_Mw_DECT5",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
+        "key": "Mw_DECT5",
+        "match": "any",
+        "object": null,
+        "optional": true,
+        "outputDatatableKey": "mw",
+        "outputKey": "mw",
+        "outputLayer": "eval_data_detec_5",
+        "outputTableIndex": [
+          "716e2c89-0be5-4e90-a370-52df92dda81c",
+          "1a4c93f6-c369-4b24-8dbd-dfe302bf1d2b"
+        ],
+        "predicate": null,
+        "subject": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "autogen_Mz_DECT5",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
+        "key": "Mz_DECT5",
+        "match": "any",
+        "object": null,
+        "optional": true,
+        "outputDatatableKey": "mz",
+        "outputKey": "mz",
+        "outputLayer": "eval_data_detec_5",
+        "outputTableIndex": [
+          "716e2c89-0be5-4e90-a370-52df92dda81c",
+          "1a4c93f6-c369-4b24-8dbd-dfe302bf1d2b"
+        ],
+        "predicate": null,
+        "subject": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "autogen_Vp_DECT5",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
+        "key": "Vp_DECT5",
+        "match": "any",
+        "object": null,
+        "optional": true,
+        "outputDatatableKey": "vp",
+        "outputKey": "vp",
+        "outputLayer": "eval_data_detec_5",
+        "outputTableIndex": [
+          "716e2c89-0be5-4e90-a370-52df92dda81c",
+          "1a4c93f6-c369-4b24-8dbd-dfe302bf1d2b"
+        ],
+        "predicate": null,
+        "subject": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": false
+    },
+    {
+      "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "autogen_[n]_DECT5",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
+        "key": "[n]_DECT5",
+        "match": "any",
+        "object": null,
+        "optional": true,
+        "outputDatatableKey": "n",
+        "outputKey": "n",
+        "outputLayer": "eval_data_detec_5",
+        "outputTableIndex": [
+          "716e2c89-0be5-4e90-a370-52df92dda81c",
+          "1a4c93f6-c369-4b24-8dbd-dfe302bf1d2b"
+        ],
+        "predicate": null,
+        "subject": null,
+        "tableIndex": 0,
+        "type": "tableMetadata",
+        "value": ""
+      },
+      "result": false
+    }
+  ],
+  "tablesCount": 2,
+  "tables": [
+    {
+      "fileName": "data/table_01.jdx",
+      "header": {
+        "DATA CLASS": "XYPOINTS",
+        "DATA TYPE": "SIZE EXCLUSION CHROMATOGRAPHY",
+        "XUNITS": "MILLILITERS",
+        "YUNITS": "ARBITRARY UNITS",
+        "label": "Vial  71: JM_03 - 1",
+        "comments": "Z:\\Jennifer\\JM-03\\1_Inj_ Vial  71  JM_03 - 1.TXT",
+        "mn": "5.646E+4",
+        "mw": "6.301E+4",
+        "d": "1.116E+0",
+        "mp": "5.286E+4",
+        "detec1": "I1: RID 1, RI Signal",
+        "detec2": "I1: IsoPump 1, Pressure",
+        "col1": "PLgel Precolumn",
+        "col2": "PLgel 5\u00b5m Mixed-C",
+        "col3": "PLgel 5\u00b5m Mixed-C",
+        "in_vol": "100.000",
+        "eluent": "DMAc 0.79g/2.5L LiBr",
+        "flow": "0.500",
+        "temperature": "50.000",
+        "date": "21/07/22",
+        "time": "14:30:57",
+        "software": "WINGPC",
+        "version": "8#1",
+        "operator": "itcp-akt",
+        "mz1": "8.281E+4",
+        "mv": "0.000E+0",
+        "mz": "7.172E+4",
+        "vp": "1.426E+1",
+        "n": "0.000E+0"
+      }
+    },
+    {
+      "fileName": "data/table_02.jdx",
+      "header": {
+        "DATA CLASS": "XYPOINTS",
+        "DATA TYPE": "SIZE EXCLUSION CHROMATOGRAPHY",
+        "XUNITS": "G/MOL",
+        "YUNITS": "ARBITRARY UNITS",
+        "label": "Vial  71: JM_03 - 1",
+        "comments": "Z:\\Jennifer\\JM-03\\1_Inj_ Vial  71  JM_03 - 1.TXT",
+        "mn": "5.646E+4",
+        "mw": "6.301E+4",
+        "d": "1.116E+0",
+        "mp": "5.286E+4",
+        "detec1": "I1: RID 1, RI Signal",
+        "detec2": "I1: IsoPump 1, Pressure",
+        "col1": "PLgel Precolumn",
+        "col2": "PLgel 5\u00b5m Mixed-C",
+        "col3": "PLgel 5\u00b5m Mixed-C",
+        "in_vol": "100.000",
+        "eluent": "DMAc 0.79g/2.5L LiBr",
+        "flow": "0.500",
+        "temperature": "50.000",
+        "date": "21/07/22",
+        "time": "14:30:57",
+        "software": "WINGPC",
+        "version": "8#1",
+        "operator": "itcp-akt",
+        "mz1": "8.281E+4",
+        "mv": "0.000E+0",
+        "mz": "7.172E+4",
+        "vp": "1.426E+1",
+        "n": "0.000E+0"
+      }
+    }
+  ]
+}

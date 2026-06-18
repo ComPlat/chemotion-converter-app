@@ -105,6 +105,12 @@ class GcdReader(Reader):
                 table_entries = line.split(self._delimiter)
                 table['rows'].append(table_entries)
                 for idx_entry, entry in enumerate(table_entries):
+                    if col_names[idx_entry] == 'Name':
+                        values = re.split(r'\s(?=\[)', entry, 2)
+                        if len(values) == 2:
+                            entry = values[0]
+                            table['metadata'][f"Ch{idx + 1}.Id {table_entries[0]}.{col_names[idx_entry]}_unit"] = values[1].strip('[]')
+
                     table['metadata'][f"Ch{idx + 1}.Id {table_entries[0]}.{col_names[idx_entry]}"] = entry
 
             table['columns'] = [{

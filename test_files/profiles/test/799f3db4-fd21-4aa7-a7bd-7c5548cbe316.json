@@ -1,0 +1,1945 @@
+{
+    "converter_version": "1.8.0",
+    "data": [
+        {
+            "metadata": {
+                "content_type": "application/octet-stream",
+                "extension": ".DTA",
+                "file_name": "2mMLSH-R415A_AcNiDrop_BVTPtChip_no10.DTA",
+                "mime_type": "text/plain",
+                "reader": "DtaReader"
+            },
+            "tables": [
+                {
+                    "columns": [
+                        {
+                            "key": "0",
+                            "name": "Column #0 (Pt)"
+                        },
+                        {
+                            "key": "1",
+                            "name": "Column #1 (T)"
+                        },
+                        {
+                            "key": "2",
+                            "name": "Column #2 (Vf)"
+                        },
+                        {
+                            "key": "3",
+                            "name": "Column #3 (Im)"
+                        },
+                        {
+                            "key": "4",
+                            "name": "Column #4 (Vu)"
+                        },
+                        {
+                            "key": "5",
+                            "name": "Column #5 (Sig)"
+                        },
+                        {
+                            "key": "6",
+                            "name": "Column #6 (Ach)"
+                        },
+                        {
+                            "key": "7",
+                            "name": "Column #7 (IERange)"
+                        },
+                        {
+                            "key": "8",
+                            "name": "Column #8 (Over)"
+                        },
+                        {
+                            "key": "9",
+                            "name": "Column #9 (Temp)"
+                        }
+                    ],
+                    "header": [
+                        "EXPLAIN",
+                        "TAG\tCV",
+                        "TITLE\tLABEL\tCyclic Voltammetry\tTest &Identifier",
+                        "DATE\tLABEL\t23.5.2022\tDate",
+                        "TIME\tLABEL\t16:09:50\tTime",
+                        "NOTES\tNOTES\t1\t&Notes...",
+                        "",
+                        "PSTAT\tPSTAT\tIFC1010-30147\tPotentiostat",
+                        "VINIT\tPOTEN\t0,00000E+000\tF\tInitial &E (V)",
+                        "VLIMIT1\tPOTEN\t-1,20000E+000\tF\tScan Limit &1 (V)",
+                        "VLIMIT2\tPOTEN\t1,10000E+000\tF\tScan Limit &2 (V)",
+                        "VFINAL\tPOTEN\t0,00000E+000\tF\tFinal &E (V)",
+                        "SCANRATE\tQUANT\t9,99998E+001\t&Scan Rate (mV/s)",
+                        "STEPSIZE\tQUANT\t5,00000E+000\tSt&ep Size (mV)",
+                        "CYCLES\tIQUANT\t3\tC&ycles (#)",
+                        "IMODE\tSELECTOR\t0\tI/E Range &Mode",
+                        "IRANGE\tQUANT\t2,00000E-001\t&Max Current (mA)",
+                        "AREA\tQUANT\t1,00000E+000\tElectrode &Area (cm^2)",
+                        "ELECTRODETYPE\tSELECTOR\t0\tElectrode Type",
+                        "STRIPPING\tTOGGLE\tF\tUsed for Stripping",
+                        "CONDIT\tTWOPARAM\tF\t1,50000E+001\t0,00000E+000\tConditionin&g\tTime(s)\tE(V)",
+                        "DELAY\tTWOPARAM\tF\t3,00000E+001\t0,00000E+000\tInit. De&lay\tTime(s)\tStab.(mV/s)",
+                        "EQDELAY\tQUANT\t2,00000E+000\tEquil. &Time (s)",
+                        "IRCOMP\tSELECTOR\t0\tIRCom&p",
+                        "PFCOR\tQUANT\t0,00000E+000\tPF Corr. (ohm)",
+                        "SAMPLINGMODE\tSELECTOR\t1\tSampling &Mode",
+                        "EOC\tQUANT\t0\tOpen Circuit (V)",
+                        "PSTATMODEL\tIQUANT\t64\tPstat Model",
+                        "PSTATSECTION\tLABEL\tIFC1010-30147\tPstat Section",
+                        "PSTATSERIALNO\tLABEL\t30147\tPstat Serial Number",
+                        "CTRLMODE\tIQUANT\t1\tControl Mode",
+                        "ELECTROMETER\tIQUANT\t0\tRE=0 or CS=1",
+                        "IESTAB\tIQUANT\t2\tI/E Stability",
+                        "CASPEED\tIQUANT\t4\tControl Amp Speed",
+                        "CONVENTION\tIQUANT\t1\tCurrent Convention",
+                        "ICHRANGE\tIQUANT\t2\tIch Range",
+                        "ICHRANGEMODE\tTOGGLE\tF\tIch Auto Range",
+                        "ICHOFFSETENABLE\tTOGGLE\tF\tIch Offset Enable",
+                        "ICHOFFSET\tQUANT\t0\tIch Offset (V)",
+                        "ICHFILTER\tIQUANT\t3\tIch Filter",
+                        "VCHRANGE\tIQUANT\t2\tVch Range",
+                        "VCHRANGEMODE\tTOGGLE\tF\tVch Auto Range",
+                        "VCHOFFSETENABLE\tTOGGLE\tF\tVch Offset Enable",
+                        "VCHOFFSET\tQUANT\t0\tVch Offset (V)",
+                        "VCHFILTER\tIQUANT\t3\tVch Filter",
+                        "IERANGELOWERLIMIT\tIQUANT\t4\tI/E Range Lower Limit",
+                        "IERANGEMODE\tTOGGLE\tT\tI/E AutoRange",
+                        "IERANGE\tIQUANT\t9\tI/E Range",
+                        "ACHSELECT\tIQUANT\t0\tAch Select",
+                        "ACHRANGE\tIQUANT\t2\tAch Range",
+                        "ACHOFFSETENABLE\tTOGGLE\tF\tAch Offset Enable",
+                        "ACHOFFSET\tQUANT\t0\tAch Offset (V)",
+                        "ACHFILTER\tIQUANT\t1\tAch Filter",
+                        "SENSECABLEID\tIQUANT\t14\tSense Cable ID",
+                        "PWRCABLEID\tIQUANT\t14\tPower Cable ID",
+                        "DCCALDATE\tLABEL\t5/13/2022\tDC Calibration Date",
+                        "ACCALDATE\tLABEL\t8/12/2021\tAC Calibration Date",
+                        "FRAMEWORKVERSION\tLABEL\t7.8.6\tFramework Version",
+                        "INSTRUMENTVERSION\tLABEL\t4.50\tInstrument Version",
+                        "CURVE1\tTABLE"
+                    ],
+                    "metadata": {
+                        "ACCALDATE": "8/12/2021",
+                        "ACHFILTER": "1",
+                        "ACHOFFSET": "0",
+                        "ACHOFFSETENABLE": "F",
+                        "ACHRANGE": "2",
+                        "ACHSELECT": "0",
+                        "AREA": "1,00000E+000",
+                        "CASPEED": "4",
+                        "CONDIT": "F",
+                        "CONVENTION": "1",
+                        "CTRLMODE": "1",
+                        "CYCLES": "3",
+                        "DATE": "23.5.2022",
+                        "DCCALDATE": "5/13/2022",
+                        "DELAY": "F",
+                        "ELECTRODETYPE": "0",
+                        "ELECTROMETER": "0",
+                        "EOC": "0",
+                        "EQDELAY": "2,00000E+000",
+                        "FRAMEWORKVERSION": "7.8.6",
+                        "ICHFILTER": "3",
+                        "ICHOFFSET": "0",
+                        "ICHOFFSETENABLE": "F",
+                        "ICHRANGE": "2",
+                        "ICHRANGEMODE": "F",
+                        "IERANGE": "9",
+                        "IERANGELOWERLIMIT": "4",
+                        "IERANGEMODE": "T",
+                        "IESTAB": "2",
+                        "IMODE": "0",
+                        "INSTRUMENTVERSION": "4.50",
+                        "IRANGE": "2,00000E-001",
+                        "IRCOMP": "0",
+                        "NOTES": "1",
+                        "PFCOR": "0,00000E+000",
+                        "PSTAT": "IFC1010-30147",
+                        "PSTATMODEL": "64",
+                        "PSTATSECTION": "IFC1010-30147",
+                        "PSTATSERIALNO": "30147",
+                        "PWRCABLEID": "14",
+                        "SAMPLINGMODE": "1",
+                        "SCANRATE": "9,99998E+001",
+                        "SENSECABLEID": "14",
+                        "STEPSIZE": "5,00000E+000",
+                        "STRIPPING": "F",
+                        "TIME": "16:09:50",
+                        "TITLE": "Cyclic",
+                        "VCHFILTER": "3",
+                        "VCHOFFSET": "0",
+                        "VCHOFFSETENABLE": "F",
+                        "VCHRANGE": "2",
+                        "VCHRANGEMODE": "F",
+                        "VFINAL": "0,00000E+000",
+                        "VINIT": "0,00000E+000",
+                        "VLIMIT1": "-1,20000E+000",
+                        "VLIMIT2": "1,10000E+000",
+                        "__UNIT_%": "%",
+                        "__UNIT_PPM": "ppm",
+                        "__UNIT_gram": "g",
+                        "__UNIT_liter": "l",
+                        "__UNIT_mol": "mol",
+                        "column_00": "Pt",
+                        "column_00_unit": "#",
+                        "column_01": "T",
+                        "column_01_unit": "s",
+                        "column_02": "Vf",
+                        "column_02_unit": "V",
+                        "column_03": "Im",
+                        "column_03_unit": "vs.",
+                        "column_04": "Vu",
+                        "column_04_unit": "Ref.",
+                        "column_05": "Sig",
+                        "column_05_unit": "A",
+                        "column_06": "Ach",
+                        "column_06_unit": "V",
+                        "column_07": "IERange",
+                        "column_07_unit": "V",
+                        "column_08": "Over",
+                        "column_08_unit": "V",
+                        "column_09": "Temp",
+                        "column_09_unit": "#",
+                        "column_10_unit": "bits",
+                        "column_11_unit": "deg",
+                        "column_12_unit": "C",
+                        "columns": 10,
+                        "rows": 701
+                    },
+                    "rows": [
+                        [
+                            "0",
+                            "0.05",
+                            "1.10407E-005",
+                            "-7.42159E-006",
+                            "0.00000E+000",
+                            "1.75089E-006",
+                            "0.00000E+000",
+                            "9",
+                            "...........",
+                            "1387.94"
+                        ],
+                        [
+                            "1",
+                            "0.1",
+                            "-4.99727E-003",
+                            "-7.49944E-006",
+                            "0.00000E+000",
+                            "-4.99606E-003",
+                            "0.00000E+000",
+                            "8",
+                            "...........",
+                            "1387.94"
+                        ],
+                        [
+                            "2",
+                            "0.15",
+                            "-9.96957E-003",
+                            "-7.53218E-006",
+                            "0.00000E+000",
+                            "-9.99387E-003",
+                            "0.00000E+000",
+                            "7",
+                            "...........",
+                            "1387.94"
+                        ],
+                        [
+                            "3",
+                            "0.2",
+                            "-1.49946E-002",
+                            "-7.56641E-006",
+                            "0.00000E+000",
+                            "-1.49917E-002",
+                            "0.00000E+000",
+                            "7",
+                            "...........",
+                            "1387.94"
+                        ],
+                        [
+                            "4",
+                            "0.25",
+                            "-1.99829E-002",
+                            "-7.59748E-006",
+                            "0.00000E+000",
+                            "-1.99895E-002",
+                            "0.00000E+000",
+                            "7",
+                            "...........",
+                            "1387.94"
+                        ],
+                        [
+                            "5",
+                            "0.3",
+                            "-2.49942E-002",
+                            "-7.62093E-006",
+                            "0.00000E+000",
+                            "-2.49873E-002",
+                            "0.00000E+000",
+                            "7",
+                            "...........",
+                            "1387.94"
+                        ],
+                        [
+                            "6",
+                            "0.35",
+                            "-3.00002E-002",
+                            "-7.64102E-006",
+                            "0.00000E+000",
+                            "-2.99851E-002",
+                            "0.00000E+000",
+                            "7",
+                            "...........",
+                            "1387.94"
+                        ],
+                        [
+                            "7",
+                            "0.4",
+                            "-3.49758E-002",
+                            "-7.66746E-006",
+                            "0.00000E+000",
+                            "-3.49829E-002",
+                            "0.00000E+000",
+                            "7",
+                            "...........",
+                            "1387.94"
+                        ],
+                        [
+                            "8",
+                            "0.45",
+                            "-3.99893E-002",
+                            "-7.68228E-006",
+                            "0.00000E+000",
+                            "-3.99807E-002",
+                            "0.00000E+000",
+                            "7",
+                            "...........",
+                            "1387.94"
+                        ],
+                        [
+                            "9",
+                            "0.5",
+                            "-4.49699E-002",
+                            "-7.69809E-006",
+                            "0.00000E+000",
+                            "-4.49785E-002",
+                            "0.00000E+000",
+                            "7",
+                            "...........",
+                            "1387.94"
+                        ]
+                    ]
+                },
+                {
+                    "columns": [
+                        {
+                            "key": "0",
+                            "name": "Column #0 (Pt)"
+                        },
+                        {
+                            "key": "1",
+                            "name": "Column #1 (T)"
+                        },
+                        {
+                            "key": "2",
+                            "name": "Column #2 (Vf)"
+                        },
+                        {
+                            "key": "3",
+                            "name": "Column #3 (Im)"
+                        },
+                        {
+                            "key": "4",
+                            "name": "Column #4 (Vu)"
+                        },
+                        {
+                            "key": "5",
+                            "name": "Column #5 (Sig)"
+                        },
+                        {
+                            "key": "6",
+                            "name": "Column #6 (Ach)"
+                        },
+                        {
+                            "key": "7",
+                            "name": "Column #7 (IERange)"
+                        },
+                        {
+                            "key": "8",
+                            "name": "Column #8 (Over)"
+                        },
+                        {
+                            "key": "9",
+                            "name": "Column #9 (Temp)"
+                        }
+                    ],
+                    "header": [
+                        "CURVE2\tTABLE"
+                    ],
+                    "metadata": {
+                        "column_00": "Pt",
+                        "column_00_unit": "#",
+                        "column_01": "T",
+                        "column_01_unit": "s",
+                        "column_02": "Vf",
+                        "column_02_unit": "V",
+                        "column_03": "Im",
+                        "column_03_unit": "vs.",
+                        "column_04": "Vu",
+                        "column_04_unit": "Ref.",
+                        "column_05": "Sig",
+                        "column_05_unit": "A",
+                        "column_06": "Ach",
+                        "column_06_unit": "V",
+                        "column_07": "IERange",
+                        "column_07_unit": "V",
+                        "column_08": "Over",
+                        "column_08_unit": "V",
+                        "column_09": "Temp",
+                        "column_09_unit": "#",
+                        "column_10_unit": "bits",
+                        "column_11_unit": "deg",
+                        "column_12_unit": "C",
+                        "columns": 10,
+                        "rows": 920
+                    },
+                    "rows": [
+                        [
+                            "701",
+                            "35.1",
+                            "1.09533E+000",
+                            "2.79444E-005",
+                            "0.00000E+000",
+                            "1.09502E+000",
+                            "0.00000E+000",
+                            "8",
+                            "...........",
+                            "1387.77"
+                        ],
+                        [
+                            "702",
+                            "35.15",
+                            "1.09032E+000",
+                            "2.70470E-005",
+                            "0.00000E+000",
+                            "1.09002E+000",
+                            "0.00000E+000",
+                            "8",
+                            "...........",
+                            "1387.77"
+                        ],
+                        [
+                            "703",
+                            "35.2",
+                            "1.08528E+000",
+                            "2.62460E-005",
+                            "0.00000E+000",
+                            "1.08498E+000",
+                            "0.00000E+000",
+                            "8",
+                            "...........",
+                            "1387.77"
+                        ],
+                        [
+                            "704",
+                            "35.25",
+                            "1.08027E+000",
+                            "2.54852E-005",
+                            "0.00000E+000",
+                            "1.07998E+000",
+                            "0.00000E+000",
+                            "8",
+                            "...........",
+                            "1387.77"
+                        ],
+                        [
+                            "705",
+                            "35.3",
+                            "1.07526E+000",
+                            "2.47952E-005",
+                            "0.00000E+000",
+                            "1.07498E+000",
+                            "0.00000E+000",
+                            "8",
+                            "...........",
+                            "1387.77"
+                        ],
+                        [
+                            "706",
+                            "35.35",
+                            "1.07027E+000",
+                            "2.41404E-005",
+                            "0.00000E+000",
+                            "1.06998E+000",
+                            "0.00000E+000",
+                            "8",
+                            "...........",
+                            "1387.77"
+                        ],
+                        [
+                            "707",
+                            "35.4",
+                            "1.06527E+000",
+                            "2.35276E-005",
+                            "0.00000E+000",
+                            "1.06498E+000",
+                            "0.00000E+000",
+                            "8",
+                            "...........",
+                            "1387.77"
+                        ],
+                        [
+                            "708",
+                            "35.45",
+                            "1.06029E+000",
+                            "2.29496E-005",
+                            "0.00000E+000",
+                            "1.05999E+000",
+                            "0.00000E+000",
+                            "8",
+                            "...........",
+                            "1387.77"
+                        ],
+                        [
+                            "709",
+                            "35.5",
+                            "1.05527E+000",
+                            "2.24081E-005",
+                            "0.00000E+000",
+                            "1.05499E+000",
+                            "0.00000E+000",
+                            "8",
+                            "...........",
+                            "1387.77"
+                        ],
+                        [
+                            "710",
+                            "35.55",
+                            "1.05029E+000",
+                            "2.19072E-005",
+                            "0.00000E+000",
+                            "1.04999E+000",
+                            "0.00000E+000",
+                            "8",
+                            "...........",
+                            "1387.77"
+                        ]
+                    ]
+                },
+                {
+                    "columns": [
+                        {
+                            "key": "0",
+                            "name": "Column #0 (Pt)"
+                        },
+                        {
+                            "key": "1",
+                            "name": "Column #1 (T)"
+                        },
+                        {
+                            "key": "2",
+                            "name": "Column #2 (Vf)"
+                        },
+                        {
+                            "key": "3",
+                            "name": "Column #3 (Im)"
+                        },
+                        {
+                            "key": "4",
+                            "name": "Column #4 (Vu)"
+                        },
+                        {
+                            "key": "5",
+                            "name": "Column #5 (Sig)"
+                        },
+                        {
+                            "key": "6",
+                            "name": "Column #6 (Ach)"
+                        },
+                        {
+                            "key": "7",
+                            "name": "Column #7 (IERange)"
+                        },
+                        {
+                            "key": "8",
+                            "name": "Column #8 (Over)"
+                        },
+                        {
+                            "key": "9",
+                            "name": "Column #9 (Temp)"
+                        }
+                    ],
+                    "header": [
+                        "CURVE3\tTABLE"
+                    ],
+                    "metadata": {
+                        "column_00": "Pt",
+                        "column_00_unit": "#",
+                        "column_01": "T",
+                        "column_01_unit": "s",
+                        "column_02": "Vf",
+                        "column_02_unit": "V",
+                        "column_03": "Im",
+                        "column_03_unit": "vs.",
+                        "column_04": "Vu",
+                        "column_04_unit": "Ref.",
+                        "column_05": "Sig",
+                        "column_05_unit": "A",
+                        "column_06": "Ach",
+                        "column_06_unit": "V",
+                        "column_07": "IERange",
+                        "column_07_unit": "V",
+                        "column_08": "Over",
+                        "column_08_unit": "V",
+                        "column_09": "Temp",
+                        "column_09_unit": "#",
+                        "column_10_unit": "bits",
+                        "column_11_unit": "deg",
+                        "column_12_unit": "C",
+                        "columns": 10,
+                        "rows": 920
+                    },
+                    "rows": [
+                        [
+                            "1621",
+                            "81.1",
+                            "1.09531E+000",
+                            "2.54817E-005",
+                            "0.00000E+000",
+                            "1.09502E+000",
+                            "0.00000E+000",
+                            "8",
+                            "...........",
+                            "1387.42"
+                        ],
+                        [
+                            "1622",
+                            "81.15",
+                            "1.09032E+000",
+                            "2.31856E-005",
+                            "0.00000E+000",
+                            "1.09002E+000",
+                            "0.00000E+000",
+                            "8",
+                            "...........",
+                            "1387.42"
+                        ],
+                        [
+                            "1623",
+                            "81.2",
+                            "1.08526E+000",
+                            "1.79838E-005",
+                            "0.00000E+000",
+                            "1.08498E+000",
+                            "0.00000E+000",
+                            "8",
+                            "...........",
+                            "1387.42"
+                        ],
+                        [
+                            "1624",
+                            "81.25",
+                            "1.08027E+000",
+                            "1.66488E-005",
+                            "0.00000E+000",
+                            "1.07998E+000",
+                            "0.00000E+000",
+                            "8",
+                            "...........",
+                            "1387.42"
+                        ],
+                        [
+                            "1625",
+                            "81.3",
+                            "1.07524E+000",
+                            "1.52873E-005",
+                            "0.00000E+000",
+                            "1.07498E+000",
+                            "0.00000E+000",
+                            "8",
+                            "...........",
+                            "1387.42"
+                        ],
+                        [
+                            "1626",
+                            "81.35",
+                            "1.07026E+000",
+                            "1.37548E-005",
+                            "0.00000E+000",
+                            "1.06998E+000",
+                            "0.00000E+000",
+                            "8",
+                            "...........",
+                            "1387.42"
+                        ],
+                        [
+                            "1627",
+                            "81.4",
+                            "1.06526E+000",
+                            "1.25790E-005",
+                            "0.00000E+000",
+                            "1.06498E+000",
+                            "0.00000E+000",
+                            "8",
+                            "...........",
+                            "1387.42"
+                        ],
+                        [
+                            "1628",
+                            "81.45",
+                            "1.06026E+000",
+                            "1.19672E-005",
+                            "0.00000E+000",
+                            "1.05999E+000",
+                            "0.00000E+000",
+                            "8",
+                            "...........",
+                            "1387.42"
+                        ],
+                        [
+                            "1629",
+                            "81.5",
+                            "1.05526E+000",
+                            "1.14598E-005",
+                            "0.00000E+000",
+                            "1.05499E+000",
+                            "0.00000E+000",
+                            "8",
+                            "...........",
+                            "1387.42"
+                        ],
+                        [
+                            "1630",
+                            "81.55",
+                            "1.05027E+000",
+                            "1.09927E-005",
+                            "0.00000E+000",
+                            "1.04999E+000",
+                            "0.00000E+000",
+                            "8",
+                            "...........",
+                            "1387.42"
+                        ]
+                    ]
+                },
+                {
+                    "columns": [
+                        {
+                            "key": "0",
+                            "name": "Column #0 (Pt)"
+                        },
+                        {
+                            "key": "1",
+                            "name": "Column #1 (T)"
+                        },
+                        {
+                            "key": "2",
+                            "name": "Column #2 (Vf)"
+                        },
+                        {
+                            "key": "3",
+                            "name": "Column #3 (Im)"
+                        },
+                        {
+                            "key": "4",
+                            "name": "Column #4 (Vu)"
+                        },
+                        {
+                            "key": "5",
+                            "name": "Column #5 (Sig)"
+                        },
+                        {
+                            "key": "6",
+                            "name": "Column #6 (Ach)"
+                        },
+                        {
+                            "key": "7",
+                            "name": "Column #7 (IERange)"
+                        },
+                        {
+                            "key": "8",
+                            "name": "Column #8 (Over)"
+                        },
+                        {
+                            "key": "9",
+                            "name": "Column #9 (Temp)"
+                        }
+                    ],
+                    "header": [
+                        "CURVE4\tTABLE"
+                    ],
+                    "metadata": {
+                        "column_00": "Pt",
+                        "column_00_unit": "#",
+                        "column_01": "T",
+                        "column_01_unit": "s",
+                        "column_02": "Vf",
+                        "column_02_unit": "V",
+                        "column_03": "Im",
+                        "column_03_unit": "vs.",
+                        "column_04": "Vu",
+                        "column_04_unit": "Ref.",
+                        "column_05": "Sig",
+                        "column_05_unit": "A",
+                        "column_06": "Ach",
+                        "column_06_unit": "V",
+                        "column_07": "IERange",
+                        "column_07_unit": "V",
+                        "column_08": "Over",
+                        "column_08_unit": "V",
+                        "column_09": "Temp",
+                        "column_09_unit": "#",
+                        "column_10_unit": "bits",
+                        "column_11_unit": "deg",
+                        "column_12_unit": "C",
+                        "columns": 10,
+                        "rows": 220
+                    },
+                    "rows": [
+                        [
+                            "2541",
+                            "127.1",
+                            "1.09531E+000",
+                            "1.47940E-005",
+                            "0.00000E+000",
+                            "1.09502E+000",
+                            "0.00000E+000",
+                            "8",
+                            "...........",
+                            "1387.33"
+                        ],
+                        [
+                            "2542",
+                            "127.15",
+                            "1.09030E+000",
+                            "1.41668E-005",
+                            "0.00000E+000",
+                            "1.09002E+000",
+                            "0.00000E+000",
+                            "8",
+                            "...........",
+                            "1387.33"
+                        ],
+                        [
+                            "2543",
+                            "127.2",
+                            "1.08526E+000",
+                            "1.36022E-005",
+                            "0.00000E+000",
+                            "1.08498E+000",
+                            "0.00000E+000",
+                            "8",
+                            "...........",
+                            "1387.33"
+                        ],
+                        [
+                            "2544",
+                            "127.25",
+                            "1.08024E+000",
+                            "1.31265E-005",
+                            "0.00000E+000",
+                            "1.07998E+000",
+                            "0.00000E+000",
+                            "8",
+                            "...........",
+                            "1387.33"
+                        ],
+                        [
+                            "2545",
+                            "127.3",
+                            "1.07525E+000",
+                            "1.25726E-005",
+                            "0.00000E+000",
+                            "1.07498E+000",
+                            "0.00000E+000",
+                            "8",
+                            "...........",
+                            "1387.33"
+                        ],
+                        [
+                            "2546",
+                            "127.35",
+                            "1.07026E+000",
+                            "1.20936E-005",
+                            "0.00000E+000",
+                            "1.06998E+000",
+                            "0.00000E+000",
+                            "8",
+                            "...........",
+                            "1387.33"
+                        ],
+                        [
+                            "2547",
+                            "127.4",
+                            "1.06526E+000",
+                            "1.16701E-005",
+                            "0.00000E+000",
+                            "1.06498E+000",
+                            "0.00000E+000",
+                            "8",
+                            "...........",
+                            "1387.33"
+                        ],
+                        [
+                            "2548",
+                            "127.45",
+                            "1.06027E+000",
+                            "1.12586E-005",
+                            "0.00000E+000",
+                            "1.05999E+000",
+                            "0.00000E+000",
+                            "8",
+                            "...........",
+                            "1387.33"
+                        ],
+                        [
+                            "2549",
+                            "127.5",
+                            "1.05524E+000",
+                            "1.09229E-005",
+                            "0.00000E+000",
+                            "1.05499E+000",
+                            "0.00000E+000",
+                            "8",
+                            "...........",
+                            "1387.33"
+                        ],
+                        [
+                            "2550",
+                            "127.55",
+                            "1.05027E+000",
+                            "1.06354E-005",
+                            "0.00000E+000",
+                            "1.04999E+000",
+                            "0.00000E+000",
+                            "8",
+                            "...........",
+                            "1387.33"
+                        ]
+                    ]
+                }
+            ]
+        }
+    ],
+    "datatypes": [],
+    "description": "Gamry Interface Framework; ref location: KIT CN, data: +, metadata: +",
+    "devices": [],
+    "diff_history": [
+        {
+            "at": "2026-04-30T12:53:58.459154+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "CV data from DTA, data: +, metadata: +"
+                }
+            ],
+            "profile_version": "1.0",
+            "trigger": "migration:20260430145303"
+        },
+        {
+            "at": "2026-04-30T12:54:02.261975+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "CV data from DTA, data: +, metadata: +__TEST"
+                }
+            ],
+            "profile_version": "1.1",
+            "trigger": "migration:20260430145303"
+        },
+        {
+            "at": "2026-04-30T13:02:19.341829+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "CV data from DTA, data: +, metadata: +__TEST__TEST"
+                }
+            ],
+            "profile_version": "1.2",
+            "trigger": "restore_migration:20260430145303"
+        },
+        {
+            "at": "2026-04-30T13:02:19.347525+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "CV data from DTA, data: +, metadata: +__TEST"
+                }
+            ],
+            "profile_version": "1.3",
+            "trigger": "restore_migration:20260430145303"
+        },
+        {
+            "at": "2026-05-04T04:59:00.177654+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "CV data from DTA, data: +, metadata: +"
+                }
+            ],
+            "profile_version": "1.4",
+            "trigger": "undo:1.1"
+        },
+        {
+            "at": "2026-05-04T04:59:00.183146+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "CV data from DTA, data: +, metadata: +__TEST"
+                }
+            ],
+            "profile_version": "1.5",
+            "trigger": "undo:1.0"
+        },
+        {
+            "at": "2026-05-04T04:59:00.186106+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "CV data from DTA, data: +, metadata: +"
+                }
+            ],
+            "profile_version": "1.6",
+            "trigger": "migration:20260504065656"
+        },
+        {
+            "at": "2026-05-04T07:23:31.207362+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "CV data from DTA, data: +, metadata: +--TEST"
+                }
+            ],
+            "profile_version": "1.7",
+            "trigger": "undo:1.6"
+        },
+        {
+            "at": "2026-05-21T11:46:01.649377+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/reactionVariations"
+                }
+            ],
+            "profile_version": "1.8",
+            "trigger": "migration:20260417132254"
+        },
+        {
+            "at": "2026-05-21T11:46:01.649806+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_%"
+                },
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_liter"
+                },
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_mol"
+                },
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_gram"
+                },
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_PPM"
+                }
+            ],
+            "profile_version": "1.9",
+            "trigger": "migration:20260422063146"
+        },
+        {
+            "at": "2026-05-21T11:46:01.651109+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/identifiers/1/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/1/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/1/isLoobDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/1/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/1/isDatasetOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/1/isFirstMatch"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/1/outputTableIndex",
+                    "value": null
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/2/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/2/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/2/isLoobDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/2/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/2/isDatasetOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/2/isFirstMatch"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/2/outputTableIndex",
+                    "value": null
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/3/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/3/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/3/isLoobDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/3/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/3/isDatasetOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/3/isFirstMatch"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/3/outputTableIndex",
+                    "value": null
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/4/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/4/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/4/isLoobDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/4/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/4/isDatasetOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/4/isFirstMatch"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/4/outputTableIndex",
+                    "value": null
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/5/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/5/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/5/isLoobDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/5/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/5/isDatasetOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/5/isFirstMatch"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/5/outputTableIndex",
+                    "value": null
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/6/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/6/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/6/isLoobDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/6/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/6/isDatasetOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/6/isFirstMatch"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/6/outputTableIndex",
+                    "value": null
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/8/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/8/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/8/isLoobDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/8/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/8/isDatasetOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/8/isFirstMatch"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/8/outputTableIndex",
+                    "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/9/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/9/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/9/isLoobDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/9/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/9/isDatasetOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/9/isFirstMatch"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/9/outputTableIndex",
+                    "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/10/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/10/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/10/isLoobDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/10/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/10/isDatasetOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/10/isFirstMatch"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/10/outputTableIndex",
+                    "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/11/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/11/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/11/isLoobDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/11/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/11/isDatasetOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/11/isFirstMatch"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/11/outputTableIndex",
+                    "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/12/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/12/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/12/isLoobDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/12/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/12/isDatasetOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/12/isFirstMatch"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/12/outputTableIndex",
+                    "value": null
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/13/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/13/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/13/isLoobDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/13/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/13/isDatasetOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/13/isFirstMatch"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/13/outputTableIndex",
+                    "value": null
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/14/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/14/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/14/isLoobDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/14/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/14/isDatasetOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/14/isFirstMatch"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/14/outputTableIndex",
+                    "value": 0
+                },
+                {
+                    "from": "/tables/0/inputTableIndex",
+                    "op": "move",
+                    "path": "/tables/0/table/xColumn/tableIndex"
+                },
+                {
+                    "op": "add",
+                    "path": "/tables/0/table/yColumn/tableIndex",
+                    "value": 0
+                }
+            ],
+            "profile_version": "1.10",
+            "trigger": "migration:20260506160404"
+        },
+        {
+            "at": "2026-05-21T11:46:01.652153+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/identifiers/1/outputTableIndex/0",
+                    "value": 0
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/2/outputTableIndex/0",
+                    "value": 0
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/3/outputTableIndex/0",
+                    "value": 0
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/4/outputTableIndex/0",
+                    "value": 0
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/5/outputTableIndex/0",
+                    "value": 0
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/6/outputTableIndex/0",
+                    "value": 0
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/8/outputTableIndex/0",
+                    "value": 0
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/9/outputTableIndex/0",
+                    "value": 0
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/10/outputTableIndex/0",
+                    "value": 0
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/11/outputTableIndex/0",
+                    "value": 0
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/12/outputTableIndex/0",
+                    "value": 0
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/13/outputTableIndex/0",
+                    "value": 0
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/14/outputTableIndex/0",
+                    "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/tables/0/uuid"
+                },
+                {
+                    "op": "remove",
+                    "path": "/tables/0/tableName"
+                }
+            ],
+            "profile_version": "1.11",
+            "trigger": "migration:20260513094819"
+        }
+    ],
+    "id": "799f3db4-fd21-4aa7-a7bd-7c5548cbe316",
+    "identifiers": [
+        {
+            "editable": true,
+            "id": "#0fileMetadata",
+            "key": "extension",
+            "match": "exact",
+            "optional": false,
+            "type": "fileMetadata",
+            "value": ".DTA"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#1tableMetadata",
+            "isDatasetOutput": true,
+            "isDatatableOutput": true,
+            "isFirstMatch": true,
+            "isLoobDatatableOutput": true,
+            "isRdfOutput": false,
+            "key": "DATE",
+            "match": "any",
+            "object": null,
+            "optional": true,
+            "outputDatatableKey": "date",
+            "outputKey": "date",
+            "outputLayer": "general",
+            "outputTableIndex": [
+                "23bd3ca7-c108-4f48-98da-11718de9d33d"
+            ],
+            "predicate": null,
+            "subject": null,
+            "tableIndex": 0,
+            "type": "tableMetadata",
+            "value": "23.5.2022"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#2tableMetadata",
+            "isDatasetOutput": true,
+            "isDatatableOutput": true,
+            "isFirstMatch": true,
+            "isLoobDatatableOutput": true,
+            "isRdfOutput": false,
+            "key": "SCANRATE",
+            "match": "any",
+            "object": null,
+            "operations": [
+                {
+                    "operator": ":",
+                    "value": "1000"
+                }
+            ],
+            "optional": true,
+            "outputDatatableKey": "scan_rate",
+            "outputKey": "scan_rate",
+            "outputLayer": "meas",
+            "outputTableIndex": [
+                "23bd3ca7-c108-4f48-98da-11718de9d33d"
+            ],
+            "predicate": null,
+            "subject": null,
+            "tableIndex": 0,
+            "type": "tableMetadata",
+            "value": "([0-9\\.\\,E+]{2,})"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#3tableMetadata",
+            "isDatasetOutput": true,
+            "isDatatableOutput": true,
+            "isFirstMatch": true,
+            "isLoobDatatableOutput": true,
+            "isRdfOutput": false,
+            "key": "STEPSIZE",
+            "match": "any",
+            "object": null,
+            "operations": [
+                {
+                    "operator": ":",
+                    "value": "1000"
+                }
+            ],
+            "optional": true,
+            "outputDatatableKey": "step_size",
+            "outputKey": "step_size",
+            "outputLayer": "meas",
+            "outputTableIndex": [
+                "23bd3ca7-c108-4f48-98da-11718de9d33d"
+            ],
+            "predicate": null,
+            "subject": null,
+            "tableIndex": 0,
+            "type": "tableMetadata",
+            "value": "([0-9\\.\\,E+]{2,})"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#4tableMetadata",
+            "isDatasetOutput": true,
+            "isDatatableOutput": true,
+            "isFirstMatch": true,
+            "isLoobDatatableOutput": true,
+            "isRdfOutput": false,
+            "key": "CYCLES",
+            "match": "any",
+            "object": null,
+            "optional": true,
+            "outputDatatableKey": "cycles",
+            "outputKey": "cycles",
+            "outputLayer": "meas",
+            "outputTableIndex": [
+                "23bd3ca7-c108-4f48-98da-11718de9d33d"
+            ],
+            "predicate": null,
+            "subject": null,
+            "tableIndex": 0,
+            "type": "tableMetadata",
+            "value": "3"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#5tableHeader",
+            "isDatasetOutput": true,
+            "isDatatableOutput": true,
+            "isFirstMatch": true,
+            "isLoobDatatableOutput": true,
+            "isRdfOutput": false,
+            "lineNumber": null,
+            "match": "regex",
+            "object": null,
+            "optional": true,
+            "outputDatatableKey": "software_version",
+            "outputKey": "software_version",
+            "outputLayer": "software",
+            "outputTableIndex": [
+                "23bd3ca7-c108-4f48-98da-11718de9d33d"
+            ],
+            "predicate": null,
+            "subject": null,
+            "tableIndex": 0,
+            "type": "tableHeader",
+            "value": "(\\d+\\.\\d+\\.\\d+)(\\s)(Framework)"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#6tableHeader",
+            "isDatasetOutput": true,
+            "isDatatableOutput": true,
+            "isFirstMatch": true,
+            "isLoobDatatableOutput": true,
+            "isRdfOutput": false,
+            "lineNumber": null,
+            "match": "regex",
+            "object": null,
+            "optional": true,
+            "outputDatatableKey": "software",
+            "outputKey": "software",
+            "outputLayer": "software",
+            "outputTableIndex": [
+                "23bd3ca7-c108-4f48-98da-11718de9d33d"
+            ],
+            "predicate": null,
+            "subject": null,
+            "tableIndex": 0,
+            "type": "tableHeader",
+            "value": "(Framework)"
+        },
+        {
+            "editable": true,
+            "id": "#7tableMetadata",
+            "key": "TITLE",
+            "match": "exact",
+            "optional": false,
+            "tableIndex": 0,
+            "type": "tableMetadata",
+            "value": "Cyclic"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#8tableMetadata",
+            "isDatasetOutput": true,
+            "isDatatableOutput": true,
+            "isFirstMatch": true,
+            "isLoobDatatableOutput": true,
+            "isRdfOutput": false,
+            "key": "TIME",
+            "match": "any",
+            "object": null,
+            "optional": true,
+            "outputDatatableKey": "time",
+            "outputKey": "time",
+            "outputLayer": "general",
+            "outputTableIndex": [
+                "23bd3ca7-c108-4f48-98da-11718de9d33d"
+            ],
+            "predicate": null,
+            "subject": null,
+            "tableIndex": 0,
+            "type": "tableMetadata",
+            "value": "16:09:50"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#9tableMetadata",
+            "isDatasetOutput": true,
+            "isDatatableOutput": true,
+            "isFirstMatch": true,
+            "isLoobDatatableOutput": true,
+            "isRdfOutput": false,
+            "key": "VINIT",
+            "match": "any",
+            "object": null,
+            "optional": true,
+            "outputDatatableKey": "voltage_start",
+            "outputKey": "voltage_start",
+            "outputLayer": "meas",
+            "outputTableIndex": [
+                "23bd3ca7-c108-4f48-98da-11718de9d33d"
+            ],
+            "predicate": null,
+            "subject": null,
+            "tableIndex": 0,
+            "type": "tableMetadata",
+            "value": "0,00000E+000"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#10tableMetadata",
+            "isDatasetOutput": true,
+            "isDatatableOutput": true,
+            "isFirstMatch": true,
+            "isLoobDatatableOutput": true,
+            "isRdfOutput": false,
+            "key": "VLIMIT1",
+            "match": "any",
+            "object": null,
+            "optional": true,
+            "outputDatatableKey": "voltage_limit_one",
+            "outputKey": "voltage_limit_one",
+            "outputLayer": "meas",
+            "outputTableIndex": [
+                "23bd3ca7-c108-4f48-98da-11718de9d33d"
+            ],
+            "predicate": null,
+            "subject": null,
+            "tableIndex": 0,
+            "type": "tableMetadata",
+            "value": "-1,20000E+000"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#11tableMetadata",
+            "isDatasetOutput": true,
+            "isDatatableOutput": true,
+            "isFirstMatch": true,
+            "isLoobDatatableOutput": true,
+            "isRdfOutput": false,
+            "key": "VLIMIT2",
+            "match": "any",
+            "object": null,
+            "optional": true,
+            "outputDatatableKey": "voltage_limit_two",
+            "outputKey": "voltage_limit_two",
+            "outputLayer": "meas",
+            "outputTableIndex": [
+                "23bd3ca7-c108-4f48-98da-11718de9d33d"
+            ],
+            "predicate": null,
+            "subject": null,
+            "tableIndex": 0,
+            "type": "tableMetadata",
+            "value": "1,10000E+000"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#12tableMetadata",
+            "isDatasetOutput": true,
+            "isDatatableOutput": true,
+            "isFirstMatch": true,
+            "isLoobDatatableOutput": true,
+            "isRdfOutput": false,
+            "key": "VFINAL",
+            "match": "any",
+            "object": null,
+            "optional": true,
+            "outputDatatableKey": "voltage_limit_end",
+            "outputKey": "voltage_limit_end",
+            "outputLayer": "meas",
+            "outputTableIndex": [
+                "23bd3ca7-c108-4f48-98da-11718de9d33d"
+            ],
+            "predicate": null,
+            "subject": null,
+            "tableIndex": 0,
+            "type": "tableMetadata",
+            "value": "0,00000E+000"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#13tableMetadata",
+            "isDatasetOutput": true,
+            "isDatatableOutput": true,
+            "isFirstMatch": true,
+            "isLoobDatatableOutput": true,
+            "isRdfOutput": false,
+            "key": "PSTAT",
+            "match": "any",
+            "object": null,
+            "optional": true,
+            "outputDatatableKey": "serial",
+            "outputKey": "serial",
+            "outputLayer": "instrument",
+            "outputTableIndex": [
+                "23bd3ca7-c108-4f48-98da-11718de9d33d"
+            ],
+            "predicate": null,
+            "subject": null,
+            "tableIndex": 0,
+            "type": "tableMetadata",
+            "value": "IFC1010-30147"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#14tableHeader",
+            "isDatasetOutput": true,
+            "isDatatableOutput": true,
+            "isFirstMatch": true,
+            "isLoobDatatableOutput": true,
+            "isRdfOutput": false,
+            "lineNumber": "",
+            "match": "regex",
+            "object": null,
+            "optional": true,
+            "outputDatatableKey": "instrument",
+            "outputKey": "instrument",
+            "outputLayer": "instrument",
+            "outputTableIndex": [
+                "23bd3ca7-c108-4f48-98da-11718de9d33d"
+            ],
+            "predicate": null,
+            "subject": null,
+            "tableIndex": 0,
+            "type": "tableHeader",
+            "value": "(Potentiostat)"
+        }
+    ],
+    "isDisabled": false,
+    "last_migration": "20260513094819",
+    "objects": [],
+    "ols": "CHMO:0000025",
+    "ontology": "",
+    "predicates": [],
+    "profile_version": "1.12",
+    "reactionVariations": {
+        "elements": [],
+        "identifiers": []
+    },
+    "rootOntology": {
+        "description": [
+            "An electrochemical technique where the cell current is measured as a function of time and as a function of the potential between the indicator and reference electrodes. The potential is varied linearly and inverts at the end point resulting in a cycle."
+        ],
+        "id": "CHMO:properties:http://purl.obolibrary.org/obo/CHMO_0000025",
+        "iri": "http://purl.obolibrary.org/obo/CHMO_0000025",
+        "label": "cyclic voltammetry",
+        "namespace": "http://purl.obolibrary.org/obo/",
+        "obo_id": "CHMO:0000025",
+        "ontology_name": "chmo",
+        "ontology_prefix": "CHMO",
+        "short_form": "CHMO_0000025",
+        "type": "class"
+    },
+    "software": [],
+    "subjectInstances": {},
+    "subjects": [],
+    "tables": [
+        {
+            "header": {
+                "DATA CLASS": "XYPOINTS",
+                "DATA TYPE": "CYCLIC VOLTAMMETRY",
+                "XUNITS": "Voltage in V",
+                "YUNITS": "Current in A"
+            },
+            "inputTableIndex": 0,
+            "loopType": "all",
+            "matchTables": true,
+            "table": {
+                "xColumn": {
+                    "columnIndex": 2
+                },
+                "yColumn": {
+                    "columnIndex": 3
+                }
+            },
+            "tableName": "Table #1",
+            "uuid": "23bd3ca7-c108-4f48-98da-11718de9d33d"
+        }
+    ],
+    "title": "CV data from DTA, data: +, metadata: +",
+    "version": 0
+}

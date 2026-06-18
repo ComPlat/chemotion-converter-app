@@ -21,7 +21,7 @@ Then, the application and its dependencies can be installed:
 
 ```bash
 pip install -e .                     # installs the package in editable mode
-pip install -r requirements/dev.txt  # only needed for the development setup
+pip install .[dev]  # only needed for the development setup
 ```
 
 The application is configured using environment variables, which can be read from a `.env` file. The file `.env.dev` can be used as template. At least `FLASK_APP=converter_app.app` needs to be set.
@@ -138,6 +138,9 @@ The guincorn server listens on the port given in the env file (default: 9000) on
     client_max_body_size 64M;  # set this to the maximum file size allowed for upload
 ```
 
+## Licenses
+
+Please see [LICENSE](./LICENSE) and [THIRD PARTY LICENSES](licenses/THIRD_PARTY_NOTICES.md)
 
 ## Acknowledgments
 

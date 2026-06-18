@@ -1,5 +1,5 @@
 ##TITLE=Spectrum
-##JCAMP-DX=5.00 $$ chemotion-converter-app (1.5.0)
+##JCAMP-DX=5.00 $$ chemotion-converter-app (1.8.0)
 ##DATA TYPE=THERMOGRAVIMETRIC ANALYSIS
 ##DATA CLASS=XYPOINTS
 ##ORIGIN=
@@ -32,7 +32,7 @@
 ##FIRSTY=      0.18933
 ##XUNITS=DEGREES CELSIUS
 ##YUNITS=W/g
-##XYPOINTS=(XY..XY)
+##XYDATA=(XY..XY)
 -50.41463,       0.18933
 -49.41463,       0.17147
 -48.41463,  7.571247E-02

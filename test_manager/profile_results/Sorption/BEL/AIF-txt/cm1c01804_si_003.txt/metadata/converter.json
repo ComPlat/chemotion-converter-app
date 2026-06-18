@@ -4,38 +4,26 @@
   "matches": [
     {
       "identifier": {
-        "key": "reader",
-        "match": "exact",
-        "optional": false,
-        "type": "fileMetadata",
-        "value": "AifReader"
-      },
-      "result": {
-        "value": "AifReader"
-      }
-    },
-    {
-      "identifier": {
-        "key": "Unit_column_#0",
-        "match": "exact",
-        "optional": false,
-        "tableIndex": 0,
-        "type": "tableMetadata",
-        "value": "_adsorp_pressure"
-      },
-      "result": {
-        "value": "_adsorp_pressure",
-        "tableIndex": 0
-      }
-    },
-    {
-      "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#2tableMetadata",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
         "key": "_exptl_operator",
         "match": "any",
+        "object": null,
         "optional": true,
+        "outputDatatableKey": "operator",
         "outputKey": "operator",
         "outputLayer": "meas",
-        "outputTableIndex": null,
+        "outputTableIndex": [
+          "3332170e-d510-48b7-89a7-98e9d765d786"
+        ],
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "Volodymyr"
@@ -47,12 +35,26 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#3tableMetadata",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
         "key": "_exptl_date",
         "match": "regex",
+        "object": null,
         "optional": true,
+        "outputDatatableKey": "date",
         "outputKey": "date",
         "outputLayer": "gener",
-        "outputTableIndex": null,
+        "outputTableIndex": [
+          "3332170e-d510-48b7-89a7-98e9d765d786"
+        ],
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "\\d+-\\d+-\\d+"
@@ -64,12 +66,26 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#4tableMetadata",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
         "key": "_exptl_instrument",
         "match": "regex",
+        "object": null,
         "optional": true,
+        "outputDatatableKey": "serial",
         "outputKey": "serial",
         "outputLayer": "dev",
-        "outputTableIndex": null,
+        "outputTableIndex": [
+          "3332170e-d510-48b7-89a7-98e9d765d786"
+        ],
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "\\d+"
@@ -81,12 +97,26 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#5tableMetadata",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
         "key": "_exptl_adsorptive",
         "match": "any",
+        "object": null,
         "optional": true,
+        "outputDatatableKey": "adsorptive",
         "outputKey": "adsorptive",
         "outputLayer": "meas",
-        "outputTableIndex": null,
+        "outputTableIndex": [
+          "3332170e-d510-48b7-89a7-98e9d765d786"
+        ],
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "CH4"
@@ -98,8 +128,17 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#6tableMetadata",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
         "key": "_exptl_temperature",
         "match": "any",
+        "object": null,
         "operations": [
           {
             "operator": "+",
@@ -107,9 +146,14 @@
           }
         ],
         "optional": true,
+        "outputDatatableKey": "temperature",
         "outputKey": "temperature",
         "outputLayer": "meas",
-        "outputTableIndex": 0,
+        "outputTableIndex": [
+          "3332170e-d510-48b7-89a7-98e9d765d786"
+        ],
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "111.00"
@@ -121,32 +165,26 @@
     },
     {
       "identifier": {
-        "key": "_exptl_temperature",
-        "match": "any",
-        "operations": [
-          {
-            "operator": "+",
-            "value": "273,15"
-          }
-        ],
-        "optional": true,
-        "outputKey": "temperature",
-        "outputLayer": "meas",
-        "outputTableIndex": 1,
-        "tableIndex": 1,
-        "type": "tableMetadata",
-        "value": "111.00"
-      },
-      "result": false
-    },
-    {
-      "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#7tableMetadata",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
         "key": "_exptl_sample_mass",
         "match": "any",
+        "object": null,
         "optional": true,
+        "outputDatatableKey": "amount",
         "outputKey": "amount",
         "outputLayer": "sam_details",
-        "outputTableIndex": null,
+        "outputTableIndex": [
+          "3332170e-d510-48b7-89a7-98e9d765d786"
+        ],
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "0.00980"
@@ -158,12 +196,26 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#8tableMetadata",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
         "key": "_sample_id",
         "match": "any",
+        "object": null,
         "optional": true,
+        "outputDatatableKey": "sample_cid",
         "outputKey": "sample_cid",
         "outputLayer": "custom_id",
-        "outputTableIndex": null,
+        "outputTableIndex": [
+          "3332170e-d510-48b7-89a7-98e9d765d786"
+        ],
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "aus der BOX"
@@ -175,12 +227,26 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#9tableMetadata",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
         "key": "_sample_material_id",
         "match": "any",
+        "object": null,
         "optional": true,
+        "outputDatatableKey": "sample_mat_id",
         "outputKey": "sample_mat_id",
         "outputLayer": "custom_id",
-        "outputTableIndex": null,
+        "outputTableIndex": [
+          "3332170e-d510-48b7-89a7-98e9d765d786"
+        ],
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "DUT-140(Cu)"
@@ -192,12 +258,26 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#10tableHeader",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
         "lineNumber": 1,
         "match": "regex",
+        "object": null,
         "optional": true,
+        "outputDatatableKey": "software",
         "outputKey": "software",
         "outputLayer": "soft",
-        "outputTableIndex": null,
+        "outputTableIndex": [
+          "3332170e-d510-48b7-89a7-98e9d765d786"
+        ],
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableHeader",
         "value": "\\S*\\_\\S*_(\\S*)v"
@@ -210,12 +290,26 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#11tableHeader",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
         "lineNumber": 1,
         "match": "regex",
+        "object": null,
         "optional": true,
+        "outputDatatableKey": "software_version",
         "outputKey": "software_version",
         "outputLayer": "soft",
-        "outputTableIndex": null,
+        "outputTableIndex": [
+          "3332170e-d510-48b7-89a7-98e9d765d786"
+        ],
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableHeader",
         "value": "\\S*\\_\\S*_\\S*(v\\d+)"
@@ -228,12 +322,26 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#12tableMetadata",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
         "key": "_exptl_date",
         "match": "regex",
+        "object": null,
         "optional": true,
+        "outputDatatableKey": "time",
         "outputKey": "time",
         "outputLayer": "gener",
-        "outputTableIndex": 0,
+        "outputTableIndex": [
+          "3332170e-d510-48b7-89a7-98e9d765d786"
+        ],
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "\\d+:\\d+:\\d+"
@@ -245,26 +353,26 @@
     },
     {
       "identifier": {
-        "key": "_exptl_date",
-        "match": "regex",
-        "optional": true,
-        "outputKey": "time",
-        "outputLayer": "gener",
-        "outputTableIndex": 1,
-        "tableIndex": 1,
-        "type": "tableMetadata",
-        "value": "\\d+:\\d+:\\d+"
-      },
-      "result": false
-    },
-    {
-      "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#13tableMetadata",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
         "key": "_exptl_instrument",
         "match": "regex",
+        "object": null,
         "optional": true,
+        "outputDatatableKey": "brand",
         "outputKey": "brand",
         "outputLayer": "dev",
-        "outputTableIndex": 0,
+        "outputTableIndex": [
+          "3332170e-d510-48b7-89a7-98e9d765d786"
+        ],
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableMetadata",
         "value": "[^0-9\\s]+"
@@ -273,20 +381,6 @@
         "value": "BEL",
         "tableIndex": 0
       }
-    },
-    {
-      "identifier": {
-        "key": "_exptl_instrument",
-        "match": "regex",
-        "optional": true,
-        "outputKey": "brand",
-        "outputLayer": "dev",
-        "outputTableIndex": 1,
-        "tableIndex": 1,
-        "type": "tableMetadata",
-        "value": "[^0-9\\s]+"
-      },
-      "result": false
     }
   ],
   "tablesCount": 2,
@@ -323,11 +417,14 @@
         "date": "2020-04-30",
         "serial": "00218",
         "adsorptive": "CH4",
+        "temperature": null,
         "amount": "0.00980",
         "sample_cid": "aus der BOX",
         "sample_mat_id": "DUT-140(Cu)",
         "software": "raw2aif",
-        "software_version": "v004"
+        "software_version": "v004",
+        "time": "00:00:00",
+        "brand": "BEL"
       }
     }
   ]

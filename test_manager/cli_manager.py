@@ -38,7 +38,7 @@ def generate_expected_results(src_path, file, res_path, _unused):
             mod = importlib.import_module('test_manager.test_readers')
             getattr(mod, TEST_DICT[src_path_file])()
             return
-        except (ModuleNotFoundError, FileNotFoundError, AssertionError, JSONDecodeError):
+        except (ModuleNotFoundError, FileNotFoundError, AssertionError, JSONDecodeError, KeyError):
             pass
     print(f"Generating expected results for {src_path_file}")
     with open(src_path_file, 'rb') as file_pointer:
@@ -55,7 +55,6 @@ def generate_expected_results(src_path, file, res_path, _unused):
             else:
                 raise FileNotFoundError('No reader found')
         except FileNotFoundError:
-            print(traceback.format_exc())
             with open(os.path.join(res_path, file + '.json'), 'w+', encoding='utf8') as f_res:
                 f_res.write('{}')
                 f_res.close()
@@ -95,16 +94,19 @@ def main_cli():
     parser.add_argument('-t', '--tests', action='store_true', help='Generates all reader tests in: test_readers.py')
     parser.add_argument('-tp', '--test_profiles', action='store_true', help='Generates all profile tests in: test_profiles.py')
     parser.add_argument('-g', '--github', action='store_true', help='Reloads profiles and test files from the Git Repository: https://github.com/ComPlat/chemotion_saurus.git branch=added_data_files')
+    parser.add_argument('-gt', '--github_test_files', action='store_true', help='Reloads only test files from the Git Repository: https://github.com/ComPlat/chemotion_saurus.git branch=added_data_files')
     args = parser.parse_args()
+    if args.github_test_files:
+        load_profiles_from_git(True)
     if args.github:
         load_profiles_from_git()
-        Migrations().run_migration(os.path.dirname(PROFILE_PATH))
+        Migrations().run_migration(os.path.dirname(PROFILE_PATH), True)
     if args.tests or args.expected:
         TEST_IDX = 0
         TEST_DICT = {}
-        with open(TEST_FILE, 'w+', encoding='utf8') as fp:
+        with  open(TEST_FILE, 'w+', encoding='utf8') as fp:
             fp.write("import pytest\n"
-                     "from .utils_test import compare_reader_result, compare_tables\n"
+                     "from test_manager.utils_test import compare_reader_result, compare_tables\n"
                      "from converter_app.readers import READERS as registry\n"
                      "\nall_reader = set()\n")
         basic_walk(generate_test)

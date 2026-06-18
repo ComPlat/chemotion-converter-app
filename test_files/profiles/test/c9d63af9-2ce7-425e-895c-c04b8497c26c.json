@@ -1,0 +1,416 @@
+{
+    "converter_version": "1.8.0",
+    "data": [
+        {
+            "metadata": {
+                "content_type": "text/plain",
+                "delimiter": "tab",
+                "doublequote": false,
+                "extension": ".txt",
+                "file_name": "S-9_Z1.txt",
+                "lineterminator": "\\r\\n",
+                "mime_type": "text/plain",
+                "quotechar": "\"",
+                "quoting": 0,
+                "reader": "CSVReader",
+                "skipinitialspace": false,
+                "uploaded": "2022-11-25T14:16:30.303467"
+            },
+            "tables": [
+                {
+                    "columns": [
+                        {
+                            "key": "0",
+                            "name": "Column #0 (Time_s)"
+                        },
+                        {
+                            "key": "1",
+                            "name": "Column #1 (Force_N)"
+                        },
+                        {
+                            "key": "2",
+                            "name": "Column #2 (Deformation (fine)_mm)"
+                        },
+                        {
+                            "key": "3",
+                            "name": "Column #3 (Elongation_%)"
+                        },
+                        {
+                            "key": "4",
+                            "name": "Column #4 (Stress_MPa)"
+                        },
+                        {
+                            "key": "5",
+                            "name": "Column #5 (Strain_mm)"
+                        }
+                    ],
+                    "header": [],
+                    "metadata": {
+                        "__UNIT_%": "%",
+                        "__UNIT_PPM": "ppm",
+                        "__UNIT_gram": "g",
+                        "__UNIT_liter": "l",
+                        "__UNIT_mol": "mol",
+                        "column_00": "Time_s",
+                        "column_01": "Force_N",
+                        "column_02": "Deformation (fine)_mm",
+                        "column_03": "Elongation_%",
+                        "column_04": "Stress_MPa",
+                        "column_05": "Strain_mm",
+                        "columns": 6,
+                        "rows": 8348
+                    },
+                    "rows": [
+                        [
+                            "0.470",
+                            "3.317",
+                            "0.0000",
+                            "0.0002",
+                            "0.1677",
+                            "0.0000"
+                        ],
+                        [
+                            "0.490",
+                            "6.634",
+                            "0.0001",
+                            "0.0003",
+                            "0.3353",
+                            "0.0001"
+                        ],
+                        [
+                            "0.510",
+                            "9.951",
+                            "0.0001",
+                            "0.0005",
+                            "0.5030",
+                            "0.0001"
+                        ],
+                        [
+                            "0.530",
+                            "13.268",
+                            "0.0002",
+                            "0.0006",
+                            "0.6706",
+                            "0.0002"
+                        ],
+                        [
+                            "0.550",
+                            "16.585",
+                            "0.0002",
+                            "0.0008",
+                            "0.8383",
+                            "0.0002"
+                        ],
+                        [
+                            "0.570",
+                            "19.903",
+                            "0.0002",
+                            "0.0009",
+                            "1.0060",
+                            "0.0002"
+                        ],
+                        [
+                            "0.590",
+                            "23.220",
+                            "0.0003",
+                            "0.0011",
+                            "1.1736",
+                            "0.0003"
+                        ],
+                        [
+                            "0.610",
+                            "26.537",
+                            "0.0003",
+                            "0.0013",
+                            "1.3413",
+                            "0.0003"
+                        ],
+                        [
+                            "0.630",
+                            "29.854",
+                            "0.0004",
+                            "0.0014",
+                            "1.5090",
+                            "0.0004"
+                        ],
+                        [
+                            "0.650",
+                            "33.171",
+                            "0.0004",
+                            "0.0016",
+                            "1.6766",
+                            "0.0004"
+                        ]
+                    ]
+                }
+            ]
+        }
+    ],
+    "datatypes": [],
+    "description": "Inspect Table 50kN; ref location: Fraunhofer IWS, data: +, metadata: - \n;HighTemp",
+    "devices": [],
+    "diff_history": [
+        {
+            "at": "2026-04-30T12:53:58.462001+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "Tensile test data from txt, data: +, metadata: -"
+                }
+            ],
+            "profile_version": "1.0",
+            "trigger": "migration:20260430145303"
+        },
+        {
+            "at": "2026-04-30T12:54:02.272492+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "Tensile test data from txt, data: +, metadata: -__TEST"
+                }
+            ],
+            "profile_version": "1.1",
+            "trigger": "migration:20260430145303"
+        },
+        {
+            "at": "2026-04-30T13:02:19.436320+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "Tensile test data from txt, data: +, metadata: -__TEST__TEST"
+                }
+            ],
+            "profile_version": "1.2",
+            "trigger": "restore_migration:20260430145303"
+        },
+        {
+            "at": "2026-04-30T13:02:19.437928+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "Tensile test data from txt, data: +, metadata: -__TEST"
+                }
+            ],
+            "profile_version": "1.3",
+            "trigger": "restore_migration:20260430145303"
+        },
+        {
+            "at": "2026-05-04T04:59:00.203680+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "Tensile test data from txt, data: +, metadata: -"
+                }
+            ],
+            "profile_version": "1.4",
+            "trigger": "undo:1.1"
+        },
+        {
+            "at": "2026-05-04T04:59:00.205300+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "Tensile test data from txt, data: +, metadata: -__TEST"
+                }
+            ],
+            "profile_version": "1.5",
+            "trigger": "undo:1.0"
+        },
+        {
+            "at": "2026-05-04T04:59:00.206253+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "Tensile test data from txt, data: +, metadata: -"
+                }
+            ],
+            "profile_version": "1.6",
+            "trigger": "migration:20260504065656"
+        },
+        {
+            "at": "2026-05-04T07:23:31.218107+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "Tensile test data from txt, data: +, metadata: ---TEST"
+                }
+            ],
+            "profile_version": "1.7",
+            "trigger": "undo:1.6"
+        },
+        {
+            "at": "2026-05-21T11:46:01.827854+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/reactionVariations"
+                }
+            ],
+            "profile_version": "1.8",
+            "trigger": "migration:20260417132254"
+        },
+        {
+            "at": "2026-05-21T11:46:01.828064+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_%"
+                },
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_liter"
+                },
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_mol"
+                },
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_gram"
+                },
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_PPM"
+                }
+            ],
+            "profile_version": "1.9",
+            "trigger": "migration:20260422063146"
+        },
+        {
+            "at": "2026-05-21T11:46:01.828405+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/tables/0/loopType"
+                },
+                {
+                    "from": "/tables/0/inputTableIndex",
+                    "op": "move",
+                    "path": "/tables/0/table/xColumn/tableIndex"
+                },
+                {
+                    "op": "add",
+                    "path": "/tables/0/table/yColumn/tableIndex",
+                    "value": 0
+                }
+            ],
+            "profile_version": "1.10",
+            "trigger": "migration:20260506160404"
+        },
+        {
+            "at": "2026-05-21T11:46:01.828600+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/tables/0/uuid"
+                },
+                {
+                    "op": "remove",
+                    "path": "/tables/0/tableName"
+                }
+            ],
+            "profile_version": "1.11",
+            "trigger": "migration:20260513094819"
+        }
+    ],
+    "id": "c9d63af9-2ce7-425e-895c-c04b8497c26c",
+    "identifiers": [
+        {
+            "editable": true,
+            "id": "#0tableMetadata",
+            "key": "column_01",
+            "match": "exact",
+            "optional": false,
+            "tableIndex": 0,
+            "type": "tableMetadata",
+            "value": "Force_N"
+        },
+        {
+            "editable": true,
+            "id": "#1tableMetadata",
+            "key": "column_02",
+            "match": "exact",
+            "optional": false,
+            "tableIndex": 0,
+            "type": "tableMetadata",
+            "value": "Deformation (fine)_mm"
+        },
+        {
+            "editable": true,
+            "id": "#2tableMetadata",
+            "key": "column_05",
+            "match": "exact",
+            "optional": false,
+            "tableIndex": 0,
+            "type": "tableMetadata",
+            "value": "Strain_mm"
+        }
+    ],
+    "isDisabled": false,
+    "last_migration": "20260513094819",
+    "objects": [],
+    "ols": "CHMO:0001163",
+    "ontology": "",
+    "predicates": [],
+    "profile_version": "1.12",
+    "reactionVariations": {
+        "elements": [],
+        "identifiers": []
+    },
+    "rootOntology": {
+        "description": [
+            "The measurement of the surface tension of a liquid."
+        ],
+        "id": "CHMO:properties:http://purl.obolibrary.org/obo/CHMO_0001163",
+        "iri": "http://purl.obolibrary.org/obo/CHMO_0001163",
+        "label": "tensiometry",
+        "namespace": "http://purl.obolibrary.org/obo/",
+        "obo_id": "CHMO:0001163",
+        "ontology_name": "chmo",
+        "ontology_prefix": "CHMO",
+        "short_form": "CHMO_0001163",
+        "type": "class"
+    },
+    "software": [],
+    "subjectInstances": {},
+    "subjects": [],
+    "tables": [
+        {
+            "header": {
+                "DATA CLASS": "XYPOINTS",
+                "DATA TYPE": "CYCLIC VOLTAMMETRY",
+                "XUNITS": "2Theta",
+                "YUNITS": "Intensity"
+            },
+            "inputTableIndex": 0,
+            "loopType": "none",
+            "table": {
+                "xColumn": {
+                    "columnIndex": 3
+                },
+                "yColumn": {
+                    "columnIndex": 4
+                },
+                "yOperations": [
+                    {
+                        "operator": "*",
+                        "type": "value",
+                        "value": "1e6"
+                    }
+                ]
+            },
+            "tableName": "Table #1",
+            "uuid": "8deb009f-c9e3-45b5-bb81-10b48d50d8a8"
+        }
+    ],
+    "title": "Tensile test data from txt, data: +, metadata: -",
+    "version": 0
+}
