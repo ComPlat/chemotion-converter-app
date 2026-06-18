@@ -1,147 +1,106 @@
+import io
 import logging
 import re
-from typing import List, Dict
 
+import magic
+from PIL import Image, UnidentifiedImageError
+from PIL.TiffTags import TAGS
+from werkzeug.datastructures import FileStorage
+
+from converter_app.models import File
 from converter_app.readers.helper.base import Reader
 from converter_app.readers.helper.reader import Readers
-from converter_app.readers.xml_reader import XMLReader
 
 logger = logging.getLogger(__name__)
 
-UNIT_EXTENSION = "_unit"
+# Only strings longer than this are treated as an embedded header blob.
+# Shorter string tags (e.g. ``Software``) are kept as plain metadata.
+HEADER_BLOB_MIN_LEN = 32
+
+# TIFF tags whose value is structurally redundant or too large to be useful
+# as metadata (e.g. the colour palette).
+SKIP_METADATA_TAGS = frozenset({320})  # ColorMap
 
 
 class TifReader(Reader):
     """
-    Reads metadata from Tiff file images
+    Reads metadata from TIFF image files.
+
+    Image properties are taken from the standard TIFF tags. Embedded headers
+    (vendor blocks such as ZEISS' key=value block or an XML document in the
+    ImageDescription tag) are routed through the regular converter workflow:
+    every structured header is wrapped in a temporary :class:`File` whose
+    extension is sniffed from its content, matched against the registered
+    readers and the resulting tables are merged back into this reader's output.
+    Unstructured ``key = value`` headers keep being parsed in place.
     """
     identifier = 'tif_reader'
     priority = 96
 
-
     def __init__(self, file, *tar_content):
         super().__init__(file, *tar_content)
-        self._parsed_values = None
-        self._xml_stack: List[str] = []
-        # store raw values as lists per key (path)
-        self._xml_vals: Dict[str, List[str]] = {}
-        # per-element text buffer until the closing tag happens
-        self._xml_buf: Dict[str, List[str]] = {}
+        self._image_tags = None
+        self._header_blobs = None
 
     def check(self):
-        result = False
-        if self.file.suffix.lower() == '.tif' and self.file.mime_type == 'image/tiff':
-            self._parsed_values = self._read_img()
-            result = self._parsed_values is not None and len(self._parsed_values) > 0
-        return result
-
-
-    def _xml_put(self, path: str, value: str) -> None:
-        # collapse inner whitespace once
-        value = re.sub(r"\s+", " ", value).strip()
-        if not value:
-            return
-        self._xml_vals.setdefault(path, []).append(value)
-
-    def _xml_norm(self, s: str) -> str:
-        s = s.strip()
-        s = re.sub(r"<\\\s*([A-Za-z0-9:_\-]+)\s*>", r"</\1>", s)  # <\b> -> </b>
-        s = re.sub(r"\s+>", ">", s)
-        return s
-
-    def _xml_is_taglike(self, text: str) -> bool:
-        return text.lstrip().startswith("<") and ">" in text
-
-    def _xml_tag_name(self, tag: str) -> str:
-        tag = tag.strip("<>/ ")
-        tag = tag.split()[0]
-        if ":" in tag:
-            tag = tag.split(":", 1)[1]
-        return tag
-
-    def _xml_path(self, leaf: str | None = None) -> str:
-        parts = self._xml_stack[:]
-        if leaf:
-            parts.append(leaf)
-        return ".".join(parts)
-
-    def _xml_open(self, name: str) -> None:
-        self._xml_stack.append(name)
-        path = self._xml_path()
-        # start a fresh buffer for this element
-        self._xml_buf[path] = []
-
-    def _xml_text(self, text: str) -> None:
-        text = text  # raw; normalize at commit time
-        path = self._xml_path()
-        if path in self._xml_buf:
-            self._xml_buf[path].append(text)
-
-    def _xml_close(self, name: str) -> None:
-        # pop until we close 'name' (lenient)
-        while self._xml_stack:
-            curr = self._xml_stack[-1]
-            path = self._xml_path()  # path BEFORE popping (current element)
-            # commit buffered text for current element (if any)
-            if path in self._xml_buf:
-                joined = "".join(self._xml_buf.pop(path))
-                # normalize whitespace now and emit to _xml_kv
-                self._xml_put(path, joined)
-            self._xml_stack.pop()
-            if curr == name:
-                break
-
-    def _xml_selfclose(self, name: str) -> None:
-        # open -> commit empty -> close
-        self._xml_open(name)
-        self._xml_close(name)
-
-    def _xml_handle_line(self, parts: List[str]) -> bool:
-        """
-        Consume one tokenized line as XML.
-        Returns True if handled as XML (so caller should skip non-XML handling).
-        """
-        line = "".join(str(p) for p in parts)
-        line = self._xml_norm(line)
-        if not self._xml_is_taglike(line):
+        if self.file.suffix.lower() not in ('.tif', '.tiff'):
             return False
+        if self.file.mime_type != 'image/tiff':
+            return False
+        try:
+            self._read_tiff_tags()
+        except (UnidentifiedImageError, OSError, ValueError) as err:
+            logger.debug('Could not read TIFF tags from %s: %s', self.file.name, err)
+            return False
+        return self._image_tags is not None
 
-        # Tokenize into tags and text
-        for tok in re.finditer(r"<[^>]+>|[^<]+", line):
-            s = tok.group(0)
-            if s.startswith("<"):
-                # classify tag
-                if s.startswith("</"):  # closing tag
-                    name = self._xml_tag_name(s)
-                    self._xml_close(name)
+    def _read_tiff_tags(self) -> None:
+        """
+        Reads the TIFF tags via Pillow and splits them into plain image
+        metadata and (long) embedded header blobs.
+        """
+        image_tags = {}
+        header_blobs = []
+        with Image.open(io.BytesIO(self.file.content)) as image:
+            for tag_id, value in image.tag_v2.items():
+                name = TAGS.get(tag_id, str(tag_id))
+                if isinstance(value, str):
+                    # TIFF text tags are NUL-padded to a fixed size; interior
+                    # NUL bytes indicate a binary blob (e.g. a UTF-16 encoded
+                    # duplicate) which we skip.
+                    text = value.rstrip('\x00').strip()
+                    if '\x00' in text:
+                        continue
+                    if len(text) > HEADER_BLOB_MIN_LEN:
+                        header_blobs.append((tag_id, name, text))
+                        continue
+                    if text:
+                        image_tags[name] = text
+                    continue
+                if tag_id in SKIP_METADATA_TAGS:
+                    continue
+                if isinstance(value, (tuple, list)):
+                    str_value = ', '.join(str(v) for v in value)
                 else:
-                    selfclosing = s.endswith("/>")
-                    name = self._xml_tag_name(s)
-                    if selfclosing:
-                        self._xml_selfclose(name)
-                    else:
-                        self._xml_open(name)
-            else:
-                # text between tags -> append to current element buffer
-                t = s
-                # preserve spaces; final normalization happens at commit
-                if t.strip():  # ignore pure whitespace nodes
-                    self._xml_text(t)
+                    str_value = str(value)
+                if str_value.strip():
+                    image_tags[name] = str_value
+        self._image_tags = image_tags
+        self._header_blobs = header_blobs
 
-        return True
-
-    # end of xml-tag parser ------------------------------------------------------------------------------
-
-    def _read_img(self):
-        txt = re.sub(r'\\x[0-9a-f]{2}', '', str(self.file.content))
-
-        # txt = re.sub(r'^.+@@@@@{5,9}0\\r\\n', '', txt)
-        lines = [l for l in re.split(r'\\r\\n', txt) if str(l).count("@") <= 5]
-        del lines[-1]
-        # TODO: merge conflict from master
-        # txt = re.sub(r'^.+@@@@@@0\\r\\n', '', txt)
-        # lines = [x for x in re.split(r'\\r\\n', txt) if len(x) < 120 and len(x) > 2]
-        return [x.split('=') for x in lines]
+    @staticmethod
+    def _sniff_suffix(text: str) -> str | None:
+        """
+        Guesses a file extension for an embedded header from its content so the
+        normal reader matching can pick the right reader. Returns ``None`` for
+        unstructured text (handled in place as ``key = value``).
+        """
+        head = text.lstrip('﻿ \t\r\n')[:256]
+        if head.startswith('<?xml') or re.match(r'<[A-Za-z][\w.:-]*[\s/>]', head):
+            return '.xml'
+        if head[:1] in ('{', '['):
+            return '.json'
+        return None
 
     def get_value(self, value):
         if self.float_de_pattern.match(value):
@@ -150,48 +109,73 @@ class TifReader(Reader):
         if self.float_us_pattern.match(value):
             # just remove the digit group seperators
             return value.replace(',', '')
-
         return None
 
-    def prepare_tables(self):
-        # Initialize XML state once per run
+    def _delegate_header(self, name: str, text: str, tables: list) -> bool:
+        """
+        Wraps a structured header in a temporary :class:`File`, runs it through
+        the regular reader matching and appends the resulting tables. Returns
+        ``True`` if a reader handled the header.
+        """
+        suffix = self._sniff_suffix(text)
+        if suffix is None:
+            return False
 
+        data = text.encode('utf-8', errors='ignore')
+        mime_type = magic.Magic(mime=True).from_buffer(data)
+        file_storage = FileStorage(stream=io.BytesIO(data),
+                                   filename=f'{self.file.name}{suffix}',
+                                   content_type=mime_type)
+        # The header is never a TIFF, so this cannot recurse into TifReader.
+        reader = Readers.instance().match_reader(File(file_storage))
+        if reader is None:
+            return False
+
+        logger.debug('Embedded header %s of %s handled by %s',
+                     name, self.file.name, reader.identifier)
+        header_tables = reader.prepare_tables()
+        for header_table in header_tables:
+            header_table.add_metadata('embedded_header_tag', name)
+            header_table.add_metadata('embedded_header_reader', reader.identifier)
+            tables.append(header_table)
+        return bool(header_tables)
+
+    def _parse_key_value_blob(self, text: str, table) -> None:
+        """
+        Parses an unstructured header as ``key = value`` lines; standalone
+        numeric lines become rows.
+        """
+        for raw_line in text.replace('\r\n', '\n').split('\n'):
+            line = raw_line.strip()
+            if not line:
+                continue
+            table['header'].append(line)
+            if '=' in line:
+                key, value = line.split('=', 1)
+                table['metadata'][key.strip()] = value.strip()
+                continue
+            num_val = self.get_value(line)
+            if num_val is not None:
+                try:
+                    num_val = float(num_val)
+                except ValueError:
+                    pass
+                table['rows'].append([len(table['rows']), num_val])
+
+    def prepare_tables(self):
         tables = []
         table = self.append_table(tables)
 
-        for val in self._parsed_values:
-            # Try XML first (returns True if the line was XML-like and handled)
-            if self._xml_handle_line(val):
-                table['header'].append(f"{'='.join(val)}")
-                continue
-            if len(val) == 1:
-                num_val = self.get_value(val[0])
-                if num_val is not None:
-                    try:
-                       num_val = float(num_val)
-                    except ValueError:
-                        pass
-                    table['rows'].append([len(table['rows']), num_val])
-            else:
-                table['metadata'][val[0]] = '='.join(val[1:])
-            table['header'].append(f"{'='.join(val)}")
+        for key, value in self._image_tags.items():
+            table['metadata'][key] = value
 
-        table['columns'].append({
-            'key': '0',
-            'name': 'Idx'
-        })
-        table['columns'].append({
-            'key': '1',
-            'name': 'Number'
-        })
+        for _tag_id, name, text in self._header_blobs:
+            if not self._delegate_header(name, text, tables):
+                self._parse_key_value_blob(text, table)
 
-        test_result = XMLReader(self.file, *self.file_content).prepare_tables_from_content(''.join(table['header']))
-
-        for k, arr in self._xml_vals.items():
-            if len(arr) == 1:
-                table['metadata'][k] = str(arr[0])
-            else:
-                table['metadata'][k] = ', '.join(arr)
+        if table['rows']:
+            table['columns'].append({'key': '0', 'name': 'Idx'})
+            table['columns'].append({'key': '1', 'name': 'Number'})
 
         return tables
 

@@ -106,13 +106,21 @@ class XMLReader(Reader):
             self._read_node(child, new_path)
 
     def prepare_tables(self):
-        return self.prepare_tables_from_content(self.file.conent)
+        return self.prepare_tables_from_content(self.file.content)
 
     def prepare_tables_from_content(self, content):
-        root = ET.XML(content)
+        """
+        Builds the tables from an XML string/bytes. Used both for standalone
+        XML files and for XML headers embedded in other files (e.g. TIFF).
+
+        :param content: XML content as str or bytes
+        :return: list of tables
+        """
         tables = []
         self._table = self.append_table(tables)
-        root = self.root_node
+        # Reuse the node parsed in check() when available, otherwise parse the
+        # passed content (e.g. an XML header extracted from another file).
+        root = self.root_node if self.root_node is not None else ET.XML(content)
         self._read_node(root)
         self._merge_tables(self._data_tables, tables)
 

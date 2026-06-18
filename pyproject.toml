@@ -26,6 +26,7 @@ dependencies = [
     "Flask-HTTPAuth==4.*",
     "gunicorn==25.*",
     "openpyxl==3.*",
+    "Pillow==11.*",
     "python-dotenv==1.*",
     "python-magic==0.*; platform_system != 'Windows'",
     "python-magic-bin==0.*; platform_system == 'Windows'",
