@@ -1,7 +1,7 @@
 import json
 import logging
 from pathlib import Path
-from typing import Any, Generator, Self
+from typing import Any, Generator, Self, List
 
 from flask import current_app
 
@@ -20,7 +20,7 @@ class Dataset:
         self.ols = ols
 
     @classmethod
-    def list(cls) -> Generator[Self, Any, list[Any]]:
+    def list(cls) -> Generator[Self, Any, List[Any]]:
         """
         Lists all datasets.
 
@@ -35,7 +35,7 @@ class Dataset:
         return []
 
     @classmethod
-    def dataset_units(cls) -> list[Any]:
+    def dataset_units(cls) -> List[Any]:
         return [
             {
                 "type": "numeric",
