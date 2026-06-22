@@ -234,7 +234,7 @@ class Converter:
                 idx = in_list.index(unit)
                 res_value['value'] = enum_units[idx]['key']
             except ValueError:
-                res_value['value'] = enum_units[0]['key']
+                res_value['value'] = None
 
 
 
