@@ -227,8 +227,6 @@ def converting_router(app: Flask, auth: HTTPBasicAuth):
         if request.files.get('file'):
             file = File(request.files.get('file'))
             ontology = request.form.get('ontology', None)
-            if not ontology:
-                ontology = None
             reader = registry.match_reader(file, ontology=ontology)
 
             if reader:
@@ -352,6 +350,12 @@ def utils_router(app: Flask, auth: HTTPBasicAuth):
     def list_datasets():
         datasets = Dataset.list()
         return jsonify([dataset.dataset_data for dataset in datasets]), 200
+
+    @app.route('/datasets_units', methods=['GET'])
+    @auth.login_required
+    def list_datasets_units():
+        datasets = Dataset.dataset_units()
+        return jsonify(datasets), 200
 
     @app.route('/options', methods=['GET'])
     @auth.login_required

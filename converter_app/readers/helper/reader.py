@@ -76,13 +76,12 @@ class Readers:
             else:
                 reader = reader(file)
 
-            try:
-                result = reader.check(ontology=ontology)
-            except TypeError as e:
-                if "unexpected keyword argument 'ontology'" in str(e):
-                    result = reader.check()
-                else:
-                    raise  # other TypeErrors
+            check_params = inspect.signature(reader.check).parameters
+
+            if len(check_params) > 0:
+                result = reader.check(ontology)
+            else:
+                result = reader.check()
 
             logger.debug('For reader %s -> result=%s', reader.__class__.__name__, result)
 
