@@ -187,6 +187,7 @@ def converting_router(app: Flask, auth: HTTPBasicAuth):
             #marker = ft.start()
             reader = registry.match_reader(file, ontology=ontology)
             #marker.stop()
+
             error_msg = 'Your file could not be processed. No Reader available!'
 
             if reader:
