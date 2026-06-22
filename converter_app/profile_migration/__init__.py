@@ -1,15 +1,14 @@
 import importlib
 import inspect
-import os
-from pathlib import Path
 
 from converter_app.profile_migration.utils.base_migration import ProfileMigration
 from converter_app.profile_migration.utils.registration import Migrations
+from converter_app.utils import get_app_root
 
-for file in Path(__file__).parent.glob('*.py'):
+for file in (get_app_root() / 'converter_app/profile_migration').glob('*.py'):
     if not file.name.endswith('_migration.py'):
         continue
-    file_path = os.path.join(os.path.dirname(__file__), file)
+    file_path = get_app_root() / 'converter_app/profile_migration' / file
     module_name = file.stem
 
     # Load the module

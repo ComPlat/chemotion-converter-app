@@ -1,0 +1,2771 @@
+{
+    "converter_version": "1.8.0",
+    "data": [
+        {
+            "metadata": {
+                "content_type": "text/plain",
+                "extension": ".TXT",
+                "file_name": "2021-07-22 MS139.TXT",
+                "mime_type": "text/plain",
+                "reader": "SecReader",
+                "uploaded": "2022-11-30T15:55:22.980245"
+            },
+            "tables": [
+                {
+                    "columns": [],
+                    "header": [
+                        "Sample: Vial   1: MS139 - 1",
+                        "Method settings: C:\\WINGPC_8#1\\PSS.ChromPilot.Method.Instrument.2.xml",
+                        "Sequence table: C:\\WINGPC_8#1\\PSS.ChromPilot.Sequence.Instrument.2.xml",
+                        "Inject date: Friday       23.07.21   02:05:58",
+                        "Inject volume:  50.000",
+                        "Inject volume_unit: ul",
+                        "Concentration:   2.000",
+                        "Concentration_unit: g/l",
+                        "Project: C:\\DATA\\AKT THF Tosoh\\20210722",
+                        "Calibration: C:\\DATA\\calibration\\20210528-SDV_THF_PMMA.CAL",
+                        "Method: C:\\WINGPC_8#1\\Instrument2.SET",
+                        "Export file: X:\\Marvin Subarew\\AETMC Polymerization\\MS139\\2021-07-22 MS139.TXT",
+                        "Operator: itcp-akt",
+                        "Calibration MH-K:  1.000000",
+                        "Calibration MH-K_unit: ml/g",
+                        "(Calibration MH-K) univ. Calibration MH-K:  0.000000",
+                        "(Calibration MH-K) univ. Calibration MH-K_unit: ml/g",
+                        "Calibration MH-A:  0.000000",
+                        "Calibration MH-A_unit: -",
+                        "(Calibration MH-A) univ. Calibration MH-A:  0.000000",
+                        "(Calibration MH-A) univ. Calibration MH-A_unit: -",
+                        "Internal Standard Calibration:  50.000",
+                        "Internal Standard Calibration_unit: ml",
+                        "Internal Standard Acquisition: -------",
+                        "Internal Standard Acquisition_unit: ml",
+                        "Data Interval:   1.000",
+                        "Data Interval_unit: s",
+                        "Eluent: THF",
+                        "Flow:   1.000",
+                        "Flow_unit: ml/min",
+                        "Column 1: PSS SDV 5\u00b5m",
+                        "(Column 1) Temperature:  35.000",
+                        "(Column 1) Temperature_unit: C",
+                        "Column 2: PSS SDV 5\u00b5m",
+                        "(Column 2) Temperature:  35.000",
+                        "(Column 2) Temperature_unit: C",
+                        "Column 3: PSS SDV 5\u00b5m",
+                        "(Column 3) Temperature:  35.000",
+                        "(Column 3) Temperature_unit: C",
+                        "Detector 1: I2: RI Detector 1, RI Signal",
+                        "(Detector 1) Delay:   0.000",
+                        "(Detector 1) Delay_unit: min",
+                        "Detector 2: I2: UV Detector 1, UV Signal",
+                        "(Detector 2) Delay:   0.033",
+                        "(Detector 2) Delay_unit: min",
+                        "Detector 3: I2: Pump 1, Sample Pump Pressure",
+                        "(Detector 3) Delay:   0.000",
+                        "(Detector 3) Delay_unit: min",
+                        "Baseline from:  20.855",
+                        "(Baseline from) to:  27.060",
+                        "(Baseline from) to_unit: ml",
+                        "Integration from:  20.855",
+                        "(Integration from) to:  27.060",
+                        "(Integration from) to_unit: ml",
+                        " I2: RI Detector 1, RI Signal",
+                        "Mn:  6.999E+3",
+                        "Mn_unit:  7.997E+3",
+                        "Mn_unit_unit: g/mol",
+                        "Mw:  9.417E+3",
+                        "Mw_unit:  8.643E+3",
+                        "Mw_unit_unit: g/mol",
+                        "Mz:  1.195E+4",
+                        "Mz_unit:  9.348E+3",
+                        "Mz_unit_unit: g/mol",
+                        "M(z+1):  1.448E+4",
+                        "M(z+1)_unit:  1.011E+4",
+                        "M(z+1)_unit_unit: g/mol",
+                        "Mv:  0.000E+0",
+                        "Mv_unit:  0.000E+0",
+                        "Mv_unit_unit: g/mol",
+                        "D:  1.346E+0",
+                        "D_unit:  1.081E+0",
+                        "[n]:  0.000E+0",
+                        "[n]_unit:  0.000E+0",
+                        "[n]_unit_unit: ml/g",
+                        "Vp:  2.301E+1",
+                        "Vp_unit:  2.319E+1",
+                        "Vp_unit_unit: ml",
+                        "Mp:  9.724E+3",
+                        "Mp_unit:  8.736E+3",
+                        "Mp_unit_unit: g/mol",
+                        "A:  5.192E+1",
+                        "A_unit:  6.606E-1",
+                        "A_unit_unit: ml*V",
+                        "< 1175:       0.00",
+                        "< 1175_unit:       0.00",
+                        "< 1175_unit_unit: %",
+                        "w%:     100.00",
+                        "w%_unit:     100.00",
+                        "w%_unit_unit: %",
+                        "> 38290:       0.00",
+                        "> 38290_unit:       0.00",
+                        "> 38290_unit_unit: %"
+                    ],
+                    "metadata": {
+                        " - ": "I2: RI Detector 1, RI Signal",
+                        "(Baseline from) to": " 27.060",
+                        "(Baseline from) to_unit": "ml",
+                        "(Calibration MH-A) univ. Calibration MH-A": " 0.000000",
+                        "(Calibration MH-A) univ. Calibration MH-A_unit": "-",
+                        "(Calibration MH-K) univ. Calibration MH-K": " 0.000000",
+                        "(Calibration MH-K) univ. Calibration MH-K_unit": "ml/g",
+                        "(Column 1) Temperature": " 35.000",
+                        "(Column 1) Temperature_unit": "C",
+                        "(Column 2) Temperature": " 35.000",
+                        "(Column 2) Temperature_unit": "C",
+                        "(Column 3) Temperature": " 35.000",
+                        "(Column 3) Temperature_unit": "C",
+                        "(Detector 1) Delay": "  0.000",
+                        "(Detector 1) Delay_unit": "min",
+                        "(Detector 2) Delay": "  0.033",
+                        "(Detector 2) Delay_unit": "min",
+                        "(Detector 3) Delay": "  0.000",
+                        "(Detector 3) Delay_unit": "min",
+                        "(Integration from) to": " 27.060",
+                        "(Integration from) to_unit": "ml",
+                        "< 1175": "      0.00",
+                        "< 1175_unit": "      0.00",
+                        "< 1175_unit_unit": "%",
+                        "> 38290": "      0.00",
+                        "> 38290_unit": "      0.00",
+                        "> 38290_unit_unit": "%",
+                        "A": " 5.192E+1",
+                        "A_unit": " 6.606E-1",
+                        "A_unit_unit": "ml*V",
+                        "Baseline from": " 20.855",
+                        "Calibration": "C:\\DATA\\calibration\\20210528-SDV_THF_PMMA.CAL",
+                        "Calibration MH-A": " 0.000000",
+                        "Calibration MH-A_unit": "-",
+                        "Calibration MH-K": " 1.000000",
+                        "Calibration MH-K_unit": "ml/g",
+                        "Column 1": "PSS SDV 5\u00b5m",
+                        "Column 2": "PSS SDV 5\u00b5m",
+                        "Column 3": "PSS SDV 5\u00b5m",
+                        "Concentration": "  2.000",
+                        "Concentration_unit": "g/l",
+                        "D": " 1.346E+0",
+                        "D_unit": " 1.081E+0",
+                        "Data Interval": "  1.000",
+                        "Data Interval_unit": "s",
+                        "Detector 1": "I2: RI Detector 1, RI Signal",
+                        "Detector 2": "I2: UV Detector 1, UV Signal",
+                        "Detector 3": "I2: Pump 1, Sample Pump Pressure",
+                        "Eluent": "THF",
+                        "Export file": "X:\\Marvin Subarew\\AETMC Polymerization\\MS139\\2021-07-22 MS139.TXT",
+                        "Flow": "  1.000",
+                        "Flow_unit": "ml/min",
+                        "Inject date": "Friday       23.07.21   02:05:58",
+                        "Inject volume": " 50.000",
+                        "Inject volume_unit": "ul",
+                        "Integration from": " 20.855",
+                        "Internal Standard Acquisition": "-------",
+                        "Internal Standard Acquisition_unit": "ml",
+                        "Internal Standard Calibration": " 50.000",
+                        "Internal Standard Calibration_unit": "ml",
+                        "M(z+1)": " 1.448E+4",
+                        "M(z+1)_unit": " 1.011E+4",
+                        "M(z+1)_unit_unit": "g/mol",
+                        "Method": "C:\\WINGPC_8#1\\Instrument2.SET",
+                        "Method settings": "C:\\WINGPC_8#1\\PSS.ChromPilot.Method.Instrument.2.xml",
+                        "Mn": " 6.999E+3",
+                        "Mn_unit": " 7.997E+3",
+                        "Mn_unit_unit": "g/mol",
+                        "Mp": " 9.724E+3",
+                        "Mp_unit": " 8.736E+3",
+                        "Mp_unit_unit": "g/mol",
+                        "Mv": " 0.000E+0",
+                        "Mv_unit": " 0.000E+0",
+                        "Mv_unit_unit": "g/mol",
+                        "Mw": " 9.417E+3",
+                        "Mw_unit": " 8.643E+3",
+                        "Mw_unit_unit": "g/mol",
+                        "Mz": " 1.195E+4",
+                        "Mz_unit": " 9.348E+3",
+                        "Mz_unit_unit": "g/mol",
+                        "Operator": "itcp-akt",
+                        "Project": "C:\\DATA\\AKT THF Tosoh\\20210722",
+                        "Sample": "Vial   1: MS139 - 1",
+                        "Sequence table": "C:\\WINGPC_8#1\\PSS.ChromPilot.Sequence.Instrument.2.xml",
+                        "Vp": " 2.301E+1",
+                        "Vp_unit": " 2.319E+1",
+                        "Vp_unit_unit": "ml",
+                        "[n]": " 0.000E+0",
+                        "[n]_unit": " 0.000E+0",
+                        "[n]_unit_unit": "ml/g",
+                        "__UNIT_%": "%",
+                        "__UNIT_PPM": "ppm",
+                        "__UNIT_gram": "g",
+                        "__UNIT_liter": "l",
+                        "__UNIT_mol": "mol",
+                        "columns": 0,
+                        "rows": 0,
+                        "w%": "    100.00",
+                        "w%_unit": "    100.00",
+                        "w%_unit_unit": "%"
+                    },
+                    "rows": []
+                },
+                {
+                    "columns": [],
+                    "header": [
+                        "Calibration Coefficients:",
+                        "Vol. min : 16.216170",
+                        "Vol. max : 27.799500",
+                        "R : 9.999266e-01",
+                        "Fit : Polynom 5",
+                        "Const.: 7.515388e+01",
+                        "Coef.2: -1.441337e+01",
+                        "Coef.3: 1.261567e+00",
+                        "Coef.4: -5.720729e-02",
+                        "Coef.5: 1.308085e-03",
+                        "Coef.6: -1.196962e-05",
+                        "Coef.7: 0.000000e+00",
+                        "Coef.8: 0.000000e+00"
+                    ],
+                    "metadata": {
+                        "Coef.2": " -1.441337e+01",
+                        "Coef.3": " 1.261567e+00",
+                        "Coef.4": " -5.720729e-02",
+                        "Coef.5": " 1.308085e-03",
+                        "Coef.6": " -1.196962e-05",
+                        "Coef.7": " 0.000000e+00",
+                        "Coef.8": " 0.000000e+00",
+                        "Const.": " 7.515388e+01",
+                        "Fit ": " Polynom 5",
+                        "R ": " 9.999266e-01",
+                        "Vol. max ": " 27.799500",
+                        "Vol. min ": " 16.216170",
+                        "columns": 0,
+                        "rows": 0,
+                        "table_name": "Calibration Coefficients:"
+                    },
+                    "rows": []
+                },
+                {
+                    "columns": [
+                        {
+                            "key": "0",
+                            "name": "Area"
+                        },
+                        {
+                            "key": "1",
+                            "name": "Name"
+                        },
+                        {
+                            "key": "2",
+                            "name": "from"
+                        },
+                        {
+                            "key": "3",
+                            "name": "to"
+                        },
+                        {
+                            "key": "4",
+                            "name": "Unit"
+                        }
+                    ],
+                    "header": [
+                        "Multi area report ",
+                        "Sample: Vial   1: MS139 - 1",
+                        "Calibration: C:\\DATA\\calibration\\20210528-SDV_THF_PMMA.CAL",
+                        "Print Date: Friday       23.07.21   09:19:39",
+                        "Project: C:\\DATA\\AKT THF Tosoh\\20210722",
+                        "Method: C:\\WINGPC_8#1\\Instrument2"
+                    ],
+                    "metadata": {
+                        "Calibration": "C:\\DATA\\calibration\\20210528-SDV_THF_PMMA.CAL",
+                        "Method": "C:\\WINGPC_8#1\\Instrument2",
+                        "Print Date": "Friday       23.07.21   09:19:39",
+                        "Project": "C:\\DATA\\AKT THF Tosoh\\20210722",
+                        "Sample": "Vial   1: MS139 - 1",
+                        "columns": 5,
+                        "rows": 8,
+                        "table_name": "Multi area report "
+                    },
+                    "rows": [
+                        [
+                            "1",
+                            "",
+                            "",
+                            "",
+                            ""
+                        ],
+                        [
+                            "2",
+                            "",
+                            "",
+                            "",
+                            ""
+                        ],
+                        [
+                            "3",
+                            "",
+                            "",
+                            "",
+                            ""
+                        ],
+                        [
+                            "4",
+                            "",
+                            "",
+                            "",
+                            ""
+                        ],
+                        [
+                            "5",
+                            "",
+                            "",
+                            "",
+                            ""
+                        ],
+                        [
+                            "6",
+                            "",
+                            "",
+                            "",
+                            ""
+                        ],
+                        [
+                            "7",
+                            "",
+                            "",
+                            "",
+                            ""
+                        ],
+                        [
+                            "8",
+                            "",
+                            "",
+                            "",
+                            ""
+                        ]
+                    ]
+                },
+                {
+                    "columns": [
+                        {
+                            "key": "0",
+                            "name": " "
+                        },
+                        {
+                            "key": "1",
+                            "name": "Set 1"
+                        },
+                        {
+                            "key": "2",
+                            "name": "Set 2"
+                        },
+                        {
+                            "key": "3",
+                            "name": "Set 3"
+                        },
+                        {
+                            "key": "4",
+                            "name": "Set 4"
+                        },
+                        {
+                            "key": "5",
+                            "name": "Set 5"
+                        },
+                        {
+                            "key": "6",
+                            "name": "Set 6"
+                        },
+                        {
+                            "key": "7",
+                            "name": "Set 7"
+                        },
+                        {
+                            "key": "8",
+                            "name": "Set 8"
+                        }
+                    ],
+                    "header": [
+                        "Unnamed"
+                    ],
+                    "metadata": {
+                        "columns": 9,
+                        "rows": 8,
+                        "table_name": "Unnamed"
+                    },
+                    "rows": [
+                        [
+                            "",
+                            "-",
+                            "-",
+                            "-",
+                            "-",
+                            "-",
+                            "-",
+                            "-",
+                            "-"
+                        ],
+                        [
+                            "",
+                            "-",
+                            "-",
+                            "-",
+                            "-",
+                            "-",
+                            "-",
+                            "-",
+                            "-"
+                        ],
+                        [
+                            "",
+                            "-",
+                            "-",
+                            "-",
+                            "-",
+                            "-",
+                            "-",
+                            "-",
+                            "-"
+                        ],
+                        [
+                            "",
+                            "-",
+                            "-",
+                            "-",
+                            "-",
+                            "-",
+                            "-",
+                            "-",
+                            "-"
+                        ],
+                        [
+                            "",
+                            "-",
+                            "-",
+                            "-",
+                            "-",
+                            "-",
+                            "-",
+                            "-",
+                            "-"
+                        ],
+                        [
+                            "",
+                            "-",
+                            "-",
+                            "-",
+                            "-",
+                            "-",
+                            "-",
+                            "-",
+                            "-"
+                        ],
+                        [
+                            "",
+                            "-",
+                            "-",
+                            "-",
+                            "-",
+                            "-",
+                            "-",
+                            "-",
+                            "-"
+                        ],
+                        [
+                            "",
+                            "-",
+                            "-",
+                            "-",
+                            "-",
+                            "-",
+                            "-",
+                            "-",
+                            "-"
+                        ]
+                    ]
+                },
+                {
+                    "columns": [],
+                    "header": [
+                        "Unnamed"
+                    ],
+                    "metadata": {
+                        "columns": 0,
+                        "rows": 0,
+                        "table_name": "Unnamed"
+                    },
+                    "rows": []
+                },
+                {
+                    "columns": [
+                        {
+                            "key": "0",
+                            "name": "Time"
+                        },
+                        {
+                            "key": "1",
+                            "name": "I2: RI Detector 1, RI Signal"
+                        },
+                        {
+                            "key": "2",
+                            "name": "I2: UV Detector 1, UV Signal"
+                        },
+                        {
+                            "key": "3",
+                            "name": "Time"
+                        }
+                    ],
+                    "header": [
+                        "RAW"
+                    ],
+                    "metadata": {
+                        "columns": 4,
+                        "rows": 2400,
+                        "table_name": "RAW"
+                    },
+                    "rows": [
+                        [
+                            "0.00000E+0",
+                            "4.84484E-2",
+                            "-4.91658E-1",
+                            "02:05:58:04"
+                        ],
+                        [
+                            "1.66667E-2",
+                            "5.92478E-2",
+                            "-4.96613E-1",
+                            "02:05:59:04"
+                        ],
+                        [
+                            "3.33333E-2",
+                            "5.93170E-2",
+                            "-5.02558E-1",
+                            "02:06:00:04"
+                        ],
+                        [
+                            "5.00000E-2",
+                            "5.86064E-2",
+                            "-5.00128E-1",
+                            "02:06:01:04"
+                        ],
+                        [
+                            "6.66667E-2",
+                            "5.67800E-2",
+                            "-4.98998E-1",
+                            "02:06:02:04"
+                        ],
+                        [
+                            "8.33333E-2",
+                            "6.23032E-2",
+                            "-5.00891E-1",
+                            "02:06:03:04"
+                        ],
+                        [
+                            "1.00000E-1",
+                            "6.71144E-2",
+                            "-4.99485E-1",
+                            "02:06:04:04"
+                        ],
+                        [
+                            "1.16667E-1",
+                            "6.71120E-2",
+                            "-4.99678E-1",
+                            "02:06:05:04"
+                        ],
+                        [
+                            "1.33333E-1",
+                            "6.97904E-2",
+                            "-4.96942E-1",
+                            "02:06:06:04"
+                        ],
+                        [
+                            "1.50000E-1",
+                            "6.48520E-2",
+                            "-4.96882E-1",
+                            "02:06:07:04"
+                        ]
+                    ]
+                },
+                {
+                    "columns": [
+                        {
+                            "key": "0",
+                            "name": "Volume"
+                        },
+                        {
+                            "key": "1",
+                            "name": "Molar mass"
+                        },
+                        {
+                            "key": "2",
+                            "name": "I2: RI Detector 1, RI Signal"
+                        },
+                        {
+                            "key": "3",
+                            "name": "Integral[%]"
+                        },
+                        {
+                            "key": "4",
+                            "name": "I2: UV Detector 1, UV Signal"
+                        },
+                        {
+                            "key": "5",
+                            "name": "Integral[%]"
+                        }
+                    ],
+                    "header": [
+                        "ELU"
+                    ],
+                    "metadata": {
+                        "columns": 6,
+                        "rows": 376,
+                        "table_name": "ELU"
+                    },
+                    "rows": [
+                        [
+                            "2.08555E+1",
+                            "3.82890E+4",
+                            "0.00000E+0",
+                            "1.00000E+2",
+                            "0.00000E+0",
+                            "1.00000E+2"
+                        ],
+                        [
+                            "2.08720E+1",
+                            "3.78565E+4",
+                            "5.14929E-5",
+                            "1.00000E+2",
+                            "6.47883E-3",
+                            "9.99919E+1"
+                        ],
+                        [
+                            "2.08886E+1",
+                            "3.74294E+4",
+                            "9.99062E-3",
+                            "9.99998E+1",
+                            "9.23873E-4",
+                            "9.99826E+1"
+                        ],
+                        [
+                            "2.09051E+1",
+                            "3.70076E+4",
+                            "8.60308E-3",
+                            "9.99995E+1",
+                            "0.00000E+0",
+                            "9.99815E+1"
+                        ],
+                        [
+                            "2.09217E+1",
+                            "3.65910E+4",
+                            "3.07814E-2",
+                            "9.99989E+1",
+                            "0.00000E+0",
+                            "9.99815E+1"
+                        ],
+                        [
+                            "2.09382E+1",
+                            "3.61795E+4",
+                            "3.11942E-2",
+                            "9.99979E+1",
+                            "0.00000E+0",
+                            "9.99815E+1"
+                        ],
+                        [
+                            "2.09548E+1",
+                            "3.57731E+4",
+                            "4.60153E-2",
+                            "9.99967E+1",
+                            "0.00000E+0",
+                            "9.99815E+1"
+                        ],
+                        [
+                            "2.09713E+1",
+                            "3.53718E+4",
+                            "4.82632E-2",
+                            "9.99952E+1",
+                            "0.00000E+0",
+                            "9.99815E+1"
+                        ],
+                        [
+                            "2.09878E+1",
+                            "3.49754E+4",
+                            "7.53493E-2",
+                            "9.99932E+1",
+                            "0.00000E+0",
+                            "9.99815E+1"
+                        ],
+                        [
+                            "2.10044E+1",
+                            "3.45839E+4",
+                            "8.82731E-2",
+                            "9.99906E+1",
+                            "0.00000E+0",
+                            "9.99815E+1"
+                        ]
+                    ]
+                },
+                {
+                    "columns": [
+                        {
+                            "key": "0",
+                            "name": "Molar mass"
+                        },
+                        {
+                            "key": "1",
+                            "name": "I2: RI Detector 1, RI Signal"
+                        },
+                        {
+                            "key": "2",
+                            "name": "Integral[%]"
+                        },
+                        {
+                            "key": "3",
+                            "name": "I2: UV Detector 1, UV Signal"
+                        },
+                        {
+                            "key": "4",
+                            "name": "Integral[%]"
+                        }
+                    ],
+                    "header": [
+                        "MWD"
+                    ],
+                    "metadata": {
+                        "columns": 5,
+                        "rows": 376,
+                        "table_name": "MWD"
+                    },
+                    "rows": [
+                        [
+                            "1.17562E+3",
+                            "0.00000E+0",
+                            "0.00000E+0",
+                            "3.82806E-16",
+                            "1.54430E-16"
+                        ],
+                        [
+                            "1.18659E+3",
+                            "1.85399E-3",
+                            "7.47931E-4",
+                            "0.00000E+0",
+                            "1.54430E-16"
+                        ],
+                        [
+                            "1.19766E+3",
+                            "6.40963E-3",
+                            "3.33369E-3",
+                            "0.00000E+0",
+                            "1.54430E-16"
+                        ],
+                        [
+                            "1.20884E+3",
+                            "9.40598E-3",
+                            "7.12822E-3",
+                            "0.00000E+0",
+                            "1.54430E-16"
+                        ],
+                        [
+                            "1.22012E+3",
+                            "1.22682E-2",
+                            "1.20774E-2",
+                            "0.00000E+0",
+                            "1.54430E-16"
+                        ],
+                        [
+                            "1.23151E+3",
+                            "1.50615E-2",
+                            "1.81535E-2",
+                            "0.00000E+0",
+                            "1.54430E-16"
+                        ],
+                        [
+                            "1.24300E+3",
+                            "1.92948E-2",
+                            "2.59374E-2",
+                            "0.00000E+0",
+                            "1.54430E-16"
+                        ],
+                        [
+                            "1.25460E+3",
+                            "2.17525E-2",
+                            "3.47127E-2",
+                            "0.00000E+0",
+                            "1.54430E-16"
+                        ],
+                        [
+                            "1.26631E+3",
+                            "2.49598E-2",
+                            "4.47819E-2",
+                            "0.00000E+0",
+                            "1.54430E-16"
+                        ],
+                        [
+                            "1.27812E+3",
+                            "2.67075E-2",
+                            "5.55561E-2",
+                            "0.00000E+0",
+                            "1.54430E-16"
+                        ]
+                    ]
+                }
+            ]
+        }
+    ],
+    "datatypes": [],
+    "description": "Size Exclusion Chromatography with two Detector Outputs\n !deprecated please see the new loop ready profile.\n --autogenerated by converter app for SEC loop",
+    "devices": [],
+    "diff_history": [
+        {
+            "at": "2026-04-30T12:53:58.472749+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "SEC 2"
+                }
+            ],
+            "profile_version": "1.0",
+            "trigger": "migration:20260430145303"
+        },
+        {
+            "at": "2026-04-30T12:54:02.326410+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "SEC 2__TEST"
+                }
+            ],
+            "profile_version": "1.1",
+            "trigger": "migration:20260430145303"
+        },
+        {
+            "at": "2026-04-30T13:02:19.756006+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "SEC 2__TEST__TEST"
+                }
+            ],
+            "profile_version": "1.2",
+            "trigger": "restore_migration:20260430145303"
+        },
+        {
+            "at": "2026-04-30T13:02:19.762748+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "SEC 2__TEST"
+                }
+            ],
+            "profile_version": "1.3",
+            "trigger": "restore_migration:20260430145303"
+        },
+        {
+            "at": "2026-05-04T04:59:00.303737+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "SEC 2"
+                }
+            ],
+            "profile_version": "1.4",
+            "trigger": "undo:1.1"
+        },
+        {
+            "at": "2026-05-04T04:59:00.310277+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "SEC 2__TEST"
+                }
+            ],
+            "profile_version": "1.5",
+            "trigger": "undo:1.0"
+        },
+        {
+            "at": "2026-05-04T04:59:00.313611+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "SEC 2"
+                }
+            ],
+            "profile_version": "1.6",
+            "trigger": "migration:20260504065656"
+        },
+        {
+            "at": "2026-05-04T07:23:31.273483+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "SEC 2--TEST"
+                }
+            ],
+            "profile_version": "1.7",
+            "trigger": "undo:1.6"
+        },
+        {
+            "at": "2026-05-21T11:46:01.738621+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/reactionVariations"
+                }
+            ],
+            "profile_version": "1.8",
+            "trigger": "migration:20260417132254"
+        },
+        {
+            "at": "2026-05-21T11:46:01.739110+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_%"
+                },
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_liter"
+                },
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_mol"
+                },
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_gram"
+                },
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_PPM"
+                }
+            ],
+            "profile_version": "1.9",
+            "trigger": "migration:20260422063146"
+        },
+        {
+            "at": "2026-05-21T11:46:01.741316+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/identifiers/0/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/0/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/0/isLoobDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/0/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/0/isDatasetOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/0/isFirstMatch"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/0/outputTableIndex",
+                    "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/1/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/1/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/1/isLoobDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/1/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/1/isDatasetOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/1/isFirstMatch"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/1/outputTableIndex",
+                    "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/2/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/2/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/2/isLoobDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/2/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/2/isDatasetOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/2/isFirstMatch"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/2/outputTableIndex",
+                    "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/3/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/3/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/3/isLoobDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/3/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/3/isDatasetOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/3/isFirstMatch"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/3/outputTableIndex",
+                    "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/4/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/4/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/4/isLoobDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/4/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/4/isDatasetOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/4/isFirstMatch"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/4/outputTableIndex",
+                    "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/5/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/5/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/5/isLoobDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/5/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/5/isDatasetOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/5/isFirstMatch"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/5/outputTableIndex",
+                    "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/6/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/6/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/6/isLoobDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/6/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/6/isDatasetOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/6/isFirstMatch"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/6/outputTableIndex",
+                    "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/7/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/7/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/7/isLoobDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/7/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/7/isDatasetOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/7/isFirstMatch"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/7/outputTableIndex",
+                    "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/8/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/8/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/8/isLoobDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/8/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/8/isDatasetOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/8/isFirstMatch"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/8/outputTableIndex",
+                    "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/9/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/9/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/9/isLoobDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/9/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/9/isDatasetOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/9/isFirstMatch"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/9/outputTableIndex",
+                    "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/10/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/10/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/10/isLoobDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/10/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/10/isDatasetOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/10/isFirstMatch"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/10/outputTableIndex",
+                    "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/11/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/11/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/11/isLoobDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/11/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/11/isDatasetOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/11/isFirstMatch"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/11/outputTableIndex",
+                    "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/12/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/12/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/12/isLoobDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/12/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/12/isDatasetOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/12/isFirstMatch"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/12/outputTableIndex",
+                    "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/15/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/15/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/15/isLoobDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/15/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/15/isDatasetOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/15/isFirstMatch"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/15/outputTableIndex",
+                    "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/16/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/16/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/16/isLoobDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/16/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/16/isDatasetOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/16/isFirstMatch"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/16/outputTableIndex",
+                    "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/17/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/17/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/17/isLoobDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/17/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/17/isDatasetOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/17/isFirstMatch"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/17/outputTableIndex",
+                    "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/18/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/18/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/18/isLoobDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/18/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/18/isDatasetOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/18/isFirstMatch"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/18/outputTableIndex",
+                    "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/19/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/19/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/19/isLoobDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/19/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/19/isDatasetOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/19/isFirstMatch"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/19/outputTableIndex",
+                    "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/20/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/20/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/20/isLoobDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/20/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/20/isDatasetOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/20/isFirstMatch"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/20/outputTableIndex",
+                    "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/21/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/21/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/21/isLoobDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/21/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/21/isDatasetOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/21/isFirstMatch"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/21/outputTableIndex",
+                    "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/22/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/22/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/22/isLoobDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/22/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/22/isDatasetOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/22/isFirstMatch"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/22/outputTableIndex",
+                    "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/23/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/23/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/23/isLoobDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/23/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/23/isDatasetOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/23/isFirstMatch"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/23/outputTableIndex",
+                    "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/24/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/24/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/24/isLoobDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/24/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/24/isDatasetOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/24/isFirstMatch"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/24/outputTableIndex",
+                    "value": null
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/25/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/25/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/25/isLoobDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/25/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/25/isDatasetOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/25/isFirstMatch"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/25/outputTableIndex",
+                    "value": null
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/26/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/26/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/26/isLoobDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/26/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/26/isDatasetOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/26/isFirstMatch"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/26/outputTableIndex",
+                    "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/27/isRdfOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/27/outputDatatableKey"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/27/isLoobDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/27/isDatatableOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/27/isDatasetOutput"
+                },
+                {
+                    "op": "remove",
+                    "path": "/identifiers/27/isFirstMatch"
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/27/outputTableIndex",
+                    "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/tables/0/loopType"
+                },
+                {
+                    "from": "/tables/0/inputTableIndex",
+                    "op": "move",
+                    "path": "/tables/0/table/xColumn/tableIndex"
+                },
+                {
+                    "from": "/tables/1/inputTableIndex",
+                    "op": "move",
+                    "path": "/tables/0/table/yColumn/tableIndex"
+                },
+                {
+                    "op": "remove",
+                    "path": "/tables/1/loopType"
+                },
+                {
+                    "op": "add",
+                    "path": "/tables/1/table/xColumn/tableIndex",
+                    "value": 7
+                },
+                {
+                    "op": "add",
+                    "path": "/tables/1/table/yColumn/tableIndex",
+                    "value": 7
+                },
+                {
+                    "op": "remove",
+                    "path": "/tables/2/loopType"
+                },
+                {
+                    "from": "/tables/2/inputTableIndex",
+                    "op": "move",
+                    "path": "/tables/2/table/xColumn/tableIndex"
+                },
+                {
+                    "from": "/tables/3/inputTableIndex",
+                    "op": "move",
+                    "path": "/tables/2/table/yColumn/tableIndex"
+                },
+                {
+                    "op": "remove",
+                    "path": "/tables/3/loopType"
+                },
+                {
+                    "op": "add",
+                    "path": "/tables/3/table/xColumn/tableIndex",
+                    "value": 6
+                },
+                {
+                    "op": "add",
+                    "path": "/tables/3/table/yColumn/tableIndex",
+                    "value": 6
+                }
+            ],
+            "profile_version": "1.10",
+            "trigger": "migration:20260506160404"
+        },
+        {
+            "at": "2026-05-21T11:46:01.743307+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/identifiers/0/outputTableIndex/0",
+                    "value": 0
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/1/outputTableIndex/0",
+                    "value": 0
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/2/outputTableIndex/0",
+                    "value": 0
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/3/outputTableIndex/0",
+                    "value": 0
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/4/outputTableIndex/0",
+                    "value": 0
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/5/outputTableIndex/0",
+                    "value": 0
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/6/outputTableIndex/0",
+                    "value": 0
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/7/outputTableIndex/0",
+                    "value": 0
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/8/outputTableIndex/0",
+                    "value": 0
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/9/outputTableIndex/0",
+                    "value": 0
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/10/outputTableIndex/0",
+                    "value": 0
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/11/outputTableIndex/0",
+                    "value": 0
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/12/outputTableIndex/0",
+                    "value": 0
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/15/outputTableIndex/0",
+                    "value": 0
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/16/outputTableIndex/0",
+                    "value": 0
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/17/outputTableIndex/0",
+                    "value": 0
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/18/outputTableIndex/0",
+                    "value": 0
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/19/outputTableIndex/0",
+                    "value": 0
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/20/outputTableIndex/0",
+                    "value": 0
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/21/outputTableIndex/0",
+                    "value": 0
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/22/outputTableIndex/0",
+                    "value": 0
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/23/outputTableIndex/0",
+                    "value": 0
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/24/outputTableIndex/0",
+                    "value": 0
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/24/outputTableIndex/1",
+                    "value": 1
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/24/outputTableIndex/2",
+                    "value": 2
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/24/outputTableIndex/3",
+                    "value": 3
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/25/outputTableIndex/0",
+                    "value": 0
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/25/outputTableIndex/1",
+                    "value": 1
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/25/outputTableIndex/2",
+                    "value": 2
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/25/outputTableIndex/3",
+                    "value": 3
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/26/outputTableIndex/0",
+                    "value": 0
+                },
+                {
+                    "op": "replace",
+                    "path": "/identifiers/27/outputTableIndex/0",
+                    "value": 0
+                },
+                {
+                    "op": "remove",
+                    "path": "/tables/0/uuid"
+                },
+                {
+                    "op": "remove",
+                    "path": "/tables/0/tableName"
+                },
+                {
+                    "op": "remove",
+                    "path": "/tables/1/uuid"
+                },
+                {
+                    "op": "remove",
+                    "path": "/tables/1/tableName"
+                },
+                {
+                    "op": "remove",
+                    "path": "/tables/2/uuid"
+                },
+                {
+                    "op": "remove",
+                    "path": "/tables/2/tableName"
+                },
+                {
+                    "op": "remove",
+                    "path": "/tables/3/uuid"
+                },
+                {
+                    "op": "remove",
+                    "path": "/tables/3/tableName"
+                }
+            ],
+            "profile_version": "1.11",
+            "trigger": "migration:20260513094819"
+        }
+    ],
+    "id": "71883827-4472-48d8-becf-64ea89324f3e",
+    "identifiers": [
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#0tableMetadata",
+            "isDatasetOutput": true,
+            "isDatatableOutput": true,
+            "isFirstMatch": true,
+            "isLoobDatatableOutput": true,
+            "isRdfOutput": false,
+            "key": "Sample",
+            "match": "any",
+            "object": null,
+            "optional": true,
+            "outputDatatableKey": "label",
+            "outputKey": "label",
+            "outputLayer": "sample_details",
+            "outputTableIndex": [
+                "d573fa2f-38f7-482b-9ebe-e8243d346fe0"
+            ],
+            "predicate": null,
+            "subject": null,
+            "tableIndex": 0,
+            "type": "tableMetadata",
+            "value": "Vial   1: MS139 - 1"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#1tableMetadata",
+            "isDatasetOutput": true,
+            "isDatatableOutput": true,
+            "isFirstMatch": true,
+            "isLoobDatatableOutput": true,
+            "isRdfOutput": false,
+            "key": "Export file",
+            "match": "any",
+            "object": null,
+            "optional": true,
+            "outputDatatableKey": "comments",
+            "outputKey": "comments",
+            "outputLayer": "general",
+            "outputTableIndex": [
+                "d573fa2f-38f7-482b-9ebe-e8243d346fe0"
+            ],
+            "predicate": null,
+            "subject": null,
+            "tableIndex": 0,
+            "type": "tableMetadata",
+            "value": "X:\\Marvin Subarew\\AETMC Polymerization\\MS139\\2021-07-22 MS139.TXT"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#2tableMetadata",
+            "isDatasetOutput": true,
+            "isDatatableOutput": true,
+            "isFirstMatch": true,
+            "isLoobDatatableOutput": true,
+            "isRdfOutput": false,
+            "key": "Mn",
+            "match": "any",
+            "object": null,
+            "optional": true,
+            "outputDatatableKey": "mn",
+            "outputKey": "mn",
+            "outputLayer": "eval_data_detec_i",
+            "outputTableIndex": [
+                "d573fa2f-38f7-482b-9ebe-e8243d346fe0"
+            ],
+            "predicate": null,
+            "subject": null,
+            "tableIndex": 0,
+            "type": "tableMetadata",
+            "value": " 6.999E+3"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#3tableMetadata",
+            "isDatasetOutput": true,
+            "isDatatableOutput": true,
+            "isFirstMatch": true,
+            "isLoobDatatableOutput": true,
+            "isRdfOutput": false,
+            "key": "Mn_unit",
+            "match": "any",
+            "object": null,
+            "optional": true,
+            "outputDatatableKey": "mn",
+            "outputKey": "mn",
+            "outputLayer": "eval_data_detec_ii",
+            "outputTableIndex": [
+                "d573fa2f-38f7-482b-9ebe-e8243d346fe0"
+            ],
+            "predicate": null,
+            "subject": null,
+            "tableIndex": 0,
+            "type": "tableMetadata",
+            "value": " 7.997E+3"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#4tableMetadata",
+            "isDatasetOutput": true,
+            "isDatatableOutput": true,
+            "isFirstMatch": true,
+            "isLoobDatatableOutput": true,
+            "isRdfOutput": false,
+            "key": "Mw",
+            "match": "any",
+            "object": null,
+            "optional": true,
+            "outputDatatableKey": "mw",
+            "outputKey": "mw",
+            "outputLayer": "eval_data_detec_i",
+            "outputTableIndex": [
+                "d573fa2f-38f7-482b-9ebe-e8243d346fe0"
+            ],
+            "predicate": null,
+            "subject": null,
+            "tableIndex": 0,
+            "type": "tableMetadata",
+            "value": " 9.417E+3"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#5tableMetadata",
+            "isDatasetOutput": true,
+            "isDatatableOutput": true,
+            "isFirstMatch": true,
+            "isLoobDatatableOutput": true,
+            "isRdfOutput": false,
+            "key": "Mw_unit",
+            "match": "any",
+            "object": null,
+            "optional": true,
+            "outputDatatableKey": "mw",
+            "outputKey": "mw",
+            "outputLayer": "eval_data_detec_ii",
+            "outputTableIndex": [
+                "d573fa2f-38f7-482b-9ebe-e8243d346fe0"
+            ],
+            "predicate": null,
+            "subject": null,
+            "tableIndex": 0,
+            "type": "tableMetadata",
+            "value": " 8.643E+3"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#6tableMetadata",
+            "isDatasetOutput": true,
+            "isDatatableOutput": true,
+            "isFirstMatch": true,
+            "isLoobDatatableOutput": true,
+            "isRdfOutput": false,
+            "key": "D",
+            "match": "any",
+            "object": null,
+            "optional": true,
+            "outputDatatableKey": "d",
+            "outputKey": "d",
+            "outputLayer": "eval_data_detec_i",
+            "outputTableIndex": [
+                "d573fa2f-38f7-482b-9ebe-e8243d346fe0"
+            ],
+            "predicate": null,
+            "subject": null,
+            "tableIndex": 0,
+            "type": "tableMetadata",
+            "value": " 1.346E+0"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#7tableMetadata",
+            "isDatasetOutput": true,
+            "isDatatableOutput": true,
+            "isFirstMatch": true,
+            "isLoobDatatableOutput": true,
+            "isRdfOutput": false,
+            "key": "D_unit",
+            "match": "any",
+            "object": null,
+            "optional": true,
+            "outputDatatableKey": "d",
+            "outputKey": "d",
+            "outputLayer": "eval_data_detec_ii",
+            "outputTableIndex": [
+                "d573fa2f-38f7-482b-9ebe-e8243d346fe0"
+            ],
+            "predicate": null,
+            "subject": null,
+            "tableIndex": 0,
+            "type": "tableMetadata",
+            "value": " 1.081E+0"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#8tableMetadata",
+            "isDatasetOutput": true,
+            "isDatatableOutput": true,
+            "isFirstMatch": true,
+            "isLoobDatatableOutput": true,
+            "isRdfOutput": false,
+            "key": "Mp",
+            "match": "any",
+            "object": null,
+            "optional": true,
+            "outputDatatableKey": "mp",
+            "outputKey": "mp",
+            "outputLayer": "eval_data_detec_i",
+            "outputTableIndex": [
+                "d573fa2f-38f7-482b-9ebe-e8243d346fe0"
+            ],
+            "predicate": null,
+            "subject": null,
+            "tableIndex": 0,
+            "type": "tableMetadata",
+            "value": " 9.724E+3"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#9tableMetadata",
+            "isDatasetOutput": true,
+            "isDatatableOutput": true,
+            "isFirstMatch": true,
+            "isLoobDatatableOutput": true,
+            "isRdfOutput": false,
+            "key": "Mp_unit",
+            "match": "any",
+            "object": null,
+            "optional": true,
+            "outputDatatableKey": "mp",
+            "outputKey": "mp",
+            "outputLayer": "eval_data_detec_ii",
+            "outputTableIndex": [
+                "d573fa2f-38f7-482b-9ebe-e8243d346fe0"
+            ],
+            "predicate": null,
+            "subject": null,
+            "tableIndex": 0,
+            "type": "tableMetadata",
+            "value": " 8.736E+3"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#10tableMetadata",
+            "isDatasetOutput": true,
+            "isDatatableOutput": true,
+            "isFirstMatch": true,
+            "isLoobDatatableOutput": true,
+            "isRdfOutput": false,
+            "key": "Detector 1",
+            "match": "any",
+            "object": null,
+            "optional": true,
+            "outputDatatableKey": "detec1",
+            "outputKey": "detec1",
+            "outputLayer": "instrument",
+            "outputTableIndex": [
+                "d573fa2f-38f7-482b-9ebe-e8243d346fe0"
+            ],
+            "predicate": null,
+            "subject": null,
+            "tableIndex": 0,
+            "type": "tableMetadata",
+            "value": "I2: RI Detector 1, RI Signal"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#11tableMetadata",
+            "isDatasetOutput": true,
+            "isDatatableOutput": true,
+            "isFirstMatch": true,
+            "isLoobDatatableOutput": true,
+            "isRdfOutput": false,
+            "key": "Detector 2",
+            "match": "any",
+            "object": null,
+            "optional": true,
+            "outputDatatableKey": "detec2",
+            "outputKey": "detec2",
+            "outputLayer": "instrument",
+            "outputTableIndex": [
+                "d573fa2f-38f7-482b-9ebe-e8243d346fe0"
+            ],
+            "predicate": null,
+            "subject": null,
+            "tableIndex": 0,
+            "type": "tableMetadata",
+            "value": "I2: UV Detector 1, UV Signal"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#12tableMetadata",
+            "isDatasetOutput": true,
+            "isDatatableOutput": true,
+            "isFirstMatch": true,
+            "isLoobDatatableOutput": true,
+            "isRdfOutput": false,
+            "key": "Detector 3",
+            "match": "any",
+            "object": null,
+            "optional": true,
+            "outputDatatableKey": "detec3",
+            "outputKey": "detec3",
+            "outputLayer": "instrument",
+            "outputTableIndex": [
+                "d573fa2f-38f7-482b-9ebe-e8243d346fe0"
+            ],
+            "predicate": null,
+            "subject": null,
+            "tableIndex": 0,
+            "type": "tableMetadata",
+            "value": "I2: Pump 1, Sample Pump Pressure"
+        },
+        {
+            "editable": true,
+            "id": "#13fileMetadata",
+            "key": "reader",
+            "match": "exact",
+            "optional": false,
+            "type": "fileMetadata",
+            "value": "SecReader"
+        },
+        {
+            "editable": true,
+            "id": "#14tableMetadata",
+            "key": "table_name",
+            "match": "exact",
+            "optional": false,
+            "tableIndex": 7,
+            "type": "tableMetadata",
+            "value": "MWD"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#15tableMetadata",
+            "isDatasetOutput": true,
+            "isDatatableOutput": true,
+            "isFirstMatch": true,
+            "isLoobDatatableOutput": true,
+            "isRdfOutput": false,
+            "key": "Column 1",
+            "match": "any",
+            "object": null,
+            "optional": true,
+            "outputDatatableKey": "col1",
+            "outputKey": "col1",
+            "outputLayer": "equipment",
+            "outputTableIndex": [
+                "d573fa2f-38f7-482b-9ebe-e8243d346fe0"
+            ],
+            "predicate": null,
+            "subject": null,
+            "tableIndex": 0,
+            "type": "tableMetadata",
+            "value": "PSS SDV 5\u00b5m"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#16tableMetadata",
+            "isDatasetOutput": true,
+            "isDatatableOutput": true,
+            "isFirstMatch": true,
+            "isLoobDatatableOutput": true,
+            "isRdfOutput": false,
+            "key": "Column 2",
+            "match": "any",
+            "object": null,
+            "optional": true,
+            "outputDatatableKey": "col2",
+            "outputKey": "col2",
+            "outputLayer": "equipment",
+            "outputTableIndex": [
+                "d573fa2f-38f7-482b-9ebe-e8243d346fe0"
+            ],
+            "predicate": null,
+            "subject": null,
+            "tableIndex": 0,
+            "type": "tableMetadata",
+            "value": "PSS SDV 5\u00b5m"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#17tableMetadata",
+            "isDatasetOutput": true,
+            "isDatatableOutput": true,
+            "isFirstMatch": true,
+            "isLoobDatatableOutput": true,
+            "isRdfOutput": false,
+            "key": "Column 3",
+            "match": "any",
+            "object": null,
+            "optional": true,
+            "outputDatatableKey": "col3",
+            "outputKey": "col3",
+            "outputLayer": "equipment",
+            "outputTableIndex": [
+                "d573fa2f-38f7-482b-9ebe-e8243d346fe0"
+            ],
+            "predicate": null,
+            "subject": null,
+            "tableIndex": 0,
+            "type": "tableMetadata",
+            "value": "PSS SDV 5\u00b5m"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#18tableMetadata",
+            "isDatasetOutput": true,
+            "isDatatableOutput": true,
+            "isFirstMatch": true,
+            "isLoobDatatableOutput": true,
+            "isRdfOutput": false,
+            "key": "Inject volume",
+            "match": "any",
+            "object": null,
+            "optional": true,
+            "outputDatatableKey": "in_vol",
+            "outputKey": "in_vol",
+            "outputLayer": "meta",
+            "outputTableIndex": [
+                "d573fa2f-38f7-482b-9ebe-e8243d346fe0"
+            ],
+            "predicate": null,
+            "subject": null,
+            "tableIndex": 0,
+            "type": "tableMetadata",
+            "value": " 50.000"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#19tableMetadata",
+            "isDatasetOutput": true,
+            "isDatatableOutput": true,
+            "isFirstMatch": true,
+            "isLoobDatatableOutput": true,
+            "isRdfOutput": false,
+            "key": "Eluent",
+            "match": "any",
+            "object": null,
+            "optional": true,
+            "outputDatatableKey": "eluent",
+            "outputKey": "eluent",
+            "outputLayer": "meta",
+            "outputTableIndex": [
+                "d573fa2f-38f7-482b-9ebe-e8243d346fe0"
+            ],
+            "predicate": null,
+            "subject": null,
+            "tableIndex": 0,
+            "type": "tableMetadata",
+            "value": "THF"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#20tableMetadata",
+            "isDatasetOutput": true,
+            "isDatatableOutput": true,
+            "isFirstMatch": true,
+            "isLoobDatatableOutput": true,
+            "isRdfOutput": false,
+            "key": "Flow",
+            "match": "any",
+            "object": null,
+            "optional": true,
+            "outputDatatableKey": "flow",
+            "outputKey": "flow",
+            "outputLayer": "meta",
+            "outputTableIndex": [
+                "d573fa2f-38f7-482b-9ebe-e8243d346fe0"
+            ],
+            "predicate": null,
+            "subject": null,
+            "tableIndex": 0,
+            "type": "tableMetadata",
+            "value": "  1.000"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#21tableMetadata",
+            "isDatasetOutput": true,
+            "isDatatableOutput": true,
+            "isFirstMatch": true,
+            "isLoobDatatableOutput": true,
+            "isRdfOutput": false,
+            "key": "(Column 1) Temperature",
+            "match": "any",
+            "object": null,
+            "optional": true,
+            "outputDatatableKey": "temperature",
+            "outputKey": "temperature",
+            "outputLayer": "meta",
+            "outputTableIndex": [
+                "d573fa2f-38f7-482b-9ebe-e8243d346fe0"
+            ],
+            "predicate": null,
+            "subject": null,
+            "tableIndex": 0,
+            "type": "tableMetadata",
+            "value": " 35.000"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#22tableMetadata",
+            "isDatasetOutput": true,
+            "isDatatableOutput": true,
+            "isFirstMatch": true,
+            "isLoobDatatableOutput": true,
+            "isRdfOutput": false,
+            "key": "Inject date",
+            "match": "regex",
+            "object": null,
+            "optional": true,
+            "outputDatatableKey": "date",
+            "outputKey": "date",
+            "outputLayer": "general",
+            "outputTableIndex": [
+                "d573fa2f-38f7-482b-9ebe-e8243d346fe0"
+            ],
+            "predicate": null,
+            "subject": null,
+            "tableIndex": 0,
+            "type": "tableMetadata",
+            "value": "^\\S+\\s(.*?)(\\s\\d+\\:\\d+\\:\\d+)"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#23tableMetadata",
+            "isDatasetOutput": true,
+            "isDatatableOutput": true,
+            "isFirstMatch": true,
+            "isLoobDatatableOutput": true,
+            "isRdfOutput": false,
+            "key": "Inject date",
+            "match": "regex",
+            "object": null,
+            "optional": true,
+            "outputDatatableKey": "time",
+            "outputKey": "time",
+            "outputLayer": "general",
+            "outputTableIndex": [
+                "d573fa2f-38f7-482b-9ebe-e8243d346fe0"
+            ],
+            "predicate": null,
+            "subject": null,
+            "tableIndex": 0,
+            "type": "tableMetadata",
+            "value": "(\\d+\\:\\d+\\:\\d+)"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#24tableHeader",
+            "isDatasetOutput": true,
+            "isDatatableOutput": true,
+            "isFirstMatch": true,
+            "isLoobDatatableOutput": true,
+            "isRdfOutput": false,
+            "lineNumber": "",
+            "match": "regex",
+            "object": null,
+            "optional": true,
+            "outputDatatableKey": "no_dec",
+            "outputKey": "no_dec",
+            "outputLayer": "instrument",
+            "outputTableIndex": [
+                "d573fa2f-38f7-482b-9ebe-e8243d346fe0",
+                "f6277c47-b584-483b-b4a3-ca02fb64a909",
+                "1a8ec5c8-6d6f-4901-9955-0ee0cf3f4648",
+                "59ea0547-d08d-4138-ab62-91e1b3321cb2"
+            ],
+            "predicate": null,
+            "subject": null,
+            "tableIndex": 0,
+            "type": "tableHeader",
+            "value": "2"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#25tableHeader",
+            "isDatasetOutput": true,
+            "isDatatableOutput": true,
+            "isFirstMatch": true,
+            "isLoobDatatableOutput": true,
+            "isRdfOutput": false,
+            "lineNumber": "",
+            "match": "regex",
+            "object": null,
+            "optional": true,
+            "outputDatatableKey": "software",
+            "outputKey": "software",
+            "outputLayer": "software",
+            "outputTableIndex": [
+                "d573fa2f-38f7-482b-9ebe-e8243d346fe0",
+                "f6277c47-b584-483b-b4a3-ca02fb64a909",
+                "1a8ec5c8-6d6f-4901-9955-0ee0cf3f4648",
+                "59ea0547-d08d-4138-ab62-91e1b3321cb2"
+            ],
+            "predicate": null,
+            "subject": null,
+            "tableIndex": 0,
+            "type": "tableHeader",
+            "value": "WINGPC"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#26tableHeader",
+            "isDatasetOutput": true,
+            "isDatatableOutput": true,
+            "isFirstMatch": true,
+            "isLoobDatatableOutput": true,
+            "isRdfOutput": false,
+            "lineNumber": "",
+            "match": "regex",
+            "object": null,
+            "optional": true,
+            "outputDatatableKey": "version",
+            "outputKey": "version",
+            "outputLayer": "software",
+            "outputTableIndex": [
+                "d573fa2f-38f7-482b-9ebe-e8243d346fe0"
+            ],
+            "predicate": null,
+            "subject": null,
+            "tableIndex": 0,
+            "type": "tableHeader",
+            "value": "WINGPC_(\\d+#\\d+)"
+        },
+        {
+            "datatype": null,
+            "editable": true,
+            "id": "#27tableMetadata",
+            "isDatasetOutput": true,
+            "isDatatableOutput": true,
+            "isFirstMatch": true,
+            "isLoobDatatableOutput": true,
+            "isRdfOutput": false,
+            "key": "Operator",
+            "match": "any",
+            "object": null,
+            "optional": true,
+            "outputDatatableKey": "operator",
+            "outputKey": "operator",
+            "outputLayer": "general",
+            "outputTableIndex": [
+                "d573fa2f-38f7-482b-9ebe-e8243d346fe0"
+            ],
+            "predicate": null,
+            "subject": null,
+            "tableIndex": 0,
+            "type": "tableMetadata",
+            "value": "itcp-akt"
+        },
+        {
+            "editable": true,
+            "id": "#28tableMetadata",
+            "key": "Detector 2",
+            "match": "regex",
+            "optional": false,
+            "tableIndex": 0,
+            "type": "tableMetadata",
+            "value": "I2"
+        }
+    ],
+    "isDisabled": true,
+    "last_migration": "20260513094819",
+    "objects": [],
+    "ols": "CHMO:0001013",
+    "ontology": "",
+    "predicates": [],
+    "profile_version": "1.12",
+    "reactionVariations": {
+        "elements": [],
+        "identifiers": []
+    },
+    "rootOntology": {
+        "description": [
+            "Column chromatography where the separation is caused by differences in molecular size."
+        ],
+        "id": "CHMO:properties:http://purl.obolibrary.org/obo/CHMO_0001013",
+        "iri": "http://purl.obolibrary.org/obo/CHMO_0001013",
+        "label": "size-exclusion chromatography",
+        "namespace": "http://purl.obolibrary.org/obo/",
+        "obo_id": "CHMO:0001013",
+        "ontology_name": "chmo",
+        "ontology_prefix": "CHMO",
+        "short_form": "CHMO_0001013",
+        "type": "class"
+    },
+    "software": [],
+    "subjectInstances": {},
+    "subjects": [],
+    "tables": [
+        {
+            "header": {
+                "DATA CLASS": "XYPOINTS",
+                "DATA TYPE": "SIZE EXCLUSION CHROMATOGRAPHY",
+                "XUNITS": "G/MOL",
+                "YUNITS": "ARBITRARY UNITS"
+            },
+            "inputTableIndex": 7,
+            "loopType": "none",
+            "table": {
+                "xColumn": {
+                    "columnIndex": 0
+                },
+                "yColumn": {
+                    "columnIndex": 1
+                }
+            },
+            "tableName": "Table #1",
+            "uuid": "d573fa2f-38f7-482b-9ebe-e8243d346fe0"
+        },
+        {
+            "header": {
+                "DATA CLASS": "XYPOINTS",
+                "DATA TYPE": "SIZE EXCLUSION CHROMATOGRAPHY",
+                "XUNITS": "G/MOL",
+                "YUNITS": "ARBITRARY UNITS"
+            },
+            "inputTableIndex": 7,
+            "loopType": "none",
+            "table": {
+                "xColumn": {
+                    "columnIndex": 0
+                },
+                "yColumn": {
+                    "columnIndex": 3
+                }
+            },
+            "tableName": "Table #2",
+            "uuid": "f6277c47-b584-483b-b4a3-ca02fb64a909"
+        },
+        {
+            "header": {
+                "DATA CLASS": "XYPOINTS",
+                "DATA TYPE": "SIZE EXCLUSION CHROMATOGRAPHY",
+                "XUNITS": "MILLILITERS",
+                "YUNITS": "ARBITRARY UNITS"
+            },
+            "inputTableIndex": 6,
+            "loopType": "none",
+            "table": {
+                "xColumn": {
+                    "columnIndex": 0
+                },
+                "yColumn": {
+                    "columnIndex": 2
+                }
+            },
+            "tableName": "Table #3",
+            "uuid": "1a8ec5c8-6d6f-4901-9955-0ee0cf3f4648"
+        },
+        {
+            "header": {
+                "DATA CLASS": "XYPOINTS",
+                "DATA TYPE": "SIZE EXCLUSION CHROMATOGRAPHY",
+                "XUNITS": "MILLILITERS",
+                "YUNITS": "ARBITRARY UNITS"
+            },
+            "inputTableIndex": 6,
+            "loopType": "none",
+            "table": {
+                "xColumn": {
+                    "columnIndex": 0
+                },
+                "yColumn": {
+                    "columnIndex": 4
+                }
+            },
+            "tableName": "Table #4",
+            "uuid": "59ea0547-d08d-4138-ab62-91e1b3321cb2"
+        }
+    ],
+    "title": "SEC 2",
+    "version": 0
+}

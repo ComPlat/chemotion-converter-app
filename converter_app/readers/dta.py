@@ -7,7 +7,7 @@ logger = logging.getLogger(__name__)
 
 class DtaReader(Reader):
     """
-    Reads and converts .dat files
+    Reads and converts .dta files
     """
     identifier = 'dta_reader'
     priority = 10

@@ -1,0 +1,5 @@
+@prefix chemotion: <https://chemotion.net/chemotion/#> .
+@prefix obi: <http://purl.obolibrary.org/obo/> .
+
+chemotion:UV-VIS_data_from_csv%252C_data__%252B%252C_metadata__- a obi:OBI_0000070 .
+

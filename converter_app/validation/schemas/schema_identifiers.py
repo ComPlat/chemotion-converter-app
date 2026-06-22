@@ -1,4 +1,25 @@
+import copy
+
 from converter_app.validation.registry import SchemaRegistry
+
+ontology_id = {
+    "properties": {
+        "id": {
+            "type": "string",
+        }
+    },
+    "additionalProperties": False,
+    "type": ["object", "null"],
+    "required": ["id"]
+
+}
+
+ontology_subjects_id = copy.deepcopy(ontology_id)
+ontology_subjects_id['properties'] |= {
+    'subjectInstance': {
+      "type": "string"
+    }
+}
 
 identifiers_schema = {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
@@ -6,6 +27,27 @@ identifiers_schema = {
     "title": "Schema for ChemConverter profile tables",
     "type": "object",
     "properties": {
+        "id": {
+            "type": "string"
+        },
+        "editable": {
+            "type": "boolean"
+        },
+        "isRdfOutput": {
+            "type": "boolean"
+        },
+        "isDatatableOutput": {
+            "type": "boolean"
+        },
+        "isDatasetOutput": {
+            "type": "boolean"
+        },
+        "isLoobDatatableOutput": {
+            "type": "boolean"
+        },
+        "isFirstMatch": {
+            "type": "boolean"
+        },
         "key": {
             "type": "string"
         },
@@ -27,8 +69,12 @@ identifiers_schema = {
             "enum": ["fileMetadata", "tableMetadata", "tableHeader"]
         },
         "value": {
-            "type": "string"
-        }
+            "type": ["string", "number"]
+        },
+        "predicate": ontology_id,
+        "object": ontology_id,
+        "subject": ontology_subjects_id,
+        "datatype": ontology_id,
     },
     "additionalProperties": True,
 

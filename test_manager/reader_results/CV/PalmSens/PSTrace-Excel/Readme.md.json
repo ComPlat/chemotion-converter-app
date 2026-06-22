@@ -1,1 +1,34 @@
-{"tables": [{"header": ["not recommended, because metadata will be lost!"], "metadata": {"rows": "0", "columns": "0"}, "columns": [], "rows": []}], "metadata": {"file_name": "Readme.md", "content_type": "", "mime_type": "text/plain", "extension": ".md", "reader": "CSVReader", "uploaded": "2024-07-15T10:22:11.282516", "lineterminator": "\\r\\n", "quoting": "0", "doublequote": "False", "delimiter": "comma", "quotechar": "\"", "skipinitialspace": "True"}}
+{
+    "tables": [
+        {
+            "header": [
+                "not recommended, because metadata will be lost!"
+            ],
+            "metadata": {
+                "__UNIT_PPM": "ppm",
+                "__UNIT_liter": "l",
+                "__UNIT_gram": "g",
+                "__UNIT_%": "%",
+                "__UNIT_mol": "mol",
+                "rows": "0",
+                "columns": "0"
+            },
+            "columns": [],
+            "rows": []
+        }
+    ],
+    "metadata": {
+        "file_name": "Readme.md",
+        "content_type": "",
+        "mime_type": "text/plain",
+        "extension": ".md",
+        "reader": "CSVReader",
+        "uploaded": "2026-05-22T09:38:52.438319+00:00",
+        "lineterminator": "\\r\\n",
+        "quoting": "0",
+        "doublequote": "False",
+        "delimiter": "comma",
+        "quotechar": "\"",
+        "skipinitialspace": "True"
+    }
+}
