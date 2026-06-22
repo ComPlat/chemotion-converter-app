@@ -7,7 +7,7 @@ from typing import LiteralString
 import astropy.units as u
 
 from converter_app.models import Profile
-from utils import normalize_unit
+from converter_app.utils import normalize_unit
 
 logger = logging.getLogger(__name__)
 
