@@ -75,13 +75,8 @@ class Readers:
                 reader = reader(file, *archive_file_list)
             else:
                 reader = reader(file)
-
-            check_params = inspect.signature(reader.check).parameters
-
-            if len(check_params) > 0 and 'ontology' in check_params.keys():
-                result = reader.check(ontology=ontology)
-            else:
-                result = reader.check()
+            reader.ontology = ontology
+            result = reader.check()
 
             logger.debug('For reader %s -> result=%s', reader.__class__.__name__, result)
 
