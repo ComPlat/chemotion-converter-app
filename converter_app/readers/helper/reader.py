@@ -78,8 +78,8 @@ class Readers:
 
             check_params = inspect.signature(reader.check).parameters
 
-            if len(check_params) > 0:
-                result = reader.check(ontology)
+            if len(check_params) > 0 and 'ontology' in check_params.keys():
+                result = reader.check(ontology=ontology)
             else:
                 result = reader.check()
 
