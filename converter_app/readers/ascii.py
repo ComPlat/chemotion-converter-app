@@ -19,14 +19,11 @@ class AsciiReader(Reader):
 
     def __init__(self, file, *tar_content):
         super().__init__(file, tar_content)
-        self.ontology = None
 
     def check(self, **kwargs):
         """
         :return: True if it fits
         """
-
-        self.ontology = kwargs.get('ontology')
 
         return not self.file.encoding == 'binary'
 
