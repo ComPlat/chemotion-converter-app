@@ -8,6 +8,7 @@ users with the capability to effortlessly create profiles for the conversion pro
 """
 import json
 import os
+import re
 import time
 from pathlib import Path
 
@@ -25,6 +26,46 @@ from converter_app.profile_migration.utils.registration import Migrations
 from converter_app.readers import READERS as registry
 from converter_app.utils import checkpw, run_conversion, get_app_root, str_to_bool, FunctionTimer
 from converter_app.validation import validate_profile
+
+# OBO ID format for CHMO ontology terms, e.g. "CHMO:0001007".
+ONTOLOGY_ID_PATTERN = re.compile(r'^CHMO:\d{7}$')
+
+
+def validate_ontology(ontology):
+    """
+    Offline (format-only) validation of the optional ``ontology`` request
+    parameter.
+
+    Returns an error message string if the value is present but malformed,
+    or ``None`` if it is valid or absent.
+
+    Passing no ontology (``None`` or an empty string) is explicitly allowed for
+    backwards compatibility: conversions without an ontology must keep working.
+
+    NOTE: This deliberately performs *offline* format validation only and does
+    NOT verify online that the term actually exists. An online lookup against
+    the EBI OLS4 / TIB terminology service must not be done here: in a
+    productive, silent, headless deployment a conversion must never fail just
+    because the OLS4 server is down or unreachable from the backend network,
+    with nobody noticing. If online verification is ever added, it has to be
+    optional and fail-open (treat any lookup/network error as "valid"), and
+    ideally cached -- e.g.:
+        # try:
+        #     resp = requests.get(f'{OLS4_URL}/ontologies/CHMO/terms',
+        #                         params={'obo_id': ontology}, timeout=2)
+        #     if resp.ok and not resp.json().get('_embedded'):
+        #         return f'Unknown ontology term: "{ontology}".'
+        # except requests.RequestException:
+        #     pass  # fail open: never block a conversion on a network issue
+    """
+    if not ontology:
+        # No ontology supplied -> nothing to validate (backwards compatible).
+        return None
+    if not ONTOLOGY_ID_PATTERN.match(ontology):
+        return (f'Invalid ontology "{ontology}". Expected a CHMO OBO ID of the '
+                f'form "CHMO:0001007".')
+    return None
+
 
 is_shutdown = False
 def get_clients() -> dict[str,str] | None:
@@ -184,6 +225,9 @@ def converting_router(app: Flask, auth: HTTPBasicAuth):
         if request.files.get('file'):
             file = File(request.files.get('file'))
             ontology = request.form.get('ontology', None)
+            ontology_error = validate_ontology(ontology)
+            if ontology_error:
+                return jsonify({'error': ontology_error}), 400
             #marker = ft.start()
             reader = registry.match_reader(file, ontology=ontology)
             #marker.stop()
@@ -228,6 +272,9 @@ def converting_router(app: Flask, auth: HTTPBasicAuth):
         if request.files.get('file'):
             file = File(request.files.get('file'))
             ontology = request.form.get('ontology', None)
+            ontology_error = validate_ontology(ontology)
+            if ontology_error:
+                return jsonify({'error': ontology_error}), 400
             reader = registry.match_reader(file, ontology=ontology)
 
             if reader:
