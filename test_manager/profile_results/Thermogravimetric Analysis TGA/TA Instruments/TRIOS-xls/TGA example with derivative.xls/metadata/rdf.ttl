@@ -1,0 +1,5 @@
+@prefix chemotion: <https://chemotion.net/chemotion/#> .
+@prefix obi: <http://purl.obolibrary.org/obo/> .
+
+chemotion:TGA_with_derivative a obi:OBI_0000070 .
+

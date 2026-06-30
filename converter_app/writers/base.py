@@ -1,10 +1,23 @@
-class Writer(object):
+from abc import ABC, abstractmethod
 
+
+class Writer(ABC):
+    """
+    Processes a reader output and prepares all gained date in a single file
+    """
     def __init__(self, converter):
-        self.converter = converter
+        self.tables = [t for t in converter.tables]
+        self._converter = converter
 
-    def write(self):
-        return self.buffer.getvalue()
+    @abstractmethod
+    def write(self) -> bytes:
+        """
+        Returns the whole file content as bytes or str
+        :return: Files content to be sent
+        """
 
+    @abstractmethod
     def process(self):
-        raise NotImplementedError
+        """
+        Processes the reader output
+        """

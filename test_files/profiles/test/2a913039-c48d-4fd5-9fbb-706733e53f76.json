@@ -1,0 +1,422 @@
+{
+    "converter_version": "1.8.0",
+    "data": [
+        {
+            "metadata": {
+                "content_type": "text/plain",
+                "delimiter": "tab",
+                "doublequote": "False",
+                "extension": ".txt",
+                "file_name": "Example of UV-Vis.txt",
+                "lineterminator": "\\r\\n",
+                "mime_type": "text/plain",
+                "quotechar": "\"",
+                "quoting": "0",
+                "reader": "CSVReader",
+                "skipinitialspace": "False",
+                "uploaded": "2023-05-17T08:51:06.020005"
+            },
+            "tables": [
+                {
+                    "columns": [
+                        {
+                            "key": "0",
+                            "name": "Column #0 (XYDATA)"
+                        },
+                        {
+                            "key": "1",
+                            "name": "Column #1"
+                        }
+                    ],
+                    "header": [
+                        "TITLE\t10min_withTGA",
+                        "DATA TYPE\tULTRAVIOLET SPECTRUM",
+                        "ORIGIN\tJASCO",
+                        "OWNER\t",
+                        "DATE\t22/10/12",
+                        "TIME\t11:28:35",
+                        "SPECTROMETER/DATA SYSTEM\t",
+                        "LOCALE\t1031",
+                        "RESOLUTION\t",
+                        "DELTAX\t-0.2",
+                        "XUNITS\tNANOMETERS",
+                        "YUNITS\tABSORBANCE",
+                        "FIRSTX\t  800.0000",
+                        "LASTX\t  230.0000",
+                        "NPOINTS\t    2851",
+                        "FIRSTY\t    -0.00022",
+                        "MAXY\t     3.62801",
+                        "MINY\t    -0.00232"
+                    ],
+                    "metadata": {
+                        "__UNIT_%": "%",
+                        "__UNIT_PPM": "ppm",
+                        "__UNIT_gram": "g",
+                        "__UNIT_liter": "l",
+                        "__UNIT_mol": "mol",
+                        "column_00": "XYDATA",
+                        "columns": "2",
+                        "rows": "2851"
+                    },
+                    "rows": [
+                        [
+                            "800.0000",
+                            "-0.000222945"
+                        ],
+                        [
+                            "799.8000",
+                            "-0.000230765"
+                        ],
+                        [
+                            "799.6000",
+                            "3.65355E-006"
+                        ],
+                        [
+                            "799.4000",
+                            "-0.000224079"
+                        ],
+                        [
+                            "799.2000",
+                            "-0.000412295"
+                        ],
+                        [
+                            "799.0000",
+                            "-7.67543E-005"
+                        ],
+                        [
+                            "798.8000",
+                            "0.000238371"
+                        ],
+                        [
+                            "798.6000",
+                            "0.000229416"
+                        ],
+                        [
+                            "798.4000",
+                            "-5.50257E-005"
+                        ],
+                        [
+                            "798.2000",
+                            "-0.000115197"
+                        ]
+                    ]
+                },
+                {
+                    "columns": [],
+                    "header": [
+                        "",
+                        "##### Extended Information",
+                        "[Comments]",
+                        "Sample name\t10min_withTGA",
+                        "Comment",
+                        "User",
+                        "Division",
+                        "Company\tKarlsruhe Institute of Technology",
+                        "",
+                        "[Detailed Information]",
+                        "Creation date\t12.10.2022 11:28",
+                        "",
+                        "Data array type\tLinear data array",
+                        "Horizontal axis\tWavelength [nm]",
+                        "Vertical axis\tAbs",
+                        "Start\t800 nm",
+                        "End\t230 nm",
+                        "Data interval\t0.2 nm",
+                        "Data points\t2851    ",
+                        "",
+                        "[Measurement Information]",
+                        "Instrument name\tV-730",
+                        "Model name\tV-730",
+                        "Serial No.\tA175461798",
+                        "",
+                        "Accessory\tSTR-773",
+                        "Accessory S/N\tB013561436",
+                        "  Cell\t",
+                        "  Stirrer\tRotate",
+                        "  Ref. beam\t",
+                        "",
+                        "Measurement date\t12.10.2022 11:28",
+                        "",
+                        "Photometric mode\tAbs",
+                        "Measurement range\t800 - 230 nm",
+                        "Data interval\t0.2 nm",
+                        "Bandwidth\t1.0 nm",
+                        "Response\t0.06 sec",
+                        "Scan mode\tContinuous",
+                        "Scan speed\t400 nm/min",
+                        "Change source at\t340 nm",
+                        "Light source\tD2/WI",
+                        "Filter exchange\tStep",
+                        "Correction\tBaseline",
+                        "No. of cycles\t1",
+                        ""
+                    ],
+                    "metadata": {
+                        "columns": "0",
+                        "rows": "0"
+                    },
+                    "rows": []
+                }
+            ]
+        }
+    ],
+    "datatypes": [],
+    "description": "UV Vis INT (FI)",
+    "devices": [],
+    "diff_history": [
+        {
+            "at": "2026-04-30T12:53:58.469560+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "UV-Vis"
+                }
+            ],
+            "profile_version": "1.0",
+            "trigger": "migration:20260430145303"
+        },
+        {
+            "at": "2026-04-30T12:54:02.309192+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "UV-Vis__TEST"
+                }
+            ],
+            "profile_version": "1.1",
+            "trigger": "migration:20260430145303"
+        },
+        {
+            "at": "2026-04-30T13:02:19.682071+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "UV-Vis__TEST__TEST"
+                }
+            ],
+            "profile_version": "1.2",
+            "trigger": "restore_migration:20260430145303"
+        },
+        {
+            "at": "2026-04-30T13:02:19.683550+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "UV-Vis__TEST"
+                }
+            ],
+            "profile_version": "1.3",
+            "trigger": "restore_migration:20260430145303"
+        },
+        {
+            "at": "2026-05-04T04:59:00.277118+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "UV-Vis"
+                }
+            ],
+            "profile_version": "1.4",
+            "trigger": "undo:1.1"
+        },
+        {
+            "at": "2026-05-04T04:59:00.278656+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "UV-Vis__TEST"
+                }
+            ],
+            "profile_version": "1.5",
+            "trigger": "undo:1.0"
+        },
+        {
+            "at": "2026-05-04T04:59:00.279574+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "UV-Vis"
+                }
+            ],
+            "profile_version": "1.6",
+            "trigger": "migration:20260504065656"
+        },
+        {
+            "at": "2026-05-04T07:23:31.256126+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "UV-Vis--TEST"
+                }
+            ],
+            "profile_version": "1.7",
+            "trigger": "undo:1.6"
+        },
+        {
+            "at": "2026-05-21T11:46:01.830525+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/reactionVariations"
+                }
+            ],
+            "profile_version": "1.8",
+            "trigger": "migration:20260417132254"
+        },
+        {
+            "at": "2026-05-21T11:46:01.830732+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_%"
+                },
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_liter"
+                },
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_mol"
+                },
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_gram"
+                },
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_PPM"
+                }
+            ],
+            "profile_version": "1.9",
+            "trigger": "migration:20260422063146"
+        },
+        {
+            "at": "2026-05-21T11:46:01.831058+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/tables/0/loopType"
+                },
+                {
+                    "from": "/tables/0/inputTableIndex",
+                    "op": "move",
+                    "path": "/tables/0/table/xColumn/tableIndex"
+                },
+                {
+                    "op": "add",
+                    "path": "/tables/0/table/yColumn/tableIndex",
+                    "value": 0
+                }
+            ],
+            "profile_version": "1.10",
+            "trigger": "migration:20260506160404"
+        },
+        {
+            "at": "2026-05-21T11:46:01.831251+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/tables/0/uuid"
+                },
+                {
+                    "op": "remove",
+                    "path": "/tables/0/tableName"
+                }
+            ],
+            "profile_version": "1.11",
+            "trigger": "migration:20260513094819"
+        }
+    ],
+    "id": "2a913039-c48d-4fd5-9fbb-706733e53f76",
+    "identifiers": [
+        {
+            "editable": true,
+            "id": "#0fileMetadata",
+            "key": "reader",
+            "match": "exact",
+            "optional": false,
+            "type": "fileMetadata",
+            "value": "CSVReader"
+        },
+        {
+            "editable": true,
+            "id": "#1tableHeader",
+            "lineNumber": 2,
+            "match": "regex",
+            "optional": false,
+            "tableIndex": 0,
+            "type": "tableHeader",
+            "value": "ULTRAVIOLET SPECTRUM"
+        },
+        {
+            "editable": true,
+            "id": "#2tableHeader",
+            "lineNumber": 7,
+            "match": "exact",
+            "optional": false,
+            "tableIndex": 0,
+            "type": "tableHeader",
+            "value": "SPECTROMETER/DATA SYSTEM"
+        }
+    ],
+    "isDisabled": false,
+    "last_migration": "20260513094819",
+    "objects": [],
+    "ols": "CHMO:0000292",
+    "ontology": "",
+    "predicates": [],
+    "profile_version": "1.12",
+    "reactionVariations": {
+        "elements": [],
+        "identifiers": []
+    },
+    "rootOntology": {
+        "description": [
+            "Spectroscopy where the sample absorbs radiation in the range ultraviolet to visible (190-800 nm) resulting in electronic transitions within the sample."
+        ],
+        "id": "CHMO:properties:http://purl.obolibrary.org/obo/CHMO_0000292",
+        "iri": "http://purl.obolibrary.org/obo/CHMO_0000292",
+        "label": "ultraviolet-visible spectrophotometry",
+        "namespace": "http://purl.obolibrary.org/obo/",
+        "obo_id": "CHMO:0000292",
+        "ontology_name": "chmo",
+        "ontology_prefix": "CHMO",
+        "short_form": "CHMO_0000292",
+        "type": "class"
+    },
+    "software": [],
+    "subjectInstances": {},
+    "subjects": [],
+    "tables": [
+        {
+            "header": {
+                "DATA CLASS": "XYPOINTS",
+                "DATA TYPE": "UV-VIS",
+                "XUNITS": "wavelength (nm)",
+                "YUNITS": "ABSORBANCE"
+            },
+            "inputTableIndex": 0,
+            "loopType": "none",
+            "table": {
+                "xColumn": {
+                    "columnIndex": 0
+                },
+                "yColumn": {
+                    "columnIndex": 1
+                }
+            },
+            "tableName": "Table #1",
+            "uuid": "db501c85-c99c-4132-9af8-76a361bf94f0"
+        }
+    ],
+    "title": "UV-Vis",
+    "version": 0
+}

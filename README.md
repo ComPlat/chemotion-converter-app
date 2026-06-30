@@ -21,7 +21,7 @@ Then, the application and its dependencies can be installed:
 
 ```bash
 pip install -e .                     # installs the package in editable mode
-pip install -r requirements/dev.txt  # only needed for the development setup
+pip install .[dev]  # only needed for the development setup
 ```
 
 The application is configured using environment variables, which can be read from a `.env` file. The file `.env.dev` can be used as template. At least `FLASK_APP=converter_app.app` needs to be set.
@@ -62,7 +62,18 @@ To develop a new reader run:
 python -m converter_app new_reader
 ```
 
-For more details see the _Test Drive Development_ section in  [Test Strategy](TEST_STRATEGY.md). It explains how to develop a reader test drive.
+For more details see the _Test Drive Development_ section in  [Test Strategy](docu/TEST_STRATEGY.md). It explains how to develop a reader test drive.
+
+
+### Profile Versioning 
+
+To change the structure of profiles, you can create a new profile migration script with the following command:
+
+```shell
+python -m converter_app new_migration
+```
+
+For more details see: [Profile Versioning](docu/MIGRATION.md)
 
 Production setup
 ----------------
@@ -127,6 +138,9 @@ The guincorn server listens on the port given in the env file (default: 9000) on
     client_max_body_size 64M;  # set this to the maximum file size allowed for upload
 ```
 
+## Licenses
+
+Please see [LICENSE](./LICENSE) and [THIRD PARTY LICENSES](licenses/THIRD_PARTY_NOTICES.md)
 
 ## Acknowledgments
 

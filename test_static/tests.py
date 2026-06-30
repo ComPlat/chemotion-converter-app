@@ -67,9 +67,8 @@ def test_tar_unzip(client: FlaskClient):
         file = File(fs)
         assert file.is_tar_archive
         assert file.name == 'a.tar.gz'
-        with tempfile.TemporaryDirectory() as tmpdirname:
-            with open(os.path.join(os.path.dirname(__file__), 'a/a.txt.0'), 'r') as tf:
-                archive = extract_tar_archive(file, tmpdirname)
-                assert len(archive) == 1
-                assert archive[0].name == 'a.txt.0'
-                assert archive[0].string == tf.read()
+        with open(os.path.join(os.path.dirname(__file__), 'a/a.txt.0'), 'r') as tf:
+            archive = extract_tar_archive(file)
+            assert len(archive) == 1
+            assert archive[0].name == 'a.txt.0'
+            assert archive[0].string == tf.read()

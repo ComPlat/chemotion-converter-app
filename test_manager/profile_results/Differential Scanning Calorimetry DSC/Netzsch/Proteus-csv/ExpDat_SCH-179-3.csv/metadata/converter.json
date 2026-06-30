@@ -4,67 +4,26 @@
   "matches": [
     {
       "identifier": {
-        "key": "reader",
-        "match": "exact",
-        "optional": false,
-        "type": "fileMetadata",
-        "value": "CSVReader"
-      },
-      "result": {
-        "value": "CSVReader"
-      }
-    },
-    {
-      "identifier": {
-        "key": "column_01",
-        "match": "exact",
-        "optional": false,
-        "tableIndex": 0,
-        "type": "tableMetadata",
-        "value": "DSC/(mW/mg)"
-      },
-      "result": {
-        "value": "DSC/(mW/mg)",
-        "tableIndex": 0
-      }
-    },
-    {
-      "identifier": {
-        "key": "column_00",
-        "match": "exact",
-        "optional": false,
-        "tableIndex": 0,
-        "type": "tableMetadata",
-        "value": "##Temp./\u00b0C"
-      },
-      "result": {
-        "value": "##Temp./\u00b0C",
-        "tableIndex": 0
-      }
-    },
-    {
-      "identifier": {
-        "lineNumber": 1,
-        "match": "exact",
-        "optional": false,
-        "tableIndex": 0,
-        "type": "tableHeader",
-        "value": "#EXPORTTYPE:                 ;DATA COMPARE"
-      },
-      "result": {
-        "value": "#EXPORTTYPE:                 ;DATA COMPARE",
-        "tableIndex": 0,
-        "lineNumber": 1
-      }
-    },
-    {
-      "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#4tableHeader",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
         "lineNumber": 18,
         "match": "regex",
+        "object": null,
         "optional": true,
+        "outputDatatableKey": "sample",
         "outputKey": "sample",
         "outputLayer": "sample_details",
-        "outputTableIndex": 0,
+        "outputTableIndex": [
+          "7aa536d7-f2d5-46a0-a5a7-4ca2f98d18b5"
+        ],
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableHeader",
         "value": "#SAMPLE:\\s+;(\\S+)"
@@ -77,12 +36,26 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#5tableHeader",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
         "lineNumber": "",
         "match": "regex",
+        "object": null,
         "optional": true,
+        "outputDatatableKey": "amount",
         "outputKey": "amount",
         "outputLayer": "sample_details",
-        "outputTableIndex": 0,
+        "outputTableIndex": [
+          "7aa536d7-f2d5-46a0-a5a7-4ca2f98d18b5"
+        ],
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableHeader",
         "value": "#SAMPLE MASS \\/mg:\\s+;(\\S+)"
@@ -95,12 +68,26 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#6tableHeader",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
         "lineNumber": "",
         "match": "regex",
+        "object": null,
         "optional": true,
+        "outputDatatableKey": "date",
         "outputKey": "date",
         "outputLayer": "general",
-        "outputTableIndex": 0,
+        "outputTableIndex": [
+          "7aa536d7-f2d5-46a0-a5a7-4ca2f98d18b5"
+        ],
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableHeader",
         "value": "#DATE\\/TIME:\\s+;(\\d+.\\d+.\\d+)"
@@ -113,12 +100,26 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#7tableHeader",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
         "lineNumber": "",
         "match": "regex",
+        "object": null,
         "optional": true,
+        "outputDatatableKey": "time",
         "outputKey": "time",
         "outputLayer": "general",
-        "outputTableIndex": 0,
+        "outputTableIndex": [
+          "7aa536d7-f2d5-46a0-a5a7-4ca2f98d18b5"
+        ],
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableHeader",
         "value": "#DATE\\/TIME:\\s+;\\S+\\s(\\d+:\\d+:\\d+\\s\\S+)"
@@ -131,12 +132,26 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#8tableHeader",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
         "lineNumber": "",
         "match": "regex",
+        "object": null,
         "optional": true,
+        "outputDatatableKey": "reference",
         "outputKey": "reference",
         "outputLayer": "meas",
-        "outputTableIndex": 0,
+        "outputTableIndex": [
+          "7aa536d7-f2d5-46a0-a5a7-4ca2f98d18b5"
+        ],
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableHeader",
         "value": "#REFERENCE:\\s+;(\\S+)"
@@ -149,8 +164,17 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#9tableHeader",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
         "lineNumber": "",
         "match": "regex",
+        "object": null,
         "operations": [
           {
             "operator": ":",
@@ -158,9 +182,14 @@
           }
         ],
         "optional": true,
+        "outputDatatableKey": "reference_mass",
         "outputKey": "reference_mass",
         "outputLayer": "meas",
-        "outputTableIndex": 0,
+        "outputTableIndex": [
+          "7aa536d7-f2d5-46a0-a5a7-4ca2f98d18b5"
+        ],
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableHeader",
         "value": "REFERENCE MASS /mg:\\s+;(\\d+)"
@@ -173,12 +202,26 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#10tableHeader",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
         "lineNumber": "",
         "match": "regex",
+        "object": null,
         "optional": true,
+        "outputDatatableKey": "temp_cal",
         "outputKey": "temp_cal",
         "outputLayer": "meas",
-        "outputTableIndex": 0,
+        "outputTableIndex": [
+          "7aa536d7-f2d5-46a0-a5a7-4ca2f98d18b5"
+        ],
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableHeader",
         "value": "#TEMPCAL:\\s+;(\\S+)"
@@ -191,12 +234,26 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#11tableHeader",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
         "lineNumber": "",
         "match": "regex",
+        "object": null,
         "optional": true,
+        "outputDatatableKey": "sensFile",
         "outputKey": "sensFile",
         "outputLayer": "meas",
-        "outputTableIndex": 0,
+        "outputTableIndex": [
+          "7aa536d7-f2d5-46a0-a5a7-4ca2f98d18b5"
+        ],
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableHeader",
         "value": "#SENSITIVITY:\\s+;(\\S+)"
@@ -209,12 +266,26 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#12tableHeader",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
         "lineNumber": "",
         "match": "regex",
+        "object": null,
         "optional": true,
+        "outputDatatableKey": "segments",
         "outputKey": "segments",
         "outputLayer": "meas",
-        "outputTableIndex": 0,
+        "outputTableIndex": [
+          "7aa536d7-f2d5-46a0-a5a7-4ca2f98d18b5"
+        ],
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableHeader",
         "value": "#SEGMENT:\\s+;S(\\d*\\/\\d*)"
@@ -227,12 +298,26 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#13tableHeader",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
         "lineNumber": "",
         "match": "regex",
+        "object": null,
         "optional": true,
+        "outputDatatableKey": "brand",
         "outputKey": "brand",
         "outputLayer": "instrument",
-        "outputTableIndex": 0,
+        "outputTableIndex": [
+          "7aa536d7-f2d5-46a0-a5a7-4ca2f98d18b5"
+        ],
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableHeader",
         "value": "#INSTRUMENT:\\s+;(\\S+)\\s"
@@ -245,12 +330,26 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#14tableHeader",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
         "lineNumber": "",
         "match": "regex",
+        "object": null,
         "optional": true,
+        "outputDatatableKey": "instrument",
         "outputKey": "instrument",
         "outputLayer": "instrument",
-        "outputTableIndex": 0,
+        "outputTableIndex": [
+          "7aa536d7-f2d5-46a0-a5a7-4ca2f98d18b5"
+        ],
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableHeader",
         "value": "#INSTRUMENT:\\s+;\\S+\\s(\\S+\\s\\d+)"
@@ -263,12 +362,26 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#15tableHeader",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
         "lineNumber": "",
         "match": "regex",
+        "object": null,
         "optional": true,
+        "outputDatatableKey": "crucible",
         "outputKey": "crucible",
         "outputLayer": "set",
-        "outputTableIndex": 0,
+        "outputTableIndex": [
+          "7aa536d7-f2d5-46a0-a5a7-4ca2f98d18b5"
+        ],
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableHeader",
         "value": "#TYPE OF CRUCIBLE:\\s+;(.*)"
@@ -281,12 +394,26 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#16tableHeader",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
         "lineNumber": "",
         "match": "regex",
+        "object": null,
         "optional": true,
+        "outputDatatableKey": "atmosphere",
         "outputKey": "atmosphere",
         "outputLayer": "set",
-        "outputTableIndex": 0,
+        "outputTableIndex": [
+          "7aa536d7-f2d5-46a0-a5a7-4ca2f98d18b5"
+        ],
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableHeader",
         "value": "#PROTECTIVE MFC:\\s+;(.*)"
@@ -299,8 +426,17 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#17tableHeader",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
         "lineNumber": "",
         "match": "regex",
+        "object": null,
         "operations": [
           {
             "operator": ":",
@@ -308,9 +444,14 @@
           }
         ],
         "optional": true,
+        "outputDatatableKey": "range",
         "outputKey": "range",
         "outputLayer": "set",
-        "outputTableIndex": 0,
+        "outputTableIndex": [
+          "7aa536d7-f2d5-46a0-a5a7-4ca2f98d18b5"
+        ],
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableHeader",
         "value": "#M.RANGE /\u00b5V:\\s+;(\\d*)"
@@ -323,12 +464,26 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#18tableHeader",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
         "lineNumber": "",
         "match": "regex",
+        "object": null,
         "optional": true,
+        "outputDatatableKey": "temperature",
         "outputKey": "temperature",
         "outputLayer": "set",
-        "outputTableIndex": 0,
+        "outputTableIndex": [
+          "7aa536d7-f2d5-46a0-a5a7-4ca2f98d18b5"
+        ],
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableHeader",
         "value": "#RANGE:\\s+;(.*)"
@@ -341,12 +496,26 @@
     },
     {
       "identifier": {
+        "datatype": null,
+        "editable": true,
+        "id": "#19tableHeader",
+        "isDatasetOutput": true,
+        "isDatatableOutput": true,
+        "isFirstMatch": true,
+        "isLoobDatatableOutput": true,
+        "isRdfOutput": false,
         "lineNumber": "",
         "match": "regex",
+        "object": null,
         "optional": true,
+        "outputDatatableKey": "operator",
         "outputKey": "operator",
         "outputLayer": "general",
-        "outputTableIndex": 0,
+        "outputTableIndex": [
+          "7aa536d7-f2d5-46a0-a5a7-4ca2f98d18b5"
+        ],
+        "predicate": null,
+        "subject": null,
         "tableIndex": 0,
         "type": "tableHeader",
         "value": "#IDENTITY:\\s+;(\\S{2,3})"
@@ -355,18 +524,6 @@
         "value": "SCH",
         "tableIndex": 0,
         "lineNumber": 2
-      }
-    },
-    {
-      "identifier": {
-        "key": "extension",
-        "match": "exact",
-        "optional": false,
-        "type": "fileMetadata",
-        "value": ".csv"
-      },
-      "result": {
-        "value": ".csv"
       }
     }
   ],

@@ -1,4 +1,6 @@
 """Array Constant definitions for dropdown select options"""
+import importlib
+import json
 
 DATA_TYPES = (
     'CIRCULAR DICHROISM SPECTROSCOPY',
@@ -16,6 +18,7 @@ DATA_TYPES = (
     'INFRARED SPECTRUM',
     'INFRARED TRANSFERED SPECTRUM',
     'MASS SPECTRUM',
+    'MASS TIC',
     'NMP PEAK ASSIGNMENTS',
     'NMR FID',
     'NMR PEAK TABLE',
@@ -24,6 +27,7 @@ DATA_TYPES = (
     'SINGLE CRYSTAL X-RAY DIFFRACTION',
     'SIZE EXCLUSION CHROMATOGRAPHY',
     'SORPTION-DESORPTION MEASUREMENT',
+    'SQUID',
     'TENSIOMETRY',
     'THERMOGRAVIMETRIC ANALYSIS',
     'UV-VIS',
@@ -34,18 +38,24 @@ DATA_TYPES = (
 DATA_CLASSES = (
     'XYPOINTS',
     'XYDATA',
-    'PEAK TABLE',
-    'NTUPLES',
+    'PEAK TABLE'
+)
+
+DATA_LOOP_CLASSES = (
+    'MULTI FILE',
+    'SINGLE FILE (NTUPLES)'
 )
 
 XUNITS = (
     '%',
     '1/CM',
     '2Theta',
+    'Ampere',
     'DEGREES CELSIUS',
     'G/MOL',
     'Hydrodynamic diameter (nm)',
     'HZ',
+    'KELVIN',
     'KILOGRAM',
     'kPa',
     'Lag time (microseconds)',
@@ -56,7 +66,8 @@ XUNITS = (
     'MINUTES',
     'MOLECULAR MASS / DA',
     'NANOMETERS',
-    'p/p0', # Normalaized dimension
+    'OHM',
+    'p/p0',  # Normalaized dimension
     'SECONDS',
     'Voltage in V',
     'Voltage vs Ref',
@@ -69,6 +80,7 @@ YUNITS = (
     'ACF (a.u.)',
     'Ampere',
     'ARBITRARY UNITS',
+    'cm³*K',  # non-molar Susceptibility χ -> needs to be divided by amount of substance to get χ_m
     'Current in A',
     'COUNTS',
     'DEGREES CELSIUS',
@@ -82,10 +94,12 @@ YUNITS = (
     'Molar Extinction (cm2/mmol) ',
     'Newton',
     'N/M2',
+    'OHM',
     'REFLECTANCE',
     'relative intensity (%)',
     'SIGNAL',
     'TRANSMITTANCE',
+    'Voltage in V',
     'W/g',
     'WEIGHT',
     'Weight %',
@@ -94,6 +108,13 @@ YUNITS = (
 OPTIONS = {
     'DATA TYPE': DATA_TYPES,
     'DATA CLASS': DATA_CLASSES,
+    'DATA_LOOP_CLASSES': DATA_LOOP_CLASSES,
     'XUNITS': XUNITS,
     'YUNITS': YUNITS,
+    'VERSION': importlib.metadata.version('chemotion-converter-app')
 }
+
+def compose_options(rdf_path):
+    with open(rdf_path, 'r') as fp:  #
+        rdf_content = json.load(fp)
+    return OPTIONS | {'rdf': rdf_content}

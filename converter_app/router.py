@@ -8,35 +8,43 @@ users with the capability to effortlessly create profiles for the conversion pro
 """
 import json
 import os
+import time
 from pathlib import Path
 
-from flask import Flask, Response, abort, jsonify, make_response, request
+import jsonschema
+from flask import Flask, Response, abort, jsonify, make_response, request, send_file
 from flask_cors import CORS
 from flask_httpauth import HTTPBasicAuth
+from werkzeug.exceptions import NotFound
 
 from converter_app.converters import Converter
 from converter_app.datasets import Dataset
 from converter_app.models import File, Profile
-from converter_app.options import OPTIONS
+from converter_app.options import compose_options
+from converter_app.profile_migration.utils.registration import Migrations
 from converter_app.readers import READERS as registry
-from converter_app.utils import checkpw
-from converter_app.writers.jcamp import JcampWriter
-from converter_app.writers.jcampzip import JcampZipWriter
+from converter_app.utils import checkpw, run_conversion, get_app_root, str_to_bool, FunctionTimer
+from converter_app.validation import validate_profile
 
-
-def get_clients() -> dict[str:str] | None:
+is_shutdown = False
+def get_clients() -> dict[str,str] | None:
     """
     opens (plain) htpasswd file for the clients. Generates dict
     with username->password
     :return: Dict with username->password
     """
+    if os.getenv('IS_CLI', False):
+        return {'cli': ''}
     htpasswd_path = os.getenv('HTPASSWD_PATH')
     if htpasswd_path:
         clients = {}
         with open(htpasswd_path, encoding='utf8') as fp:
             for line in fp.readlines():
-                username, password = line.strip().split(':')
-                clients[username] = password
+                try:
+                    username, password = line.strip().split(':')
+                    clients[username] = password
+                except ValueError:
+                    pass
     else:
         return None
     return clients
@@ -67,8 +75,12 @@ def auth_router(app: Flask) -> HTTPBasicAuth:
 
     @auth.verify_password
     def verify_password(username, password):
+        if "PYTEST_CURRENT_TEST" in os.environ:
+            return 'test'
         if not app.config['CLIENTS']:
             return 'dev'
+        if os.getenv('IS_CLI', False):
+            return 'cli'
         hashed_password = get_clients().get(username)
         if hashed_password is not None:
             if checkpw(password.encode(), hashed_password.encode()):
@@ -86,12 +98,69 @@ def converting_router(app: Flask, auth: HTTPBasicAuth):
     :param auth: Flask HTTPBasicAuth
     """
 
-    @app.route('/', methods=['GET'])
-    def root():
-        '''
-        Utility endpoint: Just return ok
-        '''
-        return make_response(jsonify({'status': 'ok'}), 200)
+
+    if not os.getenv('IS_CLI', False):
+        @app.route('/', methods=['GET'])
+        def root():
+            '''
+            Utility endpoint: Just return ok
+            '''
+            return make_response(jsonify({'status': 'ok'}), 200)
+    else:
+        index_root = get_app_root() / "client_build"
+        admin_root = index_root / "admin"
+        if os.getenv('IS_CLI_HOST', False):
+
+            @app.route('/admin', methods=['GET'])
+            def index_admin():
+                return send_file(admin_root / "index.html")
+
+            @app.route('/', methods=['GET'])
+            def index():
+                return send_file(index_root / "index.html")
+        else:
+            @app.route('/', methods=['GET'])
+            def index():
+                return send_file(admin_root / "index.html")
+
+        @app.before_request
+        def auto_cancel_on_activity():
+            # Cancel shutdown if ANY route except /shutdown is called
+            from flask import request
+            if request.endpoint != "shutdown":
+                global is_shutdown
+                is_shutdown = False
+
+        @app.route("/shutdown", methods=["POST", "GET"])
+        def shutdown():
+            global is_shutdown
+            import signal
+            import time
+            import threading
+
+            is_shutdown = True
+            def delayed_shutdown():
+                time.sleep(2)
+                if is_shutdown:
+                    os.kill(os.getpid(), signal.SIGINT)
+
+            threading.Thread(target=delayed_shutdown).start()
+            return "Server will shut down in 2 seconds..."
+
+        @app.route("/admin/<string:filename>")
+        def assets_admin(filename):
+            full_path = admin_root / filename
+            if not full_path.exists():
+                raise NotFound()
+            return send_file(full_path)
+
+        @app.route("/<string:filename>")
+        def assets(filename):
+            full_path = index_root / filename
+            if not full_path.exists():
+                raise NotFound()
+            return send_file(full_path)
+
 
     @app.route('/client', methods=['GET'])
     @auth.login_required
@@ -108,48 +177,45 @@ def converting_router(app: Flask, auth: HTTPBasicAuth):
         Simple View: upload file, convert to table, search for profile,
         return jcamp based on profiledescription
         '''
+
+        # ft = FunctionTimer()
         client_id = auth.current_user()
         error_msg = 'No file provided.'
         if request.files.get('file'):
             file = File(request.files.get('file'))
+            #marker = ft.start()
             reader = registry.match_reader(file)
+            #marker.stop()
             error_msg = 'Your file could not be processed. No Reader available!'
 
             if reader:
+                #marker = ft.start()
                 reader.process()
+                #marker.stop()
+                #marker = ft.start()
                 converter = Converter.match_profile(client_id, reader.as_dict)
-
-                return _run_conversion(converter, file)
+                #marker.stop()
+                #marker = ft.start()
+                result = _run_conversion(converter, file)
+                #marker.stop()
+                #ft.print()
+                return result
         return jsonify({'error': error_msg}), 400
 
     def _run_conversion(converter, file):
-        if converter:
-            converter.process()
+        conversion_format = request.form.get('format', 'jcampzip')
+        try:
+            writer = run_conversion(converter, conversion_format)
+        except AssertionError as e:
+            return jsonify({'error': 'There was an error while converting your file.'}), 400
+        except ValueError as e:
+            return jsonify({'error': e.__str__()}), 400
 
-            conversion_format = request.form.get('format', 'jcampzip')
-            if conversion_format == 'jcampzip':
-                writer = JcampZipWriter(converter)
-            elif conversion_format == 'jcamp':
-                if len(converter.tables) == 1:
-                    writer = JcampWriter(converter)
-                else:
-                    return jsonify({
-                        'error':
-                            'Conversion to a single JCAMP file is not supported for this file.'
-                    }), 400
-            else:
-                return jsonify({'error': 'Conversion format is not supported.'}), 400
-            try:
-                writer.process()
-            except AssertionError:
-                return jsonify({'error': 'There was an error while converting your file.'}), 400
+        file_name = Path(file.name).with_suffix(writer.suffix)
 
-            file_name = Path(file.name).with_suffix(writer.suffix)
-
-            response = Response(writer.write(), mimetype=writer.mimetype)
-            response.headers['Content-Disposition'] = f'attachment;filename={file_name}'
-            return response
-        return jsonify({'error': 'Your file could not be processed. No Profile available!'}), 400
+        response = Response(writer.write(), mimetype=writer.mimetype)
+        response.headers['Content-Disposition'] = f'attachment;filename={file_name}'
+        return response
 
     @app.route('/tables', methods=['POST'])
     @auth.login_required
@@ -197,8 +263,14 @@ def profile_router(app: Flask, auth: HTTPBasicAuth):
         profile_data = json.loads(request.data)
         profile = Profile(profile_data, client_id)
         if profile.clean():
-            profile.save()
-            return jsonify(profile.as_dict), 201
+            Migrations().migrate_profile(profile, True)
+            try:
+                validate_profile(profile.as_dict)
+                profile.save()
+                return jsonify(profile.as_dict), 201
+            except jsonschema.exceptions.ValidationError as e:
+                    profile.errors['Validation'] = "Profile is not valid!"
+                    profile.errors['Validation Message'] = e.__str__()
         return jsonify(profile.errors), 400
 
     @app.route('/profiles/<profile_id>', methods=['GET'])
@@ -223,8 +295,14 @@ def profile_router(app: Flask, auth: HTTPBasicAuth):
                 return jsonify({'error': 'Bad request'}), 400
 
             if profile.clean():
-                profile.save()
-                return jsonify(profile.as_dict), 200
+                Migrations().migrate_profile(profile, add_history=False)
+                try:
+                    validate_profile(profile.as_dict)
+                    profile.save()
+                    return jsonify(profile.as_dict), 200
+                except jsonschema.exceptions.ValidationError as e:
+                    profile.errors['Validation'] = "Profile is not valid!"
+                    profile.errors['ValidationMsg'] = e.__str__()
             return jsonify(profile.errors), 400
         abort(404)
         return None
@@ -239,6 +317,22 @@ def profile_router(app: Flask, auth: HTTPBasicAuth):
             return '', 204
         abort(404)
         return None
+
+    @app.route('/profiles/restore/<profile_id>/<version>', methods=['POST'])
+    @auth.login_required
+    def restore_profile(profile_id, version):
+        hard = str_to_bool(json.loads(request.data).get("hard"))
+        client_id = auth.current_user()
+        profile = Profile.retrieve(client_id, profile_id)
+        if not profile:
+            abort(404)
+        try:
+            profile.restore(version, hard)
+        except ValueError as e:
+            return jsonify({'error': str(e)}), 404
+        except RuntimeError as e:
+            return jsonify({'error': str(e)}), 409
+        return jsonify(profile.as_dict), 200
 
 
 def utils_router(app: Flask, auth: HTTPBasicAuth):
@@ -258,7 +352,7 @@ def utils_router(app: Flask, auth: HTTPBasicAuth):
     @app.route('/options', methods=['GET'])
     @auth.login_required
     def list_options():
-        return jsonify(OPTIONS), 200
+        return jsonify(compose_options(app.config['RDF_JSON'])), 200
 
 
 def setup_flask_routing(app: Flask):

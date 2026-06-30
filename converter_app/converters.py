@@ -1,8 +1,9 @@
-import copy
 import datetime
 import logging
 import os
 import re
+from collections import defaultdict
+from typing import LiteralString
 
 from converter_app.models import Profile
 
@@ -15,93 +16,199 @@ class CalculationError(Exception):
 
 class Converter:
     """
-    Converter object checks if profile matches to filedata and runs the converting process
+    Converter object checks if the profile matches to filedata and runs the converting process
     """
 
     def __init__(self, profile, file_data):
+        self._output_index_offset = None
+        self._has_loop_cache = None
+        self._joined_headers = None
         self.profile = profile
         self.matches = []
-        self.tables = []
+        self.reaction_variation_matches = []
+        self._tables = defaultdict(list)
         self.file_metadata = file_data.get('metadata', {})
         self.input_tables = file_data.get('tables', [])
         self.attachments = file_data.get('attachments', [])
-
-        if self.profile.data.get('matchTables'):
-            self._prepare_identifier()
-            self._prepare_tables()
-        else:
-            self.output_tables = self.profile.data.get('tables', [])
-            self.identifiers = self.profile.data.get('identifiers', [])
-
-    def _prepare_tables(self):
-        profile_output_tables = self.profile.data.get('tables', [])
-
-        # match the output Table to the input tables and adjust the tableIndexes to the input table
+        self.profile_output_tables = self.profile.data.get('tables', [])
         self.output_tables = []
-        for input_table_index, _ in enumerate(self.input_tables):
-            output_table = copy.deepcopy(profile_output_tables[0])
-            output_table_table = output_table.get('table')
-            if output_table_table:
-                if 'xColumn' in output_table_table:
-                    output_table_table['xColumn']['tableIndex'] = input_table_index
-                if 'xColumn' in output_table_table:
-                    output_table_table['yColumn']['tableIndex'] = input_table_index
-                for x_operation in output_table_table.get('xOperations', []):
-                    if 'column' in x_operation:
-                        x_operation['column']['tableIndex'] = input_table_index
-                for y_operation in output_table_table.get('yOperations', []):
-                    if 'column' in y_operation:
-                        y_operation['column']['tableIndex'] = input_table_index
 
-            self.output_tables.append(output_table)
+        self.identifiers = self._prepare_identifier()
+        self._reaction_variation_identifiers = self._prepare_reaction_variation_identifier()
+
+    def get_matches(self, rdf=False, dataset=False):
+        return_matches = []
+        for match in self.matches:
+            if rdf and match['identifier']['isRdfOutput']:
+                return_matches.append(match)
+            if dataset and match['identifier']['isDatasetOutput']:
+                return_matches.append(match)
+        return return_matches
+
+    def prepare(self):
+        # Precomputed once so the loop helpers don't redo the same
+        # (output_index, input_index) work on every call. Without these,
+        # _get_output_table_index re-scans every output/input pair on every
+        # invocation and _check_loop_condition is repeated for the same
+        # arguments from _prepare_identifier, _prepare_tables, and
+        # _get_output_table_index — quadratic-to-cubic with looped tables.
+        self._joined_headers = [
+            os.linesep.join(t.get('header', [])).rstrip() for t in self.input_tables
+        ]
+        self._has_loop_cache = {
+            i: self._compute_has_loop(i) for i in range(len(self.profile_output_tables))
+        }
+
+        self.matches = self._resolve_all_identifiers(self.identifiers)
+
+    @property
+    def tables(self):
+        sorted_items = sorted(
+            self._tables.items(),
+            key=lambda item: item[0][0]
+        )
+
+        for (tb_idx, keys), out_table_res in sorted_items:
+            output_table = self.profile_output_tables[tb_idx]
+            is_ntuples = output_table.get('loopOutput') == 'SINGLE FILE (NTUPLES)' and output_table['loopType'] != 'none'
+            if is_ntuples:
+                yield out_table_res
+            else:
+                for table in out_table_res:
+                    yield table
+
+    def _prepare_reaction_variation_identifier(self):
+        return self.profile.data.get('reactionVariations', {}).get('identifiers', [])
 
     def _prepare_identifier(self):
-        profile_identifiers = self.profile.data.get('identifiers', [])
-        self.identifiers = []
-        for identifier in profile_identifiers:
-            if identifier.get('outputTableIndex') is None:
-                # if no outputTableIndex was set this identifier is valid for every table
-                # no adjustment has to be done
-                self.identifiers.append(identifier)
-            else:
-                # adjust this identifier for every input table
-                for input_table_index, _ in enumerate(self.input_tables):
-                    # make a copy of the identifier and adjust the outputTableIndex
-                    identifier_copy = copy.deepcopy(identifier)
-                    identifier_copy['outputTableIndex'] = input_table_index
+        return self.profile.data.get('identifiers', [])
 
-                    # adjust the (input)tableIndex as well if it was not null
-                    if identifier_copy.get('tableIndex') is not None:
-                        identifier_copy['tableIndex'] = input_table_index
+    def _compute_has_loop(self, index):
+        if len(self.profile_output_tables) <= index:
+            return False
+        return self.profile_output_tables[index].get('loopType') != 'none'
 
-                    self.identifiers.append(identifier_copy)
+    def _compute_check_loop_condition(self, index, input_table_index):
+        """
+        Return a tuple that says whether this output table should process the
+        current input table. The first item is the match flag; remaining items
+        are grouping values used to build the output table key.
+        """
+        # "all" loop tables accept every input table without further checks.
+        if self.profile_output_tables[index].get('loopType') == 'all':
+            return (True, )
+
+        if self.profile_output_tables[index].get('loopType') != 'none':
+            # For looped tables, every configured loop selector must match the
+            # input table. Group selectors append their value to group_values so
+            # matching input tables are collected into the same output bucket.
+            group_values = [True]
+            loop_header = self.profile_output_tables[index]['table'].get('loop_header', [])
+            for header in loop_header:
+                if not header.get('column'):
+                    return (False, )
+                column_name = header['column']
+
+                # loop_header entries require a column with the configured name
+                # to exist in the candidate input table.
+                has_col_name = any(
+                    col.get('name') == column_name for col in self.input_tables[input_table_index].get('columns', []))
+                if not has_col_name:
+                    return (False, )
+
+            loop_theader = self.profile_output_tables[index]['table'].get('loop_theader', [])
+            for theader in loop_theader:
+                # Header regex selectors must match. Unless ignoreValue is set,
+                # the captured value becomes part of the grouping key.
+                match, _ = self._search_regex(theader, input_table_index)
+                if not match:
+                    return (False, )
+                if not theader.get('ignoreValue'):
+                    group_values.append(match)
+
+            loop_metadata = self.profile_output_tables[index]['table'].get('loop_metadata', [])
+            for metadata in loop_metadata:
+                # Metadata selectors can either contribute a grouping value or
+                # require an exact metadata value on the input table.
+                if not metadata.get('metadata'):
+                    return (False, )
+                key = metadata.get('metadata')
+                if not key in self.input_tables[input_table_index].get('metadata', {}):
+                    return (False, )
+                match_mode = metadata.get('matchMode')
+                if match_mode == 'group':
+                    value = self.input_tables[input_table_index].get('metadata', {}).get(key, None)
+                    group_values.append(value)
+                if match_mode == 'exact':
+                    value = self.input_tables[input_table_index].get('metadata', {}).get(key, None)
+                    if metadata.get('value') != value:
+                        return (False, )
+
+            return tuple(group_values)
+        elif input_table_index == self.profile_output_tables[index]['inputTableIndex']:
+            # Non-looped tables only process their configured input table.
+            return (True, )
+        return (False, )
 
     def match(self):
+        matches = self._match(self.identifiers)
+        if isinstance(matches, list):
+            return len(self._match(self.identifiers))
+        return False
+
+    def match_reaction_variation_identifier(self):
+        self.reaction_variation_matches = self._resolve_all_identifiers(self._reaction_variation_identifiers)
+
+    def _match(self, identifiers):
         """
 
         :return:
         """
-        for identifier in self.identifiers:
-            match = self.match_identifier(identifier)
-            if match is False and not identifier.get('optional'):
-                # return immediately if one (non optional) identifier does not match
-                return False
 
-            if match and 'value' in match:
-                match_operations = identifier.get('operations', [])
-                for match_operation in match_operations:
-                    match['value'] = self._run_identifier_operation(match['value'], match_operation)
+        matches = []
+        for identifier in identifiers:
+            if not identifier.get('optional'):
+                match = self.match_identifier(identifier)
+                if match is False:
+                    return False
 
-            # store match
-            self.matches.append({
-                'identifier': identifier,
-                'result': match
-            })
+                # store match
+                matches.append(match)
 
         # if everything matched, return how many identifiers matched
-        return len(self.matches)
+        return matches
 
-    def match_identifier(self, identifier):
+    def _resolve_all_identifiers(self, identifiers):
+        """
+
+        :return:
+        """
+
+        matches = []
+        for identifier in identifiers:
+
+            if identifier.get('optional'):
+                # return immediately if one (non optional) identifier does not match
+
+                match = self._resolve_identifier(identifier)
+                # store match
+                matches.append({
+                    'identifier': identifier,
+                    'result': match
+                })
+
+        # if everything matched, return how many identifiers matched
+        return matches
+
+    def _resolve_identifier(self, identifier, in_idx=None):
+        match = self.match_identifier(identifier, in_idx)
+        if match and 'value' in match:
+            match_operations = identifier.get('operations', [])
+            for match_operation in match_operations:
+                match['value'] = self._run_identifier_operation(match['value'], match_operation)
+        return match
+
+    def match_identifier(self, identifier, in_idx=None):
         """
         Checks if single identifier matches
         :param identifier: Identifier profile object
@@ -110,9 +217,9 @@ class Converter:
         if identifier.get('type') == 'fileMetadata':
             return self._match_file_metadata(identifier, self.file_metadata)
         if identifier.get('type') == 'tableMetadata':
-            return self._match_table_metadata(identifier, self.input_tables)
+            return self._match_table_metadata(identifier, self.input_tables, in_idx)
         if identifier.get('type') == 'tableHeader':
-            return self._match_table_header(identifier, self.input_tables)
+            return self._match_table_header(identifier, self.input_tables, in_idx)
 
         return False
 
@@ -128,9 +235,10 @@ class Converter:
 
         return False
 
-    def _match_table_metadata(self, identifier, input_tables):
-        input_table_index = identifier.get('tableIndex')
-        input_table = self.get_input_table(input_table_index, input_tables)
+    def _match_table_metadata(self, identifier, input_tables, input_table_index=None):
+        if input_table_index is None:
+            input_table_index = identifier.get('tableIndex')
+        input_table = input_tables[input_table_index]
         if input_table is not None:
             input_key = identifier.get('key', None)
             input_value = input_table.get('metadata', {}).get(input_key, None)
@@ -144,9 +252,10 @@ class Converter:
 
         return False
 
-    def _match_table_header(self, identifier, input_tables):
-        input_table_index = identifier.get('tableIndex')
-        input_table = self.get_input_table(input_table_index, input_tables)
+    def _match_table_header(self, identifier, input_tables, input_table_index=None):
+        if input_table_index is None:
+            input_table_index = identifier.get('tableIndex')
+        input_table = input_tables[input_table_index]
         if input_table is not None:
             # try to get the line_number from the identifier
             try:
@@ -187,16 +296,7 @@ class Converter:
         if value is not None:
             value = str(value)
             if identifier.get('isRegex') or identifier.get('match') == 'regex':
-                pattern = identifier.get('value')
-                match = re.search(pattern, str(value))
-                logger.debug('match_value pattern="%s" value="%s" match=%s', pattern, value, bool(match))
-                if match:
-                    try:
-                        return match.group(1).strip()
-                    except IndexError:
-                        return match.group(0).strip()
-                else:
-                    return False
+                return self._solve_regex(identifier.get('value'), value)
             elif identifier.get('match') == 'any':
                 logger.debug('match_value identifier="%s", value="any" result=%s', identifier.get('value'), bool(value))
                 return value if value else False
@@ -209,115 +309,204 @@ class Converter:
         else:
             return False
 
-    def process(self):
-        """
-        Runs converting process
-        :return:
-        """
-        for output_table_index, output_table in enumerate(self.output_tables):
-            header = self._process_prepare_header(output_table)
-
-            self._process_prepare_metadata(header, output_table_index)
-
-            x_column = output_table.get('table', {}).get('xColumn')
-            y_column = output_table.get('table', {}).get('yColumn')
-            x_operations = output_table.get('table', {}).get('xOperations', [])
-            y_operations = output_table.get('table', {}).get('yOperations', [])
-
-            # repare rows
-            x_rows = []
-            y_rows = []
-            for operation in x_operations:
-                if operation.get('type') == 'column':
-                    operation['rows'] = []
-            for operation in y_operations:
-                if operation.get('type') == 'column':
-                    operation['rows'] = []
-
-            self._process_prepare_data(x_column, x_operations, x_rows, y_column, y_operations, y_rows)
-
-            applied_operators = {
-                "applied_x_operator": False,
-                "applied_y_operator": False,
-                "applied_operator_failed": False,
-                "x_operations_description": output_table.get('table', {}).get('xOperationsDescription'),
-                "y_operations_description": output_table.get('table', {}).get('yOperationsDescription')
-            }
+    @staticmethod
+    def _solve_regex(pattern, value: str) -> LiteralString | str | bool:
+        if str(pattern).startswith('^') or str(pattern).endswith('$'):
+            match = re.search(pattern, str(value), re.MULTILINE)
+        else:
+            match = re.search(pattern, str(value))
+        logger.debug('match_value pattern="%s" value="%s" match=%s', pattern, f'{value[:10]}...', bool(match))
+        if match:
             try:
-                for operation in x_operations:
-                    applied_operators["applied_x_operator"] |= self._run_operation(x_rows, operation)
-                for operation in y_operations:
-                    applied_operators["applied_y_operator"] |= self._run_operation(y_rows, operation)
-            except CalculationError:
-                applied_operators['applied_x_operator'] = applied_operators['applied_y_operator'] = False
-                applied_operators['applied_operator_failed'] = True
-                x_rows = []
-                y_rows = []
+                return match.group(1).strip()
+            except IndexError:
+                return match.group(0).strip()
+        else:
+            return False
 
+    def get_reaction_variation_matches(self):
+        values = []
+        for [sample_id, value_id, unit_id] in self.profile.data.get('reactionVariations', {}).get('elements', []):
+            value = next((x for x in self.reaction_variation_matches if x['identifier']['id'] == value_id), {}).get(
+                'result', {}).get('value')
+            sample = next((x for x in self.reaction_variation_matches if x['identifier']['id'] == sample_id), {}).get(
+                'result', {}).get('value')
+            unit = next((x for x in self.reaction_variation_matches if x['identifier']['id'] == unit_id), {}).get(
+                'result', {}).get('value')
+            values.append([sample, value, unit])
+        return {
+            'samples': values
+        }
 
-            self.tables.append({
-                'header': header,
-                'x': x_rows,
-                'y': y_rows
-            } | applied_operators)
+    def process(self):
+        self.prepare()
+        ntuples_header = dict()
+        for in_idx in range(len(self.input_tables)):
+            for output_table_index, output_table in enumerate(self.profile_output_tables):
+                group_values = self._compute_check_loop_condition(output_table_index, in_idx)
+                if group_values[0]:
+                    output_table_key = (output_table_index, group_values)
+                    header = self._process_prepare_header(output_table, output_table_key, in_idx, ntuples_header)
+                    table_data = output_table.get('table', {})
+                    x_column = table_data.get('xColumn')
+                    y_column = table_data.get('yColumn')
+                    x_operations = table_data.get('xOperations', [])
+                    y_operations = table_data.get('yOperations', [])
 
-    def _process_prepare_data(self, x_column, x_operations, x_rows, y_column, y_operations, y_rows):
-        for table_index, table in enumerate(self.input_tables):
-            for _, row in enumerate(table['rows']):
-                for column_index, _ in enumerate(table['columns']):
-                    if x_column and \
-                            table_index == x_column.get('tableIndex') and \
-                            column_index == x_column.get('columnIndex'):
-                        x_rows.append(self.get_value(row, column_index))
-
-                    if y_column and \
-                            table_index == y_column.get('tableIndex') and \
-                            column_index == y_column.get('columnIndex'):
-                        y_rows.append(self.get_value(row, column_index))
-
+                    # --- Prepare rows (reuse existing lists if possible) ---
                     for operation in x_operations:
-                        if operation.get('type') == 'column' and \
-                                table_index == operation.get('column', {}).get('tableIndex') and \
-                                column_index == operation.get('column', {}).get('columnIndex'):
-                            operation['rows'].append(self.get_value(row, column_index))
-
+                        if operation.get('type') == 'column':
+                            operation['rows'] = []
                     for operation in y_operations:
-                        if operation.get('type') == 'column' and \
-                                table_index == operation.get('column', {}).get('tableIndex') and \
-                                column_index == operation.get('column', {}).get('columnIndex'):
-                            operation['rows'].append(self.get_value(row, column_index))
+                        if operation.get('type') == 'column':
+                            operation['rows'] = []
+                    x_rows = self._process_prepare_data(x_column, x_operations, in_idx)
+                    y_rows = self._process_prepare_data(y_column, y_operations, in_idx)
 
+                    # --- Prepare data ---
 
-    def _process_prepare_metadata(self, header, output_table_index):
+                    # --- Apply operations ---
+                    applied_operators = {
+                        "applied_x_operator": False,
+                        "applied_y_operator": False,
+                        "applied_operator_failed": False,
+                        "x_operations_description": table_data.get('xOperationsDescription'),
+                        "y_operations_description": table_data.get('yOperationsDescription')
+                    }
+
+                    try:
+                        for operation in x_operations:
+                            applied_operators["applied_x_operator"] |= self._run_operation(x_rows, operation, in_idx)
+                        for operation in y_operations:
+                            applied_operators["applied_y_operator"] |= self._run_operation(y_rows, operation, in_idx)
+                    except CalculationError:
+                        applied_operators['applied_x_operator'] = False
+                        applied_operators['applied_y_operator'] = False
+                        applied_operators['applied_operator_failed'] = True
+                        x_rows.clear()
+                        y_rows.clear()
+
+                    # --- Append table efficiently ---
+                    table_dict = {
+                        'header': header,
+                        'x': x_rows,
+                        'y': y_rows
+                    }
+                    table_dict.update(applied_operators)
+
+                    self._tables[output_table_key].append(table_dict)
+
+    def _process_prepare_data(self, column, operations, in_idx):
+        """
+        Efficiently fills rows and operation rows using direct table/column access.
+        Avoids scanning all input tables and columns.
+        """
+
+        def check_indexes(tabel_index, column_index):
+            if len(self.input_tables) <= tabel_index:
+                return False
+            tabel = self.input_tables[table_index]
+            if len(tabel['rows']) == 0:
+                return False
+            row = tabel['rows'][0]
+            if len(row) <= column_index:
+                return False
+            return True
+
+        rows = []
+
+        # --- Fill x_rows directly ---
+        if column:
+            table_index = in_idx
+            col_index = column['columnIndex']
+            if check_indexes(table_index, col_index):
+                table = self.input_tables[table_index]
+                for row in table['rows']:
+                    rows.append(self.get_value(row, col_index))
+
+        # --- Fill x_operations rows directly ---
+        for operation in operations:
+            if operation.get('type') == 'column' and operation.get('column'):
+                col = operation['column']
+                col_index = col['columnIndex']
+                table_index = in_idx
+                if check_indexes(table_index, col_index):
+                    table = self.input_tables[table_index]
+                    op_rows = operation.setdefault('rows', [])
+                    for row in table['rows']:
+                        op_rows.append(self.get_value(row, col_index))
+        return rows
+
+    def _process_prepare_metadata(self, header, output_table, in_idx, is_ntuples):
         # merge the metadata from the profile (header) with the metadata
         # extracted using the identifiers (see self.match)
         for match in self.matches:
-            match_result = match.get('result')
+            table_uuid = output_table['uuid']
+            if not match['identifier']['isDatatableOutput'] or table_uuid not in match['identifier'][
+                'outputTableIndex']:
+                continue
+            match_output_key = match.get('identifier', {}).get('outputDatatableKey')
+
+            if match_output_key in header and (not match['identifier']['isLoobDatatableOutput'] or match['identifier']['isFirstMatch']):
+                match_result = False
+            elif not match['identifier']['isLoobDatatableOutput']:
+                match_result = match['result']
+            else:
+                match_result = self._resolve_identifier(match['identifier'], in_idx) or match['result']
+
             if match_result:
-                match_output_key = match.get('identifier', {}).get('outputKey')
-                match_output_table_index = match.get('identifier', {}).get('outputTableIndex')
-                match_value = match_result.get('value')
-                if match_output_key and (
-                        output_table_index == match_output_table_index or
-                        match_output_table_index is None
-                ):
-                    header[match_output_key] = match_value
+                if match_output_key:
+                    match_value = match_result.get('value')
+                    if not is_ntuples or (not match['identifier']['isLoobDatatableOutput'] or match['identifier']['isFirstMatch']):
+                        header[match_output_key] = match_value
+                    else:
+                        if match_output_key not in header:
+                            header[match_output_key] = []
+                        header[match_output_key].append(match_value)
 
-
-    def _process_prepare_header(self, output_table):
+    def _process_prepare_ntuples_header(self, output_table, output_table_idx, in_idx):
         header = {}
+        page_header = output_table.get('nTuplePageHeader', '___+')
+        header['NTUPLES_PAGE_HEADER'] = page_header
+        if page_header == '___TABLE_NAME':
+            header['PAGE'] = f'TABLE: {in_idx}'
+
+        elif page_header == '___+':
+            header['PAGE'] = len(self._tables[output_table_idx])
+
+        else:
+            # Cache input metadata for fast access
+            input_metadata = {}
+            if in_idx is not None and in_idx < len(self.input_tables):
+                input_metadata = self.input_tables[in_idx].get('metadata', {})
+            key_value = input_metadata.get(page_header, 'UNKNOWN')
+            header['PAGE'] = f"{page_header}= {key_value}"
+        return header
+
+    def _process_prepare_header(self, output_table, output_table_key, in_idx, ntuples_header):
+        header = {}
+        is_ntuples = output_table.get('loopOutput') == 'SINGLE FILE (NTUPLES)' and output_table['loopType'] != 'none'
+        if is_ntuples:
+            header = self._process_prepare_ntuples_header(output_table, output_table_key, in_idx)
+            if output_table_key not in ntuples_header:
+                ntuples_header[output_table_key] = header
+            else:
+                self._process_prepare_metadata(ntuples_header[output_table_key], output_table, in_idx, is_ntuples)
+                return header
+
         for key, value in output_table.get('header', {}).items():
             if isinstance(value, dict):
                 # this is a table identifier, e.g. FIRSTX
-                match = self.match_identifier(value)
+                match = self.match_identifier(value, in_idx)
                 if match:
                     header[key] = match['value']
             else:
                 header[key] = value
+
+        self._process_prepare_metadata(header, output_table, in_idx, is_ntuples)
         return header
 
-
-    def _run_operation(self, rows, operation):
+    def _run_operation(self, rows, operation, in_idx):
         for i, row in enumerate(rows):
             str_value = None
             if operation.get('type') == 'column':
@@ -328,25 +517,11 @@ class Converter:
             elif operation.get('type') == 'value':
                 str_value = operation.get('value')
             elif operation.get('type') == 'metadata_value':
-                str_value = self.input_tables[int(operation.get('table'))]['metadata'].get(operation.get('value'))
+                str_value = self.input_tables[in_idx]['metadata'].get(operation.get('value'))
             elif operation.get('type') == 'header_value':
-                table = 0
-                if operation.get('table') is not None:
-                    table = int(operation.get('table'))
-                try:
-                    line_number = int(operation.get('line', ''))
-                    header = self.input_tables[table]['header'][line_number - 1].rstrip()
-                except (TypeError, ValueError, IndexError):
-                    header = os.linesep.join(self.input_tables[table]['header']).rstrip()
-                pattern = operation.get('regex')
-                if header is not None and pattern is not None:
-                    str_value = header
-                    match = re.search(pattern, str_value)
-                    if match is not None:
-                        if len(match.regs) > 1:
-                            str_value = match[1]
-                        else:
-                            str_value = match[0]
+                match, str_value = self._search_regex(operation, in_idx)
+                if match is not None:
+                    str_value = match
             else:
                 raise ValueError(f"Unknown operation type: {operation.get('type')}")
             try:
@@ -361,13 +536,25 @@ class Converter:
 
         return True
 
+    def _search_regex(self, operation, table_id):
+        match = None
+        str_value = None
+        try:
+            line_number = int(operation.get('line', ''))
+            header = self.input_tables[table_id]['header'][line_number - 1].rstrip()
+        except (TypeError, ValueError, IndexError):
+            header = self._joined_headers[table_id]
+        pattern = operation.get('regex')
+        if header is not None and pattern is not None:
+            str_value = header
+            match = self._solve_regex(pattern, str_value)
+        return match, str_value
 
     def _run_identifier_operation(self, value, operation):
         op_value = operation.get('value')
         if op_value:
             return self.apply_operation(value, op_value, operation.get('operator'))
         return value
-
 
     def apply_operation(self, value, op_value, op_operator):
         """
@@ -392,7 +579,6 @@ class Converter:
             pass
         return None
 
-
     def get_input_table(self, index, input_tables):
         if index is not None:
             try:
@@ -401,7 +587,7 @@ class Converter:
                 return input_tables[int(index)]
             except KeyError:
                 return None
-
+        return None
 
     def _get_line_number(self, header, value):
         # if line_number is None:
@@ -410,7 +596,6 @@ class Converter:
                 # again we count from 1
                 return i + 1
         return -1
-
 
     def get_value(self, row, column_index):
         """
@@ -421,11 +606,9 @@ class Converter:
         """
         return self._fix_float(row[column_index])
 
-
     @staticmethod
     def _fix_float(value):
         return str(value).replace(',', '.').replace('e', 'E')
-
 
     @classmethod
     def match_profile(cls, client_id, file_data):
@@ -438,14 +621,18 @@ class Converter:
         converter = None
         matches = 0
         latest_profile_uploaded = 0
+        current_converter = None
         for profile in Profile.list_including_default(client_id):
             if profile.isDisabled:
                 continue
-            current_converter = cls(profile, file_data)
-            current_matches = current_converter.match()
+            try:
+                current_converter = cls(profile, file_data)
+                current_matches = current_converter.match()
+            except (ValueError, TypeError, IndexError) as e:
+                current_matches = False
             try:
                 profile_uploaded = datetime.datetime.fromisoformat(
-                    profile.as_dict['data']['metadata'].get('uploaded')).timestamp()
+                    profile.as_dict['data'][-1]['metadata'].get('uploaded')).timestamp()
             except (ValueError, TypeError):
                 profile_uploaded = 1
             logger.info('profile=%s matches=%s', profile.id, current_matches)

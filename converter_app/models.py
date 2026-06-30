@@ -1,18 +1,25 @@
+import copy
+from datetime import datetime, timezone
 import json
 import logging
 import os
 import pathlib
+import shutil
 import tarfile
 import tempfile
 import uuid
+import zipfile
 from collections import defaultdict
 from pathlib import Path
+
+import jsonpatch
 
 import magic
 from flask import current_app
 from werkzeug.datastructures import FileStorage
 
-from converter_app.utils import check_uuid
+from converter_app.utils import check_uuid, cli_home_path, remove_keys
+from converter_app.utils import get_app_root
 
 logger = logging.getLogger(__name__)
 
@@ -27,14 +34,34 @@ class Profile:
         id          [str] id of the profile and file name
         errors      [collections.defaultdict] contains all errors if profile is not correct
     """
-    
+
+    cli_profiles_dir = cli_home_path() / 'profiles'
+
     def __init__(self, profile_data, client_id, profile_id=None, is_default_profile: bool = False):
         self.isDisabled = profile_data.get('isDisabled', False)
-        self.data = profile_data
+        self._data = profile_data
         self.client_id = client_id
-        self.id = profile_id
+        self._id = profile_id
         self.errors = defaultdict(list)
         self._is_default_profile = is_default_profile
+
+    @property
+    def data(self):
+        """
+        :return: the profile data dictionary
+        """
+        return self._data
+
+    @data.setter
+    def data(self, data):
+        """
+        Replaces the profile data dictionary
+        """
+        self._data = data
+
+    @property
+    def is_default_profile(self):
+        return self._is_default_profile
 
     def clean(self):
         """
@@ -100,24 +127,94 @@ class Profile:
             else:
                 self.errors['tables'].append('tables have to be provided.')
 
-    def save(self):
+    def increase_version(self):
+        """
+        Increments the minor part of the profile version by 1.
+        """
+        self.update_version(miner=1)
+
+    def decrease_version(self):
+        """
+        Decrements the minor part of the profile version by 1.
+        """
+        self.update_version(miner=-1)
+
+    def update_version(self, major=0, miner=0):
+        """
+        Updates the profile version by adding the given offsets to the major
+        and minor numbers.
+        """
+        version_numbers = [int(vn) for vn in self.data['profile_version'].split('.')]
+        version_numbers[-1] += miner
+        version_numbers[0] += major
+        self.data['profile_version'] = '.'.join(str(vn) for vn in version_numbers)
+
+    def restore(self, version, hard):
+        """
+        Restores the profile to a previous version by replaying the recorded
+        diffs in reverse. With ``hard=True`` the history is truncated and the
+        profile is saved without adding a new history entry; otherwise a
+        ``reset:<version>`` entry is appended. Raises ``RuntimeError`` if any
+        recorded diff fails to apply, leaving the profile unchanged.
+        """
+        idx = next((i for i, item in enumerate(self.data['diff_history']) if item["profile_version"] == version), -1)
+        if idx == -1:
+            raise ValueError(f"Version {version} does not exist!")
+
+        snapshot = copy.deepcopy(self.data)
+        try:
+            for history_item in reversed(self.data['diff_history'][idx:]):
+                patch = jsonpatch.JsonPatch(history_item['diff'])
+                self.data = patch.apply(self.data)
+        except jsonpatch.JsonPatchException as exc:
+            self.data = snapshot
+            raise RuntimeError(f"Could not restore version {version}: {exc}") from exc
+
+        if not hard:
+            self.save(trigger=f'reset:{version}')
+        else:
+            self.data['diff_history'] = self.data['diff_history'][:idx]
+            self.data['profile_version'] = version
+            self.save(add_to_history=False)
+
+    def update_change_history(self, origin_profile_content: dict, trigger):
+        """
+        Appends a diff between the current profile data and the previous
+        content to ``diff_history`` (capped at 50 entries) and bumps the
+        profile version. No-op if no previous content is provided or there
+        are no changes.
+        """
+        if not origin_profile_content:
+            return
+        [diff_a, diff_b] = remove_keys([self.data, origin_profile_content],
+                                       ['profile_version', 'diff_history', 'isDefaultProfile', 'isDisabled',
+                                        'last_migration'])
+        diff = jsonpatch.make_patch(diff_a, diff_b).patch
+        if diff:
+            self.data['diff_history'].append(
+                {
+                    'profile_version': self.data['profile_version'],
+                    'at': datetime.now(timezone.utc).isoformat(),
+                    'diff': diff,
+                    'trigger': trigger
+                })
+            self.data['diff_history'] = self.data['diff_history'][-50:]
+            self.increase_version()
+
+    def save(self, trigger='save', add_to_history=True):
         """
         Saves a profile under $PROFILES_DIR/$client_id/$id.json
         """
         profiles_path = Path(current_app.config['PROFILES_DIR']).joinpath(self.client_id)
         profiles_path.mkdir(parents=True, exist_ok=True)
 
-        if self.id is None:
-            if 'id' in self.data:
-                self.id = self.data['id']
-            else:
-                # create a uuid for new profiles
-                self.id = str(uuid.uuid4())
-
         file_path = profiles_path.joinpath(self.id).with_suffix('.json')
         if 'isDefaultProfile' in self.data:
             del self.data['isDefaultProfile']
-
+        if add_to_history and file_path.exists():
+            with open(file_path, 'r', encoding='utf8') as fp:
+                profile_content = json.load(fp)
+            self.update_change_history(profile_content, trigger)
         with open(file_path, 'w+', encoding='utf8') as fp:
             json.dump(self.data, fp, sort_keys=True, indent=4)
 
@@ -142,6 +239,20 @@ class Profile:
             'isDefaultProfile': self._is_default_profile
         }
 
+    @property
+    def id(self):
+        if self._id is None:
+            if 'id' in self.data:
+                self._id = self.data['id']
+            else:
+                # create a uuid for new profiles
+                self.id = str(uuid.uuid4())
+        return self._id
+
+    @id.setter
+    def id(self, new_id):
+        self.data['id'] = self._id = new_id
+
     @classmethod
     def load(cls, file_path: pathlib.PurePath):
         """
@@ -163,20 +274,37 @@ class Profile:
         return profile_data
 
     @classmethod
+    def profile_from_file_path(cls, file_path: Path, client_id: str = ''):
+        """
+        Factor to construct a Profile object from file path
+
+        :param file_path: to .json file
+        :param client_id: client id [optional]
+        :return: Profile object
+        """
+        profile_id = str(file_path.with_suffix('').name)
+        profile_data = cls.load(file_path)
+        return cls(profile_data, client_id, profile_id)
+
+    @classmethod
     def list(cls, client_id):
         """
         List all profiles of one user/client
+
         :param client_id: [str] Username
         :return:
         """
-        profiles_path = Path(current_app.config['PROFILES_DIR']).joinpath(client_id)
+        if not current_app:
+            profiles_path = cls.cli_profiles_dir.joinpath('cli')
+        else:
+            profiles_path = Path(current_app.config['PROFILES_DIR']).joinpath(client_id)
 
         if profiles_path.exists():
             for file_path in sorted(Path.iterdir(profiles_path)):
-                profile_id = str(file_path.with_suffix('').name)
-                profile_data = cls.load(file_path)
-                yield cls(profile_data, client_id, profile_id)
-
+                try:
+                    yield cls.profile_from_file_path(file_path, client_id)
+                except json.decoder.JSONDecodeError:
+                    pass
         return []
 
     @classmethod
@@ -190,14 +318,13 @@ class Profile:
         for p in cls.list(client_id):
             all_ids.append(p.id)
             yield p
-        default_profiles_path = Path(os.path.join(os.path.dirname(__file__), 'profiles'))
+        default_profiles_path = get_app_root() / 'converter_app/profiles'
         if default_profiles_path.exists():
             for file_path in sorted(Path.iterdir(default_profiles_path)):
                 if file_path.suffix == '.json':
                     profile_id = str(file_path.with_suffix('').name)
-                    profile_data = cls.load(file_path)
                     if next((x for x in all_ids if x == profile_id), None) is None:
-                        yield cls(profile_data, client_id, profile_id, True)
+                        yield cls.profile_from_file_path(file_path, client_id)
 
         return []
 
@@ -210,7 +337,7 @@ class Profile:
         :return:
         """
         profiles_path = Path(current_app.config['PROFILES_DIR']).joinpath(client_id)
-        default_profiles_path = Path(os.path.join(os.path.dirname(__file__), 'profiles'))
+        default_profiles_path = get_app_root() / 'converter_app/profiles'
 
         # make sure that its really a uuid, this should prevent file system traversal
         if check_uuid(profile_id):
@@ -232,6 +359,7 @@ class File:
     def __init__(self, file):
         self._features = {}
         self.fp = file
+        self._temp_dir = None
 
         # read the file
         self.content = file.read()
@@ -247,6 +375,10 @@ class File:
 
         # decode file string
         self.string = self.content.decode(self.encoding, errors='ignore') if self.encoding != 'binary' else None
+
+    def __del__(self):
+        if self._temp_dir and os.path.exists(self._temp_dir):
+            shutil.rmtree(self._temp_dir)
 
     @property
     def content_type(self):
@@ -295,10 +427,16 @@ class File:
         Checks if the file is a tar archive
         :return: True if the file is a tar archive
         """
-        return self.name.endswith(".gz") or self.name.endswith(".xz") or self.name.endswith(".tar")
+        return self.name.endswith(".gz") or self.name.endswith(".xz") or self.name.endswith(
+            ".tar") or self.name.endswith(".zip")
+
+    def get_temp_dir(self):
+        if not self._temp_dir:
+            self._temp_dir = tempfile.TemporaryDirectory().name
+        return self._temp_dir
 
 
-def extract_tar_archive(file: File, temp_dir: str) -> list[File]:
+def extract_tar_archive(file: File) -> list[File]:
     """
     If the file is a tar archive, this function extracts it and returns a list of all files
     :param file: Input file from the client
@@ -306,26 +444,33 @@ def extract_tar_archive(file: File, temp_dir: str) -> list[File]:
     """
     if not file.is_tar_archive:
         return []
+    temp_dir = file.get_temp_dir()
+    temp_unzipped_dir = os.path.join(temp_dir, file.name)
     file_list = []
-    with tempfile.NamedTemporaryFile(delete=True) as temp_archive:
+    with tempfile.TemporaryDirectory() as temp_archive:
         try:
             # Save the contents of FileStorage to the temporary file
-            file.fp.save(temp_archive.name)
-            if file.name.endswith(".gz"):
-                mode = "r:gz"
-            elif file.name.endswith(".xz"):
-                mode = "r:xz"
-            elif file.name.endswith(".tar"):
-                mode = "r:"
+            temp_tar_file_name = os.path.join(temp_archive, file.name)
+            file.fp.save(temp_tar_file_name)
+            if file.name.endswith(".zip"):
+                with zipfile.ZipFile(temp_tar_file_name, 'r') as zip_ref:
+                    zip_ref.extractall(temp_unzipped_dir)
             else:
-                return []
-            with tarfile.open(temp_archive.name, mode) as tar:
-                tar.extractall(temp_dir)
-                tar.close()
+                if file.name.endswith(".gz"):
+                    mode = "r:gz"
+                elif file.name.endswith(".xz"):
+                    mode = "r:xz"
+                elif file.name.endswith(".tar"):
+                    mode = "r:"
+                else:
+                    return []
+                with tarfile.open(temp_tar_file_name, mode) as tar:
+                    tar.extractall(temp_unzipped_dir)
+                    tar.close()
         except ValueError:
             return []
 
-        for root, _, files in os.walk(temp_dir, topdown=False):
+        for root, _, files in os.walk(temp_unzipped_dir, topdown=False):
             for name in files:
                 path_file_name = os.path.join(root, name)
                 content_type = magic.Magic(mime=True).from_file(path_file_name)

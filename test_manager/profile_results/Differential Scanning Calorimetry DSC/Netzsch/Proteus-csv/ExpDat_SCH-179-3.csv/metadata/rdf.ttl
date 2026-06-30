@@ -1,0 +1,5 @@
+@prefix chemotion: <https://chemotion.net/chemotion/#> .
+@prefix chmo: <http://purl.obolibrary.org/obo/> .
+
+chemotion:DSC_without_time a chmo:CHMO_0000684 .
+
