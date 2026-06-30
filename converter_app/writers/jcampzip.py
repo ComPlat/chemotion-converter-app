@@ -2,7 +2,6 @@ import hashlib
 import io
 import json
 import logging
-import tempfile
 import zipfile
 
 from converter_app.writers.rdf import RDFWriter
@@ -34,27 +33,16 @@ class JcampZipWriter(Writer):
 
         sha_strings = {'256': [], '512': []}
 
-        zf = zipfile.ZipFile(self.zipbuffer, 'w')
-
-
-        for (attachment_file, filename, file_type) in self.converter.attachments:
-            file_path = f'attachments/{filename}'
-            with tempfile.NamedTemporaryFile(delete=True) as temp:
-                temp.write(attachment_file)
-                zf.write(temp.name, file_path)
-
-                sha256_string += '{} {}\n'.format(hashlib.sha256(attachment_file).hexdigest(), file_path)
-                sha512_string += '{} {}\n'.format(hashlib.sha512(attachment_file).hexdigest(), file_path)
-
-        for table_id, table in enumerate(self.tables):
-            self.buffer = io.StringIO()
-            self.process_table(table)
-            string = self.buffer.getvalue()
         with zipfile.ZipFile(self.zipbuffer, 'w') as zf:
+
+            for (attachment_file, filename, _file_type) in self._converter.attachments:
+                file_path = f'attachments/{filename}'
+                zf.writestr(file_path, attachment_file)
+                self._update_sha_binary(sha_strings, attachment_file, file_path)
 
             rdf_writer = RDFWriter(self._converter)
 
-            file_name = f'metadata/rdf.ttl'
+            file_name = 'metadata/rdf.ttl'
             rdf_writer.process()
             rdf_result = rdf_writer.write()
             self._update_sha_binary(sha_strings, rdf_result, file_name)
