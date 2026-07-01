@@ -349,6 +349,12 @@ def utils_router(app: Flask, auth: HTTPBasicAuth):
         datasets = Dataset.list()
         return jsonify([dataset.dataset_data for dataset in datasets]), 200
 
+    @app.route('/datasets_units', methods=['GET'])
+    @auth.login_required
+    def list_datasets_units():
+        datasets = Dataset.dataset_units()
+        return jsonify(datasets), 200
+
     @app.route('/options', methods=['GET'])
     @auth.login_required
     def list_options():

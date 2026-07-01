@@ -48,7 +48,8 @@ dependencies = [
     "GitPython==3.1.*",
     "requests==2.32.*",
     "click==8.3.*",
-    "jsonpatch==1.33"
+    "jsonpatch==1.33",
+    "astropy~=8.0.0"
 ]
 
 [project.optional-dependencies]
