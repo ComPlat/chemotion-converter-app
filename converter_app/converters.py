@@ -4,10 +4,15 @@ import os
 import re
 from collections import defaultdict
 from typing import LiteralString
+import astropy.units as u
 
 from converter_app.models import Profile
+from converter_app.utils import normalize_unit
 
 logger = logging.getLogger(__name__)
+
+# imperial units (e.g. deg_F) are not in astropy's default registry; enable them globally
+u.imperial.enable()
 
 
 class CalculationError(Exception):
@@ -152,7 +157,7 @@ class Converter:
     def match(self):
         matches = self._match(self.identifiers)
         if isinstance(matches, list):
-            return len(self._match(self.identifiers))
+            return len(matches)
         return False
 
     def match_reaction_variation_identifier(self):
@@ -210,17 +215,30 @@ class Converter:
     def match_identifier(self, identifier, in_idx=None):
         """
         Checks if single identifier matches
+        :param in_idx:
         :param identifier: Identifier profile object
         :return: Boolean if matches
         """
+        res_value = False
         if identifier.get('type') == 'fileMetadata':
-            return self._match_file_metadata(identifier, self.file_metadata)
+            res_value = self._match_file_metadata(identifier, self.file_metadata)
         if identifier.get('type') == 'tableMetadata':
-            return self._match_table_metadata(identifier, self.input_tables, in_idx)
+            res_value = self._match_table_metadata(identifier, self.input_tables, in_idx)
         if identifier.get('type') == 'tableHeader':
-            return self._match_table_header(identifier, self.input_tables, in_idx)
+            res_value = self._match_table_header(identifier, self.input_tables, in_idx)
+        if res_value and identifier.get('outputKey', '').startswith('___unit___'):
+            enum_units = identifier.get('outputEnum', [])
+            in_list = [u.Unit(normalize_unit(x['label'])) for x in enum_units]
+            unit = u.Unit(normalize_unit(res_value['value']))
+            try:
+                idx = in_list.index(unit)
+                res_value['value'] = enum_units[idx]['key']
+            except ValueError:
+                res_value['value'] = None
 
-        return False
+
+
+        return res_value
 
     def _match_file_metadata(self, identifier, metadata):
         input_key = identifier.get('key')
