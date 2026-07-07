@@ -177,6 +177,7 @@
         "mime_type": "application/zip",
         "extension": ".zip",
         "reader": "AscZipReader",
-        "uploaded": "2026-07-07T10:54:36.420689+00:00"
+        "uploaded": "2026-07-07T11:04:20.209616+00:00",
+        "ontology": null
     }
 }
