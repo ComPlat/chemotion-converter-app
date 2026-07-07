@@ -1,55 +1,7 @@
 {
   "profileId": "e7a4ee04-cdf6-4da6-a82c-ba6909af6cee",
   "ols": null,
-  "matches": [
-    {
-      "identifier": {
-        "editable": true,
-        "id": "#0fileMetadata",
-        "key": "reader",
-        "match": "exact",
-        "optional": false,
-        "type": "fileMetadata",
-        "value": "OldExcelReader"
-      },
-      "result": {
-        "value": "OldExcelReader"
-      }
-    },
-    {
-      "identifier": {
-        "editable": true,
-        "id": "#1tableMetadata",
-        "key": "Instrument Type",
-        "match": "exact",
-        "optional": false,
-        "tableIndex": 0,
-        "type": "tableMetadata",
-        "value": "TGA5500"
-      },
-      "result": {
-        "value": "TGA5500",
-        "tableIndex": 0
-      }
-    },
-    {
-      "identifier": {
-        "editable": true,
-        "id": "#2tableHeader",
-        "lineNumber": 1,
-        "match": "regex",
-        "optional": false,
-        "tableIndex": 2,
-        "type": "tableHeader",
-        "value": "Ramp"
-      },
-      "result": {
-        "value": "Ramp",
-        "tableIndex": 2,
-        "lineNumber": 1
-      }
-    }
-  ],
+  "matches": [],
   "tablesCount": 2,
   "tables": [
     {

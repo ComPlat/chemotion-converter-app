@@ -390,7 +390,7 @@
             "trigger": "undo:1.6"
         },
         {
-            "at": "2026-05-06T08:56:29.090879+00:00",
+            "at": "2026-05-21T11:46:01.644400+00:00",
             "diff": [
                 {
                     "op": "remove",
@@ -401,8 +401,12 @@
             "trigger": "migration:20260417132254"
         },
         {
-            "at": "2026-05-06T08:56:29.091295+00:00",
+            "at": "2026-05-21T11:46:01.644804+00:00",
             "diff": [
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_%"
+                },
                 {
                     "op": "remove",
                     "path": "/data/0/tables/0/metadata/__UNIT_liter"
@@ -413,19 +417,51 @@
                 },
                 {
                     "op": "remove",
-                    "path": "/data/0/tables/0/metadata/__UNIT_PPM"
-                },
-                {
-                    "op": "remove",
-                    "path": "/data/0/tables/0/metadata/__UNIT_%"
-                },
-                {
-                    "op": "remove",
                     "path": "/data/0/tables/0/metadata/__UNIT_gram"
+                },
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_PPM"
                 }
             ],
             "profile_version": "1.9",
             "trigger": "migration:20260422063146"
+        },
+        {
+            "at": "2026-05-21T11:46:01.645213+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/tables/0/loopType"
+                },
+                {
+                    "from": "/tables/0/inputTableIndex",
+                    "op": "move",
+                    "path": "/tables/0/table/xColumn/tableIndex"
+                },
+                {
+                    "op": "add",
+                    "path": "/tables/0/table/yColumn/tableIndex",
+                    "value": 1
+                }
+            ],
+            "profile_version": "1.10",
+            "trigger": "migration:20260506160404"
+        },
+        {
+            "at": "2026-05-21T11:46:01.645429+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/tables/0/uuid"
+                },
+                {
+                    "op": "remove",
+                    "path": "/tables/0/tableName"
+                }
+            ],
+            "profile_version": "1.11",
+            "trigger": "migration:20260513094819"
         }
     ],
     "id": "fb63e718-3842-4d45-9b39-84a53b27e483",
@@ -461,12 +497,12 @@
         }
     ],
     "isDisabled": false,
-    "last_migration": "20260430125545",
+    "last_migration": "20260513094819",
     "objects": [],
     "ols": null,
     "ontology": "",
     "predicates": [],
-    "profile_version": "1.10",
+    "profile_version": "1.12",
     "reactionVariations": {
         "elements": [],
         "identifiers": []
@@ -496,16 +532,18 @@
                 "XUNITS": "DEGREES CELSIUS",
                 "YUNITS": "Weight %"
             },
+            "inputTableIndex": 1,
+            "loopType": "none",
             "table": {
                 "xColumn": {
-                    "columnIndex": 1,
-                    "tableIndex": 1
+                    "columnIndex": 1
                 },
                 "yColumn": {
-                    "columnIndex": 3,
-                    "tableIndex": 1
+                    "columnIndex": 3
                 }
-            }
+            },
+            "tableName": "Table #1",
+            "uuid": "8e763efb-0bcc-4fc5-9c95-d23b71443caf"
         }
     ],
     "title": "TGA 2",

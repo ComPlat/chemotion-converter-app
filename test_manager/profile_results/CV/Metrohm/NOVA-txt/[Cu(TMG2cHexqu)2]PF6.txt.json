@@ -6138,7 +6138,12 @@
                     "0.001983642578125",
                     "0.20000429352140509"
                 ]
-            ]
+            ],
+            "__UNIT_PPM": "ppm",
+            "__UNIT_liter": "l",
+            "__UNIT_gram": "g",
+            "__UNIT_%": "%",
+            "__UNIT_mol": "mol"
         }
     ],
     "metadata": {
@@ -6147,7 +6152,7 @@
         "mime_type": "text/csv",
         "extension": ".txt",
         "reader": "NovaReader",
-        "uploaded": "2026-03-10T09:23:28.385535+00:00",
+        "uploaded": "2026-05-22T09:41:10.757499+00:00",
         "lineterminator": "\\r\\n",
         "quoting": "0",
         "doublequote": "False",

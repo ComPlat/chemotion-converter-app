@@ -190,6 +190,11 @@
                 "> 52575_DECT1": "0.00",
                 "> 52575_DECT2": "0.00",
                 "> 52575_unit": "%",
+                "__UNIT_PPM": "ppm",
+                "__UNIT_liter": "l",
+                "__UNIT_gram": "g",
+                "__UNIT_%": "%",
+                "__UNIT_mol": "mol",
                 "rows": "0",
                 "columns": "0"
             },
@@ -35483,6 +35488,6 @@
         "mime_type": "text/plain",
         "extension": ".TXT",
         "reader": "SecReader",
-        "uploaded": "2026-03-10T09:22:12.320930+00:00"
+        "uploaded": "2026-05-22T09:39:36.902629+00:00"
     }
 }

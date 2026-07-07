@@ -42,7 +42,6 @@ def basic_walk(callback):
                 os.makedirs(res_reader_path, exist_ok=True)
                 for file in os.listdir(software_path):
                     file_path = '/'.join([ontology, device, software, file])
-                    print(file_path)
                     if file_path not in BLACK_LIST:
                         callback(software_path, file, res_reader_path, res_profile_path)
                     else:

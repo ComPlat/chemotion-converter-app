@@ -38,8 +38,12 @@ DATA_TYPES = (
 DATA_CLASSES = (
     'XYPOINTS',
     'XYDATA',
-    'PEAK TABLE',
-    'NTUPLES',
+    'PEAK TABLE'
+)
+
+DATA_LOOP_CLASSES = (
+    'MULTI FILE',
+    'SINGLE FILE (NTUPLES)'
 )
 
 XUNITS = (
@@ -104,6 +108,7 @@ YUNITS = (
 OPTIONS = {
     'DATA TYPE': DATA_TYPES,
     'DATA CLASS': DATA_CLASSES,
+    'DATA_LOOP_CLASSES': DATA_LOOP_CLASSES,
     'XUNITS': XUNITS,
     'YUNITS': YUNITS,
     'VERSION': importlib.metadata.version('chemotion-converter-app')

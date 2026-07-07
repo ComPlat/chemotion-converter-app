@@ -305,7 +305,7 @@
             "trigger": "undo:1.6"
         },
         {
-            "at": "2026-05-06T08:56:29.147194+00:00",
+            "at": "2026-05-21T11:46:01.715611+00:00",
             "diff": [
                 {
                     "op": "remove",
@@ -316,15 +316,15 @@
             "trigger": "migration:20260417132254"
         },
         {
-            "at": "2026-05-06T08:56:29.147546+00:00",
+            "at": "2026-05-21T11:46:01.715871+00:00",
             "diff": [
                 {
                     "op": "remove",
-                    "path": "/data/0/tables/0/metadata/__UNIT_liter"
+                    "path": "/data/0/tables/0/metadata/__UNIT_%"
                 },
                 {
                     "op": "remove",
-                    "path": "/data/0/tables/0/metadata/__UNIT_PPM"
+                    "path": "/data/0/tables/0/metadata/__UNIT_liter"
                 },
                 {
                     "op": "remove",
@@ -332,15 +332,117 @@
                 },
                 {
                     "op": "remove",
-                    "path": "/data/0/tables/0/metadata/__UNIT_%"
+                    "path": "/data/0/tables/0/metadata/__UNIT_gram"
                 },
                 {
                     "op": "remove",
-                    "path": "/data/0/tables/0/metadata/__UNIT_gram"
+                    "path": "/data/0/tables/0/metadata/__UNIT_PPM"
                 }
             ],
             "profile_version": "1.9",
             "trigger": "migration:20260422063146"
+        },
+        {
+            "at": "2026-05-21T11:46:01.716446+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/tables/0/loopType"
+                },
+                {
+                    "from": "/tables/0/inputTableIndex",
+                    "op": "move",
+                    "path": "/tables/0/table/xColumn/tableIndex"
+                },
+                {
+                    "from": "/tables/1/inputTableIndex",
+                    "op": "move",
+                    "path": "/tables/0/table/yColumn/tableIndex"
+                },
+                {
+                    "op": "remove",
+                    "path": "/tables/1/loopType"
+                },
+                {
+                    "op": "add",
+                    "path": "/tables/1/table/xColumn/tableIndex",
+                    "value": 0
+                },
+                {
+                    "from": "/tables/2/inputTableIndex",
+                    "op": "move",
+                    "path": "/tables/1/table/yColumn/tableIndex"
+                },
+                {
+                    "op": "remove",
+                    "path": "/tables/2/loopType"
+                },
+                {
+                    "op": "add",
+                    "path": "/tables/2/table/xColumn/tableIndex",
+                    "value": 0
+                },
+                {
+                    "from": "/tables/3/inputTableIndex",
+                    "op": "move",
+                    "path": "/tables/2/table/yColumn/tableIndex"
+                },
+                {
+                    "op": "remove",
+                    "path": "/tables/3/loopType"
+                },
+                {
+                    "op": "add",
+                    "path": "/tables/3/table/xColumn/tableIndex",
+                    "value": 0
+                },
+                {
+                    "op": "add",
+                    "path": "/tables/3/table/yColumn/tableIndex",
+                    "value": 0
+                }
+            ],
+            "profile_version": "1.10",
+            "trigger": "migration:20260506160404"
+        },
+        {
+            "at": "2026-05-21T11:46:01.716771+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/tables/0/uuid"
+                },
+                {
+                    "op": "remove",
+                    "path": "/tables/0/tableName"
+                },
+                {
+                    "op": "remove",
+                    "path": "/tables/1/uuid"
+                },
+                {
+                    "op": "remove",
+                    "path": "/tables/1/tableName"
+                },
+                {
+                    "op": "remove",
+                    "path": "/tables/2/uuid"
+                },
+                {
+                    "op": "remove",
+                    "path": "/tables/2/tableName"
+                },
+                {
+                    "op": "remove",
+                    "path": "/tables/3/uuid"
+                },
+                {
+                    "op": "remove",
+                    "path": "/tables/3/tableName"
+                }
+            ],
+            "profile_version": "1.11",
+            "trigger": "migration:20260513094819"
         }
     ],
     "id": "d8e6bf8f-6de1-4743-9513-04cbd0c6c712",
@@ -395,12 +497,12 @@
         }
     ],
     "isDisabled": false,
-    "last_migration": "20260430125545",
+    "last_migration": "20260513094819",
     "objects": [],
     "ols": "CHMO:0000292",
     "ontology": "",
     "predicates": [],
-    "profile_version": "1.10",
+    "profile_version": "1.12",
     "reactionVariations": {
         "elements": [],
         "identifiers": []
@@ -430,16 +532,18 @@
                 "XUNITS": "wavelength (nm)",
                 "YUNITS": "ABSORBANCE"
             },
+            "inputTableIndex": 0,
+            "loopType": "none",
             "table": {
                 "xColumn": {
-                    "columnIndex": 0,
-                    "tableIndex": 0
+                    "columnIndex": 0
                 },
                 "yColumn": {
-                    "columnIndex": 1,
-                    "tableIndex": 0
+                    "columnIndex": 1
                 }
-            }
+            },
+            "tableName": "Table #1",
+            "uuid": "11db538c-b165-4dcd-a5c8-35c3295d0fa7"
         },
         {
             "header": {
@@ -448,16 +552,18 @@
                 "XUNITS": "wavelength (nm)",
                 "YUNITS": "ABSORBANCE"
             },
+            "inputTableIndex": 0,
+            "loopType": "none",
             "table": {
                 "xColumn": {
-                    "columnIndex": 2,
-                    "tableIndex": 0
+                    "columnIndex": 2
                 },
                 "yColumn": {
-                    "columnIndex": 3,
-                    "tableIndex": 0
+                    "columnIndex": 3
                 }
-            }
+            },
+            "tableName": "Table #2",
+            "uuid": "30e84c42-5e5d-4661-960c-dd6c1853d7bc"
         },
         {
             "header": {
@@ -466,16 +572,18 @@
                 "XUNITS": "wavelength (nm)",
                 "YUNITS": "ABSORBANCE"
             },
+            "inputTableIndex": 0,
+            "loopType": "none",
             "table": {
                 "xColumn": {
-                    "columnIndex": 4,
-                    "tableIndex": 0
+                    "columnIndex": 4
                 },
                 "yColumn": {
-                    "columnIndex": 5,
-                    "tableIndex": 0
+                    "columnIndex": 5
                 }
-            }
+            },
+            "tableName": "Table #3",
+            "uuid": "9ab2122e-32e3-4f72-a6ef-5c0e39ac73c2"
         },
         {
             "header": {
@@ -484,16 +592,18 @@
                 "XUNITS": "wavelength (nm)",
                 "YUNITS": "ABSORBANCE"
             },
+            "inputTableIndex": 0,
+            "loopType": "none",
             "table": {
                 "xColumn": {
-                    "columnIndex": 6,
-                    "tableIndex": 0
+                    "columnIndex": 6
                 },
                 "yColumn": {
-                    "columnIndex": 7,
-                    "tableIndex": 0
+                    "columnIndex": 7
                 }
-            }
+            },
+            "tableName": "Table #4",
+            "uuid": "cae4dc72-8b8b-4995-960c-15e3535a2729"
         }
     ],
     "title": "UVVIS CS",

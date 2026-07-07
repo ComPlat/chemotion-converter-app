@@ -1,15 +1,19 @@
 import base64
+import datetime
 import hashlib
+import inspect
 import os
 import re
 import shutil
 import sys
 import tempfile
+import time
 import uuid
 from pathlib import Path
 from typing import Optional
 
 import git
+import astropy.units as u
 
 from converter_app.writers.jcamp import JcampWriter
 from converter_app.writers.jcampzip import JcampZipWriter
@@ -146,3 +150,323 @@ def str_to_bool(value):
     representation against a set of truthy literals.
     """
     return str(value).lower() in ("true", "1", "yes", "on")
+
+
+class FunctionTimer:
+
+    class TimeMark:
+        def __init__(self, function, lineno, filename):
+            self.function = function
+            self.lineno = lineno
+            self.filename = filename
+            self.start = time.perf_counter()
+            self.end = None
+
+        def stop(self):
+            self.end = time.perf_counter()
+
+        def toStr(self):
+            return f'{self.function}\t{self.filename}:{self.lineno}\t{self.end-self.start}'
+
+    def __init__(self):
+        self.marks = []
+
+    def start(self):
+        stack = inspect.stack()
+        caller = stack[1]
+        print("Called from:", caller.function)
+        print("Line:", caller.lineno)
+        print("File:", caller.filename)
+        marker = FunctionTimer.TimeMark(caller.function, caller.lineno, caller.filename)
+        self.marks.append(marker)
+        return marker
+
+    def print(self):
+        markers = [marker.toStr() for marker in self.marks]
+        for marker in markers:
+            print(marker)
+        os.makedirs('___timer_results', exist_ok=True)
+        with open(f'./___timer_results/timer{datetime.datetime.now(datetime.UTC).isoformat()}.txt', 'w+') as f:
+            f.write('\n'.join(markers))
+
+def _register_custom_units():
+    """
+    Register domain-specific units that astropy does not know out of the box,
+    so that normalize_unit() output can always be parsed by ``u.Unit``.
+    """
+    u.imperial.enable()  # deg_F and other imperial units
+
+    namespace = {}
+    u.def_unit('rpm', u.cycle / u.min, namespace=namespace)          # agitation
+    u.def_unit('U', u.umol / u.min, prefixes=True, namespace=namespace)  # enzyme unit (+ mU, ...)
+    u.def_unit('ppm', 1e-6 * u.one, namespace=namespace)             # dimensionless concentration
+    u.def_unit('ppb', 1e-9 * u.one, namespace=namespace)
+    u.def_unit('px', u.pix, namespace=namespace)                     # pixel
+    u.def_unit('Fd', 96485.33212 * u.C, namespace=namespace)         # faraday (charge per mol of e-)
+    u.def_unit('atm', 101325 * u.Pa, namespace=namespace)            # standard atmosphere
+
+    u.add_enabled_units(list(namespace.values()))
+
+
+_register_custom_units()
+
+UNIT_ALIASES = {
+    # ---------- Length ----------
+    "meter": "m",
+    "meters": "m",
+    "metre": "m",
+    "metres": "m",
+
+    "millimeter": "mm",
+    "millimeters": "mm",
+    "millimetre": "mm",
+
+    "micrometer": "um",
+    "micrometers": "um",
+    "micrometre": "um",
+    "µm": "um",
+
+    "nanometer": "nm",
+    "nanometers": "nm",
+
+    "centimeter": "cm",
+    "centimeters": "cm",
+
+    "kilometer": "km",
+    "kilometers": "km",
+
+    "angstrom": "Angstrom",
+    "ångström": "Angstrom",
+    "Å": "Angstrom",
+
+    # ---------- Mass ----------
+    "gram": "g",
+    "grams": "g",
+
+    "kilogram": "kg",
+    "kilograms": "kg",
+
+    "milligram": "mg",
+    "milligrams": "mg",
+
+    "microgram": "ug",
+    "micrograms": "ug",
+    "µg": "ug",
+
+    "nanogram": "ng",
+
+    "tonne": "t",
+    "metric ton": "t",
+
+    # ---------- Time ----------
+    "second": "s",
+    "seconds": "s",
+
+    "millisecond": "ms",
+    "milliseconds": "ms",
+
+    "microsecond": "us",
+    "µs": "us",
+
+    "minute": "min",
+    "minutes": "min",
+
+    "hour": "h",
+    "hours": "h",
+
+    # ---------- Temperature ----------
+    "kelvin": "K",
+
+    "°c": "deg_C",
+    "deg c": "deg_C",
+    "celsius": "deg_C",
+
+    "°f": "deg_F",
+    "deg f": "deg_F",
+    "fahrenheit": "deg_F",
+
+    # ---------- Amount ----------
+    "mole": "mol",
+    "moles": "mol",
+
+    "millimole": "mmol",
+    "millimoles": "mmol",
+
+    "micromole": "umol",
+    "µmol": "umol",
+
+    "nanomole": "nmol",
+
+    # ---------- Volume ----------
+    "liter": "L",
+    "liters": "L",
+    "litre": "L",
+    "litres": "L",
+
+    "milliliter": "mL",
+    "milliliters": "mL",
+    "millilitre": "mL",
+
+    "microliter": "uL",
+    "microliters": "uL",
+    "µl": "uL",
+    "µL": "uL",
+
+    "nanoliter": "nL",
+
+    # ---------- Pressure ----------
+    "pascal": "Pa",
+    "pascals": "Pa",
+
+    "kilopascal": "kPa",
+    "megapascal": "MPa",
+
+    "bar": "bar",
+    "millibar": "mbar",
+
+    "atmosphere": "atm",
+    "atmospheres": "atm",
+
+    "torr": "Torr",
+
+    "mmhg": "mmHg",
+
+    # ---------- Energy ----------
+    "joule": "J",
+    "joules": "J",
+
+    "kilojoule": "kJ",
+
+    "calorie": "cal",
+    "calories": "cal",
+
+    "kilocalorie": "kcal",
+
+    "electronvolt": "eV",
+
+    # ---------- Power ----------
+    "watt": "W",
+    "watts": "W",
+
+    "kilowatt": "kW",
+
+    # ---------- Force ----------
+    "newton": "N",
+    "newtons": "N",
+
+    # ---------- Frequency ----------
+    "hertz": "Hz",
+
+    "kilohertz": "kHz",
+    "megahertz": "MHz",
+    "gigahertz": "GHz",
+
+    # ---------- Voltage ----------
+    "volt": "V",
+    "volts": "V",
+
+    "millivolt": "mV",
+
+    "kilovolt": "kV",
+
+    # ---------- Current ----------
+    "amp": "A",
+    "amps": "A",
+    "ampere": "A",
+    "amperes": "A",
+
+    "milliamp": "mA",
+    "microamp": "uA",
+
+    # ---------- Resistance ----------
+    "ohm": "Ohm",
+    "Ω": "Ohm",
+
+    "kiloohm": "kOhm",
+    "megaohm": "MOhm",
+
+    # ---------- Conductance ----------
+    "siemens": "S",
+
+    # ---------- Capacitance ----------
+    "farad": "F",
+
+    "microfarad": "uF",
+    "µf": "uF",
+
+    "nanofarad": "nF",
+    "picofarad": "pF",
+
+    # ---------- Inductance ----------
+    "henry": "H",
+
+    # ---------- Magnetic ----------
+    "tesla": "T",
+    "gauss": "G",
+
+    # ---------- Radiation ----------
+    "becquerel": "Bq",
+    "gray": "Gy",
+    "sievert": "Sv",
+
+    # ---------- Concentration ----------
+    "molar": "M",
+    "molarity": "M",
+
+    "mm": "mmol/L",
+    "millimolar": "mmol/L",
+
+    "um": "umol/L",
+    "µmolar": "umol/L",
+
+    "nm": "nmol/L",
+
+    # ---------- Optical ----------
+    "absorbance unit": "",
+    "au": "",
+
+    # ---------- Dimensionless ----------
+    "%": "percent",
+    "percent": "percent",
+    "ppm": "ppm",
+    "ppb": "ppb",
+
+    # ---------- Compound units (astropy needs explicit operators) ----------
+    # Electrical capacity (charge)
+    "mah": "mA h",
+    "ah": "A h",
+    "as": "A s",
+    "mah/g": "mA h / g",
+    "ah/g": "A h / g",
+
+    # Dynamic viscosity
+    "pas": "Pa s",
+    "mpas": "mPa s",
+
+    # Reaction rate
+    "mol/lmin": "mol / (L min)",
+    "mol/ls": "mol / (L s)",
+
+    # Electrical potential vs. reference/counter electrode (annotation is not a unit)
+    "v vs. re": "V",
+    "mv vs. re": "mV",
+    "v vs. ce": "V",
+    "mv vs. ce": "mV",
+}
+
+def normalize_unit(unit: str) -> str:
+    unit = unit.strip()
+
+    def replace_superscripts(s: str) -> str:
+        return re.sub(r"<sup>(-?\d+)</sup>", r"\1", s)
+
+    # Unicode normalization
+    unit = replace_superscripts(
+        unit.replace("µ", "u")
+            .replace("μ", "u")
+            .replace("°", "deg ")
+            .replace("Ω", "Ohm")
+            .replace("Ω", "Ohm")
+    )
+
+    return UNIT_ALIASES.get(unit.lower(), unit)

@@ -621,7 +621,7 @@
             "trigger": "undo:1.6"
         },
         {
-            "at": "2026-05-06T08:56:29.172333+00:00",
+            "at": "2026-05-21T11:46:01.747886+00:00",
             "diff": [
                 {
                     "op": "remove",
@@ -632,15 +632,15 @@
             "trigger": "migration:20260417132254"
         },
         {
-            "at": "2026-05-06T08:56:29.172754+00:00",
+            "at": "2026-05-21T11:46:01.748170+00:00",
             "diff": [
                 {
                     "op": "remove",
-                    "path": "/data/0/tables/0/metadata/__UNIT_liter"
+                    "path": "/data/0/tables/0/metadata/__UNIT_%"
                 },
                 {
                     "op": "remove",
-                    "path": "/data/0/tables/0/metadata/__UNIT_PPM"
+                    "path": "/data/0/tables/0/metadata/__UNIT_liter"
                 },
                 {
                     "op": "remove",
@@ -648,15 +648,95 @@
                 },
                 {
                     "op": "remove",
-                    "path": "/data/0/tables/0/metadata/__UNIT_%"
+                    "path": "/data/0/tables/0/metadata/__UNIT_gram"
                 },
                 {
                     "op": "remove",
-                    "path": "/data/0/tables/0/metadata/__UNIT_gram"
+                    "path": "/data/0/tables/0/metadata/__UNIT_PPM"
                 }
             ],
             "profile_version": "1.9",
             "trigger": "migration:20260422063146"
+        },
+        {
+            "at": "2026-05-21T11:46:01.748768+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/tables/0/loopType"
+                },
+                {
+                    "from": "/tables/0/inputTableIndex",
+                    "op": "move",
+                    "path": "/tables/0/table/xColumn/tableIndex"
+                },
+                {
+                    "from": "/tables/1/inputTableIndex",
+                    "op": "move",
+                    "path": "/tables/0/table/yColumn/tableIndex"
+                },
+                {
+                    "op": "remove",
+                    "path": "/tables/1/loopType"
+                },
+                {
+                    "op": "add",
+                    "path": "/tables/1/table/xColumn/tableIndex",
+                    "value": 0
+                },
+                {
+                    "from": "/tables/2/inputTableIndex",
+                    "op": "move",
+                    "path": "/tables/1/table/yColumn/tableIndex"
+                },
+                {
+                    "op": "remove",
+                    "path": "/tables/2/loopType"
+                },
+                {
+                    "op": "add",
+                    "path": "/tables/2/table/xColumn/tableIndex",
+                    "value": 0
+                },
+                {
+                    "op": "add",
+                    "path": "/tables/2/table/yColumn/tableIndex",
+                    "value": 0
+                }
+            ],
+            "profile_version": "1.10",
+            "trigger": "migration:20260506160404"
+        },
+        {
+            "at": "2026-05-21T11:46:01.749114+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/tables/0/uuid"
+                },
+                {
+                    "op": "remove",
+                    "path": "/tables/0/tableName"
+                },
+                {
+                    "op": "remove",
+                    "path": "/tables/1/uuid"
+                },
+                {
+                    "op": "remove",
+                    "path": "/tables/1/tableName"
+                },
+                {
+                    "op": "remove",
+                    "path": "/tables/2/uuid"
+                },
+                {
+                    "op": "remove",
+                    "path": "/tables/2/tableName"
+                }
+            ],
+            "profile_version": "1.11",
+            "trigger": "migration:20260513094819"
         }
     ],
     "id": "db05bfb4-6829-4339-bec1-54065710f211",
@@ -682,12 +762,12 @@
         }
     ],
     "isDisabled": false,
-    "last_migration": "20260430125545",
+    "last_migration": "20260513094819",
     "objects": [],
     "ols": null,
     "ontology": "",
     "predicates": [],
-    "profile_version": "1.10",
+    "profile_version": "1.12",
     "reactionVariations": {
         "elements": [],
         "identifiers": []
@@ -717,16 +797,18 @@
                 "XUNITS": "NANOMETERS",
                 "YUNITS": "ABSORBANCE"
             },
+            "inputTableIndex": 0,
+            "loopType": "none",
             "table": {
                 "xColumn": {
-                    "columnIndex": 0,
-                    "tableIndex": 0
+                    "columnIndex": 0
                 },
                 "yColumn": {
-                    "columnIndex": 1,
-                    "tableIndex": 0
+                    "columnIndex": 1
                 }
-            }
+            },
+            "tableName": "Table #1",
+            "uuid": "2589f9ca-8dec-414d-b0fe-6e9cc5a24b96"
         },
         {
             "header": {
@@ -735,16 +817,18 @@
                 "XUNITS": "NANOMETERS",
                 "YUNITS": "ABSORBANCE"
             },
+            "inputTableIndex": 0,
+            "loopType": "none",
             "table": {
                 "xColumn": {
-                    "columnIndex": 2,
-                    "tableIndex": 0
+                    "columnIndex": 2
                 },
                 "yColumn": {
-                    "columnIndex": 3,
-                    "tableIndex": 0
+                    "columnIndex": 3
                 }
-            }
+            },
+            "tableName": "Table #2",
+            "uuid": "9b577fbc-bb76-4d8a-aaef-db685e90f7d8"
         },
         {
             "header": {
@@ -753,16 +837,18 @@
                 "XUNITS": "NANOMETERS",
                 "YUNITS": "ABSORBANCE"
             },
+            "inputTableIndex": 0,
+            "loopType": "none",
             "table": {
                 "xColumn": {
-                    "columnIndex": 4,
-                    "tableIndex": 0
+                    "columnIndex": 4
                 },
                 "yColumn": {
-                    "columnIndex": 5,
-                    "tableIndex": 0
+                    "columnIndex": 5
                 }
-            }
+            },
+            "tableName": "Table #3",
+            "uuid": "2812e875-936e-405e-9d02-cadffdcbe42a"
         }
     ],
     "title": "UV-VIS data from multi-column csv, data: +, metadata: -",

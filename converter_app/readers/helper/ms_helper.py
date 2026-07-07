@@ -60,12 +60,13 @@ class MsHelper:
 
         table['header'].append(reader_type)
 
-        if index < 0 or index > 1:
-            table['metadata']['mode'] = "unknown"
+
         if index == 0:
-            table['metadata']['mode'] = "negativ"  # assumption
-        if index == 1:
-            table['metadata']['mode'] = "positiv"  # assumption
+            table['metadata']['mode'] = "negativ"
+        elif index == 1:
+            table['metadata']['mode'] = "positiv"
+        else:
+            table['metadata']['mode'] = "unknown"
 
         table['metadata']['internal_reader_name'] = reader_name
         table['columns'] = [
