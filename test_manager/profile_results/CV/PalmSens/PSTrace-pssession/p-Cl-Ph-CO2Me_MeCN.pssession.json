@@ -201,6 +201,11 @@
                 "column_01": "potential",
                 "column_02": "current",
                 "column_03": "charge",
+                "__UNIT_PPM": "ppm",
+                "__UNIT_liter": "l",
+                "__UNIT_gram": "g",
+                "__UNIT_%": "%",
+                "__UNIT_mol": "mol",
                 "rows": "904",
                 "columns": "4"
             },
@@ -34621,7 +34626,7 @@
         "mime_type": "text/plain",
         "extension": ".pssession",
         "reader": "PsSessionReader",
-        "uploaded": "2026-03-10T09:23:30.694745+00:00",
+        "uploaded": "2026-05-22T09:41:29.038148+00:00",
         "type": "PalmSens.DataFiles.SessionFile"
     }
 }

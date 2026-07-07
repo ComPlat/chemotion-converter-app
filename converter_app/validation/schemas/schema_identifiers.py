@@ -33,6 +33,21 @@ identifiers_schema = {
         "editable": {
             "type": "boolean"
         },
+        "isRdfOutput": {
+            "type": "boolean"
+        },
+        "isDatatableOutput": {
+            "type": "boolean"
+        },
+        "isDatasetOutput": {
+            "type": "boolean"
+        },
+        "isLoobDatatableOutput": {
+            "type": "boolean"
+        },
+        "isFirstMatch": {
+            "type": "boolean"
+        },
         "key": {
             "type": "string"
         },

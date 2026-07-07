@@ -73,14 +73,16 @@ def _generate_expected_profiles_results(src_path, file, _unused, res_path):
     print(f"Generating expected profiles results for {src_path_file}")
     with open(os.path.join(src_path, file), 'rb') as file_pointer:
         file_storage = FileStorage(file_pointer)
-        # os.makedirs(os.path.join(res_path, file) , exist_ok=True)
         reader_content_str = '{}'
         try:
             reader = registry.match_reader(File(file_storage))
             if reader:
                 reader.process()
                 reader_dict = reader.as_dict
-                reader_content_str = json.dumps(reader_dict, indent=4)
+                try:
+                    reader_content_str = json.dumps(reader_dict, indent=4)
+                except:
+                    pass
                 converter = Converter.match_profile('test', reader_dict)
                 if converter:
                     converter.process()
@@ -101,13 +103,10 @@ def _generate_expected_profiles_results(src_path, file, _unused, res_path):
                 raise FileNotFoundError('No reader found')
         except FileNotFoundError:
             print('Reader or Profile not found')
-            print(traceback.format_exc())
         except AssertionError:
             print('Profile not matching')
-            print(traceback.format_exc())
         except AttributeError:
             print('Converter con not write')
-            print(traceback.format_exc())
         finally:
             with open(os.path.join(res_path, file + '.json'), 'w+', encoding='utf8') as f_res:
                 f_res.write(reader_content_str)

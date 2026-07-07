@@ -1,0 +1,27 @@
+FROM ubuntu:24.04
+LABEL authors="martin"
+
+ENV DEBIAN_FRONTEND=noninteractive \
+    PATH="/opt/venv/bin:${PATH}"
+
+RUN apt-get update \
+    && apt-get install -y -q --no-install-recommends \
+        file \
+        git \
+        libmagic1 \
+        python3.12 \
+        python3.12-venv \
+    && rm -rf /var/lib/apt/lists/* \
+    && python3.12 -m venv /opt/venv
+
+RUN file --version
+RUN python --version
+
+RUN mkdir /srv/converter
+COPY pyproject.toml README.md LICENSE /srv/converter/
+WORKDIR /srv/converter/
+
+RUN pip install pip --upgrade
+RUN pip install ".[dev]"
+
+CMD python -m test_manager -e && python -m test_manager -ep && pytest .

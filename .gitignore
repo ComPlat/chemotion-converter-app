@@ -39,3 +39,5 @@ test_manager/test_readers.py
 /.run/migrate.run.xml
 /test_files/profiles/private/
 /test_files/profiles/dev/
+/___timer_results/*
+/changes_results.diff

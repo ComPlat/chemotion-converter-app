@@ -217,7 +217,7 @@ class Reader:
                 shape.append(None)
             else:
                 if isinstance(cell, datetime):
-                    shape.append('f')
+                    shape.append('dt')
                     continue
                 cell = str(cell).strip()
                 if cell in self._empty_values:

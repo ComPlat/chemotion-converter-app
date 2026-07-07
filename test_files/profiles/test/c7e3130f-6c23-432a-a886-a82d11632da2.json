@@ -200,7 +200,7 @@
             "trigger": "undo:1.6"
         },
         {
-            "at": "2026-05-06T08:56:28.969239+00:00",
+            "at": "2026-05-21T11:46:01.712686+00:00",
             "diff": [
                 {
                     "op": "remove",
@@ -211,15 +211,15 @@
             "trigger": "migration:20260417132254"
         },
         {
-            "at": "2026-05-06T08:56:28.969504+00:00",
+            "at": "2026-05-21T11:46:01.712865+00:00",
             "diff": [
                 {
                     "op": "remove",
-                    "path": "/data/0/tables/0/metadata/__UNIT_liter"
+                    "path": "/data/0/tables/0/metadata/__UNIT_%"
                 },
                 {
                     "op": "remove",
-                    "path": "/data/0/tables/0/metadata/__UNIT_PPM"
+                    "path": "/data/0/tables/0/metadata/__UNIT_liter"
                 },
                 {
                     "op": "remove",
@@ -227,15 +227,51 @@
                 },
                 {
                     "op": "remove",
-                    "path": "/data/0/tables/0/metadata/__UNIT_%"
+                    "path": "/data/0/tables/0/metadata/__UNIT_gram"
                 },
                 {
                     "op": "remove",
-                    "path": "/data/0/tables/0/metadata/__UNIT_gram"
+                    "path": "/data/0/tables/0/metadata/__UNIT_PPM"
                 }
             ],
             "profile_version": "1.9",
             "trigger": "migration:20260422063146"
+        },
+        {
+            "at": "2026-05-21T11:46:01.713183+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/tables/0/loopType"
+                },
+                {
+                    "from": "/tables/0/inputTableIndex",
+                    "op": "move",
+                    "path": "/tables/0/table/xColumn/tableIndex"
+                },
+                {
+                    "op": "add",
+                    "path": "/tables/0/table/yColumn/tableIndex",
+                    "value": 0
+                }
+            ],
+            "profile_version": "1.10",
+            "trigger": "migration:20260506160404"
+        },
+        {
+            "at": "2026-05-21T11:46:01.713362+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/tables/0/uuid"
+                },
+                {
+                    "op": "remove",
+                    "path": "/tables/0/tableName"
+                }
+            ],
+            "profile_version": "1.11",
+            "trigger": "migration:20260513094819"
         }
     ],
     "id": "c7e3130f-6c23-432a-a886-a82d11632da2",
@@ -261,12 +297,12 @@
         }
     ],
     "isDisabled": false,
-    "last_migration": "20260430125545",
+    "last_migration": "20260513094819",
     "objects": [],
     "ols": null,
     "ontology": "",
     "predicates": [],
-    "profile_version": "1.10",
+    "profile_version": "1.12",
     "reactionVariations": {
         "elements": [],
         "identifiers": []
@@ -296,16 +332,18 @@
                 "XUNITS": "%",
                 "YUNITS": "ABSORBANCE"
             },
+            "inputTableIndex": 0,
+            "loopType": "none",
             "table": {
                 "xColumn": {
-                    "columnIndex": 0,
-                    "tableIndex": 0
+                    "columnIndex": 0
                 },
                 "yColumn": {
-                    "columnIndex": 1,
-                    "tableIndex": 0
+                    "columnIndex": 1
                 }
-            }
+            },
+            "tableName": "Table #1",
+            "uuid": "31ce5223-49cd-43e0-8508-6caddfe9324c"
         }
     ],
     "title": "UV-Vis",

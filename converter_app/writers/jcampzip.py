@@ -19,7 +19,7 @@ class JcampZipWriter(Writer):
     def __init__(self, converter):
         super().__init__(converter)
         self.profile = converter.profile
-        self.matches = converter.matches
+        self.matches = converter.get_matches(dataset=True)
         self.zipbuffer = io.BytesIO()
 
     def process(self):
@@ -50,17 +50,17 @@ class JcampZipWriter(Writer):
                 zf.writestr(reaction_variation_file_name, reaction_variation)
 
             jc = JcampWriter(self._converter)
-            for idx, tables in enumerate(jc.process_ntuples_tables()):
+            for idx, header in enumerate(jc.process_ntuples_tables()):
                 file_name = f'data/table_NTUPLES{idx}.jdx'
-                binary_string = self._add_table_to_zip(metadata, tables[0], file_name, zf, jc)
+                binary_string = self._add_table_to_zip(metadata, header, file_name, zf, jc)
                 self._update_sha_binary(sha_strings, binary_string, file_name)
 
             for table_id, table in enumerate(
-                    [t for t in self.tables if t.get('header', {}).get('DATA CLASS') != 'NTUPLES']):
+                    [t for t in self.tables if not isinstance(t, list)]):
                 file_name = f'data/table_{(table_id + 1):02d}.jdx'
                 jc = JcampWriter(self._converter)
                 jc.process_table(table)
-                binary_string = self._add_table_to_zip(metadata, table, file_name, zf, jc)
+                binary_string = self._add_table_to_zip(metadata, table['header'], file_name, zf, jc)
                 self._update_sha_binary(sha_strings, binary_string, file_name)
 
             metadata_file_name = 'metadata/converter.json'
@@ -81,13 +81,13 @@ class JcampZipWriter(Writer):
         sha_strings['256'].append(f'{hashlib.sha256(content).hexdigest()} {filename}')
         sha_strings['512'].append(f'{hashlib.sha512(content).hexdigest()} {filename}')
 
-    def _add_table_to_zip(self, metadata, table, file_name, zf, jc):
+    def _add_table_to_zip(self, metadata, header, file_name, zf, jc):
         string = jc.write()
         zf.writestr(file_name, string)
         metadata['tablesCount'] += 1
         metadata['tables'].append({
             'fileName': file_name,
-            'header': table['header']
+            'header': header
         })
         return string
 

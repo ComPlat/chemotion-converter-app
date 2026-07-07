@@ -37,6 +37,11 @@
                 "Unit_column_#0": "_adsorp_pressure",
                 "Unit_column_#1": "_adsorp_p0",
                 "Unit_column_#2": "_adsorp_loading",
+                "__UNIT_PPM": "ppm",
+                "__UNIT_liter": "l",
+                "__UNIT_gram": "g",
+                "__UNIT_%": "%",
+                "__UNIT_mol": "mol",
                 "rows": "48",
                 "columns": "3"
             },
@@ -656,6 +661,6 @@
         "mime_type": "text/plain",
         "extension": ".txt",
         "reader": "AifReader",
-        "uploaded": "2026-03-10T09:23:35.337764+00:00"
+        "uploaded": "2026-05-22T09:41:34.980027+00:00"
     }
 }

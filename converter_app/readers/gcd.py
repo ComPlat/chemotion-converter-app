@@ -87,7 +87,7 @@ class GcdReader(Reader):
                 else:
                     table['metadata'][f'{header_key}.{key}'] = value
 
-            table['columns'] = []
+        table['columns'] = []
         table['rows'] = []
         table['metadata']['rows'] = str(len(table['rows']))
         table['metadata']['columns'] = str(len(table['columns']))

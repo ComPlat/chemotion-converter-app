@@ -23,4 +23,4 @@ def test_is_operator_sample():
         profile = Profile(profile_data, 'dev', profile_identifier, False)
         converter = Converter(profile, csv_reader.as_dict)
         converter.process()
-        assert [float(x) for x in converter.tables[0]['x']] == data
+        assert [float(x) for x in next(converter.tables)['x']] == data

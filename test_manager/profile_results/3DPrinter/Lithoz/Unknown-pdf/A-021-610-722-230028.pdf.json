@@ -21,6 +21,11 @@
                 "Kartuschen": "10",
                 "Run anpassen": "10 DIESER RUN WURDE GETUNED!",
                 "Drucker": "A-021-610-722 (A-021-610-722) Run-Call-sign A-021-610-722-230028 Jobname None Endstatus des Runs Fertig Startdatum 14.08.2023 14:03:42 Enddatum 15.08.2023 07:40:20 Dauer 17:37 h Material LithaLox 350 Basisparametersatz Gute Parameter LithaLox 350 Softwareversion 20Q3 Letzte Kalibrierung 03.12.2021",
+                "__UNIT_PPM": "ppm",
+                "__UNIT_liter": "l",
+                "__UNIT_gram": "g",
+                "__UNIT_%": "%",
+                "__UNIT_mol": "mol",
                 "rows": "0",
                 "columns": "0"
             },
@@ -208,6 +213,6 @@
         "mime_type": "application/pdf",
         "extension": ".pdf",
         "reader": "PdfReader",
-        "uploaded": "2026-01-19T10:50:07.071892+00:00"
+        "uploaded": "2026-05-22T09:41:36.957907+00:00"
     }
 }

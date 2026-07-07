@@ -8,6 +8,7 @@ users with the capability to effortlessly create profiles for the conversion pro
 """
 import json
 import os
+import time
 from pathlib import Path
 
 import jsonschema
@@ -22,7 +23,7 @@ from converter_app.models import File, Profile
 from converter_app.options import compose_options
 from converter_app.profile_migration.utils.registration import Migrations
 from converter_app.readers import READERS as registry
-from converter_app.utils import checkpw, run_conversion, get_app_root, str_to_bool
+from converter_app.utils import checkpw, run_conversion, get_app_root, str_to_bool, FunctionTimer
 from converter_app.validation import validate_profile
 
 is_shutdown = False
@@ -176,18 +177,29 @@ def converting_router(app: Flask, auth: HTTPBasicAuth):
         Simple View: upload file, convert to table, search for profile,
         return jcamp based on profiledescription
         '''
+
+        # ft = FunctionTimer()
         client_id = auth.current_user()
         error_msg = 'No file provided.'
         if request.files.get('file'):
             file = File(request.files.get('file'))
+            #marker = ft.start()
             reader = registry.match_reader(file)
+            #marker.stop()
             error_msg = 'Your file could not be processed. No Reader available!'
 
             if reader:
+                #marker = ft.start()
                 reader.process()
+                #marker.stop()
+                #marker = ft.start()
                 converter = Converter.match_profile(client_id, reader.as_dict)
-
-                return _run_conversion(converter, file)
+                #marker.stop()
+                #marker = ft.start()
+                result = _run_conversion(converter, file)
+                #marker.stop()
+                #ft.print()
+                return result
         return jsonify({'error': error_msg}), 400
 
     def _run_conversion(converter, file):
@@ -336,6 +348,12 @@ def utils_router(app: Flask, auth: HTTPBasicAuth):
     def list_datasets():
         datasets = Dataset.list()
         return jsonify([dataset.dataset_data for dataset in datasets]), 200
+
+    @app.route('/datasets_units', methods=['GET'])
+    @auth.login_required
+    def list_datasets_units():
+        datasets = Dataset.dataset_units()
+        return jsonify(datasets), 200
 
     @app.route('/options', methods=['GET'])
     @auth.login_required
