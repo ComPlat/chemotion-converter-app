@@ -43,6 +43,11 @@ It fetches the profiles and test files from the added_data_files branch of the r
 Generate files:  
 
 ```shell
+docker build -t generate_test_results:latest -f Dockerfile.Test_Results .
+docker run --rm -it -v "$(pwd):/srv/converter" generate_test_results:latest
+```
+
+```shell
 python -m test_manager -t -tp
 ```
 

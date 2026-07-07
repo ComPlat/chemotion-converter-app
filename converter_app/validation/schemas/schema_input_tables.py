@@ -41,9 +41,7 @@ tables_schema = {
             "type": "array",
             "items": {
                 "type": "array",
-                "items": {
-                    "type": ["string", "number"]
-                }
+                "items": {}
             }
         }
 
