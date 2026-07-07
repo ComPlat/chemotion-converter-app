@@ -6,6 +6,7 @@ with the Chemotion platform. This module comes equipped with
 a Flask server that exposes various endpoints, providing
 users with the capability to effortlessly create profiles for the conversion process.
 """
+import base64
 import json
 import os
 import time
@@ -235,7 +236,21 @@ def converting_router(app: Flask, auth: HTTPBasicAuth):
                 for index, table in enumerate(reader.tables):
                     reader.tables[index]['rows'] = table['rows'][:10]
 
-                return jsonify(reader.as_dict), 201
+                # as_dict carries attachments as (raw bytes, filename, AttachmentType)
+                # tuples, which jsonify cannot serialize. The conversion endpoint needs
+                # those raw bytes, so only this preview response gets a JSON-safe form
+                # (base64 content + the enum value).
+                result = reader.as_dict
+                result['attachments'] = [
+                    {
+                        'filename': filename,
+                        'type': file_type.value,
+                        'content': base64.b64encode(content).decode('ascii'),
+                    }
+                    for content, filename, file_type in result['attachments']
+                ]
+
+                return jsonify(result), 201
             return jsonify(
                 {'error': 'Your file could not be processed.'}), 400
         return jsonify({'error': 'No file provided.'}), 400
