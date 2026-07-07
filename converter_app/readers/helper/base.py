@@ -95,7 +95,16 @@ class Reader:
         self.tables = None
         self.file = file
         self.file_content = tar_content
-        self.is_tar_ball = len(tar_content) > 0
+        self.is_tar_ball = len(tar_content) > 0,
+        self._ontology = None
+
+    @property
+    def ontology(self):
+        return self._ontology
+
+    @ontology.setter
+    def ontology(self, value):
+        self._ontology = value
 
     @property
     def as_dict(self):
@@ -192,7 +201,8 @@ class Reader:
             'mime_type': self.file.mime_type,
             'extension': self.file.suffix,
             'reader': self.__class__.__name__,
-            'uploaded': datetime.now(UTC).isoformat()
+            'uploaded': datetime.now(UTC).isoformat(),
+            'ontology': self.ontology
         }
 
     def append_table(self, tables: list) -> Table:
