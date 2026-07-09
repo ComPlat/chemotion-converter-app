@@ -18,7 +18,7 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 RUN mkdir /srv/converter
-COPY pyproject.toml README.md LICENSE /srv/converter/
+
 WORKDIR /srv/converter/
 
 # Create virtual environment
@@ -28,6 +28,5 @@ RUN python3.13 -m venv /opt/venv
 ENV PATH="/opt/venv/bin:$PATH"
 
 RUN pip install pip --upgrade
-RUN pip install ".[dev]"
 
-CMD python -m test_manager -e && python -m test_manager -ep && pytest .
+CMD pip install ".[dev]" && python -m test_manager -e && python -m test_manager -ep && pytest .

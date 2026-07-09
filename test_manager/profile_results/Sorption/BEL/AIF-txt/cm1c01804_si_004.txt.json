@@ -22,6 +22,7 @@
                 "_adsorp_loading"
             ],
             "metadata": {
+                "ontology": "",
                 "_exptl_operator": "Francesco",
                 "_exptl_date": "2018-11-21T00:00:00",
                 "_exptl_instrument": "BEL 00349",
@@ -661,6 +662,7 @@
         "mime_type": "text/plain",
         "extension": ".txt",
         "reader": "AifReader",
-        "uploaded": "2026-05-22T09:41:34.980027+00:00"
+        "uploaded": "2026-07-09T08:08:31.854118+00:00",
+        "ontology": null
     }
 }

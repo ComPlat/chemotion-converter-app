@@ -33034,6 +33034,7 @@
         "mime_type": "text/plain",
         "extension": ".TXT",
         "reader": "SecReader",
-        "uploaded": "2026-05-22T09:39:35.529544+00:00"
+        "uploaded": "2026-07-09T08:07:13.862419+00:00",
+        "ontology": null
     }
 }
