@@ -68556,9 +68556,10 @@
     "metadata": {
         "file_name": "File062.brml",
         "content_type": "",
-        "mime_type": "application/octet-stream",
+        "mime_type": "application/zip",
         "extension": ".brml",
         "reader": "BrmlReader",
-        "uploaded": "2026-05-22T09:41:34.742614+00:00"
+        "uploaded": "2026-07-09T08:08:31.577848+00:00",
+        "ontology": null
     }
 }

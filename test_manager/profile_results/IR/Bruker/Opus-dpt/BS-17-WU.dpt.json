@@ -7056,10 +7056,11 @@
     "metadata": {
         "file_name": "BS-17-WU.dpt",
         "content_type": "",
-        "mime_type": "text/plain",
+        "mime_type": "text/csv",
         "extension": ".dpt",
         "reader": "CSVReader",
-        "uploaded": "2026-05-22T09:39:45.014823+00:00",
+        "uploaded": "2026-07-09T08:07:22.279223+00:00",
+        "ontology": null,
         "lineterminator": "\\r\\n",
         "quoting": "0",
         "doublequote": "False",

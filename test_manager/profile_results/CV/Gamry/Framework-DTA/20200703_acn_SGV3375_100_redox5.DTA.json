@@ -48368,6 +48368,7 @@
         "mime_type": "text/plain",
         "extension": ".DTA",
         "reader": "DtaReader",
-        "uploaded": "2026-05-22T09:41:29.145721+00:00"
+        "uploaded": "2026-07-09T08:08:27.943283+00:00",
+        "ontology": null
     }
 }
