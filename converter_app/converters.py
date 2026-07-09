@@ -161,7 +161,7 @@ class Converter:
         return False
 
     def match_reaction_variation_identifier(self):
-        self.reaction_variation_matches = self._resolve_all_identifiers(self._reaction_variation_identifiers)
+        self.reaction_variation_matches = self._resolve_all_identifiers(self._reaction_variation_identifiers, True)
 
     def _match(self, identifiers):
         """
@@ -182,7 +182,7 @@ class Converter:
         # if everything matched, return how many identifiers matched
         return matches
 
-    def _resolve_all_identifiers(self, identifiers):
+    def _resolve_all_identifiers(self, identifiers, force = False):
         """
 
         :return:
@@ -191,7 +191,7 @@ class Converter:
         matches = []
         for identifier in identifiers:
 
-            if identifier.get('optional'):
+            if force or identifier.get('optional'):
                 # return immediately if one (non optional) identifier does not match
 
                 match = self._resolve_identifier(identifier)
@@ -357,6 +357,7 @@ class Converter:
 
     def process(self):
         self.prepare()
+        self.match_reaction_variation_identifier()
         ntuples_header = dict()
         for in_idx in range(len(self.input_tables)):
             for output_table_index, output_table in enumerate(self.profile_output_tables):
