@@ -97,6 +97,7 @@ class Reader:
         self.file_content = tar_content
         self.is_tar_ball = len(tar_content) > 0,
         self._ontology = None
+        self._device = None
 
     @property
     def ontology(self):
@@ -105,6 +106,14 @@ class Reader:
     @ontology.setter
     def ontology(self, value):
         self._ontology = value
+
+    @property
+    def device(self):
+        return self._device
+
+    @device.setter
+    def device(self, value):
+        self._device = value
 
     @property
     def as_dict(self):
@@ -202,7 +211,8 @@ class Reader:
             'extension': self.file.suffix,
             'reader': self.__class__.__name__,
             'uploaded': datetime.now(UTC).isoformat(),
-            'ontology': self.ontology
+            'ontology': self.ontology,
+            'device': self.device
         }
 
     def append_table(self, tables: list) -> Table:

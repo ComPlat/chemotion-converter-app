@@ -67,6 +67,35 @@ def validate_ontology(ontology):
     return None
 
 
+# Maximum accepted length of the free-form ``device`` request parameter.
+DEVICE_MAX_LENGTH = 256
+
+
+def validate_device(device):
+    """
+    Offline validation of the optional ``device`` request parameter.
+
+    Returns an error message string if the value is present but invalid, or
+    ``None`` if it is valid or absent. Passing no device (``None`` or an empty
+    string) is explicitly allowed for backwards compatibility.
+
+    Unlike ``ontology`` the ``device`` value is a free-form identifier supplied
+    by an external client (e.g. an ELN) -- either a free string or a value the
+    client picked from its own drop-down. There is no fixed format and no online
+    authority to validate against, so validation is intentionally minimal: we
+    only guard against unreasonably long input. The value flows into the file
+    metadata (see ``Reader.get_metadata``) where it becomes available as a
+    ``fileMetadata`` profile identifier for matching.
+    """
+    if not device:
+        # No device supplied -> nothing to validate (backwards compatible).
+        return None
+    if len(device) > DEVICE_MAX_LENGTH:
+        return (f'Invalid device: exceeds the maximum length of '
+                f'{DEVICE_MAX_LENGTH} characters.')
+    return None
+
+
 is_shutdown = False
 def get_clients() -> dict[str,str] | None:
     """
@@ -228,8 +257,12 @@ def converting_router(app: Flask, auth: HTTPBasicAuth):
             ontology_error = validate_ontology(ontology)
             if ontology_error:
                 return jsonify({'error': ontology_error}), 400
+            device = request.form.get('device', None)
+            device_error = validate_device(device)
+            if device_error:
+                return jsonify({'error': device_error}), 400
             #marker = ft.start()
-            reader = registry.match_reader(file, ontology=ontology)
+            reader = registry.match_reader(file, ontology=ontology, device=device)
             #marker.stop()
 
             error_msg = 'Your file could not be processed. No Reader available!'
@@ -275,7 +308,11 @@ def converting_router(app: Flask, auth: HTTPBasicAuth):
             ontology_error = validate_ontology(ontology)
             if ontology_error:
                 return jsonify({'error': ontology_error}), 400
-            reader = registry.match_reader(file, ontology=ontology)
+            device = request.form.get('device', None)
+            device_error = validate_device(device)
+            if device_error:
+                return jsonify({'error': device_error}), 400
+            reader = registry.match_reader(file, ontology=ontology, device=device)
 
             if reader:
                 reader.process()

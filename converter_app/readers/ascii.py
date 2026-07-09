@@ -32,6 +32,7 @@ class AsciiReader(Reader):
         table = self.append_table(tables)
 
         table['metadata']['ontology'] = str(self.ontology) if self.ontology else ''
+        table['metadata']['device'] = str(self.device) if self.device else ''
 
         # loop over lines of the file
         previous_count = None
