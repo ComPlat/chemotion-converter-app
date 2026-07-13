@@ -42,7 +42,7 @@ class MSXmlReader(Reader):
         with tempfile.TemporaryDirectory() as tmpdirname:
             tmp_file_name = os.path.join(tmpdirname, os.path.basename(self.file.name))
             with open(tmp_file_name, 'wb+') as f:
-                f.write(self._mz_xml_content)
+                f.write(self.file.content)
             return self.prepare_tables_from_xml(tmp_file_name)
 
     def prepare_tables_from_xml(self, xml_file_path):

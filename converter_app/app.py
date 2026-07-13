@@ -12,7 +12,6 @@ import os
 import uuid
 from pathlib import Path
 import subprocess as sp
-from urllib.parse import urlparse
 
 import dotenv
 import flask
@@ -29,7 +28,7 @@ from converter_app.models import Profile
 # Example usage
 
 
-def create_app(is_local_cli_admin = False, is_local_cli = False) -> flask.Flask:
+def create_app(is_local_cli_admin=False, is_local_cli=False) -> flask.Flask:
     """
     Creates a Flask server that exposes various endpoints, providing
     users with the capability to effortlessly create profiles for the conversion process.
@@ -55,14 +54,15 @@ def create_app(is_local_cli_admin = False, is_local_cli = False) -> flask.Flask:
 
     logger = logging.getLogger(__name__)
 
-    parsed_url = urlparse(os.getenv('MS_CONVERTER', 'http://127.0.0.1:5050'))
-    parsed_host_uri = '{uri.scheme}://{uri.netloc}/'.format(uri=parsed_url)
     ms_test_cmd_command = ["docker", "exec", "msconvert_docker", "wine", "msconvert", "--help"]
     try:
         res = sp.run(
-            ms_test_cmd_command, check=True)
+            ms_test_cmd_command,
+            stdout=sp.DEVNULL,
+            stderr=sp.DEVNULL, check=True)
         if res.returncode != 0:
-            logger.warning(f"MS_CONVERTER: MS converter Docker container NOT available! -> {' '.join(ms_test_cmd_command)}")
+            logger.warning(
+                f"MS_CONVERTER: MS converter Docker container NOT available! -> {' '.join(ms_test_cmd_command)[:50]}...")
     except sp.CalledProcessError:
         logger.warning(f"MS_CONVERTER: MS converter Docker container NOT available! -> {' '.join(ms_test_cmd_command)}")
 
@@ -73,7 +73,6 @@ def create_app(is_local_cli_admin = False, is_local_cli = False) -> flask.Flask:
         SECRET_KEY=os.getenv('SECRET_KEY'),
         PROFILES_DIR=os.getenv('PROFILES_DIR', 'profiles'),
         DATASETS_DIR=os.getenv('DATASETS_DIR', 'datasets'),
-        MS_CONVERTER=parsed_host_uri,
         MAX_CONTENT_LENGTH=human2bytes(os.getenv('MAX_CONTENT_LENGTH', '64M')),
         CORS=str2bool(os.getenv('CORS', 'False').lower()),
         DEBUG=debug,
