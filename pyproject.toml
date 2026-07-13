@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "chemotion-converter-app"
-version = "1.8.0"
+version = "1.9.1"
 authors = [{ name = "Nicole Jung", email = "nicole.jung@kit.edu" }]
 requires-python = ">= 3.12"
 description = "A backend service to interconvert chemistry-related files."
@@ -26,6 +26,7 @@ dependencies = [
     "Flask-HTTPAuth==4.*",
     "gunicorn==25.*",
     "openpyxl==3.*",
+    "Pillow==11.*",
     "python-dotenv==1.*",
     "python-magic==0.*; platform_system != 'Windows'",
     "python-magic-bin==0.*; platform_system == 'Windows'",
@@ -43,11 +44,13 @@ dependencies = [
     "yadg==6.2.3",
     "numpy==2.*",
     "xmltodict==1.*",
-    "binaryparser @ git+https://github.com/ComPlat/BinaryParser@main",
+    "binaryparser @ git+https://github.com/ComPlat/BinaryParser.git@v1.4.0",
     "rdflib==7.*",
     "GitPython==3.1.*",
     "requests==2.32.*",
-    "click==8.3.*"
+    "click==8.3.*",
+    "jsonpatch==1.33",
+    "astropy~=8.0.0"
 ]
 
 [project.optional-dependencies]
@@ -65,7 +68,8 @@ dev = [
     "setuptools",
     "jinja2",
     "pytest-timeout",
-    "pyinstaller"
+    "pyinstaller",
+    "pip-licenses"
 ]
 
 [project.urls]

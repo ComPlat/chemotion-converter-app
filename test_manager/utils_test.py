@@ -37,21 +37,23 @@ def compare_tables(tables_res, tables_exp):
 
 def compare_reader_result(src_path, res_path, file):
     expected_result = {}
+    content = {}
+    has_reader = False
     try:
         with open(os.path.join(src_path, file), 'rb') as fp:
             file_storage = FileStorage(fp)
+            reader = registry.match_reader(File(file_storage))
+            if reader:
+                reader.process()
+                content = reader.as_dict
+                has_reader = True
             with open(os.path.join(res_path, file + '.json'), 'r', encoding='utf8') as f_res:
                 expected_result = json.loads(f_res.read())
                 f_res.close()
-                reader = registry.match_reader(File(file_storage))
-                if reader:
-                    reader.process()
-                    content = reader.as_dict
-                    return (expected_result, content, True)
+
     except FileNotFoundError:
-        print('Reader result not found')
-        print(traceback.format_exc())
-    return (expected_result, {}, False)
+        print(f' {file}: Reader result not found')
+    return (expected_result, content, has_reader)
 
 
 def get_profile_result(reader_dict, file):
@@ -72,7 +74,9 @@ def get_profile_result(reader_dict, file):
                 data = []
                 meta_data = []
                 if os.path.exists(os.path.join(res_path, file, 'data')):
-                    for data_file in os.listdir(os.path.join(res_path, file, 'data')):
+                    data_files = os.listdir(os.path.join(res_path, file, 'data'))
+                    data_files_sorted = sorted(data_files)
+                    for data_file in data_files_sorted:
                         with open(os.path.join(res_path, file, 'data', data_file), 'r', encoding='utf8') as f:
                             data.append(f.read())
 
@@ -82,16 +86,14 @@ def get_profile_result(reader_dict, file):
                         meta_data.append(json.loads(f.read()))
                 return data, meta_data, True
             else:
-                raise FileNotFoundError('No profile found')
+                print(f' {file}: Profile not found')
         except FileNotFoundError:
-            print('Reader or Profile not found')
-            print(traceback.format_exc())
+            pass
+            print(f' {file}: Reader or Profile not found')
         except AssertionError:
-            print('Profile not matching')
-            print(traceback.format_exc())
+            print(f' {file}: Profile not matching')
         except AttributeError:
-            print('Converter con not write')
-            print(traceback.format_exc())
+            print(f' {file}: Converter con not write')
         finally:
             shutil.rmtree(res_path)
     return [], [], False
@@ -109,8 +111,11 @@ def compare_profile_result(src_path, res_path, file):
         data_expected = []
         meta_expected = []
         if os.path.exists(os.path.join(res_path, file, 'data')):
-            for data_file in os.listdir(str(os.path.join(res_path, file, 'data'))):
+            data_files = os.listdir(str(os.path.join(res_path, file, 'data')))
+            data_files_sorted = sorted(data_files)
+            for data_file in data_files_sorted:
                 with open(os.path.join(res_path, file, 'data', data_file), 'r', encoding='utf8') as f:
+
                     data_expected.append(f.read())
 
         if os.path.exists(os.path.join(res_path, file, 'metadata')):

@@ -3,6 +3,11 @@
         {
             "header": [],
             "metadata": {
+                "__UNIT_PPM": "ppm",
+                "__UNIT_liter": "l",
+                "__UNIT_gram": "g",
+                "__UNIT_%": "%",
+                "__UNIT_mol": "mol",
                 "rows": "1757",
                 "columns": "2"
             },
@@ -7054,7 +7059,8 @@
         "mime_type": "text/csv",
         "extension": ".dpt",
         "reader": "CSVReader",
-        "uploaded": "2026-03-10T09:22:20.945027+00:00",
+        "uploaded": "2026-07-09T08:22:40.542846+00:00",
+        "ontology": null,
         "lineterminator": "\\r\\n",
         "quoting": "0",
         "doublequote": "False",

@@ -33,6 +33,21 @@ identifiers_schema = {
         "editable": {
             "type": "boolean"
         },
+        "isRdfOutput": {
+            "type": "boolean"
+        },
+        "isDatatableOutput": {
+            "type": "boolean"
+        },
+        "isDatasetOutput": {
+            "type": "boolean"
+        },
+        "isLoobDatatableOutput": {
+            "type": "boolean"
+        },
+        "isFirstMatch": {
+            "type": "boolean"
+        },
         "key": {
             "type": "string"
         },
@@ -57,6 +72,7 @@ identifiers_schema = {
             "type": ["string", "number"]
         },
         "predicate": ontology_id,
+        "object": ontology_id,
         "subject": ontology_subjects_id,
         "datatype": ontology_id,
     },

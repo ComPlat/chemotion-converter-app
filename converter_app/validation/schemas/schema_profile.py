@@ -53,6 +53,15 @@ profile_schema = {
         "converter_version": {
             "type": "string"
         },
+        "profile_version": {
+            "type": "string"
+        },
+        "version": {
+            "type": ["string", "number"]
+        },
+        "diff_history": {
+            "type": "array"
+        },
         "identifiers": {
             "type": "array",
             "items": {
@@ -60,21 +69,45 @@ profile_schema = {
             }
         },
         "data": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "metadata": {
+                        "type": "object",
+                        "properties": {}
+                    },
+                    "tables": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "chemconverter://profile/input_tables/draft-01"
+                        }
+                    }
+                }
+            }
+
+        },
+        "reactionVariations": {
             "type": "object",
             "properties": {
-                "metadata": {
-                    "type": "object",
-                    "properties": {
-
+                "identifiers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "chemconverter://profile/identifiers/draft-01"
                     }
                 },
-                "tables": {
+                "elements": {
                     "type": "array",
-                    "items": {"$ref": "chemconverter://profile/input_tables/draft-01"}
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
                 }
             },
-            "required": ["metadata", "tables"]
 
+            "additionalProperties": False,
         },
         "last_migration": {
             "type": "string"
@@ -117,6 +150,10 @@ profile_schema = {
             "items": ontology_properties
         },
         "predicates": {
+            "type": "array",
+            "items": ontology_properties
+        },
+        "objects": {
             "type": "array",
             "items": ontology_properties
         },
@@ -163,7 +200,10 @@ profile_schema = {
         "subjectInstances",
         "predicates",
         "datatypes",
-        "subjects"
+        "subjects",
+        "objects",
+        "profile_version",
+        "reactionVariations"
     ]
 
 }

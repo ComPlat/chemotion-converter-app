@@ -84,6 +84,11 @@
                 "params.goto Ns'.0": "0",
                 "params.nr cycles.0": "0",
                 "params.inc. cycle.0": "0",
+                "__UNIT_PPM": "ppm",
+                "__UNIT_liter": "l",
+                "__UNIT_gram": "g",
+                "__UNIT_%": "%",
+                "__UNIT_mol": "mol",
                 "rows": "1",
                 "columns": "1"
             },
@@ -95,7 +100,7 @@
             ],
             "rows": [
                 [
-                    1686914437.393
+                    1686921637.393
                 ]
             ]
         }
@@ -106,6 +111,7 @@
         "mime_type": "application/octet-stream",
         "extension": ".mpr",
         "reader": "MprReader",
-        "uploaded": "2026-01-13T09:25:57.705000+00:00"
+        "uploaded": "2026-07-07T11:04:00.721071+00:00",
+        "ontology": null
     }
 }

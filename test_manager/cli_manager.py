@@ -55,7 +55,6 @@ def generate_expected_results(src_path, file, res_path, _unused):
             else:
                 raise FileNotFoundError('No reader found')
         except FileNotFoundError:
-            print(traceback.format_exc())
             with open(os.path.join(res_path, file + '.json'), 'w+', encoding='utf8') as f_res:
                 f_res.write('{}')
                 f_res.close()

@@ -1,5 +1,5 @@
 @prefix chemotion: <https://chemotion.net/chemotion/#> .
-@prefix chmo: <http://purl.obolibrary.org/obo/> .
+@prefix obi: <http://purl.obolibrary.org/obo/> .
 
-chemotion:IR_DPT a chmo:OBI_0000070 .
+chemotion:IR_DPT a obi:OBI_0000070 .
 

@@ -1,39 +1,7 @@
 {
   "profileId": "6be46fd7-59a2-4b02-829b-cbfef8c19646",
   "ols": null,
-  "matches": [
-    {
-      "identifier": {
-        "editable": true,
-        "id": "#0fileMetadata",
-        "key": "extension",
-        "match": "exact",
-        "optional": false,
-        "type": "fileMetadata",
-        "value": ".txt"
-      },
-      "result": {
-        "value": ".txt"
-      }
-    },
-    {
-      "identifier": {
-        "editable": true,
-        "id": "#1tableHeader",
-        "lineNumber": 3,
-        "match": "exact",
-        "optional": false,
-        "tableIndex": 0,
-        "type": "tableHeader",
-        "value": "ORIGIN\tJASCO"
-      },
-      "result": {
-        "value": "ORIGIN\tJASCO",
-        "tableIndex": 0,
-        "lineNumber": 3
-      }
-    }
-  ],
+  "matches": [],
   "tablesCount": 1,
   "tables": [
     {

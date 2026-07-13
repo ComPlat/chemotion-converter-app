@@ -30,6 +30,11 @@
                 "Onset x: 173.49 \u00b0C": "End x: 243.88 \u00b0C Change: 1339.18 \u00b5g Change (normalized): 67.97 %",
                 "Onset x: 904.10 \u00b0C": "End x: 981.49 \u00b0C Change: 265.35 \u00b5g Change (normalized): 13.47 %",
                 "Residue: 557.90 \u00b5g": "Residue Percent: 28.32 %",
+                "__UNIT_PPM": "ppm",
+                "__UNIT_liter": "l",
+                "__UNIT_gram": "g",
+                "__UNIT_%": "%",
+                "__UNIT_mol": "mol",
                 "rows": "0",
                 "columns": "0"
             },
@@ -43,6 +48,6 @@
         "mime_type": "application/pdf",
         "extension": ".pdf",
         "reader": "PdfReader",
-        "uploaded": "2026-01-19T10:48:42.859359+00:00"
+        "uploaded": "2026-05-22T09:37:54.558626+00:00"
     }
 }

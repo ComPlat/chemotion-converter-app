@@ -83,8 +83,9 @@ def create_app(is_local_cli_admin = False, is_local_cli = False) -> flask.Flask:
     )
 
     os.makedirs(app.config['PROFILES_DIR'], exist_ok=True)
-    Migrations().run_migration(app.config['PROFILES_DIR'])
-    validate_all_profiles(app.config['PROFILES_DIR'])
+    if not debug:
+        Migrations().run_migration(app.config['PROFILES_DIR'])
+        validate_all_profiles(app.config['PROFILES_DIR'])
     app.debug = debug
     setup_flask_routing(app)
 

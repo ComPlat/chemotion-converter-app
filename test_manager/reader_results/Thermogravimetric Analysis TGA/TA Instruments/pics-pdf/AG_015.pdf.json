@@ -33,6 +33,11 @@
                 "Time: 96.7950 min": "Temperature: 988.83 \u00b0C Weight: 3178.44 \u00b5g Weight Percent: 92.85 %",
                 "Time: 80.7783 min": "Temperature: 830.15 \u00b0C Weight: 3241.27 \u00b5g Weight Percent: 94.68 %",
                 "Time: 68.4500 min": "Temperature: 707.68 \u00b0C Weight: 3212.79 \u00b5g Weight Percent: 93.85 %",
+                "__UNIT_PPM": "ppm",
+                "__UNIT_liter": "l",
+                "__UNIT_gram": "g",
+                "__UNIT_%": "%",
+                "__UNIT_mol": "mol",
                 "rows": "0",
                 "columns": "0"
             },
@@ -46,6 +51,6 @@
         "mime_type": "application/pdf",
         "extension": ".pdf",
         "reader": "PdfReader",
-        "uploaded": "2026-01-19T10:48:42.668302+00:00"
+        "uploaded": "2026-05-22T09:37:54.700870+00:00"
     }
 }

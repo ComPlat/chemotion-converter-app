@@ -1,10 +1,12 @@
 import logging
 import os
 import re
+from typing import Any
 from datetime import datetime, UTC
 
 logger = logging.getLogger(__name__)
 
+DEFAULT_UNITS = [('__UNIT_PPM', 'ppm'), ('__UNIT_liter', 'l'), ('__UNIT_gram', 'g'), ('__UNIT_%', '%'), ('__UNIT_mol', 'mol')]
 
 class Table(dict):
     """
@@ -26,18 +28,20 @@ class Table(dict):
         :param value: Value of the metadata
         :return:
         """
-        self['metadata'].add_unique(key, value)
+        if isinstance(self['metadata'], MetadataContainer):
+            self['metadata'].add_unique(key, value)
+        else:
+            self['metadata'][key] = value
 
     def __add__(self, other):
         raise NotImplementedError
 
-
-class MetadataContainer(dict[str:any]):
+class MetadataContainer(dict[str, Any]):
     """
     Metadata container extents dict ´. It extents the dict class by add_unique.
     """
 
-    def add_unique(self, key: str, value: any):
+    def add_unique(self, key: str, value: Any):
         """
         Checks if key exists. If so it extends the key with an integer. This integer ingresses until the key is not
         a key in the dict.
@@ -50,6 +54,17 @@ class MetadataContainer(dict[str:any]):
             key = f"{o_key} ({idx})"
             idx += 1
         self[key] = value
+
+
+def _add_default_units(tables):
+    if len(tables) == 0:
+        return
+    if isinstance(tables[0], Table):
+        for (key, val) in DEFAULT_UNITS:
+            tables[0].add_metadata(key, val)
+    else:
+        for (key, val) in DEFAULT_UNITS:
+            tables[0][key] = val
 
 
 class Reader:
@@ -81,6 +96,15 @@ class Reader:
         self.file = file
         self.file_content = tar_content
         self.is_tar_ball = len(tar_content) > 0
+        self._ontology = None
+
+    @property
+    def ontology(self):
+        return self._ontology
+
+    @ontology.setter
+    def ontology(self, value):
+        self._ontology = value
 
     @property
     def as_dict(self):
@@ -130,6 +154,9 @@ class Reader:
         method converts the content of a file.
         """
         tables = self.prepare_tables()
+
+        _add_default_units(tables)
+
         for table in tables:
             if len(table['rows']) > 0:
                 start_len_c = len(table['columns'])
@@ -174,7 +201,8 @@ class Reader:
             'mime_type': self.file.mime_type,
             'extension': self.file.suffix,
             'reader': self.__class__.__name__,
-            'uploaded': datetime.now(UTC).isoformat()
+            'uploaded': datetime.now(UTC).isoformat(),
+            'ontology': self.ontology
         }
 
     def append_table(self, tables: list) -> Table:
@@ -199,7 +227,7 @@ class Reader:
                 shape.append(None)
             else:
                 if isinstance(cell, datetime):
-                    shape.append('f')
+                    shape.append('dt')
                     continue
                 cell = str(cell).strip()
                 if cell in self._empty_values:

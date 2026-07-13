@@ -41,6 +41,11 @@
             "metadata": {
                 "column_00": "##Temp./\u00b0C",
                 "column_01": "DSC/(mW/mg)",
+                "__UNIT_PPM": "ppm",
+                "__UNIT_liter": "l",
+                "__UNIT_gram": "g",
+                "__UNIT_%": "%",
+                "__UNIT_mol": "mol",
                 "rows": "151",
                 "columns": "2"
             },
@@ -679,7 +684,8 @@
         "mime_type": "text/plain",
         "extension": ".csv",
         "reader": "CSVReader",
-        "uploaded": "2026-03-10T09:22:19.416713+00:00",
+        "uploaded": "2026-07-09T08:22:39.830942+00:00",
+        "ontology": null,
         "lineterminator": "\\r\\n",
         "quoting": "0",
         "doublequote": "False",

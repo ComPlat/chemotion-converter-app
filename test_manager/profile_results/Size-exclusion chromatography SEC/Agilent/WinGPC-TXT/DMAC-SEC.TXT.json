@@ -156,6 +156,11 @@
                 "w%_unit": "%",
                 "> 78080_DECT1": "0.00",
                 "> 78080_unit": "%",
+                "__UNIT_PPM": "ppm",
+                "__UNIT_liter": "l",
+                "__UNIT_gram": "g",
+                "__UNIT_%": "%",
+                "__UNIT_mol": "mol",
                 "rows": "0",
                 "columns": "0"
             },
@@ -17379,6 +17384,7 @@
         "mime_type": "text/plain",
         "extension": ".TXT",
         "reader": "SecReader",
-        "uploaded": "2026-03-10T09:22:13.152684+00:00"
+        "uploaded": "2026-07-09T08:22:34.366538+00:00",
+        "ontology": null
     }
 }

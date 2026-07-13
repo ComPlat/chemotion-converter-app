@@ -1,521 +1,744 @@
 {
     "converter_version": "1.8.0",
-    "data": {
-        "metadata": {
-            "content_type": "text/csv",
-            "delimiter": "comma",
-            "doublequote": "False",
-            "extension": ".csv",
-            "file_name": "Messungen Platz 1.csv",
-            "lineterminator": "\\r\\n",
-            "mime_type": "application/csv",
-            "quotechar": "\"",
-            "quoting": "0",
-            "reader": "CSVReader",
-            "skipinitialspace": "False",
-            "uploaded": "2023-08-04T14:00:26.604597"
-        },
-        "tables": [
-            {
-                "columns": [
-                    {
-                        "key": "0",
-                        "name": "Column #0 (Wavelength (nm))"
-                    },
-                    {
-                        "key": "1",
-                        "name": "Column #1 (Abs)"
-                    },
-                    {
-                        "key": "2",
-                        "name": "Column #2 (Wavelength (nm))"
-                    },
-                    {
-                        "key": "3",
-                        "name": "Column #3 (Abs)"
-                    },
-                    {
-                        "key": "4",
-                        "name": "Column #4 (Wavelength (nm))"
-                    },
-                    {
-                        "key": "5",
-                        "name": "Column #5 (Abs)"
-                    },
-                    {
-                        "key": "6",
-                        "name": "Column #6 (Wavelength (nm))"
-                    },
-                    {
-                        "key": "7",
-                        "name": "Column #7 (Abs)"
-                    },
-                    {
-                        "key": "8",
-                        "name": "Column #8 (Wavelength (nm))"
-                    },
-                    {
-                        "key": "9",
-                        "name": "Column #9 (Abs)"
-                    },
-                    {
-                        "key": "10",
-                        "name": "Column #10"
-                    }
-                ],
-                "header": [
-                    "Probe 1 Blau,,Probe 2 Violett,,Probe 4 ,,Probe 3.1,,Probe 3.1,,"
-                ],
-                "metadata": {
-                    "column_00": "Wavelength (nm)",
-                    "column_01": "Abs",
-                    "column_02": "Wavelength (nm)",
-                    "column_03": "Abs",
-                    "column_04": "Wavelength (nm)",
-                    "column_05": "Abs",
-                    "column_06": "Wavelength (nm)",
-                    "column_07": "Abs",
-                    "column_08": "Wavelength (nm)",
-                    "column_09": "Abs",
-                    "column_10": "",
-                    "columns": "11",
-                    "rows": "151"
-                },
-                "rows": [
-                    [
-                        "1000.009583",
-                        "0.05260777846",
-                        "1000.009583",
-                        "0.01107585337",
-                        "1000.009583",
-                        "0.002711876296",
-                        "1000.009583",
-                        "0.01157044899",
-                        "1000.009583",
-                        "0.01157044899",
-                        ""
-                    ],
-                    [
-                        "995.0097656",
-                        "0.05706326291",
-                        "995.0097656",
-                        "0.006640139967",
-                        "995.0097656",
-                        "0.00403207168",
-                        "995.0097656",
-                        "0.005010861903",
-                        "995.0097656",
-                        "0.005010861903",
-                        ""
-                    ],
-                    [
-                        "989.9949341",
-                        "0.06133940071",
-                        "989.9949341",
-                        "0.00816992484",
-                        "989.9949341",
-                        "0.006937680766",
-                        "989.9949341",
-                        "0.003671088722",
-                        "989.9949341",
-                        "0.003671088722",
-                        ""
-                    ],
-                    [
-                        "984.996582",
-                        "0.06282429397",
-                        "984.996582",
-                        "0.008629770949",
-                        "984.996582",
-                        "0.002826268552",
-                        "984.996582",
-                        "0.006585996598",
-                        "984.996582",
-                        "0.006585996598",
-                        ""
-                    ],
-                    [
-                        "980.0152588",
-                        "0.0679968223",
-                        "980.0152588",
-                        "0.007841200568",
-                        "980.0152588",
-                        "0.00391124934",
-                        "980.0152588",
-                        "0.001130875899",
-                        "980.0152588",
-                        "0.001130875899",
-                        ""
-                    ],
-                    [
-                        "974.9876099",
-                        "0.07217921317",
-                        "974.9876099",
-                        "0.007284332067",
-                        "974.9876099",
-                        "0.004688104149",
-                        "974.9876099",
-                        "9.584042709E-005",
-                        "974.9876099",
-                        "9.584042709E-005",
-                        ""
-                    ],
-                    [
-                        "970.0091553",
-                        "0.07927948982",
-                        "970.0091553",
-                        "0.006380103528",
-                        "970.0091553",
-                        "0.004838799126",
-                        "970.0091553",
-                        "0.001313704648",
-                        "970.0091553",
-                        "0.001313704648",
-                        ""
-                    ],
-                    [
-                        "964.984375",
-                        "0.07915404439",
-                        "964.984375",
-                        "0.008298086002",
-                        "964.984375",
-                        "0.0008732085116",
-                        "964.984375",
-                        "0.001090442296",
-                        "964.984375",
-                        "0.001090442296",
-                        ""
-                    ],
-                    [
-                        "960.0095215",
-                        "0.08677043021",
-                        "960.0095215",
-                        "0.00976182241",
-                        "960.0095215",
-                        "0.002292964142",
-                        "960.0095215",
-                        "-0.0009279001388",
-                        "960.0095215",
-                        "-0.0009279001388",
-                        ""
-                    ],
-                    [
-                        "954.9885254",
-                        "0.09803614765",
-                        "954.9885254",
-                        "0.007115576882",
-                        "954.9885254",
-                        "0.002849692712",
-                        "954.9885254",
-                        "0.005280901212",
-                        "954.9885254",
-                        "0.005280901212",
-                        ""
-                    ]
-                ]
+    "data": [
+        {
+            "metadata": {
+                "content_type": "text/csv",
+                "delimiter": "comma",
+                "doublequote": "False",
+                "extension": ".csv",
+                "file_name": "Messungen Platz 1.csv",
+                "lineterminator": "\\r\\n",
+                "mime_type": "application/csv",
+                "quotechar": "\"",
+                "quoting": "0",
+                "reader": "CSVReader",
+                "skipinitialspace": "False",
+                "uploaded": "2023-08-04T14:00:26.604597"
             },
-            {
-                "columns": [
-                    {
-                        "key": "0",
-                        "name": "Column #0"
-                    }
-                ],
-                "header": [
-                    "",
-                    "Probe 1 Blau,"
-                ],
-                "metadata": {
-                    "columns": "1",
-                    "rows": "24"
-                },
-                "rows": [
-                    [
-                        "Probe 1 Blau"
+            "tables": [
+                {
+                    "columns": [
+                        {
+                            "key": "0",
+                            "name": "Column #0 (Wavelength (nm))"
+                        },
+                        {
+                            "key": "1",
+                            "name": "Column #1 (Abs)"
+                        },
+                        {
+                            "key": "2",
+                            "name": "Column #2 (Wavelength (nm))"
+                        },
+                        {
+                            "key": "3",
+                            "name": "Column #3 (Abs)"
+                        },
+                        {
+                            "key": "4",
+                            "name": "Column #4 (Wavelength (nm))"
+                        },
+                        {
+                            "key": "5",
+                            "name": "Column #5 (Abs)"
+                        },
+                        {
+                            "key": "6",
+                            "name": "Column #6 (Wavelength (nm))"
+                        },
+                        {
+                            "key": "7",
+                            "name": "Column #7 (Abs)"
+                        },
+                        {
+                            "key": "8",
+                            "name": "Column #8 (Wavelength (nm))"
+                        },
+                        {
+                            "key": "9",
+                            "name": "Column #9 (Abs)"
+                        },
+                        {
+                            "key": "10",
+                            "name": "Column #10"
+                        }
                     ],
-                    [
-                        "Collection Time: 10/27/2021 12:25:34 PM"
+                    "header": [
+                        "Probe 1 Blau,,Probe 2 Violett,,Probe 4 ,,Probe 3.1,,Probe 3.1,,"
                     ],
-                    [
-                        "Operator Name  :"
-                    ],
-                    [
-                        "Scan Version 5.1.3.1042"
-                    ],
-                    [
-                        "Parameter List :"
-                    ],
-                    [
-                        "Instrument  Cary 60"
-                    ],
-                    [
-                        "Instrument Version  2.00"
-                    ],
-                    [
-                        "Start (nm)  1000.0"
-                    ],
-                    [
-                        "Stop (nm)  250.0"
-                    ],
-                    [
-                        "X Mode  Nanometers"
+                    "metadata": {
+                        "__UNIT_%": "%",
+                        "__UNIT_PPM": "ppm",
+                        "__UNIT_gram": "g",
+                        "__UNIT_liter": "l",
+                        "__UNIT_mol": "mol",
+                        "column_00": "Wavelength (nm)",
+                        "column_01": "Abs",
+                        "column_02": "Wavelength (nm)",
+                        "column_03": "Abs",
+                        "column_04": "Wavelength (nm)",
+                        "column_05": "Abs",
+                        "column_06": "Wavelength (nm)",
+                        "column_07": "Abs",
+                        "column_08": "Wavelength (nm)",
+                        "column_09": "Abs",
+                        "column_10": "",
+                        "columns": "11",
+                        "rows": "151"
+                    },
+                    "rows": [
+                        [
+                            "1000.009583",
+                            "0.05260777846",
+                            "1000.009583",
+                            "0.01107585337",
+                            "1000.009583",
+                            "0.002711876296",
+                            "1000.009583",
+                            "0.01157044899",
+                            "1000.009583",
+                            "0.01157044899",
+                            ""
+                        ],
+                        [
+                            "995.0097656",
+                            "0.05706326291",
+                            "995.0097656",
+                            "0.006640139967",
+                            "995.0097656",
+                            "0.00403207168",
+                            "995.0097656",
+                            "0.005010861903",
+                            "995.0097656",
+                            "0.005010861903",
+                            ""
+                        ],
+                        [
+                            "989.9949341",
+                            "0.06133940071",
+                            "989.9949341",
+                            "0.00816992484",
+                            "989.9949341",
+                            "0.006937680766",
+                            "989.9949341",
+                            "0.003671088722",
+                            "989.9949341",
+                            "0.003671088722",
+                            ""
+                        ],
+                        [
+                            "984.996582",
+                            "0.06282429397",
+                            "984.996582",
+                            "0.008629770949",
+                            "984.996582",
+                            "0.002826268552",
+                            "984.996582",
+                            "0.006585996598",
+                            "984.996582",
+                            "0.006585996598",
+                            ""
+                        ],
+                        [
+                            "980.0152588",
+                            "0.0679968223",
+                            "980.0152588",
+                            "0.007841200568",
+                            "980.0152588",
+                            "0.00391124934",
+                            "980.0152588",
+                            "0.001130875899",
+                            "980.0152588",
+                            "0.001130875899",
+                            ""
+                        ],
+                        [
+                            "974.9876099",
+                            "0.07217921317",
+                            "974.9876099",
+                            "0.007284332067",
+                            "974.9876099",
+                            "0.004688104149",
+                            "974.9876099",
+                            "9.584042709E-005",
+                            "974.9876099",
+                            "9.584042709E-005",
+                            ""
+                        ],
+                        [
+                            "970.0091553",
+                            "0.07927948982",
+                            "970.0091553",
+                            "0.006380103528",
+                            "970.0091553",
+                            "0.004838799126",
+                            "970.0091553",
+                            "0.001313704648",
+                            "970.0091553",
+                            "0.001313704648",
+                            ""
+                        ],
+                        [
+                            "964.984375",
+                            "0.07915404439",
+                            "964.984375",
+                            "0.008298086002",
+                            "964.984375",
+                            "0.0008732085116",
+                            "964.984375",
+                            "0.001090442296",
+                            "964.984375",
+                            "0.001090442296",
+                            ""
+                        ],
+                        [
+                            "960.0095215",
+                            "0.08677043021",
+                            "960.0095215",
+                            "0.00976182241",
+                            "960.0095215",
+                            "0.002292964142",
+                            "960.0095215",
+                            "-0.0009279001388",
+                            "960.0095215",
+                            "-0.0009279001388",
+                            ""
+                        ],
+                        [
+                            "954.9885254",
+                            "0.09803614765",
+                            "954.9885254",
+                            "0.007115576882",
+                            "954.9885254",
+                            "0.002849692712",
+                            "954.9885254",
+                            "0.005280901212",
+                            "954.9885254",
+                            "0.005280901212",
+                            ""
+                        ]
                     ]
-                ]
-            },
-            {
-                "columns": [
-                    {
-                        "key": "0",
-                        "name": "Column #0"
-                    }
-                ],
-                "header": [
-                    "Autoconvert Changed: 10/19/2021 9:34:47 AM, Old:None, New:Ascii",
-                    "X Start nm Changed: 10/19/2021 9:34:47 AM, Old:  800.0, New: 1000.0",
-                    "X Stop nm Changed: 10/19/2021 9:34:47 AM, Old:  200.0, New:  250.0",
-                    "Baseline Correction Changed: 10/19/2021 9:34:47 AM, Old:0, New:1",
-                    "Saved as D:\\Praktikum\\ACF_WS_21_22\\Methode_ACF_Ag_Nanoprismen.MSW",
-                    "Opened D:\\Praktikum\\ACF_WS_21_22\\Methode_ACF_Ag_Nanoprismen.MSW",
-                    "End Method Modifications",
-                    "<Current Wavelength> , 423.2",
-                    "",
-                    "Probe 2 Violett,"
-                ],
-                "metadata": {
-                    "columns": "1",
-                    "rows": "24"
                 },
-                "rows": [
-                    [
-                        "Probe 2 Violett"
+                {
+                    "columns": [
+                        {
+                            "key": "0",
+                            "name": "Column #0"
+                        }
                     ],
-                    [
-                        "Collection Time: 10/27/2021 12:26:28 PM"
+                    "header": [
+                        "",
+                        "Probe 1 Blau,"
                     ],
-                    [
-                        "Operator Name  :"
-                    ],
-                    [
-                        "Scan Version 5.1.3.1042"
-                    ],
-                    [
-                        "Parameter List :"
-                    ],
-                    [
-                        "Instrument  Cary 60"
-                    ],
-                    [
-                        "Instrument Version  2.00"
-                    ],
-                    [
-                        "Start (nm)  1000.0"
-                    ],
-                    [
-                        "Stop (nm)  250.0"
-                    ],
-                    [
-                        "X Mode  Nanometers"
+                    "metadata": {
+                        "columns": "1",
+                        "rows": "24"
+                    },
+                    "rows": [
+                        [
+                            "Probe 1 Blau"
+                        ],
+                        [
+                            "Collection Time: 10/27/2021 12:25:34 PM"
+                        ],
+                        [
+                            "Operator Name  :"
+                        ],
+                        [
+                            "Scan Version 5.1.3.1042"
+                        ],
+                        [
+                            "Parameter List :"
+                        ],
+                        [
+                            "Instrument  Cary 60"
+                        ],
+                        [
+                            "Instrument Version  2.00"
+                        ],
+                        [
+                            "Start (nm)  1000.0"
+                        ],
+                        [
+                            "Stop (nm)  250.0"
+                        ],
+                        [
+                            "X Mode  Nanometers"
+                        ]
                     ]
-                ]
-            },
-            {
-                "columns": [
-                    {
-                        "key": "0",
-                        "name": "Column #0"
-                    }
-                ],
-                "header": [
-                    "Autoconvert Changed: 10/19/2021 9:34:47 AM, Old:None, New:Ascii",
-                    "X Start nm Changed: 10/19/2021 9:34:47 AM, Old:  800.0, New: 1000.0",
-                    "X Stop nm Changed: 10/19/2021 9:34:47 AM, Old:  200.0, New:  250.0",
-                    "Baseline Correction Changed: 10/19/2021 9:34:47 AM, Old:0, New:1",
-                    "Saved as D:\\Praktikum\\ACF_WS_21_22\\Methode_ACF_Ag_Nanoprismen.MSW",
-                    "Opened D:\\Praktikum\\ACF_WS_21_22\\Methode_ACF_Ag_Nanoprismen.MSW",
-                    "End Method Modifications",
-                    "<Current Wavelength> , 337.5",
-                    "",
-                    "Probe 4 ,"
-                ],
-                "metadata": {
-                    "columns": "1",
-                    "rows": "24"
                 },
-                "rows": [
-                    [
-                        "Probe 4"
+                {
+                    "columns": [
+                        {
+                            "key": "0",
+                            "name": "Column #0"
+                        }
                     ],
-                    [
-                        "Collection Time: 10/27/2021 12:28:44 PM"
+                    "header": [
+                        "Autoconvert Changed: 10/19/2021 9:34:47 AM, Old:None, New:Ascii",
+                        "X Start nm Changed: 10/19/2021 9:34:47 AM, Old:  800.0, New: 1000.0",
+                        "X Stop nm Changed: 10/19/2021 9:34:47 AM, Old:  200.0, New:  250.0",
+                        "Baseline Correction Changed: 10/19/2021 9:34:47 AM, Old:0, New:1",
+                        "Saved as D:\\Praktikum\\ACF_WS_21_22\\Methode_ACF_Ag_Nanoprismen.MSW",
+                        "Opened D:\\Praktikum\\ACF_WS_21_22\\Methode_ACF_Ag_Nanoprismen.MSW",
+                        "End Method Modifications",
+                        "<Current Wavelength> , 423.2",
+                        "",
+                        "Probe 2 Violett,"
                     ],
-                    [
-                        "Operator Name  :"
-                    ],
-                    [
-                        "Scan Version 5.1.3.1042"
-                    ],
-                    [
-                        "Parameter List :"
-                    ],
-                    [
-                        "Instrument  Cary 60"
-                    ],
-                    [
-                        "Instrument Version  2.00"
-                    ],
-                    [
-                        "Start (nm)  1000.0"
-                    ],
-                    [
-                        "Stop (nm)  250.0"
-                    ],
-                    [
-                        "X Mode  Nanometers"
+                    "metadata": {
+                        "columns": "1",
+                        "rows": "24"
+                    },
+                    "rows": [
+                        [
+                            "Probe 2 Violett"
+                        ],
+                        [
+                            "Collection Time: 10/27/2021 12:26:28 PM"
+                        ],
+                        [
+                            "Operator Name  :"
+                        ],
+                        [
+                            "Scan Version 5.1.3.1042"
+                        ],
+                        [
+                            "Parameter List :"
+                        ],
+                        [
+                            "Instrument  Cary 60"
+                        ],
+                        [
+                            "Instrument Version  2.00"
+                        ],
+                        [
+                            "Start (nm)  1000.0"
+                        ],
+                        [
+                            "Stop (nm)  250.0"
+                        ],
+                        [
+                            "X Mode  Nanometers"
+                        ]
                     ]
-                ]
-            },
-            {
-                "columns": [
-                    {
-                        "key": "0",
-                        "name": "Column #0"
-                    }
-                ],
-                "header": [
-                    "Autoconvert Changed: 10/19/2021 9:34:47 AM, Old:None, New:Ascii",
-                    "X Start nm Changed: 10/19/2021 9:34:47 AM, Old:  800.0, New: 1000.0",
-                    "X Stop nm Changed: 10/19/2021 9:34:47 AM, Old:  200.0, New:  250.0",
-                    "Baseline Correction Changed: 10/19/2021 9:34:47 AM, Old:0, New:1",
-                    "Saved as D:\\Praktikum\\ACF_WS_21_22\\Methode_ACF_Ag_Nanoprismen.MSW",
-                    "Opened D:\\Praktikum\\ACF_WS_21_22\\Methode_ACF_Ag_Nanoprismen.MSW",
-                    "End Method Modifications",
-                    "<Current Wavelength> , 410.0",
-                    "",
-                    "Probe 3.1,"
-                ],
-                "metadata": {
-                    "columns": "1",
-                    "rows": "24"
                 },
-                "rows": [
-                    [
-                        "Probe 3.1"
+                {
+                    "columns": [
+                        {
+                            "key": "0",
+                            "name": "Column #0"
+                        }
                     ],
-                    [
-                        "Collection Time: 10/27/2021 12:59:09 PM"
+                    "header": [
+                        "Autoconvert Changed: 10/19/2021 9:34:47 AM, Old:None, New:Ascii",
+                        "X Start nm Changed: 10/19/2021 9:34:47 AM, Old:  800.0, New: 1000.0",
+                        "X Stop nm Changed: 10/19/2021 9:34:47 AM, Old:  200.0, New:  250.0",
+                        "Baseline Correction Changed: 10/19/2021 9:34:47 AM, Old:0, New:1",
+                        "Saved as D:\\Praktikum\\ACF_WS_21_22\\Methode_ACF_Ag_Nanoprismen.MSW",
+                        "Opened D:\\Praktikum\\ACF_WS_21_22\\Methode_ACF_Ag_Nanoprismen.MSW",
+                        "End Method Modifications",
+                        "<Current Wavelength> , 337.5",
+                        "",
+                        "Probe 4 ,"
                     ],
-                    [
-                        "Operator Name  :"
-                    ],
-                    [
-                        "Scan Version 5.1.3.1042"
-                    ],
-                    [
-                        "Parameter List :"
-                    ],
-                    [
-                        "Instrument  Cary 60"
-                    ],
-                    [
-                        "Instrument Version  2.00"
-                    ],
-                    [
-                        "Start (nm)  1000.0"
-                    ],
-                    [
-                        "Stop (nm)  250.0"
-                    ],
-                    [
-                        "X Mode  Nanometers"
+                    "metadata": {
+                        "columns": "1",
+                        "rows": "24"
+                    },
+                    "rows": [
+                        [
+                            "Probe 4"
+                        ],
+                        [
+                            "Collection Time: 10/27/2021 12:28:44 PM"
+                        ],
+                        [
+                            "Operator Name  :"
+                        ],
+                        [
+                            "Scan Version 5.1.3.1042"
+                        ],
+                        [
+                            "Parameter List :"
+                        ],
+                        [
+                            "Instrument  Cary 60"
+                        ],
+                        [
+                            "Instrument Version  2.00"
+                        ],
+                        [
+                            "Start (nm)  1000.0"
+                        ],
+                        [
+                            "Stop (nm)  250.0"
+                        ],
+                        [
+                            "X Mode  Nanometers"
+                        ]
                     ]
-                ]
-            },
-            {
-                "columns": [
-                    {
-                        "key": "0",
-                        "name": "Column #0"
-                    }
-                ],
-                "header": [
-                    "Autoconvert Changed: 10/19/2021 9:34:47 AM, Old:None, New:Ascii",
-                    "X Start nm Changed: 10/19/2021 9:34:47 AM, Old:  800.0, New: 1000.0",
-                    "X Stop nm Changed: 10/19/2021 9:34:47 AM, Old:  200.0, New:  250.0",
-                    "Baseline Correction Changed: 10/19/2021 9:34:47 AM, Old:0, New:1",
-                    "Saved as D:\\Praktikum\\ACF_WS_21_22\\Methode_ACF_Ag_Nanoprismen.MSW",
-                    "Opened D:\\Praktikum\\ACF_WS_21_22\\Methode_ACF_Ag_Nanoprismen.MSW",
-                    "10/27/2021 12:56:19 PM Continuum Probe 1 Blau is now restored",
-                    "10/27/2021 12:56:19 PM Continuum Probe 2 Violett is now restored",
-                    "10/27/2021 12:56:19 PM Continuum Probe 3 Violett 2 is now restored",
-                    "End Method Modifications",
-                    "<Current Wavelength> , 316.2",
-                    "",
-                    "Probe 3.1,"
-                ],
-                "metadata": {
-                    "columns": "1",
-                    "rows": "24"
                 },
-                "rows": [
-                    [
-                        "Probe 3.1"
+                {
+                    "columns": [
+                        {
+                            "key": "0",
+                            "name": "Column #0"
+                        }
                     ],
-                    [
-                        "Collection Time: 10/27/2021 12:59:09 PM"
+                    "header": [
+                        "Autoconvert Changed: 10/19/2021 9:34:47 AM, Old:None, New:Ascii",
+                        "X Start nm Changed: 10/19/2021 9:34:47 AM, Old:  800.0, New: 1000.0",
+                        "X Stop nm Changed: 10/19/2021 9:34:47 AM, Old:  200.0, New:  250.0",
+                        "Baseline Correction Changed: 10/19/2021 9:34:47 AM, Old:0, New:1",
+                        "Saved as D:\\Praktikum\\ACF_WS_21_22\\Methode_ACF_Ag_Nanoprismen.MSW",
+                        "Opened D:\\Praktikum\\ACF_WS_21_22\\Methode_ACF_Ag_Nanoprismen.MSW",
+                        "End Method Modifications",
+                        "<Current Wavelength> , 410.0",
+                        "",
+                        "Probe 3.1,"
                     ],
-                    [
-                        "Operator Name  :"
-                    ],
-                    [
-                        "Scan Version 5.1.3.1042"
-                    ],
-                    [
-                        "Parameter List :"
-                    ],
-                    [
-                        "Instrument  Cary 60"
-                    ],
-                    [
-                        "Instrument Version  2.00"
-                    ],
-                    [
-                        "Start (nm)  1000.0"
-                    ],
-                    [
-                        "Stop (nm)  250.0"
-                    ],
-                    [
-                        "X Mode  Nanometers"
+                    "metadata": {
+                        "columns": "1",
+                        "rows": "24"
+                    },
+                    "rows": [
+                        [
+                            "Probe 3.1"
+                        ],
+                        [
+                            "Collection Time: 10/27/2021 12:59:09 PM"
+                        ],
+                        [
+                            "Operator Name  :"
+                        ],
+                        [
+                            "Scan Version 5.1.3.1042"
+                        ],
+                        [
+                            "Parameter List :"
+                        ],
+                        [
+                            "Instrument  Cary 60"
+                        ],
+                        [
+                            "Instrument Version  2.00"
+                        ],
+                        [
+                            "Start (nm)  1000.0"
+                        ],
+                        [
+                            "Stop (nm)  250.0"
+                        ],
+                        [
+                            "X Mode  Nanometers"
+                        ]
                     ]
-                ]
-            },
-            {
-                "columns": [],
-                "header": [
-                    "Autoconvert Changed: 10/19/2021 9:34:47 AM, Old:None, New:Ascii",
-                    "X Start nm Changed: 10/19/2021 9:34:47 AM, Old:  800.0, New: 1000.0",
-                    "X Stop nm Changed: 10/19/2021 9:34:47 AM, Old:  200.0, New:  250.0",
-                    "Baseline Correction Changed: 10/19/2021 9:34:47 AM, Old:0, New:1",
-                    "Saved as D:\\Praktikum\\ACF_WS_21_22\\Methode_ACF_Ag_Nanoprismen.MSW",
-                    "Opened D:\\Praktikum\\ACF_WS_21_22\\Methode_ACF_Ag_Nanoprismen.MSW",
-                    "10/27/2021 12:56:19 PM Continuum Probe 1 Blau is now restored",
-                    "10/27/2021 12:56:19 PM Continuum Probe 2 Violett is now restored",
-                    "10/27/2021 12:56:19 PM Continuum Probe 3 Violett 2 is now restored",
-                    "End Method Modifications",
-                    "<Current Wavelength> , 316.2",
-                    ""
-                ],
-                "metadata": {
-                    "columns": "0",
-                    "rows": "0"
                 },
-                "rows": []
-            }
-        ]
-    },
+                {
+                    "columns": [
+                        {
+                            "key": "0",
+                            "name": "Column #0"
+                        }
+                    ],
+                    "header": [
+                        "Autoconvert Changed: 10/19/2021 9:34:47 AM, Old:None, New:Ascii",
+                        "X Start nm Changed: 10/19/2021 9:34:47 AM, Old:  800.0, New: 1000.0",
+                        "X Stop nm Changed: 10/19/2021 9:34:47 AM, Old:  200.0, New:  250.0",
+                        "Baseline Correction Changed: 10/19/2021 9:34:47 AM, Old:0, New:1",
+                        "Saved as D:\\Praktikum\\ACF_WS_21_22\\Methode_ACF_Ag_Nanoprismen.MSW",
+                        "Opened D:\\Praktikum\\ACF_WS_21_22\\Methode_ACF_Ag_Nanoprismen.MSW",
+                        "10/27/2021 12:56:19 PM Continuum Probe 1 Blau is now restored",
+                        "10/27/2021 12:56:19 PM Continuum Probe 2 Violett is now restored",
+                        "10/27/2021 12:56:19 PM Continuum Probe 3 Violett 2 is now restored",
+                        "End Method Modifications",
+                        "<Current Wavelength> , 316.2",
+                        "",
+                        "Probe 3.1,"
+                    ],
+                    "metadata": {
+                        "columns": "1",
+                        "rows": "24"
+                    },
+                    "rows": [
+                        [
+                            "Probe 3.1"
+                        ],
+                        [
+                            "Collection Time: 10/27/2021 12:59:09 PM"
+                        ],
+                        [
+                            "Operator Name  :"
+                        ],
+                        [
+                            "Scan Version 5.1.3.1042"
+                        ],
+                        [
+                            "Parameter List :"
+                        ],
+                        [
+                            "Instrument  Cary 60"
+                        ],
+                        [
+                            "Instrument Version  2.00"
+                        ],
+                        [
+                            "Start (nm)  1000.0"
+                        ],
+                        [
+                            "Stop (nm)  250.0"
+                        ],
+                        [
+                            "X Mode  Nanometers"
+                        ]
+                    ]
+                },
+                {
+                    "columns": [],
+                    "header": [
+                        "Autoconvert Changed: 10/19/2021 9:34:47 AM, Old:None, New:Ascii",
+                        "X Start nm Changed: 10/19/2021 9:34:47 AM, Old:  800.0, New: 1000.0",
+                        "X Stop nm Changed: 10/19/2021 9:34:47 AM, Old:  200.0, New:  250.0",
+                        "Baseline Correction Changed: 10/19/2021 9:34:47 AM, Old:0, New:1",
+                        "Saved as D:\\Praktikum\\ACF_WS_21_22\\Methode_ACF_Ag_Nanoprismen.MSW",
+                        "Opened D:\\Praktikum\\ACF_WS_21_22\\Methode_ACF_Ag_Nanoprismen.MSW",
+                        "10/27/2021 12:56:19 PM Continuum Probe 1 Blau is now restored",
+                        "10/27/2021 12:56:19 PM Continuum Probe 2 Violett is now restored",
+                        "10/27/2021 12:56:19 PM Continuum Probe 3 Violett 2 is now restored",
+                        "End Method Modifications",
+                        "<Current Wavelength> , 316.2",
+                        ""
+                    ],
+                    "metadata": {
+                        "columns": "0",
+                        "rows": "0"
+                    },
+                    "rows": []
+                }
+            ]
+        }
+    ],
     "datatypes": [],
     "description": "Cary 60; ref location: KIT CN, data: +, metadata: +",
     "devices": [],
+    "diff_history": [
+        {
+            "at": "2026-04-30T12:53:58.495918+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "UV-VIS data from multi-column csv, data: +, metadata: -"
+                }
+            ],
+            "profile_version": "1.0",
+            "trigger": "migration:20260430145303"
+        },
+        {
+            "at": "2026-04-30T12:54:02.432704+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "UV-VIS data from multi-column csv, data: +, metadata: -__TEST"
+                }
+            ],
+            "profile_version": "1.1",
+            "trigger": "migration:20260430145303"
+        },
+        {
+            "at": "2026-04-30T13:02:20.491416+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "UV-VIS data from multi-column csv, data: +, metadata: -__TEST__TEST"
+                }
+            ],
+            "profile_version": "1.2",
+            "trigger": "restore_migration:20260430145303"
+        },
+        {
+            "at": "2026-04-30T13:02:20.494352+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "UV-VIS data from multi-column csv, data: +, metadata: -__TEST"
+                }
+            ],
+            "profile_version": "1.3",
+            "trigger": "restore_migration:20260430145303"
+        },
+        {
+            "at": "2026-05-04T04:59:00.517621+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "UV-VIS data from multi-column csv, data: +, metadata: -"
+                }
+            ],
+            "profile_version": "1.4",
+            "trigger": "undo:1.1"
+        },
+        {
+            "at": "2026-05-04T04:59:00.520494+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "UV-VIS data from multi-column csv, data: +, metadata: -__TEST"
+                }
+            ],
+            "profile_version": "1.5",
+            "trigger": "undo:1.0"
+        },
+        {
+            "at": "2026-05-04T04:59:00.522012+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "UV-VIS data from multi-column csv, data: +, metadata: -"
+                }
+            ],
+            "profile_version": "1.6",
+            "trigger": "migration:20260504065656"
+        },
+        {
+            "at": "2026-05-04T07:23:31.381699+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "UV-VIS data from multi-column csv, data: +, metadata: ---TEST"
+                }
+            ],
+            "profile_version": "1.7",
+            "trigger": "undo:1.6"
+        },
+        {
+            "at": "2026-05-21T11:46:01.747886+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/reactionVariations"
+                }
+            ],
+            "profile_version": "1.8",
+            "trigger": "migration:20260417132254"
+        },
+        {
+            "at": "2026-05-21T11:46:01.748170+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_%"
+                },
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_liter"
+                },
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_mol"
+                },
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_gram"
+                },
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_PPM"
+                }
+            ],
+            "profile_version": "1.9",
+            "trigger": "migration:20260422063146"
+        },
+        {
+            "at": "2026-05-21T11:46:01.748768+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/tables/0/loopType"
+                },
+                {
+                    "from": "/tables/0/inputTableIndex",
+                    "op": "move",
+                    "path": "/tables/0/table/xColumn/tableIndex"
+                },
+                {
+                    "from": "/tables/1/inputTableIndex",
+                    "op": "move",
+                    "path": "/tables/0/table/yColumn/tableIndex"
+                },
+                {
+                    "op": "remove",
+                    "path": "/tables/1/loopType"
+                },
+                {
+                    "op": "add",
+                    "path": "/tables/1/table/xColumn/tableIndex",
+                    "value": 0
+                },
+                {
+                    "from": "/tables/2/inputTableIndex",
+                    "op": "move",
+                    "path": "/tables/1/table/yColumn/tableIndex"
+                },
+                {
+                    "op": "remove",
+                    "path": "/tables/2/loopType"
+                },
+                {
+                    "op": "add",
+                    "path": "/tables/2/table/xColumn/tableIndex",
+                    "value": 0
+                },
+                {
+                    "op": "add",
+                    "path": "/tables/2/table/yColumn/tableIndex",
+                    "value": 0
+                }
+            ],
+            "profile_version": "1.10",
+            "trigger": "migration:20260506160404"
+        },
+        {
+            "at": "2026-05-21T11:46:01.749114+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/tables/0/uuid"
+                },
+                {
+                    "op": "remove",
+                    "path": "/tables/0/tableName"
+                },
+                {
+                    "op": "remove",
+                    "path": "/tables/1/uuid"
+                },
+                {
+                    "op": "remove",
+                    "path": "/tables/1/tableName"
+                },
+                {
+                    "op": "remove",
+                    "path": "/tables/2/uuid"
+                },
+                {
+                    "op": "remove",
+                    "path": "/tables/2/tableName"
+                }
+            ],
+            "profile_version": "1.11",
+            "trigger": "migration:20260513094819"
+        }
+    ],
     "id": "db05bfb4-6829-4339-bec1-54065710f211",
     "identifiers": [
         {
@@ -539,21 +762,27 @@
         }
     ],
     "isDisabled": false,
-    "last_migration": "20260113143334",
+    "last_migration": "20260513094819",
+    "objects": [],
     "ols": null,
     "ontology": "",
     "predicates": [],
+    "profile_version": "1.12",
+    "reactionVariations": {
+        "elements": [],
+        "identifiers": []
+    },
     "rootOntology": {
         "description": [
             "A planned process that has the objective to produce information about a material entity (the evaluant) by examining it."
         ],
-        "id": "OBI:property:http://purl.obolibrary.org/obo/OBI_0000070",
+        "id": "obi:class:http://purl.obolibrary.org/obo/OBI_0000070",
         "iri": "http://purl.obolibrary.org/obo/OBI_0000070",
         "label": "assay",
         "namespace": "http://purl.obolibrary.org/obo/",
         "obo_id": "OBI:0000070",
-        "ontology_name": "chmo",
-        "ontology_prefix": "CHMO",
+        "ontology_name": "obi",
+        "ontology_prefix": "OBI",
         "short_form": "OBI_0000070",
         "type": "class"
     },
@@ -568,16 +797,18 @@
                 "XUNITS": "NANOMETERS",
                 "YUNITS": "ABSORBANCE"
             },
+            "inputTableIndex": 0,
+            "loopType": "none",
             "table": {
                 "xColumn": {
-                    "columnIndex": 0,
-                    "tableIndex": 0
+                    "columnIndex": 0
                 },
                 "yColumn": {
-                    "columnIndex": 1,
-                    "tableIndex": 0
+                    "columnIndex": 1
                 }
-            }
+            },
+            "tableName": "Table #1",
+            "uuid": "2589f9ca-8dec-414d-b0fe-6e9cc5a24b96"
         },
         {
             "header": {
@@ -586,16 +817,18 @@
                 "XUNITS": "NANOMETERS",
                 "YUNITS": "ABSORBANCE"
             },
+            "inputTableIndex": 0,
+            "loopType": "none",
             "table": {
                 "xColumn": {
-                    "columnIndex": 2,
-                    "tableIndex": 0
+                    "columnIndex": 2
                 },
                 "yColumn": {
-                    "columnIndex": 3,
-                    "tableIndex": 0
+                    "columnIndex": 3
                 }
-            }
+            },
+            "tableName": "Table #2",
+            "uuid": "9b577fbc-bb76-4d8a-aaef-db685e90f7d8"
         },
         {
             "header": {
@@ -604,17 +837,20 @@
                 "XUNITS": "NANOMETERS",
                 "YUNITS": "ABSORBANCE"
             },
+            "inputTableIndex": 0,
+            "loopType": "none",
             "table": {
                 "xColumn": {
-                    "columnIndex": 4,
-                    "tableIndex": 0
+                    "columnIndex": 4
                 },
                 "yColumn": {
-                    "columnIndex": 5,
-                    "tableIndex": 0
+                    "columnIndex": 5
                 }
-            }
+            },
+            "tableName": "Table #3",
+            "uuid": "2812e875-936e-405e-9d02-cadffdcbe42a"
         }
     ],
-    "title": "UV-VIS data from multi-column csv, data: +, metadata: -"
+    "title": "UV-VIS data from multi-column csv, data: +, metadata: -",
+    "version": 0
 }

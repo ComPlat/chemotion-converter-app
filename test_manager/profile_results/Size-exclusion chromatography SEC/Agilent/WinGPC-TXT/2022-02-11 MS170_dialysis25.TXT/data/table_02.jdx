@@ -1,5 +1,5 @@
 ##TITLE=Spectrum
-##JCAMP-DX=5.00 $$ chemotion-converter-app (1.8.0)
+##JCAMP-DX=5.00 $$ chemotion-converter-app (1.9.1)
 ##DATA TYPE=SIZE EXCLUSION CHROMATOGRAPHY
 ##DATA CLASS=XYPOINTS
 ##ORIGIN=
@@ -8,6 +8,10 @@
 ##YUNITS=ARBITRARY UNITS
 ##LABEL=Vial   3: MS170_dia25 - 1
 ##COMMENTS=X:\Marvin Subarew\PAETMC Thiol-ene\MS170\2022-02-11 MS170_dialysis25.TXT
+##MN=1.600E+4
+##MW=2.262E+4
+##D=1.413E+0
+##MP=2.673E+4
 ##DETEC1=I2: RI Detector 1, RI Signal
 ##DETEC2=I2: UV Detector 1, UV Signal
 ##DETEC3=I2: Pump 1, Sample Pump Pressure
@@ -23,14 +27,10 @@
 ##SOFTWARE=WINGPC
 ##VERSION=8#1
 ##OPERATOR=itcp-akt
-##D=1.149E+0
-##MZ1=3.779E+4
-##MN=2.693E+4
-##MP=3.785E+4
+##MZ1=3.013E+4
 ##MV=0.000E+0
-##MW=3.094E+4
-##MZ=3.456E+4
-##VP=2.087E+1
+##MZ=2.691E+4
+##VP=2.139E+1
 ##N=0.000E+0
 ##FIRSTX=1.96405E+1
 ##LASTX=2.66388E+1

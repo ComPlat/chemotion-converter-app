@@ -1,5 +1,5 @@
 ##TITLE=Spectrum
-##JCAMP-DX=5.00 $$ chemotion-converter-app (1.8.0)
+##JCAMP-DX=5.00 $$ chemotion-converter-app (1.9.1)
 ##DATA TYPE=SIZE EXCLUSION CHROMATOGRAPHY
 ##DATA CLASS=XYPOINTS
 ##ORIGIN=
@@ -8,6 +8,10 @@
 ##YUNITS=ARBITRARY UNITS
 ##LABEL=Vial   3: TM-82
 ##COMMENTS=C:\GPC-data\H2O-GPC\Tamara\TM-82.TXT
+##MN=2.531E+3
+##MW=7.076E+3
+##D=2.795E+0
+##MP=5.952E+3
 ##DETEC1=PSS SECcurity RI
 ##DETEC2=PSS SECcurity UV
 ##COL1=PSS Suprema precolumn 10 µm
@@ -20,11 +24,7 @@
 ##DATE=26.06.93
 ##TIME=15:55:39
 ##OPERATOR=GPCAdmin
-##D=2.795E+0
-##MN=2.531E+3
-##MP=5.952E+3
 ##MV=0.000E+0
-##MW=7.076E+3
 ##MZ=1.316E+4
 ##VP=2.583E+1
 ##N=0.000E+0

@@ -1,1 +1,12 @@
-{}
+{
+    "tables": [],
+    "metadata": {
+        "file_name": "PD-01-02(2).raw",
+        "content_type": "",
+        "mime_type": "application/octet-stream",
+        "extension": ".raw",
+        "reader": "AsciiReaderArchive",
+        "uploaded": "2026-07-07T10:41:59.189311+00:00",
+        "ontology": null
+    }
+}

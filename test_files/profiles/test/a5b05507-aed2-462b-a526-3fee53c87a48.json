@@ -1,132 +1,311 @@
 {
     "converter_version": "1.8.0",
-    "data": {
-        "metadata": {
-            "content_type": "text/plain",
-            "delimiter": "tab",
-            "doublequote": "False",
-            "extension": ".txt",
-            "file_name": "SSP-041_H20.txt",
-            "lineterminator": "\\r\\n",
-            "mime_type": "text/plain",
-            "quotechar": "\"",
-            "quoting": "0",
-            "reader": "CSVReader",
-            "skipinitialspace": "False",
-            "uploaded": "2023-03-27T20:10:13.948013"
-        },
-        "tables": [
-            {
-                "columns": [
-                    {
-                        "key": "0",
-                        "name": "Column #0 (X Intensity)"
+    "data": [
+        {
+            "metadata": {
+                "content_type": "text/plain",
+                "delimiter": "tab",
+                "doublequote": "False",
+                "extension": ".txt",
+                "file_name": "SSP-041_H20.txt",
+                "lineterminator": "\\r\\n",
+                "mime_type": "text/plain",
+                "quotechar": "\"",
+                "quoting": "0",
+                "reader": "CSVReader",
+                "skipinitialspace": "False",
+                "uploaded": "2023-03-27T20:10:13.948013"
+            },
+            "tables": [
+                {
+                    "columns": [
+                        {
+                            "key": "0",
+                            "name": "Column #0 (X Intensity)"
+                        },
+                        {
+                            "key": "1",
+                            "name": "Column #1 (Record 253: 2021-09-14_SSP-041_H2O_Run- 1)"
+                        },
+                        {
+                            "key": "2",
+                            "name": "Column #2 (Record 254: 2021-09-14_SSP-041_H2O_Run- 2)"
+                        },
+                        {
+                            "key": "3",
+                            "name": "Column #3 (Record 255: 2021-09-14_SSP-041_H2O_Run- 3)"
+                        },
+                        {
+                            "key": "4",
+                            "name": "Column #4 (Record 256: 2021-09-14_SSP-041_H2O_Average)"
+                        }
+                    ],
+                    "header": [],
+                    "metadata": {
+                        "__UNIT_%": "%",
+                        "__UNIT_PPM": "ppm",
+                        "__UNIT_gram": "g",
+                        "__UNIT_liter": "l",
+                        "__UNIT_mol": "mol",
+                        "column_00": "X Intensity",
+                        "column_01": "Record 253: 2021-09-14_SSP-041_H2O_Run- 1",
+                        "column_02": "Record 254: 2021-09-14_SSP-041_H2O_Run- 2",
+                        "column_03": "Record 255: 2021-09-14_SSP-041_H2O_Run- 3",
+                        "column_04": "Record 256: 2021-09-14_SSP-041_H2O_Average",
+                        "columns": "5",
+                        "rows": "69"
                     },
-                    {
-                        "key": "1",
-                        "name": "Column #1 (Record 253: 2021-09-14_SSP-041_H2O_Run- 1)"
-                    },
-                    {
-                        "key": "2",
-                        "name": "Column #2 (Record 254: 2021-09-14_SSP-041_H2O_Run- 2)"
-                    },
-                    {
-                        "key": "3",
-                        "name": "Column #3 (Record 255: 2021-09-14_SSP-041_H2O_Run- 3)"
-                    },
-                    {
-                        "key": "4",
-                        "name": "Column #4 (Record 256: 2021-09-14_SSP-041_H2O_Average)"
-                    }
-                ],
-                "header": [],
-                "metadata": {
-                    "column_00": "X Intensity",
-                    "column_01": "Record 253: 2021-09-14_SSP-041_H2O_Run- 1",
-                    "column_02": "Record 254: 2021-09-14_SSP-041_H2O_Run- 2",
-                    "column_03": "Record 255: 2021-09-14_SSP-041_H2O_Run- 3",
-                    "column_04": "Record 256: 2021-09-14_SSP-041_H2O_Average",
-                    "columns": "5",
-                    "rows": "69"
-                },
-                "rows": [
-                    [
-                        "0.4",
-                        "0",
-                        "0",
-                        "0",
-                        "0"
-                    ],
-                    [
-                        "0.463",
-                        "0",
-                        "0",
-                        "0",
-                        "0"
-                    ],
-                    [
-                        "0.536",
-                        "0",
-                        "0",
-                        "0",
-                        "0"
-                    ],
-                    [
-                        "0.621",
-                        "0",
-                        "0",
-                        "0",
-                        "0"
-                    ],
-                    [
-                        "0.719",
-                        "0",
-                        "0",
-                        "0",
-                        "0"
-                    ],
-                    [
-                        "0.833",
-                        "0",
-                        "0",
-                        "0",
-                        "0"
-                    ],
-                    [
-                        "0.965",
-                        "0",
-                        "0",
-                        "0",
-                        "0"
-                    ],
-                    [
-                        "1.12",
-                        "0",
-                        "0",
-                        "0",
-                        "0"
-                    ],
-                    [
-                        "1.29",
-                        "0",
-                        "0",
-                        "0",
-                        "0"
-                    ],
-                    [
-                        "1.5",
-                        "0",
-                        "0",
-                        "0",
-                        "0"
+                    "rows": [
+                        [
+                            "0.4",
+                            "0",
+                            "0",
+                            "0",
+                            "0"
+                        ],
+                        [
+                            "0.463",
+                            "0",
+                            "0",
+                            "0",
+                            "0"
+                        ],
+                        [
+                            "0.536",
+                            "0",
+                            "0",
+                            "0",
+                            "0"
+                        ],
+                        [
+                            "0.621",
+                            "0",
+                            "0",
+                            "0",
+                            "0"
+                        ],
+                        [
+                            "0.719",
+                            "0",
+                            "0",
+                            "0",
+                            "0"
+                        ],
+                        [
+                            "0.833",
+                            "0",
+                            "0",
+                            "0",
+                            "0"
+                        ],
+                        [
+                            "0.965",
+                            "0",
+                            "0",
+                            "0",
+                            "0"
+                        ],
+                        [
+                            "1.12",
+                            "0",
+                            "0",
+                            "0",
+                            "0"
+                        ],
+                        [
+                            "1.29",
+                            "0",
+                            "0",
+                            "0",
+                            "0"
+                        ],
+                        [
+                            "1.5",
+                            "0",
+                            "0",
+                            "0",
+                            "0"
+                        ]
                     ]
-                ]
-            }
-        ]
-    },
+                }
+            ]
+        }
+    ],
     "datatypes": [],
     "description": "---; ref location: ---, data: +, metadata: -\n;Subtype 1",
     "devices": [],
+    "diff_history": [
+        {
+            "at": "2026-04-30T12:53:58.481831+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "DLS data from txt, data: +, metadata: -"
+                }
+            ],
+            "profile_version": "1.0",
+            "trigger": "migration:20260430145303"
+        },
+        {
+            "at": "2026-04-30T12:54:02.369008+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "DLS data from txt, data: +, metadata: -__TEST"
+                }
+            ],
+            "profile_version": "1.1",
+            "trigger": "migration:20260430145303"
+        },
+        {
+            "at": "2026-04-30T13:02:20.081721+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "DLS data from txt, data: +, metadata: -__TEST__TEST"
+                }
+            ],
+            "profile_version": "1.2",
+            "trigger": "restore_migration:20260430145303"
+        },
+        {
+            "at": "2026-04-30T13:02:20.083191+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "DLS data from txt, data: +, metadata: -__TEST"
+                }
+            ],
+            "profile_version": "1.3",
+            "trigger": "restore_migration:20260430145303"
+        },
+        {
+            "at": "2026-05-04T04:59:00.394024+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "DLS data from txt, data: +, metadata: -"
+                }
+            ],
+            "profile_version": "1.4",
+            "trigger": "undo:1.1"
+        },
+        {
+            "at": "2026-05-04T04:59:00.395464+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "DLS data from txt, data: +, metadata: -__TEST"
+                }
+            ],
+            "profile_version": "1.5",
+            "trigger": "undo:1.0"
+        },
+        {
+            "at": "2026-05-04T04:59:00.396318+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "DLS data from txt, data: +, metadata: -"
+                }
+            ],
+            "profile_version": "1.6",
+            "trigger": "migration:20260504065656"
+        },
+        {
+            "at": "2026-05-04T07:23:31.316732+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "DLS data from txt, data: +, metadata: ---TEST"
+                }
+            ],
+            "profile_version": "1.7",
+            "trigger": "undo:1.6"
+        },
+        {
+            "at": "2026-05-21T11:46:01.822220+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/reactionVariations"
+                }
+            ],
+            "profile_version": "1.8",
+            "trigger": "migration:20260417132254"
+        },
+        {
+            "at": "2026-05-21T11:46:01.822410+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_%"
+                },
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_liter"
+                },
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_mol"
+                },
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_gram"
+                },
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_PPM"
+                }
+            ],
+            "profile_version": "1.9",
+            "trigger": "migration:20260422063146"
+        },
+        {
+            "at": "2026-05-21T11:46:01.822740+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/tables/0/loopType"
+                },
+                {
+                    "from": "/tables/0/inputTableIndex",
+                    "op": "move",
+                    "path": "/tables/0/table/xColumn/tableIndex"
+                },
+                {
+                    "op": "add",
+                    "path": "/tables/0/table/yColumn/tableIndex",
+                    "value": 0
+                }
+            ],
+            "profile_version": "1.10",
+            "trigger": "migration:20260506160404"
+        },
+        {
+            "at": "2026-05-21T11:46:01.822923+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/tables/0/uuid"
+                },
+                {
+                    "op": "remove",
+                    "path": "/tables/0/tableName"
+                }
+            ],
+            "profile_version": "1.11",
+            "trigger": "migration:20260513094819"
+        }
+    ],
     "id": "a5b05507-aed2-462b-a526-3fee53c87a48",
     "identifiers": [
         {
@@ -149,21 +328,27 @@
         }
     ],
     "isDisabled": false,
-    "last_migration": "20260113143334",
+    "last_migration": "20260513094819",
+    "objects": [],
     "ols": null,
     "ontology": "",
     "predicates": [],
+    "profile_version": "1.12",
+    "reactionVariations": {
+        "elements": [],
+        "identifiers": []
+    },
     "rootOntology": {
         "description": [
             "A planned process that has the objective to produce information about a material entity (the evaluant) by examining it."
         ],
-        "id": "OBI:property:http://purl.obolibrary.org/obo/OBI_0000070",
+        "id": "obi:class:http://purl.obolibrary.org/obo/OBI_0000070",
         "iri": "http://purl.obolibrary.org/obo/OBI_0000070",
         "label": "assay",
         "namespace": "http://purl.obolibrary.org/obo/",
         "obo_id": "OBI:0000070",
-        "ontology_name": "chmo",
-        "ontology_prefix": "CHMO",
+        "ontology_name": "obi",
+        "ontology_prefix": "OBI",
         "short_form": "OBI_0000070",
         "type": "class"
     },
@@ -178,17 +363,20 @@
                 "XUNITS": "NANOMETERS",
                 "YUNITS": "Intensity"
             },
+            "inputTableIndex": 0,
+            "loopType": "none",
             "table": {
                 "xColumn": {
-                    "columnIndex": 0,
-                    "tableIndex": 0
+                    "columnIndex": 0
                 },
                 "yColumn": {
-                    "columnIndex": 4,
-                    "tableIndex": 0
+                    "columnIndex": 4
                 }
-            }
+            },
+            "tableName": "Table #1",
+            "uuid": "19cd5cc2-267a-4b73-8703-713b76f34cd7"
         }
     ],
-    "title": "DLS data from txt, data: +, metadata: -"
+    "title": "DLS data from txt, data: +, metadata: -",
+    "version": 0
 }

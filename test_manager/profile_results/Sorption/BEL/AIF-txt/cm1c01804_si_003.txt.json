@@ -22,6 +22,7 @@
                 "_adsorp_loading"
             ],
             "metadata": {
+                "ontology": "",
                 "_exptl_operator": "Volodymyr",
                 "_exptl_date": "2020-04-30T00:00:00",
                 "_exptl_instrument": "BEL 00218",
@@ -37,6 +38,11 @@
                 "Unit_column_#0": "_adsorp_pressure",
                 "Unit_column_#1": "_adsorp_p0",
                 "Unit_column_#2": "_adsorp_loading",
+                "__UNIT_PPM": "ppm",
+                "__UNIT_liter": "l",
+                "__UNIT_gram": "g",
+                "__UNIT_%": "%",
+                "__UNIT_mol": "mol",
                 "rows": "96",
                 "columns": "3"
             },
@@ -986,6 +992,7 @@
         "mime_type": "text/plain",
         "extension": ".txt",
         "reader": "AifReader",
-        "uploaded": "2026-03-10T09:23:35.200617+00:00"
+        "uploaded": "2026-07-09T08:23:52.277951+00:00",
+        "ontology": null
     }
 }

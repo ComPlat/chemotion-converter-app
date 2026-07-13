@@ -274,6 +274,11 @@
                 "_shelx_res_checksum": "91811",
                 "_shelx_hkl_checksum": "22519",
                 "_olex2_submission_special_instructions": "No special instructions were received",
+                "__UNIT_PPM": "ppm",
+                "__UNIT_liter": "l",
+                "__UNIT_gram": "g",
+                "__UNIT_%": "%",
+                "__UNIT_mol": "mol",
                 "rows": "0",
                 "columns": "0"
             },
@@ -2233,6 +2238,6 @@
         "mime_type": "text/plain",
         "extension": ".cif",
         "reader": "CifReader",
-        "uploaded": "2026-02-06T10:06:07.044819+00:00"
+        "uploaded": "2026-05-22T09:41:30.468732+00:00"
     }
 }

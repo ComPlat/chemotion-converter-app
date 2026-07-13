@@ -143,6 +143,11 @@
                 "column_10_unit": "bits",
                 "column_11_unit": "deg",
                 "column_12_unit": "C",
+                "__UNIT_PPM": "ppm",
+                "__UNIT_liter": "l",
+                "__UNIT_gram": "g",
+                "__UNIT_%": "%",
+                "__UNIT_mol": "mol",
                 "rows": "401",
                 "columns": "10"
             },
@@ -14850,6 +14855,7 @@
         "mime_type": "text/plain",
         "extension": ".DTA",
         "reader": "DtaReader",
-        "uploaded": "2026-03-10T09:23:35.726842+00:00"
+        "uploaded": "2026-07-09T08:23:53.851237+00:00",
+        "ontology": null
     }
 }

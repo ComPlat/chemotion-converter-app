@@ -1,0 +1,32 @@
+FROM ubuntu:24.04
+LABEL authors="martin"
+
+ENV DEBIAN_FRONTEND=noninteractive \
+    PATH="/opt/venv/bin:${PATH}"
+
+RUN apt-get update \
+    && apt-get install -y -q --no-install-recommends \
+        software-properties-common \
+    && add-apt-repository -y ppa:deadsnakes/ppa \
+    && apt-get update \
+    && apt-get install -y -q --no-install-recommends \
+        file \
+        git \
+        libmagic1 \
+        python3.13 \
+        python3.13-venv \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN mkdir /srv/converter
+
+WORKDIR /srv/converter/
+
+# Create virtual environment
+RUN python3.13 -m venv /opt/venv
+
+# Use the virtual environment for all subsequent commands
+ENV PATH="/opt/venv/bin:$PATH"
+
+RUN pip install pip --upgrade
+
+CMD pip install ".[dev]" && python -m test_manager -e && python -m test_manager -ep && pytest .

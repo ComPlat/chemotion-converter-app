@@ -1,81 +1,260 @@
 {
     "converter_version": "1.8.0",
-    "data": {
-        "metadata": {
-            "content_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-            "extension": ".xlsx",
-            "file_name": "ACF function.xlsx",
-            "mime_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-            "reader": "ExcelReader",
-            "uploaded": "2023-05-22T12:30:25.204112"
-        },
-        "tables": [
-            {
-                "columns": [
-                    {
-                        "key": "0",
-                        "name": "Column #0"
+    "data": [
+        {
+            "metadata": {
+                "content_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                "extension": ".xlsx",
+                "file_name": "ACF function.xlsx",
+                "mime_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                "reader": "ExcelReader",
+                "uploaded": "2023-05-22T12:30:25.204112"
+            },
+            "tables": [
+                {
+                    "columns": [
+                        {
+                            "key": "0",
+                            "name": "Column #0"
+                        },
+                        {
+                            "key": "1",
+                            "name": "Column #1"
+                        }
+                    ],
+                    "header": [
+                        "X Lag Time\tRecord 4: loaded lipid test2 1"
+                    ],
+                    "metadata": {
+                        "__UNIT_%": "%",
+                        "__UNIT_PPM": "ppm",
+                        "__UNIT_gram": "g",
+                        "__UNIT_liter": "l",
+                        "__UNIT_mol": "mol",
+                        "columns": "2",
+                        "rows": "70"
                     },
-                    {
-                        "key": "1",
-                        "name": "Column #1"
-                    }
-                ],
-                "header": [
-                    "X Lag Time\tRecord 4: loaded lipid test2 1"
-                ],
-                "metadata": {
-                    "columns": "2",
-                    "rows": "70"
-                },
-                "rows": [
-                    [
-                        0.5,
-                        0.897
-                    ],
-                    [
-                        1,
-                        0.905
-                    ],
-                    [
-                        1.5,
-                        0.903
-                    ],
-                    [
-                        2,
-                        0.9
-                    ],
-                    [
-                        2.5,
-                        0.899
-                    ],
-                    [
-                        3,
-                        0.897
-                    ],
-                    [
-                        3.5,
-                        0.895
-                    ],
-                    [
-                        4,
-                        0.892
-                    ],
-                    [
-                        4.5,
-                        0.891
-                    ],
-                    [
-                        5.5,
-                        0.886
+                    "rows": [
+                        [
+                            0.5,
+                            0.897
+                        ],
+                        [
+                            1,
+                            0.905
+                        ],
+                        [
+                            1.5,
+                            0.903
+                        ],
+                        [
+                            2,
+                            0.9
+                        ],
+                        [
+                            2.5,
+                            0.899
+                        ],
+                        [
+                            3,
+                            0.897
+                        ],
+                        [
+                            3.5,
+                            0.895
+                        ],
+                        [
+                            4,
+                            0.892
+                        ],
+                        [
+                            4.5,
+                            0.891
+                        ],
+                        [
+                            5.5,
+                            0.886
+                        ]
                     ]
-                ]
-            }
-        ]
-    },
+                }
+            ]
+        }
+    ],
     "datatypes": [],
     "description": "ACF - INT (FI)",
     "devices": [],
+    "diff_history": [
+        {
+            "at": "2026-04-30T12:53:58.471713+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "DLS-ACF"
+                }
+            ],
+            "profile_version": "1.0",
+            "trigger": "migration:20260430145303"
+        },
+        {
+            "at": "2026-04-30T12:54:02.318087+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "DLS-ACF__TEST"
+                }
+            ],
+            "profile_version": "1.1",
+            "trigger": "migration:20260430145303"
+        },
+        {
+            "at": "2026-04-30T13:02:19.737877+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "DLS-ACF__TEST__TEST"
+                }
+            ],
+            "profile_version": "1.2",
+            "trigger": "restore_migration:20260430145303"
+        },
+        {
+            "at": "2026-04-30T13:02:19.739051+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "DLS-ACF__TEST"
+                }
+            ],
+            "profile_version": "1.3",
+            "trigger": "restore_migration:20260430145303"
+        },
+        {
+            "at": "2026-05-04T04:59:00.294210+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "DLS-ACF"
+                }
+            ],
+            "profile_version": "1.4",
+            "trigger": "undo:1.1"
+        },
+        {
+            "at": "2026-05-04T04:59:00.295511+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "DLS-ACF__TEST"
+                }
+            ],
+            "profile_version": "1.5",
+            "trigger": "undo:1.0"
+        },
+        {
+            "at": "2026-05-04T04:59:00.296257+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "DLS-ACF"
+                }
+            ],
+            "profile_version": "1.6",
+            "trigger": "migration:20260504065656"
+        },
+        {
+            "at": "2026-05-04T07:23:31.265360+00:00",
+            "diff": [
+                {
+                    "op": "replace",
+                    "path": "/title",
+                    "value": "DLS-ACF--TEST"
+                }
+            ],
+            "profile_version": "1.7",
+            "trigger": "undo:1.6"
+        },
+        {
+            "at": "2026-05-21T11:46:01.796762+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/reactionVariations"
+                }
+            ],
+            "profile_version": "1.8",
+            "trigger": "migration:20260417132254"
+        },
+        {
+            "at": "2026-05-21T11:46:01.796939+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_%"
+                },
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_liter"
+                },
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_mol"
+                },
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_gram"
+                },
+                {
+                    "op": "remove",
+                    "path": "/data/0/tables/0/metadata/__UNIT_PPM"
+                }
+            ],
+            "profile_version": "1.9",
+            "trigger": "migration:20260422063146"
+        },
+        {
+            "at": "2026-05-21T11:46:01.797239+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/tables/0/loopType"
+                },
+                {
+                    "from": "/tables/0/inputTableIndex",
+                    "op": "move",
+                    "path": "/tables/0/table/xColumn/tableIndex"
+                },
+                {
+                    "op": "add",
+                    "path": "/tables/0/table/yColumn/tableIndex",
+                    "value": 0
+                }
+            ],
+            "profile_version": "1.10",
+            "trigger": "migration:20260506160404"
+        },
+        {
+            "at": "2026-05-21T11:46:01.797430+00:00",
+            "diff": [
+                {
+                    "op": "remove",
+                    "path": "/tables/0/uuid"
+                },
+                {
+                    "op": "remove",
+                    "path": "/tables/0/tableName"
+                }
+            ],
+            "profile_version": "1.11",
+            "trigger": "migration:20260513094819"
+        }
+    ],
     "id": "fbbe088a-b688-4609-8c00-086a149f61ba",
     "identifiers": [
         {
@@ -99,21 +278,27 @@
         }
     ],
     "isDisabled": false,
-    "last_migration": "20260113143334",
+    "last_migration": "20260513094819",
+    "objects": [],
     "ols": null,
     "ontology": "",
     "predicates": [],
+    "profile_version": "1.12",
+    "reactionVariations": {
+        "elements": [],
+        "identifiers": []
+    },
     "rootOntology": {
         "description": [
             "A planned process that has the objective to produce information about a material entity (the evaluant) by examining it."
         ],
-        "id": "OBI:property:http://purl.obolibrary.org/obo/OBI_0000070",
+        "id": "obi:class:http://purl.obolibrary.org/obo/OBI_0000070",
         "iri": "http://purl.obolibrary.org/obo/OBI_0000070",
         "label": "assay",
         "namespace": "http://purl.obolibrary.org/obo/",
         "obo_id": "OBI:0000070",
-        "ontology_name": "chmo",
-        "ontology_prefix": "CHMO",
+        "ontology_name": "obi",
+        "ontology_prefix": "OBI",
         "short_form": "OBI_0000070",
         "type": "class"
     },
@@ -128,17 +313,20 @@
                 "XUNITS": "Lag time (microseconds)",
                 "YUNITS": "ACF (a.u.)"
             },
+            "inputTableIndex": 0,
+            "loopType": "none",
             "table": {
                 "xColumn": {
-                    "columnIndex": 0,
-                    "tableIndex": 0
+                    "columnIndex": 0
                 },
                 "yColumn": {
-                    "columnIndex": 1,
-                    "tableIndex": 0
+                    "columnIndex": 1
                 }
-            }
+            },
+            "tableName": "Table #1",
+            "uuid": "45b09c2e-c249-462f-89d2-667b39d53cb2"
         }
     ],
-    "title": "DLS-ACF"
+    "title": "DLS-ACF",
+    "version": 0
 }

@@ -63018,7 +63018,12 @@
                     "0.001068115234375",
                     "0.10000142655880291"
                 ]
-            ]
+            ],
+            "__UNIT_PPM": "ppm",
+            "__UNIT_liter": "l",
+            "__UNIT_gram": "g",
+            "__UNIT_%": "%",
+            "__UNIT_mol": "mol"
         }
     ],
     "metadata": {
@@ -63027,7 +63032,8 @@
         "mime_type": "text/plain",
         "extension": ".txt",
         "reader": "NovaReader",
-        "uploaded": "2026-03-10T09:23:28.759902+00:00",
+        "uploaded": "2026-07-09T08:23:32.179696+00:00",
+        "ontology": null,
         "lineterminator": "\\r\\n",
         "quoting": "0",
         "doublequote": "False",

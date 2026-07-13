@@ -1,22 +1,7 @@
 {
   "profileId": "0cd6596c-83d2-49ab-a982-1dfec98d16ba",
   "ols": null,
-  "matches": [
-    {
-      "identifier": {
-        "editable": true,
-        "id": "#0fileMetadata",
-        "key": "extension",
-        "match": "exact",
-        "optional": false,
-        "type": "fileMetadata",
-        "value": ".dpt"
-      },
-      "result": {
-        "value": ".dpt"
-      }
-    }
-  ],
+  "matches": [],
   "tablesCount": 1,
   "tables": [
     {
