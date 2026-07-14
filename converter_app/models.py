@@ -190,7 +190,7 @@ class Profile:
                                        ['profile_version', 'diff_history', 'isDefaultProfile', 'isDisabled',
                                         'last_migration'])
         diff = jsonpatch.make_patch(diff_a, diff_b).patch
-        if diff:
+        if diff and self.data.get('diff_history'):
             self.data['diff_history'].append(
                 {
                     'profile_version': self.data['profile_version'],

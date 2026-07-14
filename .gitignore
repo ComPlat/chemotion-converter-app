@@ -39,6 +39,7 @@ test_manager/test_readers.py
 /converter_app/rdf/rdf_terms_info.json
 /.run/migrate.run.xml
 /test_files/profiles/private/
+/test_files/profiles/_dev/
 /test_files/profiles/dev/
 /___timer_results/*
 /changes_results.diff
