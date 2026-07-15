@@ -42,12 +42,12 @@ class ProfileMigrationScript(ProfileMigration):
         profile['objects'] = []
         profile['predicates'] = []
 
-        for instances in profile['subjectInstances'].values():
+        for instances in profile.get('subjectInstances', {}).values():
             for instance in instances:
                 find_ontology_id(instance['predicate'], 'predicates')
 
-        for i, identifier in enumerate(profile['identifiers']):
-            if identifier['optional']:
+        for i, identifier in enumerate(profile.get('identifiers', [])):
+            if identifier.get('optional'):
                 object_item = identifier.get('predicate')
                 profile['identifiers'][i]['object'] = object_item
                 if object_item:
