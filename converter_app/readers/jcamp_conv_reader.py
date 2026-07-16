@@ -1,6 +1,10 @@
 import logging
 
-from jcamp import jcamp_read
+try:
+    # jcamp >= 1.3.1 renamed jcamp_read -> read (and jcamp_readfile -> readfile)
+    from jcamp import read as jcamp_read
+except ImportError:  # jcamp <= 1.3.0
+    from jcamp import jcamp_read
 from numpy import ndarray
 
 from converter_app.readers.helper.base import Reader
