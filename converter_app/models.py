@@ -37,6 +37,9 @@ class Profile:
 
     cli_profiles_dir = cli_home_path() / 'profiles'
 
+    # Must match the seed used by the 20260430125545 migration.
+    DEFAULT_VERSION = '1.0'
+
     def __init__(self, profile_data, client_id, profile_id=None, is_default_profile: bool = False):
         self.isDisabled = profile_data.get('isDisabled', False)
         self._data = profile_data
@@ -190,16 +193,22 @@ class Profile:
                                        ['profile_version', 'diff_history', 'isDefaultProfile', 'isDisabled',
                                         'last_migration'])
         diff = jsonpatch.make_patch(diff_a, diff_b).patch
-        if diff and self.data.get('diff_history'):
-            self.data['diff_history'].append(
-                {
-                    'profile_version': self.data['profile_version'],
-                    'at': datetime.now(timezone.utc).isoformat(),
-                    'diff': diff,
-                    'trigger': trigger
-                })
-            self.data['diff_history'] = self.data['diff_history'][-50:]
-            self.increase_version()
+        if not diff:
+            return
+        # Seed both fields rather than testing them: a freshly migrated profile has
+        # diff_history == [], and gating on its truthiness would suppress the first
+        # entry forever, leaving the profile stuck at its initial version.
+        history = self.data.setdefault('diff_history', [])
+        self.data.setdefault('profile_version', self.DEFAULT_VERSION)
+        history.append(
+            {
+                'profile_version': self.data['profile_version'],
+                'at': datetime.now(timezone.utc).isoformat(),
+                'diff': diff,
+                'trigger': trigger
+            })
+        self.data['diff_history'] = history[-50:]
+        self.increase_version()
 
     def save(self, trigger='save', add_to_history=True):
         """
