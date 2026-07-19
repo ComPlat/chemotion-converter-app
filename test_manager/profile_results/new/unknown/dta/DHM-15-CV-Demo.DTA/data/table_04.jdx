@@ -29,6 +29,6 @@
 ##FIRSTY=2.64327E-006
 ##XUNITS=Voltage in V
 ##YUNITS=Current in A
-##XYDATA=(XY..XY)
+##XYPOINTS=(XY..XY)
 2.99927E-001, 2.64327E-006
 ##END=$$ End of the data block
