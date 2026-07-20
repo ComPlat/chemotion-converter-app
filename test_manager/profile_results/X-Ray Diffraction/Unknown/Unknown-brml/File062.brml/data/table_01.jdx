@@ -1,5 +1,5 @@
 ##TITLE=Spectrum
-##JCAMP-DX=5.00 $$ chemotion-converter-app (1.9.1)
+##JCAMP-DX=5.00 $$ chemotion-converter-app (1.9.2)
 ##DATA TYPE=X-RAY DIFFRACTION
 ##DATA CLASS=XYPOINTS
 ##ORIGIN=
@@ -17,7 +17,7 @@
 ##FIRSTY=0.09375
 ##XUNITS=2Theta
 ##YUNITS=Intensity
-##XYDATA=(XY..XY)
+##XYPOINTS=(XY..XY)
 5, 0.09375
 5.0102, 0.11458333333333334
 5.0204, 0.10416666666666667
