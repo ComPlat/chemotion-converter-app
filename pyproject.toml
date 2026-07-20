@@ -33,7 +33,7 @@ dependencies = [
     "gemmi==0.*",
     "xlrd==2.*",
     "Werkzeug==3.*",
-    "jcamp==1.2.2",
+    "jcamp==1.*",
     "PyMuPDF==1.26.7",
     "pylint==4.*",
     "str2bool==1.*",
