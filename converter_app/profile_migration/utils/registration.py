@@ -165,7 +165,7 @@ class Migrations:
             if add_history:
                 profile.update_change_history(origen_data, f'migration:{next_migration}')
         for next_migration in self._registry_tree[last_migration]:
-            self._up_migration(next_migration, profile)
+            self._up_migration(next_migration, profile, add_history)
         return True
 
     def _save_profile(self, profile: Profile, profile_file_path: Optional[Path] = None):

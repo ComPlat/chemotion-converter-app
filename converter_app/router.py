@@ -313,7 +313,12 @@ def profile_router(app: Flask, auth: HTTPBasicAuth):
         profile_data = json.loads(request.data)
         profile = Profile(profile_data, client_id)
         if profile.clean():
-            Migrations().migrate_profile(profile, True)
+            try:
+                Migrations().migrate_profile(profile, True)
+            except Exception as e:  # noqa: BLE001 - a migration must never surface as a 500
+                profile.errors['Migration'] = 'Profile migration failed.'
+                profile.errors['MigrationMsg'] = f'{type(e).__name__}: {e}'
+                return jsonify(profile.errors), 400
             try:
                 validate_profile(profile.as_dict)
                 profile.save()
@@ -345,7 +350,12 @@ def profile_router(app: Flask, auth: HTTPBasicAuth):
                 return jsonify({'error': 'Bad request'}), 400
 
             if profile.clean():
-                Migrations().migrate_profile(profile, add_history=False)
+                try:
+                    Migrations().migrate_profile(profile, add_history=False)
+                except Exception as e:  # noqa: BLE001 - a migration must never surface as a 500
+                    profile.errors['Migration'] = 'Profile migration failed.'
+                    profile.errors['MigrationMsg'] = f'{type(e).__name__}: {e}'
+                    return jsonify(profile.errors), 400
                 try:
                     validate_profile(profile.as_dict)
                     profile.save()
