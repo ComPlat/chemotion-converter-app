@@ -1,5 +1,6 @@
 import logging
 import zipfile
+from collections import namedtuple
 
 import defusedxml.ElementTree as ET
 
@@ -7,6 +8,21 @@ from converter_app.readers.helper.reader import Readers
 from converter_app.readers.helper.base import Reader
 
 logger = logging.getLogger(__name__)
+
+# Declarative description of a single metadata field to extract.
+#
+#   path   -- '/'-separated local-name path to the element, relative to the base
+#             node the field is applied to. An empty string means the base node
+#             itself.
+#   kind   -- how the value is read from that element:
+#               'attr'       -> element.get(source); ``source`` may be a tuple of
+#                               attribute names, the first non-empty one wins.
+#               'text'       -> element.text (stripped).
+#               'value_unit' -> element.get('Value'), with element.get('Unit')
+#                               appended to ``key`` as a '_<unit>' suffix.
+#   source -- attribute name(s) for kind 'attr'; ignored otherwise.
+#   key    -- the metadata key written to the output table.
+_Field = namedtuple('_Field', 'path kind source key')
 
 
 class BrmlReader(Reader):
@@ -20,7 +36,8 @@ class BrmlReader(Reader):
 
     For every ``DataRoute`` found in the referenced raw data one table is produced:
 
-    * ``rows``    -- the measured data points (one row per ``Datum``).
+    * ``rows``    -- the measured data points (one row per ``Datum``), plus a derived
+                     ``Intensity_cps`` column (counts / measured time).
     * ``columns`` -- named according to the ``DataView`` definition, e.g.
                      ``MeasuredTime_s``, ``AbsorptionFactor``, ``2Theta_°``,
                      ``Theta_°``, ``ScanCounter_Counts``.
@@ -28,11 +45,16 @@ class BrmlReader(Reader):
                       parameters. Values carry their physical unit as a ``_<unit>``
                       suffix where one is available (e.g. ``Voltage_kV``).
 
+    Which metadata is extracted is defined declaratively in the ``*_FIELDS`` tables
+    below (element path -> output key), so extending the output is a one-line change
+    rather than new extraction logic.
+
     Only ``DataContainer.xml`` and the referenced ``RawDataN.xml`` files are parsed.
-    Additional optics details (individual slits, Soller collimators, monochromators,
-    ...) live in the much larger ``MeasurementContainer.xml`` and are intentionally
-    not read here, to keep the reader fast and robust. They could be added later as
-    an optional "deep" extraction step if required.
+    Additional optics details (individual slits, Soller collimators, goniometer
+    radius, temperature, sample rotation, ...) live in the much larger
+    ``MeasurementContainer.xml`` and are intentionally not read here, to keep the
+    reader fast and robust. They could be added later as an optional "deep"
+    extraction step if required.
 
     The XML traversal is namespace tolerant: elements are matched by their local
     name, so both plain and namespace-qualified BRML variants are supported.
@@ -40,6 +62,62 @@ class BrmlReader(Reader):
 
     identifier = 'brml_reader'
     priority = 10
+
+    # Sample and instrument level fields, relative to the DataContainer.xml root.
+    CONTAINER_FIELDS = (
+        _Field('CreatingVersion', 'text', None, 'Software version'),
+        _Field('Identifier/TimeStampCreated', 'text', None, 'Timestamp created'),
+        _Field('MeasurementInfo', 'attr', 'SampleName', 'Sample name'),
+        _Field('MeasurementInfo', 'attr', 'UserName', 'Operator'),
+        _Field('MeasurementInfo', 'attr', 'Comment', 'Comment'),
+        _Field('MeasurementInfo', 'attr', 'SamplePosition', 'Sample position'),
+        _Field('MeasurementInfo', 'attr', ('BsmlFileName', 'ScriptName'), 'Script file'),
+        _Field('ExperimentInfo/InstrumentDescription/InstrumentName', 'text', None, 'Instrument'),
+        _Field('ExperimentInfo/InstrumentDescription/SerialNo', 'text', None, 'Serial number'),
+        _Field('ExperimentInfo/InstrumentDescription/DeviceTypeDesc', 'text', None, 'Device type'),
+        _Field('ExperimentInfo/ApplicationType', 'text', None, 'Application type'),
+        _Field('TotalMeasurementTime', 'value_unit', None, 'TotalMeasurementTime'),
+    )
+
+    # Status fields, relative to the RawDataN.xml root.
+    RAW_FIELDS = (
+        _Field('MeasurementStatus', 'text', None, 'Measurement status'),
+        _Field('TimeStampStarted', 'text', None, 'Timestamp started'),
+        _Field('TimeStampFinished', 'text', None, 'Timestamp finished'),
+    )
+
+    # Fields relative to a single DataRoute element.
+    ROUTE_FIELDS = (
+        _Field('', 'attr', 'Description', 'Data route'),
+        _Field('', 'attr', 'RouteFlag', 'Route flag'),
+    )
+
+    # Fields relative to a ScanInformation element.
+    SCAN_FIELDS = (
+        _Field('', 'attr', ('VisibleName', 'ScanName'), 'Scan name'),
+        _Field('MeasurementPoints', 'text', None, 'Measurement points'),
+        _Field('TimePerStep', 'text', None, 'TimePerStep_s'),
+        _Field('TimePerStepEffective', 'text', None, 'TimePerStepEffective_s'),
+        _Field('EstimatedTime', 'text', None, 'EstimatedTime_s'),
+        _Field('ScanMode', 'text', None, 'Scan mode'),
+        _Field('ScanModeVisibleName', 'text', None, 'Scan mode description'),
+    )
+
+    # X-ray source fields, relative to the Tube element.
+    TUBE_FIELDS = (
+        _Field('', 'attr', 'LogicName', 'Tube'),
+        _Field('WaveLengthAlpha1', 'value_unit', None, 'WaveLengthAlpha1'),
+        _Field('WaveLengthAlpha2', 'value_unit', None, 'WaveLengthAlpha2'),
+        _Field('WaveLengthAverage', 'value_unit', None, 'WaveLengthAverage'),
+        _Field('WaveLengthBeta', 'value_unit', None, 'WaveLengthBeta'),
+        _Field('WaveLengthRatio', 'value_unit', None, 'WaveLengthRatio'),
+        _Field('Generator/Voltage', 'value_unit', None, 'Voltage'),
+        _Field('Generator/Current', 'value_unit', None, 'Current'),
+    )
+
+    # Sealed-tube anode materials, used to derive the anode from the tube name.
+    # Two-letter symbols first so they win over the single-letter tungsten symbol.
+    ANODE_MATERIALS = ('Ag', 'Co', 'Cr', 'Cu', 'Fe', 'Mn', 'Mo', 'Ni', 'Rh', 'W')
 
     def check(self):
         """
@@ -147,8 +225,6 @@ class BrmlReader(Reader):
         with zf.open(dc_name) as fp:
             dc_root = ET.fromstring(fp.read())
 
-        container_metadata = self._container_metadata(dc_root)
-
         refs = [s.text for s in self._path_all(dc_root, 'RawDataReferenceList/string')
                 if s.text]
         if not refs:
@@ -166,23 +242,26 @@ class BrmlReader(Reader):
                 continue
             with zf.open(ref) as fp:
                 raw_root = ET.fromstring(fp.read())
-            self._process_raw_data(raw_root, container_metadata, tables)
+            self._process_raw_data(dc_root, raw_root, tables)
 
-    def _process_raw_data(self, raw_root, container_metadata, tables):
-        raw_metadata = {}
-        self._set(raw_metadata, 'Measurement status', self._text(raw_root, 'MeasurementStatus'))
-        self._set(raw_metadata, 'Timestamp started', self._text(raw_root, 'TimeStampStarted'))
-        self._set(raw_metadata, 'Timestamp finished', self._text(raw_root, 'TimeStampFinished'))
-
+    def _process_raw_data(self, dc_root, raw_root, tables):
         for data_route in self._path_all(raw_root, 'DataRoutes/DataRoute'):
             table = self.append_table(tables)
 
-            for key, value in container_metadata.items():
-                table.add_metadata(key, value)
-            for key, value in raw_metadata.items():
-                table.add_metadata(key, value)
-            self._add_route_metadata(table, data_route)
+            self._extract_fields(table, dc_root, self.CONTAINER_FIELDS)
+            self._extract_fields(table, raw_root, self.RAW_FIELDS)
+            self._extract_fields(table, data_route, self.ROUTE_FIELDS)
+
+            scan = self._path(data_route, 'ScanInformation')
+            if scan is not None:
+                self._extract_fields(table, scan, self.SCAN_FIELDS)
+                for axis in self._path_all(scan, 'ScanAxes/ScanAxisInfo'):
+                    self._add_axis_metadata(table, axis)
+                for axis in self._path_all(scan, 'FixedScanAxes/FixedScanAxisInfo'):
+                    self._add_fixed_axis_metadata(table, axis)
+
             self._add_source_metadata(table, data_route, raw_root)
+            self._add_detector_metadata(table, data_route)
 
             columns = self._column_definitions(data_route)
             # Add a derived counts-per-second column when both the measured time and
@@ -207,67 +286,24 @@ class BrmlReader(Reader):
 
     # -- metadata extraction ----------------------------------------------------
 
-    @staticmethod
-    def _set(metadata, key, value):
-        """Store ``value`` under ``key`` only if it is a non-empty string."""
-        if value:
-            metadata[key] = value
-
-    def _container_metadata(self, dc_root) -> dict:
-        """Sample and instrument level metadata from ``DataContainer.xml``."""
-        metadata = {}
-        self._set(metadata, 'Software version', self._text(dc_root, 'CreatingVersion'))
-        self._set(metadata, 'Timestamp created',
-                  self._text(dc_root, 'Identifier/TimeStampCreated'))
-
-        measurement_info = self._path(dc_root, 'MeasurementInfo')
-        if measurement_info is not None:
-            self._set(metadata, 'Sample name', measurement_info.get('SampleName', ''))
-            self._set(metadata, 'Operator', measurement_info.get('UserName', ''))
-            self._set(metadata, 'Comment', measurement_info.get('Comment', ''))
-            self._set(metadata, 'Sample position', measurement_info.get('SamplePosition', ''))
-            self._set(metadata, 'Script file',
-                      measurement_info.get('BsmlFileName', '')
-                      or measurement_info.get('ScriptName', ''))
-
-        instrument = self._path(dc_root, 'ExperimentInfo/InstrumentDescription')
-        if instrument is not None:
-            self._set(metadata, 'Instrument', self._text(instrument, 'InstrumentName'))
-            self._set(metadata, 'Serial number', self._text(instrument, 'SerialNo'))
-            self._set(metadata, 'Device type', self._text(instrument, 'DeviceTypeDesc'))
-        self._set(metadata, 'Application type',
-                  self._text(dc_root, 'ExperimentInfo/ApplicationType'))
-
-        total_time = self._path(dc_root, 'TotalMeasurementTime')
-        if total_time is not None:
-            self._set(metadata, self._key('TotalMeasurementTime', total_time.get('Unit', '')),
-                      total_time.get('Value', ''))
-        return metadata
-
-    def _add_route_metadata(self, table, data_route):
-        """Scan setup metadata for a single ``DataRoute``."""
-        self._add(table, 'Data route', data_route.get('Description'))
-        self._add(table, 'Route flag', data_route.get('RouteFlag'))
-
-        scan = self._path(data_route, 'ScanInformation')
-        if scan is None:
-            return
-        self._add(table, 'Scan name',
-                  scan.get('VisibleName') or scan.get('ScanName'))
-        for tag, key in (
-            ('MeasurementPoints', 'Measurement points'),
-            ('TimePerStep', 'TimePerStep_s'),
-            ('TimePerStepEffective', 'TimePerStepEffective_s'),
-            ('EstimatedTime', 'EstimatedTime_s'),
-            ('ScanMode', 'Scan mode'),
-            ('ScanModeVisibleName', 'Scan mode description'),
-        ):
-            self._add(table, key, self._text(scan, tag))
-
-        for axis in self._path_all(scan, 'ScanAxes/ScanAxisInfo'):
-            self._add_axis_metadata(table, axis)
-        for axis in self._path_all(scan, 'FixedScanAxes/FixedScanAxisInfo'):
-            self._add_fixed_axis_metadata(table, axis)
+    def _extract_fields(self, table, node, fields):
+        """Extract every field of a declarative ``*_FIELDS`` table from ``node``."""
+        for field in fields:
+            element = self._path(node, field.path) if field.path else node
+            if element is None:
+                continue
+            if field.kind == 'attr':
+                sources = field.source if isinstance(field.source, tuple) else (field.source,)
+                for attr in sources:
+                    value = element.get(attr, '')
+                    if value:
+                        self._add(table, field.key, value)
+                        break
+            elif field.kind == 'text':
+                self._add(table, field.key, (element.text or '').strip())
+            elif field.kind == 'value_unit':
+                self._add(table, self._key(field.key, element.get('Unit', '')),
+                          element.get('Value', ''))
 
     def _add_axis_metadata(self, table, axis):
         """Start/Stop/Increment of a moving scan axis (e.g. TwoTheta, Theta)."""
@@ -285,7 +321,7 @@ class BrmlReader(Reader):
         self._add(table, self._key(name, unit), self._text(axis, 'Position'))
 
     def _add_source_metadata(self, table, *nodes):
-        """X-ray source: tube, wavelengths (K-alpha1/2, ...) and generator settings."""
+        """X-ray source: tube, wavelengths, generator settings and anode material."""
         tube = None
         for node in nodes:
             tube = self._find_first(node, 'Tube')
@@ -293,22 +329,27 @@ class BrmlReader(Reader):
                 break
         if tube is None:
             return
+        self._extract_fields(table, tube, self.TUBE_FIELDS)
+        # The anode material is not stored explicitly; derive it from the tube name.
+        self._add(table, 'Anode', self._derive_anode(tube.get('LogicName')))
 
-        self._add(table, 'Tube', tube.get('LogicName'))
-        for tag in ('WaveLengthAlpha1', 'WaveLengthAlpha2', 'WaveLengthAverage',
-                    'WaveLengthBeta', 'WaveLengthRatio'):
-            element = self._child(tube, tag)
-            if element is not None:
-                self._add(table, self._key(tag, element.get('Unit', '')),
-                          element.get('Value'))
+    def _add_detector_metadata(self, table, data_route):
+        """Detector name, taken from the counter's DataView ``Recording`` element."""
+        recording = self._find_first(data_route, 'Recording')
+        if recording is not None:
+            self._add(table, 'Detector',
+                      recording.get('ParentBeringObjectName')
+                      or recording.get('VisibleName'))
 
-        generator = self._find_first(tube, 'Generator')
-        if generator is not None:
-            for tag in ('Voltage', 'Current'):
-                element = self._child(generator, tag)
-                if element is not None:
-                    self._add(table, self._key(tag, element.get('Unit', '')),
-                              element.get('Value'))
+    @classmethod
+    def _derive_anode(cls, tube_name):
+        """Heuristically derive the anode material from the tube name (e.g. Cu)."""
+        if not tube_name:
+            return ''
+        for symbol in cls.ANODE_MATERIALS:
+            if symbol in tube_name:
+                return symbol
+        return ''
 
     @staticmethod
     def _add(table, key, value):
