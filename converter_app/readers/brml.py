@@ -119,6 +119,19 @@ class BrmlReader(Reader):
     # Two-letter symbols first so they win over the single-letter tungsten symbol.
     ANODE_MATERIALS = ('Ag', 'Co', 'Cr', 'Cu', 'Fe', 'Mn', 'Mo', 'Ni', 'Rh', 'W')
 
+    # Optional deep parse of the large MeasurementContainer.xml (3+ MB). It holds the
+    # full instrument configuration (mounted optics with their configured values,
+    # goniometer radius, sample rotation, temperature stage). Note that it also
+    # contains the complete component *library*, so only components explicitly
+    # flagged ``PositionStatus = Mounted`` reflect the actual setup.
+    #
+    # Disabled by default: parsing this file adds ~125-150 ms per file (roughly 7-20x
+    # the core read of the 194 KB RawDataN.xml) for a handful of extra metadata
+    # fields. Set to True to opt in when that instrument configuration is needed.
+    DEEP_PARSE = False
+    MEASUREMENT_CONTAINER = 'MeasurementContainer.xml'
+    XSI_TYPE = '{http://www.w3.org/2001/XMLSchema-instance}type'
+
     def check(self):
         """
         :return: True if the file is a BRML (ZIP) archive
@@ -225,6 +238,10 @@ class BrmlReader(Reader):
         with zf.open(dc_name) as fp:
             dc_root = ET.fromstring(fp.read())
 
+        # The deep parse is done once per experiment (not per DataRoute), so the
+        # multi-megabyte MeasurementContainer.xml is read at most once here.
+        deep_metadata = self._deep_metadata(zf, dc_name, names) if self.DEEP_PARSE else {}
+
         refs = [s.text for s in self._path_all(dc_root, 'RawDataReferenceList/string')
                 if s.text]
         if not refs:
@@ -242,9 +259,9 @@ class BrmlReader(Reader):
                 continue
             with zf.open(ref) as fp:
                 raw_root = ET.fromstring(fp.read())
-            self._process_raw_data(dc_root, raw_root, tables)
+            self._process_raw_data(dc_root, raw_root, deep_metadata, tables)
 
-    def _process_raw_data(self, dc_root, raw_root, tables):
+    def _process_raw_data(self, dc_root, raw_root, deep_metadata, tables):
         for data_route in self._path_all(raw_root, 'DataRoutes/DataRoute'):
             table = self.append_table(tables)
 
@@ -262,6 +279,8 @@ class BrmlReader(Reader):
 
             self._add_source_metadata(table, data_route, raw_root)
             self._add_detector_metadata(table, data_route)
+            for key, value in deep_metadata.items():
+                self._add(table, key, value)
 
             columns = self._column_definitions(data_route)
             # Add a derived counts-per-second column when both the measured time and
@@ -340,6 +359,97 @@ class BrmlReader(Reader):
             self._add(table, 'Detector',
                       recording.get('ParentBeringObjectName')
                       or recording.get('VisibleName'))
+
+    # -- optional deep parse (MeasurementContainer.xml) -------------------------
+
+    def _deep_metadata(self, zf, dc_name, names) -> dict:
+        """
+        Extract instrument configuration from the (large) MeasurementContainer.xml.
+
+        Returns a dict of metadata that applies to every table of the experiment.
+        Only components explicitly flagged as mounted are considered, so the values
+        reflect the actual setup rather than the full component library. Returns an
+        empty dict if the container is missing.
+        """
+        prefix = dc_name[:-len('DataContainer.xml')]
+        mc_name = prefix + self.MEASUREMENT_CONTAINER
+        if mc_name not in names:
+            return {}
+        with zf.open(mc_name) as fp:
+            mc_root = ET.fromstring(fp.read())
+
+        metadata = {}
+
+        # Goniometer radius: first track radius with a non-zero value.
+        for radius in self._iter_by_name(mc_root, 'Radius'):
+            value, unit = radius.get('Value'), radius.get('Unit', '')
+            if self._as_float(value):
+                metadata[self._key('GoniometerRadius', unit)] = value
+                break
+
+        # Soller collimator angle: first mounted Soller with a non-zero angle. The
+        # divergence slit opening is deliberately not reported: the D8 stores it as
+        # an internal, unit-less motor code, not as a clean angle in this container.
+        for optic in self._iter_mounted_optics(mc_root):
+            if optic.get(self.XSI_TYPE, '').split(':')[-1] != 'SollerData':
+                continue
+            data = self._find_first(optic, 'Data')
+            if data is not None and self._as_float(data.get('Value')) \
+                    and data.get('Unit', '').strip():
+                metadata[self._key('Soller', data.get('Unit'))] = data.get('Value')
+                break
+
+        # Sample rotation speed: first rotation axis with a non-zero setpoint.
+        for rotation in self._iter_by_name(mc_root, 'RotationData'):
+            data = self._find_first(rotation, 'Data')
+            if data is not None and self._as_float(data.get('Value')):
+                metadata[self._key('Sample rotation', data.get('Unit', ''))] = data.get('Value')
+                break
+
+        # Temperature: only report a controller that is actually active.
+        for controller in self._iter_by_name(mc_root, 'NonAmbientModeData'):
+            if controller.get('IsActive', '').lower() == 'true':
+                metadata['Temperature controller'] = controller.get('VisibleName', '')
+                break
+
+        return metadata
+
+    def _iter_mounted(self, root):
+        """Yield optic components explicitly flagged ``PositionStatus = Mounted``."""
+        for parent in root.iter():
+            children = list(parent)
+            for index, child in enumerate(children):
+                if (self._local_name(child) == 'PositionStatus'
+                        and (child.text or '').strip() == 'Mounted'
+                        and index + 1 < len(children)
+                        and self._local_name(children[index + 1])
+                        in ('MountedComponent', 'MountedOptic')):
+                    yield children[index + 1]
+
+    def _iter_mounted_optics(self, root):
+        """Yield each mounted component plus any optics nested inside it (e.g. the
+        Soller inside a mounted SollerMount box)."""
+        for mounted in self._iter_mounted(root):
+            yield mounted
+            for inner in self._iter_by_name(mounted, 'MountedOptic'):
+                if inner is not mounted:
+                    yield inner
+
+    @classmethod
+    def _iter_by_name(cls, node, name):
+        """Yield all descendants (including ``node``) with local name ``name``."""
+        for element in node.iter():
+            if cls._local_name(element) == name:
+                yield element
+
+    @staticmethod
+    def _as_float(value):
+        """Return ``value`` as a non-zero float, or None (also None for 0 / invalid)."""
+        try:
+            result = float(value)
+        except (TypeError, ValueError):
+            return None
+        return result if result != 0 else None
 
     @classmethod
     def _derive_anode(cls, tube_name):
