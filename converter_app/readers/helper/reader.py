@@ -56,11 +56,12 @@ class Readers:
             raise EnvironmentError('Setting the readers is only supported for testing purposes!')
         self._registry['readers'] = value
 
-    def match_reader(self, file: File, ontology: str = None):
+    def match_reader(self, file: File, ontology: str = None, device: str = None):
         """
         Checks which reader fits to a File
         :param file:
         :param ontology:
+        :param device:
         :return:
         """
 
@@ -76,6 +77,7 @@ class Readers:
             else:
                 reader = reader(file)
             reader.ontology = ontology
+            reader.device = device
             result = reader.check()
 
             logger.debug('For reader %s -> result=%s', reader.__class__.__name__, result)
