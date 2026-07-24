@@ -20,7 +20,6 @@ __pycache__/
 /log
 /tmp
 /profiles
-/_datasets
 /datasets
 /.idea/.gitignore
 /.idea/chemotion-converter-app.iml
@@ -43,3 +42,5 @@ test_manager/test_readers.py
 /test_files/profiles/dev/
 /___timer_results/*
 /changes_results.diff
+/logs/
+/MS Temp Files/

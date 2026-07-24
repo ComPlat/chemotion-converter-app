@@ -1,0 +1,14 @@
+version: "3.8"
+
+services:
+  msconvert:
+    image: proteowizard/pwiz-skyline-i-agree-to-the-vendor-licenses
+    container_name: msconvert_docker
+    command: bash
+    environment:
+      WINEDEBUG: "-all"
+    volumes:
+      - ./MS Temp Files:/data
+    stdin_open: true
+    tty: true
+    restart: "no"

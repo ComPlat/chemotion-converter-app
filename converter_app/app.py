@@ -11,6 +11,7 @@ import logging
 import os
 import uuid
 from pathlib import Path
+import subprocess as sp
 
 import dotenv
 import flask
@@ -27,7 +28,7 @@ from converter_app.models import Profile
 # Example usage
 
 
-def create_app(is_local_cli_admin = False, is_local_cli = False) -> flask.Flask:
+def create_app(is_local_cli_admin=False, is_local_cli=False) -> flask.Flask:
     """
     Creates a Flask server that exposes various endpoints, providing
     users with the capability to effortlessly create profiles for the conversion process.
@@ -50,6 +51,20 @@ def create_app(is_local_cli_admin = False, is_local_cli = False) -> flask.Flask:
     # setup logging
     logging.basicConfig(level=os.getenv('LOG_LEVEL', 'INFO').upper(),
                         filename=os.getenv('LOG_FILE'))
+
+    logger = logging.getLogger(__name__)
+
+    ms_test_cmd_command = ["docker", "exec", "msconvert_docker", "wine", "msconvert", "--help"]
+    try:
+        res = sp.run(
+            ms_test_cmd_command,
+            stdout=sp.DEVNULL,
+            stderr=sp.DEVNULL, check=True)
+        if res.returncode != 0:
+            logger.warning(
+                f"MS_CONVERTER: MS converter Docker container NOT available! -> {' '.join(ms_test_cmd_command)[:50]}...")
+    except sp.CalledProcessError:
+        logger.warning(f"MS_CONVERTER: MS converter Docker container NOT available! -> {' '.join(ms_test_cmd_command)}")
 
     # configure app
     debug = str2bool(os.getenv('DEBUG', 'False').lower())
