@@ -20,6 +20,8 @@ class CSVReader(Reader):
         self.lines = None
         self.rows = None
         self.table_min_rows = 20
+        # markers that flag a following numeric block as a data table even if it is shorter than table_min_rows
+        self.block_identifiers = ['XYDATA']
         self.delimiters = {
             '\t': 'tab',
             ';': 'semicolon',
@@ -86,7 +88,15 @@ class CSVReader(Reader):
         # loop over blocks and sort into header, table, and metadata
         prev_block = None
         for block in blocks:
-            if len(block['indexes']) < self.table_min_rows or not block['shape']:
+            is_table = len(block['indexes']) >= self.table_min_rows and block['shape']
+
+            # a short numeric block still counts as a table if it directly follows a known marker (e.g. JCAMP "XYDATA")
+            if not is_table and any(cell == 'f' for cell in block['shape']) and prev_block is not None:
+                prev_lines = [self.lines[index].strip() for index in prev_block['indexes']]
+                if any(line in self.block_identifiers for line in prev_lines):
+                    is_table = True
+
+            if not is_table:
                 # this is the header
                 if table['rows']:
                     # if a table is already there, this must be a new header
