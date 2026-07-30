@@ -46,6 +46,42 @@ class JsonReader(Reader):
             current_json = current_json[step]
         return copy.deepcopy(current_json)
 
+    def _handle_scalar(self, key: str, value):
+        """
+        Stores a scalar leaf of the json document as metadata of the current table.
+        Subclasses can override this hook to rename, regroup or drop keys.
+
+        :param key: json path of the leaf, "." separated
+        :param value: the leaf value
+        """
+        self.table['metadata'].add_unique(key, value)
+
+    def _handle_number_list(self, key: str, values: list):
+        """
+        Stores a list of numbers as a column. All columns of the same length are combined
+        into one table afterwards. Subclasses can override this hook to lay out columns
+        differently.
+
+        :param key: json path of the list, "." separated
+        :param values: the list of numbers
+        """
+        if len(values) not in self._all_tables:
+            self._all_tables[len(values)] = {}
+        self._all_tables[len(values)][key] = values
+
+    def _handle_list(self, key: str, values: list) -> bool:
+        """
+        Hook for all lists that are not plain number columns. The default implementation
+        consumes nothing, so the parser walks into the items of the list. Subclasses can
+        override this hook to turn a list into a table of its own.
+
+        :param key: json path of the list, "." separated
+        :param values: the list
+        :return: True if the list has been consumed completely, False to walk into it
+        """
+        logger.debug('list %s with %d entries is read entry by entry', key, len(values))
+        return False
+
     def _rec_reader(self, elem, key, step_count=0):
         if step_count > self._max_steps:
             return
@@ -54,13 +90,13 @@ class JsonReader(Reader):
             iterator = elem.items()
         elif isinstance(elem, list):
             if all(isinstance(x, (int, float)) for x in elem):
-                if len(elem) not in self._all_tables:
-                    self._all_tables[len(elem)] = {}
-                self._all_tables[len(elem)][key] = elem
+                self._handle_number_list(key, elem)
+                return
+            if self._handle_list(key, elem):
                 return
             iterator = enumerate(elem)
         else:
-            self.table['metadata'].add_unique(key, elem)
+            self._handle_scalar(key, elem)
             return
         for k, v in iterator:
             temp_key = f'{key}.{k}'
