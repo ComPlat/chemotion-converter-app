@@ -106,6 +106,15 @@ class Reader:
         self.file_content = tar_content
         self.is_tar_ball = len(tar_content) > 0
         self._attachment_files = []
+        self._ontology = None
+
+    @property
+    def ontology(self):
+        return self._ontology
+
+    @ontology.setter
+    def ontology(self, value):
+        self._ontology = value
 
     def add_attachment(self, file_content: bytes, filename: str, file_type: AttachmentType):
         self._attachment_files.append((file_content, filename, file_type))
@@ -206,7 +215,8 @@ class Reader:
             'mime_type': self.file.mime_type,
             'extension': self.file.suffix,
             'reader': self.__class__.__name__,
-            'uploaded': datetime.now(UTC).isoformat()
+            'uploaded': datetime.now(UTC).isoformat(),
+            'ontology': self.ontology
         }
 
     def append_table(self, tables: list) -> Table:

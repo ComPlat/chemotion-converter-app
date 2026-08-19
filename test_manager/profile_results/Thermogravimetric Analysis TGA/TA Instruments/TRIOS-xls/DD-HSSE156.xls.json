@@ -372580,6 +372580,7 @@
         "mime_type": "application/vnd.ms-excel",
         "extension": ".xls",
         "reader": "OldExcelReader",
-        "uploaded": "2026-05-22T09:39:29.519837+00:00"
+        "uploaded": "2026-07-19T08:41:47.704883+00:00",
+        "ontology": null
     }
 }

@@ -177,7 +177,7 @@ class JcampWriter(Writer):
                 maxy = max(maxy, y_float)
             except ValueError:
                 continue
-        data_class = data_class if data_class == 'PEAK TABLE' else 'XYDATA'
+
 
         if is_closed:
             # write header with xydata specific values
@@ -195,6 +195,7 @@ class JcampWriter(Writer):
                 data_class: '(XY..XY)'
             })
         else:
+            data_class = data_class if data_class == 'PEAK TABLE' else 'XYDATA'
             # write header with xydata specific values
             self._write_header({
                 data_class: '(XY..XY)'

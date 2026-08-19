@@ -28,7 +28,9 @@ class ProfileMigrationScript(ProfileMigration):
         Updates the profile.
         """
 
-        if profile["rootOntology"]["iri"] == "http://purl.obolibrary.org/obo/OBI_0000070":
+        root_ontology = profile.get("rootOntology")
+        if isinstance(root_ontology, dict) and \
+                root_ontology.get("iri") == "http://purl.obolibrary.org/obo/OBI_0000070":
             profile["rootOntology"] = copy.deepcopy(self.default_assay)
 
     def to_be_applied_after_migration(self) -> str:

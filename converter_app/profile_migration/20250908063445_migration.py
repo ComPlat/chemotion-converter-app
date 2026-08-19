@@ -29,7 +29,7 @@ class ProfileMigrationScript(ProfileMigration):
         """
         Updates the profile.
         """
-        if isinstance(profile["rootOntology"],dict):
+        if isinstance(profile.get("rootOntology"), dict):
             return
 
         profile["rootOntology"] = {

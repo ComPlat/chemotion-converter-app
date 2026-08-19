@@ -43,6 +43,7 @@
         "mime_type": "text/plain",
         "extension": ".dx",
         "reader": "JcampReader",
-        "uploaded": "2026-05-22T09:38:50.956365+00:00"
+        "uploaded": "2026-07-09T07:06:32.879082+00:00",
+        "ontology": null
     }
 }

@@ -5,6 +5,7 @@
                 "binary"
             ],
             "metadata": {
+                "ontology": "",
                 "__UNIT_PPM": "ppm",
                 "__UNIT_liter": "l",
                 "__UNIT_gram": "g",
@@ -23,6 +24,7 @@
         "mime_type": "text/plain",
         "extension": ".md",
         "reader": "AsciiReader",
-        "uploaded": "2026-05-22T09:38:08.271906+00:00"
+        "uploaded": "2026-07-07T10:40:17.813054+00:00",
+        "ontology": null
     }
 }

@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "chemotion-converter-app"
-version = "1.8.0"
+version = "1.9.3"
 authors = [{ name = "Nicole Jung", email = "nicole.jung@kit.edu" }]
 requires-python = ">= 3.12"
 description = "A backend service to interconvert chemistry-related files."
@@ -26,13 +26,14 @@ dependencies = [
     "Flask-HTTPAuth==4.*",
     "gunicorn==25.*",
     "openpyxl==3.*",
+    "Pillow==11.*",
     "python-dotenv==1.*",
     "python-magic==0.*; platform_system != 'Windows'",
     "python-magic-bin==0.*; platform_system == 'Windows'",
     "gemmi==0.*",
     "xlrd==2.*",
     "Werkzeug==3.*",
-    "jcamp==1.*",
+    "jcamp==1.2.2",
     "PyMuPDF==1.26.7",
     "pylint==4.*",
     "str2bool==1.*",
@@ -49,7 +50,8 @@ dependencies = [
     "requests==2.32.*",
     "click==8.3.*",
     "jsonpatch==1.33",
-    "gcode_translator @ git+https://github.com/herrdivad/GCode_Translator.git@v1.1.0"
+    "gcode_translator @ git+https://github.com/herrdivad/GCode_Translator.git@v1.1.0",
+    "astropy~=8.0.0"
 ]
 
 [project.optional-dependencies]

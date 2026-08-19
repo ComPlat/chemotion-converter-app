@@ -163195,6 +163195,7 @@
         "mime_type": "text/plain",
         "extension": ".txt",
         "reader": "GcdReader",
-        "uploaded": "2026-05-22T09:38:07.946777+00:00"
+        "uploaded": "2026-07-09T07:05:38.247303+00:00",
+        "ontology": null
     }
 }

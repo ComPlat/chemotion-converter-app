@@ -9,7 +9,7 @@ from converter_app.models import File, extract_tar_archive
 
 class Readers:
     """
-    This calls manages all reader. It must be used as Singleton
+    This call manages all readers. It must be used as Singleton
     """
     _instance = None
 
@@ -56,12 +56,14 @@ class Readers:
             raise EnvironmentError('Setting the readers is only supported for testing purposes!')
         self._registry['readers'] = value
 
-    def match_reader(self, file: File):
+    def match_reader(self, file: File, ontology: str = None):
         """
         Checks which reader fits to a File
         :param file:
+        :param ontology:
         :return:
         """
+
         logger.debug('file_name=%s content_type=%s mime_type=%s encoding=%s',
                      file.name, file.content_type, file.mime_type, file.encoding)
 
@@ -73,7 +75,7 @@ class Readers:
                 reader = reader(file, *archive_file_list)
             else:
                 reader = reader(file)
-
+            reader.ontology = ontology
             result = reader.check()
 
             logger.debug('For reader %s -> result=%s', reader.__class__.__name__, result)

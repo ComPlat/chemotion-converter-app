@@ -4,10 +4,15 @@ import os
 import re
 from collections import defaultdict
 from typing import LiteralString
+import astropy.units as u
 
 from converter_app.models import Profile
+from converter_app.utils import normalize_unit
 
 logger = logging.getLogger(__name__)
+
+# imperial units (e.g. deg_F) are not in astropy's default registry; enable them globally
+u.imperial.enable()
 
 
 class CalculationError(Exception):
@@ -153,11 +158,11 @@ class Converter:
     def match(self):
         matches = self._match(self.identifiers)
         if isinstance(matches, list):
-            return len(self._match(self.identifiers))
+            return len(matches)
         return False
 
     def match_reaction_variation_identifier(self):
-        self.reaction_variation_matches = self._resolve_all_identifiers(self._reaction_variation_identifiers)
+        self.reaction_variation_matches = self._resolve_all_identifiers(self._reaction_variation_identifiers, True)
 
     def _match(self, identifiers):
         """
@@ -178,7 +183,7 @@ class Converter:
         # if everything matched, return how many identifiers matched
         return matches
 
-    def _resolve_all_identifiers(self, identifiers):
+    def _resolve_all_identifiers(self, identifiers, force = False):
         """
 
         :return:
@@ -187,7 +192,7 @@ class Converter:
         matches = []
         for identifier in identifiers:
 
-            if identifier.get('optional'):
+            if force or identifier.get('optional'):
                 # return immediately if one (non optional) identifier does not match
 
                 match = self._resolve_identifier(identifier)
@@ -211,17 +216,30 @@ class Converter:
     def match_identifier(self, identifier, in_idx=None):
         """
         Checks if single identifier matches
+        :param in_idx:
         :param identifier: Identifier profile object
         :return: Boolean if matches
         """
+        res_value = False
         if identifier.get('type') == 'fileMetadata':
-            return self._match_file_metadata(identifier, self.file_metadata)
+            res_value = self._match_file_metadata(identifier, self.file_metadata)
         if identifier.get('type') == 'tableMetadata':
-            return self._match_table_metadata(identifier, self.input_tables, in_idx)
+            res_value = self._match_table_metadata(identifier, self.input_tables, in_idx)
         if identifier.get('type') == 'tableHeader':
-            return self._match_table_header(identifier, self.input_tables, in_idx)
+            res_value = self._match_table_header(identifier, self.input_tables, in_idx)
+        if res_value and identifier.get('outputKey', '').startswith('___unit___'):
+            enum_units = identifier.get('outputEnum', [])
+            in_list = [u.Unit(normalize_unit(x['label'])) for x in enum_units]
+            unit = u.Unit(normalize_unit(res_value['value']))
+            try:
+                idx = in_list.index(unit)
+                res_value['value'] = enum_units[idx]['key']
+            except ValueError:
+                res_value['value'] = None
 
-        return False
+
+
+        return res_value
 
     def _match_file_metadata(self, identifier, metadata):
         input_key = identifier.get('key')
@@ -340,6 +358,7 @@ class Converter:
 
     def process(self):
         self.prepare()
+        self.match_reaction_variation_identifier()
         ntuples_header = dict()
         for in_idx in range(len(self.input_tables)):
             for output_table_index, output_table in enumerate(self.profile_output_tables):
