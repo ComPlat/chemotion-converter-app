@@ -34,6 +34,7 @@ class Converter:
         self._tables = defaultdict(list)
         self.file_metadata = file_data.get('metadata', {})
         self.input_tables = file_data.get('tables', [])
+        self.attachments = file_data.get('attachments', [])
         self.profile_output_tables = self.profile.data.get('tables', [])
         self.output_tables = []
 

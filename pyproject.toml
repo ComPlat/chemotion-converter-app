@@ -50,6 +50,7 @@ dependencies = [
     "requests==2.32.*",
     "click==8.3.*",
     "jsonpatch==1.33",
+    "gcode_translator @ git+https://github.com/herrdivad/GCode_Translator.git@v1.1.0",
     "astropy~=8.0.0"
 ]
 

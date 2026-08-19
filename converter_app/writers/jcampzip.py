@@ -35,9 +35,14 @@ class JcampZipWriter(Writer):
 
         with zipfile.ZipFile(self.zipbuffer, 'w') as zf:
 
+            for (attachment_file, filename, _file_type) in self._converter.attachments:
+                file_path = f'attachments/{filename}'
+                zf.writestr(file_path, attachment_file)
+                self._update_sha_binary(sha_strings, attachment_file, file_path)
+
             rdf_writer = RDFWriter(self._converter)
 
-            file_name = f'metadata/rdf.ttl'
+            file_name = 'metadata/rdf.ttl'
             rdf_writer.process()
             rdf_result = rdf_writer.write()
             self._update_sha_binary(sha_strings, rdf_result, file_name)
