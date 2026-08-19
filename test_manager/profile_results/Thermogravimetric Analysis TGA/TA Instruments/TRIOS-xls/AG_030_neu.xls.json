@@ -351638,7 +351638,8 @@
         "mime_type": "application/vnd.ms-excel",
         "extension": ".xls",
         "reader": "OldExcelReader",
-        "uploaded": "2026-07-19T08:41:44.479678+00:00",
+        "uploaded": "2026-08-19T11:01:33.136614+00:00",
         "ontology": null
-    }
+    },
+    "attachments": []
 }

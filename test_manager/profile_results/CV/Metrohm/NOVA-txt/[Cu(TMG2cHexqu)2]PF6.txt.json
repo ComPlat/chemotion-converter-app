@@ -6152,7 +6152,7 @@
         "mime_type": "text/csv",
         "extension": ".txt",
         "reader": "NovaReader",
-        "uploaded": "2026-07-19T08:42:51.453594+00:00",
+        "uploaded": "2026-08-19T11:01:59.659678+00:00",
         "ontology": null,
         "lineterminator": "\\r\\n",
         "quoting": "0",
@@ -6171,5 +6171,6 @@
         "scan_rate": "0.19960902",
         "scan_rate_unit": "V/s",
         "cycles": "3"
-    }
+    },
+    "attachments": []
 }

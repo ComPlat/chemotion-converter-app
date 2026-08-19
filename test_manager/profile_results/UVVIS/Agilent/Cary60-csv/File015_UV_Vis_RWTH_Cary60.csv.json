@@ -4085,7 +4085,7 @@
         "mime_type": "text/csv",
         "extension": ".csv",
         "reader": "CaryReader",
-        "uploaded": "2026-07-19T08:42:51.334948+00:00",
+        "uploaded": "2026-08-19T11:01:59.537495+00:00",
         "ontology": null,
         "lineterminator": "\\r\\n",
         "quoting": "0",
@@ -4093,5 +4093,6 @@
         "delimiter": "comma",
         "quotechar": "\"",
         "skipinitialspace": "False"
-    }
+    },
+    "attachments": []
 }
