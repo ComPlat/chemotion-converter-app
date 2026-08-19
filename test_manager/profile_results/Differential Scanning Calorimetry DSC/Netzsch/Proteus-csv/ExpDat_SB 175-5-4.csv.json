@@ -936,7 +936,7 @@
         "mime_type": "text/plain",
         "extension": ".csv",
         "reader": "CSVReader",
-        "uploaded": "2026-08-19T11:01:50.656152+00:00",
+        "uploaded": "2026-07-31T04:51:43.871641+00:00",
         "ontology": null,
         "lineterminator": "\\r\\n",
         "quoting": "0",
@@ -944,6 +944,5 @@
         "delimiter": "semicolon",
         "quotechar": "\"",
         "skipinitialspace": "False"
-    },
-    "attachments": []
+    }
 }

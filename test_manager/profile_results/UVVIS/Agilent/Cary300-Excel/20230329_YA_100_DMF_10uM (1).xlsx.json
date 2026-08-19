@@ -3828,8 +3828,7 @@
         "mime_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
         "extension": ".xlsx",
         "reader": "ExcelReader",
-        "uploaded": "2026-08-19T11:01:59.386694+00:00",
+        "uploaded": "2026-07-31T04:52:40.529386+00:00",
         "ontology": null
-    },
-    "attachments": []
+    }
 }

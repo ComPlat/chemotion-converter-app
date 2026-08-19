@@ -34626,9 +34626,8 @@
         "mime_type": "text/plain",
         "extension": ".pssession",
         "reader": "PsSessionReader",
-        "uploaded": "2026-08-19T11:02:01.278641+00:00",
+        "uploaded": "2026-07-31T04:52:58.512300+00:00",
         "ontology": null,
         "type": "PalmSens.DataFiles.SessionFile"
-    },
-    "attachments": []
+    }
 }

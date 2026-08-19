@@ -79038,7 +79038,7 @@
         "mime_type": "text/plain",
         "extension": ".txt",
         "reader": "NovaReader",
-        "uploaded": "2026-08-19T11:02:00.067818+00:00",
+        "uploaded": "2026-07-31T04:52:42.034137+00:00",
         "ontology": null,
         "lineterminator": "\\r\\n",
         "quoting": "0",
@@ -79057,6 +79057,5 @@
         "scan_rate": "0.09994812",
         "scan_rate_unit": "V/s",
         "cycles": "3"
-    },
-    "attachments": []
+    }
 }

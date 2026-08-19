@@ -63032,7 +63032,7 @@
         "mime_type": "text/plain",
         "extension": ".txt",
         "reader": "NovaReader",
-        "uploaded": "2026-08-19T11:02:00.419206+00:00",
+        "uploaded": "2026-07-31T04:52:42.994838+00:00",
         "ontology": null,
         "lineterminator": "\\r\\n",
         "quoting": "0",
@@ -63051,6 +63051,5 @@
         "scan_rate": "0.09998236",
         "scan_rate_unit": "V/s",
         "cycles": "3"
-    },
-    "attachments": []
+    }
 }

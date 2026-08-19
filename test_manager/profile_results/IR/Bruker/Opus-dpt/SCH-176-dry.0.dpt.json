@@ -7059,7 +7059,7 @@
         "mime_type": "text/csv",
         "extension": ".dpt",
         "reader": "CSVReader",
-        "uploaded": "2026-08-19T11:01:51.375239+00:00",
+        "uploaded": "2026-07-31T04:51:44.635895+00:00",
         "ontology": null,
         "lineterminator": "\\r\\n",
         "quoting": "0",
@@ -7067,6 +7067,5 @@
         "delimiter": "comma",
         "quotechar": "\"",
         "skipinitialspace": "False"
-    },
-    "attachments": []
+    }
 }
