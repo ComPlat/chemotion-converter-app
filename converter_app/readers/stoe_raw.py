@@ -88,11 +88,15 @@ class StoeRawReader(Reader):
         :return: True if it fits
         """
 
-        return (
-                self.file.suffix.lower() == ".raw"
-                and self.file.encoding.lower() == "binary"
-                and self.file_type == "RAW_1.06Powdat"
-        )
+        try:
+            return (
+                    self.file.suffix.lower() == ".raw"
+                    and self.file.encoding.lower() == "binary"
+                    and self.file_type == "RAW_1.06Powdat"
+            )
+        except ValueError:
+            return False
+
 
     @property
     def file_type(self):

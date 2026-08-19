@@ -142,6 +142,21 @@ The guincorn server listens on the port given in the env file (default: 9000) on
 
 Please see [LICENSE](./LICENSE) and [THIRD PARTY LICENSES](licenses/THIRD_PARTY_NOTICES.md)
 
+
+MS Converter
+------------
+
+The ChemConverter uses the NFDI4Chem project [MS Converter](https://github.com/NFDI4Chem/cs-ms-converter)
+to convert raw mass spectroscopy files. Consequently, for both development and production configurations it is necessary to
+to run an instance of the [MS Converter](https://github.com/NFDI4Chem/cs-ms-converter).
+ChemConverter can also be started without the MS Converter. However,
+mass spectroscopy raw files cannot then be converted. To run an instance
+of the MS Converter, you can simply run the docker-compose file from this repo.
+
+```bash
+docker run --detach --name msconvert_docker -it --rm -v /home/martin/Documents/ConverterData/MS:/data proteowizard/pwiz-skyline-i-agree-to-the-vendor-licenses bash
+```
+
 ## Acknowledgments
 
 This project has been funded by the **[DFG]**.

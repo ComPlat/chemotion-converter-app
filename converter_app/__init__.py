@@ -14,6 +14,10 @@ VERSION = importlib.metadata.version('chemotion-converter-app')
 
 if __name__ == '__main__':
     print(f"{TITLE} version {VERSION}")
+    def read(path: Path | str) -> dict:
+        pass
+    def convert(raw_file: Path | str, profile_path: Path | str, output = Literal['jcampzip', 'rdf']) -> bytes:
+        pass
 else:
 
     def read(path: Path | str) -> dict:
