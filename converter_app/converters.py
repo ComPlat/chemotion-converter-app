@@ -14,6 +14,10 @@ logger = logging.getLogger(__name__)
 # imperial units (e.g. deg_F) are not in astropy's default registry; enable them globally
 u.imperial.enable()
 
+# Placeholder of a composed identifier template, e.g. "{{#a1b2}} clamped on {{#c3d4}}".
+# The captured group is the id of the referenced identifier (ids start with '#').
+COMPOSED_TOKEN_PATTERN = re.compile(r'\{\{(#[^{}]*)}}')
+
 
 class CalculationError(Exception):
     pass
@@ -39,6 +43,10 @@ class Converter:
 
         self.identifiers = self._prepare_identifier()
         self._reaction_variation_identifiers = self._prepare_reaction_variation_identifier()
+        # Lookup for composed identifiers, which reference other identifiers by id.
+        self._identifiers_by_id = {i['id']: i for i in self.identifiers if i.get('id')}
+        # Ids of the composed identifiers currently being resolved, used to break cycles.
+        self._composed_stack = set()
 
     def get_matches(self, rdf=False, dataset=False):
         return_matches = []
@@ -171,6 +179,10 @@ class Converter:
 
         matches = []
         for identifier in identifiers:
+            # composed identifiers describe an output value assembled from other
+            # identifiers, they never take part in finding the right profile
+            if identifier.get('type') == 'composed':
+                continue
             if not identifier.get('optional'):
                 match = self.match_identifier(identifier)
                 if match is False:
@@ -206,11 +218,84 @@ class Converter:
 
     def _resolve_identifier(self, identifier, in_idx=None):
         match = self.match_identifier(identifier, in_idx)
-        if match and 'value' in match:
+        # scalar operations are numeric; running them on the text of a composed
+        # identifier would only replace it by None
+        if match and 'value' in match and identifier.get('type') != 'composed':
             match_operations = identifier.get('operations', [])
             for match_operation in match_operations:
                 match['value'] = self._run_identifier_operation(match['value'], match_operation)
         return match
+
+    def _resolve_composed(self, identifier, in_idx=None):
+        """
+        Builds the value of a composed identifier: every ``{{#<id>}}`` token of its
+        template is replaced by the value of the referenced identifier, the free
+        text in between is kept as it is.
+
+        :param identifier: composed identifier profile object
+        :param in_idx: input table the value is built for [optional]
+        :return: {'value': ...} or False if no value could be built
+        """
+        identifier_id = identifier.get('id')
+        if identifier_id in self._composed_stack:
+            # a template referencing itself, directly or through another composed
+            # identifier, would recurse forever
+            logger.warning('composed identifier %s is part of a reference cycle', identifier_id)
+            return False
+
+        template = identifier.get('template') or ''
+        on_missing = identifier.get('onMissing', 'skip')
+        parts = []
+
+        self._composed_stack.add(identifier_id)
+        try:
+            position = 0
+            for token in COMPOSED_TOKEN_PATTERN.finditer(template):
+                parts.append(template[position:token.start()])
+                position = token.end()
+
+                value = self._resolve_composed_reference(token.group(1), in_idx)
+                if value is None:
+                    if on_missing == 'skip':
+                        return False
+                    if on_missing == 'placeholder':
+                        value = str(identifier.get('missingPlaceholder', ''))
+                    else:  # on_missing == 'empty'
+                        value = ''
+                parts.append(value)
+            parts.append(template[position:])
+        finally:
+            self._composed_stack.discard(identifier_id)
+
+        value = ''.join(parts)
+        if not value.strip():
+            return False
+
+        result = {'value': value}
+        if in_idx is not None:
+            result['tableIndex'] = in_idx
+        return result
+
+    def _resolve_composed_reference(self, reference_id, in_idx):
+        """
+        Resolves a single ``{{#id}}`` token of a composed template.
+
+        :return: the value as string or None if the referenced identifier is gone
+                 (e.g. removed from the profile) or has no value
+        """
+        reference = self._identifiers_by_id.get(reference_id)
+        if reference is None:
+            logger.warning('composed identifier references unknown identifier %s', reference_id)
+            return None
+
+        match = self._resolve_identifier(reference, in_idx)
+        if not match and in_idx is not None:
+            # same fallback as _process_prepare_metadata: if the current input table
+            # holds no value, use the table configured on the referenced identifier
+            match = self._resolve_identifier(reference)
+        if not match or match.get('value') is None:
+            return None
+        return str(match['value'])
 
     def match_identifier(self, identifier, in_idx=None):
         """
@@ -220,6 +305,8 @@ class Converter:
         :return: Boolean if matches
         """
         res_value = False
+        if identifier.get('type') == 'composed':
+            return self._resolve_composed(identifier, in_idx)
         if identifier.get('type') == 'fileMetadata':
             res_value = self._match_file_metadata(identifier, self.file_metadata)
         if identifier.get('type') == 'tableMetadata':
