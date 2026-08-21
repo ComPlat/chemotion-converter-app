@@ -9,6 +9,7 @@ from werkzeug.datastructures import FileStorage
 
 from converter_app.models import File
 from converter_app.readers.helper.base import Reader
+from converter_app.readers.helper.mofid_client import add_mofid_metadata
 from converter_app.readers.helper.reader import Readers
 
 logger = logging.getLogger(__name__)
@@ -123,11 +124,19 @@ class CifReader(Reader):
 
         all_tables.sort(key=lambda x: len(x), reverse=True)
 
-        return [
+        flat_tables = [
             table
             for tables in all_tables
             for table in tables
         ]
+
+        # Optional MOFid/MOFkey enrichment, added to the first meta table as
+        # 'mofid.<key>'. A no-op unless MOFID_SERVICE_URL or MOFID_HOME is
+        # configured, and never fatal -- see helper/mofid/README.md.
+        if flat_tables:
+            add_mofid_metadata(flat_tables[0], self.file.string, self.file.name)
+
+        return flat_tables
 
 
 Readers.instance().register(CifReader)
