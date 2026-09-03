@@ -2,6 +2,8 @@ import logging
 import os
 import re
 import tempfile
+from functools import reduce
+from math import gcd
 from zipfile import ZipFile
 
 from gemmi import cif
@@ -13,6 +15,9 @@ from converter_app.readers.helper.reader import Readers
 
 try:
     from mofid_wrapper import cif2mofid
+    # Importing mofid_wrapper is what puts BABEL_DATADIR/BABEL_LIBDIR into the
+    # environment, so the bundled obabel below only works via this import.
+    from mofid_wrapper.cpp_cheminformatics import OBABEL_BIN, runcmd
 except (ImportError, RuntimeError):
     # mofid_wrapper ships prebuilt binaries for Linux x86_64 only, and raises at
     # import time when those are missing. MOF identification is optional, so the
@@ -33,6 +38,119 @@ MOFID_RESULT_KEYS = (
 )
 
 MOFID_METADATA_PREFIX = 'mofid.'
+
+# Integer lists (the component ratios) are joined with this, staying index-aligned
+# with the '.'-joined smiles_nodes / smiles_linkers they describe.
+MOFID_LIST_SEPARATOR = ','
+
+# The CCDC deposition number is a standard CIF tag the mofid pipeline does not
+# surface, so read it off the CIF text: _database_code_depnum_ccdc_archive
+# 'CCDC 755080' yields '755080'.
+CCDC_PATTERN = re.compile(
+    r"_database_code_depnum_ccdc_archive\s+['\"]?\s*(?:CCDC\s+)?([A-Za-z0-9-]+)",
+    re.IGNORECASE)
+
+# Bounds the obabel calls that count building blocks; they are fast (well under a
+# second per file), so this only catches a hang.
+OBABEL_TIMEOUT = 60
+
+
+def _canonical_smiles(smiles):
+    """Canonical SMILES for a fragment, or None when Open Babel cannot parse it."""
+    run = runcmd([OBABEL_BIN, f'-:{smiles}', '-ocan'], timeout=OBABEL_TIMEOUT)
+    output = (run.stdout or '').strip().split()
+    return output[0] if output else None
+
+
+def _count_fragments(cif_path):
+    """Count the building-block instances in one of mofid's decomposition CIFs.
+
+    mofid writes the nodes and linkers of the whole unit cell with the other
+    component stripped, so each block is a discrete fragment.
+    Returns ({canonical_smiles: count}, total_count).
+    """
+    if not os.path.exists(cif_path):
+        return {}, 0
+
+    run = runcmd([OBABEL_BIN, cif_path, '-ocan', '--separate'], timeout=OBABEL_TIMEOUT)
+    counts = {}
+    total = 0
+    for line in (run.stdout or '').splitlines():
+        # Canonical SMILES output is '<smiles>\t<title>'.
+        smiles = line.split('\t')[0].strip()
+        if not smiles:
+            continue
+        counts[smiles] = counts.get(smiles, 0) + 1
+        total += 1
+    return counts, total
+
+
+def _split_smiles(value):
+    """Flatten a SMILES value (string or list, '.'-separated) into an ordered list."""
+    items = value if isinstance(value, (list, tuple)) else [value]
+    result = []
+    for item in items:
+        for part in str(item or '').split('.'):
+            part = part.strip()
+            if part:
+                result.append(part)
+    return result
+
+
+def _assign_counts(smiles_list, counts, total):
+    """Map each building block to its instance count.
+
+    A single block takes the whole file's count, because its reported SMILES may
+    differ from the decomposed cluster (a bare metal versus the full metal-oxo
+    node, or a charged linker versus its radical form in the CIF) -- but only
+    when every fragment in the file is the same species. Otherwise the file also
+    holds pieces of clusters cut by the unit cell boundary, and counting those
+    yields a wrong ratio: MOF-5's nodes.cif is 8 whole [Zn]O[Zn] plus 16 stray
+    [Zn], which would report 2:3 for a framework that is 1:3.
+
+    With siblings every block has to match. Either way None is returned rather
+    than a ratio that cannot be trusted.
+    """
+    if not smiles_list:
+        return None
+    if len(smiles_list) == 1:
+        return [total] if total and len(counts) == 1 else None
+
+    resolved = []
+    for smiles in smiles_list:
+        count = counts.get(_canonical_smiles(smiles))
+        if not count:
+            return None
+        resolved.append(count)
+    return resolved
+
+
+def _component_ratios(output_path, result):
+    """Node/linker stoichiometry as smallest-integer ratios.
+
+    The final MOFid keeps only unique building blocks and drops their
+    multiplicity, so this counts mofid's own decomposition output instead: 24
+    nodes and 32 linkers become [3] and [4]. Aligned with smiles_nodes /
+    smiles_linkers; (None, None) when it cannot be resolved for every block.
+    """
+    metal_oxo = os.path.join(output_path, 'MetalOxo')
+    node_counts, node_total = _count_fragments(os.path.join(metal_oxo, 'nodes.cif'))
+    linker_counts, linker_total = _count_fragments(os.path.join(metal_oxo, 'linkers.cif'))
+
+    node_ratios = _assign_counts(_split_smiles(result.get('smiles_nodes')),
+                                 node_counts, node_total)
+    linker_ratios = _assign_counts(_split_smiles(result.get('smiles_linkers')),
+                                   linker_counts, linker_total)
+    if not node_ratios or not linker_ratios:
+        logger.debug('mofid: no component ratios (nodes=%s, linkers=%s)',
+                     node_ratios, linker_ratios)
+        return None, None
+
+    divisor = reduce(gcd, node_ratios + linker_ratios, 0)
+    if divisor <= 0:
+        return None, None
+    return ([count // divisor for count in node_ratios],
+            [count // divisor for count in linker_ratios])
 
 
 class CifReader(Reader):
@@ -102,7 +220,8 @@ class CifReader(Reader):
         Adds the MOF identifiers of this structure to a table as 'mofid.<key>'.
 
         Runs the mofid pipeline (mofid_wrapper), which decomposes the framework
-        into nodes and linkers and matches its topology against the RCSR archive.
+        into nodes and linkers and matches its topology against the RCSR archive,
+        then adds the CCDC deposition number and the node/linker stoichiometry.
         Optional enrichment: a missing package, a missing Java runtime or a
         pipeline error leaves the CIF conversion untouched.
         """
@@ -115,17 +234,33 @@ class CifReader(Reader):
                 cif_path = os.path.join(workdir, self._mofid_cif_name())
                 with open(cif_path, 'w', encoding='utf-8') as file_handle:
                     file_handle.write(self.file.string)
-                result = cif2mofid(cif_path, output_path=os.path.join(workdir, 'Output'))
+                output_path = os.path.join(workdir, 'Output')
+                result = cif2mofid(cif_path, output_path=output_path)
+                # Counted while the decomposition output still exists.
+                node_ratios, linker_ratios = _component_ratios(output_path, result)
         except Exception as error:  # pylint: disable=broad-exception-caught
             # Never fail a valid CIF over the optional MOF step.
             logger.warning('mofid failed for %s: %s', self.file.name, error)
             return
 
         for key in MOFID_RESULT_KEYS:
-            value = result.get(key)
-            if isinstance(value, (list, tuple)):
-                value = '.'.join(str(item) for item in value if item not in (None, ''))
-            table.add_metadata(f'{MOFID_METADATA_PREFIX}{key}', '' if value is None else str(value))
+            self._add_mofid_value(table, key, result.get(key))
+
+        # Not part of the mofid pipeline's own output.
+        ccdc_match = CCDC_PATTERN.search(self.file.string)
+        self._add_mofid_value(table, 'ccdc_number', ccdc_match.group(1) if ccdc_match else '')
+        self._add_mofid_value(table, 'node_ratios', node_ratios)
+        self._add_mofid_value(table, 'linker_ratios', linker_ratios)
+
+    @staticmethod
+    def _add_mofid_value(table, key, value):
+        """Adds one identifier as a string; lists are joined, None becomes empty."""
+        if isinstance(value, (list, tuple)):
+            separator = MOFID_LIST_SEPARATOR if all(
+                isinstance(item, int) for item in value) else '.'
+            value = separator.join(str(item) for item in value if item not in (None, ''))
+        table.add_metadata(f'{MOFID_METADATA_PREFIX}{key}',
+                           '' if value is None else str(value))
 
     def _mofid_cif_name(self):
         """A sanitised file name, since it ends up inside the MOFid string."""
