@@ -9,10 +9,30 @@ from werkzeug.datastructures import FileStorage
 
 from converter_app.models import File
 from converter_app.readers.helper.base import Reader
-from converter_app.readers.helper.mofid_client import add_mofid_metadata
 from converter_app.readers.helper.reader import Readers
 
+try:
+    from mofid_wrapper import cif2mofid
+except (ImportError, RuntimeError):
+    # mofid_wrapper ships prebuilt binaries for Linux x86_64 only, and raises at
+    # import time when those are missing. MOF identification is optional, so the
+    # reader keeps working without it -- see _add_mofid_metadata.
+    cif2mofid = None
+
 logger = logging.getLogger(__name__)
+
+# The MOF identifiers surfaced as 'mofid.<key>' metadata.
+MOFID_RESULT_KEYS = (
+    'mofid',
+    'mofkey',
+    'smiles',
+    'smiles_nodes',
+    'smiles_linkers',
+    'topology',
+    'cat',
+)
+
+MOFID_METADATA_PREFIX = 'mofid.'
 
 
 class CifReader(Reader):
@@ -77,6 +97,41 @@ class CifReader(Reader):
 
         return result
 
+    def _add_mofid_metadata(self, table):
+        """
+        Adds the MOF identifiers of this structure to a table as 'mofid.<key>'.
+
+        Runs the mofid pipeline (mofid_wrapper), which decomposes the framework
+        into nodes and linkers and matches its topology against the RCSR archive.
+        Optional enrichment: a missing package, a missing Java runtime or a
+        pipeline error leaves the CIF conversion untouched.
+        """
+        if cif2mofid is None or not (self.file.string or '').strip():
+            return
+
+        try:
+            with tempfile.TemporaryDirectory(prefix='mofid_') as workdir:
+                # The file name becomes the ';<name>' suffix of the MOFid.
+                cif_path = os.path.join(workdir, self._mofid_cif_name())
+                with open(cif_path, 'w', encoding='utf-8') as file_handle:
+                    file_handle.write(self.file.string)
+                result = cif2mofid(cif_path, output_path=os.path.join(workdir, 'Output'))
+        except Exception as error:  # pylint: disable=broad-exception-caught
+            # Never fail a valid CIF over the optional MOF step.
+            logger.warning('mofid failed for %s: %s', self.file.name, error)
+            return
+
+        for key in MOFID_RESULT_KEYS:
+            value = result.get(key)
+            if isinstance(value, (list, tuple)):
+                value = '.'.join(str(item) for item in value if item not in (None, ''))
+            table.add_metadata(f'{MOFID_METADATA_PREFIX}{key}', '' if value is None else str(value))
+
+    def _mofid_cif_name(self):
+        """A sanitised file name, since it ends up inside the MOFid string."""
+        stem = re.sub(r'[^A-Za-z0-9._-]', '_', os.path.splitext(self.file.name)[0]).strip('_')
+        return f'{stem or "structure"}.cif'
+
     def prepare_tables(self):
         if self.cif is None:
             return []
@@ -130,11 +185,8 @@ class CifReader(Reader):
             for table in tables
         ]
 
-        # Optional MOFid/MOFkey enrichment, added to the first meta table as
-        # 'mofid.<key>'. A no-op unless MOFID_SERVICE_URL or MOFID_HOME is
-        # configured, and never fatal -- see helper/mofid/README.md.
         if flat_tables:
-            add_mofid_metadata(flat_tables[0], self.file.string, self.file.name)
+            self._add_mofid_metadata(flat_tables[0])
 
         return flat_tables
 
