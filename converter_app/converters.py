@@ -342,16 +342,42 @@ class Converter:
         else:
             return False
 
+    def _get_reaction_variation_value(self, identifier_id):
+        """
+        Look up the resolved value of a single reaction variation identifier.
+
+        Returns None if the identifier is not configured, was never resolved, or
+        did not match the file. match_identifier returns False on a failed match
+        (e.g. a regex on the file name that does not fit), so an unmatched
+        identifier is not a dict and must not be treated as one.
+
+        :param identifier_id: id of the identifier as referenced by an element
+        :return: the matched value or None
+        """
+        if not identifier_id:
+            return None
+
+        match = next(
+            (x for x in self.reaction_variation_matches if x['identifier'].get('id') == identifier_id),
+            None
+        )
+        if match is None:
+            return None
+
+        result = match.get('result')
+        if not isinstance(result, dict):
+            return None
+
+        return result.get('value')
+
     def get_reaction_variation_matches(self):
         values = []
         for [sample_id, value_id, unit_id] in self.profile.data.get('reactionVariations', {}).get('elements', []):
-            value = next((x for x in self.reaction_variation_matches if x['identifier']['id'] == value_id), {}).get(
-                'result', {}).get('value')
-            sample = next((x for x in self.reaction_variation_matches if x['identifier']['id'] == sample_id), {}).get(
-                'result', {}).get('value')
-            unit = next((x for x in self.reaction_variation_matches if x['identifier']['id'] == unit_id), {}).get(
-                'result', {}).get('value')
-            values.append([sample, value, unit])
+            values.append([
+                self._get_reaction_variation_value(sample_id),
+                self._get_reaction_variation_value(value_id),
+                self._get_reaction_variation_value(unit_id),
+            ])
         return {
             'samples': values
         }
