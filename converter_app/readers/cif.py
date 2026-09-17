@@ -216,15 +216,15 @@ class CifReader(Reader):
         return result
 
     def get_mofid_metadata(self):
+        """
+        Runs the mofid pipeline on this file without converting it.
+
+        :return: dict of the 'mofid.<key>' metadata, empty if MOFid is unavailable
+        """
         meta_table = self.append_table([])
         self._add_mofid_metadata(meta_table)
-        result = {}
-        for key, value in meta_table['metadata'].items():
-            if key.startswith('mofid.'):
-                result[key] = value
-
-        return result
-
+        return {key: value for key, value in meta_table['metadata'].items()
+                if key.startswith(MOFID_METADATA_PREFIX)}
 
     def _add_mofid_metadata(self, table):
         """

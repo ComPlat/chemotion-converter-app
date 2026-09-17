@@ -206,18 +206,21 @@ def converting_router(app: Flask, auth: HTTPBasicAuth):
 
     @app.route('/mofid', methods=['POST'])
     def mofid():
+        '''
+        Returns the MOFid/MOFkey metadata ('mofid.<key>') of an uploaded CIF file
+        '''
+        error = jsonify({'error': 'File could not be used to generate MOFid'}), 400
         raw_file = request.files.get('file')
-        if raw_file:
-            file = File(raw_file)
-            reader = CifReader(file)
-            if not reader.check():
-                return  jsonify({'error': 'File could not be used to generate MOFid'}), 400
-            try:
-                mofResult = reader.get_mofid_metadata()
-                return jsonify(mofResult), 200
-            except:
-                pass
-        return jsonify({'error': 'File could not be used to generate MOFid'}), 400
+        if not raw_file:
+            return error
+        reader = CifReader(File(raw_file))
+        if not reader.check():
+            return error
+        try:
+            return jsonify(reader.get_mofid_metadata()), 200
+        except Exception:  # pylint: disable=broad-exception-caught
+            app.logger.exception('MOFid generation failed for %s', raw_file.filename)
+            return error
 
 
     @app.route('/client', methods=['GET'])

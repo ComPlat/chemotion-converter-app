@@ -24,10 +24,10 @@ pip install -e .                     # installs the package in editable mode
 pip install .[dev]  # only needed for the development setup
 ```
 
-You must install JAVA for the MOFid generation.
+MOFid/MOFkey generation (the `/mofid` endpoint) additionally requires a Java runtime on the `PATH`, in development and in production. Without it, `/mofid` returns an empty result.
 
 ```bash
-apt install default-jre-headless # only needed for the development setup
+apt install default-jre-headless
 ```
 
 The application is configured using environment variables, which can be read from a `.env` file. The file `.env.dev` can be used as template. At least `FLASK_APP=converter_app.app` needs to be set.
