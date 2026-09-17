@@ -51,7 +51,8 @@ dependencies = [
     "click==8.3.*",
     "jsonpatch==1.33",
     "gcode_translator @ git+https://github.com/herrdivad/GCode_Translator.git@v1.1.0",
-    "astropy~=8.0.0"
+    "astropy~=8.0.0",
+    "mofid_wrapper @ https://github.com/ComPlat/mofid_wrapper/releases/download/v0.1/mofid_wrapper-0.1.0-py3-none-manylinux_2_28_x86_64.whl ; sys_platform == 'linux' and platform_machine == 'x86_64'",
 ]
 
 [project.optional-dependencies]
