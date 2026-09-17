@@ -215,6 +215,17 @@ class CifReader(Reader):
 
         return result
 
+    def get_mofid_metadata(self):
+        meta_table = self.append_table([])
+        self._add_mofid_metadata(meta_table)
+        result = {}
+        for key, value in meta_table['metadata'].items():
+            if key.startswith('mofid.'):
+                result[key] = value
+
+        return result
+
+
     def _add_mofid_metadata(self, table):
         """
         Adds the MOF identifiers of this structure to a table as 'mofid.<key>'.

@@ -16,7 +16,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Install dependencies
         run: |
-          sudo apt-get install -y libmagic1 file
+          sudo apt-get install -y libmagic1 file default-jre-headless
           pip install --upgrade pip
           pip install ".[dev]"
       - name: Build tests

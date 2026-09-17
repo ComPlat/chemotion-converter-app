@@ -25,6 +25,7 @@ from converter_app.models import File, Profile
 from converter_app.options import compose_options
 from converter_app.profile_migration.utils.registration import Migrations
 from converter_app.readers import READERS as registry
+from converter_app.readers.cif import CifReader
 from converter_app.utils import checkpw, run_conversion, get_app_root, str_to_bool, FunctionTimer
 from converter_app.validation import validate_profile
 
@@ -202,6 +203,21 @@ def converting_router(app: Flask, auth: HTTPBasicAuth):
             if not full_path.exists():
                 raise NotFound()
             return send_file(full_path)
+
+    @app.route('/mofid', methods=['POST'])
+    def mofid():
+        raw_file = request.files.get('file')
+        if raw_file:
+            file = File(raw_file)
+            reader = CifReader(file)
+            if not reader.check():
+                return  jsonify({'error': 'File could not be used to generate MOFid'}), 400
+            try:
+                mofResult = reader.get_mofid_metadata()
+                return jsonify(mofResult), 200
+            except:
+                pass
+        return jsonify({'error': 'File could not be used to generate MOFid'}), 400
 
 
     @app.route('/client', methods=['GET'])
