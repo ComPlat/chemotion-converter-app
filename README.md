@@ -81,6 +81,34 @@ python -m converter_app new_migration
 
 For more details see: [Profile Versioning](docu/MIGRATION.md)
 
+### MOFid / MOFkey
+
+`POST /mofid` computes the MOFid and MOFkey of a metal-organic framework from a CIF file. The file is sent as the multipart form field `file` (`.cif`, or a `.zip` containing one). The endpoint does not require authentication.
+
+```bash
+curl -X POST -F "file=@test_static/test_files/cif_files/P1-Cu-BTC.cif" http://localhost:5000/mofid
+```
+
+```json
+{
+  "mofid.mofid": "[Cu][Cu].[O-]C(=O)c1cc(cc(c1)C(=O)[O-])C(=O)[O-] MOFid-v1.tbo.cat0.mofidwrapper0.1.0-mofid36873683;P1-Cu-BTC",
+  "mofid.mofkey": "Cu.QMKYBPDZANOJGF.MOFkey-v1.tbo.mofidwrapper0.1.0-mofid36873683",
+  "mofid.smiles": "[Cu][Cu].[O-]C(=O)c1cc(cc(c1)C(=O)[O-])C(=O)[O-]",
+  "mofid.smiles_nodes": "[Cu][Cu]",
+  "mofid.smiles_linkers": "[O-]C(=O)c1cc(cc(c1)C(=O)[O-])C(=O)[O-]",
+  "mofid.topology": "tbo",
+  "mofid.cat": "0",
+  "mofid.ccdc_number": "",
+  "mofid.node_ratios": "3",
+  "mofid.linker_ratios": "4"
+}
+```
+
+- `node_ratios` / `linker_ratios` are the smallest-integer stoichiometry of the building blocks, aligned with the `.`-separated `smiles_nodes` / `smiles_linkers`. They are empty when the ratio cannot be determined reliably.
+- `ccdc_number` is read from `_database_code_depnum_ccdc_archive` and is empty if the CIF has none.
+- A missing file or a file that is not a readable CIF returns `400` with `{"error": "File could not be used to generate MOFid"}`.
+- MOFid generation relies on `mofid_wrapper` (Linux x86_64 only) and a Java runtime. If either is missing, the endpoint returns `200` with an empty object `{}`.
+
 Production setup
 ----------------
 
