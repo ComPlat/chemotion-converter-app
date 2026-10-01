@@ -62,10 +62,11 @@ class SuprabankReader(Reader):
         if not units or units[0] != 'nm':
             return False
 
-        # verify the trailing 'Extended Information' metadata block is present
+        # verify the trailing 'Extended Information' metadata block is present below the four
+        # header rows (header, units, labels, formulas) that prepare_tables relies on
         has_marker = any(
             row[0] is not None and str(row[0]).strip() == self._metadata_marker
-            for row in self.ws.iter_rows(min_col=1, max_col=1, values_only=True)
+            for row in self.ws.iter_rows(min_row=5, min_col=1, max_col=1, values_only=True)
         )
         result = has_marker
         logger.debug('result=%s', result)
