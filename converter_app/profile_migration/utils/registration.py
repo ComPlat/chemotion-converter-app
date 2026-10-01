@@ -1,5 +1,6 @@
 import copy
 import json
+import logging
 import traceback
 from pathlib import Path
 from typing import Optional
@@ -8,6 +9,9 @@ import jsonpatch
 
 from converter_app.models import Profile
 from converter_app.utils import get_app_root, cli_home_path
+from converter_app.validation import profile_validation_errors
+
+logger = logging.getLogger(__name__)
 
 
 class Migrations:
@@ -152,7 +156,57 @@ class Migrations:
             last_migration = profile.data.get('last_migration', '')
         is_migration_applied = self.restore_unknown_migrations(profile, add_history)
         is_migration_applied |= self._up_migration(last_migration, profile, add_history)
+        if not force:
+            is_migration_applied |= self._repair_untrusted_checkpoint(profile, add_history)
         return is_migration_applied
+
+    def _repair_untrusted_checkpoint(self, profile: Profile, add_history: bool = True) -> bool:
+        """
+        Heals a profile whose ``last_migration`` overstates what was actually applied.
+
+        The checkpoint is only a claim; the schema is the ground truth. Real profiles
+        exist that are stamped past a field-adding migration yet lack its field (e.g.
+        ``rootOntology``, added by 20250908063445, missing on profiles checkpointed at
+        20260113143334). Resuming from such a checkpoint skips the field-adder forever,
+        so the profile stays structurally invalid no matter how often it is migrated --
+        it only ever looked fixed because the checkpoint kept advancing. Downstream that
+        surfaces as a hard failure far from the cause (the RDF writer reading the absent
+        key), and the only escape used to be an operator running ``migrate --force``.
+
+        So when a profile does not validate after a normal resume, distrust the
+        checkpoint and replay the chain from the root. The replay is adopted when it
+        leaves no violation the profile did not already have -- a subset check rather
+        than a clean bill of health, because a profile can carry an unrelated defect no
+        migration claims to fix (a table header of nulls, say). Insisting on full
+        validity there would throw away a replay that did restore the missing fields.
+        If the replay introduces anything new, the profile is restored untouched, so a
+        repair attempt can never leave it worse than it was found.
+
+        :return: True when the replay repaired the profile and it must be saved
+        """
+        before = profile_validation_errors(profile.data)
+        if not before:
+            return False
+
+        checkpoint = profile.data.get('last_migration')
+        snapshot = copy.deepcopy(profile.data)
+        self._up_migration('', profile, add_history)
+        after = profile_validation_errors(profile.data)
+
+        if after <= before:
+            logger.warning(
+                'Profile %s: checkpoint %s overstated the applied migrations; replayed '
+                'the chain from the root and cleared %d of %d violation(s).%s',
+                profile.data.get('id'), checkpoint, len(before - after), len(before),
+                '' if not after else f' Still unresolved: {sorted(after)}.')
+            return True
+
+        profile.data = snapshot
+        logger.error(
+            'Profile %s: replaying the migration chain from the root (checkpoint %s) '
+            'introduced new violations %s; left unchanged.',
+            profile.data.get('id'), checkpoint, sorted(after - before))
+        return False
 
     def _up_migration(self, last_migration, profile, add_history: bool = True):
         if last_migration not in self._registry_tree:

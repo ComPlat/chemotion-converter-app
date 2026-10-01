@@ -8,6 +8,28 @@ from converter_app.writers.base import Writer
 
 logger = logging.getLogger(__name__)
 
+# Fallback for a profile that reached the writer without a rootOntology. Migration
+# 20250908063445 seeds exactly this term, but a profile can still arrive without it
+# (an unmigratable one, or a client POSTing a hand-built profile), and the writer must
+# degrade to the generic assay rather than fail the whole conversion. The migration
+# keeps its own copy on purpose: migrations are historical artefacts and must not shift
+# when this default is retuned.
+DEFAULT_ROOT_ONTOLOGY = {
+    'description': [
+        'A planned process that has the objective to produce information about a '
+        'material entity (the evaluant) by examining it.'
+    ],
+    'id': 'obi:class:http://purl.obolibrary.org/obo/OBI_0000070',
+    'iri': 'http://purl.obolibrary.org/obo/OBI_0000070',
+    'label': 'assay',
+    'namespace': 'http://purl.obolibrary.org/obo/',
+    'obo_id': 'OBI:0000070',
+    'ontology_name': 'obi',
+    'ontology_prefix': 'OBI',
+    'short_form': 'OBI_0000070',
+    'type': 'class'
+}
+
 
 class RDFWriter(Writer):
     suffix = '.ttl'
@@ -162,12 +184,23 @@ class RDFWriter(Writer):
         profile = self._converter.profile.as_dict
         temp_namespaces = defaultdict(set)
         temp_namespaces[Namespace(self._namespace)].add(self._namespace_name)
-        self.root_ontology = profile['rootOntology']
-        self.subjects += profile['subjects']
-        self.predicates += profile['predicates']
-        self.datatypes += profile['datatypes']
-        self.objects += profile['objects']
-        self.instances.update(profile['subjectInstances'])
+        # Read defensively: these are all fields that migrations add, so a profile whose
+        # migration never completed reaches this point without them. Indexing here used
+        # to raise KeyError mid-conversion, which the API surfaced as a bare HTTP 500 and
+        # callers reported as "conversion silently stopped working". An incomplete
+        # profile now yields a thinner graph instead of no graph at all.
+        root_ontology = profile.get('rootOntology')
+        if not isinstance(root_ontology, dict):
+            logger.warning(
+                'Profile %s has no rootOntology; falling back to the generic assay term. '
+                'The profile is likely mid-migration.', profile.get('id'))
+            root_ontology = DEFAULT_ROOT_ONTOLOGY
+        self.root_ontology = root_ontology
+        self.subjects += profile.get('subjects') or []
+        self.predicates += profile.get('predicates') or []
+        self.datatypes += profile.get('datatypes') or []
+        self.objects += profile.get('objects') or []
+        self.instances.update(profile.get('subjectInstances') or {})
         identifiers = [i['identifier'] | i['result'] for i in self._converter.get_matches(rdf=True) if i['result']]
 
         for element in [self.root_ontology] + self.subjects + self.predicates + self.datatypes + self.objects:
