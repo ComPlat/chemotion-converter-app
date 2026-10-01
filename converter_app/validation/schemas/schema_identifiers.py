@@ -66,10 +66,21 @@ identifiers_schema = {
         },
         "type": {
             "type": "string",
-            "enum": ["fileMetadata", "tableMetadata", "tableHeader"]
+            "enum": ["fileMetadata", "tableMetadata", "tableHeader", "composed"]
         },
         "value": {
             "type": ["string", "number"]
+        },
+        # composed identifiers only: template with {{#<identifier id>}} placeholders
+        "template": {
+            "type": "string"
+        },
+        "onMissing": {
+            "type": "string",
+            "enum": ["skip", "empty", "placeholder"]
+        },
+        "missingPlaceholder": {
+            "type": "string"
         },
         "predicate": ontology_id,
         "object": ontology_id,
