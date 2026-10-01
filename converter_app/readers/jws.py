@@ -16,23 +16,27 @@ class JwsReader(Reader):
     Reads native JASCO Spectra Manager files (.jws), an OLE2 compound document.
 
     A single .jws holds one spectrum. The relevant streams are:
-      - 'DataInfo': doubles; index 3/4/5 = X start / end / interval (nm)
+      - 'DataInfo': uint32 at byte 20 = number of points N; doubles at byte 24/32/40 =
+                    X start / end / interval (nm)
       - 'Y-Data'  : N little-endian float32 intensities
-      - 'X-Data'  : present only for non-linear arrays (then X is read from here)
+      - 'X-Data'  : N little-endian float32 X values, present only for non-linear arrays
       - 'SampleInfo' / 'ModuleInfo' / 'MeasParam' / 'UserInfo': UTF-16LE text metadata
 
     Emits a single table (Wavelength vs Intensity) plus metadata. Column names and the
     internal_reader_* keys mirror the SuprabankReader spectra pages so the data is comparable.
 
     Note: the binary layout is reverse-engineered and verified against FP-8300 emission
-    spectra. Files with a differing data-array type are rejected in check() rather than
-    guessed at.
+    spectra. Files whose stream sizes do not match this layout (e.g. float64 or truncated
+    arrays, multiple channels) are rejected in check() rather than guessed at.
     """
     identifier = 'jws_reader'
     priority = 10
 
-    # DataInfo layout: X start / end / interval are the doubles at index 3, 4, 5
+    # DataInfo layout: the number of points is the uint32 at index 5,
+    # X start / end / interval are the doubles at index 3, 4, 5
+    _DATAINFO_NPOINTS_OFFSET = 5 * 4
     _DATAINFO_XAXIS_OFFSET = 3 * 8
+    _DATAINFO_MIN_SIZE = _DATAINFO_XAXIS_OFFSET + 3 * 8
     # token pattern for a measured parameter like '2.5 nm' or '1 sec'
     _param_pattern = re.compile(r'^\d+(?:\.\d+)?\s*(?:nm|sec|s)$')
 
@@ -40,18 +44,35 @@ class JwsReader(Reader):
         super().__init__(file, *tar_content)
         self._ole = None
 
-    @staticmethod
-    def _open_jws(content):
-        """Open and validate a .jws OLE2 blob. Returns the OleFileIO, or None if it is not a .jws."""
+    @classmethod
+    def _open_jws(cls, content):
+        """Open and validate a .jws OLE2 blob. Returns the OleFileIO, or None if it is not a valid .jws."""
         try:
             ole = olefile.OleFileIO(io.BytesIO(content))
         except (OSError, ValueError):
             return None
-        streams = {'/'.join(entry) for entry in ole.listdir()}
-        if 'DataInfo' in streams and 'Y-Data' in streams:
+        if cls._has_valid_layout(ole):
             return ole
         ole.close()
         return None
+
+    @classmethod
+    def _has_valid_layout(cls, ole):
+        """
+        Checks the stream layout _populate_spectrum relies on: DataInfo is long enough for the
+        X axis, and Y-Data (and X-Data, if present) hold exactly N float32 values.
+        """
+        if not ole.exists('DataInfo') or not ole.exists('Y-Data'):
+            return False
+        if ole.get_size('DataInfo') < cls._DATAINFO_MIN_SIZE:
+            return False
+
+        data_info = ole.openstream('DataInfo').read()
+        n_points = struct.unpack_from('<I', data_info, cls._DATAINFO_NPOINTS_OFFSET)[0]
+        array_size = n_points * 4
+        if n_points == 0 or ole.get_size('Y-Data') != array_size:
+            return False
+        return not ole.exists('X-Data') or ole.get_size('X-Data') == array_size
 
     def check(self):
         """
@@ -76,19 +97,17 @@ class JwsReader(Reader):
 
     def _populate_spectrum(self, ole, table):
         """Fill one table (columns/rows + device metadata) from an opened .jws OLE2 file."""
-        # X axis: start / end / interval from DataInfo
+        # number of points and X axis (start / end / interval) from DataInfo
         data_info = ole.openstream('DataInfo').read()
+        n_points = struct.unpack_from('<I', data_info, self._DATAINFO_NPOINTS_OFFSET)[0]
         x_start, x_end, x_step = struct.unpack_from('<3d', data_info, self._DATAINFO_XAXIS_OFFSET)
 
-        # Y values: N little-endian float32
-        y_raw = ole.openstream('Y-Data').read()
-        n_points = len(y_raw) // 4
-        y_values = struct.unpack(f'<{n_points}f', y_raw[:n_points * 4])
+        # Y values: N little-endian float32 (stream size validated in _has_valid_layout)
+        y_values = struct.unpack(f'<{n_points}f', ole.openstream('Y-Data').read())
 
         # X values: read from 'X-Data' for non-linear arrays, otherwise reconstruct linearly
         if ole.exists('X-Data'):
-            x_raw = ole.openstream('X-Data').read()
-            x_values = struct.unpack(f'<{n_points}f', x_raw[:n_points * 4])
+            x_values = struct.unpack(f'<{n_points}f', ole.openstream('X-Data').read())
         else:
             x_values = [x_start + i * x_step for i in range(n_points)]
 
