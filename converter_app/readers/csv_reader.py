@@ -88,15 +88,7 @@ class CSVReader(Reader):
         # loop over blocks and sort into header, table, and metadata
         prev_block = None
         for block in blocks:
-            is_table = len(block['indexes']) >= self.table_min_rows and block['shape']
-
-            # a short numeric block still counts as a table if it directly follows a known marker (e.g. JCAMP "XYDATA")
-            if not is_table and any(cell == 'f' for cell in block['shape']) and prev_block is not None:
-                prev_lines = [self.lines[index].strip() for index in prev_block['indexes']]
-                if any(line in self.block_identifiers for line in prev_lines):
-                    is_table = True
-
-            if not is_table:
+            if not self.is_table_block(block, prev_block):
                 # this is the header
                 if table['rows']:
                     # if a table is already there, this must be a new header
@@ -135,6 +127,20 @@ class CSVReader(Reader):
                     })
 
         return tables
+
+    def is_table_block(self, block, prev_block):
+        """
+        A block is a table if it has at least table_min_rows rows. A shorter numeric block still
+        counts as a table if it directly follows a known marker (e.g. JCAMP "XYDATA").
+        :param block: the current block
+        :param prev_block: the block preceding the current one, or None
+        :return: True if block is a table
+        """
+        if block['shape'] and len(block['indexes']) >= self.table_min_rows:
+            return True
+        if prev_block is None or not any(cell == 'f' for cell in block['shape']):
+            return False
+        return self.lines[prev_block['indexes'][-1]].strip() in self.block_identifiers
 
     def get_metadata(self):
         csv_dialect = self.file.features('csv_dialect')
