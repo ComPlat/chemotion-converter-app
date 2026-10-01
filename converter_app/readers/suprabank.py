@@ -35,11 +35,6 @@ class SuprabankReader(Reader):
     _metadata_marker = '##### Extended Information'
     _volume_pattern = re.compile(r'(-?\d+(?:[.,]\d+)?)')
 
-    def __init__(self, file, *tar_content):
-        super().__init__(file, *tar_content)
-        self.wb = None
-        self.ws = None
-
     def check(self):
         """
         :return: True if the file is a Suprabank JASCO fluorescence xlsx export
@@ -48,15 +43,30 @@ class SuprabankReader(Reader):
             return False
 
         try:
-            self.wb = openpyxl.load_workbook(filename=self.file.fp)
+            # read-only keeps the probe cheap, since every xlsx upload passes through here
+            # before the generic ExcelReader; other files are rejected after their first two rows
+            wb = openpyxl.load_workbook(filename=self.file.fp, read_only=True)
         except (openpyxl.utils.exceptions.InvalidFileException, zipfile.BadZipFile):
             return False
 
-        self.ws = self.wb.active
+        try:
+            result = self._has_signature(wb.active)
+        finally:
+            wb.close()
 
+        logger.debug('result=%s', result)
+        return result
+
+    def _has_signature(self, ws):
+        """
+        :param ws: the (read-only) worksheet to probe
+        :return: True if the worksheet carries the Suprabank header rows and metadata marker
+        """
         # verify the characteristic header signature
-        header = [str(c.value).strip() if c.value is not None else '' for c in self.ws[1]]
-        units = [str(c.value).strip() if c.value is not None else '' for c in self.ws[2]]
+        first_rows = list(ws.iter_rows(min_row=1, max_row=2, values_only=True))
+        if len(first_rows) < 2:
+            return False
+        header, units = ([str(v).strip() if v is not None else '' for v in row] for row in first_rows)
         if not header or header[0] != 'Wavelength' or 'Intensity' not in header:
             return False
         if not units or units[0] != 'nm':
@@ -64,16 +74,16 @@ class SuprabankReader(Reader):
 
         # verify the trailing 'Extended Information' metadata block is present below the four
         # header rows (header, units, labels, formulas) that prepare_tables relies on
-        has_marker = any(
+        return any(
             row[0] is not None and str(row[0]).strip() == self._metadata_marker
-            for row in self.ws.iter_rows(min_row=5, min_col=1, max_col=1, values_only=True)
+            for row in ws.iter_rows(min_row=5, min_col=1, max_col=1, values_only=True)
         )
-        result = has_marker
-        logger.debug('result=%s', result)
-        return result
 
     def prepare_tables(self):
-        rows = list(self.ws.iter_rows(values_only=True))
+        # full (not read-only) load: only then are all rows padded to the sheet width,
+        # which the column indexing below relies on
+        self.file.fp.seek(0)
+        rows = list(openpyxl.load_workbook(filename=self.file.fp).active.iter_rows(values_only=True))
 
         header = [self._clean(v) for v in rows[0]]
         units = [self._clean(v) for v in rows[1]]
