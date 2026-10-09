@@ -1,6 +1,7 @@
 import csv
 import io
 import logging
+from datetime import datetime
 
 from converter_app.readers.helper.base import Reader
 from converter_app.readers.helper.reader import Readers
@@ -123,8 +124,31 @@ class CSVReader(Reader):
                         'key': str(idx),
                         'name': f'Column #{idx} ({name})' if name else f'Column #{idx}'
                     })
+                self.add_duration_column(table)
 
         return tables
+
+    def add_duration_column(self, table):
+        """
+        Appends a duration column (seconds since the first row) if the table has a
+        date+time column. Tables without such a column are left unchanged.
+        :param table: table with rows and columns
+        """
+        for col in range(len(table['rows'][0])):
+            try:
+                times = [datetime.fromisoformat(row[col].strip()) for row in table['rows'] if ':' in row[col]]
+                if len(times) != len(table['rows']):
+                    continue
+                durations = [str(round((time - times[0]).total_seconds(), 6)) for time in times]
+            except (ValueError, TypeError, IndexError, AttributeError):
+                continue
+
+            for row, duration in zip(table['rows'], durations):
+                row.append(duration)
+            idx = len(table['columns'])
+            table['metadata'][f'column_{idx:02d}'] = 'duration_s'
+            table['columns'].append({'key': str(idx), 'name': f'Column #{idx} (duration_s)'})
+            return
 
     def get_metadata(self):
         csv_dialect = self.file.features('csv_dialect')
