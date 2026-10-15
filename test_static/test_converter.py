@@ -189,3 +189,41 @@ def test_process_builds_output_table_and_applies_operations():
     assert table['applied_y_operator'] is True
     assert table['applied_operator_failed'] is False
     assert table['y_operations_description'] == 'double y'
+
+
+def test_get_reaction_variation_matches_skips_elements_whose_sample_does_not_match():
+    def file_name_identifier(identifier_id, pattern):
+        return {
+            'id': identifier_id,
+            'type': 'fileMetadata',
+            'key': 'file_name',
+            'match': 'regex',
+            'value': pattern,
+        }
+
+    converter = make_converter(
+        {
+            'identifiers': [],
+            'tables': [],
+            'reactionVariations': {
+                'identifiers': [
+                    file_name_identifier('sample-ok', r'sample_(\w+?)_'),
+                    file_name_identifier('value-ok', r'_(\d+\.\d+)'),
+                    file_name_identifier('unit-ok', r'\d([a-z]+)\.csv'),
+                    file_name_identifier('sample-missing', r'probe_(\w+?)_'),
+                    file_name_identifier('value-missing', r'temp_(\d+)'),
+                ],
+                'elements': [
+                    ['sample-ok', 'value-ok', 'unit-ok'],
+                    ['sample-missing', 'value-missing', 'unit-ok'],
+                ],
+            },
+        },
+        {'metadata': {'file_name': 'sample_A1_12.5mg.csv'}, 'tables': []},
+    )
+
+    converter.match_reaction_variation_identifier()
+
+    assert converter.get_reaction_variation_matches() == {
+        'samples': [['A1', '12.5', 'mg']],
+    }
