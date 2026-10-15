@@ -373,8 +373,12 @@ class Converter:
     def get_reaction_variation_matches(self):
         values = []
         for [sample_id, value_id, unit_id] in self.profile.data.get('reactionVariations', {}).get('elements', []):
+            sample = self._get_reaction_variation_value(sample_id)
+            if sample is None:
+                continue
+
             values.append([
-                self._get_reaction_variation_value(sample_id),
+                sample,
                 self._get_reaction_variation_value(value_id),
                 self._get_reaction_variation_value(unit_id),
             ])
