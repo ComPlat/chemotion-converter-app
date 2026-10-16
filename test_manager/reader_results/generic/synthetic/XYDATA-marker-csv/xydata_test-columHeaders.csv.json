@@ -1,0 +1,106 @@
+{
+    "tables": [
+        {
+            "header": [
+                "Title\tmarker test",
+                "Wavelength\tAbsorbance",
+                "Test\tText",
+                "Test\tText",
+                "Test\tText",
+                "Test\tText",
+                "Test\tText",
+                "Test\tText",
+                "Test\tText",
+                "Test\tText",
+                "Test\tText",
+                "Test\tText",
+                "Date\t2026-10-14",
+                "XYDATA"
+            ],
+            "metadata": {
+                "column_00": "Wavelength",
+                "column_01": "Absorbance",
+                "column_02": "",
+                "__UNIT_PPM": "ppm",
+                "__UNIT_liter": "l",
+                "__UNIT_gram": "g",
+                "__UNIT_%": "%",
+                "__UNIT_mol": "mol",
+                "rows": "11",
+                "columns": "2"
+            },
+            "columns": [
+                {
+                    "key": "0",
+                    "name": "Column #0 (Wavelength)"
+                },
+                {
+                    "key": "1",
+                    "name": "Column #1 (Absorbance)"
+                }
+            ],
+            "rows": [
+                [
+                    "400",
+                    "0.100"
+                ],
+                [
+                    "410",
+                    "0.130"
+                ],
+                [
+                    "420",
+                    "0.160"
+                ],
+                [
+                    "430",
+                    "0.190"
+                ],
+                [
+                    "440",
+                    "0.220"
+                ],
+                [
+                    "450",
+                    "0.250"
+                ],
+                [
+                    "460",
+                    "0.280"
+                ],
+                [
+                    "470",
+                    "0.310"
+                ],
+                [
+                    "480",
+                    "0.340"
+                ],
+                [
+                    "490",
+                    "0.370"
+                ],
+                [
+                    "500",
+                    "0.400"
+                ]
+            ]
+        }
+    ],
+    "metadata": {
+        "file_name": "xydata_test-columHeaders.csv",
+        "content_type": "",
+        "mime_type": "text/plain",
+        "extension": ".csv",
+        "reader": "CSVReader",
+        "uploaded": "2026-10-16T14:29:35.573211+00:00",
+        "ontology": null,
+        "lineterminator": "\\r\\n",
+        "quoting": "0",
+        "doublequote": "False",
+        "delimiter": "tab",
+        "quotechar": "\"",
+        "skipinitialspace": "False"
+    },
+    "attachments": []
+}
