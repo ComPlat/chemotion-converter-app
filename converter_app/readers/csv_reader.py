@@ -20,7 +20,8 @@ class CSVReader(Reader):
         self.lines = None
         self.rows = None
         self.table_min_rows = 20
-        # markers that flag a following numeric block as a data table even if it is shorter than table_min_rows
+        # markers that flag a following numeric block as a data table even if it is shorter than table_min_rows;
+        # a marker line stays in the header and is never used as column names
         self.block_identifiers = ['XYDATA']
         self.delimiters = {
             '\t': 'tab',
@@ -88,7 +89,7 @@ class CSVReader(Reader):
         # loop over blocks and sort into header, table, and metadata
         prev_block = None
         for block in blocks:
-            if not self.is_table_block(block, prev_block):
+            if not self.is_table_block(block):
                 # this is the header
                 if table['rows']:
                     # if a table is already there, this must be a new header
@@ -100,13 +101,12 @@ class CSVReader(Reader):
                 if not table['rows']:
                     # if there are no tables, we can try to find the columns previous line
                     if prev_block is not None:
-                        this_row = self.rows[block['indexes'][0]]
-                        prev_row = self.rows[prev_block['indexes'][-1]]
+                        prev_index = prev_block['indexes'][-1]
 
-                        if len(prev_row) > 0 and len(prev_row) <= len(this_row):
+                        if self.is_column_header(prev_index, block['indexes'][0]):
                             # add the column names as metadata
                             table['metadata'] = {
-                                f'column_{idx:02d}': str(value) for idx, value in enumerate(prev_row)
+                                f'column_{idx:02d}': str(value) for idx, value in enumerate(self.rows[prev_index])
                             }
                             # remove the colum line from the header
                             table['header'] = table['header'][:-1]
@@ -128,19 +128,52 @@ class CSVReader(Reader):
 
         return tables
 
-    def is_table_block(self, block, prev_block):
+    def is_table_block(self, block):
         """
         A block is a table if it has at least table_min_rows rows. A shorter numeric block still
-        counts as a table if it directly follows a known marker (e.g. JCAMP "XYDATA").
+        counts as a table if it follows a known marker (e.g. JCAMP "XYDATA"), either directly or
+        with one column header line in between.
         :param block: the current block
-        :param prev_block: the block preceding the current one, or None
         :return: True if block is a table
         """
         if block['shape'] and len(block['indexes']) >= self.table_min_rows:
             return True
-        if prev_block is None or not any(cell == 'f' for cell in block['shape']):
+        if not any(cell == 'f' for cell in block['shape']):
             return False
-        return self.lines[prev_block['indexes'][-1]].strip() in self.block_identifiers
+
+        start = block['indexes'][0]
+        if self.is_block_identifier(start - 1):
+            return True
+        return self.is_block_identifier(start - 2) and self.is_column_header(start - 1, start)
+
+    def is_column_header(self, header_index, data_index):
+        """
+        A line can name the columns of the following data row if it is not a marker line and has
+        no more cells than the data row. Trailing empty cells (e.g. from a trailing tab) are ignored.
+        :param header_index: line index of the candidate column header
+        :param data_index: line index of the first data row
+        :return: True if the line at header_index is a column header for the data row
+        """
+        header_row = self.strip_trailing_empty(self.rows[header_index])
+        return 0 < len(header_row) <= len(self.rows[data_index]) and not self.is_block_identifier(header_index)
+
+    @staticmethod
+    def strip_trailing_empty(row):
+        """
+        :param row: list of cell values
+        :return: row without trailing empty or whitespace-only cells
+        """
+        end = len(row)
+        while end > 0 and not row[end - 1].strip():
+            end -= 1
+        return row[:end]
+
+    def is_block_identifier(self, index):
+        """
+        :param index: line index
+        :return: True if the line at index is one of the block_identifiers markers
+        """
+        return 0 <= index < len(self.lines) and self.lines[index].strip() in self.block_identifiers
 
     def get_metadata(self):
         csv_dialect = self.file.features('csv_dialect')
